@@ -10,15 +10,15 @@ link-citations: yes
 github-repo: yeonsoonshin/research-methods-and-stats
 ---
 
-# Welcome
+# Welcome {-}
 
 Welcome! This book is a collection of lecture notes and resources for **PSYC B205: Research Methods and Statistics** at Bryn Mawr College.
 
-# Thanks
+## Thanks {-}
 
 Many people have helped creating the materials in this book, including Prof. Anjali Thapar and Prof. Dustin Albert. I also want to thank the students in PSYC B205 for their feedback and suggestions.
 
-# Resources and References
+## Resources and References {-}
 
 1.  Cote, L. R., Gordon, R. G., Randell, C. E., Schmitt, J., & Marvin, H. (2021). *Introduction to Statistics in the Psychological Sciences*. UMSL Libraries. <https://umsystem.pressbooks.pub/isps/>
 2.  Navarro, D., & Foxcroft, D. (2025). *Learning Statistics with jamovi: A Tutorial for Beginners in Statistical Analysis*. Open Book Publishers. <https://doi.org/10.11647/obp.0333>
