@@ -1,0 +1,5 @@
+book_filename: "PSYC B205 Research Methods and Statistics"
+new_session: yes
+output_dir: docs
+rmd_files:
+  - index.Rmd
