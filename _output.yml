@@ -4,7 +4,7 @@ bookdown::gitbook:
     toc:
       collapse: section
       before: |
-        <li><a href="./">PSYC B205</a></li>
+        <li><a href="./">PSYC B205</a></li> 
     toolbar:
       position: fixed
     sharing:
