@@ -1,13 +1,13 @@
 bookdown::gitbook:
   css: style.css
   number_sections: true
-  split_by: 
+  split_by:
     - rmd
   config:
     toc:
-      collapse: section
+      collapse: chapter
       before: |
-        <li><a href="./">PSYC B205</a></li> 
+        <li><a href="./">PSYC B205</a></li>
     toolbar:
       position: fixed
     sharing:
