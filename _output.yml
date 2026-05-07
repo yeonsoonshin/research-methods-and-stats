@@ -1,5 +1,8 @@
 bookdown::gitbook:
   css: style.css
+  number_sections: true
+  split_by: 
+    - rmd
   config:
     toc:
       collapse: section
