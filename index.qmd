@@ -1,0 +1,23 @@
+---
+author: 
+  - "Yeon Soon Shin, PhD"
+---
+
+# Research Methods and Statistics {.unnumbered}
+
+## Welcome {.unnumbered}
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE)
+```
+
+This textbook is is adaptation of the following open access resources for Bryn Mawr College PSYC B205 Research Methods and Statistics:
+
+1.  *Research Methods in Psychology* originally written by Paul C. Price (California State University, Fresno) and adapted by The Saylor Foundation under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License without attribution as requested by the work's original creator or licensee. This adaptation incorporates two editions of the textbook:
+    1.  The Brooklyn College edition of by Matthew J. C. Crump (Brooklyn College and Graduate Center of the City University of New York).
+    2.  The fourth edition of *Research Methods in Psychology* (published in 2019), co-authored by Rajiv S. Jhangiani (Kwantlen Polytechnic University), Carrie Cuttler (Washington State University), and Dana C. Leighton (Texas A&M University—Texarkana).
+2.  *Introduction to Statistics in the Psychological Sciences* authored by Linda R. Cote (Marymount University), Rupa G. Gordon (Augustana College), Chrislyn E. Randell (Metropolitan State University), Judy Schmitt (University of Missouri–St. Louis), and Helena Marvin (University of Missouri–St. Louis), which is based on *An Introduction to Psychological Statistics* (https://irl.umsl.edu/oer/4/) authored by Garett C. Foster (University of Missouri–St. Louis) and *Online Statistics Education: A Multimedia Course of Study* (http://onlinestatbook.com/) led by David M. Lane (Rice University).
+
+Changes to the original works were made by Yeon Soon Shin (Bryn Mawr College). Materials from the original sources have been combined, reorganized, and added to by the current author, and any conceptual, mathematical, or typographical errors are the responsibility of the current authors.
+
+This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License, except where otherwise noted.

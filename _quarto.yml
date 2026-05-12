@@ -1,0 +1,44 @@
+project:
+  type: website
+  render:
+    - "*.qmd"
+    - "!*.rmd"
+  output-dir: docs
+  resources:
+   - "Figures/"
+
+bibliography:
+  - "Refs/book.bib"
+  - "Refs/packages.bib"
+  - "Refs/MyLibrary.bib"
+
+website:
+  site-url: https://yeonsoon.github.io/research-methods-and-stats-book
+  repo-url: https://github.com/yeonsoon/research-methods-and-stats-book/
+  repo-branch: master
+  repo-actions: [edit]
+  # google-analytics: ""
+  title: "Research Methods and Statistics"
+  sidebar:
+    style: "floating"
+    search: true
+    contents:
+      - index.qmd
+      - section: "Research Methods"
+        contents:
+          - 01-psych-science.qmd
+      - section: "Statistics"
+        contents:
+          -  02-stats-test.qmd
+    # logo: ResearchMethods.png
+
+format:
+  html:
+    theme: ally
+    toc: true
+    html-math-method: mathjax
+  epub: default
+  docx: default
+
+editor: source
+

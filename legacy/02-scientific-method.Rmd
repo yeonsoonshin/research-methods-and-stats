@@ -1,0 +1,42 @@
+# Psychological Science
+
+Do you have beliefs about the world around you? What are the things you believe to be true? Perhaps you may believe that the world is an uncertain place where unexpected things can happen any time. You may also believe that people with anxiety disorders are intolerant to uncertainty. These are all beliefs -- statements you accept as true. But can you *know* whether these beliefs match reality? If someone asks you whether anxiety is associated with intolerance of uncertainty, can you claim that it does with good justification? In this lecture, we will learn about different ways of justifying beliefs, identify what kinds of beliefs and questions about them fall within the domain of science, and examine how the scientific method helps us evaluate claims systematically.
+
+## Learning Objectives {.unnumbered}
+
+By the end of this chapter, you should be able to:
+
+1.  describe the 5 ways of knowing
+2.  evaluate whether logical arguments are valid
+3.  determine whether a question can be answered scientifically and explain why or why not
+4.  differentiate between theories and hypotheses
+
+## Ways of Knowing
+
+There are five common ways to justify beliefs and acquire knowledge:
+
+1.  [Intuition](#intuition): a hunch or a gut feeling
+2.  [Authority](#authority): unquestioning belief/trust in someone who is considered an expert in an area
+3.  [Rationalism](#rationalism): rules of logic/reasoning to arrive at a conclusion
+4.  [Empiricism](#empiricism): direct observations of events using senses
+5.  [The Scientific Method](#the-scientific-method): systematic observations on empirical questions
+
+We will examine each and consider its strengths and weaknesses.
+
+### Intuition {#intuition}
+
+You may believe something is true based on a hunch or a gut feeling -- what *feels* true. It's a quick and dirty solution to make sense of the world. However, intuition is limited in that:
+
+1.  it often fails to consider what we cannot see (e.g., present bias)
+2.  it can be swayed by what comes easily to mind (e.g., availability heuristic)
+3.  it is biased by motivation
+4.  it focuses on evidence that is consistent with our point of view (e.g., confirmation bias)
+5.  it is easily swayed by a "good" story
+
+### Authority {#authority}
+
+### Rationalism {#rationalism}
+
+### Empiricism {#empiricism}
+
+### The Scientific Method {#the-scientific-method}
