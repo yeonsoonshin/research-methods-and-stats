@@ -30,6 +30,7 @@ website:
       - section: "Statistics"
         contents:
           -  02-stats-test.qmd
+          -  02-stats-test copy.qmd
     # logo: ResearchMethods.png
 
 format:
