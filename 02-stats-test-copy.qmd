@@ -1,0 +1,45 @@
+---
+author: 
+  - "Yeon Soon Shin"
+  - "Matthew J. C. Crump"
+  - "Paul C. Price"
+  - "Rajiv Jhangiani"
+  - "I-Chant A. Chiang"
+  - "Dana C. Leighton"
+html:
+  html-math-method: mathml
+---
+
+# Descriptive Statistics MathML
+
+> Statistics is the grammar of science.  ---Karl Pearson
+
+At this point, we need to consider the basics of data analysis in psychological research in more detail. In this chapter, we focus on descriptive statistics—a set of techniques for summarizing and displaying the data from your sample. We look first at some of the most common techniques for describing single variables, followed by some of the most common techniques for describing statistical relationships between variables. We then look at how to present descriptive statistics in writing and also in the form of tables and graphs that would be appropriate for an American Psychological Association (APA)-style research report. We end with some practical advice for organizing and carrying out your analyses.
+
+## Describing Single Variables
+
+### Measures of Central Tendency and Variability
+
+It is also useful to be able to describe the characteristics of a distribution more precisely. Here we look at how to do this in terms of two important characteristics: their central tendency and their variability.
+
+### Central Tendency
+
+The central tendency of a distribution is its middle—the point around which the scores in the distribution tend to cluster. (Another term for central tendency is average.) 
+
+The mean of a distribution (symbolized $M$) is the sum of the scores divided by the number of scores. As a formula, it looks like this:
+
+$$
+M = \frac{\sum(X)}{N}
+$$
+
+In this formula, the symbol $\sum$ (the Greek letter sigma) is the summation sign and means to sum across the values of the variable $X$. $N$ represents the number of scores. The mean is by far the most common measure of central tendency, and there are some good reasons for this. It usually provides a good indication of the central tendency of a distribution, and it is easily understood by most people. In addition, the mean has statistical properties that make it especially useful in doing inferential statistics.
+
+An alternative to the mean is the median. The median is the middle score in the sense that half the scores in the distribution are less than it and half are greater than it. The simplest way to find the median is to organize the scores from lowest to highest and locate the score in the middle. Consider, for example, the following set of seven scores:
+
+8 4 12 14 3 2 3
+
+To find the median, simply rearrange the scores from lowest to highest and locate the one in the middle.
+
+2 3 3 4 8 12 14
+
+In this case, the median is 4 because there are three scores lower than 4 and three scores higher than 4. When there is an even number of scores, there are two scores in the middle of the distribution, in which case the median is the value halfway between them. For example, if we were to add a score of 15 to the preceding data set, there would be two scores (both 4 and 8) in the middle of the distribution, and the median would be halfway between them (6).
