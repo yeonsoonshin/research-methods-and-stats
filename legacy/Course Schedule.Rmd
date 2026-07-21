@@ -1,0 +1,219 @@
+# Week 01-1: Introduction
+
+## Getting to know each other
+
+## Why take this course?
+
+* [ ] PollEverywhere: Why are you here?
+
+## Course Overview
+
+* [ ] Worksheet: Syllabus
+
+## Ways of Knowing
+
+* [ ] Worksheet: Pair Share
+
+### Intuition
+
+### Authority
+
+* [ ] Image: Huberman Lab
+* [ ] Image: ChatGPT screenshot
+
+### Rationalism
+
+### Empiricism
+
+* [ ] PollEverywhere: Empricism
+
+### The Scientific Method
+
+* [ ] PollEverywhere: Is it a scientific question? x 4
+
+* [ ] Two Content: Comparison between empirical question
+
+## Psychological Science
+
+* [ ] Image: https://imgs.xkcd.com/comics/purity.png
+
+# Week 01-2:Research Claims
+
+## Getting to know each other
+
+## The Scientific Method
+
+* [ ] Image: Scientific Process Flowchart 
+
+### Theory vs. Hypothesis
+
+### Research Cycle
+
+* [ ] Image: Research Cycle (inner)
+* [ ] Image: Research Cycle (outer)
+* [ ] Image: Google Scholar screenshot
+
+
+### Good Hypotheses
+
+* [ ] PollEverywhere: Is it a good hypothesis? x 2
+
+## Understanding Research Claims
+
+### Variables
+
+* [ ] Table: Construct, Conceptual definition, Operational Definition
+
+### Types of Claims
+
+* [ ] Image (Table): Beth Morling
+
+* [ ] Worksheet: Types of claim (choose among three types, underline variables)
+
+
+# Week 02-1: Research Design and Validity
+
+## Predict vs. Explain
+
+## Getting to know each other
+
+## Types of Research Claims
+
+* [ ] Slide build for answers
+* [ ] Slide font colors to mark answers
+
+## Approaches to Research Design
+
+### Scientific Reserach: From questions to claim
+
+* [ ] Flowchart 1
+* [ ] Flowchart 2
+* [ ] Floating text boxes
+
+### Three Causal Criteria
+
+* [ ] Chart: Three causal criteria
+
+### Types of Research Design
+
+* [ ] Table: Shared headings
+
+### Testing a causal hypothesis with experimental design
+
+* [ ] Flowchart: Frustration to Aggressive Behavior
+* [ ] Flowchart: IV to DV
+* [ ] Floating text boxes
+* [ ] Flowchart: Random assignment -> Manipulate IV -> Measure DV -> Examine differences in DV between conditions
+
+### Three Causal Criteria
+
+* [ ] Floating text box
+
+
+### Research Design and Claims
+
+* [ ] Table
+
+#### Quasi-Experimental Design and Causal Criteria
+
+* [ ] Chart: Three causal criteria
+* [ ] Floating text box
+
+#### Correlation Design
+
+##### Bivariate Relationships: Direction
+
+* [ ] Plot: scatterplots from Cote et al
+
+##### Bivariate Relationships: Strength
+* [ ] Plot: scatterplots generated from R
+
+#### Correlation Design
+
+* [ ] Plot: scatterplot between Smoking and Depression
+
+* [ ] PollEverywhere: Scatterplot
+
+#### Correlation is not the same as causation
+
+* [ ] Plot: Time series Pork spending and Lululemon 
+* [ ] Plot: Scatterplot Pork stending ~ Lululemon
+* [ ] Website: https://www.tylervigen.com/spurious-correlations 
+
+* [ ] Plot: Time series Neptune Earth distance and Burglaries
+* [ ] Plot: Scatterplot Neptune Earth distance ~ Burglaries
+* [ ] Website: https://www.tylervigen.com/spurious-correlations 
+
+## Research Validity
+
+### Research Validity
+
+* [ ] Chart: Four validities
+
+### Threats to Internal Validity
+
+* [ ] Table: threat, definition, solution (greyed out)
+
+* [ ] Worksheet: Identify threats (refer to the threat table)
+
+
+# Week 02-2: Measurement Reliability and Validity
+
+## Research Validity (Cont'd)
+
+## Measurement
+
+### Types of Measure
+
+#### Self-report
+
+* [ ] Table: Rosenberg Self-Esteem Scale
+
+### Types of Variables
+
+#### Levels of Measurement
+
+* [ ] Table: Levels of Measurement with Shared heading
+
+* [ ] PollEverywhere: Choose Levels of Measurement x 4
+
+##### Nominal
+
+* [ ] PollEverywhere: Choose Levels of Measurement
+
+#### Likert
+
+* [ ] PollEverywhere: Choose Levels of Measurement
+
+#### Personality Survey
+
+* [ ] Link: Google Form <https://forms.gle/PyZmhb9Z3v9CZcgi6>
+
+
+## Measurement Reliability and Validity
+
+### Reliability of Measurement
+
+* [ ] Chart: Three measurement reliability
+
+* [ ] Plot: scatter plots (Internel Consistency)
+
+* [ ] PollEverywhere: scatter plots (Internel Consistency)
+
+* [ ] PollEverywhere: reliablility
+
+### Validity of Measurement
+
+* [ ] Chart: Five Measurement Validity
+
+### Relationship between reliability and validity
+
+* [ ] Image: Dart images
+* [ ] Chart: Research Validity
+
+
+
+
+
+
+

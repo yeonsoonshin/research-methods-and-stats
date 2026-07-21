@@ -1,0 +1,286 @@
+---
+title: "PSYC B205: Research Methods and Statistics"
+author: "Yeon Soon Shin, PhD"
+date: "Last Update: `r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+description: |
+  Lecture notes and resources for PSYC B205 at Bryn Mawr College
+link-citations: yes
+github-repo: yeonsoonshin/research-methods-and-stats
+---
+
+# Syllabus {.unnumbered}
+
+## Course Introduction
+
+Welcome to **PSYC B205: Research Methods and Statistics**! This course introduces the *how* of psychological science. Research methods and statistics are essential tools for testing and developing theories about human behavior. You will learn core concepts and techniques used by psychological scientists, gain hands-on experience analyzing empirical data using **jamovi**, an open-source statistical software package, and develop skills for critically evaluating statistical claims. You will also learn how to communicate your findings effectively in the standard format in the field, APA style. By the end of the course, you will have a solid foundation in research methods and statistics that will prepare you to both consume research critically and produce your own research.
+
+### Learning Goals
+
+By the end of this course, you should be able to:
+
+1.  understand what goes into research design
+2.  understand fundamental concepts related to descriptive and inferential statistics
+3.  interpret and evaluate statistical evidence presented in scientific journal articles
+4.  be able to analyze data and run statistical tests using jamovi
+5.  report findings from statistical analyses in APA style
+
+## Course Logistics
+
+### Teaching Team
+
+| Name           | Pronouns | Role       | Email (at brynmawr.edu) | Office Hours |
+|---------------|---------------|---------------|---------------|---------------|
+| Yeon Soon Shin | she/her  | Instructor | yshin2                  | TBD          |
+| Sophia Park    |          | TA         | shpark                  |              |
+| Addie Kieffer  |          | TA         | akieffer                |              |
+| Prii Regmi     |          | TA         | pregmi                  |              |
+
+### Class Meetings
+
+This class has lectures and lab recitations. Lectures will introduce the key concepts and topics, and Lab recitations will provide you with hands-on exercises in jamovi.
+
+| Type | Time | Location |
+|------------------------|------------------------|------------------------|
+| Lectures | Tuesdays and Thursdays from 1:10 pm to 2:30 pm | TBD |
+| Lab recitations | Fridays 10:40 am to 12:00 pm or Fridays 1:10 pm to 2:30 pm | TBD |
+
+### Office Hours
+
+I am excited to meet you and talk about psychology/neuroscience and beyond. Outside of regular office hours, you can schedule a meeting at <https://brynmawr-edu.zoom.us/zbook/yeon-soon-shin/in-person-meetings>. Please give at least 24 hours' notice so I can plan accordingly.
+
+### TA Help Sessions
+
+TBD
+
+## Course Covenant
+
+Our classroom is a safe and welcoming space for learning, shaped collectively by everyone in it. Each of you plays an important role in creating an environment where ideas, questions, and perspectives are shared openly and respectfully. Every contribution matters. What may seem obvious to one person can be insightful to another. Often, speaking up helps move the learning forward for everyone.
+
+This course is enriched by the wide range of backgrounds, experiences, and viewpoints students bring with them. I am committed to ensuring that all students are respected and supported, regardless of gender, sexuality, race, ethnicity, nationality, age, disability, socioeconomic background, religion, culture, or perspective. That commitment extends to our course content, activities, and discussions, which aim to reflect and value this diversity.
+
+To help foster an inclusive learning community, we are expected to engage with one another thoughtfully: listening actively and without judgment, contributing constructively, ensuring that everyone has the opportunity to be heard, and avoiding discriminatory language or inappropriate humor. Respectful dialogue is essential to meaningful learning.
+
+I am continually working to expand the perspectives represented in our course materials, and I welcome your input in that process. If you have suggestions for improving the course or if any discussion makes you uncomfortable, please feel free to share your thoughts. Your feedback helps make this a stronger, more inclusive learning environment for all.
+
+## Assessment and Grading
+
+### Assessment Philosophy
+
+The assessments in this course are designed to support your learning and help you achieve the learning goals. I believe effective assessments help you develop competencies and recognize your progress toward professional standards in psychological science.
+
+Most assessed components measure your ability to **consume research critically** and **produce research that meets the expectations of the field**. They are *not* designed to test your skill at "optimizing" for assignment formats or guessing what I want. If you ever find yourself asking "what does the instructor want us to do?" reframe that question to **"what would a psychological scientist do?"**.
+
+You will also be assessed for class contribution because active participation helps you understand the material and develop collaboration skills that are essential to the scientific process.
+
+Use these assessments to develop meta-cognitive awareness, reflecting on areas for improvement and recognizing your progress as you develop as a psychological scientist.
+
+### Assessed Components
+
+| Assessed Components               | Percentage of Final Grade |
+|-----------------------------------|---------------------------|
+| 6 Homework Problem Sets (5% each) | 30%                       |
+| Research Paper                    | 15%                       |
+| 3 Exams (15% each)                | 45%                       |
+| Quizzes                           | 6%                        |
+| Class Contribution                | 4%                        |
+
+#### Homework Problem Sets
+
+Six homework problem sets will be assigned throughout the semester. The goal of these assignments is to give you practice with the materials and help you prepare for the exams and the final research paper. After each assignment is graded, you will receive model responses to help you identify areas for improvement in future assignments.
+
+#### Research Paper
+
+Reporting your findings in a paper is an essential part of the scientific process. In this assignment, you will be given a dataset to analyze, prepare data for analysis, conduct descriptive and inferential statistical analyses, and present the findings in an APA-style research paper. This builds on skills from homework problem sets. The paper should be approximately 10-15 pages (double-spaced), not including Supplementary Materials.
+
+#### Exams
+
+There will be three exams during the semester, administered in-class and primarily pen-and-paper. Each exam will include multiple-choice questions, short-answer and essay questions, calculation problems, and data analysis questions. Exams are designed to help you apply concepts to different problems. You are not expected to memorize formulas, but to know when to use which formula and why.
+
+#### Quizzes
+
+Short, low‑stakes multiple‑choice quizzes will be administered on Moodle throughout the semester to assess your understanding of lectures and assigned readings. These quizzes help you identify areas for review and to encourage consistent engagement with course material. The two lowest quiz scores will be dropped.
+
+#### Class Contribution
+
+You will earn a class contribution grade based on your attendance at lectures and lab recitations, as well as your active engagement with the course community. This includes asking questions, participating in discussions, and completing class activities.
+
+### Grading Scale
+
+| Letter Grade | BMC Grade | Percentage  |
+|--------------|-----------|-------------|
+| A            | 4.0       | 95 to 100   |
+| A-           | 3.7       | 90 to \< 95 |
+| B+           | 3.3       | 87 to \< 90 |
+| B            | 3.0       | 83 to \< 87 |
+| B-           | 2.7       | 80 to \< 83 |
+| C+           | 2.3       | 77 to \< 80 |
+| C            | 2.0       | 73 to \< 77 |
+| C-           | 1.7       | 70 to \< 73 |
+| D+           | 1.3       | 67 to \< 70 |
+| D            | 1.0       | 60 to \< 67 |
+| F            | 0.0       | Below 60    |
+
+## Course Policies
+
+### Attendance
+
+1.  **Expectation and policy**: You are expected to attend all lecture and lab recitations. Attendance will be recorded for every class and count toward the class contribution grade.
+2.  **Free absences**: Life happens. You may feel unwell, need time to take care of yourself, or need to stay home out of consideration for the health of others. To allow for this, you are allowed **3 absences** for the semester without affecting the grade. No justification is required for these absences. Please treat these free absences as an "emergency fund" to use when needed. Once they are used, additional absences will affect your grade. I trust you to use this flexibility responsibly.
+3.  **Emergencies**: If you experience a serious or unavoidable emergency that may require additional excused absences, please contact me as soon as possible. Documentation may be requested in these cases.
+
+### Late Work
+
+This section is pertinent to Homework Problem Sets and Research Paper.
+
+1.  **Expectation and policy**: Submitting work on time allows me to provide timely feedback, monitor your understanding, and adjust the pace of the course to best support your learning. You are therefore expected to submit all work by the stated deadlines. Assignments submitted late will incur a **20% penalty for every 24-hour period** past the deadline.
+2.  **Slip days**: I recognize that schedules do not always go as planned. You may feel develop illness close to the deadline, and you may just need one more day to finish the assignment. To account for this, you are given **3 slip days** for the semester. Submitting an assignment up to 24 hours late uses one slip day; up to 48 hours late uses two slip days, and so on. Slip days may be used for any reason and do not require justification. Please use them thoughtfully and treat them as an "emergency fund" for times you truly need flexibility. Once all slip days are used, late submissions *from that point on* will be penalized according to the late work policy. As you plan, keep in mind that research paper is a larger assignment that accounts for 15% of your final grade.
+3.  **Emergencies**: If you experience a serious or unavoidable emergency that may require additional excused extensions, please contact me as soon as possible. Documentation may be requested in these cases.
+
+### Missed Exams
+
+1.  **Expectation and policy**: You are expected to take exams on the scheduled dates. We will review each exam as a class, and delaying this review because some students have not yet taken the exam hinders learning for the entire class.
+2.  **Alternative dates**: If you know in advance that you will need to miss an exam, contact me as soon as possible to discuss arrangements to take it before the scheduled the exam date.
+3.  **Make-up exam**: One make-up session will be offered for each exam within one week of the original exam date. Note that the make-up exam may be in a different format than the original exam.
+    1.  If you attend the make-up session:
+        1.  If you have a valid, documented reason for missing the exam (e.g., illness, family emergency), you can earn up to 100% of the exam grade.
+        2.  If you do not have a valid reason, you can earn up to **50% of the exam grade**.
+    2.  If you miss both the original exam and the make-up session, you will receive a zero on that exam.
+4.  **Emergencies**: If you experience a serious or unavoidable emergency that prevents you from attending both the original exam and the scheduled make-up session, please contact me as soon as possible. Documentation is required in these cases, and alternative arrangements may be considered.
+
+### Calculator
+
+For pen-and-paper exams, the focus is on your ability to think through statistical reasoning and procedures, not your arithmetic abilities. Therefore, calculation errors will incur only a small penalty: less than 10% of the points for that question.
+
+You may use a basic calculator for exams—one without internet access, graphing capabilities, statistical functions (e.g., automatic z-score calculation), or programming features. You are responsible for ensuring your calculator meets these requirements. Calculators will not be provided, so plan accordingly. **If you forget your calculator, you may *not* use your phone or other electronic devices as a substitute.**
+
+### Academic Integrity: AI Use and Collaboration
+
+I regard academic integrity as a very serious matter. If I have reasons to suspect plagiarism, cheating, or any violation of academic integrity, I will ask that you report yourself to the Bryn Mawr Honor Board (<https://sga.blogs.brynmawr.edu/honor-board/>). In this section, I will outline specific guidelines on AI use and collaboration to help you avoid unintentional violations of academic integrity.
+
+#### Use of Generative AI tools
+
+We live in a time of rapid technological advancement, and generative AI tools have become increasingly prevalent in education. While these tools can be powerful aids for learning, it is crucial to use them responsibly and ethically. The core AI philosophy for this course: **AI tools should not bypass your learning.** You are here to learn!
+
+##### Course AI Guidelines
+
+###### You may not directly use AI outputs.
+
+You may not use AI tools to generate answers for homework assignments or to write research papers. **Directly using AI outputs is not acceptable and counts as a violation of academic integrity.** For example, copying and pasting AI-generated text into your assignment, even if you edit it afterward, is not acceptable.
+
+###### You may not use AI as a solution generator.
+
+You may use AI as a tool that supports learning. Think of AI as a teaching assistant or a tutor who guides your thinking and points you to the right direction, but does not write an answer for you.
+
+####### Sample prompt to use at the beginning of an AI conversation:
+
+```         
+You are a tutor helping a student learn research methods and statistics. Your role is to guide thinking, not provide answers.
+
+I'm working on [a problem]. I will show you my work, and I want you to:
+
+1. Identify strengths in my approach
+2. Point out errors or misconceptions WITHOUT correcting them
+3. Suggest concepts and keywords I should review to improve my understanding
+
+DO NOT:
+1. Provide the correct answer or solve the problem for me
+2. Write answers I could submit, even if I give you a draft
+
+If I ask you to solve something directly or haven't shown my attempt yet, remind me that I need to try it first. Then you can evaluate my work. Never give me direct answers. 
+
+You may point out typos or grammatical errors, but you may not rewrite my work for me. 
+```
+
+###### You are responsible for all submitted work.
+
+AI does not take accountability for the content it generates and cannot be held responsible for errors, inaccuracies, or misrepresentations. "AI told me so" is not a valid justification for incorrect work. AI tools frequently produce inaccurate or misleading information that sounds plausible, making it essential that you understand and verify all AI-generated content.
+
+###### You must be able to explain your work.
+
+If any part of your work was informed by AI tools, you must be able to **explain and defend** all content in your submission.
+
+###### You must disclose AI use.
+
+If you used AI tools for *any* part of your work, you must disclose the extent of their use in the Honor Checklist.
+
+#### Collaboration
+
+Collaboration is an important part of the scientific process, and I encourage you to work together on homework assignments and studying for the exam. However, the work you submit should be uniquely your own, by your own hand. You should understand every step of your answer. If you collaborate with others on any part of an assignment, you must disclose the extent of your collaboration in the Honor Checklist.
+
+#### Honor Checklist
+
+Please include this honor checklist with every assignment submission:
+
+-   **Did you use AI tools to help complete any part of this assignment?**
+    -   [ ] **Yes**. If yes, please describe the extent of AI use (which tools, what you used them for, how they helped you learn):
+        -   [ ] I verified the accuracy of any AI-assisted content.
+        -   [ ] I can explain and defend all content in this work.
+    -   [ ] **No**. I did not use AI tools.
+-   **Did you collaborate with others on any part of this assignment?**
+    -   [ ] **Yes**. If yes, describe the extent of collaboration (who you worked with, what you discussed, how it helped you learn):
+        -   [ ] I generated my own work after collaboration and did not copy from others.
+        -   [ ] I can explain and defend all content in this work.
+    -   [ ] **No**. I worked independently.
+-   **All students must confirm**:
+    -   [ ] I pledge my honor that I am the author of this work and did not directly use AI outputs or copy from outside sources.
+    -   [ ] I pledge my honor that neither AI nor other people provided solutions to the core problems in this assignment.
+
+### Accommodations for Disabilities
+
+#### Course Recording
+
+Any student who has a disability-related need to record this class must first be found eligible to do so by Access Services and must share this eligibility with me, the instructor. **Class members need to be aware that this class may be recorded.**
+
+#### Bryn Mawr College
+
+Bryn Mawr College is committed to providing equal access to students with a documented disability. Students needing academic accommodations for a disability must first speak with Access Services. Students can email [accessservices\@brynmawr.edu](mailto:accessservices@brynmawr.edu){.email} to request an appointment to begin this confidential process. If eligible for accommodations as per Access Services, students should schedule an appointment with the professor as early in the semester as possible to share their verification form and make appropriate arrangements. Please note that accommodations are not retroactive and require advance notice to implement. More information can be obtained at the Access Services website (<http://www.brynmawr.edu/access-services/>).
+
+#### Haverford College
+
+Haverford College is committed to creating a learning environment that meets the needs of its diverse student body and provides equitable access to students with disabilities. If you have (or think you may have) a disability related to mental health, chronic health, neurological state, and/or physical condition, please contact the Office of Access and Disability Services (ADS) at [hc-ads\@haverford.edu](mailto:hc-ads@haverford.edu){.email}.
+
+### Religious Observance
+
+All students are free to engage in religious or faith-based observations that are important to them. Please contact me **within the first two weeks** of the semester to make alternative plans for class and assignments that occur during religious observances.
+
+### Title IX
+
+Bryn Mawr College and Haverford College are committed to ensuring that all members of the College community have a learning and working environment that is free from sexual misconduct. All forms of sexual misconduct, including sexual harassment, sexual assault, dating violence, domestic violence, and stalking, are violations of Bryn Mawr/Haverford’s policies, whether they occur on or off campus. Bryn Mawr/Haverford faculty are committed to helping to create a safe learning environment for all students and for the College community as a whole. If you have experienced any form of sexual misconduct or other gender-based misconduct, know that help and support are available. Staff members are trained to support students in navigating campus life, accessing health and counseling services, providing academic and housing accommodations, and more.
+
+The College strongly encourages all students to report any incidents of sexual misconduct. Please be aware that all Bryn Mawr/Haverford employees (other than those designated as confidential resources such as counselors, clergy, and healthcare providers) are required to report information about sexual misconduct to the to their respective Title IX Offices.
+
+-   Information about each College's Sexual Misconduct Policy, reporting options, and a list of campus and local resources can be found on the following websites:
+    -   Bryn Mawr College Sexual Misconduct Policy and Resources: <https://www.brynmawr.edu/inside/policies-guidelines-handbooks/sexual-misconduct>\
+    -   Haverford College Sexual Misconduct Policy and Resources: <https://www.haverford.edu/title-ix/sexual-misconduct-policy>
+-   To make a report of Sexual Misconduct:
+    -   Bryn Mawr College:
+        -   Contact: Cary Carr, Title IX Coordinator, [ccarr1\@brynmawr.edu](mailto:ccarr1@brynmawr.edu){.email}, 610.526.7863
+        -   Reporting form: <https://cm.maxient.com/reportingform.php?BrynMawrCollege=&layout_id=200>
+    -   Haverford College:
+        -   Contact: Raquel Esteves-Joyce, Interim Title IX Coordinator, [rjoyce\@haverford.edu](mailto:rjoyce@haverford.edu){.email}, 610.795.6121
+        -   Reporting form: <https://cm.maxient.com/reportingform.php?HaverfordCollege&layout_id=9>
+
+## Resources
+
+### Q Center
+
+The Bryn Mawr College Q Center supports students who are doing quantitative work in courses across the STEM and Social Science disciplines. The Q Center is a collaborative study space that provides a welcoming location for individual work, study groups, and collaboration with Q Mentors, who provide study support at the Q Center. Students may sign up for appointments through the online scheduling system: <https://www.brynmawr.edu/inside/offices-services/q-center>
+
+### Peer Tutoring
+
+<https://www.brynmawr.edu/inside/offices-services/academic-support/peer-tutoring>
+
+
+### Books and Online Sources 
+
+1.  Cote, L. R., Gordon, R. G., Randell, C. E., Schmitt, J., & Marvin, H. (2021). *Introduction to Statistics in the Psychological Sciences*. UMSL Libraries. <https://umsystem.pressbooks.pub/isps/>
+2.  Jhangiani, R. S., Chiang, I.-C. A., Cuttler, C., & Leighton, D. C. (2019). *Research Methods in Psychology*. Kwantlen Polytechnic University. <https://doi.org/10.17605/OSF.IO/HF7DQ>
+3.  Navarro, D., & Foxcroft, D. (2025). *Learning Statistics with jamovi: A Tutorial for Beginners in Statistical Analysis*. Open Book Publishers. <https://doi.org/10.11647/obp.0333>
+4.  Linnell, D. (2026). *Statistics with Jamovi*. <https://danalinnell.github.io/statistics-with-jamovi/>
+5.  Gerstenberg, T. (2022). *Statistical methods for the behavioral and social sciences*. <https://psych252.github.io/psych252book/>
+
+## Thanks {.unnumbered}
+
+This course draws primarily on material from PSYC B205 Research Methods and Statistics taught by **Prof. Anjali Thapar** and **Prof. Dustin Albert**. It is also informed by a range of related courses, including those taught by [Dylan Gee](https://psychology.yale.edu/people/dylan-gee), [Dana Linnell](https://www.danalinnell.com/), and [Tobias Gerstenberg](https://cicl.stanford.edu/member/tobias_gerstenberg/). I am grateful to all of them for their contribution to the putting together these materials, and to the students in PSYC B205 for their thoughtful feedback and suggestions.
