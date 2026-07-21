@@ -27,6 +27,7 @@ website:
       - section: "Research Methods"
         contents:
           - 01-psych-science.qmd
+          - 02-research-questions-and-claims.qmd
       - section: "Statistics"
         contents:
           -  02-stats-test.qmd
