@@ -39,6 +39,8 @@ format:
     theme: ally
     toc: true
     html-math-method: mathjax
+    number-sections: true
+    number-depth: 3
   epub: default
   docx: default
 

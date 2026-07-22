@@ -26,7 +26,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -87,7 +107,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-psych-science.html">Research Methods</a></li><li class="breadcrumb-item"><a href="./02-research-questions-and-claims.html">Understanding Research Questions and Claims</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-psych-science.html">Research Methods</a></li><li class="breadcrumb-item"><a href="./02-research-questions-and-claims.html">Research Questions, Designs, and Claims</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -136,7 +156,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02-research-questions-and-claims.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Understanding Research Questions and Claims</span></a>
+ <span class="menu-text">Research Questions, Designs, and Claims</span></a>
   </div>
 </li>
       </ul>
@@ -174,21 +194,32 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#understanding-research-questions-and-claims" id="toc-understanding-research-questions-and-claims" class="nav-link active" data-scroll-target="#understanding-research-questions-and-claims">Understanding Research Questions and Claims</a>
+  <li><a href="#research-questions-designs-and-claims" id="toc-research-questions-designs-and-claims" class="nav-link active" data-scroll-target="#research-questions-designs-and-claims"><span class="header-section-number">1</span> Research Questions, Designs, and Claims</a>
   <ul class="collapse">
-  <li><a href="#basic-concepts" id="toc-basic-concepts" class="nav-link" data-scroll-target="#basic-concepts">Basic Concepts</a>
+  <li><a href="#basic-concepts" id="toc-basic-concepts" class="nav-link" data-scroll-target="#basic-concepts"><span class="header-section-number">1.1</span> Basic Concepts</a>
   <ul class="collapse">
-  <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables">Variables</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables"><span class="header-section-number">1.1.1</span> Variables</a></li>
+  <li><a href="#population-and-sample" id="toc-population-and-sample" class="nav-link" data-scroll-target="#population-and-sample"><span class="header-section-number">1.1.2</span> Population and Sample</a></li>
   <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key Takeaways</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
   </ul></li>
-  <li><a href="#types-of-research-questions-and-claims" id="toc-types-of-research-questions-and-claims" class="nav-link" data-scroll-target="#types-of-research-questions-and-claims">Types of Research Questions and Claims</a>
+  <li><a href="#types-of-research-questions-and-claims" id="toc-types-of-research-questions-and-claims" class="nav-link" data-scroll-target="#types-of-research-questions-and-claims"><span class="header-section-number">1.2</span> Types of Research Questions and Claims</a>
   <ul class="collapse">
-  <li><a href="#frequency-questions-claims" id="toc-frequency-questions-claims" class="nav-link" data-scroll-target="#frequency-questions-claims">Frequency Questions/ Claims</a></li>
-  <li><a href="#association-questions-claims" id="toc-association-questions-claims" class="nav-link" data-scroll-target="#association-questions-claims">Association Questions/ Claims</a></li>
-  <li><a href="#causal-questions-claims" id="toc-causal-questions-claims" class="nav-link" data-scroll-target="#causal-questions-claims">Causal Questions/ Claims</a></li>
+  <li><a href="#learning-objectives-1" id="toc-learning-objectives-1" class="nav-link" data-scroll-target="#learning-objectives-1">Learning Objectives</a></li>
+  <li><a href="#frequency-questions-claims" id="toc-frequency-questions-claims" class="nav-link" data-scroll-target="#frequency-questions-claims"><span class="header-section-number">1.2.1</span> Frequency Questions/ Claims</a></li>
+  <li><a href="#association-questions-claims" id="toc-association-questions-claims" class="nav-link" data-scroll-target="#association-questions-claims"><span class="header-section-number">1.2.2</span> Association Questions/ Claims</a></li>
+  <li><a href="#causal-questions-claims" id="toc-causal-questions-claims" class="nav-link" data-scroll-target="#causal-questions-claims"><span class="header-section-number">1.2.3</span> Causal Questions/ Claims</a></li>
   <li><a href="#key-takeaways-1" id="toc-key-takeaways-1" class="nav-link" data-scroll-target="#key-takeaways-1">Key Takeaways</a></li>
   <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1">Exercises</a></li>
+  </ul></li>
+  <li><a href="#causal-criteria" id="toc-causal-criteria" class="nav-link" data-scroll-target="#causal-criteria"><span class="header-section-number">1.3</span> Causal Criteria</a>
+  <ul class="collapse">
+  <li><a href="#learning-objectives-2" id="toc-learning-objectives-2" class="nav-link" data-scroll-target="#learning-objectives-2">Learning Objectives</a></li>
+  <li><a href="#covariance" id="toc-covariance" class="nav-link" data-scroll-target="#covariance"><span class="header-section-number">1.3.1</span> Covariance</a></li>
+  <li><a href="#temporal-precedence" id="toc-temporal-precedence" class="nav-link" data-scroll-target="#temporal-precedence"><span class="header-section-number">1.3.2</span> Temporal Precedence</a></li>
+  <li><a href="#internal-validity" id="toc-internal-validity" class="nav-link" data-scroll-target="#internal-validity"><span class="header-section-number">1.3.3</span> Internal Validity</a></li>
+  <li><a href="#key-takeaways-2" id="toc-key-takeaways-2" class="nav-link" data-scroll-target="#key-takeaways-2">Key Takeaways</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -197,7 +228,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-psych-science.html">Research Methods</a></li><li class="breadcrumb-item"><a href="./02-research-questions-and-claims.html">Understanding Research Questions and Claims</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-psych-science.html">Research Methods</a></li><li class="breadcrumb-item"><a href="./02-research-questions-and-claims.html">Research Questions, Designs, and Claims</a></li></ol></nav>
 <div class="quarto-title">
 </div>
 
@@ -226,24 +257,38 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="understanding-research-questions-and-claims" class="level1">
-<h1>Understanding Research Questions and Claims</h1>
+<section id="research-questions-designs-and-claims" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Research Questions, Designs, and Claims</h1>
 <!--YS edit 20260721-->
-<p>As we discussed in the previous chapter, scientific research is conducted to answer empirical questions about the world, and the results of research are often summarized in the form of claims. In this chapter, we will examine the basic ingredients of research questions and claims, types of questions/ claims, and how to evaluate the claims made in research articles.</p>
-<section id="basic-concepts" class="level2">
-<h2 class="anchored" data-anchor-id="basic-concepts">Basic Concepts</h2>
-<section id="variables" class="level3">
-<h3 class="anchored" data-anchor-id="variables">Variables</h3>
-<p>A <strong>variable</strong> is a quantity or quality that varies across people or situations. Research claims make statements about variables and/or their relationships, and variables are the core unit of research questions and claims in psychology.</p>
+<p>As we discussed in the previous chapter, scientific research is conducted to answer empirical questions about the world, and the results of research are often summarized in the form of claims. In this chapter, we will examine the core components of these claims and how to evaluate them.</p>
+<section id="basic-concepts" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="basic-concepts"><span class="header-section-number">1.1</span> Basic Concepts</h2>
+<section id="learning-objectives" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="learning-objectives">Learning Objectives</h3>
+<ol type="1">
+<li>Define a variable and a constant in a research context.</li>
+<li>Distinguish between measured and manipulated variables.</li>
+<li>Define a population and a sample in a research context.</li>
+</ol>
+</section>
+<section id="variables" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="variables"><span class="header-section-number">1.1.1</span> Variables</h3>
+<p>A variable is a quantity or quality that varies across people or situations. Variables are the core unit of research questions and claims in psychology.</p>
 <!--YS edit 20260721-->
-<p>Variables, by definition, must vary in value, meaning that they must have at least two levels (i.e., possible values) that it can take. For example, the height of the students enrolled in a university course is a variable because it varies from student to student. The major of the Bryn Mawr students is also a variable as long as the college offers more than one major (we do!). Some other examples of variables include people’s level of talkativeness, how depressed they are, the number of siblings they have, how much they are engaged in social media, people’s nationality, their occupation, whether they are receiving psychotherapy, and types of diet people are on (e.g., vegan, non-vegan). In contrast, a <strong>constant</strong> is a quantity or quality that does not vary across people or situations. For example, if there is only one professor teaching a course, then the professor is a constant because there is only one level.</p>
+<p>By definition, a variable must have at least two levels (possible values). For example, the height of the students enrolled in a university course is a variable because it varies from student to student. The major of the Bryn Mawr students is also a variable as long as the college offers more than one major (we do!). Other examples of variables include talkativeness, depression level, number of siblings, social media engagement, nationality, occupation, psychotherapy status, and diet type (e.g., vegan vs.&nbsp;non-vegan). In contrast, a <strong>constant</strong> is a quality that does not vary within a specific study. For example, when you are interested in the relationship between class time and student performance in a course, and if only one professor teaches the course, then “professor” is a constant because it has only one level in that study.</p>
 <!-- YS addition 20260721 -->
-<p>Variables are <strong>measured or manipulated</strong> in research. For example, you might measure the height of students in a course and their diet in their childhood, and see test the relationship between these two variables. Notice that you did not manipulate the height of students or their diet in childhood, you simply measured them. In contrast, you might manipulate the kind of snacks students are given in a course and then measure their level of talkativeness. In this case, you manipulated the snack variable and measured the talkativeness variable.</p>
+<p>Variables are <strong>measured or manipulated</strong> in research. For example, you might measure the height of students in a course and their diet in their childhood and examine the relationship between these two variables. You did not manipulate these variables and simply measured them. In contrast, you might manipulate the kind of snacks students are given in a course and then measure their level of talkativeness. In this case, you manipulated the snack variable and measured the talkativeness variable.</p>
+</section>
+<section id="population-and-sample" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="population-and-sample"><span class="header-section-number">1.1.2</span> Population and Sample</h3>
+<p>Researchers in psychology are usually interested in drawing conclusions about a large group of people. This is called the population. It could be American teenagers, children with autism, professional athletes, or even just human beings—depending on the interests and goals of the researcher. But they usually study only a small subset of the population, called <strong>sample</strong>. For example, a researcher might measure the talkativeness of a few hundred university students with the intention of drawing conclusions about the talkativeness of men and women in general. It is important, therefore, for researchers to use a <strong>representative sample</strong>—one that is similar to the population in important respects.</p>
 </section>
 <section id="key-takeaways" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="key-takeaways">Key Takeaways</h3>
 <ul>
-<li>A variable is a quantity or quality that varies across people or situations, and can be measured or manipulated in research.</li>
+<li>A variable must have at least two levels (values), whereas a constant remains the same across all participants in a study.</li>
+<li>Measured variables are observed and recorded, while manipulated variables are controlled by the researcher.</li>
+<li>A population is the entire group of people a researcher is interested in, while a sample is a subset of that population.</li>
 </ul>
 </section>
 <section id="exercises" class="level3 unnumbered">
@@ -256,23 +301,36 @@ ul.task-list li input[type="checkbox"] {
 <li>“What is the prevalence of schizophrenia among adults in the United States?”</li>
 <li>“Does the type of music listened to influence mood?”</li>
 </ol></li>
+<li><strong>Practice</strong>: Identify variables in the following research claims:
+<ol type="a">
+<li>“Students who sleep more than 8 hours a night have higher GPAs than those who sleep fewer than 8 hours.”</li>
+<li>“41% of U.S. teens use social media daily.”</li>
+</ol></li>
 </ol>
 </section>
 </section>
-<section id="types-of-research-questions-and-claims" class="level2">
-<h2 class="anchored" data-anchor-id="types-of-research-questions-and-claims">Types of Research Questions and Claims</h2>
+<section id="types-of-research-questions-and-claims" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="types-of-research-questions-and-claims"><span class="header-section-number">1.2</span> Types of Research Questions and Claims</h2>
 <!-- YS addition 20260721 -->
-<p>In the previous chapter, we discussed the goals of science: to describe, to predict, and to explain. The types of questions the researchers ask and the types of claims they make are closely related to these goals. In this section, we will discuss three types of claims: frequency, association, and causal claims.</p>
-<section id="frequency-questions-claims" class="level3">
-<h3 class="anchored" data-anchor-id="frequency-questions-claims">Frequency Questions/ Claims</h3>
-<p>Some research questions in psychology are about one variable. <!--YS edit 20260721--> How frequent or common is a particular behavior or characteristic in a population? What is the average level of a particular characteristic in a population? Answers to this type of questions are called <strong>frequency claims</strong>, and they <strong>describe</strong> the rate or level of a <strong>single</strong> variable.</p>
-<p>For example, how common is it for soldiers who have served in the American Military to develop post-traumatic stress disorder (PTSD) after returning from a deployment in a war zone? How talkative are American university students on average? How much time per week do school children spend online? <!--YS edit 20260721--> Notice that there is only one variable in each of these questions: PTSD, talkativeness, and time spent online. American Militery soldiers, American university students, and school children are NOT variables, but rather the populations of interest. For example, if you measure PTSD levels in 100 soldiers who have served in the American Military, the PTSD levels will vary, but every one of the 100 people responded share the same characteristic of being a soldier who has served in the American Military. Similarly, if you measure time spent online in 1,000 school children, the time spent online will vary, but every one of the 1,000 children studied share the same characteristic of being a school child. You are not making a claim about how militery service or being a school child causes PTSD or time spent online; you are simply describing the rate or level of PTSD/ time spent online in these populations.</p>
+<p>In the previous chapter, we discussed the goals of science: to describe, to predict, and to explain. The questions researchers ask and the claims they make are closely related to these goals. In this section, we will discuss three types of claims: frequency, association, and causal claims.</p>
+<section id="learning-objectives-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="learning-objectives-1">Learning Objectives</h3>
+<ol type="1">
+<li>Explain how the types of research questions and claims are related to the goals of science.</li>
+<li>Describe the three types of research questions and claims.</li>
+<li>Define the directionality problem and the third-variable problem, and explain how they relate to causal claims.</li>
+</ol>
 </section>
-<section id="association-questions-claims" class="level3">
-<h3 class="anchored" data-anchor-id="association-questions-claims">Association Questions/ Claims</h3>
-<p>However, research questions in psychology are more likely to be about relationships between variables. There is a relationship between two variables when the average score on one differs systematically across the levels of the other (e.g., if the average exam score is higher among students who read the textbook versus those who did not). Studying relationships is important because instead of telling us about behaviors and psychological characteristics in isolation, it lets us make useful <strong>predictions</strong> about one variable based on the other.</p>
+<section id="frequency-questions-claims" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="frequency-questions-claims"><span class="header-section-number">1.2.1</span> Frequency Questions/ Claims</h3>
+<p>Some research questions in psychology are about one variable. <!--YS edit 20260721--> How frequent or common is a particular behavior or characteristic in a population? What is the average level of a particular characteristic in a population? Answers to thse types of questions are called <strong>frequency claims</strong>, and they <strong>describe</strong> the rate or level of a <strong>single</strong> variable.</p>
+<p>For example, how common is it for soldiers who have served in the American Military to develop post-traumatic stress disorder (PTSD) after returning from a deployment in a war zone? How talkative are American university students on average? How much time per week do school children spend online? <!--YS edit 20260721--> Notice that there is only one variable in each of these questions: PTSD, talkativeness, and time spent online. American Militery soldiers, American university students, and school children are NOT variables, but rather the populations of interest. For example, if you measure PTSD levels in 100 soldiers who have served in the American Military, the PTSD levels will vary, but every one of the 100 respondents shares the same characteristic of being a soldier who has served in the American Military. Similarly, if you measure time spent online in 1,000 school children, the time spent online will vary, but every one of the 1,000 children studied share the same characteristic of being a school child. You are not making a claim about how militery service or being a school child causes PTSD or time spent online; you are simply describing the rate or level of PTSD/ time spent online in these populations.</p>
+</section>
+<section id="association-questions-claims" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="association-questions-claims"><span class="header-section-number">1.2.2</span> Association Questions/ Claims</h3>
+<p>However, research questions in psychology are more likely to be about relationships between variables. A relationship exists between two variables when the average score on one differs systematically across the levels of the other (e.g., if the average exam score is higher among students who read the textbook versus those who did not). Studying relationships is important because instead of telling us about behaviors and psychological characteristics in isolation, it lets us make useful <strong>predictions</strong> about one variable based on the other.</p>
 <p>One basic form of relationship is a difference between the average scores of two groups on some variable of interest. A wide variety of research questions in psychology take this form. Are women really more talkative than men? Do people talking on a cell phone have poorer driving abilities than people not talking on a cell phone? Do people receiving Psychotherapy A tend to have fewer depressive symptoms than people receiving Psychotherapy B? Later we will also see that such relationships can involve more than two groups and that the groups can consist of the very same individuals tested at different times or under different conditions. For now, however, it is easiest to think in terms of two distinct groups.</p>
-<p>Notice that in these examples, we are making comparisons between groups – one group is “more liklely to” or “less likely to” have a certain characteristic than the other group. Even if the comparison group is not explicitly mentioned, it is often implied in claims about relationships. For example, if we say that people taking on a cell phone are more likely to have accidents, we are implicitly comparing them to people not talking on a cell phone.</p>
+<p>Notice that in these examples, we are making comparisons between groups – one group is “more likely to” or “less likely to” have a certain characteristic than the other group. Even if the comparison group is not explicitly mentioned, it is often implied in claims about relationships. For example, if we say that people taking on a cell phone are more likely to have accidents, we are implicitly comparing them to people not talking on a cell phone.</p>
 <p>A second basic form of relationship is a correlation between two quantitative variables, where the average score on one variable differs systematically across the levels of the other. Again, a wide variety of research questions in psychology take this form. Is being a happier person associated with being more talkative? Do people who are narcissistic tend to take more selfies? Is the effectiveness of psychotherapy associated with how much the patient likes the therapist?</p>
 <p>Some common phrases used for association questions/claims include:</p>
 <ul>
@@ -286,29 +344,32 @@ ul.task-list li input[type="checkbox"] {
 <li>predicts</li>
 </ul>
 </section>
-<section id="causal-questions-claims" class="level3">
-<h3 class="anchored" data-anchor-id="causal-questions-claims">Causal Questions/ Claims</h3>
+<section id="causal-questions-claims" class="level3" data-number="1.2.3">
+<h3 data-number="1.2.3" class="anchored" data-anchor-id="causal-questions-claims"><span class="header-section-number">1.2.3</span> Causal Questions/ Claims</h3>
 <p>If you find yourself somewhat dissatisfied by the association claims above and feel tempted to say that one variable “increases” or “decreases” the other (e.g., “talking on a cell phone increases the risk of having an accident”), you are not alone. Researchers are often interested in <strong>explaining</strong> the state of a variable by its cause. That is, they want to know <strong>why</strong> a variable is the way it is, and they identify another variable as the cause.</p>
-<p>We can make causal claims when we are confident that changing one variable (called the <strong>independent variable</strong>) produces a change in another variable (called the <strong>dependent variable</strong>). For example, we may claim that a treatment reduces depresive symptoms when changing the type of treatment a patient receives produces a change in the level of depressive symptoms, and the measured change is not attributable to other factors (e.g., a new development in the patient’s financial circumstances that caused changes in both the treatment plan and depressive symptoms). Note that, to make causal claims, it is important to rule out alternative explanations for the observed change in the depressive symptoms.</p>
-<p>Here are common phrases used for causal claims:</p>
+<p>But not all associations reflect causal relationships. This is what psychologists mean when they say, “Correlation does not imply causation.” An amusing example of this comes from a 2012 study that showed a positive correlation between the per capita chocolate consumption of a nation and the number of Nobel prizes awarded to citizens of that nation <span class="citation" data-cites="messerli_chocolate_2012">(<a href="#ref-messerli_chocolate_2012" role="doc-biblioref">Messerli 2012</a>)</span>. It seems clear, however, that this does not mean that eating chocolate causes people to win Nobel prizes, and it would not make sense to try to increase the number of Nobel prizes won by recommending that parents feed their children more chocolate.</p>
+<p>There are two reasons that correlation does not imply causation. The first is called the directionality problem. Two variables, X and Y, can be correlated because X causes Y or because Y causes X. Consider, for example, a study showing that whether or not people exercise is related to how happy they are—such that people who exercise are happier on average than people who do not. This relationship is consistent with the idea that exercising causes happiness, but it is also consistent with the idea that happiness causes exercise. Perhaps being happy gives people more energy or leads them to seek opportunities to socialize with others by going to the gym. The second reason that correlation does not imply causation is called the third-variable problem. Two variables, X and Y, can be related not because X causes Y, or because Y causes X, but because some third variable, Z, causes both X and Y. For example, the fact that nations that have won more Nobel prizes tend to have higher chocolate consumption probably reflects geography in that European countries tend to have higher rates of per capita chocolate consumption and invest more in education and technology (once again, per capita) than many other countries in the world. Similarly, the relationship between exercise and happiness could mean that some third variable, such as physical health, causes both of the others. Being physically healthy could cause people to exercise and cause them to be happier.</p>
+<p>Although researchers in psychology know that correlation does not imply causation, many journalists do not. Many of the headlines suggest that a causal relationship has been demonstrated, when a careful reading of the articles shows that it has not because of the directionality and third-variable problems. Here are common phrases used for causal claims:</p>
 <ul>
 <li>causes</li>
 <li>affects</li>
 <li>leads to</li>
 <li>changes</li>
 <li>increases/ decreases</li>
+<li>enhances / diminishes</li>
 <li>helps/ hurts</li>
 <li>promotes / prevents / reduces</li>
 <li>alleviates / worsens</li>
 </ul>
 <p>When you see these phrases in a research article, you should be careful to check whether the causal claim is justified by the research design and data.</p>
+<p>So when can we make causal claims? We can make causal claims when we are confident that changing one variable (called the <strong>independent variable</strong>) produces a change in another variable (called the <strong>dependent variable</strong>). For example, we may claim that a treatment reduces depressive symptoms when changing the type of treatment a patient receives produces a change in the level of depressive symptoms, and the measured change is not attributable to other factors (e.g., a new development in the patient’s financial circumstances that caused changes in both the treatment plan and depressive symptoms). Note that, to make causal claims, it is important to rule out alternative explanations for the observed change in the depressive symptoms. We will get to this point in the next section on causal criteria.</p>
 </section>
 <section id="key-takeaways-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="key-takeaways-1">Key Takeaways</h3>
 <ul>
 <li>Frequency claims describe the rate or level of a single variable in a population.</li>
-<li>Association claims identify the relationship between two variables, which can be in the form of group differences or correlations.</li>
-<li>Causal claims identify the cause-and-effect relationship between two variables where changes in one variable causes changes in the other variable.</li>
+<li>Association claims identify the relationship between two variables, which can be in the form of group differences or correlations, and allow us to make predictions about one variable based on the other variable.</li>
+<li>Causal claims identify the cause-and-effect relationship between two variables,where changes in one variable causes changes in the other variable, and allow us to explain a phenomenon.</li>
 </ul>
 </section>
 <section id="exercises-1" class="level3 unnumbered">
@@ -325,14 +386,51 @@ ul.task-list li input[type="checkbox"] {
 <li>“Romantic partners who express gratitude are three times more likely to stay together.”</li>
 <li>“One glass of wine a day reduces the risk of heart disease.”</li>
 </ol></li>
+<li><strong>Discuss</strong>: A study found that children who ate candy daily were more likely than other children to be arrested for violent offenses later in life. A journalist reported this with the headline “Lots of Candy Could Lead to Violence.” Could candy really “lead to” violence, as the headline suggests? What alternative explanations can you think of for this association? How could the headline be rewritten so that it is not misleading?</li>
 </ol>
+</section>
+</section>
+<section id="causal-criteria" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="causal-criteria"><span class="header-section-number">1.3</span> Causal Criteria</h2>
+<p>The 19th century philosopher John Stuart Mill proposed a set of criteria for establishing causal relationships between variables. These criteria are still widely used in psychology and other sciences today. In this section, we will discuss the three most important criteria for establishing causality: (1) the cause was associated with the effect (covariance), (2) the cause preceded the effect in time (temporal precedence), and (3) there are no plausible alternative explanations for the effect (internal validity).</p>
+<section id="learning-objectives-2" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="learning-objectives-2">Learning Objectives</h3>
+<ol type="1">
+<li>Explain the three causal criteria: covariance, temporal precedence, and internal validity.</li>
+</ol>
+</section>
+<section id="covariance" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="covariance"><span class="header-section-number">1.3.1</span> Covariance</h3>
+<p>Covariance means that there is an association between the cause and the effect. There should be a systematic relationship between variables. That is, there is a consistent pattern where the dependent variable differs across levels of the independent variable. For example, the exercise group and the non-exercise group should have different levels of happiness; or, if we are just measuring happiness and exercise, the more people exercise, the happier they should be. However, covariance alone does not establish causality. Causation implies correlation, but correlation does not imply causation.</p>
+</section>
+<section id="temporal-precedence" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="temporal-precedence"><span class="header-section-number">1.3.2</span> Temporal Precedence</h3>
+<p>The cause must precede the effect in time. This means that the cause must occur before the effect, and not at the same time or after the effect. In psychological research, temporal precedence is often established by <em>manipulating</em> the independent variable before measuring the dependent variable.This resolves the directionality problem. For example, if we manipulate the amount of exercise people engage in and then measure their happiness, happiness cannot be causing exercise. However, simply measuring one variable before another does not necessarily establish temporal precedence. For example, if we measure people’s exercise levels today and their happiness levels tomorrow and find a correlation, we still cannot conclude that exercise causes happiness. We did not establish a baseline happiness level before people began exercising, so it could be that people who were already happier chose to exercise more.</p>
+</section>
+<section id="internal-validity" class="level3" data-number="1.3.3">
+<h3 data-number="1.3.3" class="anchored" data-anchor-id="internal-validity"><span class="header-section-number">1.3.3</span> Internal Validity</h3>
+<p>Internal validity requires ruling out alternative explanations. To establish internal validity, the only thing that should differ between levels of the independent variable is the independent variable itself, and nothing else. In the exercise and happiness example, the exercise group and non-exercise group should be matched on physical health, diet, sleep, and social support. If they differ on any of these variables, we cannot determine whether exercise or these other factors caused the difference in happiness. In the next section, we will discuss how researchers design studies to control for these confounding variables.</p>
+</section>
+<section id="key-takeaways-2" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="key-takeaways-2">Key Takeaways</h3>
+<ul>
+<li>Covariance means that there is an association between the two variables.</li>
+<li>Temporal Precedence means that the cause must come before the effect in time.</li>
+<li>Internal Validity means that you have ruled out alternative explanations for the observed effect.</li>
+<li>Correlation does not imply causation.</li>
+</ul>
+
 
 
 </section>
 </section>
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-messerli_chocolate_2012" class="csl-entry" role="listitem">
+Messerli, Franz H. 2012. <span>“Chocolate Consumption, Cognitive Function, and <span>Nobel</span> Laureates.”</span> <em>The New England Journal of Medicine</em> 367 (16): 1562.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
