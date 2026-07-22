@@ -8,7 +8,7 @@ author:
   - "Dana C. Leighton"
 ---
 
-# Research Questions, Designs, and Claims
+# Research Questions, Designs, and Validity
 
 <!--YS edit 20260721--> 
 As we discussed in the previous chapter, scientific research is conducted to answer empirical questions about the world, and the results of research are often summarized in the form of claims. In this chapter, we will examine the core components of these claims and how to evaluate them.
@@ -147,7 +147,7 @@ Covariance means that there is an association between the cause and the effect. 
 
 ### Temporal Precedence
 
-The cause must precede the effect in time. This means that the cause must occur before the effect, and not at the same time or after the effect. In psychological research, temporal precedence is often established by _manipulating_ the independent variable before measuring the dependent variable.This resolves the directionality problem. For example, if we manipulate the amount of exercise people engage in and then measure their happiness, happiness cannot be causing exercise. However, simply measuring one variable before another does not necessarily establish temporal precedence. For example, if we measure people's exercise levels today and their happiness levels tomorrow and find a correlation, we still cannot conclude that exercise causes happiness. We did not establish a baseline happiness level before people began exercising, so it could be that people who were already happier chose to exercise more.
+The cause must precede the effect in time. This means that the cause must occur before the effect, and not at the same time or after the effect. In psychological research, temporal precedence is often established by _manipulating_ the independent variable before measuring the dependent variable. This resolves the directionality problem. For example, if we manipulate the amount of exercise people engage in and then measure their happiness, happiness cannot be causing exercise. However, simply measuring one variable before another does not necessarily establish temporal precedence. The key issue is whether we know what the outcome variable looked like BEFORE the cause began. For example, if we measure people's exercise levels today and their happiness levels tomorrow and find a correlation, we still cannot conclude that exercise causes happiness because we don't know their baseline happiness before they exercised. Perhaps people who were already happier chose to exercise more, but we just don't know that they were happy yesterday too. 
 
 ### Internal Validity
 
@@ -155,6 +155,10 @@ Internal validity requires ruling out alternative explanations. To establish int
 
 ### Key Takeaways {.unnumbered}
 - Covariance means that there is an association between the two variables.
-- Temporal Precedence means that the cause must come before the effect in time.
-- Internal Validity means that you have ruled out alternative explanations for the observed effect.
+- Temporal Precedence means that the cause must come before the effect in time, and it resolves the directionality problem.
+- Internal Validity means that you have ruled out alternative explanations for the observed effect, and it addresses the third-variable problem.
 - Correlation does not imply causation.
+
+## Exercises {.unnumbered}
+1. **Practice**: Evaluate this study for the three causal criteria.
+    A researcher wants to know if playing wind instruments improves respiratory function. They compare lung capacity of musicians who play wind instruments (like flute or trumpet) and non-musicians, and find that the musicians have greater lung capacity.
