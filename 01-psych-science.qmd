@@ -66,15 +66,14 @@ The scientific method is a process of systematically collecting and evaluating e
 ### Exercises {.unnumbered}
 
 1. **Practice**: In each of the following scenarios, which way of knowing is being used? Is the conclusion sound and valid? Why or why not?
-
-   1. 
+   a. 
       > - "All humans are immortal." (Premise 1) 
       > - "Socrates is a human." (Premise 2) 
       > - "Therefore, Socrates is immortal." (Conclusion)
 
-    2. You logged your mood for 4 weeks as you do yoga and drink protein shakes every morning. Your data show that your mood is better than it was before you started this routine. You conclude that yoga and protein shakes improve your mood.
+    a. You logged your mood for 4 weeks as you do yoga and drink protein shakes every morning. Your data show that your mood is better than it was before you started this routine. You conclude that yoga and protein shakes improve your mood.
 
-2. **Discussion**: What is your question about human psychology that you would like to answer? Discuss how each way of knowing could be used to answer your question and the strengths and weaknesses of each approach. 
+1. **Discussion**: What is your question about human psychology that you would like to answer? Discuss how each way of knowing could be used to answer your question and the strengths and weaknesses of each approach. 
 
 ## Understanding Science
 
@@ -167,17 +166,13 @@ Why should we concern ourselves with pseudoscience? There are at least three rea
 ### Exercises {.unnumbered}
 
 1.  **Practice**: Determine whether the following questions are empirical or nonempirical.
-
-    1. Do people perceive lies as unethical?
-    2. Is it wrong to tell a lie?
-    3. Is butter more delicious than olive oil?
-    4. Do Americans prefer butter over olive oil?
-
-2. **Practice**: List three empirical questions about human behavior. List three nonempirical questions about human behavior.
-
-3.  **Discussion**: Consider the following psychological claim. “People’s choice of spouse is strongly influenced by their perception of their own parents. Some choose a spouse who is similar in some way to one of their parents. Others choose a spouse who is different from one of their parents.” Is this claim falsifiable? Why or why not?
-
-4.  **Discussion**: People sometimes suggest that psychology cannot be a science because either (a) human behavior cannot be predicted with perfect accuracy or (b) much of its subject matter (e.g., thoughts and feelings) cannot be observed directly. Do you agree or disagree with each of these ideas? Why?
+    a. Do people perceive lies as unethical?
+    a. Is it wrong to tell a lie?
+    a. Is butter more delicious than olive oil?
+    a. Do Americans prefer butter over olive oil?
+1. **Practice**: List three empirical questions about human behavior. List three nonempirical questions about human behavior.
+1.  **Discussion**: Consider the following psychological claim. “People’s choice of spouse is strongly influenced by their perception of their own parents. Some choose a spouse who is similar in some way to one of their parents. Others choose a spouse who is different from one of their parents.” Is this claim falsifiable? Why or why not?
+1.  **Discussion**: People sometimes suggest that psychology cannot be a science because either (a) human behavior cannot be predicted with perfect accuracy or (b) much of its subject matter (e.g., thoughts and feelings) cannot be observed directly. Do you agree or disagree with each of these ideas? Why?
 
 
 ## Science and Clinical Practice
@@ -294,10 +289,9 @@ Finally, the hypothesis should be **positive**. That is, the hypothesis should m
 ### Exercises {.unnumbered}
 
 1. **Practice**: Evaluate the following hypotheses in terms of whether they are testable, falsifiable, logical, and positive. If they are not, how can they be improved?
-
-    1. People who meditate regularly will experience reduced stress levels compared to people who do not meditate.
-    2. Social media use does not increase depression in teens.
-    3. Based on the drive theory of social facilitation and inhibition, students will solve simple math problems faster when working in a group than when working alone.
-    4. Social Dominance Theory proposes that high-status groups use legitimizing myths to maintain their position (e.g., meritocracy). Therefore, people with high social dominance orientation will have higher self-esteem.
+    a. People who meditate regularly will experience reduced stress levels compared to people who do not meditate.
+    a. Social media use does not increase depression in teens.
+    a. Based on the drive theory of social facilitation and inhibition, students will solve simple math problems faster when working in a group than when working alone.
+    a. Social Dominance Theory proposes that high-status groups use legitimizing myths to maintain their position (e.g., meritocracy). Therefore, people with high social dominance orientation will have higher self-esteem.
 
 ## References {.unnumbered}

@@ -30,12 +30,11 @@ Variables are **measured or manipulated** in research. For example, you might me
 
 ### Exercises {.unnumbered}
 
-1. Identify the variables in the following research questions:
-
-  * "How does the amount of sleep affect college students' academic performance?"
-  * "Is there a relationship between social media usage and levels of anxiety among teenagers?"
-  * "What is the prevalence of schizophrenia among adults in the United States?"
-  * "Does the type of music listened to influence mood?"
+1. **Practice**: Identify the variables in the following research questions:
+    a. "How does the amount of sleep affect college students' academic performance?"
+    a. "Is there a relationship between social media usage and levels of anxiety among teenagers?"
+    a. "What is the prevalence of schizophrenia among adults in the United States?"
+    a. "Does the type of music listened to influence mood?"
 
 ## Types of Research Questions and Claims
 
@@ -96,13 +95,12 @@ When you see these phrases in a research article, you should be careful to check
 
 ### Exercises {.unnumbered}
 
-1. Identify the type of research claim (frequency, association, or causal) in the following statements:
-
-   * "42% of European adults never exercise."
-   * "Meditation enhances attention span."
-   * "33% of U.S. adolescents have tried smoking cigarettes."
-   * "Kids in private school smoke less than kids in public school."
-   * "Smoking is tied to depression."
-   * "Want a higher GPA? Go to a private college."
-   * "Romantic partners who express gratitude are three times more likely to stay together."
-   * "One glass of wine a day reduces the risk of heart disease."
+1. **Practice**: Identify the type of research claim (frequency, association, or causal) in the following statements:
+    a. "42% of European adults never exercise."
+    a. "Meditation enhances attention span."
+    a. "33% of U.S. adolescents have tried smoking cigarettes."
+    a. "Kids in private school smoke less than kids in public school."
+    a. "Smoking is tied to depression."
+    a. "Want a higher GPA? Go to a private college."
+    a. "Romantic partners who express gratitude are three times more likely to stay together."
+    a. "One glass of wine a day reduces the risk of heart disease."
