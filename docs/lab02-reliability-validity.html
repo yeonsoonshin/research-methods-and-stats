@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>lab02-reliability-validity – Research Methods and Statistics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-a14e3238c51140e99ccc48519b6ed9ce.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab02-reliability-validity.html">Lab</a></li><li class="breadcrumb-item"><a href="./lab02-reliability-validity.html">Reliability and Validity</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Research Methods and Statistics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Research Methods and Statistics</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Research Methods</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-psych-science.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Psychological Science</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-research-questions-and-claims.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Research Questions, Designs, and Validity</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Statistics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-stats-test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Descriptive Statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-stats-test-copy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Descriptive Statistics MathML</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Lab</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab02-reliability-validity.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Reliability and Validity</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#reliability-and-validity" id="toc-reliability-and-validity" class="nav-link active" data-scroll-target="#reliability-and-validity"><span class="header-section-number">1</span> Reliability and Validity</a>
+  <ul class="collapse">
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="header-section-number">1.1</span> Data</a></li>
+  <li><a href="#reliability-internal-consistency-and-composite-scores" id="toc-reliability-internal-consistency-and-composite-scores" class="nav-link" data-scroll-target="#reliability-internal-consistency-and-composite-scores"><span class="header-section-number">1.2</span> Reliability (internal consistency) and composite scores</a>
+  <ul class="collapse">
+  <li><a href="#workout-example-tipi" id="toc-workout-example-tipi" class="nav-link" data-scroll-target="#workout-example-tipi"><span class="header-section-number">1.2.1</span> Workout example: TIPI</a></li>
+  <li><a href="#exercise-bfi" id="toc-exercise-bfi" class="nav-link" data-scroll-target="#exercise-bfi"><span class="header-section-number">1.2.2</span> Exercise: BFI</a></li>
+  </ul></li>
+  <li><a href="#validity-convergent-validity" id="toc-validity-convergent-validity" class="nav-link" data-scroll-target="#validity-convergent-validity"><span class="header-section-number">1.3</span> Validity (convergent validity)</a>
+  <ul class="collapse">
+  <li><a href="#example-extraversion" id="toc-example-extraversion" class="nav-link" data-scroll-target="#example-extraversion"><span class="header-section-number">1.3.1</span> Example: Extraversion</a></li>
+  <li><a href="#exercise-correlation-bewteen-tipi-and-bfi" id="toc-exercise-correlation-bewteen-tipi-and-bfi" class="nav-link" data-scroll-target="#exercise-correlation-bewteen-tipi-and-bfi"><span class="header-section-number">1.3.2</span> Exercise: Correlation bewteen TIPI and BFI</a></li>
+  </ul></li>
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/yeonsoon/research-methods-and-stats-book/edit/master/lab02-reliability-validity.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lab02-reliability-validity.epub"><i class="bi bi-file"></i>ePub</a></li><li><a href="lab02-reliability-validity.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab02-reliability-validity.html">Lab</a></li><li class="breadcrumb-item"><a href="./lab02-reliability-validity.html">Reliability and Validity</a></li></ol></nav></header>
+
+
+
+
+<section id="reliability-and-validity" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Reliability and Validity</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(papaja)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In this lab, we will explore the concepts of measurement reliability and validity. Measurement is a critical aspect of empirical research, and it is the foundation for drawing valid conclusions from data. Measurement should be targeting the construct of interest (valid) and should be consistent (reliable).</p>
+<p>This lab will use two personality trait scales, the Ten-Item Personality Inventory (TIPI) and the Big Five Inventory (BFI), to demonstrate how to assess reliability and validity of measurement.</p>
+<section id="learning-objectives" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<ol type="1">
+<li>Understand the concepts of reliability and validity in measurement.</li>
+<li>Calculate Cronbach’s alpha to assess internal consistency of a scale.</li>
+<li>Calculate composite scores for a scale.</li>
+<li>Calculate correlations between two scales to assess convergent validity.</li>
+<li>Visualize the relationship between two scales using scatter plots and regression lines.</li>
+<li>Interpret what the results of reliability and validity analyses mean in the context of research.</li>
+<li>Write up the results of reliability and validity analyses in APA style.</li>
+</ol>
+</section>
+<section id="data" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="data"><span class="header-section-number">1.1</span> Data</h2>
+<p>Data for this lab comes from a survey of 32 participants who completed both TIPI and BFI.</p>
+<blockquote class="blockquote">
+<p><strong>TIPI Instruction</strong>: Here are a number of personality traits that may or may not apply to you. Please choose a number for each statement to indicate the extent to which you agree or disagree with that statement. You should rate the extent to which the pair of traits applies to you, even if one characteristic applies more strongly than the other. (Disagree Strongly = 1 …….. Agree Strongly = 7)</p>
+</blockquote>
+<table class="caption-top table">
+<caption>Ten-Item Personality Inventory (TIPI) items.</caption>
+<colgroup>
+<col style="width: 30%">
+<col style="width: 21%">
+<col style="width: 48%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Item</th>
+<th style="text-align: left;">Trait</th>
+<th style="text-align: left;">Reverse scored?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">I see myself as …… Extraverted, enthusiastic.</td>
+<td style="text-align: left;">Extraversion</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">I see myself as …… Critical, quarrelsome.</td>
+<td style="text-align: left;">Agreeableness</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">I see myself as …… Dependable, self-disciplined.</td>
+<td style="text-align: left;">Conscientiousness</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">I see myself as …… Anxious, easily upset.</td>
+<td style="text-align: left;">Emotional Stability</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">I see myself as …… Open to new experiences, complex.</td>
+<td style="text-align: left;">Openness to Experience</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">I see myself as …… Reserved, quiet.</td>
+<td style="text-align: left;">Extraversion</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">I see myself as …… Sympathetic, warm.</td>
+<td style="text-align: left;">Agreeableness</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">I see myself as …… Disorganized, careless.</td>
+<td style="text-align: left;">Conscientiousness</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">I see myself as …… Calm, emotionally stable.</td>
+<td style="text-align: left;">Emotional Stability</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">I see myself as …… Conventional, uncreative.</td>
+<td style="text-align: left;">Openness to Experience</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p><strong>BFI Instruction</strong>: Below you see a number of statements, each of which starts with “I see myself as someone who”. For each statement, indicate how much you agree with this statement. (Disagree Strongly = 1 …….. Agree Strongly = 7)</p>
+</blockquote>
+<table class="caption-top table">
+<caption>Big Five Inventory (BFI) items.</caption>
+<colgroup>
+<col style="width: 30%">
+<col style="width: 21%">
+<col style="width: 48%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Item</th>
+<th style="text-align: left;">Trait</th>
+<th style="text-align: left;">Reverse scored?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">I see myself as someone who worries a lot.</td>
+<td style="text-align: left;">Neuroticism</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">I see myself as someone who gets nervous easily.</td>
+<td style="text-align: left;">Neuroticism</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">I see myself as someone who remains calm in tense situations.</td>
+<td style="text-align: left;">Neuroticism</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">I see myself as someone who is talkative.</td>
+<td style="text-align: left;">Extraversion</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">I see myself as someone who is outgoing, sociable.</td>
+<td style="text-align: left;">Extraversion</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">I see myself as someone who is reserved.</td>
+<td style="text-align: left;">Extraversion</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">I see myself as someone who is original, comes up with new ideas.</td>
+<td style="text-align: left;">Openness</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">I see myself as someone who values artistic, aesthetic experiences.</td>
+<td style="text-align: left;">Openness</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">I see myself as someone who has an active imagination.</td>
+<td style="text-align: left;">Openness</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">I see myself as someone who is sometimes rude to others.</td>
+<td style="text-align: left;">Agreeableness</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">I see myself as someone who has a forgiving nature.</td>
+<td style="text-align: left;">Agreeableness</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">I see myself as someone who is considerate and kind to almost everyone.</td>
+<td style="text-align: left;">Agreeableness</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">I see myself as someone who does a thorough job.</td>
+<td style="text-align: left;">Conscientiousness</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">I see myself as someone who tends to be lazy.</td>
+<td style="text-align: left;">Conscientiousness</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">I see myself as someone who does things efficiently.</td>
+<td style="text-align: left;">Conscientiousness</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<p>Let’s take a look at the data. We will read in the data and use <code>describe()</code> function from the <code>psych</code> package to get a summary of the data.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Checklist
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Are data complete (no missing values)?</li>
+<li>Are all items in the expected range (1-7)?</li>
+</ul>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'data/personality.csv'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                 vars  n  mean   sd median trimmed   mad min
+participant*                        1 32 16.50 9.38   16.5   16.50 11.86   1
+TIPI_extraverted_enthusiastic       2 32  3.94 1.64    4.0    3.88  2.97   2
+TIPI_critical_quarrelsome           3 32  3.47 1.46    3.5    3.46  2.22   1
+TIPI_dependable_self_disciplined    4 32  5.22 1.18    5.0    5.31  1.48   2
+TIPI_anxious_easily_upset           5 32  5.03 1.62    6.0    5.15  1.48   2
+TIPI_open_complex                   6 32  5.22 1.24    5.0    5.31  1.48   2
+TIPI_reserved_quiet                 7 32  4.41 1.72    5.0    4.46  1.48   1
+TIPI_sympathetic_warm               8 32  5.38 1.21    6.0    5.42  1.48   2
+TIPI_disorganized_careless          9 32  3.06 1.46    3.0    3.00  1.48   1
+TIPI_calm_emotionally_stable       10 32  4.06 1.41    4.0    4.08  1.48   1
+TIPI_conventional_uncreative       11 32  2.66 1.12    3.0    2.62  1.48   1
+BFI_worries                        12 32  5.47 1.76    6.0    5.77  1.48   1
+BFI_nervous                        13 32  5.19 1.75    6.0    5.38  1.48   1
+BFI_calm                           14 32  4.00 1.52    4.0    4.08  1.48   1
+BFI_talkative                      15 32  4.41 1.70    5.0    4.46  1.48   1
+BFI_outgoing                       16 32  3.75 1.76    3.5    3.69  2.22   1
+BFI_reserved                       17 32  4.12 1.64    4.0    4.08  1.48   1
+BFI_original                       18 32  4.91 1.35    5.0    4.92  1.48   2
+BFI_values_artistic                19 32  5.53 1.44    6.0    5.73  1.48   2
+BFI_active_imagination             20 32  5.38 1.39    5.0    5.50  1.48   2
+BFI_rude                           21 32  2.84 1.48    2.5    2.77  0.74   1
+BFI_forgiving                      22 32  4.88 1.43    5.0    4.92  1.48   2
+BFI_kind                           23 32  5.84 0.85    6.0    5.85  1.48   4
+BFI_thorough                       24 32  5.38 1.29    6.0    5.50  1.48   2
+BFI_lazy                           25 32  3.59 1.50    3.0    3.46  1.48   2
+BFI_efficient                      26 32  4.84 1.48    5.0    4.92  1.48   2
+                                 max range  skew kurtosis   se
+participant*                      32    31  0.00    -1.31 1.66
+TIPI_extraverted_enthusiastic      7     5  0.10    -1.51 0.29
+TIPI_critical_quarrelsome          6     5  0.03    -1.32 0.26
+TIPI_dependable_self_disciplined   7     5 -0.75     0.17 0.21
+TIPI_anxious_easily_upset          7     5 -0.63    -0.88 0.29
+TIPI_open_complex                  7     5 -0.60    -0.18 0.22
+TIPI_reserved_quiet                7     6 -0.21    -0.94 0.30
+TIPI_sympathetic_warm              7     5 -0.61    -0.17 0.21
+TIPI_disorganized_careless         6     5  0.38    -0.96 0.26
+TIPI_calm_emotionally_stable       7     6  0.16    -0.67 0.25
+TIPI_conventional_uncreative       5     4  0.15    -0.66 0.20
+BFI_worries                        7     6 -1.26     0.53 0.31
+BFI_nervous                        7     6 -0.87    -0.41 0.31
+BFI_calm                           6     5 -0.26    -0.98 0.27
+BFI_talkative                      7     6 -0.28    -0.96 0.30
+BFI_outgoing                       7     6  0.27    -1.20 0.31
+BFI_reserved                       7     6  0.15    -1.06 0.29
+BFI_original                       7     5 -0.37    -0.92 0.24
+BFI_values_artistic                7     5 -1.01     0.24 0.25
+BFI_active_imagination             7     5 -0.45    -0.67 0.24
+BFI_rude                           6     5  0.49    -1.02 0.26
+BFI_forgiving                      7     5 -0.43    -0.93 0.25
+BFI_kind                           7     3 -0.02    -1.09 0.15
+BFI_thorough                       7     5 -0.78    -0.19 0.23
+BFI_lazy                           7     5  0.41    -1.12 0.27
+BFI_efficient                      7     5 -0.49    -0.89 0.26</code></pre>
+</div>
+</div>
+</section>
+<section id="reliability-internal-consistency-and-composite-scores" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="reliability-internal-consistency-and-composite-scores"><span class="header-section-number">1.2</span> Reliability (internal consistency) and composite scores</h2>
+<p>Good measurement is reliable, and the measurement of the same construct should produce similar results across different items (internal consistency), different time points (test-retest reliability), or different raters (inter-rater reliability).</p>
+<p>In today’s lab, we will focus on internal consistency. Let’s say we want to measure Extraversion. What we want to obtain from our measurement is some score that represents Extraversion for an individual. But we don’t just ask one question “Are you extraverted?” for many reasons. For one, increasing the amount of data helps us be more accurate and more confident in our measurement. People may make mistakes when answering a single question and can be influenced by other things outside of the question itself (maybe they are distracted by notifications on their phones). To guard against this, we ask multiple questions that are supposed to measure the same construct. For example, in TIPI, we ask two questions that measure extraversion: “I see myself as extraverted, enthusiastic” and “I see myself as reserved, quiet”. If someone strongly agrees with the first statement and strongly disagrees with the second statement, we can say that this person is extraverted (high extraversion score). But what if someone strongly agrees with both statements? Then we have a problem, and we may not want to use the “extraversion” composite score.</p>
+<p>To summarize, before we use a composite score, we want to check if the items are internally consistent and correlated with each other. We use <strong>Cronbach’s alpha</strong> to quantify the internal consistency. If Cronbach’s alpha is greater than or equal to 0.7, we can say that the items are internally consistent and reliable. Ideally, we want to see Cronbach’s alpha to be greater than 0.8, but this is not always the case in practice.</p>
+<section id="workout-example-tipi" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="workout-example-tipi"><span class="header-section-number">1.2.1</span> Workout example: TIPI</h3>
+<p>TIPI is a ten-item scale where each of the five traits is measured by two items. Before we calculate Cronbach’s alpha, we need to define the items that measure each trait in TIPI. <a href="#tbl-tipi-items" class="quarto-xref">Table&nbsp;1</a> shows the items in TIPI, the trait that each item measures, and whether the item needs to be reverse scored.</p>
+<div id="tbl-tipi-items" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tipi-items-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Ten-Item Personality Inventory (TIPI) item variables
+</figcaption>
+<div aria-describedby="tbl-tipi-items-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variable name</th>
+<th style="text-align: left;">Trait</th>
+<th style="text-align: left;">Reverse scored?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">TIPI_critical_quarrelsome</td>
+<td style="text-align: left;">Agreeableness</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TIPI_sympathetic_warm</td>
+<td style="text-align: left;">Agreeableness</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TIPI_dependable_self_disciplined</td>
+<td style="text-align: left;">Conscientiousness</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TIPI_disorganized_careless</td>
+<td style="text-align: left;">Conscientiousness</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TIPI_anxious_easily_upset</td>
+<td style="text-align: left;">Emotional Stability</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TIPI_calm_emotionally_stable</td>
+<td style="text-align: left;">Emotional Stability</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TIPI_extraverted_enthusiastic</td>
+<td style="text-align: left;">Extraversion</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TIPI_reserved_quiet</td>
+<td style="text-align: left;">Extraversion</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TIPI_open_complex</td>
+<td style="text-align: left;">Openness to Experience</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TIPI_conventional_uncreative</td>
+<td style="text-align: left;">Openness to Experience</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>We will create a list of keys for each trait, where the items that need to be reverse scored are prefixed with a minus sign (“-”). For example, for Agreeableness, the item “TIPI_critical_quarrelsome” needs to be reverse scored, so we will write it as “-TIPI_critical_quarrelsome”.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>tipi.keys <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">agreeableness          =</span> <span class="fu">c</span>(<span class="st">"-TIPI_critical_quarrelsome"</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"TIPI_sympathetic_warm"</span>),</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">conscientiousness      =</span> <span class="fu">c</span>(<span class="st">"TIPI_dependable_self_disciplined"</span>, </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"-TIPI_disorganized_careless"</span>),</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">emotional_stability    =</span> <span class="fu">c</span>(<span class="st">"-TIPI_anxious_easily_upset"</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"TIPI_calm_emotionally_stable"</span>),</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">extraversion           =</span> <span class="fu">c</span>(<span class="st">"TIPI_extraverted_enthusiastic"</span>, </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"-TIPI_reserved_quiet"</span>),</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">openness_to_experience =</span> <span class="fu">c</span>(<span class="st">"TIPI_open_complex"</span>, </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"-TIPI_conventional_uncreative"</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>With the keys defined, we can now score the items in TIPI using <code>scoreItems()</code> function from the <code>psych</code> package. This function will calculate the composite scores for each trait and also calculate Cronbach’s alpha for each trait.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tipi <span class="ot">&lt;-</span> <span class="fu">scoreItems</span>(tipi.keys, </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"TIPI_"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You can find the scores for each trait in TIPI under <code>scores</code> in the <code>tipi</code> object. We will add prefix “TIPI_” to the column names to indicate that these are scores from TIPI.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>tipi.scores <span class="ot">&lt;-</span> tipi<span class="sc">$</span>scores <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_with</span>(<span class="sc">~</span><span class="fu">paste0</span>(<span class="st">"TIPI_"</span>, .x))</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(tipi.scores)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            vars  n mean   sd median trimmed  mad min max range
+TIPI_agreeableness             1 32 4.95 1.13   4.75    4.98 1.11 2.0 7.0   5.0
+TIPI_conscientiousness         2 32 5.08 1.14   5.50    5.13 0.74 2.0 7.0   5.0
+TIPI_emotional_stability       3 32 3.52 1.38   3.00    3.42 1.48 1.5 6.5   5.0
+TIPI_extraversion              4 32 3.77 1.58   3.75    3.73 1.85 1.5 7.0   5.5
+TIPI_openness_to_experience    5 32 5.28 1.02   5.50    5.31 0.74 3.5 7.0   3.5
+                             skew kurtosis   se
+TIPI_agreeableness          -0.23    -0.35 0.20
+TIPI_conscientiousness      -0.61    -0.03 0.20
+TIPI_emotional_stability     0.52    -0.87 0.24
+TIPI_extraversion            0.14    -1.25 0.28
+TIPI_openness_to_experience -0.24    -1.10 0.18</code></pre>
+</div>
+</div>
+<p>Let’s check the Cronbach’s alpha for each trait in TIPI. We can access the Cronbach’s alpha values from the <code>tipi</code> object.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Checklist
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Are all traits internally consistent (Cronbach’s alpha &gt;= 0.7)?</li>
+</ul>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(tipi<span class="sc">$</span>alpha, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      agreeableness conscientiousness emotional_stability extraversion
+alpha         0.595             0.652               0.784         0.86
+      openness_to_experience
+alpha                  0.644</code></pre>
+</div>
+</div>
+<section id="write-up" class="level4">
+<h4 class="anchored" data-anchor-id="write-up">Write up</h4>
+<p>Here is a sample write up for the reliability analysis of TIPI:</p>
+<blockquote class="blockquote">
+<p>Reliability analysis using Cronbach’s alpha showed that the Ten Item Personality Inventory (TIPI) has good internal consistency for extraversion (<span class="math inline">\(\alpha\)</span> = .86). Internal consistency for emotional stability (<span class="math inline">\(\alpha\)</span> = .78) was acceptable, but not for agreeableness (<span class="math inline">\(\alpha\)</span> = .60), conscientiousness (<span class="math inline">\(\alpha\)</span> = .65), and openness to experience (<span class="math inline">\(\alpha\)</span> = .64).</p>
+</blockquote>
+</section>
+</section>
+<section id="exercise-bfi" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="exercise-bfi"><span class="header-section-number">1.2.2</span> Exercise: BFI</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+TODO
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Calculate Cronbach’s alpha for each of the five traits in BFI.</li>
+<li>Write up the results of the reliability analysis for BFI.</li>
+</ul>
+</div>
+</div>
+<p>BFI is a longer scale that measures the same five traits as TIPI. We will define the keys for BFI in the same way as we did for TIPI.</p>
+<div id="tbl-bfi-items" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-bfi-items-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Big Five Inventory (BFI) item variables
+</figcaption>
+<div aria-describedby="tbl-bfi-items-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variable name</th>
+<th style="text-align: left;">Trait</th>
+<th style="text-align: left;">Reverse scored?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">BFI_worries</td>
+<td style="text-align: left;">Neuroticism</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BFI_nervous</td>
+<td style="text-align: left;">Neuroticism</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BFI_calm</td>
+<td style="text-align: left;">Neuroticism</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BFI_talkative</td>
+<td style="text-align: left;">Extraversion</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BFI_outgoing</td>
+<td style="text-align: left;">Extraversion</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BFI_reserved</td>
+<td style="text-align: left;">Extraversion</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BFI_original</td>
+<td style="text-align: left;">Openness</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BFI_values_artistic</td>
+<td style="text-align: left;">Openness</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BFI_active_imagination</td>
+<td style="text-align: left;">Openness</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BFI_rude</td>
+<td style="text-align: left;">Agreeableness</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BFI_forgiving</td>
+<td style="text-align: left;">Agreeableness</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BFI_kind</td>
+<td style="text-align: left;">Agreeableness</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BFI_thorough</td>
+<td style="text-align: left;">Conscientiousness</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BFI_lazy</td>
+<td style="text-align: left;">Conscientiousness</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">BFI_efficient</td>
+<td style="text-align: left;">Conscientiousness</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Based on <a href="#tbl-bfi-items" class="quarto-xref">Table&nbsp;2</a>, you can define the keys. Reveal after you have defined the keys.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>bfi.keys <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">agreeableness     =</span> <span class="fu">c</span>(<span class="st">"-BFI_rude"</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"BFI_forgiving"</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"BFI_kind"</span>),</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">conscientiousness =</span> <span class="fu">c</span>(<span class="st">"BFI_thorough"</span>, </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"-BFI_lazy"</span>,</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"BFI_efficient"</span>),</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">neuroticism       =</span> <span class="fu">c</span>(<span class="st">"BFI_worries"</span>,</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"BFI_nervous"</span>,</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"-BFI_calm"</span>),</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">extraversion      =</span> <span class="fu">c</span>(<span class="st">"BFI_talkative"</span>, </span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"BFI_outgoing"</span>, </span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"-BFI_reserved"</span>),</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">openness          =</span> <span class="fu">c</span>(<span class="st">"BFI_original"</span>, </span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"BFI_values_artistic"</span>, </span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"BFI_active_imagination"</span>)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>bfi <span class="ot">&lt;-</span> <span class="fu">scoreItems</span>(bfi.keys,</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"BFI_"</span>)))</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>bfi<span class="sc">$</span>alpha</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      agreeableness conscientiousness neuroticism extraversion  openness
+alpha     0.6101879         0.6050197   0.8773627    0.9335963 0.7712336</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>bfi.scores <span class="ot">&lt;-</span> bfi<span class="sc">$</span>scores <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_with</span>(<span class="sc">~</span><span class="fu">paste0</span>(<span class="st">"BFI_"</span>, .x))</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(bfi.scores)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                      vars  n mean   sd median trimmed  mad  min  max range
+BFI_agreeableness        1 32 5.29 0.96   5.50    5.35 0.74 3.33 7.00  3.67
+BFI_conscientiousness    2 32 4.88 1.07   5.17    4.91 1.24 2.67 6.67  4.00
+BFI_neuroticism          3 32 4.89 1.51   5.33    5.00 1.24 1.33 7.00  5.67
+BFI_extraversion         4 32 4.01 1.60   4.00    4.03 1.98 1.00 7.00  6.00
+BFI_openness             5 32 5.27 1.15   5.33    5.33 0.99 3.00 7.00  4.00
+                       skew kurtosis   se
+BFI_agreeableness     -0.47    -0.74 0.17
+BFI_conscientiousness -0.31    -1.06 0.19
+BFI_neuroticism       -0.77    -0.41 0.27
+BFI_extraversion      -0.03    -1.05 0.28
+BFI_openness          -0.44    -0.78 0.20</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="validity-convergent-validity" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="validity-convergent-validity"><span class="header-section-number">1.3</span> Validity (convergent validity)</h2>
+<p>Validity is the extent to which a measure actually measures what it is supposed to measure. There are several types of validity, including face validity, content validity, criterion validity, and convergent and divergent validity. In this lab, we will focus on convergent validity, which is the extent to which a measure correlates with other measures of the same construct.</p>
+<p>Luckily, we have two different scales measuring the same construct in the same individuals – TIPI and BFI. If someone scores high on Extraversion in TIPI, we expect that that person should also score high on Extraversion in BFI too. We will calculate the correlation between the two scales for each of the five traits.</p>
+<table class="caption-top table">
+<caption>TIPI and BFI traits mapping</caption>
+<thead>
+<tr class="header">
+<th>TIPI trait</th>
+<th>BFI trait</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Extraversion</td>
+<td>Extraversion</td>
+</tr>
+<tr class="even">
+<td>Agreeableness</td>
+<td>Agreeableness</td>
+</tr>
+<tr class="odd">
+<td>Conscientiousness</td>
+<td>Conscientiousness</td>
+</tr>
+<tr class="even">
+<td>Emotional Stability</td>
+<td>Neuroticism</td>
+</tr>
+<tr class="odd">
+<td>Openness to Experience</td>
+<td>Openness</td>
+</tr>
+</tbody>
+</table>
+<p>Notice that in TIPI, we have a trait called Emotional Stability, while in BFI, we have a trait called Neuroticism. These two traits are actually measuring the same construct, but in opposite directions. That is, if someone scores high on Emotional Stability in TIPI, we expect that they should score low on Neuroticism in BFI. So when we calculate the correlation between these two traits, we expect to see a negative correlation.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># merge TIPI and BFI scores </span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>df.scores <span class="ot">&lt;-</span> <span class="fu">bind_cols</span>(tipi.scores, bfi.scores)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="example-extraversion" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="example-extraversion"><span class="header-section-number">1.3.1</span> Example: Extraversion</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df.scores <span class="sc">%&gt;%</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> TIPI_extraversion, </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">y =</span> BFI_extraversion)) <span class="sc">+</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">color=</span><span class="st">'gray'</span>) <span class="sc">+</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"TIPI"</span>, <span class="at">y =</span> <span class="st">"BFI"</span>, <span class="at">title =</span> <span class="st">"Extraversion"</span>) <span class="sc">+</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">1</span>, <span class="dv">7</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">1</span>, <span class="dv">7</span>) <span class="sc">+</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_fixed</span>(<span class="at">ratio =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab02-reliability-validity_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">apa_print</span>(<span class="fu">cor.test</span>(df.scores<span class="sc">$</span>TIPI_extraversion, df.scores<span class="sc">$</span>BFI_extraversion))</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>full_result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "$r = .88$, 95\\% CI $[.76, .94]$, $t(30) = 10.05$, $p &lt; .001$"</code></pre>
+</div>
+</div>
+<section id="write-up-1" class="level4">
+<h4 class="anchored" data-anchor-id="write-up-1">Write up</h4>
+<blockquote class="blockquote">
+<p>Pearson correlation indicated that extraversion scores in TIPI and BFI were significantly correlated, <span class="math inline">\(r = .88\)</span>, 95% CI <span class="math inline">\([.76, .94]\)</span>, <span class="math inline">\(t(30) = 10.05\)</span>, <span class="math inline">\(p &lt; .001\)</span>, suggesting that the two scales are convergent.</p>
+</blockquote>
+</section>
+</section>
+<section id="exercise-correlation-bewteen-tipi-and-bfi" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="exercise-correlation-bewteen-tipi-and-bfi"><span class="header-section-number">1.3.2</span> Exercise: Correlation bewteen TIPI and BFI</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+TODO
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Calculate the correlation between TIPI and BFI for each of the five traits.</li>
+<li>Visualize the correlation between TIPI and BFI for each of the five traits.</li>
+<li>Write up the results of the convergent validity analysis.</li>
+</ol>
+</div>
+</div>
+</section>
+</section>
+<section id="exercise" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="exercise">Exercise</h2>
+<ol type="1">
+<li><strong>Discuss</strong>: You are interested how openness to openness to experience predicts political orientation. You have two options: TIPI and BFI. Which scale would you choose and why?</li>
+</ol>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/yeonsoon\.github\.io\/research-methods-and-stats-book");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/yeonsoon/research-methods-and-stats-book/edit/master/lab02-reliability-validity.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>

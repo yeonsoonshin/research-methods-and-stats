@@ -32,6 +32,9 @@ website:
         contents:
           -  02-stats-test.qmd
           -  02-stats-test-copy.qmd
+      - section: "Lab"
+        contents:
+          - lab02-reliability-validity.qmd
     # logo: ResearchMethods.png
 
 format:

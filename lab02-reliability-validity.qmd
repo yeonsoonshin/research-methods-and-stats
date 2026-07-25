@@ -1,0 +1,291 @@
+# Reliability and Validity
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+```{r}
+library(tidyverse)
+library(psych)
+library(ggpubr)
+library(broom)
+library(papaja)
+```
+
+In this lab, we will explore the concepts of measurement reliability and validity. Measurement is a critical aspect of empirical research, and it is the foundation for drawing valid conclusions from data. Measurement should be targeting the construct of interest (valid) and should be consistent (reliable). 
+
+This lab will use two personality trait scales, the Ten-Item Personality Inventory (TIPI) and the Big Five Inventory (BFI), to demonstrate how to assess reliability and validity of measurement.
+
+## Learning Objectives {.unnumbered}
+
+1. Understand the concepts of reliability and validity in measurement.
+2. Calculate Cronbach's alpha to assess internal consistency of a scale.
+3. Calculate composite scores for a scale.
+4. Calculate correlations between two scales to assess convergent validity.
+5. Visualize the relationship between two scales using scatter plots and regression lines.
+6. Interpret what the results of reliability and validity analyses mean in the context of research.
+7. Write up the results of reliability and validity analyses in APA style.
+
+## Data
+
+Data for this lab comes from a survey of 32 participants who completed both TIPI and BFI.
+
+> **TIPI Instruction**: Here are a number of personality traits that may or may not apply to you. Please choose a number for each statement to indicate the extent to which you agree or disagree with that statement. You should rate the extent to which the pair of traits applies to you, even if one characteristic applies more strongly than the other. (Disagree Strongly = 1 ........ Agree Strongly = 7)
+
+| Item | Trait | Reverse scored? |
+|:---------|:------|:---------------|
+| I see myself as …… Extraverted, enthusiastic. | Extraversion | No |
+| I see myself as …… Critical, quarrelsome. | Agreeableness | Yes |
+| I see myself as …… Dependable, self-disciplined. | Conscientiousness | No |
+| I see myself as …… Anxious, easily upset. | Emotional Stability | Yes |
+| I see myself as …… Open to new experiences, complex. | Openness to Experience | No |
+| I see myself as …… Reserved, quiet. | Extraversion | Yes |
+| I see myself as …… Sympathetic, warm. | Agreeableness | No |
+| I see myself as …… Disorganized, careless. | Conscientiousness | Yes |
+| I see myself as …… Calm, emotionally stable. | Emotional Stability | No |
+| I see myself as …… Conventional, uncreative. | Openness to Experience | Yes |
+: Ten-Item Personality Inventory (TIPI) items. 
+
+
+> **BFI Instruction**: Below you see a number of statements, each of which starts with "I see myself as someone who". For each statement, indicate how much you agree with this statement. (Disagree Strongly = 1 ........ Agree Strongly = 7)
+
+| Item | Trait | Reverse scored? |
+|:---------|:------|:---------------|
+| I see myself as someone who worries a lot. | Neuroticism | No |
+| I see myself as someone who gets nervous easily. | Neuroticism | No |
+| I see myself as someone who remains calm in tense situations. | Neuroticism | Yes |
+| I see myself as someone who is talkative. | Extraversion | No |
+| I see myself as someone who is outgoing, sociable. | Extraversion | No |
+| I see myself as someone who is reserved. | Extraversion | Yes |
+| I see myself as someone who is original, comes up with new ideas. | Openness | No |
+| I see myself as someone who values artistic, aesthetic experiences. | Openness | | No |
+| I see myself as someone who has an active imagination. | Openness | No |
+| I see myself as someone who is sometimes rude to others. | Agreeableness | Yes |
+| I see myself as someone who has a forgiving nature. | Agreeableness | No |
+| I see myself as someone who is considerate and kind to almost everyone. | Agreeableness | No |
+| I see myself as someone who does a thorough job. | Conscientiousness | No |
+| I see myself as someone who tends to be lazy. | Conscientiousness | Yes |
+| I see myself as someone who does things efficiently. | Conscientiousness |  No |
+: Big Five Inventory (BFI) items. 
+
+
+Let's take a look at the data. We will read in the data and use `describe()` function from the `psych` package to get a summary of the data.
+
+:::{.callout-tip}
+## Checklist
+* Are data complete (no missing values)?
+* Are all items in the expected range (1-7)?
+:::
+
+```{r}
+df <- read_csv('data/personality.csv') %>%
+  as_tibble()
+describe(df)
+```
+
+## Reliability (internal consistency) and composite scores
+
+Good measurement is reliable, and the measurement of the same construct should produce similar results across different items (internal consistency), different time points (test-retest reliability), or different raters (inter-rater reliability). 
+
+In today's lab, we will focus on internal consistency. Let's say we want to measure Extraversion. What we want to obtain from our measurement is some score that represents Extraversion for an individual. But we don't just ask one question "Are you extraverted?" for many reasons. For one, increasing the amount of data helps us be more accurate and more confident in our measurement. People may make mistakes when answering a single question and can be influenced by other things outside of the question itself (maybe they are distracted by notifications on their phones). To guard against this, we ask multiple questions that are supposed to measure the same construct. For example, in TIPI, we ask two questions that measure extraversion: "I see myself as extraverted, enthusiastic" and "I see myself as reserved, quiet". If someone strongly agrees with the first statement and strongly disagrees with the second statement, we can say that this person is extraverted (high extraversion score). But what if someone strongly agrees with both statements? Then we have a problem, and we may not want to use the "extraversion" composite score.
+
+To summarize, before we use a composite score, we want to check if the items are internally consistent and correlated with each other. We use **Cronbach's alpha** to quantify the internal consistency. If Cronbach's alpha is greater than or equal to 0.7, we can say that the items are internally consistent and reliable. Ideally, we want to see Cronbach's alpha to be greater than 0.8, but this is not always the case in practice.
+
+
+### Workout example: TIPI
+
+TIPI is a ten-item scale where each of the five traits is measured by two items. Before we calculate Cronbach's alpha, we need to define the items that measure each trait in TIPI. @tbl-tipi-items shows the items in TIPI, the trait that each item measures, and whether the item needs to be reverse scored.
+
+| Variable name | Trait | Reverse scored? |
+|:---------|:------|:---------------|
+| TIPI_critical_quarrelsome | Agreeableness | Yes |
+| TIPI_sympathetic_warm | Agreeableness | No |
+| TIPI_dependable_self_disciplined | Conscientiousness | No |
+| TIPI_disorganized_careless | Conscientiousness | Yes |
+| TIPI_anxious_easily_upset | Emotional Stability | Yes |
+| TIPI_calm_emotionally_stable | Emotional Stability | No |
+| TIPI_extraverted_enthusiastic | Extraversion | No |
+| TIPI_reserved_quiet | Extraversion | Yes |
+| TIPI_open_complex | Openness to Experience | No |
+| TIPI_conventional_uncreative | Openness to Experience | Yes |
+: Ten-Item Personality Inventory (TIPI) item variables {#tbl-tipi-items}
+
+We will create a list of keys for each trait, where the items that need to be reverse scored are prefixed with a minus sign ("-"). For example, for Agreeableness, the item "TIPI_critical_quarrelsome" needs to be reverse scored, so we will write it as "-TIPI_critical_quarrelsome".
+
+```{r}
+tipi.keys <- list(
+  agreeableness          = c("-TIPI_critical_quarrelsome",
+                             "TIPI_sympathetic_warm"),
+  conscientiousness      = c("TIPI_dependable_self_disciplined", 
+                             "-TIPI_disorganized_careless"),
+  emotional_stability    = c("-TIPI_anxious_easily_upset",
+                             "TIPI_calm_emotionally_stable"),
+  extraversion           = c("TIPI_extraverted_enthusiastic", 
+                             "-TIPI_reserved_quiet"),
+  openness_to_experience = c("TIPI_open_complex", 
+                             "-TIPI_conventional_uncreative")
+)
+```
+
+With the keys defined, we can now score the items in TIPI using `scoreItems()` function from the `psych` package. This function will calculate the composite scores for each trait and also calculate Cronbach's alpha for each trait.
+
+```{r}
+tipi <- scoreItems(tipi.keys, 
+  df %>% select(starts_with("TIPI_")))
+```
+
+
+You can find the scores for each trait in TIPI under `scores` in the `tipi` object. We will add prefix "TIPI_" to the column names to indicate that these are scores from TIPI.
+
+```{r}
+tipi.scores <- tipi$scores %>% 
+  as_tibble() %>% 
+  rename_with(~paste0("TIPI_", .x))
+
+describe(tipi.scores)
+```
+
+Let's check the Cronbach's alpha for each trait in TIPI. We can access the Cronbach's alpha values from the `tipi` object.
+
+:::{.callout-tip}
+## Checklist
+* Are all traits internally consistent (Cronbach's alpha >= 0.7)?
+:::
+
+```{r}
+round(tipi$alpha, 3)
+```
+
+#### Write up
+
+Here is a sample write up for the reliability analysis of TIPI:
+
+> Reliability analysis using Cronbach's alpha showed that the Ten Item Personality Inventory (TIPI) has good internal consistency for extraversion ($\alpha$ = .86). Internal consistency for emotional stability ($\alpha$ = .78) was acceptable, but not for agreeableness ($\alpha$ = .60), conscientiousness ($\alpha$ = .65), and openness to experience ($\alpha$ = .64). 
+
+### Exercise: BFI
+
+:::{.callout-tip}
+## TODO
+- Calculate Cronbach's alpha for each of the five traits in BFI.
+- Write up the results of the reliability analysis for BFI.
+:::
+
+BFI is a longer scale that measures the same five traits as TIPI. We will define the keys for BFI in the same way as we did for TIPI. 
+
+| Variable name | Trait | Reverse scored? |
+|:---------|:------|:---------------|
+| BFI_worries | Neuroticism | No |
+| BFI_nervous | Neuroticism | No |
+| BFI_calm | Neuroticism | Yes |
+| BFI_talkative | Extraversion | No |
+| BFI_outgoing | Extraversion | No |
+| BFI_reserved | Extraversion | Yes |
+| BFI_original | Openness | No |
+| BFI_values_artistic | Openness | No |
+| BFI_active_imagination | Openness | No |
+| BFI_rude | Agreeableness | Yes |
+| BFI_forgiving | Agreeableness | No |
+| BFI_kind | Agreeableness | No |
+| BFI_thorough | Conscientiousness | No |
+| BFI_lazy | Conscientiousness | Yes |
+| BFI_efficient | Conscientiousness | No |
+: Big Five Inventory (BFI) item variables {#tbl-bfi-items}
+
+Based on @tbl-bfi-items, you can define the keys. Reveal after you have defined the keys.
+
+```{r}
+bfi.keys <- list(
+  agreeableness     = c("-BFI_rude",
+                        "BFI_forgiving",
+                        "BFI_kind"),
+  conscientiousness = c("BFI_thorough", 
+                        "-BFI_lazy",
+                        "BFI_efficient"),
+  neuroticism       = c("BFI_worries",
+                        "BFI_nervous",
+                        "-BFI_calm"),
+  extraversion      = c("BFI_talkative", 
+                        "BFI_outgoing", 
+                        "-BFI_reserved"),
+  openness          = c("BFI_original", 
+                        "BFI_values_artistic", 
+                        "BFI_active_imagination")
+)
+```
+
+```{r}
+bfi <- scoreItems(bfi.keys,
+  df %>% select(starts_with("BFI_")))
+bfi$alpha
+```
+
+```{r}
+bfi.scores <- bfi$scores %>% 
+  as_tibble() %>% 
+  rename_with(~paste0("BFI_", .x))
+
+describe(bfi.scores)
+```
+
+## Validity (convergent validity)
+
+Validity is the extent to which a measure actually measures what it is supposed to measure. There are several types of validity, including face validity, content validity, criterion validity, and convergent and divergent validity. In this lab, we will focus on convergent validity, which is the extent to which a measure correlates with other measures of the same construct.
+
+Luckily, we have two different scales measuring the same construct in the same individuals -- TIPI and BFI. If someone scores high on Extraversion in TIPI, we expect that that person should also score high on Extraversion in BFI too. We will calculate the correlation between the two scales for each of the five traits.
+
+| TIPI trait | BFI trait |
+|------------|-----------|
+| Extraversion | Extraversion |
+| Agreeableness | Agreeableness |
+| Conscientiousness | Conscientiousness |
+| Emotional Stability | Neuroticism |
+| Openness to Experience | Openness |
+: TIPI and BFI traits mapping
+
+Notice that in TIPI, we have a trait called Emotional Stability, while in BFI, we have a trait called Neuroticism. These two traits are actually measuring the same construct, but in opposite directions. That is, if someone scores high on Emotional Stability in TIPI, we expect that they should score low on Neuroticism in BFI. So when we calculate the correlation between these two traits, we expect to see a negative correlation.
+
+```{r}
+# merge TIPI and BFI scores 
+df.scores <- bind_cols(tipi.scores, bfi.scores)
+```
+
+### Example: Extraversion
+
+```{r}
+df.scores %>%
+  ggplot(aes(x = TIPI_extraversion, 
+             y = BFI_extraversion)) +
+  geom_smooth(method = "lm", se = TRUE, color='gray') +
+  geom_point() +
+  labs(x = "TIPI", y = "BFI", title = "Extraversion") +
+  xlim(1, 7) + ylim(1, 7) +
+  coord_fixed(ratio = 1) +
+  theme_classic()
+```
+
+```{r}
+res <- apa_print(cor.test(df.scores$TIPI_extraversion, df.scores$BFI_extraversion))
+res$full_result
+```
+
+#### Write up
+
+> Pearson correlation indicated that extraversion scores in TIPI and BFI were significantly correlated, `r res$full_result`, suggesting that the two scales are convergent.
+
+### Exercise: Correlation bewteen TIPI and BFI
+
+
+:::{.callout-tip}
+## TODO
+1. Calculate the correlation between TIPI and BFI for each of the five traits.
+2. Visualize the correlation between TIPI and BFI for each of the five traits.
+3. Write up the results of the convergent validity analysis.
+:::
+
+## Exercise {.unnumbered}
+
+1. **Discuss**: You are interested how openness to openness to experience predicts political orientation. You have two options: TIPI and BFI. Which scale would you choose and why?

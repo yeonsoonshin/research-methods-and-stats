@@ -12,3 +12,5 @@ gitpage.Rproj
 
 /.quarto/
 **/*.quarto_ipynb
+/data/
+/legacy/
