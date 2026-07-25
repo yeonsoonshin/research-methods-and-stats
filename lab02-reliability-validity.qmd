@@ -96,7 +96,7 @@ In today's lab, we will focus on internal consistency. Let's say we want to meas
 To summarize, before we use a composite score, we want to check if the items are internally consistent and correlated with each other. We use **Cronbach's alpha** to quantify the internal consistency. If Cronbach's alpha is greater than or equal to 0.7, we can say that the items are internally consistent and reliable. Ideally, we want to see Cronbach's alpha to be greater than 0.8, but this is not always the case in practice.
 
 
-### Workout example: TIPI
+### Worked out example: TIPI
 
 TIPI is a ten-item scale where each of the five traits is measured by two items. Before we calculate Cronbach's alpha, we need to define the items that measure each trait in TIPI. @tbl-tipi-items shows the items in TIPI, the trait that each item measures, and whether the item needs to be reverse scored.
 
@@ -253,7 +253,7 @@ Notice that in TIPI, we have a trait called Emotional Stability, while in BFI, w
 df.scores <- bind_cols(tipi.scores, bfi.scores)
 ```
 
-### Example: Extraversion
+### Worked out example: Extraversion
 
 ```{r}
 df.scores %>%
