@@ -1,3 +1,9 @@
+---
+format:
+  html:
+    html-math-method: plain
+---
+
 # Reliability and Validity
 
 ```{r, include=FALSE}
@@ -9,16 +15,15 @@ knitr::opts_chunk$set(
 ```
 
 ```{r}
-library(tidyverse)
-library(psych)
-library(ggpubr)
-library(broom)
-library(papaja)
+library(tidyverse)  # for data wrangling and visualization
+library(psych)      # for describe() and scoreItems()
+library(broom)      # for tidying model output
+library(papaja)     # for APA style write up
 ```
 
-In this lab, we will explore the concepts of measurement reliability and validity. Measurement is a critical aspect of empirical research, and it is the foundation for drawing valid conclusions from data. Measurement should be targeting the construct of interest (valid) and should be consistent (reliable). 
+In this lab, we will explore the concepts of measurement reliability and validity. Measurement is a critical aspect of empirical research, and it is the foundation for drawing valid conclusions from data. The high level question is: "Are we measuring what we think we are measuring?" To answer this question, we need to assess that the measure is targetting the construct of interest (validity) with a high level of precision (reliability).
 
-This lab will use two personality trait scales, the Ten-Item Personality Inventory (TIPI) and the Big Five Inventory (BFI), to demonstrate how to assess reliability and validity of measurement.
+This lab will use two personality trait scales, the Ten-Item Personality Inventory (TIPI @gosling_very_2003) and the Short Big Five Inventory (BFI @lang_short_2011), to demonstrate how to assess reliability and validity of measurement.
 
 ## Learning Objectives {.unnumbered}
 
@@ -50,7 +55,6 @@ Data for this lab comes from a survey of 32 participants who completed both TIPI
 | I see myself as …… Conventional, uncreative. | Openness to Experience | Yes |
 : Ten-Item Personality Inventory (TIPI) items. 
 
-
 > **BFI Instruction**: Below you see a number of statements, each of which starts with "I see myself as someone who". For each statement, indicate how much you agree with this statement. (Disagree Strongly = 1 ........ Agree Strongly = 7)
 
 | Item | Trait | Reverse scored? |
@@ -72,20 +76,19 @@ Data for this lab comes from a survey of 32 participants who completed both TIPI
 | I see myself as someone who does things efficiently. | Conscientiousness |  No |
 : Big Five Inventory (BFI) items. 
 
-
 Let's take a look at the data. We will read in the data and use `describe()` function from the `psych` package to get a summary of the data.
-
-:::{.callout-tip}
-## Checklist
-* Are data complete (no missing values)?
-* Are all items in the expected range (1-7)?
-:::
 
 ```{r}
 df <- read_csv('data/personality.csv') %>%
   as_tibble()
 describe(df)
 ```
+
+:::{.callout-tip}
+## Checklist
+* Are data complete (no missing values or wrong data)?
+* Are all items in the expected range?
+:::
 
 ## Reliability (internal consistency) and composite scores
 
@@ -95,10 +98,9 @@ In today's lab, we will focus on internal consistency. Let's say we want to meas
 
 To summarize, before we use a composite score, we want to check if the items are internally consistent and correlated with each other. We use **Cronbach's alpha** to quantify the internal consistency. If Cronbach's alpha is greater than or equal to 0.7, we can say that the items are internally consistent and reliable. Ideally, we want to see Cronbach's alpha to be greater than 0.8, but this is not always the case in practice.
 
+### Ten-Item Personality Inventory (TIPI)
 
-### Worked out example: TIPI
-
-TIPI is a ten-item scale where each of the five traits is measured by two items. Before we calculate Cronbach's alpha, we need to define the items that measure each trait in TIPI. @tbl-tipi-items shows the items in TIPI, the trait that each item measures, and whether the item needs to be reverse scored.
+In TIPI, each of the five traits is measured by two items. Before we calculate Cronbach's alpha, we need to define the items that measure each trait in TIPI. @tbl-tipi-items shows the items in TIPI, the trait that each item measures, and whether the item needs to be reverse scored.
 
 | Variable name | Trait | Reverse scored? |
 |:---------|:------|:---------------|
@@ -134,14 +136,18 @@ tipi.keys <- list(
 With the keys defined, we can now score the items in TIPI using `scoreItems()` function from the `psych` package. This function will calculate the composite scores for each trait and also calculate Cronbach's alpha for each trait.
 
 ```{r}
+# score the items in TIPI (columns that start with "TIPI_") using the keys defined above
 tipi <- scoreItems(tipi.keys, 
   df %>% select(starts_with("TIPI_")))
 ```
 
 
+#### Composite scores
+
 You can find the scores for each trait in TIPI under `scores` in the `tipi` object. We will add prefix "TIPI_" to the column names to indicate that these are scores from TIPI.
 
 ```{r}
+# convert the scores to a tibble and add prefix "TIPI_" to the column names
 tipi.scores <- tipi$scores %>% 
   as_tibble() %>% 
   rename_with(~paste0("TIPI_", .x))
@@ -149,32 +155,41 @@ tipi.scores <- tipi$scores %>%
 describe(tipi.scores)
 ```
 
+#### Internal consistency (Cronbach's alpha)
+
 Let's check the Cronbach's alpha for each trait in TIPI. We can access the Cronbach's alpha values from the `tipi` object.
+
+```{r}
+# check the Cronbach's alpha for each trait in TIPI
+print(round(tipi$alpha, 3))
+```
 
 :::{.callout-tip}
 ## Checklist
 * Are all traits internally consistent (Cronbach's alpha >= 0.7)?
 :::
 
-```{r}
-round(tipi$alpha, 3)
-```
+#### Write up the results
 
-#### Write up
+We will now write up the results of the reliability analysis. The reliability analysis is conducted to justify the use of a measure in research, and thus the results of reliability analysis is usually reported in the method section of a research paper, following the description of the measure:
 
-Here is a sample write up for the reliability analysis of TIPI:
+> We used the Ten-Item Personality Inventory (TIPI) to measure the Big Five personality traits. TIPI is a brief measure of the Big Five personality traits, with two items for each trait. Participants rated the extent to which they agreed with each statement on a 7-point Likert scale (1 = Disagree Strongly, 7 = Agree Strongly). Composite scores for each trait were calculated by averaging the two items for each trait, with reverse scoring applied to the appropriate items. 
 
-> Reliability analysis using Cronbach's alpha showed that the Ten Item Personality Inventory (TIPI) has good internal consistency for extraversion ($\alpha$ = .86). Internal consistency for emotional stability ($\alpha$ = .78) was acceptable, but not for agreeableness ($\alpha$ = .60), conscientiousness ($\alpha$ = .65), and openness to experience ($\alpha$ = .64). 
+Following this description, you would report the results of the reliability analysis. The write-up should include the **purpose** of the analysis (to assess internal consistency), the **method** used (Cronbach's alpha), and the **results** of the analysis (the Cronbach's alpha values for each trait), and the **interpretation** of the results (good, acceptable, or poor internal consistency). For example:
 
-### Exercise: BFI
+> Reliability analysis using Cronbach's alpha showed that the Ten-Item Personality Inventory (TIPI) had good to acceptable internal consistency for extraversion ($\alpha$ = .86) and emotional stability ($\alpha$ = .78). However, internal consistency for agreeableness ($\alpha$ = .60), conscientiousness ($\alpha$ = .65), and openness to experience ($\alpha$ = .64) did not reach the minimum threshold of 0.7. 
 
 :::{.callout-tip}
-## TODO
-- Calculate Cronbach's alpha for each of the five traits in BFI.
-- Write up the results of the reliability analysis for BFI.
+## Reliability Analysis Write-Up Checklist
+* What type of reliability is measured? (e.g., internal consistency)
+* What method is used to assess reliability? (e.g., Cronbach's alpha)
+* What are the results of the analysis? (e.g., Cronbach's alpha values for each trait)
+* What is the interpretation of the results? (e.g., good? acceptable? poor?)
 :::
 
-BFI is a longer scale that measures the same five traits as TIPI. We will define the keys for BFI in the same way as we did for TIPI. 
+### Big Five Inventory (BFI)
+
+BFI is a longer scale that measures the same five traits as TIPI. @tbl-bfi-items shows the items in BFI, the trait that each item measures, and whether the item needs to be reverse scored.
 
 | Variable name | Trait | Reverse scored? |
 |:---------|:------|:---------------|
@@ -195,9 +210,14 @@ BFI is a longer scale that measures the same five traits as TIPI. We will define
 | BFI_efficient | Conscientiousness | No |
 : Big Five Inventory (BFI) item variables {#tbl-bfi-items}
 
-Based on @tbl-bfi-items, you can define the keys. Reveal after you have defined the keys.
+:::{.callout-tip}
+## Exercise
+1. Calculate Cronbach's alpha for each of the five traits in BFI.
+2. Write up the results of the reliability analysis for BFI.
+:::
 
-```{r}
+```{r, include=FALSE}
+# define the keys for each trait in BFI
 bfi.keys <- list(
   agreeableness     = c("-BFI_rude",
                         "BFI_forgiving",
@@ -215,21 +235,28 @@ bfi.keys <- list(
                         "BFI_values_artistic", 
                         "BFI_active_imagination")
 )
-```
 
-```{r}
+# score the items in BFI (columns that start with "BFI_") using the keys defined above
 bfi <- scoreItems(bfi.keys,
   df %>% select(starts_with("BFI_")))
-bfi$alpha
-```
 
-```{r}
+# convert the scores to a tibble and add prefix "BFI_" to the column names
 bfi.scores <- bfi$scores %>% 
   as_tibble() %>% 
   rename_with(~paste0("BFI_", .x))
 
 describe(bfi.scores)
+
+# check the Cronbach's alpha for each trait in BFI
+print(round(bfi$alpha, 3))
 ```
+
+
+## Key Takeaways {.unnumbered}
+* Internal consistency is a type of reliability that measures consistency of items within a scale, and it can be assessed using Cronbach's alpha. 
+* Cronbach's alpha values greater than or equal to 0.7 indicate acceptable internal consistency, while values less than 0.7 indicate poor internal consistency.
+* `scoreItems()` function from the `psych` package can be used to calculate composite scores for a scale and also calculate Cronbach's alpha.
+
 
 ## Validity (convergent validity)
 
@@ -248,44 +275,76 @@ Luckily, we have two different scales measuring the same construct in the same i
 
 Notice that in TIPI, we have a trait called Emotional Stability, while in BFI, we have a trait called Neuroticism. These two traits are actually measuring the same construct, but in opposite directions. That is, if someone scores high on Emotional Stability in TIPI, we expect that they should score low on Neuroticism in BFI. So when we calculate the correlation between these two traits, we expect to see a negative correlation.
 
+To look at the relationship between scores in TIPI and BFI, both scores need to be in the same data frame. `bind_cols()` function combines the two data frames.
+
 ```{r}
 # merge TIPI and BFI scores 
 df.scores <- bind_cols(tipi.scores, bfi.scores)
+
+head(df.scores)
 ```
 
-### Worked out example: Extraversion
+#### Scatter plot
+
+Now it's time to visualize the relationship between TIPI and BFI scores. The first trait we will look at is Extraversion. Create a scatter plot with TIPI Extraversion scores on the x-axis and BFI Extraversion scores on the y-axis. `ggplot()`'s `geom_point()` function will create a scatter plot. 
 
 ```{r}
+#| fig-alt: Scatter plot of TIPI and BFI Extraversion scores. On the x-axis is TIPI Extraversion scores and on the y-axis is BFI Extraversion scores. The points are scattered around a diagonal line from the bottom left to the top right. The top right and bottom left corners have more points than the top left and bottom right corners. 
+#| 
 df.scores %>%
   ggplot(aes(x = TIPI_extraversion, 
              y = BFI_extraversion)) +
-  geom_smooth(method = "lm", se = TRUE, color='gray') +
   geom_point() +
   labs(x = "TIPI", y = "BFI", title = "Extraversion") +
   xlim(1, 7) + ylim(1, 7) +
-  coord_fixed(ratio = 1) +
+  coord_fixed(ratio = 1) + # make the x and y axes have the same ratio
   theme_classic()
 ```
+
+Now let's inspect the plot. If TIPI and BFI are correlated in a positive direction (i.e., they are in the same direction), we expect high BFI individuals to also have high TIPI scores (i.e., many points in the top right corner) but NOT low TIPI scores (not many points in the top left corner); low BFI individuals to also have low TIPI scores (i.e., many points in the bottom left corner) but NOT high TIPI scores (not many points in the bottom right corner). Does the plot have this pattern?
+
+#### Correlation Coefficient (Pearson's $r$)
+To formally quantify the relationship between TIPI and BFI, we will calculate the Pearson correlation coefficient. Pearson correlation coefficient is named $r$, and it ranges from -1 to 1. The sign of $r$ indicates the direction of the relationship, and the absolute value of $r$ indicates the strength of the relationship. The `cor.test()` function will calculate the correlation coefficient and the p-value (the probability of obtaining the observed result by chance). We will come back to the details of the significance testing and how to interpret the results later in the course. For now, we will focus on the correlation coefficient itself. The criteria for interpreting the strength of the correlation coefficient is as follows: 
+
+| Correlation coefficient ($r$) | Strength of the relationship |
+| :--------- | :--------------------------- |
+| **0.10** to $\lt$ 0.30 | Weak |
+| **0.30** to $\lt$ 0.50 | Moderate |
+| **0.5** to 1.00  | Strong |
+
 
 ```{r}
 res <- apa_print(cor.test(df.scores$TIPI_extraversion, df.scores$BFI_extraversion))
 res$full_result
 ```
 
-#### Write up
+#### Write up the results
 
-> Pearson correlation indicated that extraversion scores in TIPI and BFI were significantly correlated, `r res$full_result`, suggesting that the two scales are convergent.
+We will now write up the results of the convergent validity analysis. This write-up also needs to include the **purpose** of the analysis (to assess convergent validity), the **method** used (Pearson correlation coefficient), the **results** of the analysis (the correlation coefficient), and the **interpretation** of the results (strong, moderate, or weak correlation). For example:
 
-### Exercise: Correlation bewteen TIPI and BFI
-
+> To assess the convergent validity of the Ten-Item Personality Inventory (TIPI) and the Big Five Inventory (BFI) for extraversion, we calculated the Pearson correlation coefficient between the two scales' extraversion scores. The results indicated that extraversion scores in TIPI and BFI were strongly positively correlated, $r$ = `r res$full_result`, suggesting that the two scales are convergent.
 
 :::{.callout-tip}
-## TODO
+## Convergent Validity Analysis Write-Up Checklist
+* What type of validity is measured? (e.g., convergent validity)
+* What method is used to assess validity? (e.g., Pearson correlation coefficient)
+* What are the results of the analysis? (e.g., correlation coefficient value and p-value)
+* What is the interpretation of the results? (e.g., strong? moderate? weak?)
+:::
+
+Now that you have seen how to calculate the correlation between TIPI and BFI for extraversion, you can repeat the same steps for the other four traits.
+
+:::{.callout-tip}
+## Exercise
 1. Calculate the correlation between TIPI and BFI for each of the five traits.
 2. Visualize the correlation between TIPI and BFI for each of the five traits.
 3. Write up the results of the convergent validity analysis.
 :::
 
-## Exercise {.unnumbered}
+### Key Takeaways {.unnumbered}
+* Convergent validity is a type of validity that measures the extent to which a measure correlates with other measures of the same construct, and it can be assessed using Pearson correlation coefficient.
+* Pearson correlation coefficient' absolute value indicates the strength of the relationship, and correlation greater than or equal to 0.10 is weak, 0.30 moderate, and 0.50 strong.
+
+## Wrapping up {.unnumbered}
 
 1. **Discuss**: You are interested how openness to openness to experience predicts political orientation. You have two options: TIPI and BFI. Which scale would you choose and why?

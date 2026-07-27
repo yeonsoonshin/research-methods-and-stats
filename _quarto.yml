@@ -41,9 +41,13 @@ format:
   html:
     theme: ally
     toc: true
-    html-math-method: mathjax
+    toc-depth: 4
     number-sections: true
     number-depth: 3
+    format:
+    html-math-method:
+      method: mathjax
+      url: https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js
   epub: default
   docx: default
 
