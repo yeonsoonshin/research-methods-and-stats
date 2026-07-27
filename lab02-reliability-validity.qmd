@@ -252,7 +252,7 @@ print(round(bfi$alpha, 3))
 ```
 
 
-## Key Takeaways {.unnumbered}
+### Key Takeaways {.unnumbered}
 * Internal consistency is a type of reliability that measures consistency of items within a scale, and it can be assessed using Cronbach's alpha. 
 * Cronbach's alpha values greater than or equal to 0.7 indicate acceptable internal consistency, while values less than 0.7 indicate poor internal consistency.
 * `scoreItems()` function from the `psych` package can be used to calculate composite scores for a scale and also calculate Cronbach's alpha.
@@ -322,7 +322,7 @@ res$full_result
 
 We will now write up the results of the convergent validity analysis. This write-up also needs to include the **purpose** of the analysis (to assess convergent validity), the **method** used (Pearson correlation coefficient), the **results** of the analysis (the correlation coefficient), and the **interpretation** of the results (strong, moderate, or weak correlation). For example:
 
-> To assess the convergent validity of the Ten-Item Personality Inventory (TIPI) and the Big Five Inventory (BFI) for extraversion, we calculated the Pearson correlation coefficient between the two scales' extraversion scores. The results indicated that extraversion scores in TIPI and BFI were strongly positively correlated, $r$ = `r res$full_result`, suggesting that the two scales are convergent.
+> To assess the convergent validity of the Ten-Item Personality Inventory (TIPI) and the Big Five Inventory (BFI) for extraversion, we calculated the Pearson correlation coefficient between the two scales' extraversion scores. The results indicated that extraversion scores in TIPI and BFI were strongly positively correlated, Pearson's `r res$full_result`, suggesting that the two scales are convergent.
 
 :::{.callout-tip}
 ## Convergent Validity Analysis Write-Up Checklist
