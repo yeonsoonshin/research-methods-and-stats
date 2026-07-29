@@ -36,6 +36,9 @@ website:
         contents:
           - lab02-reliability-validity.qmd
           - lab03-eda.qmd
+      - section: "Appendix"
+        contents:
+          - appendix-stats-decisions.qmd
     # logo: ResearchMethods.png
 
 format:

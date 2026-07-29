@@ -2,17 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>lab03-eda – Research Methods and Statistics</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -72,10 +78,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a14e3238c51140e99ccc48519b6ed9ce.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ba8f7c244c1f50cbf6c6a3aa3874339a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -216,6 +222,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendix</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-stats-decisions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Deciding Which Statistical Test to Use</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -325,7 +348,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Example Questions about the Dataset
+<span class="screen-reader-only">Tip</span>Example Questions about the Dataset
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -379,12 +402,12 @@ Example Questions about the Dataset
 <h2 data-number="1.1" class="anchored" data-anchor-id="preliminaries"><span class="header-section-number">1.1</span> Preliminaries</h2>
 <p>Load the necessary packages for this lab.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)  <span class="co"># for data wrangling and visualization</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)  <span class="co"># for data wrangling and visualization</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)      <span class="co"># for describe() and scoreItems()</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)      <span class="co"># for tidying model output</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)    <span class="co"># for frequency and contingency tables</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)         <span class="co"># for pretty tables</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)     <span class="co"># for ggqqplot()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)     <span class="co"># for ggqqplot()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="data" class="level2" data-number="1.2">
@@ -396,7 +419,7 @@ Example Questions about the Dataset
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Questions to answer about the data:
+<span class="screen-reader-only">Tip</span>Questions to answer about the data:
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -407,9 +430,9 @@ Questions to answer about the data:
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'data/sleep_breakfast.csv'</span>) <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'data/sleep_breakfast.csv'</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 59
 Columns: 4
@@ -459,7 +482,7 @@ Table&nbsp;1: Approach to univariate analysis based on the type of variable
 <p>The correct data type is important for conducting univariate analysis. The data type of the <code>Campus</code> variables should be <strong>factor</strong>, which has specific levels that represent the categories of the variable. The following code converts the Campus variables to factor data type, with two levels: “Bryn Mawr College” and “Haverford College”.</p>
 <p>First, make sure that the values of the <code>Campus</code> variable are spelled correctly and match the expected categories. You can use <code>unique()</code> function to check the unique values of the <code>Campus</code> variable.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(df<span class="sc">$</span>Campus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(df<span class="sc">$</span>Campus)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Bryn Mawr College" "Haverford College"</code></pre>
 </div>
@@ -467,7 +490,7 @@ Table&nbsp;1: Approach to univariate analysis based on the type of variable
 <p>If this looks right, you can convert the <code>Campus</code> variable to factor data type using <code>mutate()</code> and <code>factor()</code> functions. The <code>levels</code> argument specifies the levels of the factor, and the <code>ordered</code> argument specifies whether the levels are ordered or not. In this case, we set <code>ordered = FALSE</code> because there is no inherent order to the categories of the <code>Campus</code> variable.</p>
 <p>You can check if the data type of the <code>Campus</code> variable is factor and what the levels of the factor are using <code>class()</code> and <code>unique()</code> functions, respectively.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">Campus =</span> <span class="fu">factor</span>(Campus, </span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Bryn Mawr College"</span>, </span>
@@ -475,11 +498,11 @@ Table&nbsp;1: Approach to univariate analysis based on the type of variable
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">ordered =</span> <span class="cn">FALSE</span>),</span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df<span class="sc">$</span>Campus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df<span class="sc">$</span>Campus)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "factor"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(df<span class="sc">$</span>Campus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(df<span class="sc">$</span>Campus)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] Bryn Mawr College Haverford College
 Levels: Bryn Mawr College Haverford College</code></pre>
@@ -491,7 +514,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Data Wrangling Checklist
+<span class="screen-reader-only">Tip</span>Data Wrangling Checklist
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -511,7 +534,7 @@ Data Wrangling Checklist
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Questions to answer about the data:
+<span class="screen-reader-only">Tip</span>Questions to answer about the data:
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -523,31 +546,31 @@ Questions to answer about the data:
 </div>
 <p><code>tabyl()</code> function from the <code>janitor</code> package creates a frequency table. We can also add the total sample size using <code>adorn_totals()</code> and choose how many decimal places to display using <code>adorn_pct_formatting()</code>. Finally, we use <code>gt()</code> function to create a pretty table. Running the code below will open a new window in your browser to display the frequency table.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tbl.campus <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tbl.campus <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(Campus) <span class="sc">%&gt;%</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_totals</span>(<span class="st">"row"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_pct_formatting</span>(<span class="at">digits =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_align</span>(<span class="at">align =</span> <span class="st">"left"</span>, <span class="at">columns =</span> Campus) </span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>tbl.campus</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>tbl.campus</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="hsqpeqthkv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#hsqpeqthkv table {
+<div id="iznhpaqhzw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#iznhpaqhzw table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#hsqpeqthkv thead, #hsqpeqthkv tbody, #hsqpeqthkv tfoot, #hsqpeqthkv tr, #hsqpeqthkv td, #hsqpeqthkv th {
+#iznhpaqhzw thead, #iznhpaqhzw tbody, #iznhpaqhzw tfoot, #iznhpaqhzw tr, #iznhpaqhzw td, #iznhpaqhzw th {
   border-style: none;
 }
 
-#hsqpeqthkv p {
+#iznhpaqhzw p {
   margin: 0;
   padding: 0;
 }
 
-#hsqpeqthkv .gt_table {
+#iznhpaqhzw .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -573,12 +596,12 @@ Questions to answer about the data:
   border-left-color: #D3D3D3;
 }
 
-#hsqpeqthkv .gt_caption {
+#iznhpaqhzw .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#hsqpeqthkv .gt_title {
+#iznhpaqhzw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -590,7 +613,7 @@ Questions to answer about the data:
   border-bottom-width: 0;
 }
 
-#hsqpeqthkv .gt_subtitle {
+#iznhpaqhzw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -602,7 +625,7 @@ Questions to answer about the data:
   border-top-width: 0;
 }
 
-#hsqpeqthkv .gt_heading {
+#iznhpaqhzw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -614,13 +637,13 @@ Questions to answer about the data:
   border-right-color: #D3D3D3;
 }
 
-#hsqpeqthkv .gt_bottom_border {
+#iznhpaqhzw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#hsqpeqthkv .gt_col_headings {
+#iznhpaqhzw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -635,7 +658,7 @@ Questions to answer about the data:
   border-right-color: #D3D3D3;
 }
 
-#hsqpeqthkv .gt_col_heading {
+#iznhpaqhzw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -655,7 +678,7 @@ Questions to answer about the data:
   overflow-x: hidden;
 }
 
-#hsqpeqthkv .gt_column_spanner_outer {
+#iznhpaqhzw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -667,15 +690,15 @@ Questions to answer about the data:
   padding-right: 4px;
 }
 
-#hsqpeqthkv .gt_column_spanner_outer:first-child {
+#iznhpaqhzw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#hsqpeqthkv .gt_column_spanner_outer:last-child {
+#iznhpaqhzw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#hsqpeqthkv .gt_column_spanner {
+#iznhpaqhzw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -687,11 +710,11 @@ Questions to answer about the data:
   width: 100%;
 }
 
-#hsqpeqthkv .gt_spanner_row {
+#iznhpaqhzw .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#hsqpeqthkv .gt_group_heading {
+#iznhpaqhzw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -717,7 +740,7 @@ Questions to answer about the data:
   text-align: left;
 }
 
-#hsqpeqthkv .gt_empty_group_heading {
+#iznhpaqhzw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -732,15 +755,15 @@ Questions to answer about the data:
   vertical-align: middle;
 }
 
-#hsqpeqthkv .gt_from_md > :first-child {
+#iznhpaqhzw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#hsqpeqthkv .gt_from_md > :last-child {
+#iznhpaqhzw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#hsqpeqthkv .gt_row {
+#iznhpaqhzw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -759,7 +782,7 @@ Questions to answer about the data:
   overflow-x: hidden;
 }
 
-#hsqpeqthkv .gt_stub {
+#iznhpaqhzw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -772,7 +795,7 @@ Questions to answer about the data:
   padding-right: 5px;
 }
 
-#hsqpeqthkv .gt_stub_row_group {
+#iznhpaqhzw .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -786,15 +809,15 @@ Questions to answer about the data:
   vertical-align: top;
 }
 
-#hsqpeqthkv .gt_row_group_first td {
+#iznhpaqhzw .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#hsqpeqthkv .gt_row_group_first th {
+#iznhpaqhzw .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#hsqpeqthkv .gt_summary_row {
+#iznhpaqhzw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -804,16 +827,16 @@ Questions to answer about the data:
   padding-right: 5px;
 }
 
-#hsqpeqthkv .gt_first_summary_row {
+#iznhpaqhzw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#hsqpeqthkv .gt_first_summary_row.thick {
+#iznhpaqhzw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#hsqpeqthkv .gt_last_summary_row {
+#iznhpaqhzw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -823,7 +846,7 @@ Questions to answer about the data:
   border-bottom-color: #D3D3D3;
 }
 
-#hsqpeqthkv .gt_grand_summary_row {
+#iznhpaqhzw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -833,7 +856,7 @@ Questions to answer about the data:
   padding-right: 5px;
 }
 
-#hsqpeqthkv .gt_first_grand_summary_row {
+#iznhpaqhzw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -843,7 +866,7 @@ Questions to answer about the data:
   border-top-color: #D3D3D3;
 }
 
-#hsqpeqthkv .gt_last_grand_summary_row_top {
+#iznhpaqhzw .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -853,11 +876,11 @@ Questions to answer about the data:
   border-bottom-color: #D3D3D3;
 }
 
-#hsqpeqthkv .gt_striped {
+#iznhpaqhzw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#hsqpeqthkv .gt_table_body {
+#iznhpaqhzw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -866,7 +889,7 @@ Questions to answer about the data:
   border-bottom-color: #D3D3D3;
 }
 
-#hsqpeqthkv .gt_footnotes {
+#iznhpaqhzw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -880,7 +903,7 @@ Questions to answer about the data:
   border-right-color: #D3D3D3;
 }
 
-#hsqpeqthkv .gt_footnote {
+#iznhpaqhzw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -889,7 +912,7 @@ Questions to answer about the data:
   padding-right: 5px;
 }
 
-#hsqpeqthkv .gt_sourcenotes {
+#iznhpaqhzw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -903,7 +926,7 @@ Questions to answer about the data:
   border-right-color: #D3D3D3;
 }
 
-#hsqpeqthkv .gt_sourcenote {
+#iznhpaqhzw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -911,77 +934,77 @@ Questions to answer about the data:
   padding-right: 5px;
 }
 
-#hsqpeqthkv .gt_left {
+#iznhpaqhzw .gt_left {
   text-align: left;
 }
 
-#hsqpeqthkv .gt_center {
+#iznhpaqhzw .gt_center {
   text-align: center;
 }
 
-#hsqpeqthkv .gt_right {
+#iznhpaqhzw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#hsqpeqthkv .gt_font_normal {
+#iznhpaqhzw .gt_font_normal {
   font-weight: normal;
 }
 
-#hsqpeqthkv .gt_font_bold {
+#iznhpaqhzw .gt_font_bold {
   font-weight: bold;
 }
 
-#hsqpeqthkv .gt_font_italic {
+#iznhpaqhzw .gt_font_italic {
   font-style: italic;
 }
 
-#hsqpeqthkv .gt_super {
+#iznhpaqhzw .gt_super {
   font-size: 65%;
 }
 
-#hsqpeqthkv .gt_footnote_marks {
+#iznhpaqhzw .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#hsqpeqthkv .gt_asterisk {
+#iznhpaqhzw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#hsqpeqthkv .gt_indent_1 {
+#iznhpaqhzw .gt_indent_1 {
   text-indent: 5px;
 }
 
-#hsqpeqthkv .gt_indent_2 {
+#iznhpaqhzw .gt_indent_2 {
   text-indent: 10px;
 }
 
-#hsqpeqthkv .gt_indent_3 {
+#iznhpaqhzw .gt_indent_3 {
   text-indent: 15px;
 }
 
-#hsqpeqthkv .gt_indent_4 {
+#iznhpaqhzw .gt_indent_4 {
   text-indent: 20px;
 }
 
-#hsqpeqthkv .gt_indent_5 {
+#iznhpaqhzw .gt_indent_5 {
   text-indent: 25px;
 }
 
-#hsqpeqthkv .katex-display {
+#iznhpaqhzw .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#hsqpeqthkv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#iznhpaqhzw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings header">
 <th id="Campus" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Campus</th>
@@ -1017,7 +1040,7 @@ Questions to answer about the data:
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Frequency Table Checklist
+<span class="screen-reader-only">Tip</span>Frequency Table Checklist
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1037,7 +1060,7 @@ Frequency Table Checklist
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Questions to answer about the data:
+<span class="screen-reader-only">Tip</span>Questions to answer about the data:
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1048,11 +1071,11 @@ Questions to answer about the data:
 </div>
 <p>The following code using <code>geom_bar()</code> of <code>ggplot()</code> creates a bar chart for the <code>Campus</code> variable.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>fig.campus <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>fig.campus <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Campus)) <span class="sc">+</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"count"</span>) <span class="sc">+</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Campus"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>fig.campus</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>fig.campus</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1067,7 +1090,7 @@ Questions to answer about the data:
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Bar Chart Checklist
+<span class="screen-reader-only">Tip</span>Bar Chart Checklist
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1089,7 +1112,7 @@ Bar Chart Checklist
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercise: Ordinal data
+<span class="screen-reader-only">Tip</span>Exercise: Ordinal data
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1111,7 +1134,7 @@ Exercise: Ordinal data
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercise Checklist
+<span class="screen-reader-only">Tip</span>Exercise Checklist
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1137,7 +1160,7 @@ Exercise Checklist
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Questions to answer about the data:
+<span class="screen-reader-only">Tip</span>Questions to answer about the data:
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1154,28 +1177,28 @@ Questions to answer about the data:
 </div>
 <p>The <code>describe()</code> function from the <code>psych</code> package provides a convenient way to calculate descriptive statistics for interval and ratio variables. The following code calculates descriptive statistics for the <code>SleepDuration</code> variable. We are specifically interested the two central tendency measures (<code>mean</code> and <code>median</code>), two spread measures (standard deviation <code>sd</code> and <code>range</code>), minimum <code>min</code> and maximum <code>max</code> values, and two shape measures (<code>skew</code> and <code>kurtosis</code>).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">select</span>(SleepDuration) <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">select</span>(SleepDuration) <span class="sc">%&gt;%</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">describe</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(n, mean, median, sd, range, min, max, skew, kurtosis) <span class="sc">%&gt;%</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>(<span class="at">rownames_to_stub=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>(<span class="at">rownames_to_stub=</span><span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="wvxsefydsx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wvxsefydsx table {
+<div id="bhvdpfbyvn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bhvdpfbyvn table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wvxsefydsx thead, #wvxsefydsx tbody, #wvxsefydsx tfoot, #wvxsefydsx tr, #wvxsefydsx td, #wvxsefydsx th {
+#bhvdpfbyvn thead, #bhvdpfbyvn tbody, #bhvdpfbyvn tfoot, #bhvdpfbyvn tr, #bhvdpfbyvn td, #bhvdpfbyvn th {
   border-style: none;
 }
 
-#wvxsefydsx p {
+#bhvdpfbyvn p {
   margin: 0;
   padding: 0;
 }
 
-#wvxsefydsx .gt_table {
+#bhvdpfbyvn .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1201,12 +1224,12 @@ Questions to answer about the data:
   border-left-color: #D3D3D3;
 }
 
-#wvxsefydsx .gt_caption {
+#bhvdpfbyvn .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wvxsefydsx .gt_title {
+#bhvdpfbyvn .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1218,7 +1241,7 @@ Questions to answer about the data:
   border-bottom-width: 0;
 }
 
-#wvxsefydsx .gt_subtitle {
+#bhvdpfbyvn .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1230,7 +1253,7 @@ Questions to answer about the data:
   border-top-width: 0;
 }
 
-#wvxsefydsx .gt_heading {
+#bhvdpfbyvn .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1242,13 +1265,13 @@ Questions to answer about the data:
   border-right-color: #D3D3D3;
 }
 
-#wvxsefydsx .gt_bottom_border {
+#bhvdpfbyvn .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wvxsefydsx .gt_col_headings {
+#bhvdpfbyvn .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1263,7 +1286,7 @@ Questions to answer about the data:
   border-right-color: #D3D3D3;
 }
 
-#wvxsefydsx .gt_col_heading {
+#bhvdpfbyvn .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1283,7 +1306,7 @@ Questions to answer about the data:
   overflow-x: hidden;
 }
 
-#wvxsefydsx .gt_column_spanner_outer {
+#bhvdpfbyvn .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1295,15 +1318,15 @@ Questions to answer about the data:
   padding-right: 4px;
 }
 
-#wvxsefydsx .gt_column_spanner_outer:first-child {
+#bhvdpfbyvn .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wvxsefydsx .gt_column_spanner_outer:last-child {
+#bhvdpfbyvn .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wvxsefydsx .gt_column_spanner {
+#bhvdpfbyvn .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1315,11 +1338,11 @@ Questions to answer about the data:
   width: 100%;
 }
 
-#wvxsefydsx .gt_spanner_row {
+#bhvdpfbyvn .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wvxsefydsx .gt_group_heading {
+#bhvdpfbyvn .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1345,7 +1368,7 @@ Questions to answer about the data:
   text-align: left;
 }
 
-#wvxsefydsx .gt_empty_group_heading {
+#bhvdpfbyvn .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1360,15 +1383,15 @@ Questions to answer about the data:
   vertical-align: middle;
 }
 
-#wvxsefydsx .gt_from_md > :first-child {
+#bhvdpfbyvn .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wvxsefydsx .gt_from_md > :last-child {
+#bhvdpfbyvn .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wvxsefydsx .gt_row {
+#bhvdpfbyvn .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1387,7 +1410,7 @@ Questions to answer about the data:
   overflow-x: hidden;
 }
 
-#wvxsefydsx .gt_stub {
+#bhvdpfbyvn .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1400,7 +1423,7 @@ Questions to answer about the data:
   padding-right: 5px;
 }
 
-#wvxsefydsx .gt_stub_row_group {
+#bhvdpfbyvn .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1414,15 +1437,15 @@ Questions to answer about the data:
   vertical-align: top;
 }
 
-#wvxsefydsx .gt_row_group_first td {
+#bhvdpfbyvn .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wvxsefydsx .gt_row_group_first th {
+#bhvdpfbyvn .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wvxsefydsx .gt_summary_row {
+#bhvdpfbyvn .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1432,16 +1455,16 @@ Questions to answer about the data:
   padding-right: 5px;
 }
 
-#wvxsefydsx .gt_first_summary_row {
+#bhvdpfbyvn .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wvxsefydsx .gt_first_summary_row.thick {
+#bhvdpfbyvn .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wvxsefydsx .gt_last_summary_row {
+#bhvdpfbyvn .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1451,7 +1474,7 @@ Questions to answer about the data:
   border-bottom-color: #D3D3D3;
 }
 
-#wvxsefydsx .gt_grand_summary_row {
+#bhvdpfbyvn .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1461,7 +1484,7 @@ Questions to answer about the data:
   padding-right: 5px;
 }
 
-#wvxsefydsx .gt_first_grand_summary_row {
+#bhvdpfbyvn .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1471,7 +1494,7 @@ Questions to answer about the data:
   border-top-color: #D3D3D3;
 }
 
-#wvxsefydsx .gt_last_grand_summary_row_top {
+#bhvdpfbyvn .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1481,11 +1504,11 @@ Questions to answer about the data:
   border-bottom-color: #D3D3D3;
 }
 
-#wvxsefydsx .gt_striped {
+#bhvdpfbyvn .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wvxsefydsx .gt_table_body {
+#bhvdpfbyvn .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1494,7 +1517,7 @@ Questions to answer about the data:
   border-bottom-color: #D3D3D3;
 }
 
-#wvxsefydsx .gt_footnotes {
+#bhvdpfbyvn .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1508,7 +1531,7 @@ Questions to answer about the data:
   border-right-color: #D3D3D3;
 }
 
-#wvxsefydsx .gt_footnote {
+#bhvdpfbyvn .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1517,7 +1540,7 @@ Questions to answer about the data:
   padding-right: 5px;
 }
 
-#wvxsefydsx .gt_sourcenotes {
+#bhvdpfbyvn .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1531,7 +1554,7 @@ Questions to answer about the data:
   border-right-color: #D3D3D3;
 }
 
-#wvxsefydsx .gt_sourcenote {
+#bhvdpfbyvn .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1539,77 +1562,77 @@ Questions to answer about the data:
   padding-right: 5px;
 }
 
-#wvxsefydsx .gt_left {
+#bhvdpfbyvn .gt_left {
   text-align: left;
 }
 
-#wvxsefydsx .gt_center {
+#bhvdpfbyvn .gt_center {
   text-align: center;
 }
 
-#wvxsefydsx .gt_right {
+#bhvdpfbyvn .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wvxsefydsx .gt_font_normal {
+#bhvdpfbyvn .gt_font_normal {
   font-weight: normal;
 }
 
-#wvxsefydsx .gt_font_bold {
+#bhvdpfbyvn .gt_font_bold {
   font-weight: bold;
 }
 
-#wvxsefydsx .gt_font_italic {
+#bhvdpfbyvn .gt_font_italic {
   font-style: italic;
 }
 
-#wvxsefydsx .gt_super {
+#bhvdpfbyvn .gt_super {
   font-size: 65%;
 }
 
-#wvxsefydsx .gt_footnote_marks {
+#bhvdpfbyvn .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wvxsefydsx .gt_asterisk {
+#bhvdpfbyvn .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wvxsefydsx .gt_indent_1 {
+#bhvdpfbyvn .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wvxsefydsx .gt_indent_2 {
+#bhvdpfbyvn .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wvxsefydsx .gt_indent_3 {
+#bhvdpfbyvn .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wvxsefydsx .gt_indent_4 {
+#bhvdpfbyvn .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wvxsefydsx .gt_indent_5 {
+#bhvdpfbyvn .gt_indent_5 {
   text-indent: 25px;
 }
 
-#wvxsefydsx .katex-display {
+#bhvdpfbyvn .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#wvxsefydsx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#bhvdpfbyvn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings header">
 <th id="a::stub" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
@@ -1626,7 +1649,7 @@ Questions to answer about the data:
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td id="stub_1_1" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">SleepDuration</td>
+<th id="stub_1_1" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">SleepDuration</th>
 <td class="gt_row gt_right" headers="stub_1_1 n">58</td>
 <td class="gt_row gt_right" headers="stub_1_1 mean">7.637931</td>
 <td class="gt_row gt_right" headers="stub_1_1 median">7.5</td>
@@ -1649,7 +1672,7 @@ Questions to answer about the data:
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Descriptive Statistics Checklist
+<span class="screen-reader-only">Tip</span>Descriptive Statistics Checklist
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1668,7 +1691,7 @@ Descriptive Statistics Checklist
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Questions to answer about the data:
+<span class="screen-reader-only">Tip</span>Questions to answer about the data:
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1682,9 +1705,9 @@ Questions to answer about the data:
 </div>
 <p>The following code creates a histogram for the <code>SleepDuration</code> variable using <code>geom_histogram()</code> function of <code>ggplot()</code>. The <code>binwidth</code> argument specifies the width of the bins in the histogram. In this case, we set the binwidth to 1 hour, which means that each bin will represent 1 hour of sleep duration.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> SleepDuration)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> SleepDuration)) <span class="sc">+</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"lightgray"</span>) <span class="sc">+</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sleep Duration (hours)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sleep Duration (hours)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1700,7 +1723,7 @@ Questions to answer about the data:
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Histogram Checklist
+<span class="screen-reader-only">Tip</span>Histogram Checklist
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1720,7 +1743,7 @@ Histogram Checklist
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Questions to answer about the data:
+<span class="screen-reader-only">Tip</span>Questions to answer about the data:
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1735,11 +1758,11 @@ Questions to answer about the data:
 </div>
 <p>Let’s first make a boxplot for the <code>SleepDuration</code> variable. We can use <code>geom_boxplot()</code> function of <code>ggplot()</code> to create a boxplot. The following code creates a boxplot for the <code>SleepDuration</code> variable.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="st">""</span>,</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y=</span>SleepDuration)) <span class="sc">+</span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Sleep Duration (hours)"</span>, </span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">""</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1796,7 +1819,7 @@ Table&nbsp;2: Components of a boxplot
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Questions to answer about the data:
+<span class="screen-reader-only">Tip</span>Questions to answer about the data:
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1806,8 +1829,8 @@ Questions to answer about the data:
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(df<span class="sc">$</span>SleepDuration) <span class="sc">%&gt;%</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(df<span class="sc">$</span>SleepDuration) <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 3
   statistic  p.value method                     
@@ -1825,7 +1848,7 @@ Questions to answer about the data:
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Questions to answer about the data:
+<span class="screen-reader-only">Tip</span>Questions to answer about the data:
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1836,8 +1859,8 @@ Questions to answer about the data:
 </div>
 <p><code>ggqqplot()</code> function from the <code>ggpubr</code> package creates a Q-Q plot. You will need to specify the variable you want to check for normality using the <code>x</code> argument. The following code creates a Q-Q plot for the <code>SleepDuration</code> variable.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggqqplot</span>(<span class="at">x =</span> <span class="st">"SleepDuration"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggqqplot</span>(<span class="at">x =</span> <span class="st">"SleepDuration"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -1858,7 +1881,7 @@ Questions to answer about the data:
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercise: Ratio data
+<span class="screen-reader-only">Tip</span>Exercise: Ratio data
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1882,28 +1905,28 @@ Exercise: Ratio data
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">select</span>(BreakfastPerWeek) <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">select</span>(BreakfastPerWeek) <span class="sc">%&gt;%</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">describe</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(n, mean, median, sd, range, min, max, skew, kurtosis) <span class="sc">%&gt;%</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>(<span class="at">rownames_to_stub=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>(<span class="at">rownames_to_stub=</span><span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="dbzntlwdgd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#dbzntlwdgd table {
+<div id="qczlzxuwbx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qczlzxuwbx table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#dbzntlwdgd thead, #dbzntlwdgd tbody, #dbzntlwdgd tfoot, #dbzntlwdgd tr, #dbzntlwdgd td, #dbzntlwdgd th {
+#qczlzxuwbx thead, #qczlzxuwbx tbody, #qczlzxuwbx tfoot, #qczlzxuwbx tr, #qczlzxuwbx td, #qczlzxuwbx th {
   border-style: none;
 }
 
-#dbzntlwdgd p {
+#qczlzxuwbx p {
   margin: 0;
   padding: 0;
 }
 
-#dbzntlwdgd .gt_table {
+#qczlzxuwbx .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1929,12 +1952,12 @@ Exercise: Ratio data
   border-left-color: #D3D3D3;
 }
 
-#dbzntlwdgd .gt_caption {
+#qczlzxuwbx .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#dbzntlwdgd .gt_title {
+#qczlzxuwbx .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1946,7 +1969,7 @@ Exercise: Ratio data
   border-bottom-width: 0;
 }
 
-#dbzntlwdgd .gt_subtitle {
+#qczlzxuwbx .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1958,7 +1981,7 @@ Exercise: Ratio data
   border-top-width: 0;
 }
 
-#dbzntlwdgd .gt_heading {
+#qczlzxuwbx .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1970,13 +1993,13 @@ Exercise: Ratio data
   border-right-color: #D3D3D3;
 }
 
-#dbzntlwdgd .gt_bottom_border {
+#qczlzxuwbx .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dbzntlwdgd .gt_col_headings {
+#qczlzxuwbx .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1991,7 +2014,7 @@ Exercise: Ratio data
   border-right-color: #D3D3D3;
 }
 
-#dbzntlwdgd .gt_col_heading {
+#qczlzxuwbx .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2011,7 +2034,7 @@ Exercise: Ratio data
   overflow-x: hidden;
 }
 
-#dbzntlwdgd .gt_column_spanner_outer {
+#qczlzxuwbx .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2023,15 +2046,15 @@ Exercise: Ratio data
   padding-right: 4px;
 }
 
-#dbzntlwdgd .gt_column_spanner_outer:first-child {
+#qczlzxuwbx .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dbzntlwdgd .gt_column_spanner_outer:last-child {
+#qczlzxuwbx .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dbzntlwdgd .gt_column_spanner {
+#qczlzxuwbx .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2043,11 +2066,11 @@ Exercise: Ratio data
   width: 100%;
 }
 
-#dbzntlwdgd .gt_spanner_row {
+#qczlzxuwbx .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#dbzntlwdgd .gt_group_heading {
+#qczlzxuwbx .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2073,7 +2096,7 @@ Exercise: Ratio data
   text-align: left;
 }
 
-#dbzntlwdgd .gt_empty_group_heading {
+#qczlzxuwbx .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2088,15 +2111,15 @@ Exercise: Ratio data
   vertical-align: middle;
 }
 
-#dbzntlwdgd .gt_from_md > :first-child {
+#qczlzxuwbx .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dbzntlwdgd .gt_from_md > :last-child {
+#qczlzxuwbx .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dbzntlwdgd .gt_row {
+#qczlzxuwbx .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2115,7 +2138,7 @@ Exercise: Ratio data
   overflow-x: hidden;
 }
 
-#dbzntlwdgd .gt_stub {
+#qczlzxuwbx .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2128,7 +2151,7 @@ Exercise: Ratio data
   padding-right: 5px;
 }
 
-#dbzntlwdgd .gt_stub_row_group {
+#qczlzxuwbx .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2142,15 +2165,15 @@ Exercise: Ratio data
   vertical-align: top;
 }
 
-#dbzntlwdgd .gt_row_group_first td {
+#qczlzxuwbx .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dbzntlwdgd .gt_row_group_first th {
+#qczlzxuwbx .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#dbzntlwdgd .gt_summary_row {
+#qczlzxuwbx .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2160,16 +2183,16 @@ Exercise: Ratio data
   padding-right: 5px;
 }
 
-#dbzntlwdgd .gt_first_summary_row {
+#qczlzxuwbx .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dbzntlwdgd .gt_first_summary_row.thick {
+#qczlzxuwbx .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dbzntlwdgd .gt_last_summary_row {
+#qczlzxuwbx .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2179,7 +2202,7 @@ Exercise: Ratio data
   border-bottom-color: #D3D3D3;
 }
 
-#dbzntlwdgd .gt_grand_summary_row {
+#qczlzxuwbx .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2189,7 +2212,7 @@ Exercise: Ratio data
   padding-right: 5px;
 }
 
-#dbzntlwdgd .gt_first_grand_summary_row {
+#qczlzxuwbx .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2199,7 +2222,7 @@ Exercise: Ratio data
   border-top-color: #D3D3D3;
 }
 
-#dbzntlwdgd .gt_last_grand_summary_row_top {
+#qczlzxuwbx .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2209,11 +2232,11 @@ Exercise: Ratio data
   border-bottom-color: #D3D3D3;
 }
 
-#dbzntlwdgd .gt_striped {
+#qczlzxuwbx .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dbzntlwdgd .gt_table_body {
+#qczlzxuwbx .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2222,7 +2245,7 @@ Exercise: Ratio data
   border-bottom-color: #D3D3D3;
 }
 
-#dbzntlwdgd .gt_footnotes {
+#qczlzxuwbx .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2236,7 +2259,7 @@ Exercise: Ratio data
   border-right-color: #D3D3D3;
 }
 
-#dbzntlwdgd .gt_footnote {
+#qczlzxuwbx .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2245,7 +2268,7 @@ Exercise: Ratio data
   padding-right: 5px;
 }
 
-#dbzntlwdgd .gt_sourcenotes {
+#qczlzxuwbx .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2259,7 +2282,7 @@ Exercise: Ratio data
   border-right-color: #D3D3D3;
 }
 
-#dbzntlwdgd .gt_sourcenote {
+#qczlzxuwbx .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2267,77 +2290,77 @@ Exercise: Ratio data
   padding-right: 5px;
 }
 
-#dbzntlwdgd .gt_left {
+#qczlzxuwbx .gt_left {
   text-align: left;
 }
 
-#dbzntlwdgd .gt_center {
+#qczlzxuwbx .gt_center {
   text-align: center;
 }
 
-#dbzntlwdgd .gt_right {
+#qczlzxuwbx .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dbzntlwdgd .gt_font_normal {
+#qczlzxuwbx .gt_font_normal {
   font-weight: normal;
 }
 
-#dbzntlwdgd .gt_font_bold {
+#qczlzxuwbx .gt_font_bold {
   font-weight: bold;
 }
 
-#dbzntlwdgd .gt_font_italic {
+#qczlzxuwbx .gt_font_italic {
   font-style: italic;
 }
 
-#dbzntlwdgd .gt_super {
+#qczlzxuwbx .gt_super {
   font-size: 65%;
 }
 
-#dbzntlwdgd .gt_footnote_marks {
+#qczlzxuwbx .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#dbzntlwdgd .gt_asterisk {
+#qczlzxuwbx .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dbzntlwdgd .gt_indent_1 {
+#qczlzxuwbx .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dbzntlwdgd .gt_indent_2 {
+#qczlzxuwbx .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dbzntlwdgd .gt_indent_3 {
+#qczlzxuwbx .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dbzntlwdgd .gt_indent_4 {
+#qczlzxuwbx .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dbzntlwdgd .gt_indent_5 {
+#qczlzxuwbx .gt_indent_5 {
   text-indent: 25px;
 }
 
-#dbzntlwdgd .katex-display {
+#qczlzxuwbx .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#dbzntlwdgd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#qczlzxuwbx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings header">
 <th id="a::stub" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
@@ -2354,7 +2377,7 @@ Exercise: Ratio data
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td id="stub_1_1" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">BreakfastPerWeek</td>
+<th id="stub_1_1" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">BreakfastPerWeek</th>
 <td class="gt_row gt_right" headers="stub_1_1 n">59</td>
 <td class="gt_row gt_right" headers="stub_1_1 mean">4.254237</td>
 <td class="gt_row gt_right" headers="stub_1_1 median">4</td>
@@ -2370,9 +2393,9 @@ Exercise: Ratio data
 
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> BreakfastPerWeek)) <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> BreakfastPerWeek)) <span class="sc">+</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"lightgray"</span>) <span class="sc">+</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Breakfast Consumption (days per week)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Breakfast Consumption (days per week)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2380,11 +2403,11 @@ Exercise: Ratio data
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="st">""</span>,</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y=</span>BreakfastPerWeek)) <span class="sc">+</span></span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Breakfast Consumption (days per week)"</span>, </span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">""</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">""</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2392,28 +2415,28 @@ Exercise: Ratio data
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(papaja)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(papaja)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(df<span class="sc">$</span>BreakfastPerWeek) <span class="sc">%&gt;%</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="wwkhstklwj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wwkhstklwj table {
+<div id="euysmilytn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#euysmilytn table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wwkhstklwj thead, #wwkhstklwj tbody, #wwkhstklwj tfoot, #wwkhstklwj tr, #wwkhstklwj td, #wwkhstklwj th {
+#euysmilytn thead, #euysmilytn tbody, #euysmilytn tfoot, #euysmilytn tr, #euysmilytn td, #euysmilytn th {
   border-style: none;
 }
 
-#wwkhstklwj p {
+#euysmilytn p {
   margin: 0;
   padding: 0;
 }
 
-#wwkhstklwj .gt_table {
+#euysmilytn .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2439,12 +2462,12 @@ Exercise: Ratio data
   border-left-color: #D3D3D3;
 }
 
-#wwkhstklwj .gt_caption {
+#euysmilytn .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wwkhstklwj .gt_title {
+#euysmilytn .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2456,7 +2479,7 @@ Exercise: Ratio data
   border-bottom-width: 0;
 }
 
-#wwkhstklwj .gt_subtitle {
+#euysmilytn .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2468,7 +2491,7 @@ Exercise: Ratio data
   border-top-width: 0;
 }
 
-#wwkhstklwj .gt_heading {
+#euysmilytn .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2480,13 +2503,13 @@ Exercise: Ratio data
   border-right-color: #D3D3D3;
 }
 
-#wwkhstklwj .gt_bottom_border {
+#euysmilytn .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wwkhstklwj .gt_col_headings {
+#euysmilytn .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2501,7 +2524,7 @@ Exercise: Ratio data
   border-right-color: #D3D3D3;
 }
 
-#wwkhstklwj .gt_col_heading {
+#euysmilytn .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2521,7 +2544,7 @@ Exercise: Ratio data
   overflow-x: hidden;
 }
 
-#wwkhstklwj .gt_column_spanner_outer {
+#euysmilytn .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2533,15 +2556,15 @@ Exercise: Ratio data
   padding-right: 4px;
 }
 
-#wwkhstklwj .gt_column_spanner_outer:first-child {
+#euysmilytn .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wwkhstklwj .gt_column_spanner_outer:last-child {
+#euysmilytn .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wwkhstklwj .gt_column_spanner {
+#euysmilytn .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2553,11 +2576,11 @@ Exercise: Ratio data
   width: 100%;
 }
 
-#wwkhstklwj .gt_spanner_row {
+#euysmilytn .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wwkhstklwj .gt_group_heading {
+#euysmilytn .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2583,7 +2606,7 @@ Exercise: Ratio data
   text-align: left;
 }
 
-#wwkhstklwj .gt_empty_group_heading {
+#euysmilytn .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2598,15 +2621,15 @@ Exercise: Ratio data
   vertical-align: middle;
 }
 
-#wwkhstklwj .gt_from_md > :first-child {
+#euysmilytn .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wwkhstklwj .gt_from_md > :last-child {
+#euysmilytn .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wwkhstklwj .gt_row {
+#euysmilytn .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2625,7 +2648,7 @@ Exercise: Ratio data
   overflow-x: hidden;
 }
 
-#wwkhstklwj .gt_stub {
+#euysmilytn .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2638,7 +2661,7 @@ Exercise: Ratio data
   padding-right: 5px;
 }
 
-#wwkhstklwj .gt_stub_row_group {
+#euysmilytn .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2652,15 +2675,15 @@ Exercise: Ratio data
   vertical-align: top;
 }
 
-#wwkhstklwj .gt_row_group_first td {
+#euysmilytn .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wwkhstklwj .gt_row_group_first th {
+#euysmilytn .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wwkhstklwj .gt_summary_row {
+#euysmilytn .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2670,16 +2693,16 @@ Exercise: Ratio data
   padding-right: 5px;
 }
 
-#wwkhstklwj .gt_first_summary_row {
+#euysmilytn .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wwkhstklwj .gt_first_summary_row.thick {
+#euysmilytn .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wwkhstklwj .gt_last_summary_row {
+#euysmilytn .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2689,7 +2712,7 @@ Exercise: Ratio data
   border-bottom-color: #D3D3D3;
 }
 
-#wwkhstklwj .gt_grand_summary_row {
+#euysmilytn .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2699,7 +2722,7 @@ Exercise: Ratio data
   padding-right: 5px;
 }
 
-#wwkhstklwj .gt_first_grand_summary_row {
+#euysmilytn .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2709,7 +2732,7 @@ Exercise: Ratio data
   border-top-color: #D3D3D3;
 }
 
-#wwkhstklwj .gt_last_grand_summary_row_top {
+#euysmilytn .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2719,11 +2742,11 @@ Exercise: Ratio data
   border-bottom-color: #D3D3D3;
 }
 
-#wwkhstklwj .gt_striped {
+#euysmilytn .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wwkhstklwj .gt_table_body {
+#euysmilytn .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2732,7 +2755,7 @@ Exercise: Ratio data
   border-bottom-color: #D3D3D3;
 }
 
-#wwkhstklwj .gt_footnotes {
+#euysmilytn .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2746,7 +2769,7 @@ Exercise: Ratio data
   border-right-color: #D3D3D3;
 }
 
-#wwkhstklwj .gt_footnote {
+#euysmilytn .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2755,7 +2778,7 @@ Exercise: Ratio data
   padding-right: 5px;
 }
 
-#wwkhstklwj .gt_sourcenotes {
+#euysmilytn .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2769,7 +2792,7 @@ Exercise: Ratio data
   border-right-color: #D3D3D3;
 }
 
-#wwkhstklwj .gt_sourcenote {
+#euysmilytn .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2777,77 +2800,77 @@ Exercise: Ratio data
   padding-right: 5px;
 }
 
-#wwkhstklwj .gt_left {
+#euysmilytn .gt_left {
   text-align: left;
 }
 
-#wwkhstklwj .gt_center {
+#euysmilytn .gt_center {
   text-align: center;
 }
 
-#wwkhstklwj .gt_right {
+#euysmilytn .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wwkhstklwj .gt_font_normal {
+#euysmilytn .gt_font_normal {
   font-weight: normal;
 }
 
-#wwkhstklwj .gt_font_bold {
+#euysmilytn .gt_font_bold {
   font-weight: bold;
 }
 
-#wwkhstklwj .gt_font_italic {
+#euysmilytn .gt_font_italic {
   font-style: italic;
 }
 
-#wwkhstklwj .gt_super {
+#euysmilytn .gt_super {
   font-size: 65%;
 }
 
-#wwkhstklwj .gt_footnote_marks {
+#euysmilytn .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wwkhstklwj .gt_asterisk {
+#euysmilytn .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wwkhstklwj .gt_indent_1 {
+#euysmilytn .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wwkhstklwj .gt_indent_2 {
+#euysmilytn .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wwkhstklwj .gt_indent_3 {
+#euysmilytn .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wwkhstklwj .gt_indent_4 {
+#euysmilytn .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wwkhstklwj .gt_indent_5 {
+#euysmilytn .gt_indent_5 {
   text-indent: 25px;
 }
 
-#wwkhstklwj .katex-display {
+#euysmilytn .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#wwkhstklwj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#euysmilytn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings header">
 <th id="statistic" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">statistic</th>
@@ -2866,8 +2889,8 @@ Exercise: Ratio data
 
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggqqplot</span>(<span class="at">x =</span> <span class="st">"BreakfastPerWeek"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggqqplot</span>(<span class="at">x =</span> <span class="st">"BreakfastPerWeek"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2930,7 +2953,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Questions to answer about the data:
+<span class="screen-reader-only">Tip</span>Questions to answer about the data:
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2943,30 +2966,30 @@ Questions to answer about the data:
 <h4 class="anchored" data-anchor-id="contingency-table">Contingency Table</h4>
 <p>A contingency table is a two-way frequency table that shows the combinations of the levels of two variable. This can be done using the same <code>tabyl()</code> function as before, just with both variables.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>tbl.campus_class <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>tbl.campus_class <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(Campus, Class) <span class="sc">%&gt;%</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_totals</span>(<span class="fu">c</span>(<span class="st">"row"</span>, <span class="st">"col"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_align</span>(<span class="at">align =</span> <span class="st">"left"</span>, <span class="at">columns =</span> <span class="fu">c</span>(Campus))</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>tbl.campus_class</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>tbl.campus_class</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="ezpsdhswxb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ezpsdhswxb table {
+<div id="pxczzwebgt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pxczzwebgt table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ezpsdhswxb thead, #ezpsdhswxb tbody, #ezpsdhswxb tfoot, #ezpsdhswxb tr, #ezpsdhswxb td, #ezpsdhswxb th {
+#pxczzwebgt thead, #pxczzwebgt tbody, #pxczzwebgt tfoot, #pxczzwebgt tr, #pxczzwebgt td, #pxczzwebgt th {
   border-style: none;
 }
 
-#ezpsdhswxb p {
+#pxczzwebgt p {
   margin: 0;
   padding: 0;
 }
 
-#ezpsdhswxb .gt_table {
+#pxczzwebgt .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2992,12 +3015,12 @@ Questions to answer about the data:
   border-left-color: #D3D3D3;
 }
 
-#ezpsdhswxb .gt_caption {
+#pxczzwebgt .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ezpsdhswxb .gt_title {
+#pxczzwebgt .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3009,7 +3032,7 @@ Questions to answer about the data:
   border-bottom-width: 0;
 }
 
-#ezpsdhswxb .gt_subtitle {
+#pxczzwebgt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3021,7 +3044,7 @@ Questions to answer about the data:
   border-top-width: 0;
 }
 
-#ezpsdhswxb .gt_heading {
+#pxczzwebgt .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3033,13 +3056,13 @@ Questions to answer about the data:
   border-right-color: #D3D3D3;
 }
 
-#ezpsdhswxb .gt_bottom_border {
+#pxczzwebgt .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ezpsdhswxb .gt_col_headings {
+#pxczzwebgt .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3054,7 +3077,7 @@ Questions to answer about the data:
   border-right-color: #D3D3D3;
 }
 
-#ezpsdhswxb .gt_col_heading {
+#pxczzwebgt .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3074,7 +3097,7 @@ Questions to answer about the data:
   overflow-x: hidden;
 }
 
-#ezpsdhswxb .gt_column_spanner_outer {
+#pxczzwebgt .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3086,15 +3109,15 @@ Questions to answer about the data:
   padding-right: 4px;
 }
 
-#ezpsdhswxb .gt_column_spanner_outer:first-child {
+#pxczzwebgt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ezpsdhswxb .gt_column_spanner_outer:last-child {
+#pxczzwebgt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ezpsdhswxb .gt_column_spanner {
+#pxczzwebgt .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3106,11 +3129,11 @@ Questions to answer about the data:
   width: 100%;
 }
 
-#ezpsdhswxb .gt_spanner_row {
+#pxczzwebgt .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ezpsdhswxb .gt_group_heading {
+#pxczzwebgt .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3136,7 +3159,7 @@ Questions to answer about the data:
   text-align: left;
 }
 
-#ezpsdhswxb .gt_empty_group_heading {
+#pxczzwebgt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3151,15 +3174,15 @@ Questions to answer about the data:
   vertical-align: middle;
 }
 
-#ezpsdhswxb .gt_from_md > :first-child {
+#pxczzwebgt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ezpsdhswxb .gt_from_md > :last-child {
+#pxczzwebgt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ezpsdhswxb .gt_row {
+#pxczzwebgt .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3178,7 +3201,7 @@ Questions to answer about the data:
   overflow-x: hidden;
 }
 
-#ezpsdhswxb .gt_stub {
+#pxczzwebgt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3191,7 +3214,7 @@ Questions to answer about the data:
   padding-right: 5px;
 }
 
-#ezpsdhswxb .gt_stub_row_group {
+#pxczzwebgt .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3205,15 +3228,15 @@ Questions to answer about the data:
   vertical-align: top;
 }
 
-#ezpsdhswxb .gt_row_group_first td {
+#pxczzwebgt .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ezpsdhswxb .gt_row_group_first th {
+#pxczzwebgt .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ezpsdhswxb .gt_summary_row {
+#pxczzwebgt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3223,16 +3246,16 @@ Questions to answer about the data:
   padding-right: 5px;
 }
 
-#ezpsdhswxb .gt_first_summary_row {
+#pxczzwebgt .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ezpsdhswxb .gt_first_summary_row.thick {
+#pxczzwebgt .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ezpsdhswxb .gt_last_summary_row {
+#pxczzwebgt .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3242,7 +3265,7 @@ Questions to answer about the data:
   border-bottom-color: #D3D3D3;
 }
 
-#ezpsdhswxb .gt_grand_summary_row {
+#pxczzwebgt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3252,7 +3275,7 @@ Questions to answer about the data:
   padding-right: 5px;
 }
 
-#ezpsdhswxb .gt_first_grand_summary_row {
+#pxczzwebgt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3262,7 +3285,7 @@ Questions to answer about the data:
   border-top-color: #D3D3D3;
 }
 
-#ezpsdhswxb .gt_last_grand_summary_row_top {
+#pxczzwebgt .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3272,11 +3295,11 @@ Questions to answer about the data:
   border-bottom-color: #D3D3D3;
 }
 
-#ezpsdhswxb .gt_striped {
+#pxczzwebgt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ezpsdhswxb .gt_table_body {
+#pxczzwebgt .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3285,7 +3308,7 @@ Questions to answer about the data:
   border-bottom-color: #D3D3D3;
 }
 
-#ezpsdhswxb .gt_footnotes {
+#pxczzwebgt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3299,7 +3322,7 @@ Questions to answer about the data:
   border-right-color: #D3D3D3;
 }
 
-#ezpsdhswxb .gt_footnote {
+#pxczzwebgt .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3308,7 +3331,7 @@ Questions to answer about the data:
   padding-right: 5px;
 }
 
-#ezpsdhswxb .gt_sourcenotes {
+#pxczzwebgt .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3322,7 +3345,7 @@ Questions to answer about the data:
   border-right-color: #D3D3D3;
 }
 
-#ezpsdhswxb .gt_sourcenote {
+#pxczzwebgt .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3330,77 +3353,77 @@ Questions to answer about the data:
   padding-right: 5px;
 }
 
-#ezpsdhswxb .gt_left {
+#pxczzwebgt .gt_left {
   text-align: left;
 }
 
-#ezpsdhswxb .gt_center {
+#pxczzwebgt .gt_center {
   text-align: center;
 }
 
-#ezpsdhswxb .gt_right {
+#pxczzwebgt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ezpsdhswxb .gt_font_normal {
+#pxczzwebgt .gt_font_normal {
   font-weight: normal;
 }
 
-#ezpsdhswxb .gt_font_bold {
+#pxczzwebgt .gt_font_bold {
   font-weight: bold;
 }
 
-#ezpsdhswxb .gt_font_italic {
+#pxczzwebgt .gt_font_italic {
   font-style: italic;
 }
 
-#ezpsdhswxb .gt_super {
+#pxczzwebgt .gt_super {
   font-size: 65%;
 }
 
-#ezpsdhswxb .gt_footnote_marks {
+#pxczzwebgt .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ezpsdhswxb .gt_asterisk {
+#pxczzwebgt .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ezpsdhswxb .gt_indent_1 {
+#pxczzwebgt .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ezpsdhswxb .gt_indent_2 {
+#pxczzwebgt .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ezpsdhswxb .gt_indent_3 {
+#pxczzwebgt .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ezpsdhswxb .gt_indent_4 {
+#pxczzwebgt .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ezpsdhswxb .gt_indent_5 {
+#pxczzwebgt .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ezpsdhswxb .katex-display {
+#pxczzwebgt .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ezpsdhswxb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#pxczzwebgt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings header">
 <th id="Campus" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Campus</th>
@@ -3448,10 +3471,10 @@ Questions to answer about the data:
 <p>We can use the color of the bars to represent the levels of the new variable. In this example, it makes more sense to use the <code>Campus</code> variable as the fill color, because there are only two levels of the <code>Campus</code> variable, and it is easier to distinguish between two colors than four colors. Plus, the <code>Class</code> variable is ordinal, and it is easier to see the order of the levels when they are on the x-axis.</p>
 <p>The following code creates a grouped bar chart for the <code>Class</code> variable split by the <code>Campus</code> variable.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>fig.campus_class <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>fig.campus_class <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> Class, <span class="at">fill =</span> Campus), <span class="at">position =</span> <span class="st">"dodge"</span>) </span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>fig.campus_class</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>fig.campus_class</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -3466,7 +3489,7 @@ Questions to answer about the data:
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Grouped Bar Chart Checklist
+<span class="screen-reader-only">Tip</span>Grouped Bar Chart Checklist
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -3488,7 +3511,7 @@ Grouped Bar Chart Checklist
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Questions to answer about the data:
+<span class="screen-reader-only">Tip</span>Questions to answer about the data:
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -3501,11 +3524,11 @@ Questions to answer about the data:
 <h4 class="anchored" data-anchor-id="histogram-1">Histogram</h4>
 <p>You can use <code>facet_grid()</code> in <code>ggplot()</code> to split panels for each level of the cateorical/ordinal variable. Here, we will split the histogram of <code>SleepDuration</code> by <code>Campus</code>. The x-axis is shared between the panels using <code>Campus ~ .</code>, which makes the comparison between the two distributions easier.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> SleepDuration)) <span class="sc">+</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(Campus <span class="sc">~</span> .) <span class="sc">+</span></span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sleep Duration (hours)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sleep Duration (hours)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -3519,10 +3542,10 @@ Questions to answer about the data:
 <h4 class="anchored" data-anchor-id="boxplot-1">Boxplot</h4>
 <p>To compare the distributions of <code>SleepDuration</code> between the two campuses, we can use a boxplot split by <code>Campus</code>. The x-axis will represent the <code>Campus</code>, while the y-axis will represent the <code>SleepDuration</code>. The following code creates a boxplot for the <code>SleepDuration</code> variable split by the <code>Campus</code> variable.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Campus, <span class="at">y =</span> SleepDuration)) <span class="sc">+</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Campus"</span>, <span class="at">y =</span> <span class="st">"Sleep Duration (hours)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Campus"</span>, <span class="at">y =</span> <span class="st">"Sleep Duration (hours)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -3543,7 +3566,7 @@ Questions to answer about the data:
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercise: Continuous and Ordinal data
+<span class="screen-reader-only">Tip</span>Exercise: Continuous and Ordinal data
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -3569,7 +3592,7 @@ Exercise: Continuous and Ordinal data
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Questions to answer about the data:
+<span class="screen-reader-only">Tip</span>Questions to answer about the data:
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -3580,10 +3603,10 @@ Questions to answer about the data:
 </div>
 <p>The simplest way to do this is using the scatterplot as we’ve done before.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> SleepDuration, <span class="at">y =</span> BreakfastPerWeek)) <span class="sc">+</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sleep Duration (hours)"</span>, <span class="at">y =</span> <span class="st">"Breakfast Consumption (days per week)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sleep Duration (hours)"</span>, <span class="at">y =</span> <span class="st">"Breakfast Consumption (days per week)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -3594,10 +3617,10 @@ Questions to answer about the data:
 </div>
 <p>However, for rounding issues, there are many overlaps of data in this case which makes it harder to see the relationship between the two. To address this, we can adjust the transparency of the points using the <code>alpha</code> argument in <code>geom_point()</code>, showing the density of the points. The more overlapping points, the darker the color of the point.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> SleepDuration, <span class="at">y =</span> BreakfastPerWeek)) <span class="sc">+</span></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.2</span>) <span class="sc">+</span> </span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sleep Duration (hours)"</span>, <span class="at">y =</span> <span class="st">"Breakfast Consumption (days per week)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sleep Duration (hours)"</span>, <span class="at">y =</span> <span class="st">"Breakfast Consumption (days per week)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -3681,13 +3704,14 @@ Questions to answer about the data:
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
