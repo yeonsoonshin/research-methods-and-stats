@@ -6,15 +6,15 @@ Here is a quick overview of the most common statistical tests and when to use th
 
 | Question | Categorical | Continuous | Refer to |
 |:---|:---|:---| :---|
-| Is a variable different from a known value? | Chi-Square Goodness-of-Fit Test | One-sample z-test or One-sample t-test | @tbl-one-sample |
+| Is a variable different from a baseline? | Chi-Square Goodness-of-Fit Test | One-sample z-test or One-sample t-test | @tbl-one-sample |
 | Do groups/conditions differ? | N/A | t-test or ANOVA | @tbl-means |
 | Are two variables related? | Chi-Square Test of Independence | Pearson Correlation | @tbl-association |
 | Can scores be predicted? | N/A | Simple or Multiple Linear Regression | @tbl-prediction |
 
-### "Is a variable different from a known value?" 
+### "Is a variable different from a baseline?" 
 
 ::: {#tbl-one-sample .list-table}
-Statistical Tests for Answering "Is a variable different from a known value?"
+Statistical Tests for Answering "Is a variable different from a baseline?"
 
 - - Variable type
   - Population variance known?
