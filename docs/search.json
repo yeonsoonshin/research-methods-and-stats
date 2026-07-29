@@ -264,34 +264,34 @@
   {
     "objectID": "appendix-stats-decisions.html",
     "href": "appendix-stats-decisions.html",
-    "title": "1 Deciding Which Statistical Test to Use",
+    "title": "1 Which Statistical Test Should I Use?",
     "section": "",
     "text": "Here is a quick overview of the most common statistical tests and when to use them. The following tables summarize the questions you might ask, the type of data you have, and the appropriate statistical test to use.\n\n\n\n\n\n\n\n\n\n\n\nQuestion\nCategorical\nContinuous\nRefer to\n\n\n\n\nIs a variable different from a known value?\nChi-Square Goodness-of-Fit Test\nOne-sample z-test or One-sample t-test\nTable 1\n\n\nDo groups/conditions differ?\nN/A\nt-test or ANOVA\nTable 2\n\n\nAre two variables related?\nChi-Square Test of Independence\nPearson Correlation\nTable 3\n\n\nCan scores be predicted?\nN/A\nSimple or Multiple Linear Regression\nTable 4\n\n\n\n\n\n\n\n\nTable 1: Statistical Tests for Answering “Is a variable different from a known value?”\n\n\n\n\n\nVariable type\nPopulation variance known?\nTest\n\n\n\n\nCategorical\nN/A\nChi-Square Goodness-of-Fit Test\n\n\n Continuous\nYes\nOne-sample z-test\n\n\nNo\nOne-sample t-test\n\n\n\n\n\n\n\n\n\n\n\n\nTable 2: Statistical Tests for Answering “Do groups/conditions differ?”\n\n\n\n\n\n\n\n\n\n\n\n# of IVs\n# of levels\nIndependent groups/conditions\nRelated groups/conditions\n\n\n\n\n1\n2\nIndependent Samples t-test\nPaired Samples t-test\n\n\n1\n\\(\\geq\\) 2\nOne-way Between-Subjects ANOVA\nOne-way Repeated-Measures ANOVA\n\n\n\\(\\gt\\) 1\n\\(\\geq\\) 2\nFactorial Between-Subjects ANOVA\nFactorial Repeated-Measures ANOVA\n\n\n\n\n\n\n\n\n\n\n\n\nTable 3: Statistical Tests for Answering “Are two variables related?”\n\n\n\n\n\nVariable Types\nTest\n\n\n\n\nBoth Categorical\nChi-Square Test of Independence\n\n\nBoth Continuous\nPearson Correlation\n\n\n\n\n\n\n\n\n\n\n\n\nTable 4: Statistical Tests for Answering “Can scores be predicted?”\n\n\n\n\n\n# of Predictors\nTest\n\n\n\n\n1\nSimple Linear Regression\n\n\n\\(\\gt\\) 1\nMultiple Linear Regression\n\n\n\n\n\n\n\n\n\n\n\n\n\nTable 5: Statistical Tests by DV and IV Types\n\n\n\n\n\n\n\n\n\n\n\nTest\nDV (Outcome)\nIV (Predictor)\nAdditional IVs (Predictors)\n\n\n\n\nOne-sample z-test (known \\(\\sigma\\))\n Continuous (one)\n None\n None\n\n\nOne-sample t-test (unknown \\(\\sigma\\))\n\n\nIndependent Samples t-test\nCategorical (two independent levels)\n\n\nPaired Samples t-test\nCategorical (two related levels)\n\n\nOne-way Between-Subjects ANOVA\nCategorical (more than two independent levels)\n\n\nOne-way Repeated-Measures ANOVA\nCategorical (more than two related levels)\n\n\nFactorial Between-Subjects ANOVA\nCategorical (independent levels)\nCategorical (independent levels)\n\n\nFactorial Repeated-Measures ANOVA\nCategorical (related levels)\nCategorical (related levels)\n\n\nMixed Factorial ANOVA\nCategorical (independent or related levels)\nCategorical (related or independent levels)\n\n\nSimple Linear Regression\n Continuous (or dummy-coded categorical)\nNone\n\n\nMultiple Linear Regression\nContinuous (or dummy-coded categorical)\n\n\nPearson Correlation\nContinuous (two)\n None\n None\n\n\nChi-Square Goodness-of-Fit Test\nCategorical (one)\n\n\nChi-Square Test of Independence\nCategorical (two)",
     "crumbs": [
       "Appendix",
-      "Deciding Which Statistical Test to Use"
+      "Which Statistical Test Should I Use?"
     ]
   },
   {
     "objectID": "appendix-stats-decisions.html#decision-table-by-questions-and-data-types",
     "href": "appendix-stats-decisions.html#decision-table-by-questions-and-data-types",
-    "title": "1 Deciding Which Statistical Test to Use",
+    "title": "1 Which Statistical Test Should I Use?",
     "section": "",
     "text": "Question\nCategorical\nContinuous\nRefer to\n\n\n\n\nIs a variable different from a known value?\nChi-Square Goodness-of-Fit Test\nOne-sample z-test or One-sample t-test\nTable 1\n\n\nDo groups/conditions differ?\nN/A\nt-test or ANOVA\nTable 2\n\n\nAre two variables related?\nChi-Square Test of Independence\nPearson Correlation\nTable 3\n\n\nCan scores be predicted?\nN/A\nSimple or Multiple Linear Regression\nTable 4\n\n\n\n\n\n\n\n\nTable 1: Statistical Tests for Answering “Is a variable different from a known value?”\n\n\n\n\n\nVariable type\nPopulation variance known?\nTest\n\n\n\n\nCategorical\nN/A\nChi-Square Goodness-of-Fit Test\n\n\n Continuous\nYes\nOne-sample z-test\n\n\nNo\nOne-sample t-test\n\n\n\n\n\n\n\n\n\n\n\n\nTable 2: Statistical Tests for Answering “Do groups/conditions differ?”\n\n\n\n\n\n\n\n\n\n\n\n# of IVs\n# of levels\nIndependent groups/conditions\nRelated groups/conditions\n\n\n\n\n1\n2\nIndependent Samples t-test\nPaired Samples t-test\n\n\n1\n\\(\\geq\\) 2\nOne-way Between-Subjects ANOVA\nOne-way Repeated-Measures ANOVA\n\n\n\\(\\gt\\) 1\n\\(\\geq\\) 2\nFactorial Between-Subjects ANOVA\nFactorial Repeated-Measures ANOVA\n\n\n\n\n\n\n\n\n\n\n\n\nTable 3: Statistical Tests for Answering “Are two variables related?”\n\n\n\n\n\nVariable Types\nTest\n\n\n\n\nBoth Categorical\nChi-Square Test of Independence\n\n\nBoth Continuous\nPearson Correlation\n\n\n\n\n\n\n\n\n\n\n\n\nTable 4: Statistical Tests for Answering “Can scores be predicted?”\n\n\n\n\n\n# of Predictors\nTest\n\n\n\n\n1\nSimple Linear Regression\n\n\n\\(\\gt\\) 1\nMultiple Linear Regression",
     "crumbs": [
       "Appendix",
-      "Deciding Which Statistical Test to Use"
+      "Which Statistical Test Should I Use?"
     ]
   },
   {
     "objectID": "appendix-stats-decisions.html#statistical-tests-by-dv-and-iv-types",
     "href": "appendix-stats-decisions.html#statistical-tests-by-dv-and-iv-types",
-    "title": "1 Deciding Which Statistical Test to Use",
+    "title": "1 Which Statistical Test Should I Use?",
     "section": "",
     "text": "Table 5: Statistical Tests by DV and IV Types\n\n\n\n\n\n\n\n\n\n\n\nTest\nDV (Outcome)\nIV (Predictor)\nAdditional IVs (Predictors)\n\n\n\n\nOne-sample z-test (known \\(\\sigma\\))\n Continuous (one)\n None\n None\n\n\nOne-sample t-test (unknown \\(\\sigma\\))\n\n\nIndependent Samples t-test\nCategorical (two independent levels)\n\n\nPaired Samples t-test\nCategorical (two related levels)\n\n\nOne-way Between-Subjects ANOVA\nCategorical (more than two independent levels)\n\n\nOne-way Repeated-Measures ANOVA\nCategorical (more than two related levels)\n\n\nFactorial Between-Subjects ANOVA\nCategorical (independent levels)\nCategorical (independent levels)\n\n\nFactorial Repeated-Measures ANOVA\nCategorical (related levels)\nCategorical (related levels)\n\n\nMixed Factorial ANOVA\nCategorical (independent or related levels)\nCategorical (related or independent levels)\n\n\nSimple Linear Regression\n Continuous (or dummy-coded categorical)\nNone\n\n\nMultiple Linear Regression\nContinuous (or dummy-coded categorical)\n\n\nPearson Correlation\nContinuous (two)\n None\n None\n\n\nChi-Square Goodness-of-Fit Test\nCategorical (one)\n\n\nChi-Square Test of Independence\nCategorical (two)",
     "crumbs": [
       "Appendix",
-      "Deciding Which Statistical Test to Use"
+      "Which Statistical Test Should I Use?"
     ]
   },
   {

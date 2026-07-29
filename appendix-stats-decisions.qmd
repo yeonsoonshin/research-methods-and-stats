@@ -1,4 +1,4 @@
-# Deciding Which Statistical Test to Use
+# Which Statistical Test Should I Use?
 
 Here is a quick overview of the most common statistical tests and when to use them. The following tables summarize the questions you might ask, the type of data you have, and the appropriate statistical test to use. 
 
