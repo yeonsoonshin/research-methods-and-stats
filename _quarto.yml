@@ -34,6 +34,7 @@ website:
           -  02-stats-test-copy.qmd
       - section: "Lab"
         contents:
+          - lab01-r-basics.qmd
           - lab02-reliability-validity.qmd
           - lab03-eda.qmd
       - section: "Appendix"

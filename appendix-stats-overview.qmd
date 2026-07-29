@@ -1,0 +1,33 @@
+# Statistics Overview
+
+All Null Hypothesis Significance Testing (NHST) is based on the idea of testing whether the probability of observing your data or more extreme data is low enough if the null hypothesis is true, called the p-value. 
+
+
+:::{#tbl-tests .list-table header-rows=2 header-cols=1}
+
+- - []{rowspan=2} Test
+  - []{rowspan=2} Question About the Population
+  - []{colspan=2} Sample Data's Relative Strength (Signal vs. Noise)
+  - []{colspan=2} Statistically Significant If
+  - []{colspan=2} Practical Significance (Effect Size)
+
+- - Signal
+  - Noise
+  - Test Statistic
+  - p-value
+  - Concept
+  - Metric
+
+- - z-test
+  - []{rowspan=2} Mean difference
+  - []{rowspan=2} Mean difference
+  - []{rowspan=2} SD of the sampling distribution of the Mean (SEM)
+  - $|z| > |z_\text{crit}|$
+  - []{rowspan=8} $p \lt \alpha$
+  - []{rowspan=2} Signal in SD units
+  - []{rowspan=2} Cohen's d
+
+- - t-test
+  - $|t| \gt |t_\text{crit}|$
+
+:::

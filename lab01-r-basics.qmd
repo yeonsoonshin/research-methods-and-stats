@@ -1,0 +1,70 @@
+---
+format:
+  html:
+    html-math-method: plain
+---
+
+# R Basics
+
+R is a programming language to get some output from doing some operations on inputs.
+
+## Math Operators
+
+If the description above sounds like a simple math problems, you are absolutely right. For example, if you are curious what 5 plus 3 is, the inputs are 5 and 3, and the operation is addition You can express this as a simple R code.
+
+```{r}
+5 + 3
+```
+
+You can see the output below the code chunk.
+
+Some basic math operators in R are listed here:
+
+| Function       | Symbols           |
+|:---------------|:------------------|
+| Addition       | \+                |
+| Subtraction    | \-                |
+| Multiplication | \*                |
+| Division       | / (forward slash) |
+| Exponent       | \^                |
+
+: Math Operators and Symbols
+
+## Object (Variable)
+
+You can also store the output as an "Object" (or a variable), so you can reuse them. For example, you might want to store the output of `3 + 5` operation as an object `y` and do different things with it. To assign `3 + 5` to the object `y`, you write the object on the left of the `=` sign, and the value on the right.
+
+```{r}
+y = 3 + 5
+```
+
+Alternatively, you can use `<-` to assign values to an object, which makes it clear that output of the operation on the right side should be assigned to (hence the arrow) the left side.
+
+```{r}
+y <- 3 + 5
+```
+
+Now, you can use the object `y` to do different things with it, such as:
+
+1.  multiply it by 2
+2.  divide it by 4
+
+```{r}
+y * 2
+y / 4
+```
+
+## Functions
+
+R has some nice basic functions (a set of operations put together), also written as objects. Function objects need a parenthesis `()` so you can pass the input to the function. For example, if you want an object with different numbers in it, you can use a function `c()` where c stands for concatenate.
+
+```{r}
+x <- c(1,3,2,4,3,3,4,2,5)
+x
+```
+
+Again, you can do other things with this object `x`, such as taking the mean of the numbers in it. There is a function `mean()` that calculates the mean for you.
+
+```{r}
+mean(x)
+```

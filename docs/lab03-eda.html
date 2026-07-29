@@ -122,7 +122,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab02-reliability-validity.html">Lab</a></li><li class="breadcrumb-item"><a href="./lab03-eda.html">Exploratory Data Analysis (EDA)</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab01-r-basics.html">Lab</a></li><li class="breadcrumb-item"><a href="./lab03-eda.html">Exploratory Data Analysis (EDA)</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -210,6 +210,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./lab01-r-basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R Basics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./lab02-reliability-validity.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Reliability and Validity</span></a>
   </div>
@@ -295,7 +301,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="toc-actions"><ul><li><a href="https://github.com/yeonsoon/research-methods-and-stats-book/edit/master/lab03-eda.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab02-reliability-validity.html">Lab</a></li><li class="breadcrumb-item"><a href="./lab03-eda.html">Exploratory Data Analysis (EDA)</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab01-r-basics.html">Lab</a></li><li class="breadcrumb-item"><a href="./lab03-eda.html">Exploratory Data Analysis (EDA)</a></li></ol></nav></header>
 
 
 
@@ -554,23 +560,23 @@ Levels: Bryn Mawr College Haverford College</code></pre>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_align</span>(<span class="at">align =</span> <span class="st">"left"</span>, <span class="at">columns =</span> Campus) </span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>tbl.campus</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="vvwdzlcuah" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vvwdzlcuah table {
+<div id="xtlxwlawhq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xtlxwlawhq table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vvwdzlcuah thead, #vvwdzlcuah tbody, #vvwdzlcuah tfoot, #vvwdzlcuah tr, #vvwdzlcuah td, #vvwdzlcuah th {
+#xtlxwlawhq thead, #xtlxwlawhq tbody, #xtlxwlawhq tfoot, #xtlxwlawhq tr, #xtlxwlawhq td, #xtlxwlawhq th {
   border-style: none;
 }
 
-#vvwdzlcuah p {
+#xtlxwlawhq p {
   margin: 0;
   padding: 0;
 }
 
-#vvwdzlcuah .gt_table {
+#xtlxwlawhq .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -596,12 +602,12 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#vvwdzlcuah .gt_caption {
+#xtlxwlawhq .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vvwdzlcuah .gt_title {
+#xtlxwlawhq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -613,7 +619,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-bottom-width: 0;
 }
 
-#vvwdzlcuah .gt_subtitle {
+#xtlxwlawhq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -625,7 +631,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-top-width: 0;
 }
 
-#vvwdzlcuah .gt_heading {
+#xtlxwlawhq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -637,13 +643,13 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#vvwdzlcuah .gt_bottom_border {
+#xtlxwlawhq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vvwdzlcuah .gt_col_headings {
+#xtlxwlawhq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -658,7 +664,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#vvwdzlcuah .gt_col_heading {
+#xtlxwlawhq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -678,7 +684,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   overflow-x: hidden;
 }
 
-#vvwdzlcuah .gt_column_spanner_outer {
+#xtlxwlawhq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -690,15 +696,15 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   padding-right: 4px;
 }
 
-#vvwdzlcuah .gt_column_spanner_outer:first-child {
+#xtlxwlawhq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vvwdzlcuah .gt_column_spanner_outer:last-child {
+#xtlxwlawhq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vvwdzlcuah .gt_column_spanner {
+#xtlxwlawhq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -710,11 +716,11 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   width: 100%;
 }
 
-#vvwdzlcuah .gt_spanner_row {
+#xtlxwlawhq .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vvwdzlcuah .gt_group_heading {
+#xtlxwlawhq .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -740,7 +746,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   text-align: left;
 }
 
-#vvwdzlcuah .gt_empty_group_heading {
+#xtlxwlawhq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -755,15 +761,15 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   vertical-align: middle;
 }
 
-#vvwdzlcuah .gt_from_md > :first-child {
+#xtlxwlawhq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vvwdzlcuah .gt_from_md > :last-child {
+#xtlxwlawhq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vvwdzlcuah .gt_row {
+#xtlxwlawhq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -782,7 +788,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   overflow-x: hidden;
 }
 
-#vvwdzlcuah .gt_stub {
+#xtlxwlawhq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -795,7 +801,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   padding-right: 5px;
 }
 
-#vvwdzlcuah .gt_stub_row_group {
+#xtlxwlawhq .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -809,15 +815,15 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   vertical-align: top;
 }
 
-#vvwdzlcuah .gt_row_group_first td {
+#xtlxwlawhq .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vvwdzlcuah .gt_row_group_first th {
+#xtlxwlawhq .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vvwdzlcuah .gt_summary_row {
+#xtlxwlawhq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -827,16 +833,16 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   padding-right: 5px;
 }
 
-#vvwdzlcuah .gt_first_summary_row {
+#xtlxwlawhq .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vvwdzlcuah .gt_first_summary_row.thick {
+#xtlxwlawhq .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vvwdzlcuah .gt_last_summary_row {
+#xtlxwlawhq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -846,7 +852,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#vvwdzlcuah .gt_grand_summary_row {
+#xtlxwlawhq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -856,7 +862,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   padding-right: 5px;
 }
 
-#vvwdzlcuah .gt_first_grand_summary_row {
+#xtlxwlawhq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -866,7 +872,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#vvwdzlcuah .gt_last_grand_summary_row_top {
+#xtlxwlawhq .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -876,11 +882,11 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#vvwdzlcuah .gt_striped {
+#xtlxwlawhq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vvwdzlcuah .gt_table_body {
+#xtlxwlawhq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -889,7 +895,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#vvwdzlcuah .gt_footnotes {
+#xtlxwlawhq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -903,7 +909,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#vvwdzlcuah .gt_footnote {
+#xtlxwlawhq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -912,7 +918,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   padding-right: 5px;
 }
 
-#vvwdzlcuah .gt_sourcenotes {
+#xtlxwlawhq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -926,7 +932,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#vvwdzlcuah .gt_sourcenote {
+#xtlxwlawhq .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -934,72 +940,72 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   padding-right: 5px;
 }
 
-#vvwdzlcuah .gt_left {
+#xtlxwlawhq .gt_left {
   text-align: left;
 }
 
-#vvwdzlcuah .gt_center {
+#xtlxwlawhq .gt_center {
   text-align: center;
 }
 
-#vvwdzlcuah .gt_right {
+#xtlxwlawhq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vvwdzlcuah .gt_font_normal {
+#xtlxwlawhq .gt_font_normal {
   font-weight: normal;
 }
 
-#vvwdzlcuah .gt_font_bold {
+#xtlxwlawhq .gt_font_bold {
   font-weight: bold;
 }
 
-#vvwdzlcuah .gt_font_italic {
+#xtlxwlawhq .gt_font_italic {
   font-style: italic;
 }
 
-#vvwdzlcuah .gt_super {
+#xtlxwlawhq .gt_super {
   font-size: 65%;
 }
 
-#vvwdzlcuah .gt_footnote_marks {
+#xtlxwlawhq .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vvwdzlcuah .gt_asterisk {
+#xtlxwlawhq .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vvwdzlcuah .gt_indent_1 {
+#xtlxwlawhq .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vvwdzlcuah .gt_indent_2 {
+#xtlxwlawhq .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vvwdzlcuah .gt_indent_3 {
+#xtlxwlawhq .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vvwdzlcuah .gt_indent_4 {
+#xtlxwlawhq .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vvwdzlcuah .gt_indent_5 {
+#xtlxwlawhq .gt_indent_5 {
   text-indent: 25px;
 }
 
-#vvwdzlcuah .katex-display {
+#xtlxwlawhq .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#vvwdzlcuah div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#xtlxwlawhq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1182,23 +1188,23 @@ Levels: Bryn Mawr College Haverford College</code></pre>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(n, mean, median, sd, range, min, max, skew, kurtosis) <span class="sc">%&gt;%</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>(<span class="at">rownames_to_stub=</span><span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="gdnjhqpazq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#gdnjhqpazq table {
+<div id="ibvxuigcce" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ibvxuigcce table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#gdnjhqpazq thead, #gdnjhqpazq tbody, #gdnjhqpazq tfoot, #gdnjhqpazq tr, #gdnjhqpazq td, #gdnjhqpazq th {
+#ibvxuigcce thead, #ibvxuigcce tbody, #ibvxuigcce tfoot, #ibvxuigcce tr, #ibvxuigcce td, #ibvxuigcce th {
   border-style: none;
 }
 
-#gdnjhqpazq p {
+#ibvxuigcce p {
   margin: 0;
   padding: 0;
 }
 
-#gdnjhqpazq .gt_table {
+#ibvxuigcce .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1224,12 +1230,12 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#gdnjhqpazq .gt_caption {
+#ibvxuigcce .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#gdnjhqpazq .gt_title {
+#ibvxuigcce .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1241,7 +1247,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-bottom-width: 0;
 }
 
-#gdnjhqpazq .gt_subtitle {
+#ibvxuigcce .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1253,7 +1259,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-top-width: 0;
 }
 
-#gdnjhqpazq .gt_heading {
+#ibvxuigcce .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1265,13 +1271,13 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#gdnjhqpazq .gt_bottom_border {
+#ibvxuigcce .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gdnjhqpazq .gt_col_headings {
+#ibvxuigcce .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1286,7 +1292,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#gdnjhqpazq .gt_col_heading {
+#ibvxuigcce .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1306,7 +1312,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   overflow-x: hidden;
 }
 
-#gdnjhqpazq .gt_column_spanner_outer {
+#ibvxuigcce .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1318,15 +1324,15 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   padding-right: 4px;
 }
 
-#gdnjhqpazq .gt_column_spanner_outer:first-child {
+#ibvxuigcce .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gdnjhqpazq .gt_column_spanner_outer:last-child {
+#ibvxuigcce .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gdnjhqpazq .gt_column_spanner {
+#ibvxuigcce .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1338,11 +1344,11 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   width: 100%;
 }
 
-#gdnjhqpazq .gt_spanner_row {
+#ibvxuigcce .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#gdnjhqpazq .gt_group_heading {
+#ibvxuigcce .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1368,7 +1374,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   text-align: left;
 }
 
-#gdnjhqpazq .gt_empty_group_heading {
+#ibvxuigcce .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1383,15 +1389,15 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   vertical-align: middle;
 }
 
-#gdnjhqpazq .gt_from_md > :first-child {
+#ibvxuigcce .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gdnjhqpazq .gt_from_md > :last-child {
+#ibvxuigcce .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gdnjhqpazq .gt_row {
+#ibvxuigcce .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1410,7 +1416,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   overflow-x: hidden;
 }
 
-#gdnjhqpazq .gt_stub {
+#ibvxuigcce .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1423,7 +1429,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   padding-right: 5px;
 }
 
-#gdnjhqpazq .gt_stub_row_group {
+#ibvxuigcce .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1437,15 +1443,15 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   vertical-align: top;
 }
 
-#gdnjhqpazq .gt_row_group_first td {
+#ibvxuigcce .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gdnjhqpazq .gt_row_group_first th {
+#ibvxuigcce .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#gdnjhqpazq .gt_summary_row {
+#ibvxuigcce .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1455,16 +1461,16 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   padding-right: 5px;
 }
 
-#gdnjhqpazq .gt_first_summary_row {
+#ibvxuigcce .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gdnjhqpazq .gt_first_summary_row.thick {
+#ibvxuigcce .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gdnjhqpazq .gt_last_summary_row {
+#ibvxuigcce .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1474,7 +1480,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#gdnjhqpazq .gt_grand_summary_row {
+#ibvxuigcce .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1484,7 +1490,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   padding-right: 5px;
 }
 
-#gdnjhqpazq .gt_first_grand_summary_row {
+#ibvxuigcce .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1494,7 +1500,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#gdnjhqpazq .gt_last_grand_summary_row_top {
+#ibvxuigcce .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1504,11 +1510,11 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#gdnjhqpazq .gt_striped {
+#ibvxuigcce .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gdnjhqpazq .gt_table_body {
+#ibvxuigcce .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1517,7 +1523,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#gdnjhqpazq .gt_footnotes {
+#ibvxuigcce .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1531,7 +1537,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#gdnjhqpazq .gt_footnote {
+#ibvxuigcce .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1540,7 +1546,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   padding-right: 5px;
 }
 
-#gdnjhqpazq .gt_sourcenotes {
+#ibvxuigcce .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1554,7 +1560,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#gdnjhqpazq .gt_sourcenote {
+#ibvxuigcce .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1562,72 +1568,72 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   padding-right: 5px;
 }
 
-#gdnjhqpazq .gt_left {
+#ibvxuigcce .gt_left {
   text-align: left;
 }
 
-#gdnjhqpazq .gt_center {
+#ibvxuigcce .gt_center {
   text-align: center;
 }
 
-#gdnjhqpazq .gt_right {
+#ibvxuigcce .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gdnjhqpazq .gt_font_normal {
+#ibvxuigcce .gt_font_normal {
   font-weight: normal;
 }
 
-#gdnjhqpazq .gt_font_bold {
+#ibvxuigcce .gt_font_bold {
   font-weight: bold;
 }
 
-#gdnjhqpazq .gt_font_italic {
+#ibvxuigcce .gt_font_italic {
   font-style: italic;
 }
 
-#gdnjhqpazq .gt_super {
+#ibvxuigcce .gt_super {
   font-size: 65%;
 }
 
-#gdnjhqpazq .gt_footnote_marks {
+#ibvxuigcce .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#gdnjhqpazq .gt_asterisk {
+#ibvxuigcce .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gdnjhqpazq .gt_indent_1 {
+#ibvxuigcce .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gdnjhqpazq .gt_indent_2 {
+#ibvxuigcce .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gdnjhqpazq .gt_indent_3 {
+#ibvxuigcce .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gdnjhqpazq .gt_indent_4 {
+#ibvxuigcce .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gdnjhqpazq .gt_indent_5 {
+#ibvxuigcce .gt_indent_5 {
   text-indent: 25px;
 }
 
-#gdnjhqpazq .katex-display {
+#ibvxuigcce .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#gdnjhqpazq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ibvxuigcce div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1910,23 +1916,23 @@ Table&nbsp;2: Components of a boxplot
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(n, mean, median, sd, range, min, max, skew, kurtosis) <span class="sc">%&gt;%</span></span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>(<span class="at">rownames_to_stub=</span><span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="cvezpqngel" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#cvezpqngel table {
+<div id="rybbkxwqlg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rybbkxwqlg table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#cvezpqngel thead, #cvezpqngel tbody, #cvezpqngel tfoot, #cvezpqngel tr, #cvezpqngel td, #cvezpqngel th {
+#rybbkxwqlg thead, #rybbkxwqlg tbody, #rybbkxwqlg tfoot, #rybbkxwqlg tr, #rybbkxwqlg td, #rybbkxwqlg th {
   border-style: none;
 }
 
-#cvezpqngel p {
+#rybbkxwqlg p {
   margin: 0;
   padding: 0;
 }
 
-#cvezpqngel .gt_table {
+#rybbkxwqlg .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1952,12 +1958,12 @@ Table&nbsp;2: Components of a boxplot
   border-left-color: #D3D3D3;
 }
 
-#cvezpqngel .gt_caption {
+#rybbkxwqlg .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#cvezpqngel .gt_title {
+#rybbkxwqlg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1969,7 +1975,7 @@ Table&nbsp;2: Components of a boxplot
   border-bottom-width: 0;
 }
 
-#cvezpqngel .gt_subtitle {
+#rybbkxwqlg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1981,7 +1987,7 @@ Table&nbsp;2: Components of a boxplot
   border-top-width: 0;
 }
 
-#cvezpqngel .gt_heading {
+#rybbkxwqlg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1993,13 +1999,13 @@ Table&nbsp;2: Components of a boxplot
   border-right-color: #D3D3D3;
 }
 
-#cvezpqngel .gt_bottom_border {
+#rybbkxwqlg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#cvezpqngel .gt_col_headings {
+#rybbkxwqlg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2014,7 +2020,7 @@ Table&nbsp;2: Components of a boxplot
   border-right-color: #D3D3D3;
 }
 
-#cvezpqngel .gt_col_heading {
+#rybbkxwqlg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2034,7 +2040,7 @@ Table&nbsp;2: Components of a boxplot
   overflow-x: hidden;
 }
 
-#cvezpqngel .gt_column_spanner_outer {
+#rybbkxwqlg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2046,15 +2052,15 @@ Table&nbsp;2: Components of a boxplot
   padding-right: 4px;
 }
 
-#cvezpqngel .gt_column_spanner_outer:first-child {
+#rybbkxwqlg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#cvezpqngel .gt_column_spanner_outer:last-child {
+#rybbkxwqlg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#cvezpqngel .gt_column_spanner {
+#rybbkxwqlg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2066,11 +2072,11 @@ Table&nbsp;2: Components of a boxplot
   width: 100%;
 }
 
-#cvezpqngel .gt_spanner_row {
+#rybbkxwqlg .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#cvezpqngel .gt_group_heading {
+#rybbkxwqlg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2096,7 +2102,7 @@ Table&nbsp;2: Components of a boxplot
   text-align: left;
 }
 
-#cvezpqngel .gt_empty_group_heading {
+#rybbkxwqlg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2111,15 +2117,15 @@ Table&nbsp;2: Components of a boxplot
   vertical-align: middle;
 }
 
-#cvezpqngel .gt_from_md > :first-child {
+#rybbkxwqlg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#cvezpqngel .gt_from_md > :last-child {
+#rybbkxwqlg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#cvezpqngel .gt_row {
+#rybbkxwqlg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2138,7 +2144,7 @@ Table&nbsp;2: Components of a boxplot
   overflow-x: hidden;
 }
 
-#cvezpqngel .gt_stub {
+#rybbkxwqlg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2151,7 +2157,7 @@ Table&nbsp;2: Components of a boxplot
   padding-right: 5px;
 }
 
-#cvezpqngel .gt_stub_row_group {
+#rybbkxwqlg .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2165,15 +2171,15 @@ Table&nbsp;2: Components of a boxplot
   vertical-align: top;
 }
 
-#cvezpqngel .gt_row_group_first td {
+#rybbkxwqlg .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#cvezpqngel .gt_row_group_first th {
+#rybbkxwqlg .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#cvezpqngel .gt_summary_row {
+#rybbkxwqlg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2183,16 +2189,16 @@ Table&nbsp;2: Components of a boxplot
   padding-right: 5px;
 }
 
-#cvezpqngel .gt_first_summary_row {
+#rybbkxwqlg .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#cvezpqngel .gt_first_summary_row.thick {
+#rybbkxwqlg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#cvezpqngel .gt_last_summary_row {
+#rybbkxwqlg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2202,7 +2208,7 @@ Table&nbsp;2: Components of a boxplot
   border-bottom-color: #D3D3D3;
 }
 
-#cvezpqngel .gt_grand_summary_row {
+#rybbkxwqlg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2212,7 +2218,7 @@ Table&nbsp;2: Components of a boxplot
   padding-right: 5px;
 }
 
-#cvezpqngel .gt_first_grand_summary_row {
+#rybbkxwqlg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2222,7 +2228,7 @@ Table&nbsp;2: Components of a boxplot
   border-top-color: #D3D3D3;
 }
 
-#cvezpqngel .gt_last_grand_summary_row_top {
+#rybbkxwqlg .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2232,11 +2238,11 @@ Table&nbsp;2: Components of a boxplot
   border-bottom-color: #D3D3D3;
 }
 
-#cvezpqngel .gt_striped {
+#rybbkxwqlg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#cvezpqngel .gt_table_body {
+#rybbkxwqlg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2245,7 +2251,7 @@ Table&nbsp;2: Components of a boxplot
   border-bottom-color: #D3D3D3;
 }
 
-#cvezpqngel .gt_footnotes {
+#rybbkxwqlg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2259,7 +2265,7 @@ Table&nbsp;2: Components of a boxplot
   border-right-color: #D3D3D3;
 }
 
-#cvezpqngel .gt_footnote {
+#rybbkxwqlg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2268,7 +2274,7 @@ Table&nbsp;2: Components of a boxplot
   padding-right: 5px;
 }
 
-#cvezpqngel .gt_sourcenotes {
+#rybbkxwqlg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2282,7 +2288,7 @@ Table&nbsp;2: Components of a boxplot
   border-right-color: #D3D3D3;
 }
 
-#cvezpqngel .gt_sourcenote {
+#rybbkxwqlg .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2290,72 +2296,72 @@ Table&nbsp;2: Components of a boxplot
   padding-right: 5px;
 }
 
-#cvezpqngel .gt_left {
+#rybbkxwqlg .gt_left {
   text-align: left;
 }
 
-#cvezpqngel .gt_center {
+#rybbkxwqlg .gt_center {
   text-align: center;
 }
 
-#cvezpqngel .gt_right {
+#rybbkxwqlg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#cvezpqngel .gt_font_normal {
+#rybbkxwqlg .gt_font_normal {
   font-weight: normal;
 }
 
-#cvezpqngel .gt_font_bold {
+#rybbkxwqlg .gt_font_bold {
   font-weight: bold;
 }
 
-#cvezpqngel .gt_font_italic {
+#rybbkxwqlg .gt_font_italic {
   font-style: italic;
 }
 
-#cvezpqngel .gt_super {
+#rybbkxwqlg .gt_super {
   font-size: 65%;
 }
 
-#cvezpqngel .gt_footnote_marks {
+#rybbkxwqlg .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#cvezpqngel .gt_asterisk {
+#rybbkxwqlg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#cvezpqngel .gt_indent_1 {
+#rybbkxwqlg .gt_indent_1 {
   text-indent: 5px;
 }
 
-#cvezpqngel .gt_indent_2 {
+#rybbkxwqlg .gt_indent_2 {
   text-indent: 10px;
 }
 
-#cvezpqngel .gt_indent_3 {
+#rybbkxwqlg .gt_indent_3 {
   text-indent: 15px;
 }
 
-#cvezpqngel .gt_indent_4 {
+#rybbkxwqlg .gt_indent_4 {
   text-indent: 20px;
 }
 
-#cvezpqngel .gt_indent_5 {
+#rybbkxwqlg .gt_indent_5 {
   text-indent: 25px;
 }
 
-#cvezpqngel .katex-display {
+#rybbkxwqlg .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#cvezpqngel div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#rybbkxwqlg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2420,23 +2426,23 @@ Table&nbsp;2: Components of a boxplot
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="ggtezfpkls" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ggtezfpkls table {
+<div id="lbvpamvykz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#lbvpamvykz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ggtezfpkls thead, #ggtezfpkls tbody, #ggtezfpkls tfoot, #ggtezfpkls tr, #ggtezfpkls td, #ggtezfpkls th {
+#lbvpamvykz thead, #lbvpamvykz tbody, #lbvpamvykz tfoot, #lbvpamvykz tr, #lbvpamvykz td, #lbvpamvykz th {
   border-style: none;
 }
 
-#ggtezfpkls p {
+#lbvpamvykz p {
   margin: 0;
   padding: 0;
 }
 
-#ggtezfpkls .gt_table {
+#lbvpamvykz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2462,12 +2468,12 @@ Table&nbsp;2: Components of a boxplot
   border-left-color: #D3D3D3;
 }
 
-#ggtezfpkls .gt_caption {
+#lbvpamvykz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ggtezfpkls .gt_title {
+#lbvpamvykz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2479,7 +2485,7 @@ Table&nbsp;2: Components of a boxplot
   border-bottom-width: 0;
 }
 
-#ggtezfpkls .gt_subtitle {
+#lbvpamvykz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2491,7 +2497,7 @@ Table&nbsp;2: Components of a boxplot
   border-top-width: 0;
 }
 
-#ggtezfpkls .gt_heading {
+#lbvpamvykz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2503,13 +2509,13 @@ Table&nbsp;2: Components of a boxplot
   border-right-color: #D3D3D3;
 }
 
-#ggtezfpkls .gt_bottom_border {
+#lbvpamvykz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ggtezfpkls .gt_col_headings {
+#lbvpamvykz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2524,7 +2530,7 @@ Table&nbsp;2: Components of a boxplot
   border-right-color: #D3D3D3;
 }
 
-#ggtezfpkls .gt_col_heading {
+#lbvpamvykz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2544,7 +2550,7 @@ Table&nbsp;2: Components of a boxplot
   overflow-x: hidden;
 }
 
-#ggtezfpkls .gt_column_spanner_outer {
+#lbvpamvykz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2556,15 +2562,15 @@ Table&nbsp;2: Components of a boxplot
   padding-right: 4px;
 }
 
-#ggtezfpkls .gt_column_spanner_outer:first-child {
+#lbvpamvykz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ggtezfpkls .gt_column_spanner_outer:last-child {
+#lbvpamvykz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ggtezfpkls .gt_column_spanner {
+#lbvpamvykz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2576,11 +2582,11 @@ Table&nbsp;2: Components of a boxplot
   width: 100%;
 }
 
-#ggtezfpkls .gt_spanner_row {
+#lbvpamvykz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ggtezfpkls .gt_group_heading {
+#lbvpamvykz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2606,7 +2612,7 @@ Table&nbsp;2: Components of a boxplot
   text-align: left;
 }
 
-#ggtezfpkls .gt_empty_group_heading {
+#lbvpamvykz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2621,15 +2627,15 @@ Table&nbsp;2: Components of a boxplot
   vertical-align: middle;
 }
 
-#ggtezfpkls .gt_from_md > :first-child {
+#lbvpamvykz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ggtezfpkls .gt_from_md > :last-child {
+#lbvpamvykz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ggtezfpkls .gt_row {
+#lbvpamvykz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2648,7 +2654,7 @@ Table&nbsp;2: Components of a boxplot
   overflow-x: hidden;
 }
 
-#ggtezfpkls .gt_stub {
+#lbvpamvykz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2661,7 +2667,7 @@ Table&nbsp;2: Components of a boxplot
   padding-right: 5px;
 }
 
-#ggtezfpkls .gt_stub_row_group {
+#lbvpamvykz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2675,15 +2681,15 @@ Table&nbsp;2: Components of a boxplot
   vertical-align: top;
 }
 
-#ggtezfpkls .gt_row_group_first td {
+#lbvpamvykz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ggtezfpkls .gt_row_group_first th {
+#lbvpamvykz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ggtezfpkls .gt_summary_row {
+#lbvpamvykz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2693,16 +2699,16 @@ Table&nbsp;2: Components of a boxplot
   padding-right: 5px;
 }
 
-#ggtezfpkls .gt_first_summary_row {
+#lbvpamvykz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ggtezfpkls .gt_first_summary_row.thick {
+#lbvpamvykz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ggtezfpkls .gt_last_summary_row {
+#lbvpamvykz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2712,7 +2718,7 @@ Table&nbsp;2: Components of a boxplot
   border-bottom-color: #D3D3D3;
 }
 
-#ggtezfpkls .gt_grand_summary_row {
+#lbvpamvykz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2722,7 +2728,7 @@ Table&nbsp;2: Components of a boxplot
   padding-right: 5px;
 }
 
-#ggtezfpkls .gt_first_grand_summary_row {
+#lbvpamvykz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2732,7 +2738,7 @@ Table&nbsp;2: Components of a boxplot
   border-top-color: #D3D3D3;
 }
 
-#ggtezfpkls .gt_last_grand_summary_row_top {
+#lbvpamvykz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2742,11 +2748,11 @@ Table&nbsp;2: Components of a boxplot
   border-bottom-color: #D3D3D3;
 }
 
-#ggtezfpkls .gt_striped {
+#lbvpamvykz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ggtezfpkls .gt_table_body {
+#lbvpamvykz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2755,7 +2761,7 @@ Table&nbsp;2: Components of a boxplot
   border-bottom-color: #D3D3D3;
 }
 
-#ggtezfpkls .gt_footnotes {
+#lbvpamvykz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2769,7 +2775,7 @@ Table&nbsp;2: Components of a boxplot
   border-right-color: #D3D3D3;
 }
 
-#ggtezfpkls .gt_footnote {
+#lbvpamvykz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2778,7 +2784,7 @@ Table&nbsp;2: Components of a boxplot
   padding-right: 5px;
 }
 
-#ggtezfpkls .gt_sourcenotes {
+#lbvpamvykz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2792,7 +2798,7 @@ Table&nbsp;2: Components of a boxplot
   border-right-color: #D3D3D3;
 }
 
-#ggtezfpkls .gt_sourcenote {
+#lbvpamvykz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2800,72 +2806,72 @@ Table&nbsp;2: Components of a boxplot
   padding-right: 5px;
 }
 
-#ggtezfpkls .gt_left {
+#lbvpamvykz .gt_left {
   text-align: left;
 }
 
-#ggtezfpkls .gt_center {
+#lbvpamvykz .gt_center {
   text-align: center;
 }
 
-#ggtezfpkls .gt_right {
+#lbvpamvykz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ggtezfpkls .gt_font_normal {
+#lbvpamvykz .gt_font_normal {
   font-weight: normal;
 }
 
-#ggtezfpkls .gt_font_bold {
+#lbvpamvykz .gt_font_bold {
   font-weight: bold;
 }
 
-#ggtezfpkls .gt_font_italic {
+#lbvpamvykz .gt_font_italic {
   font-style: italic;
 }
 
-#ggtezfpkls .gt_super {
+#lbvpamvykz .gt_super {
   font-size: 65%;
 }
 
-#ggtezfpkls .gt_footnote_marks {
+#lbvpamvykz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ggtezfpkls .gt_asterisk {
+#lbvpamvykz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ggtezfpkls .gt_indent_1 {
+#lbvpamvykz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ggtezfpkls .gt_indent_2 {
+#lbvpamvykz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ggtezfpkls .gt_indent_3 {
+#lbvpamvykz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ggtezfpkls .gt_indent_4 {
+#lbvpamvykz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ggtezfpkls .gt_indent_5 {
+#lbvpamvykz .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ggtezfpkls .katex-display {
+#lbvpamvykz .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ggtezfpkls div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#lbvpamvykz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2973,23 +2979,23 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_align</span>(<span class="at">align =</span> <span class="st">"left"</span>, <span class="at">columns =</span> <span class="fu">c</span>(Campus))</span>
 <span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>tbl.campus_class</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="cgyzrbqljz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#cgyzrbqljz table {
+<div id="dnncxxgyat" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dnncxxgyat table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#cgyzrbqljz thead, #cgyzrbqljz tbody, #cgyzrbqljz tfoot, #cgyzrbqljz tr, #cgyzrbqljz td, #cgyzrbqljz th {
+#dnncxxgyat thead, #dnncxxgyat tbody, #dnncxxgyat tfoot, #dnncxxgyat tr, #dnncxxgyat td, #dnncxxgyat th {
   border-style: none;
 }
 
-#cgyzrbqljz p {
+#dnncxxgyat p {
   margin: 0;
   padding: 0;
 }
 
-#cgyzrbqljz .gt_table {
+#dnncxxgyat .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3015,12 +3021,12 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   border-left-color: #D3D3D3;
 }
 
-#cgyzrbqljz .gt_caption {
+#dnncxxgyat .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#cgyzrbqljz .gt_title {
+#dnncxxgyat .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3032,7 +3038,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   border-bottom-width: 0;
 }
 
-#cgyzrbqljz .gt_subtitle {
+#dnncxxgyat .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3044,7 +3050,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   border-top-width: 0;
 }
 
-#cgyzrbqljz .gt_heading {
+#dnncxxgyat .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3056,13 +3062,13 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   border-right-color: #D3D3D3;
 }
 
-#cgyzrbqljz .gt_bottom_border {
+#dnncxxgyat .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#cgyzrbqljz .gt_col_headings {
+#dnncxxgyat .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3077,7 +3083,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   border-right-color: #D3D3D3;
 }
 
-#cgyzrbqljz .gt_col_heading {
+#dnncxxgyat .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3097,7 +3103,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   overflow-x: hidden;
 }
 
-#cgyzrbqljz .gt_column_spanner_outer {
+#dnncxxgyat .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3109,15 +3115,15 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   padding-right: 4px;
 }
 
-#cgyzrbqljz .gt_column_spanner_outer:first-child {
+#dnncxxgyat .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#cgyzrbqljz .gt_column_spanner_outer:last-child {
+#dnncxxgyat .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#cgyzrbqljz .gt_column_spanner {
+#dnncxxgyat .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3129,11 +3135,11 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   width: 100%;
 }
 
-#cgyzrbqljz .gt_spanner_row {
+#dnncxxgyat .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#cgyzrbqljz .gt_group_heading {
+#dnncxxgyat .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3159,7 +3165,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   text-align: left;
 }
 
-#cgyzrbqljz .gt_empty_group_heading {
+#dnncxxgyat .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3174,15 +3180,15 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   vertical-align: middle;
 }
 
-#cgyzrbqljz .gt_from_md > :first-child {
+#dnncxxgyat .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#cgyzrbqljz .gt_from_md > :last-child {
+#dnncxxgyat .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#cgyzrbqljz .gt_row {
+#dnncxxgyat .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3201,7 +3207,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   overflow-x: hidden;
 }
 
-#cgyzrbqljz .gt_stub {
+#dnncxxgyat .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3214,7 +3220,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   padding-right: 5px;
 }
 
-#cgyzrbqljz .gt_stub_row_group {
+#dnncxxgyat .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3228,15 +3234,15 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   vertical-align: top;
 }
 
-#cgyzrbqljz .gt_row_group_first td {
+#dnncxxgyat .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#cgyzrbqljz .gt_row_group_first th {
+#dnncxxgyat .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#cgyzrbqljz .gt_summary_row {
+#dnncxxgyat .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3246,16 +3252,16 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   padding-right: 5px;
 }
 
-#cgyzrbqljz .gt_first_summary_row {
+#dnncxxgyat .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#cgyzrbqljz .gt_first_summary_row.thick {
+#dnncxxgyat .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#cgyzrbqljz .gt_last_summary_row {
+#dnncxxgyat .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3265,7 +3271,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   border-bottom-color: #D3D3D3;
 }
 
-#cgyzrbqljz .gt_grand_summary_row {
+#dnncxxgyat .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3275,7 +3281,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   padding-right: 5px;
 }
 
-#cgyzrbqljz .gt_first_grand_summary_row {
+#dnncxxgyat .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3285,7 +3291,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   border-top-color: #D3D3D3;
 }
 
-#cgyzrbqljz .gt_last_grand_summary_row_top {
+#dnncxxgyat .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3295,11 +3301,11 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   border-bottom-color: #D3D3D3;
 }
 
-#cgyzrbqljz .gt_striped {
+#dnncxxgyat .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#cgyzrbqljz .gt_table_body {
+#dnncxxgyat .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3308,7 +3314,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   border-bottom-color: #D3D3D3;
 }
 
-#cgyzrbqljz .gt_footnotes {
+#dnncxxgyat .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3322,7 +3328,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   border-right-color: #D3D3D3;
 }
 
-#cgyzrbqljz .gt_footnote {
+#dnncxxgyat .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3331,7 +3337,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   padding-right: 5px;
 }
 
-#cgyzrbqljz .gt_sourcenotes {
+#dnncxxgyat .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3345,7 +3351,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   border-right-color: #D3D3D3;
 }
 
-#cgyzrbqljz .gt_sourcenote {
+#dnncxxgyat .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3353,72 +3359,72 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   padding-right: 5px;
 }
 
-#cgyzrbqljz .gt_left {
+#dnncxxgyat .gt_left {
   text-align: left;
 }
 
-#cgyzrbqljz .gt_center {
+#dnncxxgyat .gt_center {
   text-align: center;
 }
 
-#cgyzrbqljz .gt_right {
+#dnncxxgyat .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#cgyzrbqljz .gt_font_normal {
+#dnncxxgyat .gt_font_normal {
   font-weight: normal;
 }
 
-#cgyzrbqljz .gt_font_bold {
+#dnncxxgyat .gt_font_bold {
   font-weight: bold;
 }
 
-#cgyzrbqljz .gt_font_italic {
+#dnncxxgyat .gt_font_italic {
   font-style: italic;
 }
 
-#cgyzrbqljz .gt_super {
+#dnncxxgyat .gt_super {
   font-size: 65%;
 }
 
-#cgyzrbqljz .gt_footnote_marks {
+#dnncxxgyat .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#cgyzrbqljz .gt_asterisk {
+#dnncxxgyat .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#cgyzrbqljz .gt_indent_1 {
+#dnncxxgyat .gt_indent_1 {
   text-indent: 5px;
 }
 
-#cgyzrbqljz .gt_indent_2 {
+#dnncxxgyat .gt_indent_2 {
   text-indent: 10px;
 }
 
-#cgyzrbqljz .gt_indent_3 {
+#dnncxxgyat .gt_indent_3 {
   text-indent: 15px;
 }
 
-#cgyzrbqljz .gt_indent_4 {
+#dnncxxgyat .gt_indent_4 {
   text-indent: 20px;
 }
 
-#cgyzrbqljz .gt_indent_5 {
+#dnncxxgyat .gt_indent_5 {
   text-indent: 25px;
 }
 
-#cgyzrbqljz .katex-display {
+#dnncxxgyat .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#cgyzrbqljz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#dnncxxgyat div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
