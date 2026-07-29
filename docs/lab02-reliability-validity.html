@@ -228,6 +228,12 @@ div.csl-indent {
  <span class="menu-text">Reliability and Validity</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab03-eda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploratory Data Analysis (EDA)</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -243,21 +249,22 @@ div.csl-indent {
   <li><a href="#reliability-and-validity" id="toc-reliability-and-validity" class="nav-link active" data-scroll-target="#reliability-and-validity"><span class="header-section-number">1</span> Reliability and Validity</a>
   <ul>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
-  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="header-section-number">1.1</span> Data</a></li>
-  <li><a href="#reliability-internal-consistency-and-composite-scores" id="toc-reliability-internal-consistency-and-composite-scores" class="nav-link" data-scroll-target="#reliability-internal-consistency-and-composite-scores"><span class="header-section-number">1.2</span> Reliability (internal consistency) and composite scores</a>
+  <li><a href="#preliminaries" id="toc-preliminaries" class="nav-link" data-scroll-target="#preliminaries"><span class="header-section-number">1.1</span> Preliminaries</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="header-section-number">1.2</span> Data</a></li>
+  <li><a href="#reliability-internal-consistency-and-composite-scores" id="toc-reliability-internal-consistency-and-composite-scores" class="nav-link" data-scroll-target="#reliability-internal-consistency-and-composite-scores"><span class="header-section-number">1.3</span> Reliability (internal consistency) and composite scores</a>
   <ul class="collapse">
-  <li><a href="#ten-item-personality-inventory-tipi" id="toc-ten-item-personality-inventory-tipi" class="nav-link" data-scroll-target="#ten-item-personality-inventory-tipi"><span class="header-section-number">1.2.1</span> Ten-Item Personality Inventory (TIPI)</a>
+  <li><a href="#ten-item-personality-inventory-tipi" id="toc-ten-item-personality-inventory-tipi" class="nav-link" data-scroll-target="#ten-item-personality-inventory-tipi"><span class="header-section-number">1.3.1</span> Ten-Item Personality Inventory (TIPI)</a>
   <ul class="collapse">
   <li><a href="#composite-scores" id="toc-composite-scores" class="nav-link" data-scroll-target="#composite-scores">Composite scores</a></li>
   <li><a href="#internal-consistency-cronbachs-alpha" id="toc-internal-consistency-cronbachs-alpha" class="nav-link" data-scroll-target="#internal-consistency-cronbachs-alpha">Internal consistency (Cronbach’s alpha)</a></li>
   <li><a href="#write-up-the-results" id="toc-write-up-the-results" class="nav-link" data-scroll-target="#write-up-the-results">Write up the results</a></li>
   </ul></li>
-  <li><a href="#big-five-inventory-bfi" id="toc-big-five-inventory-bfi" class="nav-link" data-scroll-target="#big-five-inventory-bfi"><span class="header-section-number">1.2.2</span> Big Five Inventory (BFI)</a></li>
+  <li><a href="#big-five-inventory-bfi" id="toc-big-five-inventory-bfi" class="nav-link" data-scroll-target="#big-five-inventory-bfi"><span class="header-section-number">1.3.2</span> Big Five Inventory (BFI)</a></li>
   <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key Takeaways</a></li>
   </ul></li>
-  <li><a href="#validity-convergent-validity" id="toc-validity-convergent-validity" class="nav-link" data-scroll-target="#validity-convergent-validity"><span class="header-section-number">1.3</span> Validity (convergent validity)</a>
+  <li><a href="#validity-convergent-validity" id="toc-validity-convergent-validity" class="nav-link" data-scroll-target="#validity-convergent-validity"><span class="header-section-number">1.4</span> Validity (convergent validity)</a>
   <ul class="collapse">
-  <li><a href="#scatter-plot" id="toc-scatter-plot" class="nav-link" data-scroll-target="#scatter-plot">Scatter plot</a></li>
+  <li><a href="#scatterplot" id="toc-scatterplot" class="nav-link" data-scroll-target="#scatterplot">Scatterplot</a></li>
   <li><a href="#correlation-coefficient-pearsons-r" id="toc-correlation-coefficient-pearsons-r" class="nav-link" data-scroll-target="#correlation-coefficient-pearsons-r">Correlation Coefficient (Pearson’s <span class="math inline"><em>r</em></span>)</a></li>
   <li><a href="#write-up-the-results-1" id="toc-write-up-the-results-1" class="nav-link" data-scroll-target="#write-up-the-results-1">Write up the results</a></li>
   <li><a href="#key-takeaways-1" id="toc-key-takeaways-1" class="nav-link" data-scroll-target="#key-takeaways-1">Key Takeaways</a></li>
@@ -275,14 +282,8 @@ div.csl-indent {
 
 <section id="reliability-and-validity" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Reliability and Validity</h1>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)  <span class="co"># for data wrangling and visualization</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)      <span class="co"># for describe() and scoreItems()</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)      <span class="co"># for tidying model output</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(papaja)     <span class="co"># for APA style write up</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <p>In this lab, we will explore the concepts of measurement reliability and validity. Measurement is a critical aspect of empirical research, and it is the foundation for drawing valid conclusions from data. The high level question is: “Are we measuring what we think we are measuring?” To answer this question, we need to assess that the measure is targetting the construct of interest (validity) with a high level of precision (reliability).</p>
-<p>This lab will use two personality trait scales, the Ten-Item Personality Inventory (TIPI <span class="citation" data-cites="gosling_very_2003">Gosling, Rentfrow, and Swann (<a href="#ref-gosling_very_2003" role="doc-biblioref">2003</a>)</span>) and the Short Big Five Inventory (BFI <span class="citation" data-cites="lang_short_2011">Lang et al. (<a href="#ref-lang_short_2011" role="doc-biblioref">2011</a>)</span>), to demonstrate how to assess reliability and validity of measurement.</p>
+<p>This lab will use two personality trait scales, the Ten-Item Personality Inventory <span class="citation" data-cites="gosling_very_2003">(TIPI, <a href="#ref-gosling_very_2003" role="doc-biblioref">Gosling, Rentfrow, and Swann 2003</a>)</span> and the Short Big Five Inventory <span class="citation" data-cites="lang_short_2011">(BFI, <a href="#ref-lang_short_2011" role="doc-biblioref">Lang et al. 2011</a>)</span>, to demonstrate how to assess reliability and validity of measurement.</p>
 <section id="learning-objectives" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
 <ol type="1">
@@ -290,13 +291,23 @@ div.csl-indent {
 <li>Calculate Cronbach’s alpha to assess internal consistency of a scale.</li>
 <li>Calculate composite scores for a scale.</li>
 <li>Calculate correlations between two scales to assess convergent validity.</li>
-<li>Visualize the relationship between two scales using scatter plots and regression lines.</li>
+<li>Visualize the relationship between two scales using scatterplots and regression lines.</li>
 <li>Interpret what the results of reliability and validity analyses mean in the context of research.</li>
 <li>Write up the results of reliability and validity analyses in APA style.</li>
 </ol>
 </section>
-<section id="data" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="data"><span class="header-section-number">1.1</span> Data</h2>
+<section id="preliminaries" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="preliminaries"><span class="header-section-number">1.1</span> Preliminaries</h2>
+<p>Load the necessary packages for data wrangling, visualization, and analysis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)  <span class="co"># for data wrangling and visualization</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)      <span class="co"># for describe() and scoreItems()</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)      <span class="co"># for tidying model output</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(papaja)     <span class="co"># for APA style write up</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="data" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="data"><span class="header-section-number">1.2</span> Data</h2>
 <p>Data for this lab comes from a survey of 32 participants who completed both TIPI and BFI.</p>
 <blockquote class="blockquote">
 <p><strong>TIPI Instruction</strong>: Here are a number of personality traits that may or may not apply to you. Please choose a number for each statement to indicate the extent to which you agree or disagree with that statement. You should rate the extent to which the pair of traits applies to you, even if one characteristic applies more strongly than the other. (Disagree Strongly = 1 …….. Agree Strongly = 7)</p>
@@ -531,7 +542,7 @@ BFI_efficient                      7     5 -0.49    -0.89 0.26</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Checklist
+Data Inspection Checklist
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -542,13 +553,13 @@ Checklist
 </div>
 </div>
 </section>
-<section id="reliability-internal-consistency-and-composite-scores" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="reliability-internal-consistency-and-composite-scores"><span class="header-section-number">1.2</span> Reliability (internal consistency) and composite scores</h2>
+<section id="reliability-internal-consistency-and-composite-scores" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="reliability-internal-consistency-and-composite-scores"><span class="header-section-number">1.3</span> Reliability (internal consistency) and composite scores</h2>
 <p>Good measurement is reliable, and the measurement of the same construct should produce similar results across different items (internal consistency), different time points (test-retest reliability), or different raters (inter-rater reliability).</p>
 <p>In today’s lab, we will focus on internal consistency. Let’s say we want to measure Extraversion. What we want to obtain from our measurement is some score that represents Extraversion for an individual. But we don’t just ask one question “Are you extraverted?” for many reasons. For one, increasing the amount of data helps us be more accurate and more confident in our measurement. People may make mistakes when answering a single question and can be influenced by other things outside of the question itself (maybe they are distracted by notifications on their phones). To guard against this, we ask multiple questions that are supposed to measure the same construct. For example, in TIPI, we ask two questions that measure extraversion: “I see myself as extraverted, enthusiastic” and “I see myself as reserved, quiet”. If someone strongly agrees with the first statement and strongly disagrees with the second statement, we can say that this person is extraverted (high extraversion score). But what if someone strongly agrees with both statements? Then we have a problem, and we may not want to use the “extraversion” composite score.</p>
 <p>To summarize, before we use a composite score, we want to check if the items are internally consistent and correlated with each other. We use <strong>Cronbach’s alpha</strong> to quantify the internal consistency. If Cronbach’s alpha is greater than or equal to 0.7, we can say that the items are internally consistent and reliable. Ideally, we want to see Cronbach’s alpha to be greater than 0.8, but this is not always the case in practice.</p>
-<section id="ten-item-personality-inventory-tipi" class="level3" data-number="1.2.1">
-<h3 data-number="1.2.1" class="anchored" data-anchor-id="ten-item-personality-inventory-tipi"><span class="header-section-number">1.2.1</span> Ten-Item Personality Inventory (TIPI)</h3>
+<section id="ten-item-personality-inventory-tipi" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="ten-item-personality-inventory-tipi"><span class="header-section-number">1.3.1</span> Ten-Item Personality Inventory (TIPI)</h3>
 <p>In TIPI, each of the five traits is measured by two items. Before we calculate Cronbach’s alpha, we need to define the items that measure each trait in TIPI. <a href="#tbl-tipi-items" class="quarto-xref">Table&nbsp;1</a> shows the items in TIPI, the trait that each item measures, and whether the item needs to be reverse scored.</p>
 <div id="tbl-tipi-items" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -670,6 +681,21 @@ TIPI_openness_to_experience -0.24    -1.10 0.18</code></pre>
 <section id="internal-consistency-cronbachs-alpha" class="level4">
 <h4 class="anchored" data-anchor-id="internal-consistency-cronbachs-alpha">Internal consistency (Cronbach’s alpha)</h4>
 <p>Let’s check the Cronbach’s alpha for each trait in TIPI. We can access the Cronbach’s alpha values from the <code>tipi</code> object.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Questions to answer about the data:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Are all traits internally consistent (Cronbach’s alpha &gt;= 0.7)?</li>
+</ul>
+</div>
+</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the Cronbach's alpha for each trait in TIPI</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">round</span>(tipi<span class="sc">$</span>alpha, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -678,21 +704,6 @@ TIPI_openness_to_experience -0.24    -1.10 0.18</code></pre>
 alpha         0.595             0.652               0.784         0.86
       openness_to_experience
 alpha                  0.644</code></pre>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Checklist
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>Are all traits internally consistent (Cronbach’s alpha &gt;= 0.7)?</li>
-</ul>
 </div>
 </div>
 </section>
@@ -726,8 +737,8 @@ Reliability Analysis Write-Up Checklist
 </div>
 </section>
 </section>
-<section id="big-five-inventory-bfi" class="level3" data-number="1.2.2">
-<h3 data-number="1.2.2" class="anchored" data-anchor-id="big-five-inventory-bfi"><span class="header-section-number">1.2.2</span> Big Five Inventory (BFI)</h3>
+<section id="big-five-inventory-bfi" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="big-five-inventory-bfi"><span class="header-section-number">1.3.2</span> Big Five Inventory (BFI)</h3>
 <p>BFI is a longer scale that measures the same five traits as TIPI. <a href="#tbl-bfi-items" class="quarto-xref">Table&nbsp;2</a> shows the items in BFI, the trait that each item measures, and whether the item needs to be reverse scored.</p>
 <div id="tbl-bfi-items" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -850,8 +861,8 @@ Exercise
 </ul>
 </section>
 </section>
-<section id="validity-convergent-validity" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="validity-convergent-validity"><span class="header-section-number">1.3</span> Validity (convergent validity)</h2>
+<section id="validity-convergent-validity" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="validity-convergent-validity"><span class="header-section-number">1.4</span> Validity (convergent validity)</h2>
 <p>Validity is the extent to which a measure actually measures what it is supposed to measure. There are several types of validity, including face validity, content validity, criterion validity, and convergent and divergent validity. In this lab, we will focus on convergent validity, which is the extent to which a measure correlates with other measures of the same construct.</p>
 <p>Luckily, we have two different scales measuring the same construct in the same individuals – TIPI and BFI. If someone scores high on Extraversion in TIPI, we expect that that person should also score high on Extraversion in BFI too. We will calculate the correlation between the two scales for each of the five traits.</p>
 <table class="caption-top table">
@@ -908,9 +919,9 @@ Exercise
 #   BFI_openness &lt;dbl&gt;</code></pre>
 </div>
 </div>
-<section id="scatter-plot" class="level4">
-<h4 class="anchored" data-anchor-id="scatter-plot">Scatter plot</h4>
-<p>Now it’s time to visualize the relationship between TIPI and BFI scores. The first trait we will look at is Extraversion. Create a scatter plot with TIPI Extraversion scores on the x-axis and BFI Extraversion scores on the y-axis. <code>ggplot()</code>’s <code>geom_point()</code> function will create a scatter plot.</p>
+<section id="scatterplot" class="level4">
+<h4 class="anchored" data-anchor-id="scatterplot">Scatterplot</h4>
+<p>Now it’s time to visualize the relationship between TIPI and BFI scores. The first trait we will look at is Extraversion. Create a scatterplot with TIPI Extraversion scores on the x-axis and BFI Extraversion scores on the y-axis. <code>ggplot()</code>’s <code>geom_point()</code> function will create a scatterplot.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df.scores <span class="sc">%&gt;%</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> TIPI_extraversion, </span>
@@ -923,7 +934,7 @@ Exercise
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lab02-reliability-validity_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" alt="Scatter plot of TIPI and BFI Extraversion scores. On the x-axis is TIPI Extraversion scores and on the y-axis is BFI Extraversion scores. The points are scattered around a diagonal line from the bottom left to the top right. The top right and bottom left corners have more points than the top left and bottom right corners." width="672"></p>
+<p><img src="lab02-reliability-validity_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" alt="Scatterplot of TIPI and BFI Extraversion scores. On the x-axis is TIPI Extraversion scores and on the y-axis is BFI Extraversion scores. The points are scattered around a diagonal line from the bottom left to the top right. The top right and bottom left corners have more points than the top left and bottom right corners." width="672"></p>
 </figure>
 </div>
 </div>

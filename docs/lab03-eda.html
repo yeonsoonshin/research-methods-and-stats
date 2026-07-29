@@ -1,0 +1,4037 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>lab03-eda – Research Methods and Statistics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-a14e3238c51140e99ccc48519b6ed9ce.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab02-reliability-validity.html">Lab</a></li><li class="breadcrumb-item"><a href="./lab03-eda.html">Exploratory Data Analysis (EDA)</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Research Methods and Statistics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Research Methods and Statistics</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Research Methods</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-psych-science.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Psychological Science</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-research-questions-and-claims.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Research Questions, Designs, and Validity</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Statistics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-stats-test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Descriptive Statistics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-stats-test-copy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Descriptive Statistics MathML</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Lab</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab02-reliability-validity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reliability and Validity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab03-eda.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Exploratory Data Analysis (EDA)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#exploratory-data-analysis-eda" id="toc-exploratory-data-analysis-eda" class="nav-link active" data-scroll-target="#exploratory-data-analysis-eda"><span class="header-section-number">1</span> Exploratory Data Analysis (EDA)</a>
+  <ul>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#preliminaries" id="toc-preliminaries" class="nav-link" data-scroll-target="#preliminaries"><span class="header-section-number">1.1</span> Preliminaries</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="header-section-number">1.2</span> Data</a></li>
+  <li><a href="#univariate-analysis" id="toc-univariate-analysis" class="nav-link" data-scroll-target="#univariate-analysis"><span class="header-section-number">1.3</span> Univariate Analysis</a>
+  <ul class="collapse">
+  <li><a href="#categorical-variable-campus" id="toc-categorical-variable-campus" class="nav-link" data-scroll-target="#categorical-variable-campus"><span class="header-section-number">1.3.1</span> Categorical Variable: <code>Campus</code></a>
+  <ul class="collapse">
+  <li><a href="#data-wrangling" id="toc-data-wrangling" class="nav-link" data-scroll-target="#data-wrangling">Data Wrangling</a></li>
+  <li><a href="#frequency-table" id="toc-frequency-table" class="nav-link" data-scroll-target="#frequency-table">Frequency Table</a></li>
+  <li><a href="#bar-chart" id="toc-bar-chart" class="nav-link" data-scroll-target="#bar-chart">Bar Chart</a></li>
+  </ul></li>
+  <li><a href="#ordinal-variable-class" id="toc-ordinal-variable-class" class="nav-link" data-scroll-target="#ordinal-variable-class"><span class="header-section-number">1.3.2</span> Ordinal Variable: <code>Class</code></a></li>
+  <li><a href="#ratio-variable-sleepduration" id="toc-ratio-variable-sleepduration" class="nav-link" data-scroll-target="#ratio-variable-sleepduration"><span class="header-section-number">1.3.3</span> Ratio Variable: <code>SleepDuration</code></a>
+  <ul class="collapse">
+  <li><a href="#descriptive-statistics" id="toc-descriptive-statistics" class="nav-link" data-scroll-target="#descriptive-statistics">Descriptive Statistics</a></li>
+  <li><a href="#histogram" id="toc-histogram" class="nav-link" data-scroll-target="#histogram">Histogram</a></li>
+  <li><a href="#boxplot" id="toc-boxplot" class="nav-link" data-scroll-target="#boxplot">Boxplot</a></li>
+  <li><a href="#checking-normality-statistical-tests" id="toc-checking-normality-statistical-tests" class="nav-link" data-scroll-target="#checking-normality-statistical-tests">Checking Normality: Statistical Tests</a></li>
+  <li><a href="#checking-normality-q-q-plot" id="toc-checking-normality-q-q-plot" class="nav-link" data-scroll-target="#checking-normality-q-q-plot">Checking Normality: Q-Q Plot</a></li>
+  </ul></li>
+  <li><a href="#ratio-variable-breakfastperweek" id="toc-ratio-variable-breakfastperweek" class="nav-link" data-scroll-target="#ratio-variable-breakfastperweek"><span class="header-section-number">1.3.4</span> Ratio Variable: <code>BreakfastPerWeek</code></a></li>
+  </ul></li>
+  <li><a href="#multivariate-analysis" id="toc-multivariate-analysis" class="nav-link" data-scroll-target="#multivariate-analysis"><span class="header-section-number">1.4</span> Multivariate Analysis</a>
+  <ul class="collapse">
+  <li><a href="#between-two-categoricalordinal-variables-campus-and-class" id="toc-between-two-categoricalordinal-variables-campus-and-class" class="nav-link" data-scroll-target="#between-two-categoricalordinal-variables-campus-and-class"><span class="header-section-number">1.4.1</span> Between two categorical/ordinal variables: <code>Campus</code> and <code>Class</code></a>
+  <ul class="collapse">
+  <li><a href="#contingency-table" id="toc-contingency-table" class="nav-link" data-scroll-target="#contingency-table">Contingency Table</a></li>
+  <li><a href="#grouped-bar-chart" id="toc-grouped-bar-chart" class="nav-link" data-scroll-target="#grouped-bar-chart">Grouped Bar Chart</a></li>
+  </ul></li>
+  <li><a href="#between-continuous-and-categoricalordinal-variables-sleepduration-and-campus" id="toc-between-continuous-and-categoricalordinal-variables-sleepduration-and-campus" class="nav-link" data-scroll-target="#between-continuous-and-categoricalordinal-variables-sleepduration-and-campus"><span class="header-section-number">1.4.2</span> Between continuous and categorical/ordinal variables: <code>SleepDuration</code> and <code>Campus</code></a>
+  <ul class="collapse">
+  <li><a href="#histogram-1" id="toc-histogram-1" class="nav-link" data-scroll-target="#histogram-1">Histogram</a></li>
+  <li><a href="#boxplot-1" id="toc-boxplot-1" class="nav-link" data-scroll-target="#boxplot-1">Boxplot</a></li>
+  </ul></li>
+  <li><a href="#between-continuous-and-ordinal-variables-sleepduration-and-class" id="toc-between-continuous-and-ordinal-variables-sleepduration-and-class" class="nav-link" data-scroll-target="#between-continuous-and-ordinal-variables-sleepduration-and-class"><span class="header-section-number">1.4.3</span> Between continuous and ordinal variables: <code>SleepDuration</code> and <code>Class</code></a></li>
+  <li><a href="#between-two-continuous-variables-sleepduration-and-breakfastperweek" id="toc-between-two-continuous-variables-sleepduration-and-breakfastperweek" class="nav-link" data-scroll-target="#between-two-continuous-variables-sleepduration-and-breakfastperweek"><span class="header-section-number">1.4.4</span> Between two continuous variables: <code>SleepDuration</code> and <code>BreakfastPerWeek</code></a></li>
+  </ul></li>
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key Takeaways</a></li>
+  <li><a href="#wrapping-up" id="toc-wrapping-up" class="nav-link" data-scroll-target="#wrapping-up">Wrapping up</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/yeonsoon/research-methods-and-stats-book/edit/master/lab03-eda.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab02-reliability-validity.html">Lab</a></li><li class="breadcrumb-item"><a href="./lab03-eda.html">Exploratory Data Analysis (EDA)</a></li></ol></nav></header>
+
+
+
+
+<section id="exploratory-data-analysis-eda" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Exploratory Data Analysis (EDA)</h1>
+<p>This lab will orient you to the very first steps of data analysis. When you get a new dataset, it is important to take a quick look at the data before proceeding with any analysis and answer your research questions. This is called exploratory data analysis (EDA). EDA is a critical step in the data analysis process because it allows you to understand the structure of the data, identify any potential issues, and get a sense of the state of each variable. To conduct EDA, you will inspect if the raw data look right (no missing data, appropriate range of responses, etc.), and visualize the data to understand the shape of the distributions along with descriptive statistics.</p>
+<p>You will work with survey data on sleep and breakfast consumption. We asked 59 Bi-Co students about how much sleep they get on average and how many days a week they eat breakfast, along with their demographic information on class year and home campus.</p>
+<table class="caption-top table">
+<caption>Variables in the dataset</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variable</th>
+<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Levels</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">SleepDuration</td>
+<td style="text-align: left;">“On average, how many hours of sleep do you get in a 24-hour period?”</td>
+<td style="text-align: left;">0-24 (hours)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BreakfastPerWeek</td>
+<td style="text-align: left;">“How many days a week do you eat breakfast??”</td>
+<td style="text-align: left;">0-7 (days)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Class</td>
+<td style="text-align: left;">Class year</td>
+<td style="text-align: left;">First-year, Sophomore, Junior, Senior</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Campus</td>
+<td style="text-align: left;">Home campus</td>
+<td style="text-align: left;">Bryn Mawr College, Haverford College</td>
+</tr>
+</tbody>
+</table>
+<p>What kind of questions would you want to answer about this dataset? Before reading onto the answer, pause here to think about what you would want to know about this dataset.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example Questions about the Dataset
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Demographics:</strong>
+<ul>
+<li>How many Bryn Mawr College and Haverford College students participated in the survey?</li>
+<li>How many students from each class year participated in the survey?</li>
+</ul></li>
+<li><strong>Frequency Questions:</strong>
+<ul>
+<li>Sleep:
+<ul>
+<li>What is the average sleep duration of the students?</li>
+<li>What is the spread of sleep duration among the students?</li>
+</ul></li>
+<li>Breakfast:
+<ul>
+<li>What is the average number of days per week that students eat breakfast?</li>
+<li>What is the spread of breakfast consumption among the students?</li>
+</ul></li>
+</ul></li>
+<li><strong>Association Question:</strong>
+<ul>
+<li>Relationship between sleep and breakfast consumption:
+<ul>
+<li>Is there a relationship between sleep duration and breakfast consumption?</li>
+</ul></li>
+<li>Relationship between sleep and class year:
+<ul>
+<li>Is there a relationship between sleep duration and class year?</li>
+</ul></li>
+<li>Relationship between sleep and campus:
+<ul>
+<li>Is there a relationship between sleep duration and campus?</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<p>With these questions in mind, let’s start exploring the data.</p>
+<section id="learning-objectives" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<ol type="1">
+<li>Understand the role of the exploratory data analysis (EDA) step in the data analysis process.</li>
+<li>Conduct univariate and multivariate EDA depending on the type of variables.</li>
+<li>Summarize data using descriptive statistics.</li>
+</ol>
+</section>
+<section id="preliminaries" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="preliminaries"><span class="header-section-number">1.1</span> Preliminaries</h2>
+<p>Load the necessary packages for this lab.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)  <span class="co"># for data wrangling and visualization</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)      <span class="co"># for describe() and scoreItems()</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)      <span class="co"># for tidying model output</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)    <span class="co"># for frequency and contingency tables</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)         <span class="co"># for pretty tables</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)     <span class="co"># for ggqqplot()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="data" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="data"><span class="header-section-number">1.2</span> Data</h2>
+<p>Load the data and use <code>glimpse()</code> function to inspect the structure of the dataset.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Questions to answer about the data:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Are all variables in the dataset?</li>
+<li>How many observations are in the dataset? Does it match the number of participants in the survey?</li>
+</ul>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'data/sleep_breakfast.csv'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 59
+Columns: 4
+$ SleepDuration    &lt;dbl&gt; 7.5, 8.5, 7.0, 7.5, 6.0, 8.0, 9.0, 8.0, 8.0, 7.0, 7.5…
+$ BreakfastPerWeek &lt;dbl&gt; 7, 2, 4, 7, 4, 6, 7, 2, 7, 6, 7, 1, 2, 7, 2, 6, 7, 2,…
+$ Class            &lt;chr&gt; "First-year", "Junior", "Sophomore", "First-year", "S…
+$ Campus           &lt;chr&gt; "Bryn Mawr College", "Bryn Mawr College", "Bryn Mawr …</code></pre>
+</div>
+</div>
+</section>
+<section id="univariate-analysis" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="univariate-analysis"><span class="header-section-number">1.3</span> Univariate Analysis</h2>
+<p>Univariate analysis involves examining the distribution of each variable one at a time. With this, we are asking frequency questions: what is the state of each variable? The answer to this question includes the typical response (central tendency) and how much variability there is in the responses (spread), and the shape of the distribution.</p>
+<p>How we conduct univariate analysis depends on the type of variable. <a href="#tbl-eda-univariate" class="quarto-xref">Table&nbsp;1</a> shows different approaches to univariate analysis depending on the type of variable.</p>
+<div id="tbl-eda-univariate" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-eda-univariate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Approach to univariate analysis based on the type of variable
+</figcaption>
+<div aria-describedby="tbl-eda-univariate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Type of Variable</th>
+<th style="text-align: left;">Approach to Univariate Analysis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Categorical, Ordinal</td>
+<td style="text-align: left;">Frequency table, bar chart</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Interval, Ratio</td>
+<td style="text-align: left;">Histogram, boxplot, descriptive statistics</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>In our dataset, we have one categorical variable (<code>Campus</code>), one ordinal variable (<code>Class</code>), and two ratio variables (<code>SleepDuration</code>, <code>BreakfastPerWeek</code>). We will conduct univariate analysis for each of these variables in the following sections.</p>
+<section id="categorical-variable-campus" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="categorical-variable-campus"><span class="header-section-number">1.3.1</span> Categorical Variable: <code>Campus</code></h3>
+<section id="data-wrangling" class="level4">
+<h4 class="anchored" data-anchor-id="data-wrangling">Data Wrangling</h4>
+<p>The correct data type is important for conducting univariate analysis. The data type of the <code>Campus</code> variables should be <strong>factor</strong>, which has specific levels that represent the categories of the variable. The following code converts the Campus variables to factor data type, with two levels: “Bryn Mawr College” and “Haverford College”.</p>
+<p>First, make sure that the values of the <code>Campus</code> variable are spelled correctly and match the expected categories. You can use <code>unique()</code> function to check the unique values of the <code>Campus</code> variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(df<span class="sc">$</span>Campus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Bryn Mawr College" "Haverford College"</code></pre>
+</div>
+</div>
+<p>If this looks right, you can convert the <code>Campus</code> variable to factor data type using <code>mutate()</code> and <code>factor()</code> functions. The <code>levels</code> argument specifies the levels of the factor, and the <code>ordered</code> argument specifies whether the levels are ordered or not. In this case, we set <code>ordered = FALSE</code> because there is no inherent order to the categories of the <code>Campus</code> variable.</p>
+<p>You can check if the data type of the <code>Campus</code> variable is factor and what the levels of the factor are using <code>class()</code> and <code>unique()</code> functions, respectively.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">Campus =</span> <span class="fu">factor</span>(Campus, </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Bryn Mawr College"</span>, </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"Haverford College"</span>), </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">ordered =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df<span class="sc">$</span>Campus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "factor"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(df<span class="sc">$</span>Campus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] Bryn Mawr College Haverford College
+Levels: Bryn Mawr College Haverford College</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Data Wrangling Checklist
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Are the data types of the variables correct?</li>
+<li>Do the levels of the factors match the expected categories?</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="frequency-table" class="level4">
+<h4 class="anchored" data-anchor-id="frequency-table">Frequency Table</h4>
+<p>Frequency tables are a simple way to summarize categorical or ordinal variables. They show the number of observations and the percentage of observations in each category.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Questions to answer about the data:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Any missing data? If so, how many observations are missing?</li>
+<li>Which level is the most common (called <em>mode</em>)? Which level is the least common?</li>
+</ul>
+</div>
+</div>
+<p><code>tabyl()</code> function from the <code>janitor</code> package creates a frequency table. We can also add the total sample size using <code>adorn_totals()</code> and choose how many decimal places to display using <code>adorn_pct_formatting()</code>. Finally, we use <code>gt()</code> function to create a pretty table. Running the code below will open a new window in your browser to display the frequency table.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tbl.campus <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(Campus) <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_totals</span>(<span class="st">"row"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_pct_formatting</span>(<span class="at">digits =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_align</span>(<span class="at">align =</span> <span class="st">"left"</span>, <span class="at">columns =</span> Campus) </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>tbl.campus</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="hsqpeqthkv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hsqpeqthkv table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#hsqpeqthkv thead, #hsqpeqthkv tbody, #hsqpeqthkv tfoot, #hsqpeqthkv tr, #hsqpeqthkv td, #hsqpeqthkv th {
+  border-style: none;
+}
+
+#hsqpeqthkv p {
+  margin: 0;
+  padding: 0;
+}
+
+#hsqpeqthkv .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#hsqpeqthkv .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#hsqpeqthkv .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#hsqpeqthkv .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#hsqpeqthkv .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hsqpeqthkv .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hsqpeqthkv .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hsqpeqthkv .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#hsqpeqthkv .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#hsqpeqthkv .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#hsqpeqthkv .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#hsqpeqthkv .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#hsqpeqthkv .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#hsqpeqthkv .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#hsqpeqthkv .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#hsqpeqthkv .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#hsqpeqthkv .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#hsqpeqthkv .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#hsqpeqthkv .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hsqpeqthkv .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#hsqpeqthkv .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#hsqpeqthkv .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#hsqpeqthkv .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hsqpeqthkv .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#hsqpeqthkv .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#hsqpeqthkv .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hsqpeqthkv .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hsqpeqthkv .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#hsqpeqthkv .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hsqpeqthkv .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#hsqpeqthkv .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hsqpeqthkv .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hsqpeqthkv .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hsqpeqthkv .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hsqpeqthkv .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hsqpeqthkv .gt_left {
+  text-align: left;
+}
+
+#hsqpeqthkv .gt_center {
+  text-align: center;
+}
+
+#hsqpeqthkv .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#hsqpeqthkv .gt_font_normal {
+  font-weight: normal;
+}
+
+#hsqpeqthkv .gt_font_bold {
+  font-weight: bold;
+}
+
+#hsqpeqthkv .gt_font_italic {
+  font-style: italic;
+}
+
+#hsqpeqthkv .gt_super {
+  font-size: 65%;
+}
+
+#hsqpeqthkv .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#hsqpeqthkv .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#hsqpeqthkv .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#hsqpeqthkv .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#hsqpeqthkv .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#hsqpeqthkv .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#hsqpeqthkv .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#hsqpeqthkv .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#hsqpeqthkv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="Campus" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Campus</th>
+<th id="n" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n</th>
+<th id="percent" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">percent</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
+<td class="gt_row gt_right" headers="n">45</td>
+<td class="gt_row gt_right" headers="percent">76.27%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Campus">Haverford College</td>
+<td class="gt_row gt_right" headers="n">14</td>
+<td class="gt_row gt_right" headers="percent">23.73%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Campus">Total</td>
+<td class="gt_row gt_right" headers="n">59</td>
+<td class="gt_row gt_right" headers="percent">100.00%</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Frequency Table Checklist
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Are all categories represented in the frequency table?</li>
+<li>Is the total number of observations in the frequency table equal to the total number of observations in the dataset?</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="bar-chart" class="level4">
+<h4 class="anchored" data-anchor-id="bar-chart">Bar Chart</h4>
+<p>For categorical and ordinal variables, bar charts are a good way to visualize the distribution of the variable. Bar chart has the same information as the frequency table, but it is easier to spot the most common response and the distribution of the responses.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Questions to answer about the data:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Which level is the most common (called <em>mode</em>)? Which level is the least common?</li>
+</ul>
+</div>
+</div>
+<p>The following code using <code>geom_bar()</code> of <code>ggplot()</code> creates a bar chart for the <code>Campus</code> variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>fig.campus <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Campus)) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"count"</span>) <span class="sc">+</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Campus"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>fig.campus</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab03-eda_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Bar Chart Checklist
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Are axes labeled correctly, where x-axis shows the levels of the variable and y-axis shows the frequency of each level?</li>
+<li>Is the order of the levels informative (e.g., alphabetical order, or order of importance)?</li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="ordinal-variable-class" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="ordinal-variable-class"><span class="header-section-number">1.3.2</span> Ordinal Variable: <code>Class</code></h3>
+<p>For the <code>Campus</code> variable, it doesn’t matter whether the level looks like <code>c("Bryn Mawr College", "Haverford College")</code> or <code>c("Haverford College", "Bryn Mawr College")</code>, because there is no inherent order to the categories. However, for the <code>Class</code> variable, the order of the levels matters because it is an ordinal variable. The following code converts the <code>Class</code> variable as <em>factor</em>, with four levels: “First-year”, “Sophomore”, “Junior”, and “Senior”. The order of the levels is important because it reflects the natural order of the class years. You can achieve this by setting the <code>ordered</code> argument to <code>TRUE</code> in the <code>factor()</code> function.</p>
+<p>Other than this, all the steps for univariate analysis of the <code>Class</code> variable are the same as those for the <code>Campus</code> variable. You can create a frequency table and a bar chart for the <code>Class</code> variable using the same approach as for the <code>Campus</code> variable.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise: Ordinal data
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Convert the variable as <em>factor</em> with the correct order of levels.</li>
+<li>Create a frequency table.</li>
+<li>Create a bar chart.</li>
+<li>Summarize your findings in a few sentences, addressing the following questions:
+<ul>
+<li>Any missing data? If so, how many observations are missing?</li>
+<li>Which level is the most common (called <em>mode</em>)? Which level is the least common?</li>
+</ul></li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise Checklist
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Are the levels of the <code>Class</code> variable in the correct order?</li>
+<li>Are all categories represented in the frequency table?</li>
+<li>Are axes labeled correctly in the bar chart?</li>
+<li>Are categories ordered correctly in the frequency table and the bar chart?</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="ratio-variable-sleepduration" class="level3" data-number="1.3.3">
+<h3 data-number="1.3.3" class="anchored" data-anchor-id="ratio-variable-sleepduration"><span class="header-section-number">1.3.3</span> Ratio Variable: <code>SleepDuration</code></h3>
+<p><code>SleepDuration</code> is a ratio variable, which means it has a true zero point (e.g., 0 hour means you don’t get any sleep), and the intervals between values are meaningful. Another name for interval and ratio variables is <strong>continuous</strong> variables. For continuous variables, we can summarize the data using descriptive statistics: the central tendency (mean, median) and spread of the variable (standard deviation and range) and the shape of the distribution (skew and kurtosis). Mean and standard deviation are the most commonly used descriptive statistics, especially when the distribution of the variable is approximately normal. This makes it important for us to <strong>check if the responses are <em>normally</em> distributed</strong>.</p>
+<p>We can do this by first visualizing the distribution of the variable using histograms and boxplots, and run statistical tests to check for normality.</p>
+<section id="descriptive-statistics" class="level4">
+<h4 class="anchored" data-anchor-id="descriptive-statistics">Descriptive Statistics</h4>
+<p>Descriptive statistics are a set of summary statistics that describe the central tendency, spread, and shape of the distribution of a variable. For instance, for sleep duration, we can summarize how much sleep Bi-Co students are getting on average, and how much variability there is in the amount of sleep they are getting.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Questions to answer about the data:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Are there any missing values in the variable? If so, how many observations are missing?</li>
+<li>What is the central tendency of the variable?</li>
+<li>What is the spread of the variable?</li>
+<li>What is the shape of the distribution of the variable?
+<ul>
+<li>Is the distribution approximately normal (bell-shaped, symmetric around one peak)? If not, which direction is the distribution skewed (positive or negative)?</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<p>The <code>describe()</code> function from the <code>psych</code> package provides a convenient way to calculate descriptive statistics for interval and ratio variables. The following code calculates descriptive statistics for the <code>SleepDuration</code> variable. We are specifically interested the two central tendency measures (<code>mean</code> and <code>median</code>), two spread measures (standard deviation <code>sd</code> and <code>range</code>), minimum <code>min</code> and maximum <code>max</code> values, and two shape measures (<code>skew</code> and <code>kurtosis</code>).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">select</span>(SleepDuration) <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">describe</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(n, mean, median, sd, range, min, max, skew, kurtosis) <span class="sc">%&gt;%</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>(<span class="at">rownames_to_stub=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="wvxsefydsx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wvxsefydsx table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#wvxsefydsx thead, #wvxsefydsx tbody, #wvxsefydsx tfoot, #wvxsefydsx tr, #wvxsefydsx td, #wvxsefydsx th {
+  border-style: none;
+}
+
+#wvxsefydsx p {
+  margin: 0;
+  padding: 0;
+}
+
+#wvxsefydsx .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#wvxsefydsx .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#wvxsefydsx .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#wvxsefydsx .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#wvxsefydsx .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wvxsefydsx .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wvxsefydsx .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wvxsefydsx .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#wvxsefydsx .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#wvxsefydsx .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#wvxsefydsx .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#wvxsefydsx .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#wvxsefydsx .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#wvxsefydsx .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#wvxsefydsx .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#wvxsefydsx .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#wvxsefydsx .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#wvxsefydsx .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#wvxsefydsx .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wvxsefydsx .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#wvxsefydsx .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#wvxsefydsx .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#wvxsefydsx .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wvxsefydsx .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#wvxsefydsx .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#wvxsefydsx .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wvxsefydsx .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wvxsefydsx .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#wvxsefydsx .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wvxsefydsx .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#wvxsefydsx .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wvxsefydsx .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wvxsefydsx .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wvxsefydsx .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wvxsefydsx .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wvxsefydsx .gt_left {
+  text-align: left;
+}
+
+#wvxsefydsx .gt_center {
+  text-align: center;
+}
+
+#wvxsefydsx .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#wvxsefydsx .gt_font_normal {
+  font-weight: normal;
+}
+
+#wvxsefydsx .gt_font_bold {
+  font-weight: bold;
+}
+
+#wvxsefydsx .gt_font_italic {
+  font-style: italic;
+}
+
+#wvxsefydsx .gt_super {
+  font-size: 65%;
+}
+
+#wvxsefydsx .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#wvxsefydsx .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#wvxsefydsx .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#wvxsefydsx .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#wvxsefydsx .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#wvxsefydsx .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#wvxsefydsx .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#wvxsefydsx .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#wvxsefydsx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="a::stub" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
+<th id="n" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n</th>
+<th id="mean" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">mean</th>
+<th id="median" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">median</th>
+<th id="sd" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">sd</th>
+<th id="range" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">range</th>
+<th id="min" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">min</th>
+<th id="max" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">max</th>
+<th id="skew" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">skew</th>
+<th id="kurtosis" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">kurtosis</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td id="stub_1_1" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">SleepDuration</td>
+<td class="gt_row gt_right" headers="stub_1_1 n">58</td>
+<td class="gt_row gt_right" headers="stub_1_1 mean">7.637931</td>
+<td class="gt_row gt_right" headers="stub_1_1 median">7.5</td>
+<td class="gt_row gt_right" headers="stub_1_1 sd">0.9587689</td>
+<td class="gt_row gt_right" headers="stub_1_1 range">6</td>
+<td class="gt_row gt_right" headers="stub_1_1 min">4</td>
+<td class="gt_row gt_right" headers="stub_1_1 max">10</td>
+<td class="gt_row gt_right" headers="stub_1_1 skew">-0.5347194</td>
+<td class="gt_row gt_right" headers="stub_1_1 kurtosis">2.202083</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Descriptive Statistics Checklist
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Are the min and max values reasonable? For example, min value of sleep duration should not be negative, and max value should not be greater than 24 hours.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="histogram" class="level4">
+<h4 class="anchored" data-anchor-id="histogram">Histogram</h4>
+<p>As we did with the bar chart for categorical and ordinal variables, we can use a histogram to visualize the distribution of interval and ratio variables. The histogram makes the answers to our questions about the shape of the distribution more apparent.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Questions to answer about the data:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>What is the shape of the distribution of the variable?
+<ul>
+<li>Is the distribution approximately normal (bell-shaped, symmetric around one peak)? If not, which direction is the distribution skewed (positive or negative)?</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<p>The following code creates a histogram for the <code>SleepDuration</code> variable using <code>geom_histogram()</code> function of <code>ggplot()</code>. The <code>binwidth</code> argument specifies the width of the bins in the histogram. In this case, we set the binwidth to 1 hour, which means that each bin will represent 1 hour of sleep duration.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> SleepDuration)) <span class="sc">+</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"lightgray"</span>) <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sleep Duration (hours)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab03-eda_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Inspect the histogram and notice whether the distribution approximately normal (bell-shaped). Here, you see that the distribution is not symmetric, and it is skewed to the left (negative skew). This means that there are students who are getting extremely low amounts of sleep. In this case, the median is a better measure of central tendency than the mean, because the mean is affected by extreme values.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Histogram Checklist
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Are the axes labeled correctly?</li>
+<li>Is the binwidth appropriate for the variable? If not, adjust the binwidth and recreate the histogram.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="boxplot" class="level4">
+<h4 class="anchored" data-anchor-id="boxplot">Boxplot</h4>
+<p>Boxplot conveys rich information about the distribution of a variable. It shows the central tendency and the spread of the distribution, as well as the presence of outliers.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Questions to answer about the data:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>What is the median sleep duration of the students?</li>
+<li>What is the range that the middle 50% of the students fall into (interquartile range)?</li>
+<li>What is the range of sleep duration among the students (excluding outliers)?</li>
+<li>How many outliers are present in the boxplot?</li>
+<li>Is the distribution approximately normal and symmetric around the median? If not, which direction is the distribution skewed (positive or negative)?</li>
+</ul>
+</div>
+</div>
+<p>Let’s first make a boxplot for the <code>SleepDuration</code> variable. We can use <code>geom_boxplot()</code> function of <code>ggplot()</code> to create a boxplot. The following code creates a boxplot for the <code>SleepDuration</code> variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="st">""</span>,</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y=</span>SleepDuration)) <span class="sc">+</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Sleep Duration (hours)"</span>, </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab03-eda_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The <strong>center-line</strong> in the middle of the box shows the median of the distribution. The <strong>upper edge of the box</strong> is the third quartile (Q3; 75% of the cases fall at or below this value); the <strong>lower edge</strong> is the first quartile (Q1; 25% of the cases fall at or below this value), which makes the box to represent the middle 50% of the data. If the distribution is skewed, the distance between the center line and the upper versus lower edge of the box will not be the same. When there are no outliers, the <strong>whiskers (the line)</strong> extend to the lowest and the highest score in the distribution. Outliers are plotted as separate <strong>points</strong>. If one whisker is long relative to the other or if there are outliers on only one side of the distribution, the distribution will be skewed in that direction (positive skew for outliers above Q3; negative skew for outliers below Q1). These outliers are values that fall outside of 1.5 times the interquartile range (IQR) from the first and third quartiles. For example, if the IQR is 1 hour (i.e., the range of the middle 50% of the students sleep is 1 hour), then any values that are more than 1.5 hours below Q1 or above Q3 will be considered outliers. <a href="#tbl-eda-boxplot" class="quarto-xref">Table&nbsp;2</a> shows the components of a boxplot and their descriptions.</p>
+<div id="tbl-eda-boxplot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-eda-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Components of a boxplot
+</figcaption>
+<div aria-describedby="tbl-eda-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Component</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Center line</td>
+<td style="text-align: left;">Median</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Edges of the box</td>
+<td style="text-align: left;">Interquartile range (IQR)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Whiskers extending from the box</td>
+<td style="text-align: left;">Range excluding the outliers</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Points outside of the whiskers</td>
+<td style="text-align: left;">Outliers</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="checking-normality-statistical-tests" class="level4">
+<h4 class="anchored" data-anchor-id="checking-normality-statistical-tests">Checking Normality: Statistical Tests</h4>
+<p>There are formal statistical tests to check for normality for continuous variables. The two most commonly used tests are the Kolmogorov-Smirnov test and the Shapiro-Wilk test. Generally, you would use Kolmogorov-Smirnov test for samples greater than 50 and Shapiro-Wilk is used with samples smaller than or equal to 50.</p>
+<p>However, there are a couple of considerations for using these formal tests. They are meant for continuous variables, which can theoretically take on any values within a range. However, our sleep duration variable is rounded to the nearest half hour, and there are many “ties” in the data (e.g., many students reported sleeping exactly 7 hours, although the true sleep duration may be something like 7 hours and 6 minutes or 6 hours and 47 minutes). This can affect the results of the normality test, and it is important to keep this in mind when interpreting the results.</p>
+<p>Although we have 59 students in our sample, we will use Shapiro-Wilk test because it handles ties better than Kolmogorov-Smirnov test. The following code runs the Shapiro-Wilk test for the <code>SleepDuration</code> variable. The null hypothesis of the Shapiro-Wilk test is that the data are normally distributed. If the p-value is less than 0.05, we reject the null hypothesis and conclude that the data are not normally distributed. If the p-value is greater than 0.05, we conclude that the data are normally distributed.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Questions to answer about the data:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Based on the Shapiro-Wilk test, is the distribution significantly deviates from a normal distribution and NOT normally distributed (p &lt; 0.05)?</li>
+</ul>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(df<span class="sc">$</span>SleepDuration) <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  statistic  p.value method                     
+      &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;                      
+1     0.906 0.000277 Shapiro-Wilk normality test</code></pre>
+</div>
+</div>
+</section>
+<section id="checking-normality-q-q-plot" class="level4">
+<h4 class="anchored" data-anchor-id="checking-normality-q-q-plot">Checking Normality: Q-Q Plot</h4>
+<p>A Q-Q plot (a quantile-quantile plot) is a graphical method for comparing two probability distributions by plotting their quantiles against each other. The x-axis represents the theoretical quantiles of a normal distribution, and the y-axis represents the sample quantiles of the variable. If the points in the Q-Q plot fall on a straight diagonal line, it indicates that the data are normally distributed. If the points deviate from the straight diagonal line, it indicates that the data are not normally distributed. The further the points deviate from the line, the more the data deviates from a normal distribution.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Questions to answer about the data:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Based on the Q-Q plot, is the distribution normally distributed (most points fall on the straight diagonal line)?</li>
+</ul>
+</div>
+</div>
+<p><code>ggqqplot()</code> function from the <code>ggpubr</code> package creates a Q-Q plot. You will need to specify the variable you want to check for normality using the <code>x</code> argument. The following code creates a Q-Q plot for the <code>SleepDuration</code> variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggqqplot</span>(<span class="at">x =</span> <span class="st">"SleepDuration"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab03-eda_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now we can compare the distribution of the <code>SleepDuration</code> variable to a theoretical normal distribution. First, you may notice that there is one dot that is far away from the straight diagonal line, which indicates that there is an outlier in the data. Second, you can see that the points are clustered, where many points take the same value on the sample (y-axis), forming a staircase pattern. This is due to rounding, and what you need to pay attention to is whether those clusters fall on the straight diagonal line. If they do, it indicates that the distribution is approximately normal, even though the individual dots are not on the line.</p>
+</section>
+</section>
+<section id="ratio-variable-breakfastperweek" class="level3" data-number="1.3.4">
+<h3 data-number="1.3.4" class="anchored" data-anchor-id="ratio-variable-breakfastperweek"><span class="header-section-number">1.3.4</span> Ratio Variable: <code>BreakfastPerWeek</code></h3>
+<p>Repeat the same steps for the <code>BreakfastPerWeek</code> variable.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise: Ratio data
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Check descriptive statistics.</li>
+<li>Create a histogram.</li>
+<li>Create a boxplot.</li>
+<li>Run the Shapiro-Wilk test.</li>
+<li>Create a Q-Q plot.</li>
+<li>Summarize your findings in a few sentences, addressing the following questions:
+<ul>
+<li>Are there any missing values in the variable? If so, how many observations are missing?</li>
+<li>What is the central tendency of the variable?</li>
+<li>What is the spread of the variable?</li>
+<li>What is the shape of the distribution of the variable?
+<ul>
+<li>Is the distribution approximately normal (bell-shaped, symmetric around one peak)? If not, which direction is the distribution skewed (positive or negative)?</li>
+</ul></li>
+</ul></li>
+</ol>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">select</span>(BreakfastPerWeek) <span class="sc">%&gt;%</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">describe</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(n, mean, median, sd, range, min, max, skew, kurtosis) <span class="sc">%&gt;%</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>(<span class="at">rownames_to_stub=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="dbzntlwdgd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dbzntlwdgd table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#dbzntlwdgd thead, #dbzntlwdgd tbody, #dbzntlwdgd tfoot, #dbzntlwdgd tr, #dbzntlwdgd td, #dbzntlwdgd th {
+  border-style: none;
+}
+
+#dbzntlwdgd p {
+  margin: 0;
+  padding: 0;
+}
+
+#dbzntlwdgd .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#dbzntlwdgd .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#dbzntlwdgd .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#dbzntlwdgd .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#dbzntlwdgd .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dbzntlwdgd .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dbzntlwdgd .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dbzntlwdgd .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#dbzntlwdgd .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#dbzntlwdgd .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#dbzntlwdgd .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#dbzntlwdgd .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#dbzntlwdgd .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#dbzntlwdgd .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#dbzntlwdgd .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#dbzntlwdgd .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#dbzntlwdgd .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#dbzntlwdgd .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#dbzntlwdgd .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dbzntlwdgd .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#dbzntlwdgd .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#dbzntlwdgd .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#dbzntlwdgd .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dbzntlwdgd .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#dbzntlwdgd .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#dbzntlwdgd .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dbzntlwdgd .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dbzntlwdgd .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#dbzntlwdgd .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dbzntlwdgd .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#dbzntlwdgd .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dbzntlwdgd .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dbzntlwdgd .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dbzntlwdgd .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dbzntlwdgd .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dbzntlwdgd .gt_left {
+  text-align: left;
+}
+
+#dbzntlwdgd .gt_center {
+  text-align: center;
+}
+
+#dbzntlwdgd .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#dbzntlwdgd .gt_font_normal {
+  font-weight: normal;
+}
+
+#dbzntlwdgd .gt_font_bold {
+  font-weight: bold;
+}
+
+#dbzntlwdgd .gt_font_italic {
+  font-style: italic;
+}
+
+#dbzntlwdgd .gt_super {
+  font-size: 65%;
+}
+
+#dbzntlwdgd .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#dbzntlwdgd .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#dbzntlwdgd .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#dbzntlwdgd .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#dbzntlwdgd .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#dbzntlwdgd .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#dbzntlwdgd .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#dbzntlwdgd .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#dbzntlwdgd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="a::stub" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"></th>
+<th id="n" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n</th>
+<th id="mean" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">mean</th>
+<th id="median" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">median</th>
+<th id="sd" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">sd</th>
+<th id="range" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">range</th>
+<th id="min" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">min</th>
+<th id="max" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">max</th>
+<th id="skew" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">skew</th>
+<th id="kurtosis" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">kurtosis</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td id="stub_1_1" class="gt_row gt_left gt_stub" data-quarto-table-cell-role="th" scope="row">BreakfastPerWeek</td>
+<td class="gt_row gt_right" headers="stub_1_1 n">59</td>
+<td class="gt_row gt_right" headers="stub_1_1 mean">4.254237</td>
+<td class="gt_row gt_right" headers="stub_1_1 median">4</td>
+<td class="gt_row gt_right" headers="stub_1_1 sd">2.439568</td>
+<td class="gt_row gt_right" headers="stub_1_1 range">7</td>
+<td class="gt_row gt_right" headers="stub_1_1 min">0</td>
+<td class="gt_row gt_right" headers="stub_1_1 max">7</td>
+<td class="gt_row gt_right" headers="stub_1_1 skew">-0.2279263</td>
+<td class="gt_row gt_right" headers="stub_1_1 kurtosis">-1.4872</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> BreakfastPerWeek)) <span class="sc">+</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"lightgray"</span>) <span class="sc">+</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Breakfast Consumption (days per week)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab03-eda_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="st">""</span>,</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y=</span>BreakfastPerWeek)) <span class="sc">+</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Breakfast Consumption (days per week)"</span>, </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">""</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab03-eda_files/figure-html/unnamed-chunk-15-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(papaja)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(df<span class="sc">$</span>BreakfastPerWeek) <span class="sc">%&gt;%</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="wwkhstklwj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wwkhstklwj table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#wwkhstklwj thead, #wwkhstklwj tbody, #wwkhstklwj tfoot, #wwkhstklwj tr, #wwkhstklwj td, #wwkhstklwj th {
+  border-style: none;
+}
+
+#wwkhstklwj p {
+  margin: 0;
+  padding: 0;
+}
+
+#wwkhstklwj .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#wwkhstklwj .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#wwkhstklwj .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#wwkhstklwj .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#wwkhstklwj .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wwkhstklwj .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wwkhstklwj .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wwkhstklwj .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#wwkhstklwj .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#wwkhstklwj .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#wwkhstklwj .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#wwkhstklwj .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#wwkhstklwj .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#wwkhstklwj .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#wwkhstklwj .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#wwkhstklwj .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#wwkhstklwj .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#wwkhstklwj .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#wwkhstklwj .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wwkhstklwj .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#wwkhstklwj .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#wwkhstklwj .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#wwkhstklwj .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wwkhstklwj .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#wwkhstklwj .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#wwkhstklwj .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wwkhstklwj .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wwkhstklwj .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#wwkhstklwj .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wwkhstklwj .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#wwkhstklwj .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wwkhstklwj .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wwkhstklwj .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wwkhstklwj .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wwkhstklwj .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wwkhstklwj .gt_left {
+  text-align: left;
+}
+
+#wwkhstklwj .gt_center {
+  text-align: center;
+}
+
+#wwkhstklwj .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#wwkhstklwj .gt_font_normal {
+  font-weight: normal;
+}
+
+#wwkhstklwj .gt_font_bold {
+  font-weight: bold;
+}
+
+#wwkhstklwj .gt_font_italic {
+  font-style: italic;
+}
+
+#wwkhstklwj .gt_super {
+  font-size: 65%;
+}
+
+#wwkhstklwj .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#wwkhstklwj .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#wwkhstklwj .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#wwkhstklwj .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#wwkhstklwj .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#wwkhstklwj .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#wwkhstklwj .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#wwkhstklwj .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#wwkhstklwj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="statistic" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">statistic</th>
+<th id="p.value" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">p.value</th>
+<th id="method" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">method</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="statistic">0.8623552</td>
+<td class="gt_row gt_right" headers="p.value">8.360934e-06</td>
+<td class="gt_row gt_left" headers="method">Shapiro-Wilk normality test</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggqqplot</span>(<span class="at">x =</span> <span class="st">"BreakfastPerWeek"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab03-eda_files/figure-html/unnamed-chunk-15-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="multivariate-analysis" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="multivariate-analysis"><span class="header-section-number">1.4</span> Multivariate Analysis</h2>
+<p>Multivariate analysis involves examining the relationship between two or more variables. The type of analysis we conduct depends on the type of variables we are examining. Table <a href="#tbl-eda-multivariate" class="quarto-xref">Table&nbsp;3</a> shows different approaches to multivariate analysis depending on the type of variables.</p>
+<div id="tbl-eda-multivariate" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-eda-multivariate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: Approach to multivariate analysis based on the type of variables
+</figcaption>
+<div aria-describedby="tbl-eda-multivariate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Relationship</th>
+<th style="text-align: left;">Approach to Multivariate Analysis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Between two categorical/ ordinal</td>
+<td style="text-align: left;">Contingency table, grouped bar chart split by category</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Between continuous and categorical/ordinal</td>
+<td style="text-align: left;">Histogram or boxplot split by category, descriptives by category</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Between continuous and ordinal</td>
+<td style="text-align: left;">Line graph</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Between two continuous</td>
+<td style="text-align: left;">Scatterplot</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<section id="between-two-categoricalordinal-variables-campus-and-class" class="level3" data-number="1.4.1">
+<h3 data-number="1.4.1" class="anchored" data-anchor-id="between-two-categoricalordinal-variables-campus-and-class"><span class="header-section-number">1.4.1</span> Between two categorical/ordinal variables: <code>Campus</code> and <code>Class</code></h3>
+<p>Is the distribution of class year different between Bryn Mawr College and Haverford College students? To answer this question, we can create a contingency table and a grouped bar chart split by category.</p>
+<p>For both contingency tables and grouped bar charts, we are asking whether there is a relationship between two categorical/ordinal variables. If there is no relationship between the two variables, we would expect the distribution of one variable to be the same across the levels of the other variable. If there is a relationship between the two variables, we would expect the distribution of one variable to be different across the levels of the other variable.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Questions to answer about the data:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Is there a relationship between the two variables (e.g., is the distribution of class year different between Bryn Mawr College and Haverford College students)?</li>
+</ul>
+</div>
+</div>
+<section id="contingency-table" class="level4">
+<h4 class="anchored" data-anchor-id="contingency-table">Contingency Table</h4>
+<p>A contingency table is a two-way frequency table that shows the combinations of the levels of two variable. This can be done using the same <code>tabyl()</code> function as before, just with both variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>tbl.campus_class <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(Campus, Class) <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_totals</span>(<span class="fu">c</span>(<span class="st">"row"</span>, <span class="st">"col"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_align</span>(<span class="at">align =</span> <span class="st">"left"</span>, <span class="at">columns =</span> <span class="fu">c</span>(Campus))</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>tbl.campus_class</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="ezpsdhswxb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ezpsdhswxb table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#ezpsdhswxb thead, #ezpsdhswxb tbody, #ezpsdhswxb tfoot, #ezpsdhswxb tr, #ezpsdhswxb td, #ezpsdhswxb th {
+  border-style: none;
+}
+
+#ezpsdhswxb p {
+  margin: 0;
+  padding: 0;
+}
+
+#ezpsdhswxb .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ezpsdhswxb .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ezpsdhswxb .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ezpsdhswxb .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ezpsdhswxb .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ezpsdhswxb .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ezpsdhswxb .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ezpsdhswxb .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ezpsdhswxb .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ezpsdhswxb .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ezpsdhswxb .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ezpsdhswxb .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ezpsdhswxb .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ezpsdhswxb .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#ezpsdhswxb .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ezpsdhswxb .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ezpsdhswxb .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ezpsdhswxb .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ezpsdhswxb .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ezpsdhswxb .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ezpsdhswxb .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ezpsdhswxb .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ezpsdhswxb .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ezpsdhswxb .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ezpsdhswxb .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ezpsdhswxb .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ezpsdhswxb .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ezpsdhswxb .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ezpsdhswxb .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ezpsdhswxb .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ezpsdhswxb .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ezpsdhswxb .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ezpsdhswxb .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ezpsdhswxb .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ezpsdhswxb .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ezpsdhswxb .gt_left {
+  text-align: left;
+}
+
+#ezpsdhswxb .gt_center {
+  text-align: center;
+}
+
+#ezpsdhswxb .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ezpsdhswxb .gt_font_normal {
+  font-weight: normal;
+}
+
+#ezpsdhswxb .gt_font_bold {
+  font-weight: bold;
+}
+
+#ezpsdhswxb .gt_font_italic {
+  font-style: italic;
+}
+
+#ezpsdhswxb .gt_super {
+  font-size: 65%;
+}
+
+#ezpsdhswxb .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#ezpsdhswxb .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ezpsdhswxb .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ezpsdhswxb .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ezpsdhswxb .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ezpsdhswxb .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ezpsdhswxb .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#ezpsdhswxb .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#ezpsdhswxb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="Campus" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Campus</th>
+<th id="First-year" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">First-year</th>
+<th id="Sophomore" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Sophomore</th>
+<th id="Junior" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Junior</th>
+<th id="Senior" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Senior</th>
+<th id="Total" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Total</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
+<td class="gt_row gt_right" headers="First-year">10</td>
+<td class="gt_row gt_right" headers="Sophomore">21</td>
+<td class="gt_row gt_right" headers="Junior">9</td>
+<td class="gt_row gt_right" headers="Senior">5</td>
+<td class="gt_row gt_right" headers="Total">45</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Campus">Haverford College</td>
+<td class="gt_row gt_right" headers="First-year">4</td>
+<td class="gt_row gt_right" headers="Sophomore">3</td>
+<td class="gt_row gt_right" headers="Junior">2</td>
+<td class="gt_row gt_right" headers="Senior">5</td>
+<td class="gt_row gt_right" headers="Total">14</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Campus">Total</td>
+<td class="gt_row gt_right" headers="First-year">14</td>
+<td class="gt_row gt_right" headers="Sophomore">24</td>
+<td class="gt_row gt_right" headers="Junior">11</td>
+<td class="gt_row gt_right" headers="Senior">10</td>
+<td class="gt_row gt_right" headers="Total">59</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="grouped-bar-chart" class="level4">
+<h4 class="anchored" data-anchor-id="grouped-bar-chart">Grouped Bar Chart</h4>
+<p>We can use the color of the bars to represent the levels of the new variable. In this example, it makes more sense to use the <code>Campus</code> variable as the fill color, because there are only two levels of the <code>Campus</code> variable, and it is easier to distinguish between two colors than four colors. Plus, the <code>Class</code> variable is ordinal, and it is easier to see the order of the levels when they are on the x-axis.</p>
+<p>The following code creates a grouped bar chart for the <code>Class</code> variable split by the <code>Campus</code> variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>fig.campus_class <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> Class, <span class="at">fill =</span> Campus), <span class="at">position =</span> <span class="st">"dodge"</span>) </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>fig.campus_class</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab03-eda_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Grouped Bar Chart Checklist
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Are axes labeled correctly?</li>
+<li>Does the chart show the levels of one variable on the x-axis and the levels of the other variable as the fill color?</li>
+<li>Is the order of x-axis levels informative (e.g., ordinal variable)?</li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="between-continuous-and-categoricalordinal-variables-sleepduration-and-campus" class="level3" data-number="1.4.2">
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="between-continuous-and-categoricalordinal-variables-sleepduration-and-campus"><span class="header-section-number">1.4.2</span> Between continuous and categorical/ordinal variables: <code>SleepDuration</code> and <code>Campus</code></h3>
+<p>Now we will examine the relationship between a continuous variable and a categorical/ordinal variable. In this case, we will examine the relationship between <code>SleepDuration</code> (continuous) and <code>Campus</code> (categorical). Later in the semester we will learn how to conduct statistical tests to determine whether there is a significant difference between the groups (here, <code>Campus</code>), but for now, we will just visualize the data using histograms and boxplots split by category.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Questions to answer about the data:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Is there a relationship between the two variables (e.g., is the distribution of sleep duration different between Bryn Mawr College and Haverford College students)?</li>
+</ul>
+</div>
+</div>
+<section id="histogram-1" class="level4">
+<h4 class="anchored" data-anchor-id="histogram-1">Histogram</h4>
+<p>You can use <code>facet_grid()</code> in <code>ggplot()</code> to split panels for each level of the cateorical/ordinal variable. Here, we will split the histogram of <code>SleepDuration</code> by <code>Campus</code>. The x-axis is shared between the panels using <code>Campus ~ .</code>, which makes the comparison between the two distributions easier.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> SleepDuration)) <span class="sc">+</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(Campus <span class="sc">~</span> .) <span class="sc">+</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sleep Duration (hours)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab03-eda_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="boxplot-1" class="level4">
+<h4 class="anchored" data-anchor-id="boxplot-1">Boxplot</h4>
+<p>To compare the distributions of <code>SleepDuration</code> between the two campuses, we can use a boxplot split by <code>Campus</code>. The x-axis will represent the <code>Campus</code>, while the y-axis will represent the <code>SleepDuration</code>. The following code creates a boxplot for the <code>SleepDuration</code> variable split by the <code>Campus</code> variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Campus, <span class="at">y =</span> SleepDuration)) <span class="sc">+</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Campus"</span>, <span class="at">y =</span> <span class="st">"Sleep Duration (hours)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab03-eda_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>You can inspect these boxplots and notice the skewness per each campus.</p>
+</section>
+</section>
+<section id="between-continuous-and-ordinal-variables-sleepduration-and-class" class="level3" data-number="1.4.3">
+<h3 data-number="1.4.3" class="anchored" data-anchor-id="between-continuous-and-ordinal-variables-sleepduration-and-class"><span class="header-section-number">1.4.3</span> Between continuous and ordinal variables: <code>SleepDuration</code> and <code>Class</code></h3>
+<p>Now you will examine whether there is a relationship between the amount of sleep students get and their class year.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise: Continuous and Ordinal data
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Create a faceted histogram.</li>
+<li>Create a boxplot showing both variables.</li>
+<li>Summarize your findings in a few sentences, addressing the following questions:
+<ul>
+<li>Is there a relationship between the two variables (e.g., is the distribution of sleep duration different between class years)?</li>
+<li>Which class year has the highest average sleep duration?</li>
+<li>Does the sleep distribution appear to be spread similarly across class years, or is there more variability in some class years than others?</li>
+</ul></li>
+</ol>
+</div>
+</div>
+</section>
+<section id="between-two-continuous-variables-sleepduration-and-breakfastperweek" class="level3" data-number="1.4.4">
+<h3 data-number="1.4.4" class="anchored" data-anchor-id="between-two-continuous-variables-sleepduration-and-breakfastperweek"><span class="header-section-number">1.4.4</span> Between two continuous variables: <code>SleepDuration</code> and <code>BreakfastPerWeek</code></h3>
+<p>When both variables are continuous, we can visualize the relationship between the two variables using a scatterplot. A scatterplot shows the relationship between two continuous variables by plotting one variable on the x-axis and the other variable on the y-axis. Each point in the scatterplot represents an observation (e.g., a participant) in the dataset. The following code creates a scatterplot for the <code>SleepDuration</code> and <code>BreakfastPerWeek</code> variables.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Questions to answer about the data:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Is there a relationship between the two variables?</li>
+</ul>
+</div>
+</div>
+<p>The simplest way to do this is using the scatterplot as we’ve done before.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> SleepDuration, <span class="at">y =</span> BreakfastPerWeek)) <span class="sc">+</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sleep Duration (hours)"</span>, <span class="at">y =</span> <span class="st">"Breakfast Consumption (days per week)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab03-eda_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>However, for rounding issues, there are many overlaps of data in this case which makes it harder to see the relationship between the two. To address this, we can adjust the transparency of the points using the <code>alpha</code> argument in <code>geom_point()</code>, showing the density of the points. The more overlapping points, the darker the color of the point.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> SleepDuration, <span class="at">y =</span> BreakfastPerWeek)) <span class="sc">+</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.2</span>) <span class="sc">+</span> </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sleep Duration (hours)"</span>, <span class="at">y =</span> <span class="st">"Breakfast Consumption (days per week)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab03-eda_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Inspect this scatterplot to see if there is a positive or negative association between the two variables.</p>
+</section>
+</section>
+<section id="key-takeaways" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li>Visualizing data and the shape of the distribution is an important step in EDA.</li>
+<li>The types of variables inform how to conduct univariate and multivariate EDA (<a href="#tbl-eda-univariate" class="quarto-xref">Table&nbsp;1</a> and <a href="#tbl-eda-multivariate" class="quarto-xref">Table&nbsp;3</a>).</li>
+<li>If the distribution of a continuous variable is normal, mean and standard deviation are appropriate measures of central tendency and spread, respectively.</li>
+<li>If the distribution is not normal, mean and standard deviation are not appropriate measures of central tendency and spread. For this reason, it is important to check the normality of the distribution using visualizations (histogram, boxplot, Q-Q plot) and statistical tests (Shapiro-Wilk test).</li>
+</ul>
+</section>
+<section id="wrapping-up" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="wrapping-up">Wrapping up</h2>
+<ol type="1">
+<li><strong>Discuss</strong>: What are some potential issues you found in the dataset? How would you address these issues in your analysis?</li>
+<li><strong>Discuss</strong>: We saw that rounding and not having enough granularity in the continuous data present a challenge. In addition, the one-item measure may not accurately represents the construct. If you are designing the study to look at the relationship between sleep and breakfast consumption, how would you improve the study design to address these issues?</li>
+</ol>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/yeonsoon\.github\.io\/research-methods-and-stats-book");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/yeonsoon/research-methods-and-stats-book/edit/master/lab03-eda.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>

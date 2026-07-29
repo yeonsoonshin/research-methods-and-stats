@@ -1,27 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/lab02-reliability-validity.html</loc>
-    <lastmod>2026-07-27T04:20:18.644Z</lastmod>
+    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/lab03-eda.html</loc>
+    <lastmod>2026-07-29T02:39:51.564Z</lastmod>
   </url>
   <url>
-    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/02-stats-test.html</loc>
-    <lastmod>2026-07-27T03:54:00.119Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/02-research-questions-and-claims.html</loc>
-    <lastmod>2026-07-22T21:17:04.000Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/01-psych-science.html</loc>
-    <lastmod>2026-07-22T18:07:00.000Z</lastmod>
+    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/index.html</loc>
+    <lastmod>2026-05-10T03:18:46.000Z</lastmod>
   </url>
   <url>
     <loc>https://yeonsoon.github.io/research-methods-and-stats-book/02-stats-test-copy.html</loc>
     <lastmod>2026-06-16T17:53:38.000Z</lastmod>
   </url>
   <url>
-    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/index.html</loc>
-    <lastmod>2026-05-10T03:18:46.000Z</lastmod>
+    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/01-psych-science.html</loc>
+    <lastmod>2026-07-22T18:07:00.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/02-research-questions-and-claims.html</loc>
+    <lastmod>2026-07-22T21:17:04.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/02-stats-test.html</loc>
+    <lastmod>2026-07-27T03:54:00.119Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/lab02-reliability-validity.html</loc>
+    <lastmod>2026-07-29T02:35:55.065Z</lastmod>
   </url>
 </urlset>

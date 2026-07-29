@@ -35,6 +35,7 @@ website:
       - section: "Lab"
         contents:
           - lab02-reliability-validity.qmd
+          - lab03-eda.qmd
     # logo: ResearchMethods.png
 
 format:

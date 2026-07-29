@@ -6,6 +6,23 @@ format:
 
 # Reliability and Validity
 
+
+In this lab, we will explore the concepts of measurement reliability and validity. Measurement is a critical aspect of empirical research, and it is the foundation for drawing valid conclusions from data. The high level question is: "Are we measuring what we think we are measuring?" To answer this question, we need to assess that the measure is targetting the construct of interest (validity) with a high level of precision (reliability).
+
+This lab will use two personality trait scales, the Ten-Item Personality Inventory [TIPI, @gosling_very_2003] and the Short Big Five Inventory [BFI, @lang_short_2011], to demonstrate how to assess reliability and validity of measurement.
+
+## Learning Objectives {.unnumbered}
+
+1. Understand the concepts of reliability and validity in measurement.
+2. Calculate Cronbach's alpha to assess internal consistency of a scale.
+3. Calculate composite scores for a scale.
+4. Calculate correlations between two scales to assess convergent validity.
+5. Visualize the relationship between two scales using scatterplots and regression lines.
+6. Interpret what the results of reliability and validity analyses mean in the context of research.
+7. Write up the results of reliability and validity analyses in APA style.
+
+## Preliminaries
+
 ```{r, include=FALSE}
 knitr::opts_chunk$set(
   echo = TRUE,
@@ -14,26 +31,14 @@ knitr::opts_chunk$set(
 )
 ```
 
+Load the necessary packages for data wrangling, visualization, and analysis. 
+
 ```{r}
 library(tidyverse)  # for data wrangling and visualization
 library(psych)      # for describe() and scoreItems()
 library(broom)      # for tidying model output
 library(papaja)     # for APA style write up
 ```
-
-In this lab, we will explore the concepts of measurement reliability and validity. Measurement is a critical aspect of empirical research, and it is the foundation for drawing valid conclusions from data. The high level question is: "Are we measuring what we think we are measuring?" To answer this question, we need to assess that the measure is targetting the construct of interest (validity) with a high level of precision (reliability).
-
-This lab will use two personality trait scales, the Ten-Item Personality Inventory (TIPI @gosling_very_2003) and the Short Big Five Inventory (BFI @lang_short_2011), to demonstrate how to assess reliability and validity of measurement.
-
-## Learning Objectives {.unnumbered}
-
-1. Understand the concepts of reliability and validity in measurement.
-2. Calculate Cronbach's alpha to assess internal consistency of a scale.
-3. Calculate composite scores for a scale.
-4. Calculate correlations between two scales to assess convergent validity.
-5. Visualize the relationship between two scales using scatter plots and regression lines.
-6. Interpret what the results of reliability and validity analyses mean in the context of research.
-7. Write up the results of reliability and validity analyses in APA style.
 
 ## Data
 
@@ -85,7 +90,7 @@ describe(df)
 ```
 
 :::{.callout-tip}
-## Checklist
+## Data Inspection Checklist
 * Are data complete (no missing values or wrong data)?
 * Are all items in the expected range?
 :::
@@ -159,15 +164,16 @@ describe(tipi.scores)
 
 Let's check the Cronbach's alpha for each trait in TIPI. We can access the Cronbach's alpha values from the `tipi` object.
 
+:::{.callout-tip}
+## Questions to answer about the data:
+* Are all traits internally consistent (Cronbach's alpha >= 0.7)?
+:::
+
+
 ```{r}
 # check the Cronbach's alpha for each trait in TIPI
 print(round(tipi$alpha, 3))
 ```
-
-:::{.callout-tip}
-## Checklist
-* Are all traits internally consistent (Cronbach's alpha >= 0.7)?
-:::
 
 #### Write up the results
 
@@ -284,12 +290,12 @@ df.scores <- bind_cols(tipi.scores, bfi.scores)
 head(df.scores)
 ```
 
-#### Scatter plot
+#### Scatterplot
 
-Now it's time to visualize the relationship between TIPI and BFI scores. The first trait we will look at is Extraversion. Create a scatter plot with TIPI Extraversion scores on the x-axis and BFI Extraversion scores on the y-axis. `ggplot()`'s `geom_point()` function will create a scatter plot. 
+Now it's time to visualize the relationship between TIPI and BFI scores. The first trait we will look at is Extraversion. Create a scatterplot with TIPI Extraversion scores on the x-axis and BFI Extraversion scores on the y-axis. `ggplot()`'s `geom_point()` function will create a scatterplot. 
 
 ```{r}
-#| fig-alt: Scatter plot of TIPI and BFI Extraversion scores. On the x-axis is TIPI Extraversion scores and on the y-axis is BFI Extraversion scores. The points are scattered around a diagonal line from the bottom left to the top right. The top right and bottom left corners have more points than the top left and bottom right corners. 
+#| fig-alt: Scatterplot of TIPI and BFI Extraversion scores. On the x-axis is TIPI Extraversion scores and on the y-axis is BFI Extraversion scores. The points are scattered around a diagonal line from the bottom left to the top right. The top right and bottom left corners have more points than the top left and bottom right corners. 
 #| 
 df.scores %>%
   ggplot(aes(x = TIPI_extraversion, 
