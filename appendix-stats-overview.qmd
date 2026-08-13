@@ -1,33 +1,339 @@
 # Statistics Overview
 
-All Null Hypothesis Significance Testing (NHST) is based on the idea of testing whether the probability of observing your data or more extreme data is low enough if the null hypothesis is true, called the p-value. 
+## Statistics Formulas
+
+:::{#tbl-base-formula .list-table header-rows=1 header-cols=1 aligns="l,l,l" widths="5,50,45"}
+**Basic Formulas.** $\sum$ is the summation operator, $X$ is the value of interest.
+
+- - Statistic/Parameter
+  - Definition
+  - Formula
+
+- - Mean 
+  - 
+    - Average value
+    - Total value divided by number of values
+  - $\frac{\sum X}{\text{Size}}$
+
+- - Sum of Squares (SS) 
+  - 
+    - Total squared deviations from the mean 
+    - In total, how much the values deviate from the mean of the set of values, in a squared unit
+  - $\sum (X - \text{Mean})^2$ 
+
+    = $\sum (X^2) - \frac{(\sum X)^2}{\text{Size}}$
+
+- - Variance 
+  - 
+    - Average squared deviations from the mean
+    - On average, how much the values deviate from the mean of the set of values, in a squared unit
+    - Also called the Mean Squared (MS) in ANOVA
+  - 
+    - Population: $\frac{\text{SS}}{\text{Size}}$
+    - Sample: $\frac{\text{SS}}{df}$
+
+- - Standard Deviation (SD)
+  - 
+    - Average deviations from the mean
+    - On average, how much the values deviate from the mean of the set of values, in the original unit
+
+  - $\sqrt{\text{Variance}}$
+ 
+- - Standard Score
+  - 
+    - Scaled deviation from the mean
+    - How much a value deviates from the mean, relative to average deviations, in the SD unit
+  - $\frac{X - \text{Mean}}{\text{SD}}$
+
+- - Standard Error of the Mean (SEM)
+  - 
+    - Average deviations of sample means from the mean of sample means
+    - On average, how much a sample mean deviates from the mean of sample means, in the original unit
+  - $\frac{\text{SD}}{\sqrt{\text{Size}}}$
+:::
+
+:::{#tbl-symbol .list-table header-rows=1 header-cols=1 aligns="l,c,c"}
+Symbols for Population Parameters and Sample Statistics
+
+- - Measure
+  - Population Parameter
+  - Sample Statistic
+
+- - Size
+  - $N$
+  - $n$
+
+- - Mean
+  - $\mu$
+  - $M$
+
+- - Sum of Squares
+  - []{colspan=2} $SS$
+
+- - Variance
+  - $\sigma^2$
+  - $s^2$
+
+- - Standard Deviation
+  - $\sigma$
+  - $s$ 
+
+- - Degrees of Freedom
+  - N/A
+  - $df$
+
+- - Standard Error of the Mean
+  - $\sigma_M$
+  - $s_M$
+:::
 
 
-:::{#tbl-tests .list-table header-rows=2 header-cols=1}
+## Test Statistics for Statistical Significance: Is It Real?
 
-- - []{rowspan=2} Test
-  - []{rowspan=2} Question About the Population
-  - []{colspan=2} Sample Data's Relative Strength (Signal vs. Noise)
-  - []{colspan=2} Statistically Significant If
-  - []{colspan=2} Practical Significance (Effect Size)
+When you observe some interesting pattern in your data, you might wonder if it reflects a real effect in the population or just happened by chance. Null Hypothesis Significance Testing (NHST) answers this question by calculating the probability of observing data as extreme as yours or more extreme if there were no effect in the population (the null hypothesis). You can calculate this probability using a test statistic. The test statistics in @tbl-test-statistic-numerator-denominator all estimate something about population parameters (means, variances, or relationships) and standardize those estimates by a reference unit, producing a value whose probability under the null hypothesis is known. 
 
-- - Signal
-  - Noise
+:::{#tbl-test-statistics .list-table header-rows=1 header-cols=1 aligns="l,l"}
+**Test Statistics and Statistical Tests**
+
+- - Test Statistic
+  - Statistical Test
+
+- - $z$
+  - 
+    - z-test
+
+- - $t$
+  - 
+    - t-test
+      - One-sample t-test
+      - Independent Samples t-test
+      - Paired Samples t-test
+    - ANOVA post-hoc comparisons
+    - Regression (predictor's contribution)
+
+- - $F$
+  - 
+    - ANOVA
+      - One-way Between-Subjects ANOVA
+      - One-way Repeated-Measures ANOVA
+      - Factorial Between-Subjects ANOVA
+      - Factorial Repeated-Measures ANOVA
+      - Mixed ANOVA
+    - Regression (outcome predicted by predictors)
+
+- - $r$
+  - 
+    - Pearson's r Correlation
+:::
+
+:::{#tbl-test-statistic-numerator-denominator .list-table header-rows=1 header-cols=1 aligns="l,l,l,l"}
+**Test Statistics with Their Numerators and Denominators**
+
+- - Test Statistic
+  - Numerator (observed)
+  - Denominator (reference unit)
+  - Note
+
+- - $z$ or $t$
+  - Estimate minus expected value if no effect (null)
+  - How off the estimate could be by chance (typical error). This is called Standard Error ($SE$), and it is the standard deviation of a sampling distribution (the distribution of possible estimates if no effect).
+  - When 1.96, the estimate is 1.96 SEs away from what is expected if no effect.
+
+- - $F$
+  - Variance ($MS$) of estimates predicted by groups, conditions, or predictors (signal)
+  - Leftover variance ($MS$) of individual scores after accounting for groups, conditions, or predictors (noise)
+  - When 1, noise is just as big as signal.
+
+- - $r$
+  - Covariance between $X$ and $Y$
+  - Maximum possible covariance given the spread of $X$ and $Y$
+  - When 1 or -1, X and Y covary as much as their spreads allow.
+:::
+
+### z-test and t-test
+
+
+:::{#tbl-t-z-test .list-table header-rows=1 header-cols=1 aligns="l,l,l,l"}
+**t-test and z-test**
+
+- - Test
   - Test Statistic
-  - p-value
-  - Concept
+  - Confidence Interval
+  - Standard Error of the Mean (SEM)^[Standard Error of the Mean (SEM) is the standard deviation of the sampling distribution of the mean. Because the variance of a sum of independent values is the sum of their variances, the variance of the mean is the population variance divided by the sample size. The SEM is therefore the square root of that: the population standard deviation divided by the square root of the sample size. When the population standard deviation is unknown, the sample standard deviation is used instead.]
+
+- - One-sample z-test
+  - $$\frac{M - \mu_0}{\sigma_M}$$
+  - $M \pm z_\text{crit} \times \sigma_M$
+  - $\sigma\times\frac{1}{\sqrt{n}}$
+
+- - One-sample t-test
+  - $$\frac{M - \mu_0}{s_M}$$
+  - $M \pm t_\text{crit} \times s_M$
+  - $s\times\frac{1}{\sqrt{n}}$
+
+- - Paired Samples t-test
+  - $$\frac{M_D - {\mu_D}_0}{s_{M_D}}$$
+    
+    = $\frac{M_D - 0}{s_{M_D}}$ = $\frac{M_D}{s_{M_D}}$
+  - $M_D \pm t_\text{crit} \times s_{M_D}$
+  - $s_D\times\frac{1}{\sqrt{n}}$
+  
+- - Independent Samples t-test
+  - $$\frac{(M_1 - M_2) - (\mu_1 - \mu_2)}{s_{M_1 - M_2}}$$ 
+
+    = $\frac{(M_1 - M_2) - 0}{s_{M_1 - M_2}}$ = $\frac{(M_1 - M_2)}{s_{M_1 - M_2}}$
+  - $(M_1 - M_2) \pm t_\text{crit} \times s_{M_1 - M_2}$
+  - $s_\text{pooled}\times\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}$
+  
+    = $\sqrt{\frac{SS_1 + SS_2}{df_1 + df_2}} \times \sqrt{\frac{1}{n_1}+\frac{1}{n_2}}$
+:::
+
+### F-test
+
+::::{#tbl-f-test .list-table header-rows=1 header-cols=1 aligns="l,l"}
+**F-test**
+
+- - Test
+  - Test Statistic
+
+- - One-way Between-Subjects ANOVA
+  - $$\frac{MS_\text{between}}{MS_\text{within}}$$
+
+- - One-way Repeated-Measures ANOVA
+  - $$\frac{MS_\text{between}}{MS_\text{error}}$$
+
+    = $\frac{MS_\text{between}}{MS_\text{within} - MS_\text{subject}}$
+
+- - Factorial Between-Subjects ANOVA
+  - -
+      - Main effect: $$\frac{MS_\text{factor}}{MS_\text{within}}$$
+      - Interaction: $$\frac{MS_\text{interaction}}{MS_\text{within}}$$
+
+- - Factorial Repeated-Measures ANOVA
+  - 
+    - Main effect: $$\frac{MS_\text{factor}}{MS_\text{error}}$$
+    - Interaction: $$\frac{MS_\text{interaction}}{MS_\text{error}}$$
+
+- - Simple Linear Regression
+  - $$\frac{MS_\text{predictor}}{MS_\text{residuals}}$$
+
+- - Multiple Linear Regression
+  - $$\frac{MS_\text{model}}{MS_\text{residuals}}$$
+
+:::
+
+:::{#tbl-r .list-table header-rows=1 header-cols=1 aligns="l,l"}
+**Pearson's r Correlation**
+
+- - Test
+  - Test Statistic
+
+- - Pearson's r Correlation
+  - $$r = \frac{\text{Cov}(X, Y)}{s_X s_Y}$$ 
+
+    = $\frac{1}{df}\sum (X - M_X)(Y - M_Y) \times \frac{1}{s_X s_Y}$
+    
+    = $\frac{1}{df}\sum z_X z_Y$
+:::
+
+## Effect Size for Practical Significance: Is It Meaningful?
+
+When you observe some interesting pattern in your data, you might wonder whether it's not just statistically real but also meaningful in practice. Effect size answers this by quantifying the strength of an effect in terms of the variability of _the raw scores_, independent of sample size, making it comparable across studies. You can assess this using standardized effect size metrics. The effect sizes in @tbl-effect-size all express an observed quantity relative to a reference unit, producing a value whose magnitude can be interpreted as small, medium, or large.
+
+:::{#tbl-effect-size .list-table header-rows=1 header-cols=2 aligns="l,l,l,l"}
+Effect size metrics with their numerators and denominators
+
+- - Category
   - Metric
+  - Numerator (observed)
+  - Denominator (reference unit)
 
-- - z-test
-  - []{rowspan=2} Mean difference
-  - []{rowspan=2} Mean difference
-  - []{rowspan=2} SD of the sampling distribution of the Mean (SEM)
-  - $|z| > |z_\text{crit}|$
-  - []{rowspan=8} $p \lt \alpha$
-  - []{rowspan=2} Signal in SD units
-  - []{rowspan=2} Cohen's d
+- - Effect standardized to SD units
+  - Cohen's $d$
+  - Estimate minus expected value if no effect (null)
 
-- - t-test
-  - $|t| \gt |t_\text{crit}|$
+    Same as test statistic's numerator
+  - How off an individual raw score could be by chance ($SD$)
 
+- - Change in $Y$ per unit change in $X$
+  - Unstandardized regression coefficient ($b$)
+  - Covariance between $X$ and $Y$
+  - Variance of $X$
+
+- - Standardized correlation
+  - Standardized regression coefficient ($\beta$) or Pearson's $r$
+  - Covariance between $X$ and $Y$
+  - Maximum possible covariance given the spread of $X$ and $Y$
+
+- - []{rowspan=2} Proportion of variance explained
+  - $R^2$ or $\eta^2$
+  - $SS$ of estimates predicted by groups, conditions, or predictors
+  - Total $SS$ of individual scores
+
+- - Adjusted $R^2$ or Partial $\eta^2$
+  - $SS$ of estimates predicted by groups, conditions, or predictors
+  - $SS$ of individual scores after removing variance from other factors or individual differences
+
+:::
+
+:::{#tbl-cohens-d-formula .list-table header-rows=1 header-cols=1 aligns="l,l"}
+**Cohen's d Formulas**
+
+- - Test
+  - Formula
+
+- - One-sample z-test
+  - $$\frac{M - \mu_0}{\sigma}$$
+
+- - One-sample t-test
+  - $$\frac{M - \mu_0}{s}$$
+
+- - Paired Samples t-test
+  - $$\frac{M_D - {\mu_D}_0}{s_D}$$
+
+- - Independent Samples t-test
+  - $$\frac{(M_1 - M_2) - (\mu_1 - \mu_2)}{s_\text{pooled}}$$
+:::
+
+
+:::{#tbl-eta2-formula .list-table header-rows=1 header-cols=1 aligns="l,l,l"}
+**$\eta^2$ and $R^2$ Formulas**
+
+- - Metric
+  - Test
+  - Formula
+
+- - $\eta^2$
+  - One-way Between-Subjects ANOVA
+  - $$\frac{SS_\text{between}}{SS_\text{between} + SS_\text{within}}$$
+
+- - []{rowspan=3} $\eta^2_p$ (partial $\eta^2$)
+  - One-way Repeated-Measures ANOVA
+  - $$\frac{SS_\text{between}}{SS_\text{between} + SS_\text{error}}$$
+
+- - Factorial Between-Subjects ANOVA
+  - $$\frac{SS_\text{factor}}{SS_\text{factor} + SS_\text{within}}$$
+
+- - Factorial Repeated-Measures ANOVA
+  - $$\frac{SS_\text{factor}}{SS_\text{factor} + SS_\text{error}}$$
+
+- - $R^2$
+  - Simple Linear Regression
+  - $$\frac{SS_\text{predictor}}{SS_\text{predictor} + SS_\text{residuals}}$$
+    = $1-\frac{SS_\text{residuals}}{SS_\text{total}}$
+
+- - $R^2_\text{adj}$ (adjusted $R^2$)
+  - Multiple Linear Regression
+  - $$\frac{SS_\text{model}}{SS_\text{model} + SS_\text{residuals}}$$
+   = $$1 - \frac{SS_\text{residuals}/df_\text{residuals}}{SS_\text{total}/df_\text{total}}$$
+
+- - $b$
+  - Simple Linear Regression
+  - $$\frac{\text{Cov}(X, Y)}{\text{Var}(X)}$$
+
+- - $\beta$
+  - Simple Linear Regression
+  - $$\frac{\text{Cov}(X, Y)}{s_X s_Y}$$
+
+    = $r$
 :::

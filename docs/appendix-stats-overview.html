@@ -115,9 +115,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Research Methods and Statistics
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appendix-stats-decisions.html">Appendix</a></li><li class="breadcrumb-item"><a href="./appendix-stats-overview.html">Statistics Overview</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -238,6 +236,12 @@ window.Quarto = {
  <span class="menu-text">Which Statistical Test Should I Use?</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-stats-overview.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Statistics Overview</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -250,59 +254,554 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#statistics-overview" id="toc-statistics-overview" class="nav-link active" data-scroll-target="#statistics-overview"><span class="header-section-number">1</span> Statistics Overview</a></li>
+  <li><a href="#statistics-overview" id="toc-statistics-overview" class="nav-link active" data-scroll-target="#statistics-overview"><span class="header-section-number">1</span> Statistics Overview</a>
+  <ul>
+  <li><a href="#statistics-formulas" id="toc-statistics-formulas" class="nav-link" data-scroll-target="#statistics-formulas"><span class="header-section-number">1.1</span> Statistics Formulas</a></li>
+  <li><a href="#test-statistics-for-statistical-significance-is-it-real" id="toc-test-statistics-for-statistical-significance-is-it-real" class="nav-link" data-scroll-target="#test-statistics-for-statistical-significance-is-it-real"><span class="header-section-number">1.2</span> Test Statistics for Statistical Significance: Is It Real?</a>
+  <ul class="collapse">
+  <li><a href="#z-test-and-t-test" id="toc-z-test-and-t-test" class="nav-link" data-scroll-target="#z-test-and-t-test"><span class="header-section-number">1.2.1</span> z-test and t-test</a></li>
+  <li><a href="#f-test" id="toc-f-test" class="nav-link" data-scroll-target="#f-test"><span class="header-section-number">1.2.2</span> F-test</a></li>
+  </ul></li>
+  <li><a href="#effect-size-for-practical-significance-is-it-meaningful" id="toc-effect-size-for-practical-significance-is-it-meaningful" class="nav-link" data-scroll-target="#effect-size-for-practical-significance-is-it-meaningful"><span class="header-section-number">1.3</span> Effect Size for Practical Significance: Is It Meaningful?</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/yeonsoon/research-methods-and-stats-book/edit/master/appendix-stats-overview.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="appendix-stats-overview.epub"><i class="bi bi-file"></i>ePub</a></li><li><a href="appendix-stats-overview.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appendix-stats-decisions.html">Appendix</a></li><li class="breadcrumb-item"><a href="./appendix-stats-overview.html">Statistics Overview</a></li></ol></nav></header>
 
 
 
 
 <section id="statistics-overview" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Statistics Overview</h1>
-<p>All Null Hypothesis Significance Testing (NHST) is based on the idea of testing whether the probability of observing your data or more extreme data is low enough if the null hypothesis is true, called the p-value.</p>
-<table id="tbl-tests" class="caption-top table">
+<section id="statistics-formulas" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="statistics-formulas"><span class="header-section-number">1.1</span> Statistics Formulas</h2>
+<div id="tbl-base-formula" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-base-formula-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: <strong>Basic Formulas.</strong> <span class="math inline">\(\sum\)</span> is the summation operator, <span class="math inline">\(X\)</span> is the value of interest.
+</figcaption>
+<div aria-describedby="tbl-base-formula-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table id="tbl-base-formula" class="caption-top table">
+<colgroup>
+<col style="width: 5%">
+<col style="width: 50%">
+<col style="width: 45%">
+</colgroup>
 <thead>
 <tr class="header">
-<th rowspan="2"> Test</th>
-<th rowspan="2"> Question About the Population</th>
-<th colspan="2"> Sample Data’s Relative Strength (Signal vs.&nbsp;Noise)</th>
-<th colspan="2"> Statistically Significant If</th>
-<th colspan="2"> Practical Significance (Effect Size)</th>
-</tr>
-<tr class="even">
-<th>Signal</th>
-<th>Noise</th>
-<th>Test Statistic</th>
-<th>p-value</th>
-<th>Concept</th>
-<th>Metric</th>
+<th style="text-align: left;">Statistic/Parameter</th>
+<th style="text-align: left;">Definition</th>
+<th style="text-align: left;">Formula</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<th>z-test</th>
-<td rowspan="2"> Mean difference</td>
-<td rowspan="2"> Mean difference</td>
-<td rowspan="2"> SD of the sampling distribution of the Mean (SEM)</td>
-<td><span class="math inline">\(|z| &gt; |z_\text{crit}|\)</span></td>
-<td rowspan="2"> <span class="math inline">\(p \lt \alpha\)</span></td>
-<td rowspan="2"> Signal in SD units</td>
-<td rowspan="2"> Cohen’s d</td>
+<th style="text-align: left;">Mean</th>
+<td style="text-align: left;"><ul>
+<li>Average value</li>
+<li>Total value divided by number of values</li>
+</ul></td>
+<td style="text-align: left;"><span class="math inline">\(\frac{\sum X}{\text{Size}}\)</span></td>
 </tr>
 <tr class="even">
-<th>t-test</th>
-<td><span class="math inline">\(|t| \gt |t_\text{crit}|\)</span></td>
+<th style="text-align: left;"><p>Sum of Squares (SS)</p></th>
+<td style="text-align: left;"><ul>
+<li>Total squared deviations from the mean</li>
+<li>In total, how much the values deviate from the mean of the set of values, in a squared unit</li>
+</ul></td>
+<td style="text-align: left;"><p><span class="math inline">\(\sum (X - \text{Mean})^2\)</span></p>
+<p>= <span class="math inline">\(\sum (X^2) - \frac{(\sum X)^2}{\text{Size}}\)</span></p></td>
+</tr>
+<tr class="odd">
+<th style="text-align: left;">Variance</th>
+<td style="text-align: left;"><ul>
+<li>Average squared deviations from the mean</li>
+<li>On average, how much the values deviate from the mean of the set of values, in a squared unit</li>
+<li>Also called the Mean Squared (MS) in ANOVA</li>
+</ul></td>
+<td style="text-align: left;"><ul>
+<li>Population: <span class="math inline">\(\frac{\text{SS}}{\text{Size}}\)</span></li>
+<li>Sample: <span class="math inline">\(\frac{\text{SS}}{df}\)</span></li>
+</ul></td>
+</tr>
+<tr class="even">
+<th style="text-align: left;">Standard Deviation (SD)</th>
+<td style="text-align: left;"><ul>
+<li>Average deviations from the mean</li>
+<li>On average, how much the values deviate from the mean of the set of values, in the original unit</li>
+</ul></td>
+<td style="text-align: left;"><span class="math inline">\(\sqrt{\text{Variance}}\)</span></td>
+</tr>
+<tr class="odd">
+<th style="text-align: left;">Standard Score</th>
+<td style="text-align: left;"><ul>
+<li>Scaled deviation from the mean</li>
+<li>How much a value deviates from the mean, relative to average deviations, in the SD unit</li>
+</ul></td>
+<td style="text-align: left;"><span class="math inline">\(\frac{X - \text{Mean}}{\text{SD}}\)</span></td>
+</tr>
+<tr class="even">
+<th style="text-align: left;">Standard Error of the Mean (SEM)</th>
+<td style="text-align: left;"><ul>
+<li>Average deviations of sample means from the mean of sample means</li>
+<li>On average, how much a sample mean deviates from the mean of sample means, in the original unit</li>
+</ul></td>
+<td style="text-align: left;"><span class="math inline">\(\frac{\text{SD}}{\sqrt{\text{Size}}}\)</span></td>
 </tr>
 </tbody>
 </table>
+</div>
+</figure>
+</div>
+<div id="tbl-symbol" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-symbol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Symbols for Population Parameters and Sample Statistics
+</figcaption>
+<div aria-describedby="tbl-symbol-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table id="tbl-symbol" class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Measure</th>
+<th style="text-align: center;">Population Parameter</th>
+<th style="text-align: center;">Sample Statistic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th style="text-align: left;">Size</th>
+<td style="text-align: center;"><span class="math inline">\(N\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n\)</span></td>
+</tr>
+<tr class="even">
+<th style="text-align: left;">Mean</th>
+<td style="text-align: center;"><span class="math inline">\(\mu\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(M\)</span></td>
+</tr>
+<tr class="odd">
+<th style="text-align: left;">Sum of Squares</th>
+<td colspan="2" style="text-align: center;"> <span class="math inline">\(SS\)</span></td>
+</tr>
+<tr class="even">
+<th style="text-align: left;">Variance</th>
+<td style="text-align: center;"><span class="math inline">\(\sigma^2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(s^2\)</span></td>
+</tr>
+<tr class="odd">
+<th style="text-align: left;">Standard Deviation</th>
+<td style="text-align: center;"><span class="math inline">\(\sigma\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(s\)</span></td>
+</tr>
+<tr class="even">
+<th style="text-align: left;">Degrees of Freedom</th>
+<td style="text-align: center;">N/A</td>
+<td style="text-align: center;"><span class="math inline">\(df\)</span></td>
+</tr>
+<tr class="odd">
+<th style="text-align: left;">Standard Error of the Mean</th>
+<td style="text-align: center;"><span class="math inline">\(\sigma_M\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(s_M\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="test-statistics-for-statistical-significance-is-it-real" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="test-statistics-for-statistical-significance-is-it-real"><span class="header-section-number">1.2</span> Test Statistics for Statistical Significance: Is It Real?</h2>
+<p>When you observe some interesting pattern in your data, you might wonder if it reflects a real effect in the population or just happened by chance. Null Hypothesis Significance Testing (NHST) answers this question by calculating the probability of observing data as extreme as yours or more extreme if there were no effect in the population (the null hypothesis). You can calculate this probability using a test statistic. The test statistics in <a href="#tbl-test-statistic-numerator-denominator" class="quarto-xref">Table&nbsp;4</a> all estimate something about population parameters (means, variances, or relationships) and standardize those estimates by a reference unit, producing a value whose probability under the null hypothesis is known.</p>
+<div id="tbl-test-statistics" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-test-statistics-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: <strong>Test Statistics and Statistical Tests</strong>
+</figcaption>
+<div aria-describedby="tbl-test-statistics-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table id="tbl-test-statistics" class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Test Statistic</th>
+<th style="text-align: left;">Statistical Test</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th style="text-align: left;"><span class="math inline">\(z\)</span></th>
+<td style="text-align: left;"><ul>
+<li>z-test</li>
+</ul></td>
+</tr>
+<tr class="even">
+<th style="text-align: left;"><span class="math inline">\(t\)</span></th>
+<td style="text-align: left;"><ul>
+<li>t-test
+<ul>
+<li>One-sample t-test</li>
+<li>Independent Samples t-test</li>
+<li>Paired Samples t-test</li>
+</ul></li>
+<li>ANOVA post-hoc comparisons</li>
+<li>Regression (predictor’s contribution)</li>
+</ul></td>
+</tr>
+<tr class="odd">
+<th style="text-align: left;"><span class="math inline">\(F\)</span></th>
+<td style="text-align: left;"><ul>
+<li>ANOVA
+<ul>
+<li>One-way Between-Subjects ANOVA</li>
+<li>One-way Repeated-Measures ANOVA</li>
+<li>Factorial Between-Subjects ANOVA</li>
+<li>Factorial Repeated-Measures ANOVA</li>
+<li>Mixed ANOVA</li>
+</ul></li>
+<li>Regression (outcome predicted by predictors)</li>
+</ul></td>
+</tr>
+<tr class="even">
+<th style="text-align: left;"><span class="math inline">\(r\)</span></th>
+<td style="text-align: left;"><ul>
+<li>Pearson’s r Correlation</li>
+</ul></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div id="tbl-test-statistic-numerator-denominator" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-test-statistic-numerator-denominator-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4: <strong>Test Statistics with Their Numerators and Denominators</strong>
+</figcaption>
+<div aria-describedby="tbl-test-statistic-numerator-denominator-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table id="tbl-test-statistic-numerator-denominator" class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Test Statistic</th>
+<th style="text-align: left;">Numerator (observed)</th>
+<th style="text-align: left;">Denominator (reference unit)</th>
+<th style="text-align: left;">Note</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th style="text-align: left;"><span class="math inline">\(z\)</span> or <span class="math inline">\(t\)</span></th>
+<td style="text-align: left;">Estimate minus expected value if no effect (null)</td>
+<td style="text-align: left;">How off the estimate could be by chance (typical error). This is called Standard Error (<span class="math inline">\(SE\)</span>), and it is the standard deviation of a sampling distribution (the distribution of possible estimates if no effect).</td>
+<td style="text-align: left;">When 1.96, the estimate is 1.96 SEs away from what is expected if no effect.</td>
+</tr>
+<tr class="even">
+<th style="text-align: left;"><span class="math inline">\(F\)</span></th>
+<td style="text-align: left;">Variance (<span class="math inline">\(MS\)</span>) of estimates predicted by groups, conditions, or predictors (signal)</td>
+<td style="text-align: left;">Leftover variance (<span class="math inline">\(MS\)</span>) of individual scores after accounting for groups, conditions, or predictors (noise)</td>
+<td style="text-align: left;">When 1, noise is just as big as signal.</td>
+</tr>
+<tr class="odd">
+<th style="text-align: left;"><span class="math inline">\(r\)</span></th>
+<td style="text-align: left;">Covariance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></td>
+<td style="text-align: left;">Maximum possible covariance given the spread of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></td>
+<td style="text-align: left;">When 1 or -1, X and Y covary as much as their spreads allow.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<section id="z-test-and-t-test" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="z-test-and-t-test"><span class="header-section-number">1.2.1</span> z-test and t-test</h3>
+<div id="tbl-t-z-test" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-t-z-test-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5: <strong>t-test and z-test</strong>
+</figcaption>
+<div aria-describedby="tbl-t-z-test-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table id="tbl-t-z-test" class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Test</th>
+<th style="text-align: left;">Test Statistic</th>
+<th style="text-align: left;">Confidence Interval</th>
+<th style="text-align: left;">Standard Error of the Mean (SEM)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th style="text-align: left;">One-sample z-test</th>
+<td style="text-align: left;"><span class="math display">\[\frac{M - \mu_0}{\sigma_M}\]</span></td>
+<td style="text-align: left;"><span class="math inline">\(M \pm z_\text{crit} \times \sigma_M\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\sigma\times\frac{1}{\sqrt{n}}\)</span></td>
+</tr>
+<tr class="even">
+<th style="text-align: left;">One-sample t-test</th>
+<td style="text-align: left;"><span class="math display">\[\frac{M - \mu_0}{s_M}\]</span></td>
+<td style="text-align: left;"><span class="math inline">\(M \pm t_\text{crit} \times s_M\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(s\times\frac{1}{\sqrt{n}}\)</span></td>
+</tr>
+<tr class="odd">
+<th style="text-align: left;"><p>Paired Samples t-test</p></th>
+<td style="text-align: left;"><p><span class="math display">\[\frac{M_D - {\mu_D}_0}{s_{M_D}}\]</span></p>
+<p>= <span class="math inline">\(\frac{M_D - 0}{s_{M_D}}\)</span> = <span class="math inline">\(\frac{M_D}{s_{M_D}}\)</span></p></td>
+<td style="text-align: left;"><p><span class="math inline">\(M_D \pm t_\text{crit} \times s_{M_D}\)</span></p></td>
+<td style="text-align: left;"><p><span class="math inline">\(s_D\times\frac{1}{\sqrt{n}}\)</span></p></td>
+</tr>
+<tr class="even">
+<th style="text-align: left;"><p>Independent Samples t-test</p></th>
+<td style="text-align: left;"><p><span class="math display">\[\frac{(M_1 - M_2) - (\mu_1 - \mu_2)}{s_{M_1 - M_2}}\]</span></p>
+<p>= <span class="math inline">\(\frac{(M_1 - M_2) - 0}{s_{M_1 - M_2}}\)</span> = <span class="math inline">\(\frac{(M_1 - M_2)}{s_{M_1 - M_2}}\)</span></p></td>
+<td style="text-align: left;"><p><span class="math inline">\((M_1 - M_2) \pm t_\text{crit} \times s_{M_1 - M_2}\)</span></p></td>
+<td style="text-align: left;"><p><span class="math inline">\(s_\text{pooled}\times\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}\)</span></p>
+<p>= <span class="math inline">\(\sqrt{\frac{SS_1 + SS_2}{df_1 + df_2}} \times \sqrt{\frac{1}{n_1}+\frac{1}{n_2}}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="f-test" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="f-test"><span class="header-section-number">1.2.2</span> F-test</h3>
+<div id="tbl-f-test" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-f-test-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6: <strong>F-test</strong>
+</figcaption>
+<div aria-describedby="tbl-f-test-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table id="tbl-f-test" class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Test</th>
+<th style="text-align: left;">Test Statistic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th style="text-align: left;">One-way Between-Subjects ANOVA</th>
+<td style="text-align: left;"><span class="math display">\[\frac{MS_\text{between}}{MS_\text{within}}\]</span></td>
+</tr>
+<tr class="even">
+<th style="text-align: left;"><p>One-way Repeated-Measures ANOVA</p></th>
+<td style="text-align: left;"><p><span class="math display">\[\frac{MS_\text{between}}{MS_\text{error}}\]</span></p>
+<p>= <span class="math inline">\(\frac{MS_\text{between}}{MS_\text{within} - MS_\text{subject}}\)</span></p></td>
+</tr>
+<tr class="odd">
+<th style="text-align: left;">Factorial Between-Subjects ANOVA</th>
+<td style="text-align: left;"><ul>
+<li><ul>
+<li>Main effect: <span class="math display">\[\frac{MS_\text{factor}}{MS_\text{within}}\]</span></li>
+<li>Interaction: <span class="math display">\[\frac{MS_\text{interaction}}{MS_\text{within}}\]</span></li>
+</ul></li>
+</ul></td>
+</tr>
+<tr class="even">
+<th style="text-align: left;">Factorial Repeated-Measures ANOVA</th>
+<td style="text-align: left;"><ul>
+<li>Main effect: <span class="math display">\[\frac{MS_\text{factor}}{MS_\text{error}}\]</span></li>
+<li>Interaction: <span class="math display">\[\frac{MS_\text{interaction}}{MS_\text{error}}\]</span></li>
+</ul></td>
+</tr>
+<tr class="odd">
+<th style="text-align: left;">Simple Linear Regression</th>
+<td style="text-align: left;"><span class="math display">\[\frac{MS_\text{predictor}}{MS_\text{residuals}}\]</span></td>
+</tr>
+<tr class="even">
+<th style="text-align: left;">Multiple Linear Regression</th>
+<td style="text-align: left;"><span class="math display">\[\frac{MS_\text{model}}{MS_\text{residuals}}\]</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div id="tbl-r" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-r-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;7: <strong>Pearson’s r Correlation</strong>
+</figcaption>
+<div aria-describedby="tbl-r-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table id="tbl-r" class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Test</th>
+<th style="text-align: left;">Test Statistic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th style="text-align: left;"><p>Pearson’s r Correlation</p></th>
+<td style="text-align: left;"><p><span class="math display">\[r = \frac{\text{Cov}(X, Y)}{s_X s_Y}\]</span></p>
+<p>= <span class="math inline">\(\frac{1}{df}\sum (X - M_X)(Y - M_Y) \times \frac{1}{s_X s_Y}\)</span></p>
+<p>= <span class="math inline">\(\frac{1}{df}\sum z_X z_Y\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+</section>
+<section id="effect-size-for-practical-significance-is-it-meaningful" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="effect-size-for-practical-significance-is-it-meaningful"><span class="header-section-number">1.3</span> Effect Size for Practical Significance: Is It Meaningful?</h2>
+<p>When you observe some interesting pattern in your data, you might wonder whether it’s not just statistically real but also meaningful in practice. Effect size answers this by quantifying the strength of an effect in terms of the variability of <em>the raw scores</em>, independent of sample size, making it comparable across studies. You can assess this using standardized effect size metrics. The effect sizes in <a href="#tbl-effect-size" class="quarto-xref">Table&nbsp;8</a> all express an observed quantity relative to a reference unit, producing a value whose magnitude can be interpreted as small, medium, or large.</p>
+<div id="tbl-effect-size" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-effect-size-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;8: Effect size metrics with their numerators and denominators
+</figcaption>
+<div aria-describedby="tbl-effect-size-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table id="tbl-effect-size" class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Category</th>
+<th style="text-align: left;">Metric</th>
+<th style="text-align: left;">Numerator (observed)</th>
+<th style="text-align: left;">Denominator (reference unit)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th style="text-align: left;"><p>Effect standardized to SD units</p></th>
+<th style="text-align: left;"><p>Cohen’s <span class="math inline">\(d\)</span></p></th>
+<td style="text-align: left;"><p>Estimate minus expected value if no effect (null)</p>
+<p>Same as test statistic’s numerator</p></td>
+<td style="text-align: left;"><p>How off an individual raw score could be by chance (<span class="math inline">\(SD\)</span>)</p></td>
+</tr>
+<tr class="even">
+<th style="text-align: left;">Change in <span class="math inline">\(Y\)</span> per unit change in <span class="math inline">\(X\)</span></th>
+<th style="text-align: left;">Unstandardized regression coefficient (<span class="math inline">\(b\)</span>)</th>
+<td style="text-align: left;">Covariance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></td>
+<td style="text-align: left;">Variance of <span class="math inline">\(X\)</span></td>
+</tr>
+<tr class="odd">
+<th style="text-align: left;">Standardized correlation</th>
+<th style="text-align: left;">Standardized regression coefficient (<span class="math inline">\(\beta\)</span>) or Pearson’s <span class="math inline">\(r\)</span></th>
+<td style="text-align: left;">Covariance between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></td>
+<td style="text-align: left;">Maximum possible covariance given the spread of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></td>
+</tr>
+<tr class="even">
+<th rowspan="2" style="text-align: left;"> Proportion of variance explained</th>
+<th style="text-align: left;"><span class="math inline">\(R^2\)</span> or <span class="math inline">\(\eta^2\)</span></th>
+<td style="text-align: left;"><span class="math inline">\(SS\)</span> of estimates predicted by groups, conditions, or predictors</td>
+<td style="text-align: left;">Total <span class="math inline">\(SS\)</span> of individual scores</td>
+</tr>
+<tr class="odd">
+<th style="text-align: left;">Adjusted <span class="math inline">\(R^2\)</span> or Partial <span class="math inline">\(\eta^2\)</span></th>
+<td style="text-align: left;"><span class="math inline">\(SS\)</span> of estimates predicted by groups, conditions, or predictors</td>
+<td style="text-align: left;"><span class="math inline">\(SS\)</span> of individual scores after removing variance from other factors or individual differences</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div id="tbl-cohens-d-formula" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-cohens-d-formula-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;9: <strong>Cohen’s d Formulas</strong>
+</figcaption>
+<div aria-describedby="tbl-cohens-d-formula-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table id="tbl-cohens-d-formula" class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Test</th>
+<th style="text-align: left;">Formula</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th style="text-align: left;">One-sample z-test</th>
+<td style="text-align: left;"><span class="math display">\[\frac{M - \mu_0}{\sigma}\]</span></td>
+</tr>
+<tr class="even">
+<th style="text-align: left;">One-sample t-test</th>
+<td style="text-align: left;"><span class="math display">\[\frac{M - \mu_0}{s}\]</span></td>
+</tr>
+<tr class="odd">
+<th style="text-align: left;">Paired Samples t-test</th>
+<td style="text-align: left;"><span class="math display">\[\frac{M_D - {\mu_D}_0}{s_D}\]</span></td>
+</tr>
+<tr class="even">
+<th style="text-align: left;">Independent Samples t-test</th>
+<td style="text-align: left;"><span class="math display">\[\frac{(M_1 - M_2) - (\mu_1 - \mu_2)}{s_\text{pooled}}\]</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div id="tbl-eta2-formula" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-eta2-formula-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;10: <strong><span class="math inline">\(\eta^2\)</span> and <span class="math inline">\(R^2\)</span> Formulas</strong>
+</figcaption>
+<div aria-describedby="tbl-eta2-formula-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table id="tbl-eta2-formula" class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Metric</th>
+<th style="text-align: left;">Test</th>
+<th style="text-align: left;">Formula</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th style="text-align: left;"><span class="math inline">\(\eta^2\)</span></th>
+<td style="text-align: left;">One-way Between-Subjects ANOVA</td>
+<td style="text-align: left;"><span class="math display">\[\frac{SS_\text{between}}{SS_\text{between} + SS_\text{within}}\]</span></td>
+</tr>
+<tr class="even">
+<th rowspan="3" style="text-align: left;"> <span class="math inline">\(\eta^2_p\)</span> (partial <span class="math inline">\(\eta^2\)</span>)</th>
+<td style="text-align: left;">One-way Repeated-Measures ANOVA</td>
+<td style="text-align: left;"><span class="math display">\[\frac{SS_\text{between}}{SS_\text{between} + SS_\text{error}}\]</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Factorial Between-Subjects ANOVA</td>
+<td style="text-align: left;"><span class="math display">\[\frac{SS_\text{factor}}{SS_\text{factor} + SS_\text{within}}\]</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Factorial Repeated-Measures ANOVA</td>
+<td style="text-align: left;"><span class="math display">\[\frac{SS_\text{factor}}{SS_\text{factor} + SS_\text{error}}\]</span></td>
+</tr>
+<tr class="odd">
+<th style="text-align: left;"><span class="math inline">\(R^2\)</span></th>
+<td style="text-align: left;">Simple Linear Regression</td>
+<td style="text-align: left;"><span class="math display">\[\frac{SS_\text{predictor}}{SS_\text{predictor} + SS_\text{residuals}}\]</span> = <span class="math inline">\(1-\frac{SS_\text{residuals}}{SS_\text{total}}\)</span></td>
+</tr>
+<tr class="even">
+<th style="text-align: left;"><span class="math inline">\(R^2_\text{adj}\)</span> (adjusted <span class="math inline">\(R^2\)</span>)</th>
+<td style="text-align: left;">Multiple Linear Regression</td>
+<td style="text-align: left;"><span class="math display">\[\frac{SS_\text{model}}{SS_\text{model} + SS_\text{residuals}}\]</span> = <span class="math display">\[1 - \frac{SS_\text{residuals}/df_\text{residuals}}{SS_\text{total}/df_\text{total}}\]</span></td>
+</tr>
+<tr class="odd">
+<th style="text-align: left;"><span class="math inline">\(b\)</span></th>
+<td style="text-align: left;">Simple Linear Regression</td>
+<td style="text-align: left;"><span class="math display">\[\frac{\text{Cov}(X, Y)}{\text{Var}(X)}\]</span></td>
+</tr>
+<tr class="even">
+<th style="text-align: left;"><p><span class="math inline">\(\beta\)</span></p></th>
+<td style="text-align: left;"><p>Simple Linear Regression</p></td>
+<td style="text-align: left;"><p><span class="math display">\[\frac{\text{Cov}(X, Y)}{s_X s_Y}\]</span></p>
+<p>= <span class="math inline">\(r\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
 
 
 </section>
+</section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Standard Error of the Mean (SEM) is the standard deviation of the sampling distribution of the mean. Because the variance of a sum of independent values is the sum of their variances, the variance of the mean is the population variance divided by the sample size. The SEM is therefore the square root of that: the population standard deviation divided by the square root of the sample size. When the population standard deviation is unknown, the sample standard deviation is used instead.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

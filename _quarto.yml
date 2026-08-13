@@ -40,6 +40,7 @@ website:
       - section: "Appendix"
         contents:
           - appendix-stats-decisions.qmd
+          - appendix-stats-overview.qmd
     # logo: ResearchMethods.png
 
 format:
