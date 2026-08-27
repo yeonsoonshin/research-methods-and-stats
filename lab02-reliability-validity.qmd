@@ -266,7 +266,7 @@ print(round(bfi$alpha, 3))
 
 ## Validity (convergent validity)
 
-Validity is the extent to which a measure actually measures what it is supposed to measure. There are several types of validity, including face validity, content validity, criterion validity, and convergent and divergent validity. In this lab, we will focus on convergent validity, which is the extent to which a measure correlates with other measures of the same construct.
+Validity is the extent to which a measure actually measures what it is supposed to measure. In this lab, we will focus on convergent validity, which is a kind of criterion validity that measures the extent to which a measure correlates with other measures of the same construct.
 
 Luckily, we have two different scales measuring the same construct in the same individuals -- TIPI and BFI. If someone scores high on Extraversion in TIPI, we expect that that person should also score high on Extraversion in BFI too. We will calculate the correlation between the two scales for each of the five traits.
 
@@ -353,4 +353,4 @@ Now that you have seen how to calculate the correlation between TIPI and BFI for
 
 ## Wrapping up {.unnumbered}
 
-1. **Discuss**: You are interested how openness to openness to experience predicts political orientation. You have two options: TIPI and BFI. Which scale would you choose and why?
+1. **Discuss**: You are interested how openness to experience predicts political orientation. You have two options: TIPI and BFI. Which scale would you choose and why?

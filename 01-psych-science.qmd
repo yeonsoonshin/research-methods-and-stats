@@ -1,6 +1,8 @@
 ---
 author: 
   - "Yeon Soon Shin"
+  - "Anjali Thapar"
+  - "Dustin Albert"
   - "Matthew J. C. Crump"
   - "Rajiv Jhangiani"
   - "Carrie Cuttler"
@@ -49,7 +51,7 @@ Rationalism also involves **inductive reasoning**, where we draw general conclus
 
 ### Empiricism
 
-Empiricism involves acquiring knowledge through observation and experience. Once again many of you may have believed that all swans are white because you have only ever seen white swans. For centuries people believed the world is flat because it appears to be flat. These examples and the many visual illusions that trick our senses illustrate the problems with relying on empiricism alone to derive knowledge. We are limited in what we can experience and observe and our senses can deceive us. Moreover, our prior experiences can alter the way we perceive events. 
+Empiricism involves acquiring knowledge through direct observations of events or experiences using senses or instruments that assist the senses. Once again many of you may have believed that all swans are white because you have only ever seen white swans. For centuries people believed the world is flat because it appears to be flat. These examples and the many visual illusions that trick our senses illustrate the problems with relying on empiricism alone to derive knowledge. We are limited in what we can experience and observe and our senses can deceive us. Moreover, our prior experiences can alter the way we perceive events. 
 
 Even extensive experience may not expose us to the full range of possibilities, and our everyday observations often fail to account for alternative explanations. For example, you may think your friend is lying because they are acting strangely, but their behavior might actually be explained by an unrelated factor—perhaps they recently broke up with someone and you happen to see them only when that person is nearby. This uncontrolled factor (the ex's presence) confounds your observations and leads you to an incorrect conclusion. Ruling out such alternative explanations is a key part of the scientific method, and this is often difficult to do with casual observation alone. 
 
@@ -170,7 +172,7 @@ Why should we concern ourselves with pseudoscience? There are at least three rea
     a. Is it wrong to tell a lie?
     a. Is butter more delicious than olive oil?
     a. Do Americans prefer butter over olive oil?
-1. **Practice**: List three empirical questions about human behavior. List three nonempirical questions about human behavior.
+1.  **Practice**: List three empirical questions about human behavior. List three nonempirical questions about human behavior.
 1.  **Discussion**: Consider the following psychological claim. “People’s choice of spouse is strongly influenced by their perception of their own parents. Some choose a spouse who is similar in some way to one of their parents. Others choose a spouse who is different from one of their parents.” Is this claim falsifiable? Why or why not?
 1.  **Discussion**: People sometimes suggest that psychology cannot be a science because either (a) human behavior cannot be predicted with perfect accuracy or (b) much of its subject matter (e.g., thoughts and feelings) cannot be observed directly. Do you agree or disagree with each of these ideas? Why?
 
@@ -229,10 +231,10 @@ Now that you understand what science is and why it matters for psychology, let's
 
 ### A Model of Scientific Research in Psychology
 
-```{r}
+```{r echo=FALSE}
 #| label: fig-c1fig1
 #| fig-cap: "A simple model of scientific research in Psychology."
-#| fig-alt: "TODO"
+#| fig-alt: "A cyclical research process starting with informal observations or practical problems leading to a research question, followed by empirical study, data analysis, conclusions, and research literature. The cycle includes blue arrows showing progression through study phases and green arrows indicating feedback between research literature and research question."
 
 knitr::include_graphics("Figures/C1Figure1.png")
 ```
@@ -259,10 +261,10 @@ Among the very best hypotheses are those that distinguish between competing theo
 
 ### Theory Testing
 
-```{r}
+```{r echo=FALSE}
 #| label: fig-c1fig2
 #| fig-cap: "**Theory Testing**. Combined with the General Model of Scientific Research in Psychology, they form a model of theoretically motivated research."
-#| fig-alt: "TODO"
+#| fig-alt: "Two circles showing cyclical processes. Outer circle showing hypothesis derivation, hypothesis testing, theory evaluation, and theory construction/revision, inner circle is the General Model of Scientific Research cycle."
 
 knitr::include_graphics("Figures/C1Figure2.png")
 ```
@@ -293,5 +295,38 @@ Finally, the hypothesis should be **positive**. That is, the hypothesis should m
     a. Social media use does not increase depression in teens.
     a. Based on the drive theory of social facilitation and inhibition, students will solve simple math problems faster when working in a group than when working alone.
     a. Social Dominance Theory proposes that high-status groups use legitimizing myths to maintain their position (e.g., meritocracy). Therefore, people with high social dominance orientation will have higher self-esteem.
+
+## Assessing the Quality of Research
+
+Good research is reliable and valid. As we discussed in the fundamental features of science, science is self-correcting, and this is accomplished in part by replicating research studies and finding reliable results. On top of reliability, research must be valid, and there are four validities that are important to consider when evaluating research [@kenny_estimating_1981; @morling_guide_2014]: internal validity, external validity, construct validity, and statistical validity. We will explore each validity in depth.
+
+### Construct Validity
+
+An important element to scrutinize in a study is the quality of how the constructs are measured or manipulated, called the construct validity. For example, Darley and Latané wanted to answer the research question “does helping behavior become diffused?” They hypothesized that participants in a lab would be less likely to help when they believed there were more potential helpers besides themselves. This conversion from research question to study design is called operationalization. Darley and Latané operationalized the construct of diffusion of responsibility by manipulating the number of potential helpers. In evaluating this design, we would say that the construct validity was very high because the experiment’s manipulations very clearly speak to the research question; there was a crisis, a way for the participant to help, and increasing the number of other students involved in the discussion, they provided a way to test diffusion.
+
+What if the number of conditions in Darley and Latané’s study changed? Consider if there were only two conditions: one student involved in the discussion or two. Even though we may see a decrease in helping by adding another person, it may not be a clear demonstration of diffusion of responsibility, just merely the presence of others. The construct validity would be lower. However, had there been five conditions, perhaps we would see the decrease continue with more people in the discussion or perhaps it would plateau after a certain number of people. In that situation, we may not necessarily be learning more about diffusion of responsibility or it may become a different phenomenon. By adding more conditions, the construct validity may not get higher. When designing your own study, consider how well the research question is operationalized in your study.
+
+
+### Statistical Validity
+
+A common critique of study is that a study did not have enough participants. The main reason for this criticism is that it is difficult to generalize about a population from a small sample. At the outset, it seems as though this critique is about external validity but there are studies where small sample sizes are not a problem. Therefore, small sample sizes are actually a critique of statistical validity. The statistical validity speaks to whether the statistics conducted in the study support the conclusions that are made.
+
+Proper statistical analysis should be conducted on the data to determine whether the difference or relationship that was predicted was found. The number of conditions and the number of total participants will determine the overall size of the effect. With this information, a power analysis can be conducted to ascertain whether you are likely to find a real difference. When designing a study, it is best to think about the power analysis so that the appropriate number of participants can be recruited and tested (more on effect sizes in Chapter 12). To design a statistically valid study, thinking about the statistical tests at the beginning of the design will help ensure the results can be believed.
+
+### External Validity
+
+In many psychology experiments, the participants are all undergraduate students and come to a classroom or laboratory to fill out a series of paper-and-pencil questionnaires or to perform a carefully designed computerized task. Consider, for example, an experiment in which researcher Barbara Fredrickson and her colleagues had undergraduate students come to a laboratory on campus and complete a math test while wearing a swimsuit [@fredrickson_that_1998]. At first, this manipulation might seem silly. When will undergraduate students ever have to complete math tests in their swimsuits outside of this experiment?
+
+The issue we are confronting is that of external validity. An empirical study is high in external validity if the way it was conducted supports generalizing the results to people and situations beyond those actually studied. As a general rule, studies are higher in external validity when the participants and the situation studied are similar to those that the researchers want to generalize to and participants encounter everyday, often described as mundane realism. Imagine, for example, that a group of researchers is interested in how shoppers in large grocery stores are affected by whether breakfast cereal is packaged in yellow or purple boxes. Their study would be high in external validity and have high mundane realism if they studied the decisions of ordinary people doing their weekly shopping in a real grocery store. If the shoppers bought much more cereal in purple boxes, the researchers would be fairly confident that this increase would be true for other shoppers in other stores. Their study would be relatively low in external validity, however, if they studied a sample of undergraduate students in a laboratory at a selective university who merely judged the appeal of various colors presented on a computer screen; however, this study would have high psychological realism where the same mental process is used in both the laboratory and in the real world. If the students judged purple to be more appealing than yellow, the researchers would not be very confident that this preference is relevant to grocery shoppers’ cereal-buying decisions because of low external validity but they could be confident that the visual processing of colors has high psychological realism. Another important aspect to consider is whether the sample of participants is representative of the population to which the researchers want to generalize. For example, if the everyday grocery shoppers are a diverse group of people, but the participants in the study are all undergraduate students, then the study would have low external validity because the sample is not representative of the population. In general, studies that use a more diverse sample of participants and that are conducted in real-world settings have higher external validity than studies that use a homogeneous sample of participants and that are conducted in a laboratory setting.
+
+### Internal Validity
+
+Internal validity concerns the causal conclusions that researchers draw from their studies. A common saying in science is “Correlation does not imply causation.” For example, if it were the case that people who exercise regularly are happier than people who do not exercise regularly, this implication would not necessarily mean that exercising increases people’s happiness. It could mean instead that greater happiness causes people to exercise (the directionality problem) or that something like better physical health causes people to exercise and be happier (the third-variable problem).
+
+An empirical study is said to be high in internal validity if the way it was conducted supports the causal conclusions about the any observed differences among the groups being compared, and alternative explanations are ruled out.
+
+### Prioritizing Validities
+
+These four big validities–construct, statistical, external, and internal–are useful to keep in mind when both reading about other studies and designing your own. However, researchers must prioritize and often it is not possible to have high validity in all four areas. Morling [-@morling_guide_2014] points out that most psychology studies have high internal and construct validity but sometimes sacrifice external validity.
 
 ## References {.unnumbered}

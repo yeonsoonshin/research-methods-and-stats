@@ -7,6 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Yeon Soon Shin">
+<meta name="author" content="Anjali Thapar">
+<meta name="author" content="Dustin Albert">
 <meta name="author" content="Matthew J. C. Crump">
 <meta name="author" content="Rajiv Jhangiani">
 <meta name="author" content="Carrie Cuttler">
@@ -32,41 +34,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -197,6 +164,12 @@ div.csl-indent {
   <div class="sidebar-item-container"> 
   <a href="./02-research-questions-and-claims.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Research Questions, Designs, and Validity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-measurement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Measurement</span></a>
   </div>
 </li>
       </ul>
@@ -330,6 +303,14 @@ div.csl-indent {
   <li><a href="#key-takeaways-3" id="toc-key-takeaways-3" class="nav-link" data-scroll-target="#key-takeaways-3">Key Takeaways</a></li>
   <li><a href="#exercises-3" id="toc-exercises-3" class="nav-link" data-scroll-target="#exercises-3">Exercises</a></li>
   </ul></li>
+  <li><a href="#assessing-the-quality-of-research" id="toc-assessing-the-quality-of-research" class="nav-link" data-scroll-target="#assessing-the-quality-of-research"><span class="header-section-number">1.5</span> Assessing the Quality of Research</a>
+  <ul class="collapse">
+  <li><a href="#construct-validity" id="toc-construct-validity" class="nav-link" data-scroll-target="#construct-validity"><span class="header-section-number">1.5.1</span> Construct Validity</a></li>
+  <li><a href="#statistical-validity" id="toc-statistical-validity" class="nav-link" data-scroll-target="#statistical-validity"><span class="header-section-number">1.5.2</span> Statistical Validity</a></li>
+  <li><a href="#external-validity" id="toc-external-validity" class="nav-link" data-scroll-target="#external-validity"><span class="header-section-number">1.5.3</span> External Validity</a></li>
+  <li><a href="#internal-validity" id="toc-internal-validity" class="nav-link" data-scroll-target="#internal-validity"><span class="header-section-number">1.5.4</span> Internal Validity</a></li>
+  <li><a href="#prioritizing-validities" id="toc-prioritizing-validities" class="nav-link" data-scroll-target="#prioritizing-validities"><span class="header-section-number">1.5.5</span> Prioritizing Validities</a></li>
+  </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
@@ -350,6 +331,8 @@ div.csl-indent {
     <div class="quarto-title-meta-heading">Authors</div>
     <div class="quarto-title-meta-contents">
              <p>Yeon Soon Shin </p>
+             <p>Anjali Thapar </p>
+             <p>Dustin Albert </p>
              <p>Matthew J. C. Crump </p>
              <p>Rajiv Jhangiani </p>
              <p>Carrie Cuttler </p>
@@ -402,7 +385,7 @@ div.csl-indent {
 </section>
 <section id="empiricism" class="level3" data-number="1.1.4">
 <h3 data-number="1.1.4" class="anchored" data-anchor-id="empiricism"><span class="header-section-number">1.1.4</span> Empiricism</h3>
-<p>Empiricism involves acquiring knowledge through observation and experience. Once again many of you may have believed that all swans are white because you have only ever seen white swans. For centuries people believed the world is flat because it appears to be flat. These examples and the many visual illusions that trick our senses illustrate the problems with relying on empiricism alone to derive knowledge. We are limited in what we can experience and observe and our senses can deceive us. Moreover, our prior experiences can alter the way we perceive events.</p>
+<p>Empiricism involves acquiring knowledge through direct observations of events or experiences using senses or instruments that assist the senses. Once again many of you may have believed that all swans are white because you have only ever seen white swans. For centuries people believed the world is flat because it appears to be flat. These examples and the many visual illusions that trick our senses illustrate the problems with relying on empiricism alone to derive knowledge. We are limited in what we can experience and observe and our senses can deceive us. Moreover, our prior experiences can alter the way we perceive events.</p>
 <p>Even extensive experience may not expose us to the full range of possibilities, and our everyday observations often fail to account for alternative explanations. For example, you may think your friend is lying because they are acting strangely, but their behavior might actually be explained by an unrelated factor—perhaps they recently broke up with someone and you happen to see them only when that person is nearby. This uncontrolled factor (the ex’s presence) confounds your observations and leads you to an incorrect conclusion. Ruling out such alternative explanations is a key part of the scientific method, and this is often difficult to do with casual observation alone.</p>
 <p>Nevertheless, empiricism is at the heart of the scientific method. Science relies on observations. But not just any observations, science relies on <em>structured</em> observations which is known as systematic empiricism.</p>
 </section>
@@ -579,12 +562,11 @@ div.csl-indent {
 <section id="a-model-of-scientific-research-in-psychology" class="level3" data-number="1.4.1">
 <h3 data-number="1.4.1" class="anchored" data-anchor-id="a-model-of-scientific-research-in-psychology"><span class="header-section-number">1.4.1</span> A Model of Scientific Research in Psychology</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"Figures/C1Figure1.png"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="fig-c1fig1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="TODO">
+<div id="fig-c1fig1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A cyclical research process starting with informal observations or practical problems leading to a research question, followed by empirical study, data analysis, conclusions, and research literature. The cycle includes blue arrows showing progression through study phases and green arrows indicating feedback between research literature and research question.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-c1fig1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Figures/C1Figure1.png" class="img-fluid figure-img" alt="TODO">
+<img src="Figures/C1Figure1.png" class="img-fluid figure-img" alt="A cyclical research process starting with informal observations or practical problems leading to a research question, followed by empirical study, data analysis, conclusions, and research literature. The cycle includes blue arrows showing progression through study phases and green arrows indicating feedback between research literature and research question.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-c1fig1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: A simple model of scientific research in Psychology.
@@ -609,12 +591,11 @@ Figure&nbsp;1: A simple model of scientific research in Psychology.
 <section id="theory-testing" class="level3" data-number="1.4.3">
 <h3 data-number="1.4.3" class="anchored" data-anchor-id="theory-testing"><span class="header-section-number">1.4.3</span> Theory Testing</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"Figures/C1Figure2.png"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="fig-c1fig2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="TODO">
+<div id="fig-c1fig2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two circles showing cyclical processes. Outer circle showing hypothesis derivation, hypothesis testing, theory evaluation, and theory construction/revision, inner circle is the General Model of Scientific Research cycle.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-c1fig2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Figures/C1Figure2.png" class="img-fluid figure-img" alt="TODO">
+<img src="Figures/C1Figure2.png" class="img-fluid figure-img" alt="Two circles showing cyclical processes. Outer circle showing hypothesis derivation, hypothesis testing, theory evaluation, and theory construction/revision, inner circle is the General Model of Scientific Research cycle.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-c1fig2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: <strong>Theory Testing</strong>. Combined with the General Model of Scientific Research in Psychology, they form a model of theoretically motivated research.
@@ -653,6 +634,34 @@ Figure&nbsp;2: <strong>Theory Testing</strong>. Combined with the General Model 
 </ol>
 </section>
 </section>
+<section id="assessing-the-quality-of-research" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="assessing-the-quality-of-research"><span class="header-section-number">1.5</span> Assessing the Quality of Research</h2>
+<p>Good research is reliable and valid. As we discussed in the fundamental features of science, science is self-correcting, and this is accomplished in part by replicating research studies and finding reliable results. On top of reliability, research must be valid, and there are four validities that are important to consider when evaluating research <span class="citation" data-cites="kenny_estimating_1981 morling_guide_2014">(<a href="#ref-kenny_estimating_1981" role="doc-biblioref">Kenny and Judd 1981</a>; <a href="#ref-morling_guide_2014" role="doc-biblioref">Morling 2014</a>)</span>: internal validity, external validity, construct validity, and statistical validity. We will explore each validity in depth.</p>
+<section id="construct-validity" class="level3" data-number="1.5.1">
+<h3 data-number="1.5.1" class="anchored" data-anchor-id="construct-validity"><span class="header-section-number">1.5.1</span> Construct Validity</h3>
+<p>An important element to scrutinize in a study is the quality of how the constructs are measured or manipulated, called the construct validity. For example, Darley and Latané wanted to answer the research question “does helping behavior become diffused?” They hypothesized that participants in a lab would be less likely to help when they believed there were more potential helpers besides themselves. This conversion from research question to study design is called operationalization. Darley and Latané operationalized the construct of diffusion of responsibility by manipulating the number of potential helpers. In evaluating this design, we would say that the construct validity was very high because the experiment’s manipulations very clearly speak to the research question; there was a crisis, a way for the participant to help, and increasing the number of other students involved in the discussion, they provided a way to test diffusion.</p>
+<p>What if the number of conditions in Darley and Latané’s study changed? Consider if there were only two conditions: one student involved in the discussion or two. Even though we may see a decrease in helping by adding another person, it may not be a clear demonstration of diffusion of responsibility, just merely the presence of others. The construct validity would be lower. However, had there been five conditions, perhaps we would see the decrease continue with more people in the discussion or perhaps it would plateau after a certain number of people. In that situation, we may not necessarily be learning more about diffusion of responsibility or it may become a different phenomenon. By adding more conditions, the construct validity may not get higher. When designing your own study, consider how well the research question is operationalized in your study.</p>
+</section>
+<section id="statistical-validity" class="level3" data-number="1.5.2">
+<h3 data-number="1.5.2" class="anchored" data-anchor-id="statistical-validity"><span class="header-section-number">1.5.2</span> Statistical Validity</h3>
+<p>A common critique of study is that a study did not have enough participants. The main reason for this criticism is that it is difficult to generalize about a population from a small sample. At the outset, it seems as though this critique is about external validity but there are studies where small sample sizes are not a problem. Therefore, small sample sizes are actually a critique of statistical validity. The statistical validity speaks to whether the statistics conducted in the study support the conclusions that are made.</p>
+<p>Proper statistical analysis should be conducted on the data to determine whether the difference or relationship that was predicted was found. The number of conditions and the number of total participants will determine the overall size of the effect. With this information, a power analysis can be conducted to ascertain whether you are likely to find a real difference. When designing a study, it is best to think about the power analysis so that the appropriate number of participants can be recruited and tested (more on effect sizes in Chapter 12). To design a statistically valid study, thinking about the statistical tests at the beginning of the design will help ensure the results can be believed.</p>
+</section>
+<section id="external-validity" class="level3" data-number="1.5.3">
+<h3 data-number="1.5.3" class="anchored" data-anchor-id="external-validity"><span class="header-section-number">1.5.3</span> External Validity</h3>
+<p>In many psychology experiments, the participants are all undergraduate students and come to a classroom or laboratory to fill out a series of paper-and-pencil questionnaires or to perform a carefully designed computerized task. Consider, for example, an experiment in which researcher Barbara Fredrickson and her colleagues had undergraduate students come to a laboratory on campus and complete a math test while wearing a swimsuit <span class="citation" data-cites="fredrickson_that_1998">(<a href="#ref-fredrickson_that_1998" role="doc-biblioref">Fredrickson et al. 1998</a>)</span>. At first, this manipulation might seem silly. When will undergraduate students ever have to complete math tests in their swimsuits outside of this experiment?</p>
+<p>The issue we are confronting is that of external validity. An empirical study is high in external validity if the way it was conducted supports generalizing the results to people and situations beyond those actually studied. As a general rule, studies are higher in external validity when the participants and the situation studied are similar to those that the researchers want to generalize to and participants encounter everyday, often described as mundane realism. Imagine, for example, that a group of researchers is interested in how shoppers in large grocery stores are affected by whether breakfast cereal is packaged in yellow or purple boxes. Their study would be high in external validity and have high mundane realism if they studied the decisions of ordinary people doing their weekly shopping in a real grocery store. If the shoppers bought much more cereal in purple boxes, the researchers would be fairly confident that this increase would be true for other shoppers in other stores. Their study would be relatively low in external validity, however, if they studied a sample of undergraduate students in a laboratory at a selective university who merely judged the appeal of various colors presented on a computer screen; however, this study would have high psychological realism where the same mental process is used in both the laboratory and in the real world. If the students judged purple to be more appealing than yellow, the researchers would not be very confident that this preference is relevant to grocery shoppers’ cereal-buying decisions because of low external validity but they could be confident that the visual processing of colors has high psychological realism. Another important aspect to consider is whether the sample of participants is representative of the population to which the researchers want to generalize. For example, if the everyday grocery shoppers are a diverse group of people, but the participants in the study are all undergraduate students, then the study would have low external validity because the sample is not representative of the population. In general, studies that use a more diverse sample of participants and that are conducted in real-world settings have higher external validity than studies that use a homogeneous sample of participants and that are conducted in a laboratory setting.</p>
+</section>
+<section id="internal-validity" class="level3" data-number="1.5.4">
+<h3 data-number="1.5.4" class="anchored" data-anchor-id="internal-validity"><span class="header-section-number">1.5.4</span> Internal Validity</h3>
+<p>Internal validity concerns the causal conclusions that researchers draw from their studies. A common saying in science is “Correlation does not imply causation.” For example, if it were the case that people who exercise regularly are happier than people who do not exercise regularly, this implication would not necessarily mean that exercising increases people’s happiness. It could mean instead that greater happiness causes people to exercise (the directionality problem) or that something like better physical health causes people to exercise and be happier (the third-variable problem).</p>
+<p>An empirical study is said to be high in internal validity if the way it was conducted supports the causal conclusions about the any observed differences among the groups being compared, and alternative explanations are ruled out.</p>
+</section>
+<section id="prioritizing-validities" class="level3" data-number="1.5.5">
+<h3 data-number="1.5.5" class="anchored" data-anchor-id="prioritizing-validities"><span class="header-section-number">1.5.5</span> Prioritizing Validities</h3>
+<p>These four big validities–construct, statistical, external, and internal–are useful to keep in mind when both reading about other studies and designing your own. However, researchers must prioritize and often it is not possible to have high validity in all four areas. Morling <span class="citation" data-cites="morling_guide_2014">(<a href="#ref-morling_guide_2014" role="doc-biblioref">2014</a>)</span> points out that most psychology studies have high internal and construct validity but sometimes sacrifice external validity.</p>
+</section>
+</section>
 <section id="references" class="level2 unnumbered">
 
 
@@ -667,6 +676,9 @@ Bushman, Brad J. 2002. <span>“Does Venting Anger Feed or Extinguish the Flame?
 </div>
 <div id="ref-collet_phoning_2010" class="csl-entry" role="listitem">
 Collet, C., A. Guillot, and C. Petit. 2010. <span>“Phoning While Driving <span>I</span>: A Review of Epidemiological, Psychological, Behavioural and Physiological Studies.”</span> <em>Ergonomics</em> 53 (5): 589–601.
+</div>
+<div id="ref-fredrickson_that_1998" class="csl-entry" role="listitem">
+Fredrickson, Barbara L., Tomi-Ann Roberts, Stephanie M. Noll, Diane M. Quinn, and Jean M. Twenge. 1998. <span>“That Swimsuit Becomes You: Sex Differences in Self-Objectification, Restrained Eating, and Math Performance.”</span> <em>Journal of Personality and Social Psychology</em> 75 (1): 269.
 </div>
 <div id="ref-gilovich_how_2008" class="csl-entry" role="listitem">
 Gilovich, Thomas. 2008. <em>How We Know What Isn’t so</em>. <span>Simon and Schuster</span>.
@@ -683,6 +695,9 @@ Johnson, David J., Felix Cheung, and M. Brent Donnellan. 2014. <span>“Does Cle
 <div id="ref-kassin_psychology_2004" class="csl-entry" role="listitem">
 Kassin, Saul M., and Gisli H. Gudjonsson. 2004. <span>“The Psychology of Confessions: <span>A</span> Review of the Literature and Issues.”</span> <em>Psychological Science in the Public Interest</em> 5 (2): 33–67.
 </div>
+<div id="ref-kenny_estimating_1981" class="csl-entry" role="listitem">
+Kenny, D. A., and C. Judd. 1981. <em>Estimating the Effects of Social Interventions</em>. <span>New York, NY: Cambridge University Press</span>.
+</div>
 <div id="ref-klein_investigating_2014" class="csl-entry" role="listitem">
 <span class="nocase">Klein, Richard A., Kate A. Ratliff, Michelangelo Vianello, et al.</span> 2014. <span>“Investigating Variation in Replicability.”</span> <em>Social Psychology</em>.
 </div>
@@ -694,6 +709,9 @@ Mann, Traci, A. Janet Tomiyama, Erika Westling, Ann-Marie Lew, Barbra Samuels, a
 </div>
 <div id="ref-mehl_are_2007" class="csl-entry" role="listitem">
 Mehl, Matthias R., Simine Vazire, Nairán Ramı́rez-Esparza, Richard B. Slatcher, and James W. Pennebaker. 2007. <span>“Are Women Really More Talkative Than Men?”</span> <em>Science</em> 317 (5834): 82–82.
+</div>
+<div id="ref-morling_guide_2014" class="csl-entry" role="listitem">
+Morling, Beth. 2014. <span>“Guide <span>Your Students</span> to <span>Become Better Research Consumers</span>.”</span> <em>APS Observer</em> 27 (4).
 </div>
 <div id="ref-norcross_evidence-based_2006" class="csl-entry" role="listitem">
 Norcross, John C., Larry E. Beutler, and Ronald F. Levant. 2006. <em>Evidence-Based Practices in Mental Health: <span>Debate</span> and Dialogue on the Fundamental Questions.</em> <span>American Psychological Association</span>.
