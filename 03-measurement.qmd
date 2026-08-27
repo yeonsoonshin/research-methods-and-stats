@@ -8,9 +8,12 @@ author:
   - "Rajiv Jhangiani"
   - "I-Chant A. Chiang"
   - "Dana C. Leighton"
+format:
+    html:
+        number-offset: 2
 ---
 
-# Measurement
+# Ch.3: Measurement
 
 Researchers Tara MacDonald and Alanna Martineau were interested in the effect of female university students’ moods on their intentions to have unprotected sexual intercourse [@macdonald_self-esteem_2002]. In a carefully designed empirical study, they found that being in a negative mood increased intentions to have unprotected sex—but only for students who were low in self-esteem. Although there are many challenges involved in conducting a study like this, one of the primary ones is the measurement of the relevant variables. In this study, the researchers needed to know whether each of their participants had high or low self-esteem, which of course required measuring their self-esteem. They also needed to be sure that their attempt to put people into a negative mood (by having them think negative thoughts) was successful, which required measuring their moods. Finally, they needed to see whether self-esteem and mood were related to participants’ intentions to have unprotected sexual intercourse, which required measuring these intentions.
 

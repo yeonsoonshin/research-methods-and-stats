@@ -8,9 +8,12 @@ author:
   - "Rajiv Jhangiani"
   - "I-Chant A. Chiang"
   - "Dana C. Leighton"
+format:
+    html:
+        number-offset: 1
 ---
 
-# Research Questions, Designs, and Validity
+# Ch.2: Research Questions/Claims and Designs
 
 <!--YS edit 20260721--> 
 As we discussed in the previous chapter, scientific research is conducted to answer empirical questions about the world, and the results of research are often summarized in the form of claims. In this chapter, we will examine the core components of these claims and how to evaluate them.
