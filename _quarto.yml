@@ -24,7 +24,7 @@ website:
     search: true
     contents:
       - index.qmd
-      - section: "Lecture"
+      - section: "Unit 1. The Foundations of Psychology Research"
         contents:
           - 01-psych-science.qmd
           - 02-research-questions-and-claims.qmd

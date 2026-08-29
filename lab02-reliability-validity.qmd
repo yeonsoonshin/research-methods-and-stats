@@ -4,7 +4,7 @@ format:
     html-math-method: plain
 ---
 
-# Reliability and Validity
+# Lab 2: Reliability and Validity
 
 
 In this lab, we will explore the concepts of measurement reliability and validity. Measurement is a critical aspect of empirical research, and it is the foundation for drawing valid conclusions from data. The high level question is: "Are we measuring what we think we are measuring?" To answer this question, we need to assess that the measure is targetting the construct of interest (validity) with a high level of precision (reliability).

@@ -4,7 +4,7 @@ format:
     html-math-method: plain
 ---
 
-# R Basics
+# Lab 1: R Basics
 
 R is a programming language to get some output from doing some operations on inputs.
 
