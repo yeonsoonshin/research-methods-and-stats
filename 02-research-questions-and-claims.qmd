@@ -76,23 +76,22 @@ Researchers in psychology are usually interested in drawing conclusions about a 
 ## Types of Research Questions and Claims
 
 <!-- YS addition 20260721 -->
-In the previous chapter, we discussed the goals of science: to describe, to predict, and to explain. The questions researchers ask and the claims they make are closely related to these goals. In this section, we will discuss three types of claims: frequency, association, and causal claims.
+In this section, we will discuss three types of claims: single-variable, association, and causal claims.
 
 ### Learning Objectives {.unnumbered}
 
-1. Explain how the types of research questions and claims are related to the goals of science.
-2. Describe the three types of research questions and claims.
-3. Define the directionality problem and the third-variable problem, and explain how they relate to causal claims.
+1. Describe the three types of research questions and claims.
+1. Define the directionality problem and the third-variable problem, and explain how they relate to causal claims.
 
-### Frequency Questions/ Claims
+### Single-Variable Questions/ Claims
 
-Some research questions in psychology are about one variable. <!--YS edit 20260721--> How frequent or common is a particular behavior or characteristic in a population? What is the average level of a particular characteristic in a population? Answers to thse types of questions are called **frequency claims**, and they **describe** the rate or level of a **single** variable.
+Some research questions in psychology are about one variable. <!--YS edit 20260721--> How frequent or common is a particular behavior or characteristic in a population? What is the average level of a particular characteristic in a population? Answers to thse types of questions are called **single-variable claims**, and they **characterize** a **single** variable by describing its average rate or frequency.
 
 For example, how common is it for soldiers who have served in the American Military to develop post-traumatic stress disorder (PTSD) after returning from a deployment in a war zone? How talkative are American university students on average? How much time per week do school children spend online? <!--YS edit 20260721--> Notice that there is only one variable in each of these questions: PTSD, talkativeness, and time spent online. American Militery soldiers, American university students, and school children are NOT variables, but rather the populations of interest. For example, if you measure PTSD levels in 100 soldiers who have served in the American Military, the PTSD levels will vary, but every one of the 100 respondents shares the same characteristic of being a soldier who has served in the American Military. Similarly, if you measure time spent online in 1,000 school children, the time spent online will vary, but every one of the 1,000 children studied share the same characteristic of being a school child. You are not making a claim about how militery service or being a school child causes PTSD or time spent online; you are simply describing the rate or level of PTSD/ time spent online in these populations.
 
 ### Association Questions/ Claims
 
-However, research questions in psychology are more likely to be about relationships between variables. A relationship exists between two variables when the average score on one differs systematically across the levels of the other (e.g., if the average exam score is higher among students who read the textbook versus those who did not). Studying relationships is important because instead of telling us about behaviors and psychological characteristics in isolation, it lets us make useful **predictions** about one variable based on the other. 
+However, research questions in psychology are more likely to be about relationships between variables. A relationship exists between two variables when the average score on one differs systematically across the levels of the other (e.g., if the average exam score is higher among students who read the textbook versus those who did not). Studying relationships is important because instead of telling us about behaviors and psychological characteristics in isolation, it lets us make useful predictions about one variable based on the other. 
 
 One basic form of relationship is a difference between the average scores of two groups on some variable of interest. A wide variety of research questions in psychology take this form. Are women really more talkative than men? Do people talking on a cell phone have poorer driving abilities than people not talking on a cell phone? Do people receiving Psychotherapy A tend to have fewer depressive symptoms than people receiving Psychotherapy B? Later we will also see that such relationships can involve more than two groups and that the groups can consist of the very same individuals tested at different times or under different conditions. For now, however, it is easiest to think in terms of two distinct groups.
 
@@ -137,13 +136,13 @@ So when can we make causal claims? We can make causal claims when we are confide
 
 ### Key Takeaways {.unnumbered}
 
-- Frequency claims describe the rate or level of a single variable in a population.
+- Single-variable claims characterize the state of a single variable in a population.
 - Association claims identify the relationship between two variables, which can be in the form of group differences or correlations, and allow us to make predictions about one variable based on the other variable.
 - Causal claims identify the cause-and-effect relationship between two variables,where changes in one variable causes changes in the other variable, and allow us to explain a phenomenon.
 
 ### Exercises {.unnumbered}
 
-1. **Practice**: Identify the type of research claim (frequency, association, or causal) in the following statements:
+1. **Practice**: Identify the type of research claim (single-variable, association, or causal) in the following statements:
     a. "42% of European adults never exercise."
     a. "Meditation enhances attention span."
     a. "33% of U.S. adolescents have tried smoking cigarettes."
@@ -187,15 +186,15 @@ Internal validity requires ruling out alternative explanations. To establish int
 ## Research Designs
 
 ### Learning Objectives {.unnumbered}
-1. Explain the types of research designs: descriptive, correlational, experimental, and quasi-experimental.
+1. Explain the types of research designs: single-variable, correlational, experimental, and quasi-experimental.
 2. Evaluate the strengths and weaknesses of each research design in terms of the three causal criteria.
 
-### Descriptive Studies
-Research can focus on a single variable and describe the state of the variable, answering frequency question. Although there is no widely shared term for this kind of research, we will call it descriptive research. For example, Stanley Milgram found that about two thirds of his research participants were willing to administer dangerous shocks to another person just because they were told to by an authority figure [@milgram_behavioral_1963]. He was primarily interested in one variable—the extent to which participants obeyed the researcher when he told them to shock the confederate—and he observed all participants performing the same task under the same conditions. 
+### Single-Variable Studies
+Research can focus on characterizing the state of a single variable. Although there is no widely shared term for this kind of research, we will call it single-variable research. For example, Stanley Milgram found that about two thirds of his research participants were willing to administer dangerous shocks to another person just because they were told to by an authority figure [@milgram_behavioral_1963]. He was primarily interested in one variable—the extent to which participants obeyed the researcher when he told them to shock the confederate—and he observed all participants performing the same task under the same conditions. 
 
-In another example of descriptive research, Elizabeth Loftus and Jacqueline Pickrell showed that it is relatively easy to “implant” false memories in people by repeatedly asking them about childhood events that did not actually happen to them [@loftus_formation_1995]. The variable was whether participants “remembered” having experienced mildly traumatic childhood events (e.g., getting lost in a shopping mall) that they had not actually experienced but that the research asked them about repeatedly. In this particular study, nearly a third of the participants “remembered” at least one event. (As with Milgram’s original study, this study inspired several later experiments on the factors that affect false memories.)
+In another example of single-variable research, Elizabeth Loftus and Jacqueline Pickrell showed that it is relatively easy to “implant” false memories in people by repeatedly asking them about childhood events that did not actually happen to them [@loftus_formation_1995]. The variable was whether participants “remembered” having experienced mildly traumatic childhood events (e.g., getting lost in a shopping mall) that they had not actually experienced but that the research asked them about repeatedly. In this particular study, nearly a third of the participants “remembered” at least one event. (As with Milgram’s original study, this study inspired several later experiments on the factors that affect false memories.)
 
-As these examples make clear, descriptive research can answer interesting and important questions. What it cannot do, however, is answer questions about statistical relationships between variables. This detail is a point that beginning researchers sometimes miss. Imagine, for example, a group of research methods students interested in the relationship between children’s being the victim of bullying and the children’s self-esteem. The first thing that is likely to occur to these researchers is to obtain a sample of middle-school students who have been bullied and then to measure their self-esteem. But this design would be a descriptive study with self-esteem as the only variable. Although it would tell the researchers something about the self-esteem of children who have been bullied, it would not tell them what they really want to know, which is how the self-esteem of children who have been bullied compares with the self-esteem of children who have not. Is it lower? Is it the same? Could it even be higher? To answer this question, their sample would also have to include middle-school students who have not been bullied thereby introducing another variable.
+As these examples make clear, single-variable research can answer interesting and important questions. What it cannot do, however, is answer questions about statistical relationships between variables. This detail is a point that beginning researchers sometimes miss. Imagine, for example, a group of research methods students interested in the relationship between children’s being the victim of bullying and the children’s self-esteem. The first thing that is likely to occur to these researchers is to obtain a sample of middle-school students who have been bullied and then to measure their self-esteem. But this design would be a single-variable study with self-esteem as the only variable. Although it would tell the researchers something about the self-esteem of children who have been bullied, it would not tell them what they really want to know, which is how the self-esteem of children who have been bullied compares with the self-esteem of children who have not. Is it lower? Is it the same? Could it even be higher? To answer this question, their sample would also have to include middle-school students who have not been bullied thereby introducing another variable.
 
 
 ### Correlational Studies
@@ -341,7 +340,7 @@ Of course, researchers using a nonequivalent groups design can take steps to ens
 
 
 ### Key Takeaways {.unnumbered}
-- Descriptive studies are used to answer frequency questions about a single variable. 
+- Single-variable studies are used to answer questions about a single variable. 
 - Correlational studies are used to answer association questions about the relationship between two variables.
 - Experimental studies are used to answer causal questions about the effect of one variable on another by manipulating the independent variable and controlling extraneous variables so that they do not become confounding variables.
 - Random assignment to conditions in between-subjects experiments or to orders of conditions in within-subjects experiments is a fundamental element of experimental research. 
