@@ -6,8 +6,12 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Yeon Soon Shin">
+<meta name="author" content="Anjali Thapar">
+<meta name="author" content="Gaby Mahrholz">
+<meta name="author" content="Carolina E. Kuepper-Tetzel">
 
-<title>lab01-r-basics – Research Methods and Statistics</title>
+<title>Lab 1. R Basics – Research Methods and Statistics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -122,7 +126,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab01-r-basics.html">Lab</a></li><li class="breadcrumb-item"><a href="./lab01-r-basics.html">Lab 1: R Basics</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab01-r-basics.html">Lab</a></li><li class="breadcrumb-item"><a href="./lab01-r-basics.html">Lab 1. R Basics</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -194,7 +198,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lab01-r-basics.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Lab 1: R Basics</span></a>
+ <span class="menu-text">Lab 1. R Basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -244,113 +248,904 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#lab-1-r-basics" id="toc-lab-1-r-basics" class="nav-link active" data-scroll-target="#lab-1-r-basics"><span class="header-section-number">1</span> Lab 1: R Basics</a>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#introduction-to-r-and-rstudio" id="toc-introduction-to-r-and-rstudio" class="nav-link" data-scroll-target="#introduction-to-r-and-rstudio"><span class="header-section-number">1</span> Introduction to R and RStudio</a>
   <ul>
-  <li><a href="#math-operators" id="toc-math-operators" class="nav-link" data-scroll-target="#math-operators"><span class="header-section-number">1.1</span> Math Operators</a></li>
-  <li><a href="#object-variable" id="toc-object-variable" class="nav-link" data-scroll-target="#object-variable"><span class="header-section-number">1.2</span> Object (Variable)</a></li>
-  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">1.3</span> Functions</a></li>
+  <li><a href="#r-studio-panes" id="toc-r-studio-panes" class="nav-link" data-scroll-target="#r-studio-panes"><span class="header-section-number">1.1</span> R Studio Panes</a>
+  <ul>
+  <li><a href="#source-pane" id="toc-source-pane" class="nav-link" data-scroll-target="#source-pane"><span class="header-section-number">1.1.1</span> Source Pane</a></li>
+  <li><a href="#console-pane" id="toc-console-pane" class="nav-link" data-scroll-target="#console-pane"><span class="header-section-number">1.1.2</span> Console Pane</a></li>
+  <li><a href="#environment-pane" id="toc-environment-pane" class="nav-link" data-scroll-target="#environment-pane"><span class="header-section-number">1.1.3</span> Environment Pane</a></li>
+  <li><a href="#files-pane" id="toc-files-pane" class="nav-link" data-scroll-target="#files-pane"><span class="header-section-number">1.1.4</span> Files Pane</a></li>
+  <li><a href="#keyboard-shortcuts" id="toc-keyboard-shortcuts" class="nav-link" data-scroll-target="#keyboard-shortcuts"><span class="header-section-number">1.1.5</span> Keyboard Shortcuts</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#writing-r-code" id="toc-writing-r-code" class="nav-link" data-scroll-target="#writing-r-code"><span class="header-section-number">2</span> Writing R Code</a>
+  <ul>
+  <li><a href="#r-console" id="toc-r-console" class="nav-link" data-scroll-target="#r-console"><span class="header-section-number">2.1</span> R Console</a>
+  <ul>
+  <li><a href="#keyboard-shortcuts-1" id="toc-keyboard-shortcuts-1" class="nav-link" data-scroll-target="#keyboard-shortcuts-1"><span class="header-section-number">2.1.0.1</span> Keyboard Shortcuts</a></li>
+  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1"><span class="header-section-number">2.1.1</span> Exercise 1</a></li>
+  </ul></li>
+  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto"><span class="header-section-number">2.2</span> Quarto</a>
+  <ul>
+  <li><a href="#markdown-formatted-text" id="toc-markdown-formatted-text" class="nav-link" data-scroll-target="#markdown-formatted-text"><span class="header-section-number">2.2.1</span> Markdown (formatted text)</a></li>
+  <li><a href="#code-chunks" id="toc-code-chunks" class="nav-link" data-scroll-target="#code-chunks"><span class="header-section-number">2.2.2</span> Code Chunks</a></li>
+  <li><a href="#optional-note-yaml-header" id="toc-optional-note-yaml-header" class="nav-link" data-scroll-target="#optional-note-yaml-header"><span class="header-section-number">2.2.3</span> (Optional Note) YAML header</a></li>
+  <li><a href="#rendering-quarto" id="toc-rendering-quarto" class="nav-link" data-scroll-target="#rendering-quarto"><span class="header-section-number">2.2.4</span> Rendering Quarto</a></li>
+  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2"><span class="header-section-number">2.2.5</span> Exercise 2</a></li>
+  <li><a href="#creating-and-saving-a-new-quarto-file" id="toc-creating-and-saving-a-new-quarto-file" class="nav-link" data-scroll-target="#creating-and-saving-a-new-quarto-file"><span class="header-section-number">2.2.6</span> Creating and Saving a New Quarto File</a></li>
+  <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3"><span class="header-section-number">2.2.7</span> Exercise 3</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#objects-and-functions-in-r" id="toc-objects-and-functions-in-r" class="nav-link" data-scroll-target="#objects-and-functions-in-r"><span class="header-section-number">3</span> Objects and Functions in R</a>
+  <ul>
+  <li><a href="#object-variable" id="toc-object-variable" class="nav-link" data-scroll-target="#object-variable"><span class="header-section-number">3.1</span> Object (Variable)</a>
+  <ul>
+  <li><a href="#exercise-4" id="toc-exercise-4" class="nav-link" data-scroll-target="#exercise-4"><span class="header-section-number">3.1.1</span> Exercise 4</a></li>
+  </ul></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">3.2</span> Functions</a>
+  <ul>
+  <li><a href="#exercise-5" id="toc-exercise-5" class="nav-link" data-scroll-target="#exercise-5"><span class="header-section-number">3.2.1</span> Exercise 5</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#installing-and-loading-packages" id="toc-installing-and-loading-packages" class="nav-link" data-scroll-target="#installing-and-loading-packages"><span class="header-section-number">4</span> Installing and Loading Packages</a>
+  <ul>
+  <li><a href="#installing-packages-with-install.packages" id="toc-installing-packages-with-install.packages" class="nav-link" data-scroll-target="#installing-packages-with-install.packages"><span class="header-section-number">4.0.1</span> Installing Packages with <code>install.packages()</code></a></li>
+  <li><a href="#loading-packages-with-library" id="toc-loading-packages-with-library" class="nav-link" data-scroll-target="#loading-packages-with-library"><span class="header-section-number">4.0.2</span> Loading packages with <code>library()</code></a></li>
+  </ul></li>
+  <li><a href="#reading-in-data" id="toc-reading-in-data" class="nav-link" data-scroll-target="#reading-in-data"><span class="header-section-number">5</span> Reading in Data</a>
+  <ul>
+  <li><a href="#exercise-6" id="toc-exercise-6" class="nav-link" data-scroll-target="#exercise-6"><span class="header-section-number">5.0.1</span> Exercise 6</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/yeonsoon/research-methods-and-stats-book/edit/master/lab01-r-basics.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab01-r-basics.html">Lab</a></li><li class="breadcrumb-item"><a href="./lab01-r-basics.html">Lab 1: R Basics</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content">
 
-
-
-
-<section id="lab-1-r-basics" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Lab 1: R Basics</h1>
-<p>R is a programming language to get some output from doing some operations on inputs.</p>
-<section id="math-operators" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="math-operators"><span class="header-section-number">1.1</span> Math Operators</h2>
-<p>If the description above sounds like a simple math problems, you are absolutely right. For example, if you are curious what 5 plus 3 is, the inputs are 5 and 3, and the operation is addition You can express this as a simple R code.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">+</span> <span class="dv">3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 8</code></pre>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab01-r-basics.html">Lab</a></li><li class="breadcrumb-item"><a href="./lab01-r-basics.html">Lab 1. R Basics</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Lab 1. R Basics</h1>
 </div>
-</div>
-<p>You can see the output below the code chunk.</p>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Authors</div>
+    <div class="quarto-title-meta-contents">
+             <p>Yeon Soon Shin </p>
+             <p>Anjali Thapar </p>
+             <p>Gaby Mahrholz </p>
+             <p>Carolina E. Kuepper-Tetzel </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>In this lab, we will learn how to interact with R using R Rstudio. R is a programming language that you will write code in, and RStudio is a program that makes working with R easier. The user can either install R and RStudio on their computer and work with them locally or choose to work with them remotely via an internet browser. In this course, we will work with R and RStudio remotely via <a href="posit.cloud">PositCloud</a>.</p>
+<section id="learning-objectives" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<ol type="1">
+<li>Be familiarized with RStudio.</li>
+<li>Be able to write and run code in the console.</li>
+<li>Be able to create a new Markdown (Quarto) file, write code in it, and render the file to an html document.</li>
+<li>Understand objects and functions in R.</li>
+<li>Be able to load packages.</li>
+<li>Be able to read in data.</li>
+</ol>
+</section>
+<section id="introduction-to-r-and-rstudio" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="introduction-to-r-and-rstudio"><span class="header-section-number">1</span> Introduction to R and RStudio</h2>
+<p>As previously mentioned, R is a programming language that we will use to write code for working with data. RStudio is an Integrated Development Environment (IDE) for R. RStudio is dependent on R but separate from it. It provides a useful interface for working with R and has several advantages over the default R interface. Think of it as knowing English and using a plain text editor Notepad or TextEdit to write a book versus using a word processor like Microsoft Word. You could do it on a plain text editor, but it would be much harder without things like spell-checking and formatting and you wouldn’t be able to use some of the advanced features that Word has developed. In a similar way, you can use R without RStudio but we wouldn’t recommend it. RStudio serves as a text editor, file manager, spreadsheet viewer, and much more. The key thing to remember is that although you will do all of your work using RStudio for this course, you are actually working with two pieces of software, which means that from time to time, both of them may have separate updates.</p>
+<p>RStudio runs on Mac, PC, and Linux machines and provides a simplified interface that looks and feels identical on all of them. While it can be installed on your own computer, for this course you will be asked to login to a shared RStudio Cloud server (PositCloud) from a web browser. There are several advantages to using the web browser application of RStudio Cloud. It allows you to write and access R code wherever you go. It even works on your tablet because it does not require installation. It also makes it much easier to collaborate with others, and since no installation is required, you can work on projects on any device as long as you are connected to the internet. Another significant advantage of using RStudio in the cloud is that you can run time-consuming scripts without bogging down your own device. However, because RStudio Cloud requires an internet connection, it will run slower if your internet connection is not fast or stable.</p>
+<section id="r-studio-panes" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="r-studio-panes"><span class="header-section-number">1.1</span> R Studio Panes</h3>
+<p>The interface for working with RStudio both in the cloud or locally is largely the same and consists of four main “panes” each in a quadrant of your screen. Several of the panes are further subdivided into multiple tabs.</p>
+<section id="source-pane" class="level4" data-number="1.1.1">
+<h4 data-number="1.1.1" class="anchored" data-anchor-id="source-pane"><span class="header-section-number">1.1.1</span> Source Pane</h4>
+<p>By default, the upper left pane is the source pane, where you view, write, and edit code from files and view data tables in a spreadsheet format.</p>
+</section>
+<section id="console-pane" class="level4" data-number="1.1.2">
+<h4 data-number="1.1.2" class="anchored" data-anchor-id="console-pane"><span class="header-section-number">1.1.2</span> Console Pane</h4>
+<p>The lower left pane is the console pane, where you can view the output of your coding and computations. It is also possible to write code directly into the console. However, keep in mind that the code you write in the console will run and can create objects that will be saved in the environment, but the code itself won’t be saved. You need to write your code into a script or a Markdown/Quarto file in the source pane to save it.</p>
+</section>
+<section id="environment-pane" class="level4" data-number="1.1.3">
+<h4 data-number="1.1.3" class="anchored" data-anchor-id="environment-pane"><span class="header-section-number">1.1.3</span> Environment Pane</h4>
+<p>The right panes have several different tabs that show you information about your code. The most used tabs in the upper right pane is the Environment tab. The Environment tab lists some information about the objects that you have defined in your code.</p>
+</section>
+<section id="files-pane" class="level4" data-number="1.1.4">
+<h4 data-number="1.1.4" class="anchored" data-anchor-id="files-pane"><span class="header-section-number">1.1.4</span> Files Pane</h4>
+<p>In the lower right pane are tabs for browsing files, viewing plots, managing R packages, reading help files, and for viewing html documents and presentations. The most used tabs are the <strong>Files</strong> tab for directory structure.</p>
+</section>
+<section id="keyboard-shortcuts" class="level4" data-number="1.1.5">
+<h4 data-number="1.1.5" class="anchored" data-anchor-id="keyboard-shortcuts"><span class="header-section-number">1.1.5</span> Keyboard Shortcuts</h4>
+<ul>
+<li><strong>F6</strong> and <strong>Shift+F6</strong> navigates focus between panes. To check which tab the focus is on, press <strong>Shift+Tab</strong>.</li>
+<li><strong>Ctrl+1</strong> moves your cursor to the source pane.</li>
+<li><strong>Ctrl+2</strong> moves your cursor to the console.</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="writing-r-code" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="writing-r-code"><span class="header-section-number">2</span> Writing R Code</h2>
+<p>R is a command based system. We type commands, R translates them into machine instructions, which our computer then executes, and then we often, but not necessarily, get back some output. The commands can be typed into the R console, or else they can be put into a script and run as a batch.</p>
+<section id="r-console" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="r-console"><span class="header-section-number">2.1</span> R Console</h3>
+<p>When learning R, it is usually best to start with typing commands in the R console. When we open RStudio initially, our console will usually look something like this:</p>
+<pre><code>R version 4.6.1 (2026-06-24) -- "Happy Hop"
+Copyright (C) 2026 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+&gt;</code></pre>
+<p>Notice that at the bottom, there is a single line beginning with <code>&gt;</code>. This is the R console’s command <em>prompt</em>, and it is where we type our commands. We then press <strong>Enter</strong>, and our command is executed. The output of the command, if any, is displayed on the next line or lines, and then a new <code>&gt;</code> prompt appears.</p>
+<p>At the R console prompt (<code>&gt;</code>), type <code>5</code> and press <strong>Enter</strong>. You will find the output <code>[1] 5</code>. The <code>[1]</code> at the beginning of the line indicates the index (the position) of the first element displayed on that specific line. Try running <code>1:50</code> in the console, where the colon operator (<code>:</code>) generates a sequence from 1 to 50. What’s useful to remember at this point is that outputs follow the index inside the square brackets <code>[]</code>.</p>
+<section id="keyboard-shortcuts-1" class="level5" data-number="2.1.0.1">
+<h5 data-number="2.1.0.1" class="anchored" data-anchor-id="keyboard-shortcuts-1"><span class="header-section-number">2.1.0.1</span> Keyboard Shortcuts</h5>
+<ul>
+<li><strong>Ctrl+2</strong> moves your cursor to the console prompt (<code>&gt;</code>).</li>
+<li><strong>Ctrl+`</strong> moves your focus to the console output.</li>
+</ul>
+<p>While R is much more than a simple calculator, a useful way to familiarize yourself with R and the console is to do some simple calculator-like computations. Most of this will work just like you would expect from a typical calculator.</p>
+<p>For example, if you are curious what 5 plus 3 is, the inputs are 5 and 3, and the operation is addition You can express this as a simple R code. At the R console prompt (<code>&gt;</code>), type <code>5+3</code> and press <strong>Enter</strong>. You will get <code>8</code>.</p>
 <p>Some basic math operators in R are listed here:</p>
 <table class="caption-top table">
 <caption>Math Operators and Symbols</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Function</th>
-<th style="text-align: left;">Symbols</th>
+<th>Function</th>
+<th>Symbols</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Addition</td>
-<td style="text-align: left;">+</td>
+<td>Addition</td>
+<td>+</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Subtraction</td>
-<td style="text-align: left;">-</td>
+<td>Subtraction</td>
+<td>-</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Multiplication</td>
-<td style="text-align: left;">*</td>
+<td>Multiplication</td>
+<td>*</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Division</td>
-<td style="text-align: left;">/ (forward slash)</td>
+<td>Division</td>
+<td>/ (forward slash)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Exponent</td>
-<td style="text-align: left;">^</td>
+<td>Exponent</td>
+<td>^</td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="object-variable" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="object-variable"><span class="header-section-number">1.2</span> Object (Variable)</h2>
-<p>You can also store the output as an “Object” (or a variable), so you can reuse them. For example, you might want to store the output of <code>3 + 5</code> operation as an object <code>y</code> and do different things with it. To assign <code>3 + 5</code> to the object <code>y</code>, you write the object on the left of the <code>=</code> sign, and the value on the right.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Alternatively, you can use <code>&lt;-</code> to assign values to an object, which makes it clear that output of the operation on the right side should be assigned to (hence the arrow) the left side.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">+</span> <span class="dv">5</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Now, you can use the object <code>y</code> to do different things with it, such as:</p>
-<ol type="1">
-<li>multiply it by 2</li>
-<li>divide it by 4</li>
+<section id="exercise-1" class="level4 {callout-tip}" data-number="2.1.1">
+<h4 data-number="2.1.1" class="anchored" data-anchor-id="exercise-1"><span class="header-section-number">2.1.1</span> Exercise 1</h4>
+<p>Find answer to the following questions using R console.</p>
+<ol type="a">
+<li>2026 plus 12</li>
+<li>1 divided by 5</li>
+<li>50 times 4</li>
+<li>9 squared</li>
+<li>170 minus 15</li>
 </ol>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>y <span class="sc">*</span> <span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 16</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>y <span class="sc">/</span> <span class="dv">4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
 </section>
-<section id="functions" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="functions"><span class="header-section-number">1.3</span> Functions</h2>
+</section>
+<section id="quarto" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="quarto"><span class="header-section-number">2.2</span> Quarto</h3>
+<p>This is a <strong>Quarto</strong> document which enables you to weave together formatted text, called Markdown, and executable code into a finished document. When you “render” this <code>.qmd</code> file, the code in the “code chunks” in this document will be executed (or more colloquially, “run”), and you will be able to see the output in an <code>.html</code> file. In fact, if you are reading this on <a href="https://yeonsoonshin.github.io/research-methods-and-stats/lab01-r-basics.html">the course website</a>, you are reading the rendered HTML document.</p>
+<p>There is a very similar type of document called <strong>R Markdown</strong> whose extension is <code>.Rmd</code>. They are essentially the same, except that “render” is called “knit” and it’s specialized for R only. Quarto is the next-generation successor to R Markdown. It has better accessibility features can support languages other than R. For that reason, we will be using Quarto in this course.</p>
+<section id="markdown-formatted-text" class="level4" data-number="2.2.1">
+<h4 data-number="2.2.1" class="anchored" data-anchor-id="markdown-formatted-text"><span class="header-section-number">2.2.1</span> Markdown (formatted text)</h4>
+<p>The markdown space in an <code>.qmd</code> file is ideal for writing notes that explain your analysis and document your thought process. Effectively documenting your work in the markdown space enhances both the clarity and reproducibility of your analysis.</p>
+<p>Headings are useful in organizing the outlines. The hashtag <code>#</code> marks the heading level, where <code>#</code> is heading level 1, <code>##</code> is heading level 2, and so forth.</p>
+<p>Lists can be created using <code>*</code> or <code>-</code>. For example,</p>
+<ul>
+<li>Item 1</li>
+<li>Item 2</li>
+</ul>
+<p>You will find other formatting examples throughout this Quarto document.</p>
+</section>
+<section id="code-chunks" class="level4" data-number="2.2.2">
+<h4 data-number="2.2.2" class="anchored" data-anchor-id="code-chunks"><span class="header-section-number">2.2.2</span> Code Chunks</h4>
+<p>Everything you write inside the code chunks will be interpreted as code and executed by R. Code chunks start with three backticks and an r tag (<code>```{r}</code>), followed by some space for your code, and end with another three backticks (<code>```</code>). If you accidentally delete one of those backticks, your code won’t run and/or your text parts will be interpreted as part of the code chunks or vice versa.</p>
+<p>You can embed code like this.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dv">31</span><span class="sc">^</span><span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 961</code></pre>
+</div>
+</div>
+<p>You can insert a new code chunk in several ways:</p>
+<ol type="1">
+<li>Click the <strong>Insert a new code chunk</strong> button in the RStudio Toolbar (green icon at the top right corner of the Source pane).</li>
+<li>Select <strong>Code &gt; Insert Chunk</strong> from the menu.</li>
+<li>Using the keyboard shortcut <strong>Ctrl + Alt + I</strong> for Windows or <strong>Cmd + Option + I</strong> on a Mac.</li>
+<li>Type <code>```{r}</code> and <code>```</code> manually.</li>
+</ol>
+</section>
+<section id="optional-note-yaml-header" class="level4" data-number="2.2.3">
+<h4 data-number="2.2.3" class="anchored" data-anchor-id="optional-note-yaml-header"><span class="header-section-number">2.2.3</span> (Optional Note) YAML header</h4>
+<p>You might have noticed that this <code>.qmd</code> file starts with a block fenced with three dashes <code>---</code>.</p>
+<pre><code>title: "Lab 1. R Basics"
+author:
+ - "Yeon Soon Shin"
+ - "Anjali Thapar"
+ - "Gaby Mahrholz"
+ - "Carolina E. Kuepper-Tetzel"
+format: 
+  html:
+    html-math-method: plain</code></pre>
+<p>You don’t need to worry about the syntax of this at this point, but if you are curious, this block specifies metadata for the document. For example, the title of the document is “Lab 1. R Basics” and the document should be rendered as an html file.</p>
+</section>
+<section id="rendering-quarto" class="level4" data-number="2.2.4">
+<h4 data-number="2.2.4" class="anchored" data-anchor-id="rendering-quarto"><span class="header-section-number">2.2.4</span> Rendering Quarto</h4>
+<p>When you render this file, a document will be generated that includes both content and the output of embedded code. To render, you can use the following options:</p>
+<ol type="1">
+<li>Graphic User Interface
+<ol type="1">
+<li>Click on the <strong>Render</strong> button in the RStudio Toolbar (blue right arrow icon at the top of the source pane).</li>
+</ol></li>
+<li>Using the keyboard shortcut <strong>Ctrl+Shift+K</strong>.</li>
+<li>Using Console
+<ol type="1">
+<li>Navigate to the console (<strong>Ctrl+2</strong>).</li>
+<li>Run <code>library(quarto)</code> to import <code>quarto</code> library. You need to do this only once when you start the session.</li>
+<li>To render an html file from Quarto, type the command <code>quarto_render("lab01-r-basics.qmd")</code></li>
+<li>To open the result html file, type the command <code>browseURL("lab01-r-basics.html")</code></li>
+</ol></li>
+</ol>
+<p>This will open a new tab with an html file that contains the output. You can repeat this step to run all code chunks in this file. This is generally a good practice because you will want to make sure that the code runs cleanly from top to bottom.</p>
+<p>Note that if you have already rendered the file and a tab is open on your browser, it may look like nothing happens when you render. Go find the open tab called matches the title (here, <code>Lab 1. R Basics</code>). The tab is refreshed when you render.</p>
+</section>
+<section id="exercise-2" class="level4 {callout-tip}" data-number="2.2.5">
+<h4 data-number="2.2.5" class="anchored" data-anchor-id="exercise-2"><span class="header-section-number">2.2.5</span> Exercise 2</h4>
+<p>Render this Quarto document to an html file. Inspect an output of the code chunk above. What is the output?</p>
+</section>
+<section id="creating-and-saving-a-new-quarto-file" class="level4" data-number="2.2.6">
+<h4 data-number="2.2.6" class="anchored" data-anchor-id="creating-and-saving-a-new-quarto-file"><span class="header-section-number">2.2.6</span> Creating and Saving a New Quarto File</h4>
+<ol type="1">
+<li>Select <strong>File &gt; New File &gt; R Script</strong> from the menu.</li>
+<li>When the file is open, save the file. You can save the file by the keyboard shortcut <strong>Ctrl+S</strong> on Windows or <strong>Cmd+S</strong> on a Mac.</li>
+<li>Choose the file name with an <code>.qmd</code> extension (e.g., <code>lab01-LASTNAME.qmd</code>). A popup will ask you “Are you sure you want to change the type of the file so that it is no longer an R script?”. Select <strong>Yes</strong>.</li>
+</ol>
+</section>
+<section id="exercise-3" class="level4 {callout-tip}" data-number="2.2.7">
+<h4 data-number="2.2.7" class="anchored" data-anchor-id="exercise-3"><span class="header-section-number">2.2.7</span> Exercise 3</h4>
+<p>Create a new Quarto file, add a code chunk with some math operations, save it, and render it.</p>
+</section>
+</section>
+</section>
+<section id="objects-and-functions-in-r" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="objects-and-functions-in-r"><span class="header-section-number">3</span> Objects and Functions in R</h2>
+<section id="object-variable" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="object-variable"><span class="header-section-number">3.1</span> Object (Variable)</h3>
+<p>You can also store the output as an “Object” (or a variable), so you can reuse them. For example, you might want to store the output of <code>3 + 5</code> operation as an object <code>x</code> and do different things with it. To assign <code>3 + 5</code> to the object <code>x</code>, you write the object on the left of the <code>=</code> sign, and the value on the right.</p>
+<p>Type <code>x = 3 + 5</code> in the console and press <strong>Enter</strong>. Nothing will happen in the console output. However, if you type <code>x</code> again in the console, it will give you the output <code>8</code>, indicating that the output of the <code>3+5</code> operation is stored in the object <code>x</code>.</p>
+<p>Alternatively, you can use <code>&lt;-</code> to assign values to an object, which makes it clear that output of the operation on the right side should be assigned to (hence the arrow) the left side. You can repeat the above steps with <code>y &lt;- 3 + 5</code>.</p>
+<p>Now, you can use the object <code>y</code> to do different things with it. For example, you can multiply <code>y</code> by 2. Without writing <code>(3+5)*2</code>, you can pass the output of <code>3+5</code> to the next operation <code>*2</code>.</p>
+<section id="exercise-4" class="level4 {callout-tip}" data-number="3.1.1">
+<h4 data-number="3.1.1" class="anchored" data-anchor-id="exercise-4"><span class="header-section-number">3.1.1</span> Exercise 4</h4>
+<p>Store the output of <code>10*2</code> in an object <code>z</code> and divide <code>z</code> by 4.</p>
+</section>
+</section>
+<section id="functions" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="functions"><span class="header-section-number">3.2</span> Functions</h3>
 <p>R has some nice basic functions (a set of operations put together), also written as objects. Function objects need a parenthesis <code>()</code> so you can pass the input to the function. For example, if you want an object with different numbers in it, you can use a function <code>c()</code> where c stands for concatenate.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">5</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">5</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1 3 2 4 3 3 4 2 5</code></pre>
 </div>
 </div>
 <p>Again, you can do other things with this object <code>x</code>, such as taking the mean of the numbers in it. There is a function <code>mean()</code> that calculates the mean for you.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3</code></pre>
 </div>
 </div>
-
-
+<section id="exercise-5" class="level4 {callout-tip}" data-number="3.2.1">
+<h4 data-number="3.2.1" class="anchored" data-anchor-id="exercise-5"><span class="header-section-number">3.2.1</span> Exercise 5</h4>
+<p>In your new Quarto document, add a code chunk, and get the square root of 5329 using a function <code>sqrt()</code>. Render the document to find the output.</p>
 </section>
+</section>
+</section>
+<section id="installing-and-loading-packages" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="installing-and-loading-packages"><span class="header-section-number">4</span> Installing and Loading Packages</h2>
+<p>When you install R you will have access to a range of functions including options for data wrangling and statistical analysis. The functions that are included in the default installation are typically referred to as “base R” and you can think of them like the default apps that come pre-loaded on your phone. One of the great things about R, however, is that it is user extensible: anyone can create a new package that extends its functionality. There are currently thousands of packages that R users have created to solve many different kinds of problems, or just simply to have fun. For example, there are packages for data visualization, machine learning, interactive dashboards, web scraping, and playing games such as Sudoku. Packages are not distributed with base R, but have to be downloaded and installed from an archive. The main repository where packages reside is called CRAN, the Comprehensive R Archive Network.</p>
+<p>There is an important distinction between installing a package and loading a package.</p>
+<section id="installing-packages-with-install.packages" class="level4" data-number="4.0.1">
+<h4 data-number="4.0.1" class="anchored" data-anchor-id="installing-packages-with-install.packages"><span class="header-section-number">4.0.1</span> Installing Packages with <code>install.packages()</code></h4>
+<p>When you install R and RStudio for the first time (or after an update), most of the packages we will be using won’t be pre-installed. Before you can load new packages like, you will need to install them.</p>
+<p>If you try to load a package that has not been installed yet, you will receive an error message. To fix this, simply install the package first. This is done using the function <code>install.packages()</code>. For example, if you wnat to install package called <code>tidyverse</code>, you can run <code>install.packages("tidyverse")</code>. This only needs to be done once after a fresh installation. After that, you will be able to load the tidyverse package into your library whenever you open RStudio.</p>
+<p>For this course, most of the packages we will be using are pre-installed.</p>
+</section>
+<section id="loading-packages-with-library" class="level4" data-number="4.0.2">
+<h4 data-number="4.0.2" class="anchored" data-anchor-id="loading-packages-with-library"><span class="header-section-number">4.0.2</span> Loading packages with <code>library()</code></h4>
+<p>This is like launching an app on your phone: the functionality is only there when the app is launched and remains there until you close the app or restart RStudio.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)  <span class="co"># for data wrangling</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.2.1     ✔ readr     2.2.0
+✔ forcats   1.0.1     ✔ stringr   1.6.0
+✔ ggplot2   4.0.3     ✔ tibble    3.3.1
+✔ lubridate 1.9.5     ✔ tidyr     1.3.2
+✔ purrr     1.2.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)         <span class="co"># for pretty tables</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The hashtag (#) marks everything to the right of it as <em>comment</em>. Using comments can be very useful for annotating your code, and it improves the readability too. It will also help you to remember why/what you done months later, when you return to your code that you have inevitably forgotten!</p>
+</section>
+</section>
+<section id="reading-in-data" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="reading-in-data"><span class="header-section-number">5</span> Reading in Data</h2>
+<p>The primary data files that we will be working with in R are <code>.csv</code> files. We will read in the data file <code>family.csv</code> under the <code>data</code> folder using <code>read_csv()</code>, and store it as an object <code>df</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'data/family.csv'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 12 Columns: 2
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (1): Birth Month
+dbl (1): Age
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<p>We can inspect the data as a Markdown table using function <code>gt()</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gt</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="eqeezsvfyq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#eqeezsvfyq table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#eqeezsvfyq thead, #eqeezsvfyq tbody, #eqeezsvfyq tfoot, #eqeezsvfyq tr, #eqeezsvfyq td, #eqeezsvfyq th {
+  border-style: none;
+}
+
+#eqeezsvfyq p {
+  margin: 0;
+  padding: 0;
+}
+
+#eqeezsvfyq .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#eqeezsvfyq .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#eqeezsvfyq .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#eqeezsvfyq .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#eqeezsvfyq .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#eqeezsvfyq .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#eqeezsvfyq .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#eqeezsvfyq .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#eqeezsvfyq .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#eqeezsvfyq .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#eqeezsvfyq .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#eqeezsvfyq .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#eqeezsvfyq .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#eqeezsvfyq .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#eqeezsvfyq .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#eqeezsvfyq .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#eqeezsvfyq .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#eqeezsvfyq .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#eqeezsvfyq .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#eqeezsvfyq .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#eqeezsvfyq .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#eqeezsvfyq .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#eqeezsvfyq .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#eqeezsvfyq .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#eqeezsvfyq .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#eqeezsvfyq .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#eqeezsvfyq .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#eqeezsvfyq .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#eqeezsvfyq .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#eqeezsvfyq .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#eqeezsvfyq .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#eqeezsvfyq .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#eqeezsvfyq .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#eqeezsvfyq .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#eqeezsvfyq .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#eqeezsvfyq .gt_left {
+  text-align: left;
+}
+
+#eqeezsvfyq .gt_center {
+  text-align: center;
+}
+
+#eqeezsvfyq .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#eqeezsvfyq .gt_font_normal {
+  font-weight: normal;
+}
+
+#eqeezsvfyq .gt_font_bold {
+  font-weight: bold;
+}
+
+#eqeezsvfyq .gt_font_italic {
+  font-style: italic;
+}
+
+#eqeezsvfyq .gt_super {
+  font-size: 65%;
+}
+
+#eqeezsvfyq .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#eqeezsvfyq .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#eqeezsvfyq .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#eqeezsvfyq .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#eqeezsvfyq .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#eqeezsvfyq .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#eqeezsvfyq .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#eqeezsvfyq .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#eqeezsvfyq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="Birth-Month" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Birth Month</th>
+<th id="Age" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Age</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Birth Month">July</td>
+<td class="gt_row gt_right" headers="Age">85</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Birth Month">July</td>
+<td class="gt_row gt_right" headers="Age">65</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Birth Month">August</td>
+<td class="gt_row gt_right" headers="Age">60</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Birth Month">September</td>
+<td class="gt_row gt_right" headers="Age">40</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Birth Month">July</td>
+<td class="gt_row gt_right" headers="Age">36</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Birth Month">August</td>
+<td class="gt_row gt_right" headers="Age">33</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Birth Month">October</td>
+<td class="gt_row gt_right" headers="Age">32</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Birth Month">January</td>
+<td class="gt_row gt_right" headers="Age">12</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Birth Month">April</td>
+<td class="gt_row gt_right" headers="Age">10</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Birth Month">January</td>
+<td class="gt_row gt_right" headers="Age">6</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Birth Month">January</td>
+<td class="gt_row gt_right" headers="Age">3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Birth Month">October</td>
+<td class="gt_row gt_right" headers="Age">2</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<section id="exercise-6" class="level4 {callout-tip}" data-number="5.0.1">
+<h4 data-number="5.0.1" class="anchored" data-anchor-id="exercise-6"><span class="header-section-number">5.0.1</span> Exercise 6</h4>
+<p>In your new Quarto document, load <code>tidyverse</code> and <code>gt</code> libraries and read in <code>sleep_breakfast.csv</code> file under the <code>data</code> folder. Inspect the data.</p>
+</section>
+
+
 </section>
 
 </main> <!-- /main -->

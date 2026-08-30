@@ -1,27 +1,103 @@
 ---
-format:
+title: "Lab 1. R Basics"
+author:
+ - "Yeon Soon Shin"
+ - "Anjali Thapar"
+ - "Gaby Mahrholz"
+ - "Carolina E. Kuepper-Tetzel"
+format: 
   html:
     html-math-method: plain
 ---
 
-# Lab 1: R Basics
+In this lab, we will learn how to interact with R using R Rstudio. R is a programming language that you will write code in, and RStudio is a program that makes working with R easier. The user can either install R and RStudio on their computer and work with them locally or choose to work with them remotely via an internet browser. In this course, we will work with R and RStudio remotely via [PositCloud](posit.cloud).
 
-R is a programming language to get some output from doing some operations on inputs.
+## Learning Objectives {.unnumbered}
 
-## Math Operators
+1.  Be familiarized with RStudio.
+2.  Be able to write and run code in the console.
+3.  Be able to create a new Markdown (Quarto) file, write code in it, and render the file to an html document.
+4.  Understand objects and functions in R.
+4.  Be able to load packages.
+5.  Be able to read in data.
 
-If the description above sounds like a simple math problems, you are absolutely right. For example, if you are curious what 5 plus 3 is, the inputs are 5 and 3, and the operation is addition You can express this as a simple R code.
+## Introduction to R and RStudio
 
-```{r}
-5 + 3
+As previously mentioned, R is a programming language that we will use to write code for working with data. RStudio is an Integrated Development Environment (IDE) for R. RStudio is dependent on R but separate from it. It provides a useful interface for working with R and has several advantages over the default R interface. Think of it as knowing English and using a plain text editor Notepad or TextEdit to write a book versus using a word processor like Microsoft Word. You could do it on a plain text editor, but it would be much harder without things like spell-checking and formatting and you wouldn’t be able to use some of the advanced features that Word has developed. In a similar way, you can use R without RStudio but we wouldn’t recommend it. RStudio serves as a text editor, file manager, spreadsheet viewer, and much more. The key thing to remember is that although you will do all of your work using RStudio for this course, you are actually working with two pieces of software, which means that from time to time, both of them may have separate updates.
+
+RStudio runs on Mac, PC, and Linux machines and provides a simplified interface that looks and feels identical on all of them. While it can be installed on your own computer, for this course you will be asked to login to a shared RStudio Cloud server (PositCloud) from a web browser. There are several advantages to using the web browser application of RStudio Cloud. It allows you to write and access R code wherever you go. It even works on your tablet because it does not require installation. It also makes it much easier to collaborate with others, and since no installation is required, you can work on projects on any device as long as you are connected to the internet. Another significant advantage of using RStudio in the cloud is that you can run time-consuming scripts without bogging down your own device. However, because RStudio Cloud requires an internet connection, it will run slower if your internet connection is not fast or stable.
+
+### R Studio Panes
+
+The interface for working with RStudio both in the cloud or locally is largely the same and consists of four main “panes” each in a quadrant of your screen. Several of the panes are further subdivided into multiple tabs.
+
+#### Source Pane
+
+By default, the upper left pane is the source pane, where you view, write, and edit code from files and view data tables in a spreadsheet format.
+
+#### Console Pane
+
+The lower left pane is the console pane, where you can view the output of your coding and computations. It is also possible to write code directly into the console. However, keep in mind that the code you write in the console will run and can create objects that will be saved in the environment, but the code itself won’t be saved. You need to write your code into a script or a Markdown/Quarto file in the source pane to save it.
+
+#### Environment Pane
+
+The right panes have several different tabs that show you information about your code. The most used tabs in the upper right pane is the Environment tab. The Environment tab lists some information about the objects that you have defined in your code.
+
+#### Files Pane
+
+In the lower right pane are tabs for browsing files, viewing plots, managing R packages, reading help files, and for viewing html documents and presentations. The most used tabs are the **Files** tab for directory structure.
+
+#### Keyboard Shortcuts
+
+- **F6** and **Shift+F6** navigates focus between panes. To check which tab the focus is on, press **Shift+Tab**.
+- **Ctrl+1** moves your cursor to the source pane.
+- **Ctrl+2** moves your cursor to the console.
+
+## Writing R Code
+
+R is a command based system. We type commands, R translates them into machine instructions, which our computer then executes, and then we often, but not necessarily, get back some output. The commands can be typed into the R console, or else they can be put into a script and run as a batch.
+
+### R Console
+
+When learning R, it is usually best to start with typing commands in the R console. When we open RStudio initially, our console will usually look something like this:
+
+```         
+R version 4.6.1 (2026-06-24) -- "Happy Hop"
+Copyright (C) 2026 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+>
 ```
 
-You can see the output below the code chunk.
+Notice that at the bottom, there is a single line beginning with `>`. This is the R console’s command *prompt*, and it is where we type our commands. We then press **Enter**, and our command is executed. The output of the command, if any, is displayed on the next line or lines, and then a new `>` prompt appears.
+
+At the R console prompt (`>`), type `5` and press **Enter**. You will find the output `[1] 5`. The `[1]` at the beginning of the line indicates the index (the position) of the first element displayed on that specific line. Try running `1:50` in the console, where the colon operator (`:`) generates a sequence from 1 to 50. What's useful to remember at this point is that outputs follow the index inside the square brackets `[]`.
+
+##### Keyboard Shortcuts
+
+- **Ctrl+2** moves your cursor to the console prompt (`>`).
+- **Ctrl+\`** moves your focus to the console output.
+
+While R is much more than a simple calculator, a useful way to familiarize yourself with R and the console is to do some simple calculator-like computations. Most of this will work just like you would expect from a typical calculator.
+
+For example, if you are curious what 5 plus 3 is, the inputs are 5 and 3, and the operation is addition You can express this as a simple R code. At the R console prompt (`>`), type `5+3` and press **Enter**. You will get `8`.
 
 Some basic math operators in R are listed here:
 
 | Function       | Symbols           |
-|:---------------|:------------------|
+|----------------|-------------------|
 | Addition       | \+                |
 | Subtraction    | \-                |
 | Multiplication | \*                |
@@ -30,31 +106,125 @@ Some basic math operators in R are listed here:
 
 : Math Operators and Symbols
 
-## Object (Variable)
+::: {callout-tip}
+#### Exercise 1
 
-You can also store the output as an "Object" (or a variable), so you can reuse them. For example, you might want to store the output of `3 + 5` operation as an object `y` and do different things with it. To assign `3 + 5` to the object `y`, you write the object on the left of the `=` sign, and the value on the right.
+Find answer to the following questions using R console.
+
+  a.  2026 plus 12
+  b.  1 divided by 5
+  c.  50 times 4
+  d.  9 squared
+  e.  170 minus 15
+:::
+
+### Quarto
+
+This is a **Quarto** document which enables you to weave together formatted text, called Markdown, and executable code into a finished document. When you "render" this `.qmd` file, the code in the "code chunks" in this document will be executed (or more colloquially, "run"), and you will be able to see the output in an `.html` file. In fact, if you are reading this on [the course website](https://yeonsoonshin.github.io/research-methods-and-stats/lab01-r-basics.html), you are reading the rendered HTML document.
+
+There is a very similar type of document called **R Markdown** whose extension is `.Rmd`. They are essentially the same, except that "render" is called "knit" and it's specialized for R only. Quarto is the next-generation successor to R Markdown. It has better accessibility features can support languages other than R. For that reason, we will be using Quarto in this course.
+
+#### Markdown (formatted text)
+
+The markdown space in an `.qmd` file is ideal for writing notes that explain your analysis and document your thought process. Effectively documenting your work in the markdown space enhances both the clarity and reproducibility of your analysis.
+
+Headings are useful in organizing the outlines. The hashtag `#` marks the heading level, where `#` is heading level 1, `##` is heading level 2, and so forth.
+
+Lists can be created using `*` or `-`. For example,
+
+- Item 1
+- Item 2
+
+You will find other formatting examples throughout this Quarto document.
+
+#### Code Chunks
+
+Everything you write inside the code chunks will be interpreted as code and executed by R. Code chunks start with three backticks and an r tag (```` ```{r} ````), followed by some space for your code, and end with another three backticks (```` ``` ````). If you accidentally delete one of those backticks, your code won’t run and/or your text parts will be interpreted as part of the code chunks or vice versa. 
+
+You can embed code like this.
 
 ```{r}
-y = 3 + 5
+31^2
 ```
 
-Alternatively, you can use `<-` to assign values to an object, which makes it clear that output of the operation on the right side should be assigned to (hence the arrow) the left side.
+You can insert a new code chunk in several ways:
 
-```{r}
-y <- 3 + 5
-```
+1. Click the **Insert a new code chunk** button in the RStudio Toolbar (green icon at the top right corner of the Source pane).
+2. Select **Code > Insert Chunk** from the menu.
+3. Using the keyboard shortcut **Ctrl + Alt + I** for Windows or **Cmd + Option + I** on a Mac.
+4. Type ```` ```{r} ```` and ```` ``` ```` manually.
 
-Now, you can use the object `y` to do different things with it, such as:
+#### (Optional Note) YAML header
 
-1.  multiply it by 2
-2.  divide it by 4
+You might have noticed that this `.qmd` file starts with a block fenced with three dashes ```` --- ````.
 
-```{r}
-y * 2
-y / 4
-```
+    title: "Lab 1. R Basics"
+    author:
+     - "Yeon Soon Shin"
+     - "Anjali Thapar"
+     - "Gaby Mahrholz"
+     - "Carolina E. Kuepper-Tetzel"
+    format: 
+      html:
+        html-math-method: plain
 
-## Functions
+You don't need to worry about the syntax of this at this point, but if you are curious, this block specifies metadata for the document. For example, the title of the document is "Lab 1. R Basics" and the document should be rendered as an html file.
+
+#### Rendering Quarto
+
+When you render this file, a document will be generated that includes both content and the output of embedded code. To render, you can use the following options:
+
+1.  Graphic User Interface
+    1.  Click on the **Render** button in the RStudio Toolbar (blue right arrow icon at the top of the source pane).
+2. Using the keyboard shortcut **Ctrl+Shift+K**.
+3.  Using Console
+    1.  Navigate to the console (**Ctrl+2**).
+    2.  Run `library(quarto)` to import `quarto` library. You need to do this only once when you start the session.
+    3.  To render an html file from Quarto, type the command `quarto_render("lab01-r-basics.qmd")`
+    4.  To open the result html file, type the command `browseURL("lab01-r-basics.html")`
+    
+This will open a new tab with an html file that contains the output. You can repeat this step to run all code chunks in this file. This is generally a good practice because you will want to make sure that the code runs cleanly from top to bottom.
+
+Note that if you have already rendered the file and a tab is open on your browser, it may look like nothing happens when you render. Go find the open tab called matches the title (here, `Lab 1. R Basics`). The tab is refreshed when you render.
+
+::: {callout-tip}
+#### Exercise 2
+
+Render this Quarto document to an html file. Inspect an output of the code chunk above. What is the output?
+:::
+
+
+#### Creating and Saving a New Quarto File
+
+1. Select **File > New File > R Script** from the menu. 
+2. When the file is open, save the file. You can save the file by the keyboard shortcut **Ctrl+S** on Windows or **Cmd+S** on a Mac. 
+3. Choose the file name with an `.qmd` extension (e.g., `lab01-LASTNAME.qmd`). A popup will ask you "Are you sure you want to change the type of the file so that it is no longer an R script?". Select **Yes**.
+
+::: {callout-tip}
+#### Exercise 3
+
+Create a new Quarto file, add a code chunk with some math operations, save it, and render it.
+:::
+
+## Objects and Functions in R
+
+### Object (Variable)
+
+You can also store the output as an "Object" (or a variable), so you can reuse them. For example, you might want to store the output of `3 + 5` operation as an object `x` and do different things with it. To assign `3 + 5` to the object `x`, you write the object on the left of the `=` sign, and the value on the right.
+
+Type `x = 3 + 5` in the console and press **Enter**. Nothing will happen in the console output. However, if you type `x` again in the console, it will give you the output `8`, indicating that the output of the `3+5` operation is stored in the object `x`.
+
+Alternatively, you can use `<-` to assign values to an object, which makes it clear that output of the operation on the right side should be assigned to (hence the arrow) the left side. You can repeat the above steps with `y <- 3 + 5`.
+
+Now, you can use the object `y` to do different things with it. For example, you can multiply `y` by 2. Without writing `(3+5)*2`, you can pass the output of `3+5` to the next operation `*2`.
+
+::: {callout-tip}
+#### Exercise 4
+
+Store the output of `10*2` in an object `z` and divide `z` by 4.
+:::
+
+### Functions
 
 R has some nice basic functions (a set of operations put together), also written as objects. Function objects need a parenthesis `()` so you can pass the input to the function. For example, if you want an object with different numbers in it, you can use a function `c()` where c stands for concatenate.
 
@@ -68,3 +238,54 @@ Again, you can do other things with this object `x`, such as taking the mean of 
 ```{r}
 mean(x)
 ```
+
+:::{callout-tip}
+#### Exercise 5
+
+In your new Quarto document, add a code chunk, and get the square root of 5329 using a function `sqrt()`. Render the document to find the output.
+:::
+
+## Installing and Loading Packages
+
+When you install R you will have access to a range of functions including options for data wrangling and statistical analysis. The functions that are included in the default installation are typically referred to as “base R” and you can think of them like the default apps that come pre-loaded on your phone. One of the great things about R, however, is that it is user extensible: anyone can create a new package that extends its functionality. There are currently thousands of packages that R users have created to solve many different kinds of problems, or just simply to have fun. For example, there are packages for data visualization, machine learning, interactive dashboards, web scraping, and playing games such as Sudoku. Packages are not distributed with base R, but have to be downloaded and installed from an archive. The main repository where packages reside is called CRAN, the Comprehensive R Archive Network.
+
+There is an important distinction between installing a package and loading a package.
+
+#### Installing Packages with `install.packages()`
+
+When you install R and RStudio for the first time (or after an update), most of the packages we will be using won’t be pre-installed. Before you can load new packages like, you will need to install them. 
+
+If you try to load a package that has not been installed yet, you will receive an error message. To fix this, simply install the package first. This is done using the function `install.packages()`. For example, if you wnat to install package called `tidyverse`, you can run `install.packages("tidyverse")`. This only needs to be done once after a fresh installation. After that, you will be able to load the tidyverse package into your library whenever you open RStudio.
+
+For this course, most of the packages we will be using are pre-installed.
+
+#### Loading packages with `library()`
+
+This is like launching an app on your phone: the functionality is only there when the app is launched and remains there until you close the app or restart RStudio. 
+
+```{r}
+library(tidyverse)  # for data wrangling
+library(gt)         # for pretty tables
+```
+
+The hashtag (#) marks everything to the right of it as _comment_. Using comments can be very useful for annotating your code, and it improves the readability too. It will also help you to remember why/what you done months later, when you return to your code that you have inevitably forgotten!
+
+## Reading in Data
+
+The primary data files that we will be working with in R are `.csv` files. We will read in the data file `family.csv` under the `data` folder using `read_csv()`, and store it as an object `df`.
+
+```{r}
+df <- read_csv('data/family.csv')
+```
+
+We can inspect the data as a Markdown table using function `gt()`.
+
+```{r}
+gt(df)
+```
+
+::: {callout-tip}
+#### Exercise 6
+
+In your new Quarto document, load `tidyverse` and `gt` libraries and read in `sleep_breakfast.csv` file under the `data` folder. Inspect the data.
+:::
