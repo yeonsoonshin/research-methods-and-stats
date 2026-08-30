@@ -106,7 +106,7 @@ Some basic math operators in R are listed here:
 
 : Math Operators and Symbols
 
-::: {callout-tip}
+::: {.callout-tip}
 #### Exercise 1
 
 Find answer to the following questions using R console.
@@ -187,7 +187,7 @@ This will open a new tab with an html file that contains the output. You can rep
 
 Note that if you have already rendered the file and a tab is open on your browser, it may look like nothing happens when you render. Go find the open tab called matches the title (here, `Lab 1. R Basics`). The tab is refreshed when you render.
 
-::: {callout-tip}
+::: {.callout-tip}
 #### Exercise 2
 
 Render this Quarto document to an html file. Inspect an output of the code chunk above. What is the output?
@@ -200,7 +200,7 @@ Render this Quarto document to an html file. Inspect an output of the code chunk
 2. When the file is open, save the file. You can save the file by the keyboard shortcut **Ctrl+S** on Windows or **Cmd+S** on a Mac. 
 3. Choose the file name with an `.qmd` extension (e.g., `lab01-LASTNAME.qmd`). A popup will ask you "Are you sure you want to change the type of the file so that it is no longer an R script?". Select **Yes**.
 
-::: {callout-tip}
+::: {.callout-tip}
 #### Exercise 3
 
 Create a new Quarto file, add a code chunk with some math operations, save it, and render it.
@@ -218,7 +218,7 @@ Alternatively, you can use `<-` to assign values to an object, which makes it cl
 
 Now, you can use the object `y` to do different things with it. For example, you can multiply `y` by 2. Without writing `(3+5)*2`, you can pass the output of `3+5` to the next operation `*2`.
 
-::: {callout-tip}
+::: {.callout-tip}
 #### Exercise 4
 
 Store the output of `10*2` in an object `z` and divide `z` by 4.
@@ -239,7 +239,7 @@ Again, you can do other things with this object `x`, such as taking the mean of 
 mean(x)
 ```
 
-:::{callout-tip}
+::: {.callout-tip}
 #### Exercise 5
 
 In your new Quarto document, add a code chunk, and get the square root of 5329 using a function `sqrt()`. Render the document to find the output.
@@ -284,7 +284,7 @@ We can inspect the data as a Markdown table using function `gt()`.
 gt(df)
 ```
 
-::: {callout-tip}
+::: {.callout-tip}
 #### Exercise 6
 
 In your new Quarto document, load `tidyverse` and `gt` libraries and read in `sleep_breakfast.csv` file under the `data` folder. Inspect the data.
