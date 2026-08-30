@@ -203,8 +203,6 @@ An empirically supported treatment is one that has been studied scientifically a
 - Exposure therapy with response prevention for obsessive-compulsive disorder.
 - Family therapy for schizophrenia.
 
-For a more complete list, see the following website, which is maintained by Division 12 of the American Psychological Association, the Society for Clinical Psychology <http://www.div12.org/psychological-%20treatments>.
-
 Many in the clinical psychology community have argued that their field has not paid enough attention to scientific research—for example, by failing to use empirically supported treatments—and have suggested a variety of changes in the way clinicians are trained and treatments are evaluated and put into practice. Others believe that these claims are exaggerated and the suggested changes are unnecessary [@norcross_evidence-based_2006]. On both sides of the debate, however, there is agreement that a scientific approach to clinical psychology is essential if the goal is to diagnose and treat psychological problems based on detailed and accurate knowledge about those problems and the most effective treatments for them. So not only is it important for scientific research in clinical psychology to continue, but it is also important for clinicians who never conduct a scientific study themselves to be scientifically literate so that they can read and evaluate new research and make treatment decisions based on the best available evidence.
 
 ### Key Takeaways
@@ -226,7 +224,7 @@ Now that you understand what science is and why it matters for psychology, let's
 
 ### Learning Objectives {.unnumbered}
 1.  Describe the differences between a theory and a hypothesis and explain how they are related in a model of scientific research.
-2. 
+2.  Explain characteristics of a good hypothesis.
 
 ### A Model of Scientific Research in Psychology
 
@@ -327,5 +325,12 @@ An empirical study is said to be high in internal validity if the way it was con
 ### Prioritizing Validities
 
 These four big validities–construct, statistical, external, and internal–are useful to keep in mind when both reading about other studies and designing your own. However, researchers must prioritize and often it is not possible to have high validity in all four areas. Morling [-@morling_guide_2014] points out that most psychology studies have high internal and construct validity but sometimes sacrifice external validity.
+
+### Key Takeaways {.unnumbered}
+
+* Good research is reliable and valid. Reliability is established by replicating research studies and finding reliable results. Validity is established by evaluating the quality of the research in terms of construct, statistical, external, and internal validity.
+
+* There are four big validities to consider: construct, statistical, external, and internal validity. Construct validity concerns the quality of how the constructs are measured or manipulated. Statistical validity concerns whether the statistics conducted in the study support the conclusions that are made. External validity concerns whether the way a study was conducted supports generalizing the results to people and situations beyond those actually studied. Internal validity concerns the causal conclusions that researchers draw from their studies.
+
 
 ## References {.unnumbered}
