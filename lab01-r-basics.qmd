@@ -10,7 +10,7 @@ format:
     html-math-method: plain
 ---
 
-In this lab, we will learn how to interact with R using R Rstudio. R is a programming language that you will write code in, and RStudio is a program that makes working with R easier. The user can either install R and RStudio on their computer and work with them locally or choose to work with them remotely via an internet browser. In this course, we will work with R and RStudio remotely via [PositCloud](posit.cloud).
+In this lab, we will learn how to interact with R using R Rstudio. R is a programming language that you will write code in, and RStudio is a program that makes working with R easier. The user can either install R and RStudio on their computer and work with them locally or choose to work with them remotely via an internet browser. In this course, we will work with R and RStudio remotely via [PositCloud](https://posit.cloud).
 
 ## Learning Objectives {.unnumbered}
 

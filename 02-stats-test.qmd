@@ -6,6 +6,9 @@ author:
   - "Rajiv Jhangiani"
   - "I-Chant A. Chiang"
   - "Dana C. Leighton"
+format:
+  html:
+    html-math-method: plain
 ---
 
 # Descriptive Statistics

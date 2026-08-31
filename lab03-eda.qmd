@@ -1,10 +1,9 @@
 ---
+title: "Lab 3: Exploratory Data Analysis (EDA)"
 format:
   html:
     html-math-method: plain
 ---
-
-# Lab 3: Exploratory Data Analysis (EDA)
 
 This lab will orient you to the very first steps of data analysis. When you get a new dataset, it is important to take a quick look at the data before proceeding with any analysis and answer your research questions. This is called exploratory data analysis (EDA). EDA is a critical step in the data analysis process because it allows you to understand the structure of the data, identify any potential issues, and get a sense of the state of each variable. To conduct EDA, you will inspect if the raw data look right (no missing data, appropriate range of responses, etc.), and visualize the data to understand the shape of the distributions along with descriptive statistics.
 
