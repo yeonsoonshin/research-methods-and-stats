@@ -2,23 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>appendix-stats-decisions – Research Methods and Statistics</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
+code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: 1.5em;}
-div.column{flex: auto;}
-@media screen {
-div.columns{gap: min(4vw, 1.5em);}
-div.column{overflow-x: auto;}
-}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -38,14 +32,15 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ba8f7c244c1f50cbf6c6a3aa3874339a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ff63373b1067ca6f91cf1456aa1f00a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -75,7 +70,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -306,37 +301,34 @@ window.Quarto = {
 </table>
 <section id="is-a-variable-different-from-a-baseline" class="level3" data-number="1.1.1">
 <h3 data-number="1.1.1" class="anchored" data-anchor-id="is-a-variable-different-from-a-baseline"><span class="header-section-number">1.1.1</span> “Is a variable different from a baseline?”</h3>
-<div id="tbl-one-sample" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="tbl-one-sample" class="list-table quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-one-sample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: Statistical Tests for Answering “Is a variable different from a baseline?”
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-one-sample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1
 </figcaption>
 <div aria-describedby="tbl-one-sample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table id="tbl-one-sample" class="caption-top table">
-<thead>
-<tr class="header">
-<th>Variable type</th>
-<th>Population variance known?</th>
-<th>Test</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Categorical</td>
-<td>N/A</td>
-<td>Chi-Square Goodness-of-Fit Test</td>
-</tr>
-<tr class="even">
-<td rowspan="2"> Continuous</td>
-<td>Yes</td>
-<td>One-sample z-test</td>
-</tr>
-<tr class="odd">
-<td>No</td>
-<td>One-sample t-test</td>
-</tr>
-</tbody>
-</table>
+<p>Statistical Tests for Answering “Is a variable different from a baseline?”</p>
+<ul>
+<li><ul>
+<li>Variable type</li>
+<li>Population variance known?</li>
+<li>Test</li>
+</ul></li>
+<li><ul>
+<li>Categorical</li>
+<li>N/A</li>
+<li>Chi-Square Goodness-of-Fit Test</li>
+</ul></li>
+<li><ul>
+<li><span rowspan="2"></span> Continuous</li>
+<li>Yes</li>
+<li>One-sample z-test</li>
+</ul></li>
+<li><ul>
+<li>No</li>
+<li>One-sample t-test</li>
+</ul></li>
+</ul>
 </div>
 </figure>
 </div>
@@ -452,93 +444,84 @@ Table&nbsp;4: Statistical Tests for Answering “Can scores be predicted?”
 </section>
 <section id="statistical-tests-by-dv-and-iv-types" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="statistical-tests-by-dv-and-iv-types"><span class="header-section-number">1.2</span> Statistical Tests by DV and IV Types</h2>
-<div id="tbl-by-variables" class="quarto-float quarto-figure quarto-figure-center anchored">
+<div id="tbl-by-variables" class="list-table quarto-float quarto-figure quarto-figure-center anchored" data-header-cols="1" data-widths="30,10,30,30" data-header-rows="1">
 <figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-by-variables-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;5: Statistical Tests by DV and IV Types
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-by-variables-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;5
 </figcaption>
 <div aria-describedby="tbl-by-variables-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table id="tbl-by-variables" class="caption-top table">
-<colgroup>
-<col style="width: 30%">
-<col style="width: 10%">
-<col style="width: 30%">
-<col style="width: 30%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Test</th>
-<th>DV (Outcome)</th>
-<th>IV (Predictor)</th>
-<th>Additional IVs (Predictors)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<th>One-sample z-test (known <span class="math inline">\(\sigma\)</span>)</th>
-<td rowspan="11"> Continuous (one)</td>
-<td rowspan="2"> None</td>
-<td rowspan="6"> None</td>
-</tr>
-<tr class="even">
-<th>One-sample t-test (unknown <span class="math inline">\(\sigma\)</span>)</th>
-</tr>
-<tr class="odd">
-<th>Independent Samples t-test</th>
-<td>Categorical (two independent levels)</td>
-</tr>
-<tr class="even">
-<th>Paired Samples t-test</th>
-<td>Categorical (two related levels)</td>
-</tr>
-<tr class="odd">
-<th>One-way Between-Subjects ANOVA</th>
-<td>Categorical (more than two independent levels)</td>
-</tr>
-<tr class="even">
-<th>One-way Repeated-Measures ANOVA</th>
-<td>Categorical (more than two related levels)</td>
-</tr>
-<tr class="odd">
-<th>Factorial Between-Subjects ANOVA</th>
-<td>Categorical (independent levels)</td>
-<td>Categorical (independent levels)</td>
-</tr>
-<tr class="even">
-<th>Factorial Repeated-Measures ANOVA</th>
-<td>Categorical (related levels)</td>
-<td>Categorical (related levels)</td>
-</tr>
-<tr class="odd">
-<th>Mixed Factorial ANOVA</th>
-<td>Categorical (independent or related levels)</td>
-<td>Categorical (related or independent levels)</td>
-</tr>
-<tr class="even">
-<th>Simple Linear Regression</th>
-<td rowspan="2"> Continuous (or dummy-coded categorical)</td>
-<td>None</td>
-</tr>
-<tr class="odd">
-<th>Multiple Linear Regression</th>
-<td>Continuous (or dummy-coded categorical)</td>
-</tr>
-<tr class="even">
-<th>Pearson Correlation</th>
-<td>Continuous (two)</td>
-<td rowspan="3"> None</td>
-<td rowspan="3"> None</td>
-</tr>
-<tr class="odd">
-<th>Chi-Square Goodness-of-Fit Test</th>
-<td>Categorical (one)</td>
-</tr>
-<tr class="even">
-<th>Chi-Square Test of Independence</th>
-<td>Categorical (two)</td>
-</tr>
-</tbody>
-</table>
+<p>Statistical Tests by DV and IV Types</p>
+<ul>
+<li><ul>
+<li>Test</li>
+<li>DV (Outcome)</li>
+<li>IV (Predictor)</li>
+<li>Additional IVs (Predictors)</li>
+</ul></li>
+<li><ul>
+<li>One-sample z-test (known <span class="math inline">\(\sigma\)</span>)</li>
+<li><span rowspan="11"></span> Continuous (one)</li>
+<li><span rowspan="2"></span> None</li>
+<li><span rowspan="6"></span> None</li>
+</ul></li>
+<li><ul>
+<li>One-sample t-test (unknown <span class="math inline">\(\sigma\)</span>)</li>
+</ul></li>
+<li><ul>
+<li>Independent Samples t-test</li>
+<li>Categorical (two independent levels)</li>
+</ul></li>
+<li><ul>
+<li>Paired Samples t-test</li>
+<li>Categorical (two related levels)</li>
+</ul></li>
+<li><ul>
+<li>One-way Between-Subjects ANOVA</li>
+<li>Categorical (more than two independent levels)</li>
+</ul></li>
+<li><ul>
+<li>One-way Repeated-Measures ANOVA</li>
+<li>Categorical (more than two related levels)</li>
+</ul></li>
+<li><ul>
+<li>Factorial Between-Subjects ANOVA</li>
+<li>Categorical (independent levels)</li>
+<li>Categorical (independent levels)</li>
+</ul></li>
+<li><ul>
+<li>Factorial Repeated-Measures ANOVA</li>
+<li>Categorical (related levels)</li>
+<li>Categorical (related levels)</li>
+</ul></li>
+<li><ul>
+<li>Mixed Factorial ANOVA</li>
+<li>Categorical (independent or related levels)</li>
+<li>Categorical (related or independent levels)</li>
+</ul></li>
+<li><ul>
+<li>Simple Linear Regression</li>
+<li><span rowspan="2"></span> Continuous (or dummy-coded categorical)</li>
+<li>None</li>
+</ul></li>
+<li><ul>
+<li>Multiple Linear Regression</li>
+<li>Continuous (or dummy-coded categorical)</li>
+</ul></li>
+<li><ul>
+<li>Pearson Correlation</li>
+<li>Continuous (two)</li>
+<li><span rowspan="3"></span> None</li>
+<li><span rowspan="3"></span> None</li>
+</ul></li>
+<li><ul>
+<li>Chi-Square Goodness-of-Fit Test</li>
+<li>Categorical (one)</li>
+</ul></li>
+<li><ul>
+<li>Chi-Square Test of Independence</li>
+<li>Categorical (two)</li>
+</ul></li>
+</ul>
 </div>
 </figure>
 </div>
