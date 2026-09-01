@@ -36,6 +36,7 @@ website:
           - lab03-eda.qmd
       - section: "Appendix"
         contents:
+          - appendix-apa.qmd
           - appendix-stats-decisions.qmd
           - appendix-stats-overview.qmd
 
