@@ -1,0 +1,91 @@
+# Exercise 1
+
+::: {.callout-tip}
+#### Exercise 1
+Find answer to the following questions using R console.
+
+  a.  2026 plus 12
+  b.  1 divided by 5
+  c.  50 times 4
+  d.  9 squared
+  e.  170 minus 15
+:::
+
+> a. 2038
+> b. 0.2
+> c. 200
+> d. 81
+> e. 155
+
+# Exercise 2
+
+::: {.callout-tip}
+#### Exercise 2
+
+Render this Quarto document to an html file. Inspect an output of the code chunk above. What is the output?
+:::
+
+> 961
+
+# Exercise 3
+
+::: {.callout-tip}
+#### Exercise 3
+
+Create a new Quarto file, add a code chunk with some math operations, save it, and render it.
+:::
+
+```{r}
+((100+15)*2)/5
+```
+
+::: {.callout-note}
+There is no right or wrong answer for this exercise.
+:::
+
+# Exercise 4
+
+::: {.callout-tip}
+#### Exercise 4
+
+Store the output of `10*2` in an object `z` and divide `z` by 4.
+:::
+
+```{r}
+z <- 10 * 2
+z / 4
+```
+
+# Exercise 5
+
+::: {.callout-tip}
+#### Exercise 5
+
+In your new Quarto document, add a code chunk, and get the square root of 5329 using a function `sqrt()`. Render the document to find the output.
+:::
+
+```{r}
+sqrt(5329)
+```
+
+# Exercise 6
+
+::: {.callout-tip}
+#### Exercise 6
+
+In your new Quarto document, load `tidyverse` and `gt` libraries and read in `sleep_breakfast.csv` file under the `data` folder. Inspect the data. What are the variables in the data? 
+:::
+
+```{r}
+library(tidyverse)  # for data wrangling
+library(gt)         # for pretty tables
+df <- read_csv('data/sleep_breakfast.csv')
+gt(df)
+```
+
+There are 4 variables in the data.
+
+* SleepDuration	
+* BreakfastPerWeek
+* Class
+* Campus

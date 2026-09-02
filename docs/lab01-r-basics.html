@@ -11,7 +11,7 @@
 <meta name="author" content="Gaby Mahrholz">
 <meta name="author" content="Carolina E. Kuepper-Tetzel">
 
-<title>Lab 1. R Basics – Research Methods and Statistics</title>
+<title>Lab 1: R Basics – Research Methods and Statistics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -126,7 +126,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab01-r-basics.html">Lab</a></li><li class="breadcrumb-item"><a href="./lab01-r-basics.html">Lab 1. R Basics</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab01-r-basics.html">Lab</a></li><li class="breadcrumb-item"><a href="./lab01-r-basics.html">Lab 1: R Basics</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -198,13 +198,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lab01-r-basics.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Lab 1. R Basics</span></a>
+ <span class="menu-text">Lab 1: R Basics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lab02-reliability-validity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Lab 2: Reliability and Validity</span></a>
+  <a href="./lab02-reliability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 2: Reliability</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -298,9 +298,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab01-r-basics.html">Lab</a></li><li class="breadcrumb-item"><a href="./lab01-r-basics.html">Lab 1. R Basics</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab01-r-basics.html">Lab</a></li><li class="breadcrumb-item"><a href="./lab01-r-basics.html">Lab 1: R Basics</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Lab 1. R Basics</h1>
+<h1 class="title">Lab 1: R Basics</h1>
 </div>
 
 
@@ -326,7 +326,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>In this lab, we will learn how to interact with R using R Rstudio. R is a programming language that you will write code in, and RStudio is a program that makes working with R easier. The user can either install R and RStudio on their computer and work with them locally or choose to work with them remotely via an internet browser. In this course, we will work with R and RStudio remotely via <a href="https://posit.cloud">PositCloud</a>.</p>
+<p>In this lab, we will learn how to interact with R using R Rstudio. R is a programming language that you will write code in, and RStudio is a program that makes working with R easier. The user can either install R and RStudio on their computer and work with them locally or choose to work with them remotely via an internet browser. In this course, we will work with R and RStudio remotely via <a href="posit.cloud">PositCloud</a>.</p>
 <section id="learning-objectives" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
 <ol type="1">
@@ -649,14 +649,14 @@ format:
 </section>
 <section id="reading-in-data" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="reading-in-data"><span class="header-section-number">5</span> Reading in Data</h2>
-<p>The primary data files that we will be working with in R are <code>.csv</code> files. We will read in the data file <code>family.csv</code> under the <code>data</code> folder using <code>read_csv()</code>, and store it as an object <code>df</code>.</p>
+<p>The primary data files that we will be working with in R are <code>.csv</code> files. We will read in the data file <code>birth_month_age.csv</code> under the <code>data</code> folder using <code>read_csv()</code>, and store it as an object <code>df</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'data/family.csv'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'data/birth_month_age.csv'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Rows: 12 Columns: 2
+<pre><code>Rows: 40 Columns: 2
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
-chr (1): Birth Month
+chr (1): Month
 dbl (1): Age
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
@@ -667,23 +667,23 @@ dbl (1): Age
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gt</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="ezjtyvqhdy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ezjtyvqhdy table {
+<div id="ngubsfbjru" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ngubsfbjru table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ezjtyvqhdy thead, #ezjtyvqhdy tbody, #ezjtyvqhdy tfoot, #ezjtyvqhdy tr, #ezjtyvqhdy td, #ezjtyvqhdy th {
+#ngubsfbjru thead, #ngubsfbjru tbody, #ngubsfbjru tfoot, #ngubsfbjru tr, #ngubsfbjru td, #ngubsfbjru th {
   border-style: none;
 }
 
-#ezjtyvqhdy p {
+#ngubsfbjru p {
   margin: 0;
   padding: 0;
 }
 
-#ezjtyvqhdy .gt_table {
+#ngubsfbjru .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -709,12 +709,12 @@ dbl (1): Age
   border-left-color: #D3D3D3;
 }
 
-#ezjtyvqhdy .gt_caption {
+#ngubsfbjru .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ezjtyvqhdy .gt_title {
+#ngubsfbjru .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -726,7 +726,7 @@ dbl (1): Age
   border-bottom-width: 0;
 }
 
-#ezjtyvqhdy .gt_subtitle {
+#ngubsfbjru .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -738,7 +738,7 @@ dbl (1): Age
   border-top-width: 0;
 }
 
-#ezjtyvqhdy .gt_heading {
+#ngubsfbjru .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -750,13 +750,13 @@ dbl (1): Age
   border-right-color: #D3D3D3;
 }
 
-#ezjtyvqhdy .gt_bottom_border {
+#ngubsfbjru .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ezjtyvqhdy .gt_col_headings {
+#ngubsfbjru .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -771,7 +771,7 @@ dbl (1): Age
   border-right-color: #D3D3D3;
 }
 
-#ezjtyvqhdy .gt_col_heading {
+#ngubsfbjru .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -791,7 +791,7 @@ dbl (1): Age
   overflow-x: hidden;
 }
 
-#ezjtyvqhdy .gt_column_spanner_outer {
+#ngubsfbjru .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -803,15 +803,15 @@ dbl (1): Age
   padding-right: 4px;
 }
 
-#ezjtyvqhdy .gt_column_spanner_outer:first-child {
+#ngubsfbjru .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ezjtyvqhdy .gt_column_spanner_outer:last-child {
+#ngubsfbjru .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ezjtyvqhdy .gt_column_spanner {
+#ngubsfbjru .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -823,11 +823,11 @@ dbl (1): Age
   width: 100%;
 }
 
-#ezjtyvqhdy .gt_spanner_row {
+#ngubsfbjru .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ezjtyvqhdy .gt_group_heading {
+#ngubsfbjru .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -853,7 +853,7 @@ dbl (1): Age
   text-align: left;
 }
 
-#ezjtyvqhdy .gt_empty_group_heading {
+#ngubsfbjru .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -868,15 +868,15 @@ dbl (1): Age
   vertical-align: middle;
 }
 
-#ezjtyvqhdy .gt_from_md > :first-child {
+#ngubsfbjru .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ezjtyvqhdy .gt_from_md > :last-child {
+#ngubsfbjru .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ezjtyvqhdy .gt_row {
+#ngubsfbjru .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -895,7 +895,7 @@ dbl (1): Age
   overflow-x: hidden;
 }
 
-#ezjtyvqhdy .gt_stub {
+#ngubsfbjru .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -908,7 +908,7 @@ dbl (1): Age
   padding-right: 5px;
 }
 
-#ezjtyvqhdy .gt_stub_row_group {
+#ngubsfbjru .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -922,15 +922,15 @@ dbl (1): Age
   vertical-align: top;
 }
 
-#ezjtyvqhdy .gt_row_group_first td {
+#ngubsfbjru .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ezjtyvqhdy .gt_row_group_first th {
+#ngubsfbjru .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ezjtyvqhdy .gt_summary_row {
+#ngubsfbjru .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -940,16 +940,16 @@ dbl (1): Age
   padding-right: 5px;
 }
 
-#ezjtyvqhdy .gt_first_summary_row {
+#ngubsfbjru .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ezjtyvqhdy .gt_first_summary_row.thick {
+#ngubsfbjru .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ezjtyvqhdy .gt_last_summary_row {
+#ngubsfbjru .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -959,7 +959,7 @@ dbl (1): Age
   border-bottom-color: #D3D3D3;
 }
 
-#ezjtyvqhdy .gt_grand_summary_row {
+#ngubsfbjru .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -969,7 +969,7 @@ dbl (1): Age
   padding-right: 5px;
 }
 
-#ezjtyvqhdy .gt_first_grand_summary_row {
+#ngubsfbjru .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -979,7 +979,7 @@ dbl (1): Age
   border-top-color: #D3D3D3;
 }
 
-#ezjtyvqhdy .gt_last_grand_summary_row_top {
+#ngubsfbjru .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -989,11 +989,11 @@ dbl (1): Age
   border-bottom-color: #D3D3D3;
 }
 
-#ezjtyvqhdy .gt_striped {
+#ngubsfbjru .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ezjtyvqhdy .gt_table_body {
+#ngubsfbjru .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1002,7 +1002,7 @@ dbl (1): Age
   border-bottom-color: #D3D3D3;
 }
 
-#ezjtyvqhdy .gt_footnotes {
+#ngubsfbjru .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1016,7 +1016,7 @@ dbl (1): Age
   border-right-color: #D3D3D3;
 }
 
-#ezjtyvqhdy .gt_footnote {
+#ngubsfbjru .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1025,7 +1025,7 @@ dbl (1): Age
   padding-right: 5px;
 }
 
-#ezjtyvqhdy .gt_sourcenotes {
+#ngubsfbjru .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1039,7 +1039,7 @@ dbl (1): Age
   border-right-color: #D3D3D3;
 }
 
-#ezjtyvqhdy .gt_sourcenote {
+#ngubsfbjru .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1047,72 +1047,72 @@ dbl (1): Age
   padding-right: 5px;
 }
 
-#ezjtyvqhdy .gt_left {
+#ngubsfbjru .gt_left {
   text-align: left;
 }
 
-#ezjtyvqhdy .gt_center {
+#ngubsfbjru .gt_center {
   text-align: center;
 }
 
-#ezjtyvqhdy .gt_right {
+#ngubsfbjru .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ezjtyvqhdy .gt_font_normal {
+#ngubsfbjru .gt_font_normal {
   font-weight: normal;
 }
 
-#ezjtyvqhdy .gt_font_bold {
+#ngubsfbjru .gt_font_bold {
   font-weight: bold;
 }
 
-#ezjtyvqhdy .gt_font_italic {
+#ngubsfbjru .gt_font_italic {
   font-style: italic;
 }
 
-#ezjtyvqhdy .gt_super {
+#ngubsfbjru .gt_super {
   font-size: 65%;
 }
 
-#ezjtyvqhdy .gt_footnote_marks {
+#ngubsfbjru .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ezjtyvqhdy .gt_asterisk {
+#ngubsfbjru .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ezjtyvqhdy .gt_indent_1 {
+#ngubsfbjru .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ezjtyvqhdy .gt_indent_2 {
+#ngubsfbjru .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ezjtyvqhdy .gt_indent_3 {
+#ngubsfbjru .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ezjtyvqhdy .gt_indent_4 {
+#ngubsfbjru .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ezjtyvqhdy .gt_indent_5 {
+#ngubsfbjru .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ezjtyvqhdy .katex-display {
+#ngubsfbjru .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ezjtyvqhdy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ngubsfbjru div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1120,58 +1120,170 @@ dbl (1): Age
 <table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings header">
-<th id="Birth-Month" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Birth Month</th>
+<th id="Month" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Month</th>
 <th id="Age" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Age</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td class="gt_row gt_left" headers="Birth Month">July</td>
-<td class="gt_row gt_right" headers="Age">85</td>
+<td class="gt_row gt_left" headers="Month">July</td>
+<td class="gt_row gt_right" headers="Age">93</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Birth Month">July</td>
-<td class="gt_row gt_right" headers="Age">65</td>
+<td class="gt_row gt_left" headers="Month">August</td>
+<td class="gt_row gt_right" headers="Age">67</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Birth Month">August</td>
-<td class="gt_row gt_right" headers="Age">60</td>
+<td class="gt_row gt_left" headers="Month">July</td>
+<td class="gt_row gt_right" headers="Age">69</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Birth Month">September</td>
-<td class="gt_row gt_right" headers="Age">40</td>
+<td class="gt_row gt_left" headers="Month">September</td>
+<td class="gt_row gt_right" headers="Age">39</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Birth Month">July</td>
-<td class="gt_row gt_right" headers="Age">36</td>
+<td class="gt_row gt_left" headers="Month">July</td>
+<td class="gt_row gt_right" headers="Age">37</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Birth Month">August</td>
-<td class="gt_row gt_right" headers="Age">33</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Birth Month">October</td>
-<td class="gt_row gt_right" headers="Age">32</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Birth Month">January</td>
-<td class="gt_row gt_right" headers="Age">12</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_left" headers="Birth Month">April</td>
-<td class="gt_row gt_right" headers="Age">10</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="Birth Month">January</td>
+<td class="gt_row gt_left" headers="Month">July</td>
 <td class="gt_row gt_right" headers="Age">6</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Birth Month">January</td>
-<td class="gt_row gt_right" headers="Age">3</td>
+<td class="gt_row gt_left" headers="Month">June</td>
+<td class="gt_row gt_right" headers="Age">9</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Birth Month">October</td>
-<td class="gt_row gt_right" headers="Age">2</td>
+<td class="gt_row gt_left" headers="Month">February</td>
+<td class="gt_row gt_right" headers="Age">39</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Month">July</td>
+<td class="gt_row gt_right" headers="Age">40</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Month">August</td>
+<td class="gt_row gt_right" headers="Age">34</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Month">October</td>
+<td class="gt_row gt_right" headers="Age">71</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Month">June</td>
+<td class="gt_row gt_right" headers="Age">10</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Month">May</td>
+<td class="gt_row gt_right" headers="Age">54</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Month">January</td>
+<td class="gt_row gt_right" headers="Age">25</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Month">July</td>
+<td class="gt_row gt_right" headers="Age">27</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Month">August</td>
+<td class="gt_row gt_right" headers="Age">26</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Month">July</td>
+<td class="gt_row gt_right" headers="Age">41</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Month">September</td>
+<td class="gt_row gt_right" headers="Age">59</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Month">July</td>
+<td class="gt_row gt_right" headers="Age">22</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Month">July</td>
+<td class="gt_row gt_right" headers="Age">23</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Month">June</td>
+<td class="gt_row gt_right" headers="Age">22</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Month">February</td>
+<td class="gt_row gt_right" headers="Age">50</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Month">July</td>
+<td class="gt_row gt_right" headers="Age">69</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Month">August</td>
+<td class="gt_row gt_right" headers="Age">48</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Month">October</td>
+<td class="gt_row gt_right" headers="Age">29</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Month">June</td>
+<td class="gt_row gt_right" headers="Age">27</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Month">May</td>
+<td class="gt_row gt_right" headers="Age">27</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Month">January</td>
+<td class="gt_row gt_right" headers="Age">24</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Month">September</td>
+<td class="gt_row gt_right" headers="Age">25</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Month">October</td>
+<td class="gt_row gt_right" headers="Age">22</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Month">November</td>
+<td class="gt_row gt_right" headers="Age">25</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Month">March</td>
+<td class="gt_row gt_right" headers="Age">26</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Month">April</td>
+<td class="gt_row gt_right" headers="Age">23</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Month">January</td>
+<td class="gt_row gt_right" headers="Age">25</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Month">September</td>
+<td class="gt_row gt_right" headers="Age">40</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Month">October</td>
+<td class="gt_row gt_right" headers="Age">52</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Month">November</td>
+<td class="gt_row gt_right" headers="Age">33</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Month">March</td>
+<td class="gt_row gt_right" headers="Age">32</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Month">April</td>
+<td class="gt_row gt_right" headers="Age">35</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Month">March</td>
+<td class="gt_row gt_right" headers="Age">50</td>
 </tr>
 </tbody>
 </table>
@@ -1189,7 +1301,7 @@ dbl (1): Age
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In your new Quarto document, load <code>tidyverse</code> and <code>gt</code> libraries and read in <code>sleep_breakfast.csv</code> file under the <code>data</code> folder. Inspect the data.</p>
+<p>In your new Quarto document, load <code>tidyverse</code> and <code>gt</code> libraries and read in <code>sleep_breakfast.csv</code> file under the <code>data</code> folder. Inspect the data. What are the variables in the data?</p>
 </div>
 </div>
 

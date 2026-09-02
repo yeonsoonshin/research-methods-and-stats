@@ -1,0 +1,334 @@
+---
+title: "Visualizing and Describing Data"
+author: 
+  - "Yeon Soon Shin"
+  - "Anjali Thapar"
+  - "Dustin Albert"
+  - "Matthew J. C. Crump"
+  - "Linda R. Cote"
+  - "Rupa G. Gordon"
+  - "Chrislyn E. Randell"
+  - "Judy Smith"
+  - "Helena Marvin"
+format:
+  html:
+    html-math-method: plain
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  include = FALSE,
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+
+library(tidyverse)  # for data wrangling and visualization
+library(psych)      # for describe() and scoreItems()
+library(broom)      # for tidying model output
+library(janitor)    # for frequency and contingency tables
+library(gt)         # for pretty tables
+library(ggpubr)     # for ggqqplot()
+library(BrailleR)   # for brailleR tables
+GoBlind()
+
+theme_set(theme_classic(base_size = 16))
+set.seed(123)
+```
+
+Before we can understand our statistical analyses, we must first understand our data. Imagine you have a big pile of data. How do you make sense of it? How would you describe your data? The complete description of the data is always the data itself, and it is important to inspect the data to make sure it is appropriate for the analyses you want to do. In this chapter, we will first learn how to visualize the data such that the visuals reveal some important characteristics of the data. Then, we will learn how to describe the data by summarizing them in terms of their key characteristics: typical values (**central tendency**), the spread (**variability**), and the **shape** of the distribution.
+
+## Visualizing Data
+
+The first thing to do when you have a fresh set of data is to visualize it. Visualizing the data allows us to see what the data look like and to check for any unusual patterns.
+
+### Distribution
+
+When we visualize data, we are often interested in the distribution of the data. The distribution is just a re-organization of the data without compressing it into a single number.
+
+#### Categorical Data: How common is each value?
+
+For categorical data, we can tally *how common* each value is to find some patterns of the data. For this, we will use the example of birth months. In a sample of 40 people, I asked each person what month they were born in. The responses were:
+
+> - July
+> - August
+> - July
+> - September
+> - July
+> - July
+> - June
+> - February
+> - July
+> - August
+> - October
+> - June
+> - May
+> - January
+> - July
+> - August
+> - July
+> - September
+> - July
+> - July
+> - June
+> - February
+> - July
+> - August
+> - October
+> - June
+> - May
+> - January
+> - September
+> - October
+> - November
+> - March
+> - April
+> - January
+> - September
+> - October
+> - November
+> - March
+> - April
+> - March
+
+Can you see any patterns in the data? For example, are there more people born in some months than others? Are more people born in the summer or in the fall (assuming everyone is born in the Northern Hemisphere)? How about the fall versus the winter? You may be able to answer these questions by inspecting every entry in the data because there are only 40 entries here. But what if there were 100 entries? Or 1,000 entries? It would be very difficult to see patterns in the data by inspecting every entry. Instead, we can summarize the data in a table or graph to see the patterns more clearly.
+
+##### Frequency Tables
+
+In simple terms, frequency tables are just the tally of how often each value occurs in the data. For example, in @tbl-month that shows birth months in a sample of 40 people, the frequency of "August" is 4. Note that all available response categories are included in the table, even if there are no responses in some categories. They also show the relative frequencies or percentages ("percent" column in @tbl-month).
+
+```{r}
+df <- read_csv('data/birth_month_age.csv') %>%
+  mutate(Month = factor(Month, levels = month.name)) %>%
+  arrange(Month) %>%
+  as_tibble(, )
+tbl.month <- df %>% 
+  tabyl(Month) %>%
+  adorn_totals("row") %>%
+  adorn_pct_formatting(digits = 0) %>% 
+  gt() %>%
+  cols_align(align = "left", columns = Month) 
+```
+
+```{r include=TRUE}
+#| label: tbl-month
+#| tbl-cap: "Frequency table for the birth month data."
+
+tbl.month
+```
+
+This gives you a quick sense of the distribution of the data. For example, in this sample, there are 18 people born between June and August, which is almost half of the sample.
+
+Note that there is only a minimal "compression" of the data in the frequency table. From the table, we can recreate the original data by repeating each response category according to its frequency. For example, we can recreate the original data by repeating "July" 5 times, "August" 2 times, and so on.
+
+##### Bar Graphs
+
+While frequency tables are useful, it is often easier to see the distribution of the data in a graph. Bar graphs represent the frequencies of categorical responses as bars. The levels are discrete, and the bars are separated with some gaps between them. The height of the bar on the y-axis represents the frequency of that response category.
+
+@fig-bar-graph is the same data as in @tbl-month, but represented as a bar graph. Is it easier to pick out the most common birth month in the bar graph than in the table? What about the second most common birth month? The bar graph makes it easier to see the distribution of the data than the table does.
+
+```{r include=TRUE}
+#| label: fig-bar-graph
+#| fig-cap: "Bar graph of birth month data"
+#| fig-alt: "Bar graph of the distribution of birth month data. The x-axis shows the birth month and the y-axis shows the frequency of each birth month. The bar for July is the tallest, and the rest is relatively short."
+
+df %>% ggplot(aes(x = Month)) +
+  geom_bar() +
+  labs(x = "Birth Month", y = "Frequency") +
+  scale_x_discrete(drop = FALSE) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  ggtitle("Bar Graph")
+```
+
+Note that the birth months are ordered from January to December, which is the natural order of the months. If we are working with nominal data (e.g., favorite fruit), we would not have a natural order of the levels. 
+
+#### Numerical, Continuous Data: How common is each range of values?
+
+For numerical, continuous data like interval and ratio data, we don't care about how many people have a particular value (e.g., 23 years and 5 months and 10 days old versus 23 years and 6 months and 15 days old). Instead, we care about how common each _range_ of values is. For example, if we measure the age of 40 people, we might find that there are many people who are between 20 and 40 years old, but very few people who are between 80 and 100 years old. 
+
+##### Histograms
+
+Histograms are a type of bar graph for continuous data, where the bars are touching each other. The x-axis is divided into bins of equal width that represent ranges of values. The height of the bar on the y-axis represents the frequency of values that fall into that bin.
+
+```{r include=TRUE}
+#| label: fig-histogram
+#| fig-cap: "Histogram of age data"
+#| fig-alt: "Histogram of age data. The x-axis shows the age 'bins' from 0 to 100, divided into 5 equal parts, and the y-axis shows the frequency of each age bin. The tallest bar is for 20 to 40 years old."
+#| 
+df %>% ggplot(aes(x = Age)) +
+  geom_histogram(breaks = seq(0, 100, by = 20)) +
+  scale_x_continuous(breaks = seq(0, 100, by = 20)) +
+  labs(x = "Age", y = "Frequency") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  ggtitle("Histogram")
+```
+
+Lower bounds are inclusive, and upper bounds are exclusive. For example, the first bin includes ages 0 to 19, the second bin includes ages 20 to 39, and so on. The last bin includes ages 80 to 99.
+
+Note that now there is some compression of the data. We no longer can recreate the original data from the histogram because we have lost information about the exact values of the data. It is important to choose the bin width carefully. If the bins are too wide, we may lose important information about the distribution of the data. If the bins are too narrow, we may see too much noise in the data and will not be able to see the overall pattern of the distribution. To illustrate this, @fig-histogram-wide shows the same data as in @fig-histogram, but with wider bins. The overall pattern of the distribution is still visible, but we have lost some information about the distribution of the data. In contrast, @fig-histogram-narrow shows the same data as in @fig-histogram, but with narrower bins. We can see more details about the distribution of the data, but it is harder to see the overall pattern of the distribution. How wide or narrow should your histogram be? It’s a Goldilocks question. Make it just right for your data.
+
+```{r include=TRUE}
+#| label: fig-histogram-wide
+#| fig-cap: "Histogram of age data with wider bins"
+#| fig-alt: "Histogram of age data with wider bins. The x-axis shows the age 'bins' from 0 to 100, divided into 2 equal parts, and the y-axis shows the frequency of each age bin. The bar for 1-50 years old is taller than 50-100 years old."
+
+df %>% ggplot(aes(x = Age)) +
+  geom_histogram(breaks = seq(0, 100, by = 50)) +
+  scale_x_continuous(breaks = seq(0, 100, by = 50)) +
+  labs(x = "Age", y = "Frequency") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  ggtitle("Wide Bins")
+```
+
+```{r include=TRUE}
+#| label: fig-histogram-narrow
+#| fig-cap: "Histogram of age data with narrower bins"
+#| fig-alt: "Histogram of age data with narrower bins. The x-axis shows the age 'bins' from 0 to 100, divided into 100 equal parts, and the y-axis shows the frequency of each age bin. The tallest bar is between 20 and 30 where the frequency is 4, and there are more gaps in the data."
+
+df %>% ggplot(aes(x = Age)) +
+  geom_histogram(breaks = seq(0, 100, by = 1)) +
+  scale_x_continuous(breaks = seq(0, 100, by = 10)) +
+  labs(x = "Age", y = "Frequency") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  ggtitle("Narrow Bins")
+```
+
+
+##### Noting the Shape of the Distribution
+
+As we visualize the data, we can note the shape of the distribution. 
+
+The primary characteristic we are concerned about when assessing the shape of a distribution is whether the distribution is symmetrical or skewed. A symmetrical distribution, as the name suggests, can be cut down the center to form two mirror images. The normal distribution has a single peak, known as the center, and two tails that extend out equally, forming what is known as a bell shape or bell curve.
+
+```{r include=TRUE}
+#| label: fig-histogram-symmetry
+#| fig-cap: "Histogram a symmetrical distribution"
+#| fig-alt: "Histogram of a symmetrical distribution. The x-axis shows the value from 0 to 100, divided into 15 equal parts, and the y-axis shows the frequency of each value bin. The tallest bars are around 50 where the frequency is around 2000, and the bars on either side of it are roughly equal in height."
+
+x <- round(rnorm(10000, mean = 50, sd = 10))
+
+ggplot(data.frame(x), aes(x = x)) +
+  geom_histogram(bins = 15, color = "black", fill = "lightblue") +
+  labs(x = "Value", y = "Frequency") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  ggtitle("Symmetrical Distribution")
+```
+
+Symmetrical distributions can also have multiple peaks. @fig-histogram-symmetry-multi shows a *bimodal* distribution, named for the two peaks that lie roughly symmetrically on either side of the center point. Bimodal distributions can arise when there are two different groups in the data. This is a relatively difficult characteristic to detect in numerical summary of the distribution. Thus, it is important to visualize  your data before moving ahead with any formal analyses.
+
+```{r include=TRUE}
+#| label: fig-histogram-symmetry-multi
+#| fig-cap: "Histogram a symmetrical distribution with multiple peaks"
+#| fig-alt: "Histogram of a symmetrical distribution with multiple peaks. The x-axis shows the value from 0 to 100, divided into 15 equal parts, and the y-axis shows the frequency of each value bin. There are two peaks, one between around 30 where the frequency is above 2000, and another around 70 where the frequency is also above 2000."
+x <- c(round(rnorm(5000, mean = 30, sd = 5)), round(rnorm(5000, mean = 70, sd = 5)))
+ggplot(data.frame(x), aes(x = x)) +
+  geom_histogram(bins = 15, color = "black", fill = "lightblue") +
+  labs(x = "Value", y = "Frequency") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  ggtitle("Bimodal Distribution")
+```
+
+Distributions that are not symmetrical also come in many forms, more than can be described here. The most common asymmetry to be encountered is referred to as **skew**, in which one of the two tails of the distribution is disproportionately longer than the other. This property can affect the value of the averages we use in our analyses and make them an inaccurate representation of our data, which causes many problems.
+
+Skew can either be positive or negative (also known as right or left, respectively), based on which tail is longer. It is very easy to get the two confused at first; many students want to describe the skew by where the bulk of the data (larger portion of the histogram, known as the body) is placed, but the correct determination is based on which tail is longer[^1]. 
+
+[^1]: If this is any helpful, think of SKEWered lobster TAILS.
+
+@fig-histogram-skew-positive shows a positively skewed distribution, where the tail is longer on the right side of the distribution. @fig-histogram-skew-negative shows a negatively skewed distribution, where the tail is longer on the left side of the distribution.
+
+```{r include=TRUE}
+#| label: fig-histogram-skew-positive
+#| fig-cap: "Histogram of a positively skewed distribution"
+#| fig-alt: "Histogram of a positively skewed distribution. The x-axis shows the value from 0 to 25, divided into 15 equal parts, and the y-axis shows the frequency of each value bin. The tallest bars are between 0 and 5, where the frequency is above 3000. There is a long tail to the right."
+x <- round(rchisq(10000, df = 4))
+ggplot(data.frame(x), aes(x = x)) +
+  geom_histogram(bins = 15, color = "black", fill = "lightblue") +
+  labs(x = "Value", y = "Frequency") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  ggtitle("Positive Skew")
+```
+
+```{r include=TRUE}
+#| label: fig-histogram-skew-negative
+#| fig-cap: "Histogram of a negatively skewed distribution"
+#| fig-alt: "Histogram of a negatively skewed distribution. The x-axis shows the value from around 20 to 50, divided into 15 equal parts, and the y-axis shows the frequency of each value bin. The tallest bars are between around 50, where the frequency is above 3000. There is a long tail to the left."
+x <- round(rchisq(10000, df = 4))
+ggplot(data.frame(x), aes(x = 50-x)) +
+  geom_histogram(bins = 15, color = "black", fill = "lightblue") +
+  labs(x = "Value", y = "Frequency") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  ggtitle("Negative Skew")
+```
+
+### Summary of Continuous Data
+
+#### Box Plots
+
+Box plots visually compress the data a bit more, showing the range of the middle 50% of the data (called the interquartile range, or IQR) with the middle value (called the median). Additionally, they show the range of the data set excluding outliers, and the outliers themselves.
+
+```{r, include=TRUE}
+#| label: fig-box-plot
+#| fig-cap: "Box plot of age data"
+#| fig-alt: "Box plot of age data. There is no x-axis. The y-axis shows the age from 0 to 100. There is one dot above the whiskers at around 90, which is an outlier."
+
+df %>% ggplot(aes(x = "", y = Age)) +
+  geom_boxplot() +
+  labs(x = "", y = "Age") +
+  scale_y_continuous(breaks = seq(0, 100, by = 10)) +
+  theme(axis.text.x = element_blank())
+```
+
+
+The thick horizontal line in the middle of the box in @fig-box-plot indicates the middle value of the data, which is called the median. This means that if you line up everyone in the sample from youngest to oldest, the person in the middle is about 30 years old. 
+
+If we only have the median, we don't know anything about the rest of the data. The data may comprise of most people aged between 30 and 35, or it could be that many different age groups are represented in the data. The box in the box plot gives you an idea of the range of the middle 50% of the data. The bottom of the box (called lower hinge) is the 25th percentile (called 1st quartile because the data are divided into four quarters, hence _quart_). The top of the box (called upper hinge) is the 75th percentile (called 3rd quartile). The range of the middle 50% of the data is called the interquartile range (IQR). 
+
+Still, we also want to know about the full range of the data. Are there 90 years old people in the sample? What about the youngest? The whiskers extend to the minimum and maximum values of the data, excluding outliers. Outliers are defined as values that are more than 1.5 times the IQR above the upper hinge or below the lower hinge. In @fig-box-plot, there is one outlier above the whiskers at around 90 years old.
+
+Box plots provide basic information about a distribution. For example, a distribution with a positive skew would have a longer whisker in the positive direction than in the negative direction. Box plots are good at portraying extreme values and are especially good at showing differences between distributions. However, the details of a distribution start getting compressed and lost in a box plot. Now we are entering into the realm of summarizing the data. 
+
+#### Bar Graphs
+
+Looking ahead, what we want to do is to compare the distributions by asking whether the typical values of the distributions are different. For this, we use bar graphs. Not to be confused with the bar graphs we used for categorical data, but the height of the bar represents the **mean** of the distribution, as shown in @fig-bar-mean-1. 
+
+```{r include=TRUE}
+#| label: fig-bar-mean-1
+#| fig-cap: "Bar graph of age data"
+#| fig-alt: "Bar graph of age data."
+
+df %>% ggplot(aes(x = "", y = Age)) +
+  stat_summary(fun = mean, geom = "bar") +
+  labs(x = "", y = "Age") +
+  scale_y_continuous(breaks = seq(0, 100, by = 10)) +
+  theme(axis.text.x = element_blank()) +
+  ggtitle("Bar Graph for Continuous Data")
+```
+
+This may not look like much, and you are right. It's just a single bar. But this type of visualization is useful when we want to compare the means of different groups. For example, if we want to compare the mean age across birth months, we can use a bar graph to compare the heights of the bars that represent the mean age for each birth month, as shown in @fig-bar-mean-2.
+
+```{r include=TRUE}
+#| label: fig-bar-mean-2
+#| fig-cap: "Bar graph of age data by birth month"
+#| fig-alt: "Bar graph of age data by birth month. The birth month categories are on the x-axis, and the mean age is on the y-axis. The bars are of similar heights."
+
+df %>% ggplot(aes(x = Month, y = Age)) +
+  stat_summary(fun = mean, geom = "bar") +
+  labs(x = "Month", y = "Age") +
+  scale_y_continuous(breaks = seq(0, 100, by = 10)) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  ggtitle("Bar Graph for Continuous Data Split by Categories")
+```
+
+This is the most compressed representation yet, and it is important to remember that we are losing a lot of information about the distribution when we use bar graphs or point plots. The mean is a point estimate of the typical value, and if we are going to use the mean to compare the distributions, we need what's called "error bars" to show how much error there is in the estimate of the mean. We will learn more about this in the later chapters. For now, remember that we have compressed our very complicated data into this one single height of the bar, which is the mean. We now have lost all information about the shape of the data. 
+
+
+### Describing Data with Descriptive Statistics
+
+We started with the raw data and visualized the data to see the whole ditribution, and gradually, we have compressed the data into a fewer number of values. That's what descriptive statistics are all about: summaries of the data that describe the key characteristics of the distribution. The most important characteristics of a distribution are its typical values (central tendency), the spread (variability), and the shape of the distribution.
+
+
+
+
+
+
+

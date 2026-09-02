@@ -1,5 +1,5 @@
 ---
-title: "Lab 1. R Basics"
+title: "Lab 1: R Basics"
 author:
  - "Yeon Soon Shin"
  - "Anjali Thapar"
@@ -10,7 +10,7 @@ format:
     html-math-method: plain
 ---
 
-In this lab, we will learn how to interact with R using R Rstudio. R is a programming language that you will write code in, and RStudio is a program that makes working with R easier. The user can either install R and RStudio on their computer and work with them locally or choose to work with them remotely via an internet browser. In this course, we will work with R and RStudio remotely via [PositCloud](https://posit.cloud).
+In this lab, we will learn how to interact with R using R Rstudio. R is a programming language that you will write code in, and RStudio is a program that makes working with R easier. The user can either install R and RStudio on their computer and work with them locally or choose to work with them remotely via an internet browser. In this course, we will work with R and RStudio remotely via [PositCloud](posit.cloud).
 
 ## Learning Objectives {.unnumbered}
 
@@ -272,10 +272,10 @@ The hashtag (#) marks everything to the right of it as _comment_. Using comments
 
 ## Reading in Data
 
-The primary data files that we will be working with in R are `.csv` files. We will read in the data file `family.csv` under the `data` folder using `read_csv()`, and store it as an object `df`.
+The primary data files that we will be working with in R are `.csv` files. We will read in the data file `birth_month_age.csv` under the `data` folder using `read_csv()`, and store it as an object `df`.
 
 ```{r}
-df <- read_csv('data/family.csv')
+df <- read_csv('data/birth_month_age.csv')
 ```
 
 We can inspect the data as a Markdown table using function `gt()`.
@@ -287,5 +287,5 @@ gt(df)
 ::: {.callout-tip}
 #### Exercise 6
 
-In your new Quarto document, load `tidyverse` and `gt` libraries and read in `sleep_breakfast.csv` file under the `data` folder. Inspect the data.
+In your new Quarto document, load `tidyverse` and `gt` libraries and read in `sleep_breakfast.csv` file under the `data` folder. Inspect the data. What are the variables in the data? 
 :::

@@ -1,0 +1,231 @@
+---
+title: "Lab 2: Reliability"
+format:
+  html:
+    html-math-method: plain
+---
+
+In this lab, we will explore the concepts of measurement reliability. Measurement is a critical aspect of empirical research, and it is the foundation for drawing valid conclusions from data. Measurement reliability is important if we want to compare one measurement to another, because the relationship between two different variables can’t be any stronger than the relationship between either of the variables and itself (i.e., its reliability). This means that an unreliable measure can never have a strong statistical relationship with any other measure. For this reason, researchers developing a new measurement (such as a new survey) will often go to great lengths to establish and improve its reliability.
+
+This lab will use Rosenberg Self-Esteem Scale [@rosenberg_society_1965] to demonstrate how to assess reliability of measurement.
+
+## Learning Objectives {.unnumbered}
+
+1.  Understand the concepts of reliability in measurement.
+2.  Produce a scatterplot to visualize the relationship between two items in a scale.
+3.  Calculate Cronbach's $\alpha$ to assess internal consistency of a scale.
+4.  Calculate composite scores for a scale.
+5.  Interpret what the results of reliability mean in the context of research.
+6.  Write up the results of reliability analyses in the APA style.
+
+## Preliminaries
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+Load the necessary packages for data wrangling, visualization, and analysis.
+
+```{r}
+library(tidyverse)  # for data wrangling and visualization
+library(psych)      # for describe() and scoreItems()
+library(broom)      # for tidying model output
+library(papaja)     # for APA style write up
+library(knitr)      # for kable()
+library(BrailleR)   # for accessibility
+GoBlind()
+```
+
+## Data
+
+Data for this lab comes from a sample of 318 adults between the ages of 18 and 26 who completed the Rosenberg Self-Esteem Scale (RSES) from the [Open-Source Psychometrics Project](https://openpsychometrics.org/). The items are measured on a 4-point Likert scale (0=Strongly Disagree, 1=Disagree, 2=Agree, 3=Strongly Agree). 
+
+:::{#tbl-rses .list-table aligns="l,l,l"}
+
+Rosenberg Self-Esteem Scale (RSES) items.
+
+- - Item Number
+  - Item Text
+  - Reverse Scored?
+- - 1
+  - I feel that I am a person of worth, at least on an equal plane with others.	
+  - Regular
+- - 2
+  - I feel that I have a number of good qualities.
+  - Regular
+- - 3
+  - All in all, I am inclined to feel that I am a failure.
+  - Reversed
+- - 4
+  - I am able to do things as well as most other people.
+  - Regular
+- - 5
+  - I feel I do not have much to be proud of.
+  - Reversed
+- - 6
+  - I take a positive attitude toward myself.
+  - Regular
+- - 7
+  - On the whole, I am satisfied with myself.
+  - Regular
+- - 8
+  - I wish I could have more respect for myself.
+  - Reversed
+- - 9
+  - I certainly feel useless at times.
+  - Reversed
+- - 10
+  - At times I think I am no good at all.
+  - Reversed
+
+:::
+
+
+Let's take a look at the data. We will read in the data and use `describe()` function from the `psych` package to get a summary of the data.
+
+```{r}
+df <- read_csv('data/rses.csv') %>%
+  as_tibble()
+describe(df) %>% kable()
+```
+
+::: callout-tip
+## Data Inspection Checklist
+
+- Are data complete (no missing values or wrong data)?
+- Are all items in the expected range?
+:::
+
+## Reliability (internal consistency)
+
+Good measurement is reliable, and the measurement of the same construct should produce similar results across different items (internal consistency), different time points (test-retest reliability), or different raters (inter-rater reliability).
+
+In today's lab, we will focus on internal consistency. Let's say we want to measure Self-Esteem. What we want to obtain from our measurement is some score that represents Self-Esteem for an individual. But we don't just ask one question "Do you have high self-esteem?" for many reasons. For one, increasing the amount of data helps us be more accurate and more confident in our measurement. People may make mistakes when answering a single question and can be influenced by other things outside of the question itself (maybe they are distracted by notifications on their phones). To guard against this, we ask multiple questions that are supposed to measure the same construct. For example, in RSES, we ask multiple questions that measure self-esteem: "I feel that I am a person of worth, at least on an equal plane with others." (Item 1) and "All in all, I am inclined to feel that I am a failure." (Item 3). If someone has high self-esteem, they will strongly agree with the first statement and strongly disagree with the second statement. If someone has low self-esteem, they will strongly agree with both statements. But what if someone strongly agrees with both statements? Then we have a problem, and the scale is not reliable to use.
+
+To summarize, we want to check if the items are internally consistent and correlated with each other. We will first inspect pairs of items, and then quantify overall internal consistency of the scale.
+
+### Inspect pairs of items
+
+We will first create a scatter plot of the items to visually inspect their relationships. If the items are internally consistent, we should see a pattern of positive correlation between them. As we discussed above, Items 1 and 3 are supposed to measure the same construct, but they are worded in opposite directions. Therefore, we expect to see a negative correlation between these two items. We will create a scatter plot of Items 1 and 3 to visualize their relationship. Since the responses are on a 4-point Likert scale, we will use `geom_jitter()` to add some random noise to the points so that we can see the distribution of the responses more clearly.
+
+```{r}
+# create a scatter plot of the items
+df %>%
+  ggplot(aes(x = RSES01, 
+             y = RSES03)) +
+  geom_jitter(alpha = 0.5, width = 0.2, height = 0.2) +
+  labs(x = "Item 1", y = "Item 3", 
+       title = "Rosenberg Self-Esteem Scale") +
+  coord_fixed(ratio = 1) + # make the x and y axes have the same ratio
+  theme_classic()
+```
+
+What's the correlation between the two items? We can calculate the correlation using `cor()` function. To look at a specific variable (column) in a data frame, we can use the `$` operator. For example, to look at the first item (`RSES01`), we can use `df$RSES01`. To look at the third item (`RSES03`), we can use `df$RSES03`. We can then pass these two variables to the `cor()` function to calculate the correlation between them.
+
+```{r}
+# calculate the correlation between the two items
+cor(df$RSES01, df$RSES03)
+```
+
+
+:::{.callout-tip}
+#### Exercise 1
+
+1. Choose two items from RSES that are expected to be **positively** correlated and create a scatter plot of the two items. Report the correlation between the two items. Are the two items positively correlated? If not, what could be the reason?
+
+2. Choose two items from RSES that are expected to be **negatively** correlated and create a scatter plot of the two items. Report the correlation between the two items. Are the two items negatively correlated? If not, what could be the reason?
+:::
+
+
+### Quantify overall internal consistency with Cronbach's $\alpha$
+
+We use **Cronbach's $\alpha$** (read as "Cronbach's alpha") to quantify the internal consistency. If Cronbach's $\alpha$ is greater than or equal to 0.7, we can say that the items are internally consistent and reliable. Ideally, we want to see Cronbach's $\alpha$ to be greater than 0.8, but this is not always the case in practice.
+
+We will create an array of keys, where the items that need to be reverse scored are prefixed with a minus sign (`-`). For example, for the third item "All in all, I am inclined to feel that I am a failure.", we will use `-3` to indicate that this item needs to be reverse scored. 
+
+For this example, we will only look at the first five items.
+
+```{r}
+rses.keys <- list(RSES = c(1, 2, -3, 4, -5))
+```
+
+With the keys defined, we can now score the items in RSES using `scoreItems()` function from the `psych` package. This function will calculate the composite scores and also calculate Cronbach's $\alpha$ for the scale.
+
+```{r}
+# score the items in RSES (columns that start with "RSES") using the keys defined above
+rses <- scoreItems(
+  keys = rses.keys, 
+  items = df %>% select(starts_with("RSES")),
+  totals = TRUE
+)
+```
+
+#### Composite scores
+
+You can find the RSES scores for each participant under `scores` in the `rses` object. 
+
+```{r}
+# convert the scores to a tibble
+rses.scores <- rses$scores %>% 
+  as_tibble() 
+
+head(rses.scores) %>% kable() # print the first few rows to inspect the rses.scores object
+```
+
+We can now summarize the RSES scores.
+
+```{r}
+describe(rses.scores) %>% kable()
+```
+
+#### Internal consistency (Cronbach's alpha)
+
+Let's check the Cronbach's $\alpha$ for the RSES scale. We can access the Cronbach's $\alpha$ values from the `rses` object.
+
+::: callout-tip
+## Questions to answer about the data:
+
+- Is the RSES scale internally consistent (Cronbach's alpha \>= 0.7)?
+:::
+
+```{r}
+# check the Cronbach's alpha for the RSES scale
+print(round(rses$alpha, 3)) %>% kable()
+```
+
+#### Write up the results
+
+We will now write up the results of the reliability analysis. The reliability analysis is conducted to justify the use of a measure in research, and thus the results of reliability analysis is usually reported in the method section of a research paper, following the description of the measure:
+
+> We used the Revised Self-Esteem Scale (RSES) to measure self-esteem. RSES is a brief measure of self-esteem, with 10 items. Participants rated the extent to which they agreed with each statement on a 4-point Likert scale (0 = Strongly Disagree, 3 = Strongly Agree). Composite scores were calculated by summing the responses across the first five items with reverse scoring applied to the appropriate items (Items 3, 5).
+
+Following this description, you would report the results of the reliability analysis. The write-up should include the **purpose** of the analysis (to assess internal consistency), the **method** used (Cronbach's $\alpha$), and the **results** of the analysis (the Cronbach's $\alpha$ value), and the **interpretation** of the results (good, acceptable, or poor internal consistency). For example:
+
+> Reliability analysis using Cronbach's $\alpha$ showed that the RSES had good internal consistency ($\alpha$ = .85).
+
+::: callout-tip
+## Reliability Analysis Write-Up Checklist
+
+- What type of reliability is measured? (e.g., internal consistency)
+- What method is used to assess reliability? (e.g., Cronbach's $\alpha$)
+- What are the results of the analysis? (e.g., Cronbach's $\alpha$ values for the scale)
+- What is the interpretation of the results? (e.g., good? acceptable? poor?)
+:::
+
+:::{.callout-tip}
+#### Exercise 2
+
+Repeat the reliability analysis for the RSES using all 10 items. Write up the results of the reliability analysis in APA style **in your own words**. You can use the example write-up above as a guide, but do not copy it verbatim. Make sure to include the description of the scale and how the score was calculated, the **purpose** of the analysis, the **method** used, the **results** of the analysis, and the **interpretation** of the results.
+:::
+
+### Key Takeaways {.unnumbered}
+
+- Internal consistency is a type of reliability that measures consistency of items within a scale, and it can be assessed using Cronbach's $\alpha$.
+- Cronbach's $\alpha$ values greater than or equal to 0.7 indicate acceptable internal consistency, while values less than 0.7 indicate poor internal consistency.
+- `scoreItems()` function from the `psych` package can be used to calculate composite scores for a scale and also calculate Cronbach's $\alpha$.
+
+

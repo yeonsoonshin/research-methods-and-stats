@@ -9,6 +9,7 @@ author:
   - "Rajiv Jhangiani"
   - "I-Chant A. Chiang"
   - "Dana C. Leighton"
+  - "Russell Poldrack"
 format:
     html:
         number-offset: 2
@@ -121,6 +122,8 @@ Again, measurement involves assigning scores to individuals so that they represe
 
 As an informal example, imagine that you have been dieting for a month. Your clothes seem to be fitting more loosely, and several friends have asked if you have lost weight. If at this point your bathroom scale indicated that you had lost 10 pounds, this would make sense and you would continue to use the scale. But if it indicated that you had gained 10 pounds, you would rightly conclude that it was broken and either fix it or get rid of it. In evaluating a measurement method, psychologists consider two general dimensions: reliability and validity. We will go into these two dimensions in depth in the next sections. In general, reliability is about whether the measurement is free from error, and behaves consistently. Validity is about what the measure means (does your measure actually measure what you want it to).
 
+
+
 ### Learning Objectives {.unnumbered}
 
 1. Define reliability, including the different types and how they are assessed.
@@ -129,6 +132,8 @@ As an informal example, imagine that you have been dieting for a month. Your clo
 ### Reliability
 
 Reliability refers to the consistency of a measure. Psychologists consider three types of consistency: over time (test- retest reliability), across items (internal consistency), and across different researchers (inter-rater reliability).
+
+<!--- from Russell Poldrak ---> Reliability is important if we want to compare one measurement to another, because the relationship between two different variables can’t be any stronger than the relationship between either of the variables and itself (i.e., its reliability). This means that an unreliable measure can never have a strong statistical relationship with any other measure. For this reason, researchers developing a new measurement (such as a new survey) will often go to great lengths to establish and improve its reliability.
 
 #### Test-Retest Reliability
 When researchers measure a construct that they assume to be consistent across time, then the scores they obtain should also be consistent across time. Test-retest reliability is the extent to which this is actually the case. For example, intelligence is generally thought to be consistent across time. A person who is highly intelligent today will be highly intelligent next week. This means that any good measure of intelligence should produce roughly the same scores for this individual next week as it does today. Clearly, a measure that produces highly inconsistent scores over time cannot be a very good measure of a construct that is supposed to be consistent.

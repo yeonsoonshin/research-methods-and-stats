@@ -32,7 +32,7 @@ website:
       - section: "Lab"
         contents:
           - lab01-r-basics.qmd
-          - lab02-reliability-validity.qmd
+          - lab02-reliability.qmd
           - lab03-eda.qmd
       - section: "Appendix"
         contents:
