@@ -284,8 +284,20 @@ We can inspect the data as a Markdown table using function `gt()`.
 gt(df)
 ```
 
+
+### Pipe Operator ````%>%````
+
+![Pipe Operator](https://i2.wp.com/www.rforecology.com/pipe_image1.png){#fig-pipe fig-alt="A funny parody of Magritte's famous 'This is not a pipe' painting, but with a R pipe operator '%>%' instead of a painting of a pipe. The caption reads 'This is a pipe.'"}
+
+R package `tidyverse` comes with a special operator called the pipe operator ````%>%```` that allows you to pass the output of one function to the next function. For example, we can pass the output of `read_csv()` to `gt()` using the pipe operator.
+
+```{r}
+read_csv('data/birth_month_age.csv') %>% 
+  gt()
+```
+
 ::: {.callout-tip}
 #### Exercise 6
 
-In your new Quarto document, load `tidyverse` and `gt` libraries and read in `sleep_breakfast.csv` file under the `data` folder. Inspect the data. What are the variables in the data? 
+In your new Quarto document, load `tidyverse` and `gt` libraries and read in `sleep_breakfast.csv` file under the `data` folder using the pipe operator `%>%`. Inspect the data. What are the variables in the data? 
 :::

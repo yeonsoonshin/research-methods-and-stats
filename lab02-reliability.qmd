@@ -1,5 +1,5 @@
 ---
-title: "Lab 2: Reliability"
+title: "Lab 2: Measurement Reliability"
 format:
   html:
     html-math-method: plain
@@ -35,7 +35,7 @@ library(tidyverse)  # for data wrangling and visualization
 library(psych)      # for describe() and scoreItems()
 library(broom)      # for tidying model output
 library(papaja)     # for APA style write up
-library(knitr)      # for kable()
+library(gt)         # for gt tables
 library(BrailleR)   # for accessibility
 GoBlind()
 ```
@@ -90,7 +90,7 @@ Let's take a look at the data. We will read in the data and use `describe()` fun
 ```{r}
 df <- read_csv('data/rses.csv') %>%
   as_tibble()
-describe(df) %>% kable()
+describe(df) %>% gt()
 ```
 
 ::: callout-tip
@@ -128,7 +128,8 @@ What's the correlation between the two items? We can calculate the correlation u
 
 ```{r}
 # calculate the correlation between the two items
-cor(df$RSES01, df$RSES03)
+cor(df$RSES01, df$RSES03) %>% 
+    round(3) # round the correlation to 3 decimal places
 ```
 
 
@@ -173,18 +174,18 @@ You can find the RSES scores for each participant under `scores` in the `rses` o
 rses.scores <- rses$scores %>% 
   as_tibble() 
 
-head(rses.scores) %>% kable() # print the first few rows to inspect the rses.scores object
+head(rses.scores) %>% gt() # print the first few rows to inspect the rses.scores object
 ```
 
 We can now summarize the RSES scores.
 
 ```{r}
-describe(rses.scores) %>% kable()
+describe(rses.scores) %>% gt()
 ```
 
 #### Internal consistency (Cronbach's alpha)
 
-Let's check the Cronbach's $\alpha$ for the RSES scale. We can access the Cronbach's $\alpha$ values from the `rses` object.
+Let's check the Cronbach's $\alpha$ for the RSES scale. We can access the Cronbach's $\alpha$ values from the `rses` object. 
 
 ::: callout-tip
 ## Questions to answer about the data:
@@ -194,7 +195,9 @@ Let's check the Cronbach's $\alpha$ for the RSES scale. We can access the Cronba
 
 ```{r}
 # check the Cronbach's alpha for the RSES scale
-print(round(rses$alpha, 3)) %>% kable()
+rses$alpha %>% 
+    round(3) %>% # round the Cronbach's alpha to 3 decimal places
+    knitr::kable() # similar to gt() that prints the table
 ```
 
 #### Write up the results
