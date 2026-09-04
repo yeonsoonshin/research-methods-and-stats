@@ -18,7 +18,8 @@ This textbook is is adaptation of the following open access resources for Bryn M
     2.  The fourth edition of *Research Methods in Psychology* (published in 2019), co-authored by Rajiv S. Jhangiani (Kwantlen Polytechnic University), Carrie Cuttler (Washington State University), and Dana C. Leighton (Texas A&M University—Texarkana).
 2.  *Introduction to Statistics in the Psychological Sciences* authored by Linda R. Cote (Marymount University), Rupa G. Gordon (Augustana College), Chrislyn E. Randell (Metropolitan State University), Judy Schmitt (University of Missouri–St. Louis), and Helena Marvin (University of Missouri–St. Louis), which is based on *An Introduction to Psychological Statistics* (https://irl.umsl.edu/oer/4/) authored by Garett C. Foster (University of Missouri–St. Louis) and *Online Statistics Education: A Multimedia Course of Study* (http://onlinestatbook.com/) led by David M. Lane (Rice University).
 3. *Analysis R Book* authored by Gaby Mahrholz and Carolina E. Kuepper-Tetzel, which is based on the previous version written by Phil McAleer, Carolina E. Kuepper-Tetzel, and Helena M. Paterson.
-4. *Statistical Thinking for the 21st Century* authored by Russell Poldrack (Stanford University).
+4. *Beginner Statistics for Psychology* authored by Nichole Vittoz.
+5. *Statistical Thinking for the 21st Century* authored by Russell Poldrack (Stanford University).
 
 Changes to the original works were made by Yeon Soon Shin (Bryn Mawr College). Materials from the original sources have been combined, reorganized, and added to by the current author, and any conceptual, mathematical, or typographical errors are the responsibility of the current authors.
 

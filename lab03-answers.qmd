@@ -1,0 +1,146 @@
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+```{r}
+library(tidyverse)  # for data wrangling and visualization
+library(psych)      # for describe() and scoreItems()
+library(broom)      # for tidying model output
+library(janitor)    # for frequency and contingency tables
+library(gt)         # for pretty tables
+library(ggpubr)     # for ggqqplot()
+```
+
+```{r, include=FALSE}
+theme_set(theme_classic(base_size = 16))
+```
+
+```{r}
+df <- read_csv('data/sleep_breakfast.csv') %>%
+  as_tibble()
+```
+
+# Exercise 1
+
+:::{.callout-tip}
+## Exercise 1: Ordinal data
+1. Convert the variable as _factor_ with the correct order of levels.
+2. Create a frequency table.
+3. Create a bar chart.
+4. Summarize your findings in a few sentences, addressing the following questions:
+    * Any missing data? If so, how many observations are missing?
+    * Which level is the most common (called _mode_)? Which level is the least common?
+:::
+
+```{r}
+df <- df %>%
+  mutate(
+    Class = factor(Class, 
+                   levels = c("First-year", 
+                              "Sophomore", 
+                              "Junior", 
+                              "Senior"), 
+                   ordered = TRUE),
+  )
+
+tbl.class <- df %>%
+  tabyl(Class) %>%
+  adorn_totals("row") %>%
+  adorn_pct_formatting(digits = 2) %>% 
+  gt() %>%
+  cols_align(align = "left", columns = Class)
+tbl.class
+
+fig.class <- df %>%
+  ggplot(aes(x = Class)) +
+  geom_bar(stat = "count") +
+  labs(x = "Class", y = "Frequency")
+fig.class
+```
+
+There is no missing data, and the most common class year is "Sophomore," while the least common is "Senior." 
+
+
+# Exercise 2
+
+
+:::{.callout-tip}
+## Exercise 2: Ratio data
+1. Check descriptive statistics.
+2. Create a histogram.
+3. Create a box plot.
+4. Run the Shapiro-Wilk test.
+5. Create a Q-Q plot.
+6. Summarize your findings in a few sentences, addressing the following questions:
+    * Are there any missing values in the variable? If so, how many observations are missing?
+    * What is the shape of the distribution of the variable? 
+        * Is the distribution approximately normal (bell-shaped, symmetric around one peak)? 
+        * If the distribution is skewed, which direction is the distribution skewed (positive or negative)?
+    * What is the central tendency of the variable?
+    * What is the spread of the variable?
+    
+:::
+
+```{r}
+df %>% select(BreakfastPerWeek) %>%
+  describe() %>%
+  round(3) %>%
+  select(n, mean, median, sd, range, min, max, skew, kurtosis) %>%
+  gt(rownames_to_stub=TRUE)
+
+df %>% ggplot(aes(x = BreakfastPerWeek)) +
+  geom_histogram(binwidth = 1, color = "black", fill = "lightgray") +
+  labs(x = "Breakfast Consumption (days per week)", y = "Frequency")
+
+df %>% ggplot() +
+  geom_boxplot(aes(x="",
+                   y=BreakfastPerWeek)) +
+  labs(y = "Breakfast Consumption (days per week)", 
+       x = "")  
+
+library(papaja)
+shapiro.test(df$BreakfastPerWeek) %>%
+  tidy() %>%
+  mutate(across(c("statistic"), round, 3)) %>%
+  gt()
+
+df %>% 
+  ggqqplot(x = "BreakfastPerWeek")
+```
+
+There are no missing variables. The distribution is not normally distributed (Shapiro-Wilk test, p < 0.05), and there are multiple modes visible in the histogram (2 and 7), indicating a multimodal distribution. The mean (4.254) and median (4) are similar, and the range of the variable is 7, suggesting high variability in breakfast consumption among students. 
+    * What is the central tendency of the variable?
+    * What is the spread of the variable?
+    * What is the shape of the distribution of the variable? 
+        * Is the distribution approximately normal (bell-shaped, symmetric around one peak)? If not, which direction is the distribution skewed (positive or negative)?
+
+# Exercise 3
+
+:::{.callout-tip}
+## Exercise 3: Continuous and Ordinal data
+1. Create a faceted histogram.
+2. Create a box plot showing both variables.
+3. Summarize your findings in a few sentences, addressing the following questions:
+    * Is there a relationship between the two variables (e.g., is the distribution of sleep duration different between class years)?
+    * Which class year has the highest average sleep duration? 
+    * Does the sleep distribution appear to be spread similarly across class years, or is there more variability in some class years than others?
+:::
+
+```{r}
+df %>%
+  ggplot(aes(x = SleepDuration)) +
+  facet_grid(Class ~ .) +
+  geom_histogram(binwidth = 1, color = "black", alpha = 0.5, position = "identity") +
+  labs(x = "Sleep Duration (hours)", y = "Frequency")
+
+df %>%
+  ggplot() +
+  geom_boxplot(aes(x = Class, y = SleepDuration)) +
+  labs(x = "Class", y = "Sleep Duration (hours)")
+```
+
+The sleep duration distributions look similar across class years. For Juniors and Seniors, there appears to be more skewness in the distribution. Seniors have the highest median sleep duration, while Juniors have the lowest median sleep duration. There are more outliers among Sophomores, but the IQR is the highest among Juniors. All of this should be taken with caution, as the sample sizes for each class year differ. 

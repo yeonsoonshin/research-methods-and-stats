@@ -181,6 +181,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Ch.3: Measurement</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-visualizing-and-describing-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ch.4: Visualizing and Describing Data</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -258,7 +264,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#exercise-5" id="toc-exercise-5" class="nav-link" data-scroll-target="#exercise-5"><span class="header-section-number">5</span> Exercise 5</a></li>
   <li><a href="#exercise-6" id="toc-exercise-6" class="nav-link" data-scroll-target="#exercise-6"><span class="header-section-number">6</span> Exercise 6</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/yeonsoon/research-methods-and-stats-book/edit/master/lab01-answers.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lab01-answers.epub"><i class="bi bi-file"></i>ePub</a></li><li><a href="lab01-answers.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lab01-answers.epub"><i class="bi bi-file"></i>ePub</a></li><li><a href="lab01-answers.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
@@ -367,13 +373,22 @@ Note
 <p>Store the output of <code>10*2</code> in an object <code>z</code> and divide <code>z</code> by 4.</p>
 </div>
 </div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="sc">*</span> <span class="dv">2</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>z <span class="sc">/</span> <span class="dv">4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 5</code></pre>
-</div>
-</div>
+<pre><code>  ::: {.cell}
+  
+  ```{.r .cell-code}
+  z &lt;- 10 * 2
+  z / 4
+  ```
+  
+  ::: {.cell-output .cell-output-stdout}
+  
+  ```
+  [1] 5
+  ```
+  
+  
+  :::
+  :::</code></pre>
 </section>
 <section id="exercise-5" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Exercise 5</h1>
@@ -390,12 +405,21 @@ Note
 <p>In your new Quarto document, add a code chunk, and get the square root of 5329 using a function <code>sqrt()</code>. Render the document to find the output.</p>
 </div>
 </div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">5329</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 73</code></pre>
-</div>
-</div>
+<pre><code>  ::: {.cell}
+  
+  ```{.r .cell-code}
+  sqrt(5329)
+  ```
+  
+  ::: {.cell-output .cell-output-stdout}
+  
+  ```
+  [1] 73
+  ```
+  
+  
+  :::
+  :::</code></pre>
 </section>
 <section id="exercise-6" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> Exercise 6</h1>
@@ -409,857 +433,760 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In your new Quarto document, load <code>tidyverse</code> and <code>gt</code> libraries and read in <code>sleep_breakfast.csv</code> file under the <code>data</code> folder. Inspect the data. What are the variables in the data?</p>
+<p>In your new Quarto document, load <code>tidyverse</code> and <code>gt</code> libraries and read in <code>sleep_breakfast.csv</code> file using the pipe operator under the <code>data</code> folder. Inspect the data. What are the variables in the data?</p>
 </div>
 </div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)  <span class="co"># for data wrangling</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.2.1     ✔ readr     2.2.0
-✔ forcats   1.0.1     ✔ stringr   1.6.0
-✔ ggplot2   4.0.3     ✔ tibble    3.3.1
-✔ lubridate 1.9.5     ✔ tidyr     1.3.2
-✔ purrr     1.2.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)         <span class="co"># for pretty tables</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'data/sleep_breakfast.csv'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 59 Columns: 4
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (2): Class, Campus
-dbl (2): SleepDuration, BreakfastPerWeek
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gt</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div id="jpqzeoxlso" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jpqzeoxlso table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#jpqzeoxlso thead, #jpqzeoxlso tbody, #jpqzeoxlso tfoot, #jpqzeoxlso tr, #jpqzeoxlso td, #jpqzeoxlso th {
-  border-style: none;
-}
-
-#jpqzeoxlso p {
-  margin: 0;
-  padding: 0;
-}
-
-#jpqzeoxlso .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#jpqzeoxlso .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#jpqzeoxlso .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#jpqzeoxlso .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#jpqzeoxlso .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#jpqzeoxlso .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#jpqzeoxlso .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#jpqzeoxlso .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#jpqzeoxlso .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#jpqzeoxlso .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#jpqzeoxlso .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#jpqzeoxlso .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#jpqzeoxlso .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#jpqzeoxlso .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#jpqzeoxlso .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#jpqzeoxlso .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#jpqzeoxlso .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#jpqzeoxlso .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#jpqzeoxlso .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#jpqzeoxlso .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#jpqzeoxlso .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#jpqzeoxlso .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#jpqzeoxlso .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#jpqzeoxlso .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#jpqzeoxlso .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#jpqzeoxlso .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#jpqzeoxlso .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#jpqzeoxlso .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#jpqzeoxlso .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#jpqzeoxlso .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#jpqzeoxlso .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#jpqzeoxlso .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#jpqzeoxlso .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#jpqzeoxlso .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#jpqzeoxlso .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#jpqzeoxlso .gt_left {
-  text-align: left;
-}
-
-#jpqzeoxlso .gt_center {
-  text-align: center;
-}
-
-#jpqzeoxlso .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#jpqzeoxlso .gt_font_normal {
-  font-weight: normal;
-}
-
-#jpqzeoxlso .gt_font_bold {
-  font-weight: bold;
-}
-
-#jpqzeoxlso .gt_font_italic {
-  font-style: italic;
-}
-
-#jpqzeoxlso .gt_super {
-  font-size: 65%;
-}
-
-#jpqzeoxlso .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#jpqzeoxlso .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#jpqzeoxlso .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#jpqzeoxlso .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#jpqzeoxlso .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#jpqzeoxlso .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#jpqzeoxlso .gt_indent_5 {
-  text-indent: 25px;
-}
-
-#jpqzeoxlso .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-
-#jpqzeoxlso div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
-  height: 0px !important;
-}
-</style>
-
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
-<thead>
-<tr class="gt_col_headings header">
-<th id="SleepDuration" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">SleepDuration</th>
-<th id="BreakfastPerWeek" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">BreakfastPerWeek</th>
-<th id="Class" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Class</th>
-<th id="Campus" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Campus</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="odd">
-<td class="gt_row gt_right" headers="SleepDuration">7.5</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">7</td>
-<td class="gt_row gt_left" headers="Class">First-year</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="SleepDuration">8.5</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">2</td>
-<td class="gt_row gt_left" headers="Class">Junior</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="SleepDuration">7.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">4</td>
-<td class="gt_row gt_left" headers="Class">Sophomore</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="SleepDuration">7.5</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">7</td>
-<td class="gt_row gt_left" headers="Class">First-year</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="SleepDuration">6.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">4</td>
-<td class="gt_row gt_left" headers="Class">Sophomore</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="SleepDuration">8.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">6</td>
-<td class="gt_row gt_left" headers="Class">Senior</td>
-<td class="gt_row gt_left" headers="Campus">Haverford College</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="SleepDuration">9.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">7</td>
-<td class="gt_row gt_left" headers="Class">Junior</td>
-<td class="gt_row gt_left" headers="Campus">Haverford College</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="SleepDuration">8.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">2</td>
-<td class="gt_row gt_left" headers="Class">Sophomore</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="SleepDuration">8.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">7</td>
-<td class="gt_row gt_left" headers="Class">Senior</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="SleepDuration">7.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">6</td>
-<td class="gt_row gt_left" headers="Class">Senior</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="SleepDuration">7.5</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">7</td>
-<td class="gt_row gt_left" headers="Class">Senior</td>
-<td class="gt_row gt_left" headers="Campus">Haverford College</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="SleepDuration">8.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">1</td>
-<td class="gt_row gt_left" headers="Class">Senior</td>
-<td class="gt_row gt_left" headers="Campus">Haverford College</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="SleepDuration">7.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">2</td>
-<td class="gt_row gt_left" headers="Class">Sophomore</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="SleepDuration">9.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">7</td>
-<td class="gt_row gt_left" headers="Class">Junior</td>
-<td class="gt_row gt_left" headers="Campus">Haverford College</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="SleepDuration">9.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">2</td>
-<td class="gt_row gt_left" headers="Class">Sophomore</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="SleepDuration">7.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">6</td>
-<td class="gt_row gt_left" headers="Class">Sophomore</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="SleepDuration">8.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">7</td>
-<td class="gt_row gt_left" headers="Class">Senior</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="SleepDuration">7.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">2</td>
-<td class="gt_row gt_left" headers="Class">Sophomore</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="SleepDuration">NA</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">2</td>
-<td class="gt_row gt_left" headers="Class">Sophomore</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="SleepDuration">8.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">4</td>
-<td class="gt_row gt_left" headers="Class">First-year</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="SleepDuration">7.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">0</td>
-<td class="gt_row gt_left" headers="Class">Junior</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="SleepDuration">7.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">6</td>
-<td class="gt_row gt_left" headers="Class">Junior</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="SleepDuration">7.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">6</td>
-<td class="gt_row gt_left" headers="Class">Junior</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="SleepDuration">7.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">3</td>
-<td class="gt_row gt_left" headers="Class">Senior</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="SleepDuration">6.5</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">6</td>
-<td class="gt_row gt_left" headers="Class">Junior</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="SleepDuration">7.5</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">7</td>
-<td class="gt_row gt_left" headers="Class">First-year</td>
-<td class="gt_row gt_left" headers="Campus">Haverford College</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="SleepDuration">7.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">7</td>
-<td class="gt_row gt_left" headers="Class">Sophomore</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="SleepDuration">8.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">6</td>
-<td class="gt_row gt_left" headers="Class">First-year</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="SleepDuration">7.5</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">2</td>
-<td class="gt_row gt_left" headers="Class">Sophomore</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="SleepDuration">8.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">4</td>
-<td class="gt_row gt_left" headers="Class">First-year</td>
-<td class="gt_row gt_left" headers="Campus">Haverford College</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="SleepDuration">7.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">7</td>
-<td class="gt_row gt_left" headers="Class">Junior</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="SleepDuration">7.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">0</td>
-<td class="gt_row gt_left" headers="Class">First-year</td>
-<td class="gt_row gt_left" headers="Campus">Haverford College</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="SleepDuration">9.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">1</td>
-<td class="gt_row gt_left" headers="Class">First-year</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="SleepDuration">7.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">2</td>
-<td class="gt_row gt_left" headers="Class">First-year</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="SleepDuration">8.5</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">2</td>
-<td class="gt_row gt_left" headers="Class">First-year</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="SleepDuration">7.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">2</td>
-<td class="gt_row gt_left" headers="Class">Senior</td>
-<td class="gt_row gt_left" headers="Campus">Haverford College</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="SleepDuration">9.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">7</td>
-<td class="gt_row gt_left" headers="Class">Sophomore</td>
-<td class="gt_row gt_left" headers="Campus">Haverford College</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="SleepDuration">7.5</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">4</td>
-<td class="gt_row gt_left" headers="Class">First-year</td>
-<td class="gt_row gt_left" headers="Campus">Haverford College</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="SleepDuration">8.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">7</td>
-<td class="gt_row gt_left" headers="Class">Sophomore</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="SleepDuration">7.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">1</td>
-<td class="gt_row gt_left" headers="Class">Sophomore</td>
-<td class="gt_row gt_left" headers="Campus">Haverford College</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="SleepDuration">4.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">2</td>
-<td class="gt_row gt_left" headers="Class">Sophomore</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="SleepDuration">8.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">7</td>
-<td class="gt_row gt_left" headers="Class">Sophomore</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="SleepDuration">9.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">7</td>
-<td class="gt_row gt_left" headers="Class">Sophomore</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="SleepDuration">8.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">7</td>
-<td class="gt_row gt_left" headers="Class">First-year</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="SleepDuration">9.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">1</td>
-<td class="gt_row gt_left" headers="Class">Sophomore</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="SleepDuration">8.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">7</td>
-<td class="gt_row gt_left" headers="Class">Sophomore</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="SleepDuration">10.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">3</td>
-<td class="gt_row gt_left" headers="Class">Sophomore</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="SleepDuration">9.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">6</td>
-<td class="gt_row gt_left" headers="Class">First-year</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="SleepDuration">7.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">6</td>
-<td class="gt_row gt_left" headers="Class">Sophomore</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="SleepDuration">7.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">7</td>
-<td class="gt_row gt_left" headers="Class">First-year</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="SleepDuration">7.5</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">6</td>
-<td class="gt_row gt_left" headers="Class">Senior</td>
-<td class="gt_row gt_left" headers="Campus">Haverford College</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="SleepDuration">8.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">4</td>
-<td class="gt_row gt_left" headers="Class">Senior</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="SleepDuration">8.5</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">3</td>
-<td class="gt_row gt_left" headers="Class">Junior</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="SleepDuration">7.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">2</td>
-<td class="gt_row gt_left" headers="Class">Junior</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="SleepDuration">7.5</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">0</td>
-<td class="gt_row gt_left" headers="Class">Sophomore</td>
-<td class="gt_row gt_left" headers="Campus">Haverford College</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="SleepDuration">8.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">4</td>
-<td class="gt_row gt_left" headers="Class">Junior</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="SleepDuration">6.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">0</td>
-<td class="gt_row gt_left" headers="Class">Sophomore</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_right" headers="SleepDuration">7.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">2</td>
-<td class="gt_row gt_left" headers="Class">Sophomore</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_right" headers="SleepDuration">8.0</td>
-<td class="gt_row gt_right" headers="BreakfastPerWeek">5</td>
-<td class="gt_row gt_left" headers="Class">Sophomore</td>
-<td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
+<pre><code>  ::: {.cell}
+  
+  ```{.r .cell-code}
+  library(tidyverse)  # for data wrangling
+  ```
+  
+  ::: {.cell-output .cell-output-stderr}
+  
+  ```
+  ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+  ✔ dplyr     1.2.1     ✔ readr     2.2.0
+  ✔ forcats   1.0.1     ✔ stringr   1.6.0
+  ✔ ggplot2   4.0.3     ✔ tibble    3.3.1
+  ✔ lubridate 1.9.5     ✔ tidyr     1.3.2
+  ✔ purrr     1.2.2     
+  ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+  ✖ dplyr::filter() masks stats::filter()
+  ✖ dplyr::lag()    masks stats::lag()
+  ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors
+  ```
+  
+  
+  :::
+  
+  ```{.r .cell-code}
+  library(gt)         # for pretty tables
+  read_csv('data/sleep_breakfast.csv') %&gt;% gt()
+  ```
+  
+  ::: {.cell-output .cell-output-stderr}
+  
+  ```
+  Rows: 59 Columns: 4
+  ── Column specification ────────────────────────────────────────────────────────
+  Delimiter: ","
+  chr (2): Class, Campus
+  dbl (2): SleepDuration, BreakfastPerWeek
+  
+  ℹ Use `spec()` to retrieve the full column specification for this data.
+  ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+  ```
+  
+  
+  :::
+  
+  ::: {.cell-output-display}
+  
+  ```{=html}
+  &lt;div id="ibxhtcymdz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;"&gt;
+  &lt;style&gt;#ibxhtcymdz table {
+    font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  #ibxhtcymdz thead, #ibxhtcymdz tbody, #ibxhtcymdz tfoot, #ibxhtcymdz tr, #ibxhtcymdz td, #ibxhtcymdz th {
+    border-style: none;
+  }
+  
+  #ibxhtcymdz p {
+    margin: 0;
+    padding: 0;
+  }
+  
+  #ibxhtcymdz .gt_table {
+    display: table;
+    border-collapse: collapse;
+    line-height: normal;
+    margin-left: auto;
+    margin-right: auto;
+    color: #333333;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    background-color: #FFFFFF;
+    width: auto;
+    border-top-style: solid;
+    border-top-width: 2px;
+    border-top-color: #A8A8A8;
+    border-right-style: none;
+    border-right-width: 2px;
+    border-right-color: #D3D3D3;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: #A8A8A8;
+    border-left-style: none;
+    border-left-width: 2px;
+    border-left-color: #D3D3D3;
+  }
+  
+  #ibxhtcymdz .gt_caption {
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+  
+  #ibxhtcymdz .gt_title {
+    color: #333333;
+    font-size: 125%;
+    font-weight: initial;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-bottom-color: #FFFFFF;
+    border-bottom-width: 0;
+  }
+  
+  #ibxhtcymdz .gt_subtitle {
+    color: #333333;
+    font-size: 85%;
+    font-weight: initial;
+    padding-top: 3px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-top-color: #FFFFFF;
+    border-top-width: 0;
+  }
+  
+  #ibxhtcymdz .gt_heading {
+    background-color: #FFFFFF;
+    text-align: center;
+    border-bottom-color: #FFFFFF;
+    border-left-style: none;
+    border-left-width: 1px;
+    border-left-color: #D3D3D3;
+    border-right-style: none;
+    border-right-width: 1px;
+    border-right-color: #D3D3D3;
+  }
+  
+  #ibxhtcymdz .gt_bottom_border {
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: #D3D3D3;
+  }
+  
+  #ibxhtcymdz .gt_col_headings {
+    border-top-style: solid;
+    border-top-width: 2px;
+    border-top-color: #D3D3D3;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: #D3D3D3;
+    border-left-style: none;
+    border-left-width: 1px;
+    border-left-color: #D3D3D3;
+    border-right-style: none;
+    border-right-width: 1px;
+    border-right-color: #D3D3D3;
+  }
+  
+  #ibxhtcymdz .gt_col_heading {
+    color: #333333;
+    background-color: #FFFFFF;
+    font-size: 100%;
+    font-weight: normal;
+    text-transform: inherit;
+    border-left-style: none;
+    border-left-width: 1px;
+    border-left-color: #D3D3D3;
+    border-right-style: none;
+    border-right-width: 1px;
+    border-right-color: #D3D3D3;
+    vertical-align: bottom;
+    padding-top: 5px;
+    padding-bottom: 6px;
+    padding-left: 5px;
+    padding-right: 5px;
+    overflow-x: hidden;
+  }
+  
+  #ibxhtcymdz .gt_column_spanner_outer {
+    color: #333333;
+    background-color: #FFFFFF;
+    font-size: 100%;
+    font-weight: normal;
+    text-transform: inherit;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+  
+  #ibxhtcymdz .gt_column_spanner_outer:first-child {
+    padding-left: 0;
+  }
+  
+  #ibxhtcymdz .gt_column_spanner_outer:last-child {
+    padding-right: 0;
+  }
+  
+  #ibxhtcymdz .gt_column_spanner {
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: #D3D3D3;
+    vertical-align: bottom;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    overflow-x: hidden;
+    display: inline-block;
+    width: 100%;
+  }
+  
+  #ibxhtcymdz .gt_spanner_row {
+    border-bottom-style: hidden;
+  }
+  
+  #ibxhtcymdz .gt_group_heading {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: #333333;
+    background-color: #FFFFFF;
+    font-size: 100%;
+    font-weight: initial;
+    text-transform: inherit;
+    border-top-style: solid;
+    border-top-width: 2px;
+    border-top-color: #D3D3D3;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: #D3D3D3;
+    border-left-style: none;
+    border-left-width: 1px;
+    border-left-color: #D3D3D3;
+    border-right-style: none;
+    border-right-width: 1px;
+    border-right-color: #D3D3D3;
+    vertical-align: middle;
+    text-align: left;
+  }
+  
+  #ibxhtcymdz .gt_empty_group_heading {
+    padding: 0.5px;
+    color: #333333;
+    background-color: #FFFFFF;
+    font-size: 100%;
+    font-weight: initial;
+    border-top-style: solid;
+    border-top-width: 2px;
+    border-top-color: #D3D3D3;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: #D3D3D3;
+    vertical-align: middle;
+  }
+  
+  #ibxhtcymdz .gt_from_md &gt; :first-child {
+    margin-top: 0;
+  }
+  
+  #ibxhtcymdz .gt_from_md &gt; :last-child {
+    margin-bottom: 0;
+  }
+  
+  #ibxhtcymdz .gt_row {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 10px;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color: #D3D3D3;
+    border-left-style: none;
+    border-left-width: 1px;
+    border-left-color: #D3D3D3;
+    border-right-style: none;
+    border-right-width: 1px;
+    border-right-color: #D3D3D3;
+    vertical-align: middle;
+    overflow-x: hidden;
+  }
+  
+  #ibxhtcymdz .gt_stub {
+    color: #333333;
+    background-color: #FFFFFF;
+    font-size: 100%;
+    font-weight: initial;
+    text-transform: inherit;
+    border-right-style: solid;
+    border-right-width: 2px;
+    border-right-color: #D3D3D3;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  
+  #ibxhtcymdz .gt_stub_row_group {
+    color: #333333;
+    background-color: #FFFFFF;
+    font-size: 100%;
+    font-weight: initial;
+    text-transform: inherit;
+    border-right-style: solid;
+    border-right-width: 2px;
+    border-right-color: #D3D3D3;
+    padding-left: 5px;
+    padding-right: 5px;
+    vertical-align: top;
+  }
+  
+  #ibxhtcymdz .gt_row_group_first td {
+    border-top-width: 2px;
+  }
+  
+  #ibxhtcymdz .gt_row_group_first th {
+    border-top-width: 2px;
+  }
+  
+  #ibxhtcymdz .gt_summary_row {
+    color: #333333;
+    background-color: #FFFFFF;
+    text-transform: inherit;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  
+  #ibxhtcymdz .gt_first_summary_row {
+    border-top-style: solid;
+    border-top-color: #D3D3D3;
+  }
+  
+  #ibxhtcymdz .gt_first_summary_row.thick {
+    border-top-width: 2px;
+  }
+  
+  #ibxhtcymdz .gt_last_summary_row {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: #D3D3D3;
+  }
+  
+  #ibxhtcymdz .gt_grand_summary_row {
+    color: #333333;
+    background-color: #FFFFFF;
+    text-transform: inherit;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  
+  #ibxhtcymdz .gt_first_grand_summary_row {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-top-style: double;
+    border-top-width: 6px;
+    border-top-color: #D3D3D3;
+  }
+  
+  #ibxhtcymdz .gt_last_grand_summary_row_top {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-bottom-style: double;
+    border-bottom-width: 6px;
+    border-bottom-color: #D3D3D3;
+  }
+  
+  #ibxhtcymdz .gt_striped {
+    background-color: rgba(128, 128, 128, 0.05);
+  }
+  
+  #ibxhtcymdz .gt_table_body {
+    border-top-style: solid;
+    border-top-width: 2px;
+    border-top-color: #D3D3D3;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: #D3D3D3;
+  }
+  
+  #ibxhtcymdz .gt_footnotes {
+    color: #333333;
+    background-color: #FFFFFF;
+    border-bottom-style: none;
+    border-bottom-width: 2px;
+    border-bottom-color: #D3D3D3;
+    border-left-style: none;
+    border-left-width: 2px;
+    border-left-color: #D3D3D3;
+    border-right-style: none;
+    border-right-width: 2px;
+    border-right-color: #D3D3D3;
+  }
+  
+  #ibxhtcymdz .gt_footnote {
+    margin: 0px;
+    font-size: 90%;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  
+  #ibxhtcymdz .gt_sourcenotes {
+    color: #333333;
+    background-color: #FFFFFF;
+    border-bottom-style: none;
+    border-bottom-width: 2px;
+    border-bottom-color: #D3D3D3;
+    border-left-style: none;
+    border-left-width: 2px;
+    border-left-color: #D3D3D3;
+    border-right-style: none;
+    border-right-width: 2px;
+    border-right-color: #D3D3D3;
+  }
+  
+  #ibxhtcymdz .gt_sourcenote {
+    font-size: 90%;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  
+  #ibxhtcymdz .gt_left {
+    text-align: left;
+  }
+  
+  #ibxhtcymdz .gt_center {
+    text-align: center;
+  }
+  
+  #ibxhtcymdz .gt_right {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+  
+  #ibxhtcymdz .gt_font_normal {
+    font-weight: normal;
+  }
+  
+  #ibxhtcymdz .gt_font_bold {
+    font-weight: bold;
+  }
+  
+  #ibxhtcymdz .gt_font_italic {
+    font-style: italic;
+  }
+  
+  #ibxhtcymdz .gt_super {
+    font-size: 65%;
+  }
+  
+  #ibxhtcymdz .gt_footnote_marks {
+    font-size: 75%;
+    vertical-align: 0.4em;
+    position: initial;
+  }
+  
+  #ibxhtcymdz .gt_asterisk {
+    font-size: 100%;
+    vertical-align: 0;
+  }
+  
+  #ibxhtcymdz .gt_indent_1 {
+    text-indent: 5px;
+  }
+  
+  #ibxhtcymdz .gt_indent_2 {
+    text-indent: 10px;
+  }
+  
+  #ibxhtcymdz .gt_indent_3 {
+    text-indent: 15px;
+  }
+  
+  #ibxhtcymdz .gt_indent_4 {
+    text-indent: 20px;
+  }
+  
+  #ibxhtcymdz .gt_indent_5 {
+    text-indent: 25px;
+  }
+  
+  #ibxhtcymdz .katex-display {
+    display: inline-flex !important;
+    margin-bottom: 0.75em !important;
+  }
+  
+  #ibxhtcymdz div.Reactable &gt; div.rt-table &gt; div.rt-thead &gt; div.rt-tr.rt-tr-group-header &gt; div.rt-th-group:after {
+    height: 0px !important;
+  }
+  &lt;/style&gt;
+  &lt;table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false"&gt;
+    &lt;thead&gt;
+      &lt;tr class="gt_col_headings"&gt;
+        &lt;th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="SleepDuration"&gt;SleepDuration&lt;/th&gt;
+        &lt;th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="BreakfastPerWeek"&gt;BreakfastPerWeek&lt;/th&gt;
+        &lt;th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Class"&gt;Class&lt;/th&gt;
+        &lt;th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Campus"&gt;Campus&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody class="gt_table_body"&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;7.5&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;7&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;First-year&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;8.5&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;2&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Junior&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;7.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;4&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Sophomore&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;7.5&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;7&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;First-year&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;6.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;4&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Sophomore&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;8.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;6&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Senior&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Haverford College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;9.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;7&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Junior&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Haverford College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;8.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;2&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Sophomore&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;8.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;7&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Senior&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;7.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;6&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Senior&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;7.5&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;7&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Senior&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Haverford College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;8.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;1&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Senior&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Haverford College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;7.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;2&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Sophomore&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;9.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;7&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Junior&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Haverford College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;9.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;2&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Sophomore&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;7.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;6&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Sophomore&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;8.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;7&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Senior&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;7.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;2&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Sophomore&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;NA&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;2&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Sophomore&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;8.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;4&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;First-year&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;7.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;0&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Junior&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;7.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;6&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Junior&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;7.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;6&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Junior&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;7.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;3&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Senior&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;6.5&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;6&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Junior&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;7.5&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;7&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;First-year&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Haverford College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;7.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;7&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Sophomore&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;8.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;6&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;First-year&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;7.5&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;2&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Sophomore&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;8.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;4&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;First-year&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Haverford College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;7.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;7&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Junior&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;7.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;0&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;First-year&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Haverford College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;9.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;1&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;First-year&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;7.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;2&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;First-year&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;8.5&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;2&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;First-year&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;7.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;2&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Senior&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Haverford College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;9.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;7&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Sophomore&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Haverford College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;7.5&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;4&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;First-year&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Haverford College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;8.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;7&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Sophomore&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;7.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;1&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Sophomore&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Haverford College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;4.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;2&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Sophomore&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;8.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;7&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Sophomore&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;9.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;7&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Sophomore&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;8.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;7&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;First-year&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;9.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;1&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Sophomore&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;8.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;7&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Sophomore&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;10.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;3&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Sophomore&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;9.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;6&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;First-year&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;7.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;6&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Sophomore&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;7.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;7&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;First-year&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;7.5&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;6&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Senior&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Haverford College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;8.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;4&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Senior&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;8.5&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;3&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Junior&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;7.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;2&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Junior&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;7.5&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;0&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Sophomore&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Haverford College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;8.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;4&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Junior&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;6.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;0&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Sophomore&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;7.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;2&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Sophomore&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td headers="SleepDuration" class="gt_row gt_right"&gt;8.0&lt;/td&gt;
+  &lt;td headers="BreakfastPerWeek" class="gt_row gt_right"&gt;5&lt;/td&gt;
+  &lt;td headers="Class" class="gt_row gt_left"&gt;Sophomore&lt;/td&gt;
+  &lt;td headers="Campus" class="gt_row gt_left"&gt;Bryn Mawr College&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tbody&gt;
+    
+  &lt;/table&gt;
+  &lt;/div&gt;
+  ```
+  
+  :::
+  :::</code></pre>
 <p>There are 4 variables in the data.</p>
 <ul>
 <li>SleepDuration</li>
@@ -1677,4 +1604,4 @@ dbl (2): SleepDuration, BreakfastPerWeek
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/yeonsoon/research-methods-and-stats-book/edit/master/lab01-answers.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+</body></html>

@@ -51,10 +51,10 @@ There is no right or wrong answer for this exercise.
 Store the output of `10*2` in an object `z` and divide `z` by 4.
 :::
 
-```{r}
-z <- 10 * 2
-z / 4
-```
+      ```{r}
+      z <- 10 * 2
+      z / 4
+      ```
 
 # Exercise 5
 
@@ -64,24 +64,23 @@ z / 4
 In your new Quarto document, add a code chunk, and get the square root of 5329 using a function `sqrt()`. Render the document to find the output.
 :::
 
-```{r}
-sqrt(5329)
-```
+      ```{r}
+      sqrt(5329)
+      ```
 
 # Exercise 6
 
 ::: {.callout-tip}
 #### Exercise 6
 
-In your new Quarto document, load `tidyverse` and `gt` libraries and read in `sleep_breakfast.csv` file under the `data` folder. Inspect the data. What are the variables in the data? 
+In your new Quarto document, load `tidyverse` and `gt` libraries and read in `sleep_breakfast.csv` file using the pipe operator under the `data` folder. Inspect the data. What are the variables in the data? 
 :::
 
-```{r}
-library(tidyverse)  # for data wrangling
-library(gt)         # for pretty tables
-df <- read_csv('data/sleep_breakfast.csv')
-gt(df)
-```
+      ```{r}
+      library(tidyverse)  # for data wrangling
+      library(gt)         # for pretty tables
+      read_csv('data/sleep_breakfast.csv') %>% gt()
+      ```
 
 There are 4 variables in the data.
 

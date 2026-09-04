@@ -199,6 +199,12 @@ div.csl-indent {
  <span class="menu-text">Ch.3: Measurement</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-visualizing-and-describing-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ch.4: Visualizing and Describing Data</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -284,7 +290,7 @@ div.csl-indent {
   <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key Takeaways</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/yeonsoon/research-methods-and-stats-book/edit/master/lab02-reliability.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -413,23 +419,23 @@ Table&nbsp;1: Rosenberg Self-Esteem Scale (RSES) items.
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>()</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(df) <span class="sc">%&gt;%</span> <span class="fu">gt</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="nqooxgukrx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#nqooxgukrx table {
+<div id="vmzphdfefy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vmzphdfefy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#nqooxgukrx thead, #nqooxgukrx tbody, #nqooxgukrx tfoot, #nqooxgukrx tr, #nqooxgukrx td, #nqooxgukrx th {
+#vmzphdfefy thead, #vmzphdfefy tbody, #vmzphdfefy tfoot, #vmzphdfefy tr, #vmzphdfefy td, #vmzphdfefy th {
   border-style: none;
 }
 
-#nqooxgukrx p {
+#vmzphdfefy p {
   margin: 0;
   padding: 0;
 }
 
-#nqooxgukrx .gt_table {
+#vmzphdfefy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -455,12 +461,12 @@ Table&nbsp;1: Rosenberg Self-Esteem Scale (RSES) items.
   border-left-color: #D3D3D3;
 }
 
-#nqooxgukrx .gt_caption {
+#vmzphdfefy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#nqooxgukrx .gt_title {
+#vmzphdfefy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -472,7 +478,7 @@ Table&nbsp;1: Rosenberg Self-Esteem Scale (RSES) items.
   border-bottom-width: 0;
 }
 
-#nqooxgukrx .gt_subtitle {
+#vmzphdfefy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -484,7 +490,7 @@ Table&nbsp;1: Rosenberg Self-Esteem Scale (RSES) items.
   border-top-width: 0;
 }
 
-#nqooxgukrx .gt_heading {
+#vmzphdfefy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -496,13 +502,13 @@ Table&nbsp;1: Rosenberg Self-Esteem Scale (RSES) items.
   border-right-color: #D3D3D3;
 }
 
-#nqooxgukrx .gt_bottom_border {
+#vmzphdfefy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#nqooxgukrx .gt_col_headings {
+#vmzphdfefy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -517,7 +523,7 @@ Table&nbsp;1: Rosenberg Self-Esteem Scale (RSES) items.
   border-right-color: #D3D3D3;
 }
 
-#nqooxgukrx .gt_col_heading {
+#vmzphdfefy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -537,7 +543,7 @@ Table&nbsp;1: Rosenberg Self-Esteem Scale (RSES) items.
   overflow-x: hidden;
 }
 
-#nqooxgukrx .gt_column_spanner_outer {
+#vmzphdfefy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -549,15 +555,15 @@ Table&nbsp;1: Rosenberg Self-Esteem Scale (RSES) items.
   padding-right: 4px;
 }
 
-#nqooxgukrx .gt_column_spanner_outer:first-child {
+#vmzphdfefy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#nqooxgukrx .gt_column_spanner_outer:last-child {
+#vmzphdfefy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#nqooxgukrx .gt_column_spanner {
+#vmzphdfefy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -569,11 +575,11 @@ Table&nbsp;1: Rosenberg Self-Esteem Scale (RSES) items.
   width: 100%;
 }
 
-#nqooxgukrx .gt_spanner_row {
+#vmzphdfefy .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#nqooxgukrx .gt_group_heading {
+#vmzphdfefy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -599,7 +605,7 @@ Table&nbsp;1: Rosenberg Self-Esteem Scale (RSES) items.
   text-align: left;
 }
 
-#nqooxgukrx .gt_empty_group_heading {
+#vmzphdfefy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -614,15 +620,15 @@ Table&nbsp;1: Rosenberg Self-Esteem Scale (RSES) items.
   vertical-align: middle;
 }
 
-#nqooxgukrx .gt_from_md > :first-child {
+#vmzphdfefy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#nqooxgukrx .gt_from_md > :last-child {
+#vmzphdfefy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#nqooxgukrx .gt_row {
+#vmzphdfefy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -641,7 +647,7 @@ Table&nbsp;1: Rosenberg Self-Esteem Scale (RSES) items.
   overflow-x: hidden;
 }
 
-#nqooxgukrx .gt_stub {
+#vmzphdfefy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -654,7 +660,7 @@ Table&nbsp;1: Rosenberg Self-Esteem Scale (RSES) items.
   padding-right: 5px;
 }
 
-#nqooxgukrx .gt_stub_row_group {
+#vmzphdfefy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -668,15 +674,15 @@ Table&nbsp;1: Rosenberg Self-Esteem Scale (RSES) items.
   vertical-align: top;
 }
 
-#nqooxgukrx .gt_row_group_first td {
+#vmzphdfefy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#nqooxgukrx .gt_row_group_first th {
+#vmzphdfefy .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#nqooxgukrx .gt_summary_row {
+#vmzphdfefy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -686,16 +692,16 @@ Table&nbsp;1: Rosenberg Self-Esteem Scale (RSES) items.
   padding-right: 5px;
 }
 
-#nqooxgukrx .gt_first_summary_row {
+#vmzphdfefy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#nqooxgukrx .gt_first_summary_row.thick {
+#vmzphdfefy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#nqooxgukrx .gt_last_summary_row {
+#vmzphdfefy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -705,7 +711,7 @@ Table&nbsp;1: Rosenberg Self-Esteem Scale (RSES) items.
   border-bottom-color: #D3D3D3;
 }
 
-#nqooxgukrx .gt_grand_summary_row {
+#vmzphdfefy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -715,7 +721,7 @@ Table&nbsp;1: Rosenberg Self-Esteem Scale (RSES) items.
   padding-right: 5px;
 }
 
-#nqooxgukrx .gt_first_grand_summary_row {
+#vmzphdfefy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -725,7 +731,7 @@ Table&nbsp;1: Rosenberg Self-Esteem Scale (RSES) items.
   border-top-color: #D3D3D3;
 }
 
-#nqooxgukrx .gt_last_grand_summary_row_top {
+#vmzphdfefy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -735,11 +741,11 @@ Table&nbsp;1: Rosenberg Self-Esteem Scale (RSES) items.
   border-bottom-color: #D3D3D3;
 }
 
-#nqooxgukrx .gt_striped {
+#vmzphdfefy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#nqooxgukrx .gt_table_body {
+#vmzphdfefy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -748,7 +754,7 @@ Table&nbsp;1: Rosenberg Self-Esteem Scale (RSES) items.
   border-bottom-color: #D3D3D3;
 }
 
-#nqooxgukrx .gt_footnotes {
+#vmzphdfefy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -762,7 +768,7 @@ Table&nbsp;1: Rosenberg Self-Esteem Scale (RSES) items.
   border-right-color: #D3D3D3;
 }
 
-#nqooxgukrx .gt_footnote {
+#vmzphdfefy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -771,7 +777,7 @@ Table&nbsp;1: Rosenberg Self-Esteem Scale (RSES) items.
   padding-right: 5px;
 }
 
-#nqooxgukrx .gt_sourcenotes {
+#vmzphdfefy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -785,7 +791,7 @@ Table&nbsp;1: Rosenberg Self-Esteem Scale (RSES) items.
   border-right-color: #D3D3D3;
 }
 
-#nqooxgukrx .gt_sourcenote {
+#vmzphdfefy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -793,72 +799,72 @@ Table&nbsp;1: Rosenberg Self-Esteem Scale (RSES) items.
   padding-right: 5px;
 }
 
-#nqooxgukrx .gt_left {
+#vmzphdfefy .gt_left {
   text-align: left;
 }
 
-#nqooxgukrx .gt_center {
+#vmzphdfefy .gt_center {
   text-align: center;
 }
 
-#nqooxgukrx .gt_right {
+#vmzphdfefy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#nqooxgukrx .gt_font_normal {
+#vmzphdfefy .gt_font_normal {
   font-weight: normal;
 }
 
-#nqooxgukrx .gt_font_bold {
+#vmzphdfefy .gt_font_bold {
   font-weight: bold;
 }
 
-#nqooxgukrx .gt_font_italic {
+#vmzphdfefy .gt_font_italic {
   font-style: italic;
 }
 
-#nqooxgukrx .gt_super {
+#vmzphdfefy .gt_super {
   font-size: 65%;
 }
 
-#nqooxgukrx .gt_footnote_marks {
+#vmzphdfefy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#nqooxgukrx .gt_asterisk {
+#vmzphdfefy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#nqooxgukrx .gt_indent_1 {
+#vmzphdfefy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#nqooxgukrx .gt_indent_2 {
+#vmzphdfefy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#nqooxgukrx .gt_indent_3 {
+#vmzphdfefy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#nqooxgukrx .gt_indent_4 {
+#vmzphdfefy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#nqooxgukrx .gt_indent_5 {
+#vmzphdfefy .gt_indent_5 {
   text-indent: 25px;
 }
 
-#nqooxgukrx .katex-display {
+#vmzphdfefy .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#nqooxgukrx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#vmzphdfefy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1171,23 +1177,23 @@ It has alpha set to 0.5.</code></pre>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(rses.scores) <span class="sc">%&gt;%</span> <span class="fu">gt</span>() <span class="co"># print the first few rows to inspect the rses.scores object</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="exvkhozxpv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#exvkhozxpv table {
+<div id="occktmfonh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#occktmfonh table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#exvkhozxpv thead, #exvkhozxpv tbody, #exvkhozxpv tfoot, #exvkhozxpv tr, #exvkhozxpv td, #exvkhozxpv th {
+#occktmfonh thead, #occktmfonh tbody, #occktmfonh tfoot, #occktmfonh tr, #occktmfonh td, #occktmfonh th {
   border-style: none;
 }
 
-#exvkhozxpv p {
+#occktmfonh p {
   margin: 0;
   padding: 0;
 }
 
-#exvkhozxpv .gt_table {
+#occktmfonh .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1213,12 +1219,12 @@ It has alpha set to 0.5.</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#exvkhozxpv .gt_caption {
+#occktmfonh .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#exvkhozxpv .gt_title {
+#occktmfonh .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1230,7 +1236,7 @@ It has alpha set to 0.5.</code></pre>
   border-bottom-width: 0;
 }
 
-#exvkhozxpv .gt_subtitle {
+#occktmfonh .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1242,7 +1248,7 @@ It has alpha set to 0.5.</code></pre>
   border-top-width: 0;
 }
 
-#exvkhozxpv .gt_heading {
+#occktmfonh .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1254,13 +1260,13 @@ It has alpha set to 0.5.</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#exvkhozxpv .gt_bottom_border {
+#occktmfonh .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#exvkhozxpv .gt_col_headings {
+#occktmfonh .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1275,7 +1281,7 @@ It has alpha set to 0.5.</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#exvkhozxpv .gt_col_heading {
+#occktmfonh .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1295,7 +1301,7 @@ It has alpha set to 0.5.</code></pre>
   overflow-x: hidden;
 }
 
-#exvkhozxpv .gt_column_spanner_outer {
+#occktmfonh .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1307,15 +1313,15 @@ It has alpha set to 0.5.</code></pre>
   padding-right: 4px;
 }
 
-#exvkhozxpv .gt_column_spanner_outer:first-child {
+#occktmfonh .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#exvkhozxpv .gt_column_spanner_outer:last-child {
+#occktmfonh .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#exvkhozxpv .gt_column_spanner {
+#occktmfonh .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1327,11 +1333,11 @@ It has alpha set to 0.5.</code></pre>
   width: 100%;
 }
 
-#exvkhozxpv .gt_spanner_row {
+#occktmfonh .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#exvkhozxpv .gt_group_heading {
+#occktmfonh .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1357,7 +1363,7 @@ It has alpha set to 0.5.</code></pre>
   text-align: left;
 }
 
-#exvkhozxpv .gt_empty_group_heading {
+#occktmfonh .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1372,15 +1378,15 @@ It has alpha set to 0.5.</code></pre>
   vertical-align: middle;
 }
 
-#exvkhozxpv .gt_from_md > :first-child {
+#occktmfonh .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#exvkhozxpv .gt_from_md > :last-child {
+#occktmfonh .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#exvkhozxpv .gt_row {
+#occktmfonh .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1399,7 +1405,7 @@ It has alpha set to 0.5.</code></pre>
   overflow-x: hidden;
 }
 
-#exvkhozxpv .gt_stub {
+#occktmfonh .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1412,7 +1418,7 @@ It has alpha set to 0.5.</code></pre>
   padding-right: 5px;
 }
 
-#exvkhozxpv .gt_stub_row_group {
+#occktmfonh .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1426,15 +1432,15 @@ It has alpha set to 0.5.</code></pre>
   vertical-align: top;
 }
 
-#exvkhozxpv .gt_row_group_first td {
+#occktmfonh .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#exvkhozxpv .gt_row_group_first th {
+#occktmfonh .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#exvkhozxpv .gt_summary_row {
+#occktmfonh .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1444,16 +1450,16 @@ It has alpha set to 0.5.</code></pre>
   padding-right: 5px;
 }
 
-#exvkhozxpv .gt_first_summary_row {
+#occktmfonh .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#exvkhozxpv .gt_first_summary_row.thick {
+#occktmfonh .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#exvkhozxpv .gt_last_summary_row {
+#occktmfonh .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1463,7 +1469,7 @@ It has alpha set to 0.5.</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#exvkhozxpv .gt_grand_summary_row {
+#occktmfonh .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1473,7 +1479,7 @@ It has alpha set to 0.5.</code></pre>
   padding-right: 5px;
 }
 
-#exvkhozxpv .gt_first_grand_summary_row {
+#occktmfonh .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1483,7 +1489,7 @@ It has alpha set to 0.5.</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#exvkhozxpv .gt_last_grand_summary_row_top {
+#occktmfonh .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1493,11 +1499,11 @@ It has alpha set to 0.5.</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#exvkhozxpv .gt_striped {
+#occktmfonh .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#exvkhozxpv .gt_table_body {
+#occktmfonh .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1506,7 +1512,7 @@ It has alpha set to 0.5.</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#exvkhozxpv .gt_footnotes {
+#occktmfonh .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1520,7 +1526,7 @@ It has alpha set to 0.5.</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#exvkhozxpv .gt_footnote {
+#occktmfonh .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1529,7 +1535,7 @@ It has alpha set to 0.5.</code></pre>
   padding-right: 5px;
 }
 
-#exvkhozxpv .gt_sourcenotes {
+#occktmfonh .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1543,7 +1549,7 @@ It has alpha set to 0.5.</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#exvkhozxpv .gt_sourcenote {
+#occktmfonh .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1551,72 +1557,72 @@ It has alpha set to 0.5.</code></pre>
   padding-right: 5px;
 }
 
-#exvkhozxpv .gt_left {
+#occktmfonh .gt_left {
   text-align: left;
 }
 
-#exvkhozxpv .gt_center {
+#occktmfonh .gt_center {
   text-align: center;
 }
 
-#exvkhozxpv .gt_right {
+#occktmfonh .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#exvkhozxpv .gt_font_normal {
+#occktmfonh .gt_font_normal {
   font-weight: normal;
 }
 
-#exvkhozxpv .gt_font_bold {
+#occktmfonh .gt_font_bold {
   font-weight: bold;
 }
 
-#exvkhozxpv .gt_font_italic {
+#occktmfonh .gt_font_italic {
   font-style: italic;
 }
 
-#exvkhozxpv .gt_super {
+#occktmfonh .gt_super {
   font-size: 65%;
 }
 
-#exvkhozxpv .gt_footnote_marks {
+#occktmfonh .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#exvkhozxpv .gt_asterisk {
+#occktmfonh .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#exvkhozxpv .gt_indent_1 {
+#occktmfonh .gt_indent_1 {
   text-indent: 5px;
 }
 
-#exvkhozxpv .gt_indent_2 {
+#occktmfonh .gt_indent_2 {
   text-indent: 10px;
 }
 
-#exvkhozxpv .gt_indent_3 {
+#occktmfonh .gt_indent_3 {
   text-indent: 15px;
 }
 
-#exvkhozxpv .gt_indent_4 {
+#occktmfonh .gt_indent_4 {
   text-indent: 20px;
 }
 
-#exvkhozxpv .gt_indent_5 {
+#occktmfonh .gt_indent_5 {
   text-indent: 25px;
 }
 
-#exvkhozxpv .katex-display {
+#occktmfonh .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#exvkhozxpv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#occktmfonh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1656,23 +1662,23 @@ It has alpha set to 0.5.</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">describe</span>(rses.scores) <span class="sc">%&gt;%</span> <span class="fu">gt</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="hherbduybr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#hherbduybr table {
+<div id="dvjjdysqnz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dvjjdysqnz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#hherbduybr thead, #hherbduybr tbody, #hherbduybr tfoot, #hherbduybr tr, #hherbduybr td, #hherbduybr th {
+#dvjjdysqnz thead, #dvjjdysqnz tbody, #dvjjdysqnz tfoot, #dvjjdysqnz tr, #dvjjdysqnz td, #dvjjdysqnz th {
   border-style: none;
 }
 
-#hherbduybr p {
+#dvjjdysqnz p {
   margin: 0;
   padding: 0;
 }
 
-#hherbduybr .gt_table {
+#dvjjdysqnz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1698,12 +1704,12 @@ It has alpha set to 0.5.</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#hherbduybr .gt_caption {
+#dvjjdysqnz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#hherbduybr .gt_title {
+#dvjjdysqnz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1715,7 +1721,7 @@ It has alpha set to 0.5.</code></pre>
   border-bottom-width: 0;
 }
 
-#hherbduybr .gt_subtitle {
+#dvjjdysqnz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1727,7 +1733,7 @@ It has alpha set to 0.5.</code></pre>
   border-top-width: 0;
 }
 
-#hherbduybr .gt_heading {
+#dvjjdysqnz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1739,13 +1745,13 @@ It has alpha set to 0.5.</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#hherbduybr .gt_bottom_border {
+#dvjjdysqnz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#hherbduybr .gt_col_headings {
+#dvjjdysqnz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1760,7 +1766,7 @@ It has alpha set to 0.5.</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#hherbduybr .gt_col_heading {
+#dvjjdysqnz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1780,7 +1786,7 @@ It has alpha set to 0.5.</code></pre>
   overflow-x: hidden;
 }
 
-#hherbduybr .gt_column_spanner_outer {
+#dvjjdysqnz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1792,15 +1798,15 @@ It has alpha set to 0.5.</code></pre>
   padding-right: 4px;
 }
 
-#hherbduybr .gt_column_spanner_outer:first-child {
+#dvjjdysqnz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#hherbduybr .gt_column_spanner_outer:last-child {
+#dvjjdysqnz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#hherbduybr .gt_column_spanner {
+#dvjjdysqnz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1812,11 +1818,11 @@ It has alpha set to 0.5.</code></pre>
   width: 100%;
 }
 
-#hherbduybr .gt_spanner_row {
+#dvjjdysqnz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#hherbduybr .gt_group_heading {
+#dvjjdysqnz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1842,7 +1848,7 @@ It has alpha set to 0.5.</code></pre>
   text-align: left;
 }
 
-#hherbduybr .gt_empty_group_heading {
+#dvjjdysqnz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1857,15 +1863,15 @@ It has alpha set to 0.5.</code></pre>
   vertical-align: middle;
 }
 
-#hherbduybr .gt_from_md > :first-child {
+#dvjjdysqnz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#hherbduybr .gt_from_md > :last-child {
+#dvjjdysqnz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#hherbduybr .gt_row {
+#dvjjdysqnz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1884,7 +1890,7 @@ It has alpha set to 0.5.</code></pre>
   overflow-x: hidden;
 }
 
-#hherbduybr .gt_stub {
+#dvjjdysqnz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1897,7 +1903,7 @@ It has alpha set to 0.5.</code></pre>
   padding-right: 5px;
 }
 
-#hherbduybr .gt_stub_row_group {
+#dvjjdysqnz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1911,15 +1917,15 @@ It has alpha set to 0.5.</code></pre>
   vertical-align: top;
 }
 
-#hherbduybr .gt_row_group_first td {
+#dvjjdysqnz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#hherbduybr .gt_row_group_first th {
+#dvjjdysqnz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#hherbduybr .gt_summary_row {
+#dvjjdysqnz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1929,16 +1935,16 @@ It has alpha set to 0.5.</code></pre>
   padding-right: 5px;
 }
 
-#hherbduybr .gt_first_summary_row {
+#dvjjdysqnz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#hherbduybr .gt_first_summary_row.thick {
+#dvjjdysqnz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#hherbduybr .gt_last_summary_row {
+#dvjjdysqnz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1948,7 +1954,7 @@ It has alpha set to 0.5.</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#hherbduybr .gt_grand_summary_row {
+#dvjjdysqnz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1958,7 +1964,7 @@ It has alpha set to 0.5.</code></pre>
   padding-right: 5px;
 }
 
-#hherbduybr .gt_first_grand_summary_row {
+#dvjjdysqnz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1968,7 +1974,7 @@ It has alpha set to 0.5.</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#hherbduybr .gt_last_grand_summary_row_top {
+#dvjjdysqnz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1978,11 +1984,11 @@ It has alpha set to 0.5.</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#hherbduybr .gt_striped {
+#dvjjdysqnz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#hherbduybr .gt_table_body {
+#dvjjdysqnz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1991,7 +1997,7 @@ It has alpha set to 0.5.</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#hherbduybr .gt_footnotes {
+#dvjjdysqnz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2005,7 +2011,7 @@ It has alpha set to 0.5.</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#hherbduybr .gt_footnote {
+#dvjjdysqnz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2014,7 +2020,7 @@ It has alpha set to 0.5.</code></pre>
   padding-right: 5px;
 }
 
-#hherbduybr .gt_sourcenotes {
+#dvjjdysqnz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2028,7 +2034,7 @@ It has alpha set to 0.5.</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#hherbduybr .gt_sourcenote {
+#dvjjdysqnz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2036,72 +2042,72 @@ It has alpha set to 0.5.</code></pre>
   padding-right: 5px;
 }
 
-#hherbduybr .gt_left {
+#dvjjdysqnz .gt_left {
   text-align: left;
 }
 
-#hherbduybr .gt_center {
+#dvjjdysqnz .gt_center {
   text-align: center;
 }
 
-#hherbduybr .gt_right {
+#dvjjdysqnz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#hherbduybr .gt_font_normal {
+#dvjjdysqnz .gt_font_normal {
   font-weight: normal;
 }
 
-#hherbduybr .gt_font_bold {
+#dvjjdysqnz .gt_font_bold {
   font-weight: bold;
 }
 
-#hherbduybr .gt_font_italic {
+#dvjjdysqnz .gt_font_italic {
   font-style: italic;
 }
 
-#hherbduybr .gt_super {
+#dvjjdysqnz .gt_super {
   font-size: 65%;
 }
 
-#hherbduybr .gt_footnote_marks {
+#dvjjdysqnz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#hherbduybr .gt_asterisk {
+#dvjjdysqnz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#hherbduybr .gt_indent_1 {
+#dvjjdysqnz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#hherbduybr .gt_indent_2 {
+#dvjjdysqnz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#hherbduybr .gt_indent_3 {
+#dvjjdysqnz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#hherbduybr .gt_indent_4 {
+#dvjjdysqnz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#hherbduybr .gt_indent_5 {
+#dvjjdysqnz .gt_indent_5 {
   text-indent: 25px;
 }
 
-#hherbduybr .katex-display {
+#dvjjdysqnz .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#hherbduybr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#dvjjdysqnz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2654,4 +2660,4 @@ Rosenberg, Morris. 1965. <em>Society and the Adolescent Self-Image</em>. Vol. 11
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/yeonsoon/research-methods-and-stats-book/edit/master/lab02-reliability.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+</body></html>

@@ -180,6 +180,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Ch.3: Measurement</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-visualizing-and-describing-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ch.4: Visualizing and Describing Data</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -266,7 +272,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#descriptive-statistics" id="toc-descriptive-statistics" class="nav-link" data-scroll-target="#descriptive-statistics"><span class="header-section-number">3.3.1</span> Descriptive Statistics</a></li>
   <li><a href="#histogram" id="toc-histogram" class="nav-link" data-scroll-target="#histogram"><span class="header-section-number">3.3.2</span> Histogram</a></li>
-  <li><a href="#boxplot" id="toc-boxplot" class="nav-link" data-scroll-target="#boxplot"><span class="header-section-number">3.3.3</span> Boxplot</a></li>
+  <li><a href="#box-plot" id="toc-box-plot" class="nav-link" data-scroll-target="#box-plot"><span class="header-section-number">3.3.3</span> Box plot</a></li>
   <li><a href="#checking-normality-statistical-tests" id="toc-checking-normality-statistical-tests" class="nav-link" data-scroll-target="#checking-normality-statistical-tests"><span class="header-section-number">3.3.4</span> Checking Normality: Statistical Tests</a></li>
   <li><a href="#checking-normality-q-q-plot" id="toc-checking-normality-q-q-plot" class="nav-link" data-scroll-target="#checking-normality-q-q-plot"><span class="header-section-number">3.3.5</span> Checking Normality: Q-Q Plot</a></li>
   </ul></li>
@@ -282,7 +288,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#between-continuous-and-categoricalordinal-variables-sleepduration-and-campus" id="toc-between-continuous-and-categoricalordinal-variables-sleepduration-and-campus" class="nav-link" data-scroll-target="#between-continuous-and-categoricalordinal-variables-sleepduration-and-campus"><span class="header-section-number">4.2</span> Between continuous and categorical/ordinal variables: <code>SleepDuration</code> and <code>Campus</code></a>
   <ul>
   <li><a href="#histogram-1" id="toc-histogram-1" class="nav-link" data-scroll-target="#histogram-1"><span class="header-section-number">4.2.1</span> Histogram</a></li>
-  <li><a href="#boxplot-1" id="toc-boxplot-1" class="nav-link" data-scroll-target="#boxplot-1"><span class="header-section-number">4.2.2</span> Boxplot</a></li>
+  <li><a href="#box-plot-1" id="toc-box-plot-1" class="nav-link" data-scroll-target="#box-plot-1"><span class="header-section-number">4.2.2</span> Box plot</a></li>
   </ul></li>
   <li><a href="#between-continuous-and-ordinal-variables-sleepduration-and-class" id="toc-between-continuous-and-ordinal-variables-sleepduration-and-class" class="nav-link" data-scroll-target="#between-continuous-and-ordinal-variables-sleepduration-and-class"><span class="header-section-number">4.3</span> Between continuous and ordinal variables: <code>SleepDuration</code> and <code>Class</code></a></li>
   <li><a href="#between-two-continuous-variables-sleepduration-and-breakfastperweek" id="toc-between-two-continuous-variables-sleepduration-and-breakfastperweek" class="nav-link" data-scroll-target="#between-two-continuous-variables-sleepduration-and-breakfastperweek"><span class="header-section-number">4.4</span> Between two continuous variables: <code>SleepDuration</code> and <code>BreakfastPerWeek</code></a></li>
@@ -290,7 +296,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key Takeaways</a></li>
   <li><a href="#wrapping-up" id="toc-wrapping-up" class="nav-link" data-scroll-target="#wrapping-up">Wrapping up</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/yeonsoon/research-methods-and-stats-book/edit/master/lab03-eda.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -370,7 +376,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>How many Bryn Mawr College and Haverford College students participated in the survey?</li>
 <li>How many students from each class year participated in the survey?</li>
 </ul></li>
-<li><strong>Frequency Questions:</strong>
+<li><strong>Single-Variable Questions:</strong>
 <ul>
 <li>Sleep:
 <ul>
@@ -457,7 +463,7 @@ $ Campus           &lt;chr&gt; "Bryn Mawr College", "Bryn Mawr College", "Bryn M
 </section>
 <section id="univariate-analysis" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="univariate-analysis"><span class="header-section-number">3</span> Univariate Analysis</h2>
-<p>Univariate analysis involves examining the distribution of each variable one at a time. With this, we are asking frequency questions: what is the state of each variable? The answer to this question includes the typical response (central tendency) and how much variability there is in the responses (spread), and the shape of the distribution.</p>
+<p>Univariate analysis involves examining the distribution of each variable one at a time. With this, we are asking single-variable questions: what is the state of each variable? The answer to this question includes the typical response (central tendency) and how much variability there is in the responses (spread), and the shape of the distribution.</p>
 <p>How we conduct univariate analysis depends on the type of variable. <a href="#tbl-eda-univariate" class="quarto-xref">Table&nbsp;1</a> shows different approaches to univariate analysis depending on the type of variable.</p>
 <div id="tbl-eda-univariate" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -479,7 +485,7 @@ Table&nbsp;1: Approach to univariate analysis based on the type of variable
 </tr>
 <tr class="even">
 <td style="text-align: left;">Interval, Ratio</td>
-<td style="text-align: left;">Histogram, boxplot, descriptive statistics</td>
+<td style="text-align: left;">Histogram, box plot, descriptive statistics</td>
 </tr>
 </tbody>
 </table>
@@ -566,23 +572,23 @@ Levels: Bryn Mawr College Haverford College</code></pre>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_align</span>(<span class="at">align =</span> <span class="st">"left"</span>, <span class="at">columns =</span> Campus) </span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>tbl.campus</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="auxcnknmkf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#auxcnknmkf table {
+<div id="kjuzdzykiy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#kjuzdzykiy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#auxcnknmkf thead, #auxcnknmkf tbody, #auxcnknmkf tfoot, #auxcnknmkf tr, #auxcnknmkf td, #auxcnknmkf th {
+#kjuzdzykiy thead, #kjuzdzykiy tbody, #kjuzdzykiy tfoot, #kjuzdzykiy tr, #kjuzdzykiy td, #kjuzdzykiy th {
   border-style: none;
 }
 
-#auxcnknmkf p {
+#kjuzdzykiy p {
   margin: 0;
   padding: 0;
 }
 
-#auxcnknmkf .gt_table {
+#kjuzdzykiy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -608,12 +614,12 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#auxcnknmkf .gt_caption {
+#kjuzdzykiy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#auxcnknmkf .gt_title {
+#kjuzdzykiy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -625,7 +631,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-bottom-width: 0;
 }
 
-#auxcnknmkf .gt_subtitle {
+#kjuzdzykiy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -637,7 +643,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-top-width: 0;
 }
 
-#auxcnknmkf .gt_heading {
+#kjuzdzykiy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -649,13 +655,13 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#auxcnknmkf .gt_bottom_border {
+#kjuzdzykiy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#auxcnknmkf .gt_col_headings {
+#kjuzdzykiy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -670,7 +676,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#auxcnknmkf .gt_col_heading {
+#kjuzdzykiy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -690,7 +696,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   overflow-x: hidden;
 }
 
-#auxcnknmkf .gt_column_spanner_outer {
+#kjuzdzykiy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -702,15 +708,15 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   padding-right: 4px;
 }
 
-#auxcnknmkf .gt_column_spanner_outer:first-child {
+#kjuzdzykiy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#auxcnknmkf .gt_column_spanner_outer:last-child {
+#kjuzdzykiy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#auxcnknmkf .gt_column_spanner {
+#kjuzdzykiy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -722,11 +728,11 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   width: 100%;
 }
 
-#auxcnknmkf .gt_spanner_row {
+#kjuzdzykiy .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#auxcnknmkf .gt_group_heading {
+#kjuzdzykiy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -752,7 +758,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   text-align: left;
 }
 
-#auxcnknmkf .gt_empty_group_heading {
+#kjuzdzykiy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -767,15 +773,15 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   vertical-align: middle;
 }
 
-#auxcnknmkf .gt_from_md > :first-child {
+#kjuzdzykiy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#auxcnknmkf .gt_from_md > :last-child {
+#kjuzdzykiy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#auxcnknmkf .gt_row {
+#kjuzdzykiy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -794,7 +800,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   overflow-x: hidden;
 }
 
-#auxcnknmkf .gt_stub {
+#kjuzdzykiy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -807,7 +813,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   padding-right: 5px;
 }
 
-#auxcnknmkf .gt_stub_row_group {
+#kjuzdzykiy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -821,15 +827,15 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   vertical-align: top;
 }
 
-#auxcnknmkf .gt_row_group_first td {
+#kjuzdzykiy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#auxcnknmkf .gt_row_group_first th {
+#kjuzdzykiy .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#auxcnknmkf .gt_summary_row {
+#kjuzdzykiy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -839,16 +845,16 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   padding-right: 5px;
 }
 
-#auxcnknmkf .gt_first_summary_row {
+#kjuzdzykiy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#auxcnknmkf .gt_first_summary_row.thick {
+#kjuzdzykiy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#auxcnknmkf .gt_last_summary_row {
+#kjuzdzykiy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -858,7 +864,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#auxcnknmkf .gt_grand_summary_row {
+#kjuzdzykiy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -868,7 +874,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   padding-right: 5px;
 }
 
-#auxcnknmkf .gt_first_grand_summary_row {
+#kjuzdzykiy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -878,7 +884,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#auxcnknmkf .gt_last_grand_summary_row_top {
+#kjuzdzykiy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -888,11 +894,11 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#auxcnknmkf .gt_striped {
+#kjuzdzykiy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#auxcnknmkf .gt_table_body {
+#kjuzdzykiy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -901,7 +907,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#auxcnknmkf .gt_footnotes {
+#kjuzdzykiy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -915,7 +921,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#auxcnknmkf .gt_footnote {
+#kjuzdzykiy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -924,7 +930,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   padding-right: 5px;
 }
 
-#auxcnknmkf .gt_sourcenotes {
+#kjuzdzykiy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -938,7 +944,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#auxcnknmkf .gt_sourcenote {
+#kjuzdzykiy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -946,72 +952,72 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   padding-right: 5px;
 }
 
-#auxcnknmkf .gt_left {
+#kjuzdzykiy .gt_left {
   text-align: left;
 }
 
-#auxcnknmkf .gt_center {
+#kjuzdzykiy .gt_center {
   text-align: center;
 }
 
-#auxcnknmkf .gt_right {
+#kjuzdzykiy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#auxcnknmkf .gt_font_normal {
+#kjuzdzykiy .gt_font_normal {
   font-weight: normal;
 }
 
-#auxcnknmkf .gt_font_bold {
+#kjuzdzykiy .gt_font_bold {
   font-weight: bold;
 }
 
-#auxcnknmkf .gt_font_italic {
+#kjuzdzykiy .gt_font_italic {
   font-style: italic;
 }
 
-#auxcnknmkf .gt_super {
+#kjuzdzykiy .gt_super {
   font-size: 65%;
 }
 
-#auxcnknmkf .gt_footnote_marks {
+#kjuzdzykiy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#auxcnknmkf .gt_asterisk {
+#kjuzdzykiy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#auxcnknmkf .gt_indent_1 {
+#kjuzdzykiy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#auxcnknmkf .gt_indent_2 {
+#kjuzdzykiy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#auxcnknmkf .gt_indent_3 {
+#kjuzdzykiy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#auxcnknmkf .gt_indent_4 {
+#kjuzdzykiy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#auxcnknmkf .gt_indent_5 {
+#kjuzdzykiy .gt_indent_5 {
   text-indent: 25px;
 }
 
-#auxcnknmkf .katex-display {
+#kjuzdzykiy .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#auxcnknmkf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#kjuzdzykiy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1124,7 +1130,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Exercise: Ordinal data
+<span class="screen-reader-only">Tip</span>Exercise 1: Ordinal data
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1146,7 +1152,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Exercise Checklist
+<span class="screen-reader-only">Tip</span>Exercise 1 Checklist
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1162,7 +1168,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
 <section id="ratio-variable-sleepduration" class="level3" data-number="3.3">
 <h3 data-number="3.3" class="anchored" data-anchor-id="ratio-variable-sleepduration"><span class="header-section-number">3.3</span> Ratio Variable: <code>SleepDuration</code></h3>
 <p><code>SleepDuration</code> is a ratio variable, which means it has a true zero point (e.g., 0 hour means you don’t get any sleep), and the intervals between values are meaningful. Another name for interval and ratio variables is <strong>continuous</strong> variables. For continuous variables, we can summarize the data using descriptive statistics: the central tendency (mean, median) and spread of the variable (standard deviation and range) and the shape of the distribution (skew and kurtosis). Mean and standard deviation are the most commonly used descriptive statistics, especially when the distribution of the variable is approximately normal. This makes it important for us to <strong>check if the responses are <em>normally</em> distributed</strong>.</p>
-<p>We can do this by first visualizing the distribution of the variable using histograms and boxplots, and run statistical tests to check for normality.</p>
+<p>We can do this by first visualizing the distribution of the variable using histograms and box plots, and run statistical tests to check for normality.</p>
 <section id="descriptive-statistics" class="level4" data-number="3.3.1">
 <h4 data-number="3.3.1" class="anchored" data-anchor-id="descriptive-statistics"><span class="header-section-number">3.3.1</span> Descriptive Statistics</h4>
 <p>Descriptive statistics are a set of summary statistics that describe the central tendency, spread, and shape of the distribution of a variable. For instance, for sleep duration, we can summarize how much sleep Bi-Co students are getting on average, and how much variability there is in the amount of sleep they are getting.</p>
@@ -1194,23 +1200,23 @@ Levels: Bryn Mawr College Haverford College</code></pre>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(n, mean, median, sd, range, min, max, skew, kurtosis) <span class="sc">%&gt;%</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>(<span class="at">rownames_to_stub=</span><span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="zbvxrqrqkj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#zbvxrqrqkj table {
+<div id="yzlvbmrnpg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yzlvbmrnpg table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#zbvxrqrqkj thead, #zbvxrqrqkj tbody, #zbvxrqrqkj tfoot, #zbvxrqrqkj tr, #zbvxrqrqkj td, #zbvxrqrqkj th {
+#yzlvbmrnpg thead, #yzlvbmrnpg tbody, #yzlvbmrnpg tfoot, #yzlvbmrnpg tr, #yzlvbmrnpg td, #yzlvbmrnpg th {
   border-style: none;
 }
 
-#zbvxrqrqkj p {
+#yzlvbmrnpg p {
   margin: 0;
   padding: 0;
 }
 
-#zbvxrqrqkj .gt_table {
+#yzlvbmrnpg .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1236,12 +1242,12 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#zbvxrqrqkj .gt_caption {
+#yzlvbmrnpg .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#zbvxrqrqkj .gt_title {
+#yzlvbmrnpg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1253,7 +1259,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-bottom-width: 0;
 }
 
-#zbvxrqrqkj .gt_subtitle {
+#yzlvbmrnpg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1265,7 +1271,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-top-width: 0;
 }
 
-#zbvxrqrqkj .gt_heading {
+#yzlvbmrnpg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1277,13 +1283,13 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#zbvxrqrqkj .gt_bottom_border {
+#yzlvbmrnpg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zbvxrqrqkj .gt_col_headings {
+#yzlvbmrnpg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1298,7 +1304,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#zbvxrqrqkj .gt_col_heading {
+#yzlvbmrnpg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1318,7 +1324,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   overflow-x: hidden;
 }
 
-#zbvxrqrqkj .gt_column_spanner_outer {
+#yzlvbmrnpg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1330,15 +1336,15 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   padding-right: 4px;
 }
 
-#zbvxrqrqkj .gt_column_spanner_outer:first-child {
+#yzlvbmrnpg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zbvxrqrqkj .gt_column_spanner_outer:last-child {
+#yzlvbmrnpg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zbvxrqrqkj .gt_column_spanner {
+#yzlvbmrnpg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1350,11 +1356,11 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   width: 100%;
 }
 
-#zbvxrqrqkj .gt_spanner_row {
+#yzlvbmrnpg .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#zbvxrqrqkj .gt_group_heading {
+#yzlvbmrnpg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1380,7 +1386,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   text-align: left;
 }
 
-#zbvxrqrqkj .gt_empty_group_heading {
+#yzlvbmrnpg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1395,15 +1401,15 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   vertical-align: middle;
 }
 
-#zbvxrqrqkj .gt_from_md > :first-child {
+#yzlvbmrnpg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zbvxrqrqkj .gt_from_md > :last-child {
+#yzlvbmrnpg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zbvxrqrqkj .gt_row {
+#yzlvbmrnpg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1422,7 +1428,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   overflow-x: hidden;
 }
 
-#zbvxrqrqkj .gt_stub {
+#yzlvbmrnpg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1435,7 +1441,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   padding-right: 5px;
 }
 
-#zbvxrqrqkj .gt_stub_row_group {
+#yzlvbmrnpg .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1449,15 +1455,15 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   vertical-align: top;
 }
 
-#zbvxrqrqkj .gt_row_group_first td {
+#yzlvbmrnpg .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#zbvxrqrqkj .gt_row_group_first th {
+#yzlvbmrnpg .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#zbvxrqrqkj .gt_summary_row {
+#yzlvbmrnpg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1467,16 +1473,16 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   padding-right: 5px;
 }
 
-#zbvxrqrqkj .gt_first_summary_row {
+#yzlvbmrnpg .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#zbvxrqrqkj .gt_first_summary_row.thick {
+#yzlvbmrnpg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#zbvxrqrqkj .gt_last_summary_row {
+#yzlvbmrnpg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1486,7 +1492,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#zbvxrqrqkj .gt_grand_summary_row {
+#yzlvbmrnpg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1496,7 +1502,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   padding-right: 5px;
 }
 
-#zbvxrqrqkj .gt_first_grand_summary_row {
+#yzlvbmrnpg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1506,7 +1512,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#zbvxrqrqkj .gt_last_grand_summary_row_top {
+#yzlvbmrnpg .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1516,11 +1522,11 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#zbvxrqrqkj .gt_striped {
+#yzlvbmrnpg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zbvxrqrqkj .gt_table_body {
+#yzlvbmrnpg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1529,7 +1535,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#zbvxrqrqkj .gt_footnotes {
+#yzlvbmrnpg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1543,7 +1549,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#zbvxrqrqkj .gt_footnote {
+#yzlvbmrnpg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1552,7 +1558,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   padding-right: 5px;
 }
 
-#zbvxrqrqkj .gt_sourcenotes {
+#yzlvbmrnpg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1566,7 +1572,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#zbvxrqrqkj .gt_sourcenote {
+#yzlvbmrnpg .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1574,72 +1580,72 @@ Levels: Bryn Mawr College Haverford College</code></pre>
   padding-right: 5px;
 }
 
-#zbvxrqrqkj .gt_left {
+#yzlvbmrnpg .gt_left {
   text-align: left;
 }
 
-#zbvxrqrqkj .gt_center {
+#yzlvbmrnpg .gt_center {
   text-align: center;
 }
 
-#zbvxrqrqkj .gt_right {
+#yzlvbmrnpg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zbvxrqrqkj .gt_font_normal {
+#yzlvbmrnpg .gt_font_normal {
   font-weight: normal;
 }
 
-#zbvxrqrqkj .gt_font_bold {
+#yzlvbmrnpg .gt_font_bold {
   font-weight: bold;
 }
 
-#zbvxrqrqkj .gt_font_italic {
+#yzlvbmrnpg .gt_font_italic {
   font-style: italic;
 }
 
-#zbvxrqrqkj .gt_super {
+#yzlvbmrnpg .gt_super {
   font-size: 65%;
 }
 
-#zbvxrqrqkj .gt_footnote_marks {
+#yzlvbmrnpg .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#zbvxrqrqkj .gt_asterisk {
+#yzlvbmrnpg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#zbvxrqrqkj .gt_indent_1 {
+#yzlvbmrnpg .gt_indent_1 {
   text-indent: 5px;
 }
 
-#zbvxrqrqkj .gt_indent_2 {
+#yzlvbmrnpg .gt_indent_2 {
   text-indent: 10px;
 }
 
-#zbvxrqrqkj .gt_indent_3 {
+#yzlvbmrnpg .gt_indent_3 {
   text-indent: 15px;
 }
 
-#zbvxrqrqkj .gt_indent_4 {
+#yzlvbmrnpg .gt_indent_4 {
   text-indent: 20px;
 }
 
-#zbvxrqrqkj .gt_indent_5 {
+#yzlvbmrnpg .gt_indent_5 {
   text-indent: 25px;
 }
 
-#zbvxrqrqkj .katex-display {
+#yzlvbmrnpg .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#zbvxrqrqkj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#yzlvbmrnpg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1723,7 +1729,7 @@ Levels: Bryn Mawr College Haverford College</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lab03-eda_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="lab03-eda_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1746,9 +1752,9 @@ Levels: Bryn Mawr College Haverford College</code></pre>
 </div>
 </div>
 </section>
-<section id="boxplot" class="level4" data-number="3.3.3">
-<h4 data-number="3.3.3" class="anchored" data-anchor-id="boxplot"><span class="header-section-number">3.3.3</span> Boxplot</h4>
-<p>Boxplot conveys rich information about the distribution of a variable. It shows the central tendency and the spread of the distribution, as well as the presence of outliers.</p>
+<section id="box-plot" class="level4" data-number="3.3.3">
+<h4 data-number="3.3.3" class="anchored" data-anchor-id="box-plot"><span class="header-section-number">3.3.3</span> Box plot</h4>
+<p>Box plots convey rich information about the distribution of a variable. It shows the central tendency and the spread of the distribution, as well as the presence of outliers.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1763,12 +1769,12 @@ Levels: Bryn Mawr College Haverford College</code></pre>
 <li>What is the median sleep duration of the students?</li>
 <li>What is the range that the middle 50% of the students fall into (interquartile range)?</li>
 <li>What is the range of sleep duration among the students (excluding outliers)?</li>
-<li>How many outliers are present in the boxplot?</li>
+<li>How many outliers are present in the box plot?</li>
 <li>Is the distribution approximately normal and symmetric around the median? If not, which direction is the distribution skewed (positive or negative)?</li>
 </ul>
 </div>
 </div>
-<p>Let’s first make a boxplot for the <code>SleepDuration</code> variable. We can use <code>geom_boxplot()</code> function of <code>ggplot()</code> to create a boxplot. The following code creates a boxplot for the <code>SleepDuration</code> variable.</p>
+<p>Let’s first make a box plot for the <code>SleepDuration</code> variable. We can use <code>geom_boxplot()</code> function of <code>ggplot()</code> to create a box plot. The following code creates a box plot for the <code>SleepDuration</code> variable.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="st">""</span>,</span>
@@ -1778,16 +1784,16 @@ Levels: Bryn Mawr College Haverford College</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lab03-eda_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="lab03-eda_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>The <strong>center-line</strong> in the middle of the box shows the median of the distribution. The <strong>upper edge of the box</strong> is the third quartile (Q3; 75% of the cases fall at or below this value); the <strong>lower edge</strong> is the first quartile (Q1; 25% of the cases fall at or below this value), which makes the box to represent the middle 50% of the data. If the distribution is skewed, the distance between the center line and the upper versus lower edge of the box will not be the same. When there are no outliers, the <strong>whiskers (the line)</strong> extend to the lowest and the highest score in the distribution. Outliers are plotted as separate <strong>points</strong>. If one whisker is long relative to the other or if there are outliers on only one side of the distribution, the distribution will be skewed in that direction (positive skew for outliers above Q3; negative skew for outliers below Q1). These outliers are values that fall outside of 1.5 times the interquartile range (IQR) from the first and third quartiles. For example, if the IQR is 1 hour (i.e., the range of the middle 50% of the students sleep is 1 hour), then any values that are more than 1.5 hours below Q1 or above Q3 will be considered outliers. <a href="#tbl-eda-boxplot" class="quarto-xref">Table&nbsp;2</a> shows the components of a boxplot and their descriptions.</p>
+<p>The <strong>center-line</strong> in the middle of the box shows the median of the distribution. The <strong>upper edge of the box</strong> is the third quartile (Q3; 75% of the cases fall at or below this value); the <strong>lower edge</strong> is the first quartile (Q1; 25% of the cases fall at or below this value), which makes the box to represent the middle 50% of the data. If the distribution is skewed, the distance between the center line and the upper versus lower edge of the box will not be the same. When there are no outliers, the <strong>whiskers (the line)</strong> extend to the lowest and the highest score in the distribution. Outliers are plotted as separate <strong>points</strong>. If one whisker is long relative to the other or if there are outliers on only one side of the distribution, the distribution will be skewed in that direction (positive skew for outliers above Q3; negative skew for outliers below Q1). These outliers are values that fall outside of 1.5 times the interquartile range (IQR) from the first and third quartiles. For example, if the IQR is 1 hour (i.e., the range of the middle 50% of the students sleep is 1 hour), then any values that are more than 1.5 hours below Q1 or above Q3 will be considered outliers. <a href="#tbl-eda-boxplot" class="quarto-xref">Table&nbsp;2</a> shows the components of a box plot and their descriptions.</p>
 <div id="tbl-eda-boxplot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-eda-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;2: Components of a boxplot
+Table&nbsp;2: Components of a box plot
 </figcaption>
 <div aria-describedby="tbl-eda-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -1842,103 +1848,27 @@ Table&nbsp;2: Components of a boxplot
 </div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(df<span class="sc">$</span>SleepDuration) <span class="sc">%&gt;%</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 3
-  statistic  p.value method                     
-      &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;                      
-1     0.906 0.000277 Shapiro-Wilk normality test</code></pre>
-</div>
-</div>
-</section>
-<section id="checking-normality-q-q-plot" class="level4" data-number="3.3.5">
-<h4 data-number="3.3.5" class="anchored" data-anchor-id="checking-normality-q-q-plot"><span class="header-section-number">3.3.5</span> Checking Normality: Q-Q Plot</h4>
-<p>A Q-Q plot (a quantile-quantile plot) is a graphical method for comparing two probability distributions by plotting their quantiles against each other. The x-axis represents the theoretical quantiles of a normal distribution, and the y-axis represents the sample quantiles of the variable. If the points in the Q-Q plot fall on a straight diagonal line, it indicates that the data are normally distributed. If the points deviate from the straight diagonal line, it indicates that the data are not normally distributed. The further the points deviate from the line, the more the data deviates from a normal distribution.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Questions to answer about the data:
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>Based on the Q-Q plot, is the distribution normally distributed (most points fall on the straight diagonal line)?</li>
-</ul>
-</div>
-</div>
-<p><code>ggqqplot()</code> function from the <code>ggpubr</code> package creates a Q-Q plot. You will need to specify the variable you want to check for normality using the <code>x</code> argument. The following code creates a Q-Q plot for the <code>SleepDuration</code> variable.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggqqplot</span>(<span class="at">x =</span> <span class="st">"SleepDuration"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">c</span>(<span class="st">"statistic"</span>), round, <span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lab03-eda_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Now we can compare the distribution of the <code>SleepDuration</code> variable to a theoretical normal distribution. First, you may notice that there is one dot that is far away from the straight diagonal line, which indicates that there is an outlier in the data. Second, you can see that the points are clustered, where many points take the same value on the sample (y-axis), forming a staircase pattern. This is due to rounding, and what you need to pay attention to is whether those clusters fall on the straight diagonal line. If they do, it indicates that the distribution is approximately normal, even though the individual dots are not on the line.</p>
-</section>
-</section>
-<section id="ratio-variable-breakfastperweek" class="level3" data-number="3.4">
-<h3 data-number="3.4" class="anchored" data-anchor-id="ratio-variable-breakfastperweek"><span class="header-section-number">3.4</span> Ratio Variable: <code>BreakfastPerWeek</code></h3>
-<p>Repeat the same steps for the <code>BreakfastPerWeek</code> variable.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Exercise: Ratio data
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li>Check descriptive statistics.</li>
-<li>Create a histogram.</li>
-<li>Create a boxplot.</li>
-<li>Run the Shapiro-Wilk test.</li>
-<li>Create a Q-Q plot.</li>
-<li>Summarize your findings in a few sentences, addressing the following questions:
-<ul>
-<li>Are there any missing values in the variable? If so, how many observations are missing?</li>
-<li>What is the central tendency of the variable?</li>
-<li>What is the spread of the variable?</li>
-<li>What is the shape of the distribution of the variable?
-<ul>
-<li>Is the distribution approximately normal (bell-shaped, symmetric around one peak)? If not, which direction is the distribution skewed (positive or negative)?</li>
-</ul></li>
-</ul></li>
-</ol>
-</div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">select</span>(BreakfastPerWeek) <span class="sc">%&gt;%</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">describe</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(n, mean, median, sd, range, min, max, skew, kurtosis) <span class="sc">%&gt;%</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>(<span class="at">rownames_to_stub=</span><span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div id="dolwxaomkh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#dolwxaomkh table {
+<div id="gscjyvkomr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#gscjyvkomr table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#dolwxaomkh thead, #dolwxaomkh tbody, #dolwxaomkh tfoot, #dolwxaomkh tr, #dolwxaomkh td, #dolwxaomkh th {
+#gscjyvkomr thead, #gscjyvkomr tbody, #gscjyvkomr tfoot, #gscjyvkomr tr, #gscjyvkomr td, #gscjyvkomr th {
   border-style: none;
 }
 
-#dolwxaomkh p {
+#gscjyvkomr p {
   margin: 0;
   padding: 0;
 }
 
-#dolwxaomkh .gt_table {
+#gscjyvkomr .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1964,12 +1894,12 @@ Table&nbsp;2: Components of a boxplot
   border-left-color: #D3D3D3;
 }
 
-#dolwxaomkh .gt_caption {
+#gscjyvkomr .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#dolwxaomkh .gt_title {
+#gscjyvkomr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1981,7 +1911,7 @@ Table&nbsp;2: Components of a boxplot
   border-bottom-width: 0;
 }
 
-#dolwxaomkh .gt_subtitle {
+#gscjyvkomr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1993,7 +1923,7 @@ Table&nbsp;2: Components of a boxplot
   border-top-width: 0;
 }
 
-#dolwxaomkh .gt_heading {
+#gscjyvkomr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2005,13 +1935,13 @@ Table&nbsp;2: Components of a boxplot
   border-right-color: #D3D3D3;
 }
 
-#dolwxaomkh .gt_bottom_border {
+#gscjyvkomr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dolwxaomkh .gt_col_headings {
+#gscjyvkomr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2026,7 +1956,7 @@ Table&nbsp;2: Components of a boxplot
   border-right-color: #D3D3D3;
 }
 
-#dolwxaomkh .gt_col_heading {
+#gscjyvkomr .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2046,7 +1976,7 @@ Table&nbsp;2: Components of a boxplot
   overflow-x: hidden;
 }
 
-#dolwxaomkh .gt_column_spanner_outer {
+#gscjyvkomr .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2058,15 +1988,15 @@ Table&nbsp;2: Components of a boxplot
   padding-right: 4px;
 }
 
-#dolwxaomkh .gt_column_spanner_outer:first-child {
+#gscjyvkomr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dolwxaomkh .gt_column_spanner_outer:last-child {
+#gscjyvkomr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dolwxaomkh .gt_column_spanner {
+#gscjyvkomr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2078,11 +2008,11 @@ Table&nbsp;2: Components of a boxplot
   width: 100%;
 }
 
-#dolwxaomkh .gt_spanner_row {
+#gscjyvkomr .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#dolwxaomkh .gt_group_heading {
+#gscjyvkomr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2108,7 +2038,7 @@ Table&nbsp;2: Components of a boxplot
   text-align: left;
 }
 
-#dolwxaomkh .gt_empty_group_heading {
+#gscjyvkomr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2123,15 +2053,15 @@ Table&nbsp;2: Components of a boxplot
   vertical-align: middle;
 }
 
-#dolwxaomkh .gt_from_md > :first-child {
+#gscjyvkomr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dolwxaomkh .gt_from_md > :last-child {
+#gscjyvkomr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dolwxaomkh .gt_row {
+#gscjyvkomr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2150,7 +2080,7 @@ Table&nbsp;2: Components of a boxplot
   overflow-x: hidden;
 }
 
-#dolwxaomkh .gt_stub {
+#gscjyvkomr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2163,7 +2093,7 @@ Table&nbsp;2: Components of a boxplot
   padding-right: 5px;
 }
 
-#dolwxaomkh .gt_stub_row_group {
+#gscjyvkomr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2177,15 +2107,15 @@ Table&nbsp;2: Components of a boxplot
   vertical-align: top;
 }
 
-#dolwxaomkh .gt_row_group_first td {
+#gscjyvkomr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dolwxaomkh .gt_row_group_first th {
+#gscjyvkomr .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#dolwxaomkh .gt_summary_row {
+#gscjyvkomr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2195,16 +2125,16 @@ Table&nbsp;2: Components of a boxplot
   padding-right: 5px;
 }
 
-#dolwxaomkh .gt_first_summary_row {
+#gscjyvkomr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dolwxaomkh .gt_first_summary_row.thick {
+#gscjyvkomr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dolwxaomkh .gt_last_summary_row {
+#gscjyvkomr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2214,7 +2144,7 @@ Table&nbsp;2: Components of a boxplot
   border-bottom-color: #D3D3D3;
 }
 
-#dolwxaomkh .gt_grand_summary_row {
+#gscjyvkomr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2224,7 +2154,7 @@ Table&nbsp;2: Components of a boxplot
   padding-right: 5px;
 }
 
-#dolwxaomkh .gt_first_grand_summary_row {
+#gscjyvkomr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2234,7 +2164,7 @@ Table&nbsp;2: Components of a boxplot
   border-top-color: #D3D3D3;
 }
 
-#dolwxaomkh .gt_last_grand_summary_row_top {
+#gscjyvkomr .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2244,11 +2174,11 @@ Table&nbsp;2: Components of a boxplot
   border-bottom-color: #D3D3D3;
 }
 
-#dolwxaomkh .gt_striped {
+#gscjyvkomr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dolwxaomkh .gt_table_body {
+#gscjyvkomr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2257,7 +2187,7 @@ Table&nbsp;2: Components of a boxplot
   border-bottom-color: #D3D3D3;
 }
 
-#dolwxaomkh .gt_footnotes {
+#gscjyvkomr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2271,7 +2201,7 @@ Table&nbsp;2: Components of a boxplot
   border-right-color: #D3D3D3;
 }
 
-#dolwxaomkh .gt_footnote {
+#gscjyvkomr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2280,7 +2210,7 @@ Table&nbsp;2: Components of a boxplot
   padding-right: 5px;
 }
 
-#dolwxaomkh .gt_sourcenotes {
+#gscjyvkomr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2294,7 +2224,7 @@ Table&nbsp;2: Components of a boxplot
   border-right-color: #D3D3D3;
 }
 
-#dolwxaomkh .gt_sourcenote {
+#gscjyvkomr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2302,72 +2232,615 @@ Table&nbsp;2: Components of a boxplot
   padding-right: 5px;
 }
 
-#dolwxaomkh .gt_left {
+#gscjyvkomr .gt_left {
   text-align: left;
 }
 
-#dolwxaomkh .gt_center {
+#gscjyvkomr .gt_center {
   text-align: center;
 }
 
-#dolwxaomkh .gt_right {
+#gscjyvkomr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dolwxaomkh .gt_font_normal {
+#gscjyvkomr .gt_font_normal {
   font-weight: normal;
 }
 
-#dolwxaomkh .gt_font_bold {
+#gscjyvkomr .gt_font_bold {
   font-weight: bold;
 }
 
-#dolwxaomkh .gt_font_italic {
+#gscjyvkomr .gt_font_italic {
   font-style: italic;
 }
 
-#dolwxaomkh .gt_super {
+#gscjyvkomr .gt_super {
   font-size: 65%;
 }
 
-#dolwxaomkh .gt_footnote_marks {
+#gscjyvkomr .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#dolwxaomkh .gt_asterisk {
+#gscjyvkomr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dolwxaomkh .gt_indent_1 {
+#gscjyvkomr .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dolwxaomkh .gt_indent_2 {
+#gscjyvkomr .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dolwxaomkh .gt_indent_3 {
+#gscjyvkomr .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dolwxaomkh .gt_indent_4 {
+#gscjyvkomr .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dolwxaomkh .gt_indent_5 {
+#gscjyvkomr .gt_indent_5 {
   text-indent: 25px;
 }
 
-#dolwxaomkh .katex-display {
+#gscjyvkomr .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#dolwxaomkh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#gscjyvkomr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="statistic" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">statistic</th>
+<th id="p.value" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">p.value</th>
+<th id="method" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">method</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="statistic">0.906</td>
+<td class="gt_row gt_right" headers="p.value">0.0002766586</td>
+<td class="gt_row gt_left" headers="method">Shapiro-Wilk normality test</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="checking-normality-q-q-plot" class="level4" data-number="3.3.5">
+<h4 data-number="3.3.5" class="anchored" data-anchor-id="checking-normality-q-q-plot"><span class="header-section-number">3.3.5</span> Checking Normality: Q-Q Plot</h4>
+<p>A Q-Q plot (a quantile-quantile plot) is a graphical method for comparing two probability distributions by plotting their quantiles against each other. The x-axis represents the theoretical quantiles of a normal distribution, and the y-axis represents the sample quantiles of the variable. If the points in the Q-Q plot fall on a straight diagonal line, it indicates that the data are normally distributed. If the points deviate from the straight diagonal line, it indicates that the data are not normally distributed. The further the points deviate from the line, the more the data deviates from a normal distribution.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Questions to answer about the data:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Based on the Q-Q plot, is the distribution normally distributed (most points fall on the straight diagonal line)?</li>
+</ul>
+</div>
+</div>
+<p><code>ggqqplot()</code> function from the <code>ggpubr</code> package creates a Q-Q plot. You will need to specify the variable you want to check for normality using the <code>x</code> argument. The following code creates a Q-Q plot for the <code>SleepDuration</code> variable.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggqqplot</span>(<span class="at">x =</span> <span class="st">"SleepDuration"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab03-eda_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now we can compare the distribution of the <code>SleepDuration</code> variable to a theoretical normal distribution. First, you may notice that there is one dot that is far away from the straight diagonal line, which indicates that there is an outlier in the data. Second, you can see that the points are clustered, where many points take the same value on the sample (y-axis), forming a staircase pattern. This is due to rounding, and what you need to pay attention to is whether those clusters fall on the straight diagonal line. If they do, it indicates that the distribution is approximately normal, even though the individual dots are not on the line.</p>
+</section>
+</section>
+<section id="ratio-variable-breakfastperweek" class="level3" data-number="3.4">
+<h3 data-number="3.4" class="anchored" data-anchor-id="ratio-variable-breakfastperweek"><span class="header-section-number">3.4</span> Ratio Variable: <code>BreakfastPerWeek</code></h3>
+<p>Repeat the same steps for the <code>BreakfastPerWeek</code> variable.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Exercise 2: Ratio data
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Check descriptive statistics.</li>
+<li>Create a histogram.</li>
+<li>Create a box plot.</li>
+<li>Run the Shapiro-Wilk test.</li>
+<li>Create a Q-Q plot.</li>
+<li>Summarize your findings in a few sentences, addressing the following questions:
+<ul>
+<li>Are there any missing values in the variable? If so, how many observations are missing?</li>
+<li>What is the shape of the distribution of the variable?
+<ul>
+<li>Is the distribution approximately normal (bell-shaped, symmetric around one peak)?</li>
+<li>If the distribution is skewed, which direction is the distribution skewed (positive or negative)?</li>
+</ul></li>
+<li>What is the central tendency of the variable?</li>
+<li>What is the spread of the variable?</li>
+</ul></li>
+</ol>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">select</span>(BreakfastPerWeek) <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">describe</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(n, mean, median, sd, range, min, max, skew, kurtosis) <span class="sc">%&gt;%</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>(<span class="at">rownames_to_stub=</span><span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="cnqbeflfbe" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#cnqbeflfbe table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#cnqbeflfbe thead, #cnqbeflfbe tbody, #cnqbeflfbe tfoot, #cnqbeflfbe tr, #cnqbeflfbe td, #cnqbeflfbe th {
+  border-style: none;
+}
+
+#cnqbeflfbe p {
+  margin: 0;
+  padding: 0;
+}
+
+#cnqbeflfbe .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#cnqbeflfbe .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#cnqbeflfbe .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#cnqbeflfbe .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#cnqbeflfbe .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cnqbeflfbe .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cnqbeflfbe .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cnqbeflfbe .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#cnqbeflfbe .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#cnqbeflfbe .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#cnqbeflfbe .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#cnqbeflfbe .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#cnqbeflfbe .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#cnqbeflfbe .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#cnqbeflfbe .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#cnqbeflfbe .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#cnqbeflfbe .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#cnqbeflfbe .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#cnqbeflfbe .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cnqbeflfbe .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#cnqbeflfbe .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#cnqbeflfbe .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#cnqbeflfbe .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cnqbeflfbe .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#cnqbeflfbe .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#cnqbeflfbe .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cnqbeflfbe .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cnqbeflfbe .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#cnqbeflfbe .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cnqbeflfbe .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#cnqbeflfbe .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cnqbeflfbe .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cnqbeflfbe .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cnqbeflfbe .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cnqbeflfbe .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cnqbeflfbe .gt_left {
+  text-align: left;
+}
+
+#cnqbeflfbe .gt_center {
+  text-align: center;
+}
+
+#cnqbeflfbe .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#cnqbeflfbe .gt_font_normal {
+  font-weight: normal;
+}
+
+#cnqbeflfbe .gt_font_bold {
+  font-weight: bold;
+}
+
+#cnqbeflfbe .gt_font_italic {
+  font-style: italic;
+}
+
+#cnqbeflfbe .gt_super {
+  font-size: 65%;
+}
+
+#cnqbeflfbe .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#cnqbeflfbe .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#cnqbeflfbe .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#cnqbeflfbe .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#cnqbeflfbe .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#cnqbeflfbe .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#cnqbeflfbe .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#cnqbeflfbe .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#cnqbeflfbe div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2405,50 +2878,50 @@ Table&nbsp;2: Components of a boxplot
 
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> BreakfastPerWeek)) <span class="sc">+</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"lightgray"</span>) <span class="sc">+</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Breakfast Consumption (days per week)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> BreakfastPerWeek)) <span class="sc">+</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"lightgray"</span>) <span class="sc">+</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Breakfast Consumption (days per week)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lab03-eda_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="lab03-eda_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="st">""</span>,</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y=</span>BreakfastPerWeek)) <span class="sc">+</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Breakfast Consumption (days per week)"</span>, </span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">""</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="st">""</span>,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">y=</span>BreakfastPerWeek)) <span class="sc">+</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">"Breakfast Consumption (days per week)"</span>, </span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">""</span>)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lab03-eda_files/figure-html/unnamed-chunk-15-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="lab03-eda_files/figure-html/unnamed-chunk-14-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(papaja)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(df<span class="sc">$</span>BreakfastPerWeek) <span class="sc">%&gt;%</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(papaja)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(df<span class="sc">$</span>BreakfastPerWeek) <span class="sc">%&gt;%</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="vlspjfriqx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vlspjfriqx table {
+<div id="kjzwadwywz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#kjzwadwywz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vlspjfriqx thead, #vlspjfriqx tbody, #vlspjfriqx tfoot, #vlspjfriqx tr, #vlspjfriqx td, #vlspjfriqx th {
+#kjzwadwywz thead, #kjzwadwywz tbody, #kjzwadwywz tfoot, #kjzwadwywz tr, #kjzwadwywz td, #kjzwadwywz th {
   border-style: none;
 }
 
-#vlspjfriqx p {
+#kjzwadwywz p {
   margin: 0;
   padding: 0;
 }
 
-#vlspjfriqx .gt_table {
+#kjzwadwywz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2474,12 +2947,12 @@ Table&nbsp;2: Components of a boxplot
   border-left-color: #D3D3D3;
 }
 
-#vlspjfriqx .gt_caption {
+#kjzwadwywz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vlspjfriqx .gt_title {
+#kjzwadwywz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2491,7 +2964,7 @@ Table&nbsp;2: Components of a boxplot
   border-bottom-width: 0;
 }
 
-#vlspjfriqx .gt_subtitle {
+#kjzwadwywz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2503,7 +2976,7 @@ Table&nbsp;2: Components of a boxplot
   border-top-width: 0;
 }
 
-#vlspjfriqx .gt_heading {
+#kjzwadwywz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2515,13 +2988,13 @@ Table&nbsp;2: Components of a boxplot
   border-right-color: #D3D3D3;
 }
 
-#vlspjfriqx .gt_bottom_border {
+#kjzwadwywz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vlspjfriqx .gt_col_headings {
+#kjzwadwywz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2536,7 +3009,7 @@ Table&nbsp;2: Components of a boxplot
   border-right-color: #D3D3D3;
 }
 
-#vlspjfriqx .gt_col_heading {
+#kjzwadwywz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2556,7 +3029,7 @@ Table&nbsp;2: Components of a boxplot
   overflow-x: hidden;
 }
 
-#vlspjfriqx .gt_column_spanner_outer {
+#kjzwadwywz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2568,15 +3041,15 @@ Table&nbsp;2: Components of a boxplot
   padding-right: 4px;
 }
 
-#vlspjfriqx .gt_column_spanner_outer:first-child {
+#kjzwadwywz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vlspjfriqx .gt_column_spanner_outer:last-child {
+#kjzwadwywz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vlspjfriqx .gt_column_spanner {
+#kjzwadwywz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2588,11 +3061,11 @@ Table&nbsp;2: Components of a boxplot
   width: 100%;
 }
 
-#vlspjfriqx .gt_spanner_row {
+#kjzwadwywz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vlspjfriqx .gt_group_heading {
+#kjzwadwywz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2618,7 +3091,7 @@ Table&nbsp;2: Components of a boxplot
   text-align: left;
 }
 
-#vlspjfriqx .gt_empty_group_heading {
+#kjzwadwywz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2633,15 +3106,15 @@ Table&nbsp;2: Components of a boxplot
   vertical-align: middle;
 }
 
-#vlspjfriqx .gt_from_md > :first-child {
+#kjzwadwywz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vlspjfriqx .gt_from_md > :last-child {
+#kjzwadwywz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vlspjfriqx .gt_row {
+#kjzwadwywz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2660,7 +3133,7 @@ Table&nbsp;2: Components of a boxplot
   overflow-x: hidden;
 }
 
-#vlspjfriqx .gt_stub {
+#kjzwadwywz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2673,7 +3146,7 @@ Table&nbsp;2: Components of a boxplot
   padding-right: 5px;
 }
 
-#vlspjfriqx .gt_stub_row_group {
+#kjzwadwywz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2687,15 +3160,15 @@ Table&nbsp;2: Components of a boxplot
   vertical-align: top;
 }
 
-#vlspjfriqx .gt_row_group_first td {
+#kjzwadwywz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vlspjfriqx .gt_row_group_first th {
+#kjzwadwywz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vlspjfriqx .gt_summary_row {
+#kjzwadwywz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2705,16 +3178,16 @@ Table&nbsp;2: Components of a boxplot
   padding-right: 5px;
 }
 
-#vlspjfriqx .gt_first_summary_row {
+#kjzwadwywz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vlspjfriqx .gt_first_summary_row.thick {
+#kjzwadwywz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vlspjfriqx .gt_last_summary_row {
+#kjzwadwywz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2724,7 +3197,7 @@ Table&nbsp;2: Components of a boxplot
   border-bottom-color: #D3D3D3;
 }
 
-#vlspjfriqx .gt_grand_summary_row {
+#kjzwadwywz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2734,7 +3207,7 @@ Table&nbsp;2: Components of a boxplot
   padding-right: 5px;
 }
 
-#vlspjfriqx .gt_first_grand_summary_row {
+#kjzwadwywz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2744,7 +3217,7 @@ Table&nbsp;2: Components of a boxplot
   border-top-color: #D3D3D3;
 }
 
-#vlspjfriqx .gt_last_grand_summary_row_top {
+#kjzwadwywz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2754,11 +3227,11 @@ Table&nbsp;2: Components of a boxplot
   border-bottom-color: #D3D3D3;
 }
 
-#vlspjfriqx .gt_striped {
+#kjzwadwywz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vlspjfriqx .gt_table_body {
+#kjzwadwywz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2767,7 +3240,7 @@ Table&nbsp;2: Components of a boxplot
   border-bottom-color: #D3D3D3;
 }
 
-#vlspjfriqx .gt_footnotes {
+#kjzwadwywz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2781,7 +3254,7 @@ Table&nbsp;2: Components of a boxplot
   border-right-color: #D3D3D3;
 }
 
-#vlspjfriqx .gt_footnote {
+#kjzwadwywz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2790,7 +3263,7 @@ Table&nbsp;2: Components of a boxplot
   padding-right: 5px;
 }
 
-#vlspjfriqx .gt_sourcenotes {
+#kjzwadwywz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2804,7 +3277,7 @@ Table&nbsp;2: Components of a boxplot
   border-right-color: #D3D3D3;
 }
 
-#vlspjfriqx .gt_sourcenote {
+#kjzwadwywz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2812,72 +3285,72 @@ Table&nbsp;2: Components of a boxplot
   padding-right: 5px;
 }
 
-#vlspjfriqx .gt_left {
+#kjzwadwywz .gt_left {
   text-align: left;
 }
 
-#vlspjfriqx .gt_center {
+#kjzwadwywz .gt_center {
   text-align: center;
 }
 
-#vlspjfriqx .gt_right {
+#kjzwadwywz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vlspjfriqx .gt_font_normal {
+#kjzwadwywz .gt_font_normal {
   font-weight: normal;
 }
 
-#vlspjfriqx .gt_font_bold {
+#kjzwadwywz .gt_font_bold {
   font-weight: bold;
 }
 
-#vlspjfriqx .gt_font_italic {
+#kjzwadwywz .gt_font_italic {
   font-style: italic;
 }
 
-#vlspjfriqx .gt_super {
+#kjzwadwywz .gt_super {
   font-size: 65%;
 }
 
-#vlspjfriqx .gt_footnote_marks {
+#kjzwadwywz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vlspjfriqx .gt_asterisk {
+#kjzwadwywz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vlspjfriqx .gt_indent_1 {
+#kjzwadwywz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vlspjfriqx .gt_indent_2 {
+#kjzwadwywz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vlspjfriqx .gt_indent_3 {
+#kjzwadwywz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vlspjfriqx .gt_indent_4 {
+#kjzwadwywz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vlspjfriqx .gt_indent_5 {
+#kjzwadwywz .gt_indent_5 {
   text-indent: 25px;
 }
 
-#vlspjfriqx .katex-display {
+#kjzwadwywz .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#vlspjfriqx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#kjzwadwywz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2901,12 +3374,12 @@ Table&nbsp;2: Components of a boxplot
 
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggqqplot</span>(<span class="at">x =</span> <span class="st">"BreakfastPerWeek"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggqqplot</span>(<span class="at">x =</span> <span class="st">"BreakfastPerWeek"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lab03-eda_files/figure-html/unnamed-chunk-15-3.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="lab03-eda_files/figure-html/unnamed-chunk-14-3.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -2940,7 +3413,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
 </tr>
 <tr class="even">
 <td style="text-align: left;">Between continuous and categorical/ordinal</td>
-<td style="text-align: left;">Histogram or boxplot split by category, descriptives by category</td>
+<td style="text-align: left;">Histogram or box plot split by category, descriptives by category</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Between continuous and ordinal</td>
@@ -2978,30 +3451,30 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
 <h4 data-number="4.1.1" class="anchored" data-anchor-id="contingency-table"><span class="header-section-number">4.1.1</span> Contingency Table</h4>
 <p>A contingency table is a two-way frequency table that shows the combinations of the levels of two variable. This can be done using the same <code>tabyl()</code> function as before, just with both variables.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>tbl.campus_class <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(Campus, Class) <span class="sc">%&gt;%</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_totals</span>(<span class="fu">c</span>(<span class="st">"row"</span>, <span class="st">"col"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_align</span>(<span class="at">align =</span> <span class="st">"left"</span>, <span class="at">columns =</span> <span class="fu">c</span>(Campus))</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>tbl.campus_class</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>tbl.campus_class <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(Campus, Class) <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_totals</span>(<span class="fu">c</span>(<span class="st">"row"</span>, <span class="st">"col"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_align</span>(<span class="at">align =</span> <span class="st">"left"</span>, <span class="at">columns =</span> <span class="fu">c</span>(Campus))</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>tbl.campus_class</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="wlkdwhmyls" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wlkdwhmyls table {
+<div id="huvfdfrkzd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#huvfdfrkzd table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wlkdwhmyls thead, #wlkdwhmyls tbody, #wlkdwhmyls tfoot, #wlkdwhmyls tr, #wlkdwhmyls td, #wlkdwhmyls th {
+#huvfdfrkzd thead, #huvfdfrkzd tbody, #huvfdfrkzd tfoot, #huvfdfrkzd tr, #huvfdfrkzd td, #huvfdfrkzd th {
   border-style: none;
 }
 
-#wlkdwhmyls p {
+#huvfdfrkzd p {
   margin: 0;
   padding: 0;
 }
 
-#wlkdwhmyls .gt_table {
+#huvfdfrkzd .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3027,12 +3500,12 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   border-left-color: #D3D3D3;
 }
 
-#wlkdwhmyls .gt_caption {
+#huvfdfrkzd .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wlkdwhmyls .gt_title {
+#huvfdfrkzd .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3044,7 +3517,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   border-bottom-width: 0;
 }
 
-#wlkdwhmyls .gt_subtitle {
+#huvfdfrkzd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3056,7 +3529,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   border-top-width: 0;
 }
 
-#wlkdwhmyls .gt_heading {
+#huvfdfrkzd .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3068,13 +3541,13 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   border-right-color: #D3D3D3;
 }
 
-#wlkdwhmyls .gt_bottom_border {
+#huvfdfrkzd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wlkdwhmyls .gt_col_headings {
+#huvfdfrkzd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3089,7 +3562,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   border-right-color: #D3D3D3;
 }
 
-#wlkdwhmyls .gt_col_heading {
+#huvfdfrkzd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3109,7 +3582,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   overflow-x: hidden;
 }
 
-#wlkdwhmyls .gt_column_spanner_outer {
+#huvfdfrkzd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3121,15 +3594,15 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   padding-right: 4px;
 }
 
-#wlkdwhmyls .gt_column_spanner_outer:first-child {
+#huvfdfrkzd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wlkdwhmyls .gt_column_spanner_outer:last-child {
+#huvfdfrkzd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wlkdwhmyls .gt_column_spanner {
+#huvfdfrkzd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3141,11 +3614,11 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   width: 100%;
 }
 
-#wlkdwhmyls .gt_spanner_row {
+#huvfdfrkzd .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wlkdwhmyls .gt_group_heading {
+#huvfdfrkzd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3171,7 +3644,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   text-align: left;
 }
 
-#wlkdwhmyls .gt_empty_group_heading {
+#huvfdfrkzd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3186,15 +3659,15 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   vertical-align: middle;
 }
 
-#wlkdwhmyls .gt_from_md > :first-child {
+#huvfdfrkzd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wlkdwhmyls .gt_from_md > :last-child {
+#huvfdfrkzd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wlkdwhmyls .gt_row {
+#huvfdfrkzd .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3213,7 +3686,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   overflow-x: hidden;
 }
 
-#wlkdwhmyls .gt_stub {
+#huvfdfrkzd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3226,7 +3699,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   padding-right: 5px;
 }
 
-#wlkdwhmyls .gt_stub_row_group {
+#huvfdfrkzd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3240,15 +3713,15 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   vertical-align: top;
 }
 
-#wlkdwhmyls .gt_row_group_first td {
+#huvfdfrkzd .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wlkdwhmyls .gt_row_group_first th {
+#huvfdfrkzd .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wlkdwhmyls .gt_summary_row {
+#huvfdfrkzd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3258,16 +3731,16 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   padding-right: 5px;
 }
 
-#wlkdwhmyls .gt_first_summary_row {
+#huvfdfrkzd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wlkdwhmyls .gt_first_summary_row.thick {
+#huvfdfrkzd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wlkdwhmyls .gt_last_summary_row {
+#huvfdfrkzd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3277,7 +3750,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   border-bottom-color: #D3D3D3;
 }
 
-#wlkdwhmyls .gt_grand_summary_row {
+#huvfdfrkzd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3287,7 +3760,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   padding-right: 5px;
 }
 
-#wlkdwhmyls .gt_first_grand_summary_row {
+#huvfdfrkzd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3297,7 +3770,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   border-top-color: #D3D3D3;
 }
 
-#wlkdwhmyls .gt_last_grand_summary_row_top {
+#huvfdfrkzd .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3307,11 +3780,11 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   border-bottom-color: #D3D3D3;
 }
 
-#wlkdwhmyls .gt_striped {
+#huvfdfrkzd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wlkdwhmyls .gt_table_body {
+#huvfdfrkzd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3320,7 +3793,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   border-bottom-color: #D3D3D3;
 }
 
-#wlkdwhmyls .gt_footnotes {
+#huvfdfrkzd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3334,7 +3807,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   border-right-color: #D3D3D3;
 }
 
-#wlkdwhmyls .gt_footnote {
+#huvfdfrkzd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3343,7 +3816,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   padding-right: 5px;
 }
 
-#wlkdwhmyls .gt_sourcenotes {
+#huvfdfrkzd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3357,7 +3830,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   border-right-color: #D3D3D3;
 }
 
-#wlkdwhmyls .gt_sourcenote {
+#huvfdfrkzd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3365,72 +3838,72 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
   padding-right: 5px;
 }
 
-#wlkdwhmyls .gt_left {
+#huvfdfrkzd .gt_left {
   text-align: left;
 }
 
-#wlkdwhmyls .gt_center {
+#huvfdfrkzd .gt_center {
   text-align: center;
 }
 
-#wlkdwhmyls .gt_right {
+#huvfdfrkzd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wlkdwhmyls .gt_font_normal {
+#huvfdfrkzd .gt_font_normal {
   font-weight: normal;
 }
 
-#wlkdwhmyls .gt_font_bold {
+#huvfdfrkzd .gt_font_bold {
   font-weight: bold;
 }
 
-#wlkdwhmyls .gt_font_italic {
+#huvfdfrkzd .gt_font_italic {
   font-style: italic;
 }
 
-#wlkdwhmyls .gt_super {
+#huvfdfrkzd .gt_super {
   font-size: 65%;
 }
 
-#wlkdwhmyls .gt_footnote_marks {
+#huvfdfrkzd .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wlkdwhmyls .gt_asterisk {
+#huvfdfrkzd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wlkdwhmyls .gt_indent_1 {
+#huvfdfrkzd .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wlkdwhmyls .gt_indent_2 {
+#huvfdfrkzd .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wlkdwhmyls .gt_indent_3 {
+#huvfdfrkzd .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wlkdwhmyls .gt_indent_4 {
+#huvfdfrkzd .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wlkdwhmyls .gt_indent_5 {
+#huvfdfrkzd .gt_indent_5 {
   text-indent: 25px;
 }
 
-#wlkdwhmyls .katex-display {
+#huvfdfrkzd .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#wlkdwhmyls div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#huvfdfrkzd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3440,9 +3913,9 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
 <tr class="gt_col_headings header">
 <th id="Campus" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Campus</th>
 <th id="First-year" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">First-year</th>
-<th id="Sophomore" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Sophomore</th>
 <th id="Junior" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Junior</th>
 <th id="Senior" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Senior</th>
+<th id="Sophomore" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Sophomore</th>
 <th id="Total" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Total</th>
 </tr>
 </thead>
@@ -3450,25 +3923,25 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
 <tr class="odd">
 <td class="gt_row gt_left" headers="Campus">Bryn Mawr College</td>
 <td class="gt_row gt_right" headers="First-year">10</td>
-<td class="gt_row gt_right" headers="Sophomore">21</td>
 <td class="gt_row gt_right" headers="Junior">9</td>
 <td class="gt_row gt_right" headers="Senior">5</td>
+<td class="gt_row gt_right" headers="Sophomore">21</td>
 <td class="gt_row gt_right" headers="Total">45</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="Campus">Haverford College</td>
 <td class="gt_row gt_right" headers="First-year">4</td>
-<td class="gt_row gt_right" headers="Sophomore">3</td>
 <td class="gt_row gt_right" headers="Junior">2</td>
 <td class="gt_row gt_right" headers="Senior">5</td>
+<td class="gt_row gt_right" headers="Sophomore">3</td>
 <td class="gt_row gt_right" headers="Total">14</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="Campus">Total</td>
 <td class="gt_row gt_right" headers="First-year">14</td>
-<td class="gt_row gt_right" headers="Sophomore">24</td>
 <td class="gt_row gt_right" headers="Junior">11</td>
 <td class="gt_row gt_right" headers="Senior">10</td>
+<td class="gt_row gt_right" headers="Sophomore">24</td>
 <td class="gt_row gt_right" headers="Total">59</td>
 </tr>
 </tbody>
@@ -3483,14 +3956,14 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
 <p>We can use the color of the bars to represent the levels of the new variable. In this example, it makes more sense to use the <code>Campus</code> variable as the fill color, because there are only two levels of the <code>Campus</code> variable, and it is easier to distinguish between two colors than four colors. Plus, the <code>Class</code> variable is ordinal, and it is easier to see the order of the levels when they are on the x-axis.</p>
 <p>The following code creates a grouped bar chart for the <code>Class</code> variable split by the <code>Campus</code> variable.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>fig.campus_class <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> Class, <span class="at">fill =</span> Campus), <span class="at">position =</span> <span class="st">"dodge"</span>) </span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>fig.campus_class</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>fig.campus_class <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> Class, <span class="at">fill =</span> Campus), <span class="at">position =</span> <span class="st">"dodge"</span>) </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>fig.campus_class</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lab03-eda_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="lab03-eda_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -3516,7 +3989,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
 </section>
 <section id="between-continuous-and-categoricalordinal-variables-sleepduration-and-campus" class="level3" data-number="4.2">
 <h3 data-number="4.2" class="anchored" data-anchor-id="between-continuous-and-categoricalordinal-variables-sleepduration-and-campus"><span class="header-section-number">4.2</span> Between continuous and categorical/ordinal variables: <code>SleepDuration</code> and <code>Campus</code></h3>
-<p>Now we will examine the relationship between a continuous variable and a categorical/ordinal variable. In this case, we will examine the relationship between <code>SleepDuration</code> (continuous) and <code>Campus</code> (categorical). Later in the semester we will learn how to conduct statistical tests to determine whether there is a significant difference between the groups (here, <code>Campus</code>), but for now, we will just visualize the data using histograms and boxplots split by category.</p>
+<p>Now we will examine the relationship between a continuous variable and a categorical/ordinal variable. In this case, we will examine the relationship between <code>SleepDuration</code> (continuous) and <code>Campus</code> (categorical). Later in the semester we will learn how to conduct statistical tests to determine whether there is a significant difference between the groups (here, <code>Campus</code>), but for now, we will just visualize the data using histograms and box plots split by category.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -3536,11 +4009,28 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
 <h4 data-number="4.2.1" class="anchored" data-anchor-id="histogram-1"><span class="header-section-number">4.2.1</span> Histogram</h4>
 <p>You can use <code>facet_grid()</code> in <code>ggplot()</code> to split panels for each level of the cateorical/ordinal variable. Here, we will split the histogram of <code>SleepDuration</code> by <code>Campus</code>. The x-axis is shared between the panels using <code>Campus ~ .</code>, which makes the comparison between the two distributions easier.</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> SleepDuration)) <span class="sc">+</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(Campus <span class="sc">~</span> .) <span class="sc">+</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sleep Duration (hours)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab03-eda_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="box-plot-1" class="level4" data-number="4.2.2">
+<h4 data-number="4.2.2" class="anchored" data-anchor-id="box-plot-1"><span class="header-section-number">4.2.2</span> Box plot</h4>
+<p>To compare the distributions of <code>SleepDuration</code> between the two campuses, we can use a box plot split by <code>Campus</code>. The x-axis will represent the <code>Campus</code>, while the y-axis will represent the <code>SleepDuration</code>. The following code creates a box plot for the <code>SleepDuration</code> variable split by the <code>Campus</code> variable.</p>
+<div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> SleepDuration)) <span class="sc">+</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(Campus <span class="sc">~</span> .) <span class="sc">+</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">position =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sleep Duration (hours)"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Campus, <span class="at">y =</span> SleepDuration)) <span class="sc">+</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Campus"</span>, <span class="at">y =</span> <span class="st">"Sleep Duration (hours)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -3549,24 +4039,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
 </div>
 </div>
 </div>
-</section>
-<section id="boxplot-1" class="level4" data-number="4.2.2">
-<h4 data-number="4.2.2" class="anchored" data-anchor-id="boxplot-1"><span class="header-section-number">4.2.2</span> Boxplot</h4>
-<p>To compare the distributions of <code>SleepDuration</code> between the two campuses, we can use a boxplot split by <code>Campus</code>. The x-axis will represent the <code>Campus</code>, while the y-axis will represent the <code>SleepDuration</code>. The following code creates a boxplot for the <code>SleepDuration</code> variable split by the <code>Campus</code> variable.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Campus, <span class="at">y =</span> SleepDuration)) <span class="sc">+</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Campus"</span>, <span class="at">y =</span> <span class="st">"Sleep Duration (hours)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lab03-eda_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>You can inspect these boxplots and notice the skewness per each campus.</p>
+<p>You can inspect these box plots and notice the skewness per each campus.</p>
 </section>
 </section>
 <section id="between-continuous-and-ordinal-variables-sleepduration-and-class" class="level3" data-number="4.3">
@@ -3578,13 +4051,13 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Exercise: Continuous and Ordinal data
+<span class="screen-reader-only">Tip</span>Exercise 3: Continuous and Ordinal data
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li>Create a faceted histogram.</li>
-<li>Create a boxplot showing both variables.</li>
+<li>Create a box plot showing both variables.</li>
 <li>Summarize your findings in a few sentences, addressing the following questions:
 <ul>
 <li>Is there a relationship between the two variables (e.g., is the distribution of sleep duration different between class years)?</li>
@@ -3615,28 +4088,28 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
 </div>
 <p>The simplest way to do this is using the scatterplot as we’ve done before.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> SleepDuration, <span class="at">y =</span> BreakfastPerWeek)) <span class="sc">+</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sleep Duration (hours)"</span>, <span class="at">y =</span> <span class="st">"Breakfast Consumption (days per week)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> SleepDuration, <span class="at">y =</span> BreakfastPerWeek)) <span class="sc">+</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sleep Duration (hours)"</span>, <span class="at">y =</span> <span class="st">"Breakfast Consumption (days per week)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lab03-eda_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="lab03-eda_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>However, for rounding issues, there are many overlaps of data in this case which makes it harder to see the relationship between the two. To address this, we can adjust the transparency of the points using the <code>alpha</code> argument in <code>geom_point()</code>, showing the density of the points. The more overlapping points, the darker the color of the point.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> SleepDuration, <span class="at">y =</span> BreakfastPerWeek)) <span class="sc">+</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.2</span>) <span class="sc">+</span> </span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sleep Duration (hours)"</span>, <span class="at">y =</span> <span class="st">"Breakfast Consumption (days per week)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> SleepDuration, <span class="at">y =</span> BreakfastPerWeek)) <span class="sc">+</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.2</span>) <span class="sc">+</span> </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Sleep Duration (hours)"</span>, <span class="at">y =</span> <span class="st">"Breakfast Consumption (days per week)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lab03-eda_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="lab03-eda_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -3650,7 +4123,7 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
 <li>Visualizing data and the shape of the distribution is an important step in EDA.</li>
 <li>The types of variables inform how to conduct univariate and multivariate EDA (<a href="#tbl-eda-univariate" class="quarto-xref">Table&nbsp;1</a> and <a href="#tbl-eda-multivariate" class="quarto-xref">Table&nbsp;3</a>).</li>
 <li>If the distribution of a continuous variable is normal, mean and standard deviation are appropriate measures of central tendency and spread, respectively.</li>
-<li>If the distribution is not normal, mean and standard deviation are not appropriate measures of central tendency and spread. For this reason, it is important to check the normality of the distribution using visualizations (histogram, boxplot, Q-Q plot) and statistical tests (Shapiro-Wilk test).</li>
+<li>If the distribution is not normal, mean and standard deviation are not appropriate measures of central tendency and spread. For this reason, it is important to check the normality of the distribution using visualizations (histogram, box plot, Q-Q plot) and statistical tests (Shapiro-Wilk test).</li>
 </ul>
 </section>
 <section id="wrapping-up" class="level2 unnumbered">
@@ -4069,4 +4542,4 @@ Table&nbsp;3: Approach to multivariate analysis based on the type of variables
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/yeonsoon/research-methods-and-stats-book/edit/master/lab03-eda.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+</body></html>

@@ -15,8 +15,6 @@ bibliography:
 website:
   site-url: https://yeonsoon.github.io/research-methods-and-stats-book
   repo-url: https://github.com/yeonsoon/research-methods-and-stats-book/
-  repo-branch: master
-  repo-actions: [edit]
   # google-analytics: ""
   title: "Research Methods and Statistics"
   sidebar:
@@ -29,6 +27,7 @@ website:
           - 01-psych-science.qmd
           - 02-research-questions-and-claims.qmd
           - 03-measurement.qmd
+          - 04-visualizing-and-describing-data.qmd
       - section: "Lab"
         contents:
           - lab01-r-basics.qmd
@@ -47,7 +46,6 @@ format:
     toc-depth: 5
     number-sections: true
     number-depth: 5
-    format:
     html-math-method:
       method: mathjax
       url: https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js

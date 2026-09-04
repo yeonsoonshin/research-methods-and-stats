@@ -24,7 +24,7 @@ What kind of questions would you want to answer about this dataset? Before readi
 * **Demographics:** 
     * How many Bryn Mawr College and Haverford College students participated in the survey?
     * How many students from each class year participated in the survey?
-* **Frequency Questions:**
+* **Single-Variable Questions:**
     * Sleep: 
       * What is the average sleep duration of the students?
       * What is the spread of sleep duration among the students?
@@ -44,8 +44,8 @@ With these questions in mind, let's start exploring the data.
 
 ## Learning Objectives {.unnumbered}
 1. Understand the role of the exploratory data analysis (EDA) step in the data analysis process.
-1. Conduct univariate and multivariate EDA depending on the type of variables.
-1. Summarize data using descriptive statistics.
+2. Conduct univariate and multivariate EDA depending on the type of variables.
+3. Summarize data using descriptive statistics.
 
 
 ## Preliminaries {#preliminaries}
@@ -91,14 +91,14 @@ glimpse(df)
 
 ## Univariate Analysis
 
-Univariate analysis involves examining the distribution of each variable one at a time. With this, we are asking frequency questions: what is the state of each variable? The answer to this question includes the typical response (central tendency) and how much variability there is in the responses (spread), and the shape of the distribution. 
+Univariate analysis involves examining the distribution of each variable one at a time. With this, we are asking single-variable questions: what is the state of each variable? The answer to this question includes the typical response (central tendency) and how much variability there is in the responses (spread), and the shape of the distribution. 
 
 How we conduct univariate analysis depends on the type of variable. @tbl-eda-univariate shows different approaches to univariate analysis depending on the type of variable.
 
 | Type of Variable | Approach to Univariate Analysis |
 | :--- | :--- |
 | Categorical, Ordinal | Frequency table, bar chart |
-| Interval, Ratio | Histogram, boxplot, descriptive statistics |
+| Interval, Ratio | Histogram, box plot, descriptive statistics |
 : Approach to univariate analysis based on the type of variable {#tbl-eda-univariate}
 
 In our dataset, we have one categorical variable (`Campus`), one ordinal variable (`Class`), and two ratio variables (`SleepDuration`, `BreakfastPerWeek`). We will conduct univariate analysis for each of these variables in the following sections.
@@ -198,7 +198,7 @@ For the `Campus` variable, it doesn't matter whether the level looks like `c("Br
 Other than this, all the steps for univariate analysis of the `Class` variable are the same as those for the `Campus` variable. You can create a frequency table and a bar chart for the `Class` variable using the same approach as for the `Campus` variable.
 
 :::{.callout-tip}
-## Exercise: Ordinal data
+## Exercise 1: Ordinal data
 1. Convert the variable as _factor_ with the correct order of levels.
 2. Create a frequency table.
 3. Create a bar chart.
@@ -207,34 +207,8 @@ Other than this, all the steps for univariate analysis of the `Class` variable a
     * Which level is the most common (called _mode_)? Which level is the least common?
 :::
 
-```{r, include=FALSE}
-df <- df %>%
-  mutate(
-    Class = factor(Class, 
-                   levels = c("First-year", 
-                              "Sophomore", 
-                              "Junior", 
-                              "Senior"), 
-                   ordered = TRUE),
-  )
-
-tbl.class <- df %>%
-  tabyl(Class) %>%
-  adorn_totals("row") %>%
-  adorn_pct_formatting(digits = 2) %>% 
-  gt() %>%
-  cols_align(align = "left", columns = Class)
-tbl.class
-
-fig.class <- df %>%
-  ggplot(aes(x = Class)) +
-  geom_bar(stat = "count") +
-  labs(x = "Class", y = "Frequency")
-fig.class
-```
-
 :::{.callout-tip}
-## Exercise Checklist
+## Exercise 1 Checklist
 * Are the levels of the `Class` variable in the correct order?
 * Are all categories represented in the frequency table?
 * Are axes labeled correctly in the bar chart?
@@ -245,7 +219,7 @@ fig.class
 
 `SleepDuration` is a ratio variable, which means it has a true zero point (e.g., 0 hour means you don't get any sleep), and the intervals between values are meaningful. Another name for interval and ratio variables is **continuous** variables. For continuous variables, we can summarize the data using descriptive statistics: the central tendency (mean, median) and spread of the variable (standard deviation and range) and the shape of the distribution (skew and kurtosis). Mean and standard deviation are the most commonly used descriptive statistics, especially when the distribution of the variable is approximately normal. This makes it important for us to **check if the responses are _normally_ distributed**. 
 
-We can do this by first visualizing the distribution of the variable using histograms and boxplots, and run statistical tests to check for normality.
+We can do this by first visualizing the distribution of the variable using histograms and box plots, and run statistical tests to check for normality.
 
 #### Descriptive Statistics
 
@@ -300,20 +274,20 @@ Inspect the histogram and notice whether the distribution approximately normal (
 * Is the binwidth appropriate for the variable? If not, adjust the binwidth and recreate the histogram.
 :::
 
-#### Boxplot
+#### Box plot
 
-Boxplot conveys rich information about the distribution of a variable. It shows the central tendency and the spread of the distribution, as well as the presence of outliers. 
+Box plots convey rich information about the distribution of a variable. It shows the central tendency and the spread of the distribution, as well as the presence of outliers. 
 
 :::{.callout-tip}
 ## Questions to answer about the data:
 * What is the median sleep duration of the students?
 * What is the range that the middle 50% of the students fall into (interquartile range)?
 * What is the range of sleep duration among the students (excluding outliers)?
-* How many outliers are present in the boxplot? 
+* How many outliers are present in the box plot? 
 * Is the distribution approximately normal and symmetric around the median? If not, which direction is the distribution skewed (positive or negative)?
 :::
 
-Let's first make a boxplot for the `SleepDuration` variable. We can use `geom_boxplot()` function of `ggplot()` to create a boxplot. The following code creates a boxplot for the `SleepDuration` variable.
+Let's first make a box plot for the `SleepDuration` variable. We can use `geom_boxplot()` function of `ggplot()` to create a box plot. The following code creates a box plot for the `SleepDuration` variable.
 
 ```{r}
 df %>% ggplot() +
@@ -323,7 +297,7 @@ df %>% ggplot() +
        x = "")
 ```
 
-The **center-line** in the middle of the box shows the median of the distribution. The **upper edge of the box** is the third quartile (Q3; 75% of the cases fall at or below this value); the **lower edge** is the first quartile (Q1; 25% of the cases fall at or below this value), which makes the box to represent the middle 50% of the data. If the distribution is skewed, the distance between the center line and the upper versus lower edge of the box will not be the same. When there are no outliers, the **whiskers (the line)** extend to the lowest and the highest score in the distribution. Outliers are plotted as separate **points**. If one whisker is long relative to the other or if there are outliers on only one side of the distribution, the distribution will be skewed in that direction (positive skew for outliers above Q3; negative skew for outliers below Q1). These outliers are values that fall outside of 1.5 times the interquartile range (IQR) from the first and third quartiles. For example, if the IQR is 1 hour (i.e., the range of the middle 50% of the students sleep is 1 hour), then any values that are more than 1.5 hours below Q1 or above Q3 will be considered outliers. @tbl-eda-boxplot shows the components of a boxplot and their descriptions.
+The **center-line** in the middle of the box shows the median of the distribution. The **upper edge of the box** is the third quartile (Q3; 75% of the cases fall at or below this value); the **lower edge** is the first quartile (Q1; 25% of the cases fall at or below this value), which makes the box to represent the middle 50% of the data. If the distribution is skewed, the distance between the center line and the upper versus lower edge of the box will not be the same. When there are no outliers, the **whiskers (the line)** extend to the lowest and the highest score in the distribution. Outliers are plotted as separate **points**. If one whisker is long relative to the other or if there are outliers on only one side of the distribution, the distribution will be skewed in that direction (positive skew for outliers above Q3; negative skew for outliers below Q1). These outliers are values that fall outside of 1.5 times the interquartile range (IQR) from the first and third quartiles. For example, if the IQR is 1 hour (i.e., the range of the middle 50% of the students sleep is 1 hour), then any values that are more than 1.5 hours below Q1 or above Q3 will be considered outliers. @tbl-eda-boxplot shows the components of a box plot and their descriptions.
 
 | Component | Description |
 | :--- | :--- |
@@ -331,7 +305,7 @@ The **center-line** in the middle of the box shows the median of the distributio
 | Edges of the box | Interquartile range (IQR) |
 | Whiskers extending from the box | Range excluding the outliers |
 | Points outside of the whiskers | Outliers |
-: Components of a boxplot {#tbl-eda-boxplot}
+: Components of a box plot {#tbl-eda-boxplot}
 
 
 #### Checking Normality: Statistical Tests
@@ -349,7 +323,9 @@ Although we have 59 students in our sample, we will use Shapiro-Wilk test becaus
 
 ```{r}
 shapiro.test(df$SleepDuration) %>%
-  tidy()
+  tidy() %>%
+  mutate(across(c("statistic"), round, 3)) %>%
+  gt()
 ```
 
 #### Checking Normality: Q-Q Plot
@@ -375,18 +351,20 @@ Now we can compare the distribution of the `SleepDuration` variable to a theoret
 Repeat the same steps for the `BreakfastPerWeek` variable. 
 
 :::{.callout-tip}
-## Exercise: Ratio data
+## Exercise 2: Ratio data
 1. Check descriptive statistics.
 2. Create a histogram.
-3. Create a boxplot.
+3. Create a box plot.
 4. Run the Shapiro-Wilk test.
 5. Create a Q-Q plot.
 6. Summarize your findings in a few sentences, addressing the following questions:
     * Are there any missing values in the variable? If so, how many observations are missing?
+    * What is the shape of the distribution of the variable? 
+        * Is the distribution approximately normal (bell-shaped, symmetric around one peak)? 
+        * If the distribution is skewed, which direction is the distribution skewed (positive or negative)?
     * What is the central tendency of the variable?
     * What is the spread of the variable?
-    * What is the shape of the distribution of the variable? 
-        * Is the distribution approximately normal (bell-shaped, symmetric around one peak)? If not, which direction is the distribution skewed (positive or negative)?
+    
 :::
 
 ```{r}
@@ -421,7 +399,7 @@ Multivariate analysis involves examining the relationship between two or more va
 | Relationship | Approach to Multivariate Analysis |
 | :--- | :--- |
 | Between two categorical/ ordinal | Contingency table, grouped bar chart split by category |
-| Between continuous and categorical/ordinal | Histogram or boxplot split by category, descriptives by category |
+| Between continuous and categorical/ordinal | Histogram or box plot split by category, descriptives by category |
 | Between continuous and ordinal | Line graph |
 | Between two continuous | Scatterplot |
 : Approach to multivariate analysis based on the type of variables {#tbl-eda-multivariate}
@@ -472,7 +450,7 @@ fig.campus_class
 
 ### Between continuous and categorical/ordinal variables: `SleepDuration` and `Campus`
 
-Now we will examine the relationship between a continuous variable and a categorical/ordinal variable. In this case, we will examine the relationship between `SleepDuration` (continuous) and `Campus` (categorical). Later in the semester we will learn how to conduct statistical tests to determine whether there is a significant difference between the groups (here, `Campus`), but for now, we will just visualize the data using histograms and boxplots split by category.
+Now we will examine the relationship between a continuous variable and a categorical/ordinal variable. In this case, we will examine the relationship between `SleepDuration` (continuous) and `Campus` (categorical). Later in the semester we will learn how to conduct statistical tests to determine whether there is a significant difference between the groups (here, `Campus`), but for now, we will just visualize the data using histograms and box plots split by category.
 
 :::{.callout-tip}
 ## Questions to answer about the data:
@@ -491,9 +469,9 @@ df %>%
   labs(x = "Sleep Duration (hours)", y = "Frequency")
 ```
 
-#### Boxplot
+#### Box plot
 
-To compare the distributions of `SleepDuration` between the two campuses, we can use a boxplot split by `Campus`. The x-axis will represent the `Campus`, while the y-axis will represent the `SleepDuration`. The following code creates a boxplot for the `SleepDuration` variable split by the `Campus` variable. 
+To compare the distributions of `SleepDuration` between the two campuses, we can use a box plot split by `Campus`. The x-axis will represent the `Campus`, while the y-axis will represent the `SleepDuration`. The following code creates a box plot for the `SleepDuration` variable split by the `Campus` variable. 
 
 ```{r}
 df %>%
@@ -502,34 +480,22 @@ df %>%
   labs(x = "Campus", y = "Sleep Duration (hours)")
 ```
 
-You can inspect these boxplots and notice the skewness per each campus. 
+You can inspect these box plots and notice the skewness per each campus. 
 
 ### Between continuous and ordinal variables: `SleepDuration` and `Class`
 
 Now you will examine whether there is a relationship between the amount of sleep students get and their class year. 
 
 :::{.callout-tip}
-## Exercise: Continuous and Ordinal data
+## Exercise 3: Continuous and Ordinal data
 1. Create a faceted histogram.
-2. Create a boxplot showing both variables.
+2. Create a box plot showing both variables.
 3. Summarize your findings in a few sentences, addressing the following questions:
     * Is there a relationship between the two variables (e.g., is the distribution of sleep duration different between class years)?
     * Which class year has the highest average sleep duration? 
     * Does the sleep distribution appear to be spread similarly across class years, or is there more variability in some class years than others?
 :::
 
-```{r, include=FALSE}
-df %>%
-  ggplot(aes(x = SleepDuration)) +
-  facet_grid(Class ~ .) +
-  geom_histogram(binwidth = 1, color = "black", alpha = 0.5, position = "identity") +
-  labs(x = "Sleep Duration (hours)", y = "Frequency")
-
-df %>%
-  ggplot() +
-  geom_boxplot(aes(x = Class, y = SleepDuration)) +
-  labs(x = "Class", y = "Sleep Duration (hours)")
-```
 
 ### Between two continuous variables: `SleepDuration` and `BreakfastPerWeek`
 
@@ -565,7 +531,7 @@ Inspect this scatterplot to see if there is a positive or negative association b
 * Visualizing data and the shape of the distribution is an important step in EDA. 
 * The types of variables inform how to conduct univariate and multivariate EDA (@tbl-eda-univariate and @tbl-eda-multivariate).
 * If the distribution of a continuous variable is normal, mean and standard deviation are appropriate measures of central tendency and spread, respectively. 
-* If the distribution is not normal, mean and standard deviation are not appropriate measures of central tendency and spread. For this reason, it is important to check the normality of the distribution using visualizations (histogram, boxplot, Q-Q plot) and statistical tests (Shapiro-Wilk test).
+* If the distribution is not normal, mean and standard deviation are not appropriate measures of central tendency and spread. For this reason, it is important to check the normality of the distribution using visualizations (histogram, box plot, Q-Q plot) and statistical tests (Shapiro-Wilk test).
 
 ## Wrapping up {.unnumbered}
 1. **Discuss**: What are some potential issues you found in the dataset? How would you address these issues in your analysis?
