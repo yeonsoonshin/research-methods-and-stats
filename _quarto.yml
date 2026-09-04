@@ -28,6 +28,9 @@ website:
           - 02-research-questions-and-claims.qmd
           - 03-measurement.qmd
           - 04-visualizing-and-describing-data.qmd
+      - section: "Unit 2. Introduction to Inferential Statistics"
+        contents:
+          - 06-standard-scores.qmd
       - section: "Lab"
         contents:
           - lab01-r-basics.qmd
