@@ -491,7 +491,7 @@ library(dplyr)
 ac_long_summary <- ac_long %>%
                     dplyr::group_by(Quartet) %>%
                     dplyr::summarise(Mean_X = mean(x),
-                              Variance = var(x),
+                              Variance_X = var(x),
                               Mean_Y = mean(y),
                               Variance_Y = var(y))
 
