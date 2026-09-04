@@ -7,9 +7,8 @@ knitr::opts_chunk$set(
 )
 
 library(tidyverse)  # for data wrangling and visualization
-library(patchwork)  # for combining multiple plots
 library(BrailleR)   # for brailleR tables
-GoSighted()
+GoBlind()
 
 theme_set(theme_classic(base_size = 16))
 
@@ -94,14 +93,40 @@ plot_normal_greaterthan_or_lessthan <- function (ub, lb, m = 0, s = 1, xaxis = "
 }
 ```
 
+
 ```{r, include=TRUE}
 #| label: fig-normal-intervals
-#| fig-cap: "Standard Normal Distribution and the 68-95-99.7 Rule"
-#| fig-alt: "Standard normal distributions where the x-axis shows the z-scores from -4 to 4. From top to bottom panels, three plots show the standard normal distribution with shaded areas are lines corresponding to the intervals -1 to 1, -2 to 2, and -3 to 3. The top panel shows that the interval from -1 to 1 covers 68.27% of the data, the middle panel shows that the interval from -2 to 2 covers 95.45% of the data, and the bottom panel shows that the interval from -3 to 3 covers 99.73% of the data."
-#| fig-height: 10
+#| layout-nrow: 3
+#| fig-cap: "Normal Distributions and the 68-95-99.7 Rule"
+#| fig-subcap:
+#|  - "An interval from $-1$ \u03c3 to $1$ \u03c3 from \u03bc covers 68.27% of the data"
+#|  - "An interval from $-2$ \u03c3 to $2$ \u03c3 from \u03bc covers 95.45% of the data"
+#|  - "An interval from $-3$ \u03c3 to $3$ \u03c3 from \u03bc covers 99.73% of the data"
+#| fig-alt: 
+#|  - "A normal distributions where the x-axis shows the scores from negative 4 standard deviations to 4 standard deviations from the mean with vertical lines and shaded area under the normal curve corresponding to an interval."
+#| fig-height: 2.5
 
-plot_normal_interval(-1, 1) /
-plot_normal_interval(-2, 2) /
+x_breaks = c(-4, -3, -2, -1, 0, 1, 2, 3, 4)
+x_labels = c("\u03bc-4\u03c3", "\u03bc-3\u03c3", "\u03bc-2\u03c3", "\u03bc-1\u03c3", "\u03bc", "\u03bc+1\u03c3", "\u03bc+2\u03c3", "\u03bc+3\u03c3", "\u03bc+4\u03c3")
+plot_normal_interval(-1, 1, xaxis = "Score") + scale_x_continuous(breaks = x_breaks, labels = x_labels)
+plot_normal_interval(-2, 2, xaxis = "Score") + scale_x_continuous(breaks = x_breaks, labels = x_labels)
+plot_normal_interval(-3, 3, xaxis = "Score") + scale_x_continuous(breaks = x_breaks, labels = x_labels)
+```
+
+
+```{r, include=TRUE}
+#| label: fig-standard-normal-intervals
+#| layout-nrow: 3
+#| fig-cap: "The Standard Normal Distribution and the 68-95-99.7 Rule"
+#| fig-subcap:
+#|  - "z score interval from $-1$ to $1$ covers 68.27% of the data"
+#|  - "z score interval from $-2$ to $2$ covers 95.45% of the data"
+#|  - "z score interval from $-3$ to $3$ covers 99.73% of the data"
+#| fig-alt: "A Standard Normal Distributions where the x-axis shows the z scores from negative 4 to 4 with vertical lines and shaded area under the normal curve corresponding to an interval."
+#| fig-height: 3
+
+plot_normal_interval(-1, 1)
+plot_normal_interval(-2, 2)
 plot_normal_interval(-3, 3)
 ```
 

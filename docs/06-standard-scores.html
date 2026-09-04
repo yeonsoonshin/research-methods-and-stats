@@ -74,6 +74,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -241,21 +270,221 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-normal-intervals" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Standard normal distributions where the x-axis shows the z-scores from -4 to 4. From top to bottom panels, three plots show the standard normal distribution with shaded areas are lines corresponding to the intervals -1 to 1, -2 to 2, and -3 to 3. The top panel shows that the interval from -1 to 1 covers 68.27% of the data, the middle panel shows that the interval from -2 to 2 covers 95.45% of the data, and the bottom panel shows that the interval from -3 to 3 covers 99.73% of the data.">
+<div class="cell" data-layout-nrow="3">
+<div class="cell-output cell-output-stdout">
+<pre><code>This chart has title 'Shaded area =  68.27 %'.
+It has x-axis 'Score' with labels μ-4σ, μ-3σ, μ-2σ, μ-1σ, μ, μ+1σ, μ+2σ, μ+3σ and μ+4σ.
+It has y-axis '' with labels 0.0, 0.1, 0.2 and 0.3.
+It has 3 layers.
+Layer 1 is a ribbon which is bound on the y axis, with non constant widths: 0.24, 0.35, 0.4, 0.35 and 0.24 with centers at: 0.12, 0.18, 0.2, 0.18 and 0.12. The ribbon takes up 21% of the graph.
+Layer 1 has colour set to light gray.
+Layer 1 has fill set to brilliant blue.
+Layer 1 has alpha set to 0.8.
+Layer 2 is a function graph that VI cannot process.
+Layer 2 has colour set to light gray.
+Layer 2 has linewidth set to 1.
+Layer 3 is a vline graph that VI cannot process.
+Layer 3 has colour set to light gray.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>This chart has title 'Shaded area =  95.45 %'.
+It has x-axis 'Score' with labels μ-4σ, μ-3σ, μ-2σ, μ-1σ, μ, μ+1σ, μ+2σ, μ+3σ and μ+4σ.
+It has y-axis '' with labels 0.0, 0.1, 0.2 and 0.3.
+It has 3 layers.
+Layer 1 is a ribbon which is bound on the y axis, with non constant widths: 0.05, 0.24, 0.4, 0.24 and 0.05 with centers at: 0.03, 0.12, 0.2, 0.12 and 0.03. The ribbon takes up 30% of the graph.
+Layer 1 has colour set to light gray.
+Layer 1 has fill set to brilliant blue.
+Layer 1 has alpha set to 0.8.
+Layer 2 is a function graph that VI cannot process.
+Layer 2 has colour set to light gray.
+Layer 2 has linewidth set to 1.
+Layer 3 is a vline graph that VI cannot process.
+Layer 3 has colour set to light gray.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>This chart has title 'Shaded area =  99.73 %'.
+It has x-axis 'Score' with labels μ-4σ, μ-3σ, μ-2σ, μ-1σ, μ, μ+1σ, μ+2σ, μ+3σ and μ+4σ.
+It has y-axis '' with labels 0.0, 0.1, 0.2 and 0.3.
+It has 3 layers.
+Layer 1 is a ribbon which is bound on the y axis, with non constant widths: 0, 0.13, 0.4, 0.13 and 0 with centers at: 0, 0.06, 0.2, 0.07 and 0. The ribbon takes up 31% of the graph.
+Layer 1 has colour set to light gray.
+Layer 1 has fill set to brilliant blue.
+Layer 1 has alpha set to 0.8.
+Layer 2 is a function graph that VI cannot process.
+Layer 2 has colour set to light gray.
+Layer 2 has linewidth set to 1.
+Layer 3 is a vline graph that VI cannot process.
+Layer 3 has colour set to light gray.</code></pre>
+</div>
+<div id="fig-normal-intervals" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-normal-intervals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="06-standard-scores_files/figure-html/fig-normal-intervals-1.png" class="img-fluid figure-img" alt="Standard normal distributions where the x-axis shows the z-scores from -4 to 4. From top to bottom panels, three plots show the standard normal distribution with shaded areas are lines corresponding to the intervals -1 to 1, -2 to 2, and -3 to 3. The top panel shows that the interval from -1 to 1 covers 68.27% of the data, the middle panel shows that the interval from -2 to 2 covers 95.45% of the data, and the bottom panel shows that the interval from -3 to 3 covers 99.73% of the data." width="672">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-normal-intervals" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-normal-intervals-1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A normal distributions where the x-axis shows the scores from negative 4 standard deviations to 4 standard deviations from the mean with vertical lines and shaded area under the normal curve corresponding to an interval.">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-normal-intervals-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-standard-scores_files/figure-html/fig-normal-intervals-1.png" class="img-fluid figure-img" data-ref-parent="fig-normal-intervals" alt="A normal distributions where the x-axis shows the scores from negative 4 standard deviations to 4 standard deviations from the mean with vertical lines and shaded area under the normal curve corresponding to an interval." width="672">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normal-intervals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Standard Normal Distribution and the 68-95-99.7 Rule
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-normal-intervals-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) An interval from <span class="math inline">\(-1\)</span> σ to <span class="math inline">\(1\)</span> σ from μ covers 68.27% of the data
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-normal-intervals" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-normal-intervals-2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A normal distributions where the x-axis shows the scores from negative 4 standard deviations to 4 standard deviations from the mean with vertical lines and shaded area under the normal curve corresponding to an interval.">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-normal-intervals-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-standard-scores_files/figure-html/fig-normal-intervals-2.png" class="img-fluid figure-img" data-ref-parent="fig-normal-intervals" alt="A normal distributions where the x-axis shows the scores from negative 4 standard deviations to 4 standard deviations from the mean with vertical lines and shaded area under the normal curve corresponding to an interval." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-normal-intervals-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) An interval from <span class="math inline">\(-2\)</span> σ to <span class="math inline">\(2\)</span> σ from μ covers 95.45% of the data
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-normal-intervals" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-normal-intervals-3" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A normal distributions where the x-axis shows the scores from negative 4 standard deviations to 4 standard deviations from the mean with vertical lines and shaded area under the normal curve corresponding to an interval.">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-normal-intervals-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-standard-scores_files/figure-html/fig-normal-intervals-3.png" class="img-fluid figure-img" data-ref-parent="fig-normal-intervals" alt="A normal distributions where the x-axis shows the scores from negative 4 standard deviations to 4 standard deviations from the mean with vertical lines and shaded area under the normal curve corresponding to an interval." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-normal-intervals-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) An interval from <span class="math inline">\(-3\)</span> σ to <span class="math inline">\(3\)</span> σ from μ covers 99.73% of the data
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normal-intervals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Normal Distributions and the 68-95-99.7 Rule
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell" data-layout-nrow="3">
+<div class="cell-output cell-output-stdout">
+<pre><code>This chart has title 'Shaded area =  68.27 %'.
+It has x-axis 'z' with labels -4, -3, -2, -1, 0, 1, 2, 3 and 4.
+It has y-axis '' with labels 0.0, 0.1, 0.2 and 0.3.
+It has 3 layers.
+Layer 1 is a ribbon which is bound on the y axis, with non constant widths: 0.24, 0.35, 0.4, 0.35 and 0.24 with centers at: 0.12, 0.18, 0.2, 0.18 and 0.12. The ribbon takes up 21% of the graph.
+Layer 1 has colour set to light gray.
+Layer 1 has fill set to brilliant blue.
+Layer 1 has alpha set to 0.8.
+Layer 2 is a function graph that VI cannot process.
+Layer 2 has colour set to light gray.
+Layer 2 has linewidth set to 1.
+Layer 3 is a vline graph that VI cannot process.
+Layer 3 has colour set to light gray.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>This chart has title 'Shaded area =  95.45 %'.
+It has x-axis 'z' with labels -4, -3, -2, -1, 0, 1, 2, 3 and 4.
+It has y-axis '' with labels 0.0, 0.1, 0.2 and 0.3.
+It has 3 layers.
+Layer 1 is a ribbon which is bound on the y axis, with non constant widths: 0.05, 0.24, 0.4, 0.24 and 0.05 with centers at: 0.03, 0.12, 0.2, 0.12 and 0.03. The ribbon takes up 30% of the graph.
+Layer 1 has colour set to light gray.
+Layer 1 has fill set to brilliant blue.
+Layer 1 has alpha set to 0.8.
+Layer 2 is a function graph that VI cannot process.
+Layer 2 has colour set to light gray.
+Layer 2 has linewidth set to 1.
+Layer 3 is a vline graph that VI cannot process.
+Layer 3 has colour set to light gray.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>This chart has title 'Shaded area =  99.73 %'.
+It has x-axis 'z' with labels -4, -3, -2, -1, 0, 1, 2, 3 and 4.
+It has y-axis '' with labels 0.0, 0.1, 0.2 and 0.3.
+It has 3 layers.
+Layer 1 is a ribbon which is bound on the y axis, with non constant widths: 0, 0.13, 0.4, 0.13 and 0 with centers at: 0, 0.06, 0.2, 0.07 and 0. The ribbon takes up 31% of the graph.
+Layer 1 has colour set to light gray.
+Layer 1 has fill set to brilliant blue.
+Layer 1 has alpha set to 0.8.
+Layer 2 is a function graph that VI cannot process.
+Layer 2 has colour set to light gray.
+Layer 2 has linewidth set to 1.
+Layer 3 is a vline graph that VI cannot process.
+Layer 3 has colour set to light gray.</code></pre>
+</div>
+<div id="fig-standard-normal-intervals" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-standard-normal-intervals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-standard-normal-intervals" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-standard-normal-intervals-1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A Standard Normal Distributions where the x-axis shows the z scores from negative 4 to 4 with vertical lines and shaded area under the normal curve corresponding to an interval.">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-standard-normal-intervals-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-standard-scores_files/figure-html/fig-standard-normal-intervals-1.png" class="img-fluid figure-img" data-ref-parent="fig-standard-normal-intervals" alt="A Standard Normal Distributions where the x-axis shows the z scores from negative 4 to 4 with vertical lines and shaded area under the normal curve corresponding to an interval." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-standard-normal-intervals-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) z score interval from <span class="math inline">\(-1\)</span> to <span class="math inline">\(1\)</span> covers 68.27% of the data
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-standard-normal-intervals" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-standard-normal-intervals-2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A Standard Normal Distributions where the x-axis shows the z scores from negative 4 to 4 with vertical lines and shaded area under the normal curve corresponding to an interval.">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-standard-normal-intervals-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-standard-scores_files/figure-html/fig-standard-normal-intervals-2.png" class="img-fluid figure-img" data-ref-parent="fig-standard-normal-intervals" alt="A Standard Normal Distributions where the x-axis shows the z scores from negative 4 to 4 with vertical lines and shaded area under the normal curve corresponding to an interval." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-standard-normal-intervals-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) z score interval from <span class="math inline">\(-2\)</span> to <span class="math inline">\(2\)</span> covers 95.45% of the data
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-standard-normal-intervals" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-standard-normal-intervals-3" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A Standard Normal Distributions where the x-axis shows the z scores from negative 4 to 4 with vertical lines and shaded area under the normal curve corresponding to an interval.">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-standard-normal-intervals-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-standard-scores_files/figure-html/fig-standard-normal-intervals-3.png" class="img-fluid figure-img" data-ref-parent="fig-standard-normal-intervals" alt="A Standard Normal Distributions where the x-axis shows the z scores from negative 4 to 4 with vertical lines and shaded area under the normal curve corresponding to an interval." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-standard-normal-intervals-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) z score interval from <span class="math inline">\(-3\)</span> to <span class="math inline">\(3\)</span> covers 99.73% of the data
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-standard-normal-intervals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: The Standard Normal Distribution and the 68-95-99.7 Rule
+</figcaption>
+</figure>
+</div>
+</div>
 <div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>This chart has title 'Standard Normal Distribution'.
+It has x-axis 'Score' with labels -5, -4, -3, -2, -1, 0, 1, 2, 3, 4 and 5.
+It has y-axis 'Density' with labels 0.0, 0.1, 0.2, 0.3 and 0.4.
+It has 11 layers.
+Layer 1 is a set of 1 line.
+Line 1 connects 101 points.
+Layer 2 is a vline graph that VI cannot process.
+Layer 3 is a vline graph that VI cannot process.
+Layer 4 is a label graph that VI cannot process.
+Layer 5 is a label graph that VI cannot process.
+Layer 6 is a label graph that VI cannot process.
+Layer 7 is a label graph that VI cannot process.
+Layer 8 is a label graph that VI cannot process.
+Layer 9 is a label graph that VI cannot process.
+Layer 10 is a label graph that VI cannot process.
+Layer 11 is a label graph that VI cannot process.</code></pre>
+</div>
 <div class="cell-output-display">
 <div id="fig-standard-normal-dist" class="quarto-float quarto-figure quarto-figure-center anchored" alt="The standard normal distribution with mean of 0 and standard deviation of 1. The x-axis shows scores from -5 to 5, and the y-axis shows the density. There are lines at -3, -2, -1, 0, 1, 2, and 3, creating intervals. The labels indicate the probability of a score falling within each interval: 0.001, 0.021, 0.136, 0.341, 0.341, 0.136, 0.021, and 0.001.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -263,7 +492,7 @@ Figure&nbsp;1: Standard Normal Distribution and the 68-95-99.7 Rule
 <img src="06-standard-scores_files/figure-html/fig-standard-normal-dist-1.png" class="img-fluid figure-img" alt="The standard normal distribution with mean of 0 and standard deviation of 1. The x-axis shows scores from -5 to 5, and the y-axis shows the density. There are lines at -3, -2, -1, 0, 1, 2, and 3, creating intervals. The labels indicate the probability of a score falling within each interval: 0.001, 0.021, 0.136, 0.341, 0.341, 0.136, 0.021, and 0.001." width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-standard-normal-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: The Standard Normal Distribution
+Figure&nbsp;3: The Standard Normal Distribution
 </figcaption>
 </figure>
 </div>
