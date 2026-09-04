@@ -31,6 +31,8 @@ RStudio runs on Mac, PC, and Linux machines and provides a simplified interface 
 
 The interface for working with RStudio both in the cloud or locally is largely the same and consists of four main “panes” each in a quadrant of your screen. Several of the panes are further subdivided into multiple tabs.
 
+![R Studio Panes](https://docs.posit.co/ide/user/ide/guide/ui/images/rstudio-panes-labeled.png){fig-alt="A screenshot of the four RStudio panes, labeled Source, Environments, Console, and Output, and the Sidebar toggle button."}
+
 #### Source Pane
 
 By default, the upper left pane is the source pane, where you view, write, and edit code from files and view data tables in a spreadsheet format.
@@ -43,15 +45,15 @@ The lower left pane is the console pane, where you can view the output of your c
 
 The right panes have several different tabs that show you information about your code. The most used tabs in the upper right pane is the Environment tab. The Environment tab lists some information about the objects that you have defined in your code.
 
-#### Files Pane
+#### Output Pane
 
 In the lower right pane are tabs for browsing files, viewing plots, managing R packages, reading help files, and for viewing html documents and presentations. The most used tabs are the **Files** tab for directory structure.
 
 #### Keyboard Shortcuts
 
-- **F6** and **Shift+F6** navigates focus between panes. To check which tab the focus is on, press **Shift+Tab**.
-- **Ctrl+1** moves your cursor to the source pane.
-- **Ctrl+2** moves your cursor to the console.
+- <kbd>**F6**</kbd> and <kbd>**Shift+F6**</kbd> navigates focus between panes. To check which tab the focus is on, press <kbd>**Shift+Tab**</kbd>.
+- <kbd>**Ctrl+1**</kbd> moves your cursor to the source pane.
+- <kbd>**Ctrl+2**</kbd> moves your cursor to the console.
 
 ## Writing R Code
 
@@ -81,18 +83,18 @@ Type 'q()' to quit R.
 >
 ```
 
-Notice that at the bottom, there is a single line beginning with `>`. This is the R console’s command *prompt*, and it is where we type our commands. We then press **Enter**, and our command is executed. The output of the command, if any, is displayed on the next line or lines, and then a new `>` prompt appears.
+Notice that at the bottom, there is a single line beginning with `>`. This is the R console’s command *prompt*, and it is where we type our commands. We then press <kbd>**Enter**</kbd>, and our command is executed. The output of the command, if any, is displayed on the next line or lines, and then a new `>` prompt appears.
 
-At the R console prompt (`>`), type `5` and press **Enter**. You will find the output `[1] 5`. The `[1]` at the beginning of the line indicates the index (the position) of the first element displayed on that specific line. Try running `1:50` in the console, where the colon operator (`:`) generates a sequence from 1 to 50. What's useful to remember at this point is that outputs follow the index inside the square brackets `[]`.
+At the R console prompt (`>`), type `5` and press <kbd>**Enter**</kbd>. You will find the output `[1] 5`. The `[1]` at the beginning of the line indicates the index (the position) of the first element displayed on that specific line. Try running `1:50` in the console, where the colon operator (`:`) generates a sequence from 1 to 50. What's useful to remember at this point is that outputs follow the index inside the square brackets `[]`.
 
 ##### Keyboard Shortcuts
 
-- **Ctrl+2** moves your cursor to the console prompt (`>`).
-- **Ctrl+\`** moves your focus to the console output.
+- <kbd>**Ctrl+2**</kbd> moves your cursor to the console prompt (`>`).
+- <kbd>**Ctrl+\`**</kbd> moves your focus to the console output.
 
 While R is much more than a simple calculator, a useful way to familiarize yourself with R and the console is to do some simple calculator-like computations. Most of this will work just like you would expect from a typical calculator.
 
-For example, if you are curious what 5 plus 3 is, the inputs are 5 and 3, and the operation is addition You can express this as a simple R code. At the R console prompt (`>`), type `5+3` and press **Enter**. You will get `8`.
+For example, if you are curious what 5 plus 3 is, the inputs are 5 and 3, and the operation is addition You can express this as a simple R code. At the R console prompt (`>`), type `5+3` and press <kbd>**Enter**</kbd>. You will get `8`.
 
 Some basic math operators in R are listed here:
 
@@ -151,7 +153,7 @@ You can insert a new code chunk in several ways:
 
 1. Click the **Insert a new code chunk** button in the RStudio Toolbar (green icon at the top right corner of the Source pane).
 2. Select **Code > Insert Chunk** from the menu.
-3. Using the keyboard shortcut **Ctrl + Alt + I** for Windows or **Cmd + Option + I** on a Mac.
+3. Using the keyboard shortcut <kbd>**Ctrl + Alt + I**</kbd> for Windows or <kbd>**Cmd + Option + I**</kbd> on a Mac.
 4. Type ```` ```{r} ```` and ```` ``` ```` manually.
 
 #### (Optional Note) YAML header
@@ -176,12 +178,16 @@ When you render this file, a document will be generated that includes both conte
 
 1.  Graphic User Interface
     1.  Click on the **Render** button in the RStudio Toolbar (blue right arrow icon at the top of the source pane).
-2. Using the keyboard shortcut **Ctrl+Shift+K**.
+2. Using the keyboard shortcut <kbd>**Ctrl+Shift+K**</kbd>.
 3.  Using Console
-    1.  Navigate to the console (**Ctrl+2**).
+    1.  Navigate to the console (<kbd>**Ctrl+2**</kbd>).
     2.  Run `library(quarto)` to import `quarto` library. You need to do this only once when you start the session.
     3.  To render an html file from Quarto, type the command `quarto_render("lab01-r-basics.qmd")`
     4.  To open the result html file, type the command `browseURL("lab01-r-basics.html")`
+
+:::{.callout-caution}
+Note that you need to allow pop-up window from your browser to successfully open the rendered html file.
+:::
     
 This will open a new tab with an html file that contains the output. You can repeat this step to run all code chunks in this file. This is generally a good practice because you will want to make sure that the code runs cleanly from top to bottom.
 
@@ -197,7 +203,7 @@ Render this Quarto document to an html file. Inspect an output of the code chunk
 #### Creating and Saving a New Quarto File
 
 1. Select **File > New File > R Script** from the menu. 
-2. When the file is open, save the file. You can save the file by the keyboard shortcut **Ctrl+S** on Windows or **Cmd+S** on a Mac. 
+2. When the file is open, save the file. You can save the file by the keyboard shortcut <kbd>**Ctrl+S**</kbd> on Windows or <kbd>**Cmd+S**</kbd> on a Mac. 
 3. Choose the file name with an `.qmd` extension (e.g., `lab01-LASTNAME.qmd`). A popup will ask you "Are you sure you want to change the type of the file so that it is no longer an R script?". Select **Yes**.
 
 ::: {.callout-tip}
@@ -212,7 +218,7 @@ Create a new Quarto file, add a code chunk with some math operations, save it, a
 
 You can also store the output as an "Object" (or a variable), so you can reuse them. For example, you might want to store the output of `3 + 5` operation as an object `x` and do different things with it. To assign `3 + 5` to the object `x`, you write the object on the left of the `=` sign, and the value on the right.
 
-Type `x = 3 + 5` in the console and press **Enter**. Nothing will happen in the console output. However, if you type `x` again in the console, it will give you the output `8`, indicating that the output of the `3+5` operation is stored in the object `x`.
+Type `x = 3 + 5` in the console and press <kbd>**Enter**</kbd>. Nothing will happen in the console output. However, if you type `x` again in the console, it will give you the output `8`, indicating that the output of the `3+5` operation is stored in the object `x`.
 
 Alternatively, you can use `<-` to assign values to an object, which makes it clear that output of the operation on the right side should be assigned to (hence the arrow) the left side. You can repeat the above steps with `y <- 3 + 5`.
 
@@ -272,10 +278,10 @@ The hashtag (#) marks everything to the right of it as _comment_. Using comments
 
 ## Reading in Data
 
-The primary data files that we will be working with in R are `.csv` files. We will read in the data file `birth_month_age.csv` under the `data` folder using `read_csv()`, and store it as an object `df`.
+The primary data files that we will be working with in R are `.csv` files. We will read in the data file `beverage_mood.csv` under the `data` folder using `read_csv()`, and store it as an object `df`.
 
 ```{r}
-df <- read_csv('data/birth_month_age.csv')
+df <- read_csv('data/beverage_mood.csv')
 ```
 
 We can inspect the data as a Markdown table using function `gt()`.
@@ -292,7 +298,7 @@ gt(df)
 R package `tidyverse` comes with a special operator called the pipe operator ````%>%```` that allows you to pass the output of one function to the next function. For example, we can pass the output of `read_csv()` to `gt()` using the pipe operator.
 
 ```{r}
-read_csv('data/birth_month_age.csv') %>% 
+read_csv('data/beverage_mood.csv') %>% 
   gt()
 ```
 
