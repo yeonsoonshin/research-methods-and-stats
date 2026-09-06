@@ -37,6 +37,8 @@ theme_set(theme_classic(base_size = 16))
 set.seed(123)
 ```
 
+# Visualizing and Describing Data
+
 Before we can understand our statistical analyses, we must first understand our data. Imagine you have a large pile of raw data. How do you find the big picture and make sense of it? 
 
 Descriptive statistics are a way to give big picture summaries of the data. These summaries "compress" the data down to a useful and manageable tidbit. It's like telling your friends about a movie you just watched. You don't replay the entire movie for them. Instead you hit the highlights. Summarizing the data is just like a movie highlights, only for data. There is more than one correct way to summarize the data, and you choose the most useful way for the data you are describing. Some of the common characteristics of the data that we want to summarize are: the typical values (**central tendency**), the spread (**variability**), and the **shape** of the distribution.

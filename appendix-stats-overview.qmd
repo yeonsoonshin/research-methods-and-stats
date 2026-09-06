@@ -88,7 +88,7 @@ Symbols for Population Parameters and Sample Statistics
 :::
 
 
-## Test Statistics for Statistical Significance: Is It Real?
+## Test Statistics for Statistical Significance: Is This Real?
 
 When you observe some interesting pattern in your data, you might wonder if it reflects a real effect in the population or just happened by chance. Null Hypothesis Significance Testing (NHST) answers this question by calculating the probability of observing data as extreme as yours or more extreme if there were no effect in the population (the null hypothesis). You can calculate this probability using a test statistic. The test statistics in @tbl-test-statistic-numerator-denominator all estimate something about population parameters (means, variances, or relationships) and standardize those estimates by a reference unit, producing a value whose probability under the null hypothesis is known. 
 

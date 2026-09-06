@@ -11,7 +11,12 @@ author:
 knitr::opts_chunk$set(cache=TRUE)
 ```
 
-This textbook is is adaptation of the following open access resources for Bryn Mawr College PSYC B205 Research Methods and Statistics:
+This textbook is intended for Bryn Mawr College PSYC B205 Research Methods and Statistics. 
+
+This is an adaptation of excellent open access resources listed below. Note that the students in PSYC B205 do not need to read the original textbooks, as the content has been adapted and reorganized for this course.
+
+:::{.callout-note collapse="true"}
+### Orginal textbooks used in this adaptation (Click to Expand)
 
 1.  *Research Methods in Psychology* originally written by Paul C. Price (California State University, Fresno) and adapted by The Saylor Foundation under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License without attribution as requested by the work's original creator or licensee. This adaptation incorporates two editions of the textbook:
     1.  The Brooklyn College edition of by Matthew J. C. Crump (Brooklyn College and Graduate Center of the City University of New York).
@@ -20,7 +25,9 @@ This textbook is is adaptation of the following open access resources for Bryn M
 3. *Analysis R Book* authored by Gaby Mahrholz and Carolina E. Kuepper-Tetzel, which is based on the previous version written by Phil McAleer, Carolina E. Kuepper-Tetzel, and Helena M. Paterson.
 4. *Beginner Statistics for Psychology* authored by Nichole Vittoz.
 5. *Statistical Thinking for the 21st Century* authored by Russell Poldrack (Stanford University).
+6. *Reproducible statistics for psychologists with R: Lab Tutorials* authored by Matthew J. C. Crump. https://doi.org/10.17605/OSF.IO/KBHGA
 
 Changes to the original works were made by Yeon Soon Shin (Bryn Mawr College). Materials from the original sources have been combined, reorganized, and added to by the current author, and any conceptual, mathematical, or typographical errors are the responsibility of the current authors.
+:::
 
 This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License, except where otherwise noted.
