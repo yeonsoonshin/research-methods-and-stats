@@ -1,3 +1,10 @@
+---
+title: "Lab 1. R Basics Answers"
+format: 
+  html:
+    embed-resources: true
+---
+
 # Exercise 1
 
 ::: {.callout-tip}
@@ -51,10 +58,10 @@ There is no right or wrong answer for this exercise.
 Store the output of `10*2` in an object `z` and divide `z` by 4.
 :::
 
-      ```{r}
-      z <- 10 * 2
-      z / 4
-      ```
+```{r}
+z <- 10 * 2
+z / 4
+```
 
 # Exercise 5
 
@@ -64,9 +71,9 @@ Store the output of `10*2` in an object `z` and divide `z` by 4.
 In your new Quarto document, add a code chunk, and get the square root of 5329 using a function `sqrt()`. Render the document to find the output.
 :::
 
-      ```{r}
-      sqrt(5329)
-      ```
+```{r}
+sqrt(5329)
+```
 
 # Exercise 6
 
@@ -76,11 +83,11 @@ In your new Quarto document, add a code chunk, and get the square root of 5329 u
 In your new Quarto document, load `tidyverse` and `gt` libraries and read in `sleep_breakfast.csv` file using the pipe operator under the `data` folder. Inspect the data. What are the variables in the data? 
 :::
 
-      ```{r}
-      library(tidyverse)  # for data wrangling
-      library(gt)         # for pretty tables
-      read_csv('data/sleep_breakfast.csv') %>% gt()
-      ```
+```{r}
+library(tidyverse)  # for data wrangling
+library(gt)         # for pretty tables
+read_csv('data/sleep_breakfast.csv') %>% gt()
+```
 
 There are 4 variables in the data.
 
@@ -88,3 +95,92 @@ There are 4 variables in the data.
 * BreakfastPerWeek
 * Class
 * Campus
+
+:::{.callout-caution}
+## Common Mistakes: Incorrect Path
+
+The following code will not run because R cannot locate where to read `sleep_breakfast.csv` from.
+
+```{r, eval=FALSE}
+read_csv('sleep_breakfast.csv')
+```
+:::
+
+:::{.callout-caution}
+## Common Mistakes: String Not Quoted
+
+The following code will not run because the file name is not quoted as a string. The text should be enclosed in quotes to be recognized as a string. Note that string will be shown in green in default R syntax highlighting.
+
+```{r, eval=FALSE}
+read_csv(sleep_breakfast.csv)
+```
+:::
+
+:::{.callout-caution}
+## Common Mistakes: Ending the Pipe Incorrectly
+
+The pipe operator needs a destination to send the output to. It cannot be left hanging without a function to receive the output.
+
+```{r, eval=FALSE}
+read_csv('data/sleep_breakfast.csv') %>%
+```
+:::
+
+:::{.callout-caution}
+## Common Mistakes: Double Use of `%>%` with a Temporary Object
+
+This is not going to run because you are essentially trying to input the output of `read_csv()` twice into `gt()`.
+
+```{r, eval=FALSE}
+df <- read_csv('data/sleep_breakfast.csv')
+read_csv('data/sleep_breakfast.csv') %>% 
+      gt(df)
+```
+:::
+
+
+:::{.callout-caution}
+## Common Mistakes: Pipe Operator in a New Line
+
+Pipe operator should not start a new line by itself. It must be at the end of the previous line.
+
+```{r, eval=FALSE}
+read_csv('data/sleep_breakfast.csv')
+%>% gt()
+```
+:::
+
+
+:::{.callout-note}
+## Pipe Operator Alternatives
+
+The following code chunks demonstrate different ways to pass the output of the `read_csv` function to the `gt` function. All of them achieve the same result.
+
+**Option 1:** Use a temporary object `df` to store the output of the `read_csv` function. The con of this approach is that you will need to create and manage an additional object in your environment. 
+
+```{r, eval=FALSE}
+df <- read_csv('data/sleep_breakfast.csv')
+gt(df)
+```
+
+**Option 2:** Instead of using a pipe operator, you can directly pass the output of the `read_csv` function to the `gt` function.
+
+```{r, eval=FALSE}
+gt(read_csv('data/sleep_breakfast.csv'))
+```
+
+**Option 3:** Use the pipe operator to pass the output of the `read_csv` function directly to the `gt` function. `gt()` receives the output of the previous expression as its input (first input argument).
+
+```{r, eval=FALSE}
+read_csv('data/sleep_breakfast.csv') %>% gt()
+```
+
+**Option 4:** You can also use the pipe operator with line breaks for better readability.
+
+```{r, eval=FALSE}
+read_csv('data/sleep_breakfast.csv') %>% 
+      gt()
+```
+
+:::
+

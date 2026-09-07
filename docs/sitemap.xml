@@ -2,78 +2,82 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://yeonsoon.github.io/research-methods-and-stats-book/lab03-eda.html</loc>
-    <lastmod>2026-09-05T14:50:42.185Z</lastmod>
+    <lastmod>2026-09-04T00:00:36.138Z</lastmod>
   </url>
   <url>
     <loc>https://yeonsoon.github.io/research-methods-and-stats-book/lab02-reliability.html</loc>
-    <lastmod>2026-09-05T14:50:42.184Z</lastmod>
+    <lastmod>2026-09-02T23:51:03.463Z</lastmod>
   </url>
   <url>
     <loc>https://yeonsoon.github.io/research-methods-and-stats-book/lab01-r-basics.html</loc>
-    <lastmod>2026-09-05T14:50:42.184Z</lastmod>
+    <lastmod>2026-09-04T14:16:27.476Z</lastmod>
   </url>
   <url>
     <loc>https://yeonsoon.github.io/research-methods-and-stats-book/index.html</loc>
-    <lastmod>2026-09-06T16:28:51.070Z</lastmod>
+    <lastmod>2026-09-07T19:21:22.616Z</lastmod>
   </url>
   <url>
     <loc>https://yeonsoon.github.io/research-methods-and-stats-book/appendix-z-dist.html</loc>
-    <lastmod>2026-09-07T16:12:58.015Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/appendix-stats-decisions.html</loc>
-    <lastmod>2026-07-29T21:01:43.622Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/06-standard-scores.html</loc>
-    <lastmod>2026-09-05T15:41:44.224Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/04-visualizing-and-describing-data.html</loc>
-    <lastmod>2026-09-06T23:01:56.865Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/02-stats-test.html</loc>
-    <lastmod>2026-08-31T14:16:30.832Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/01-psych-science.html</loc>
-    <lastmod>2026-09-06T23:05:18.482Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/02-research-questions-and-claims.html</loc>
-    <lastmod>2026-09-06T23:05:08.654Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/03-measurement.html</loc>
-    <lastmod>2026-09-06T23:02:02.093Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/05-hypothesis-testing.html</loc>
-    <lastmod>2026-09-06T23:01:46.506Z</lastmod>
-  </url>
-  <url>
-    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/appendix-apa.html</loc>
-    <lastmod>2026-09-05T14:50:42.112Z</lastmod>
+    <lastmod>2026-09-07T21:29:56.494Z</lastmod>
   </url>
   <url>
     <loc>https://yeonsoon.github.io/research-methods-and-stats-book/appendix-stats-overview.html</loc>
-    <lastmod>2026-09-05T20:34:17.868Z</lastmod>
+    <lastmod>2026-09-07T19:21:22.575Z</lastmod>
   </url>
   <url>
-    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/common-misinterpretation-of-p-value.html</loc>
-    <lastmod>2026-09-07T13:06:13.204Z</lastmod>
+    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/appendix-apa.html</loc>
+    <lastmod>2026-09-01T14:28:57.009Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/05-hypothesis-testing.html</loc>
+    <lastmod>2026-09-07T19:21:22.574Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/03-measurement.html</loc>
+    <lastmod>2026-09-07T19:21:22.572Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/02-research-questions-and-claims.html</loc>
+    <lastmod>2026-09-07T19:21:22.571Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/01-psych-science.html</loc>
+    <lastmod>2026-09-07T19:21:22.571Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/02-stats-test.html</loc>
+    <lastmod>2026-08-31T14:15:28.842Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/04-visualizing-and-describing-data.html</loc>
+    <lastmod>2026-09-07T19:21:22.573Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/06-standard-scores.html</loc>
+    <lastmod>2026-09-04T01:37:21.845Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/appendix-stats-decisions.html</loc>
+    <lastmod>2026-08-31T13:51:42.806Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/appendix-t-dist.html</loc>
+    <lastmod>2026-09-07T21:29:53.069Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/appendix-z-scoring.html</loc>
+    <lastmod>2026-09-07T21:30:32.453Z</lastmod>
   </url>
   <url>
     <loc>https://yeonsoon.github.io/research-methods-and-stats-book/lab01-answers.html</loc>
-    <lastmod>2026-09-05T14:50:42.183Z</lastmod>
+    <lastmod>2026-09-04T19:21:17.755Z</lastmod>
   </url>
   <url>
     <loc>https://yeonsoon.github.io/research-methods-and-stats-book/lab02-answers.html</loc>
-    <lastmod>2026-09-05T14:50:42.184Z</lastmod>
+    <lastmod>2026-09-02T23:37:04.224Z</lastmod>
   </url>
   <url>
     <loc>https://yeonsoon.github.io/research-methods-and-stats-book/lab03-answers.html</loc>
-    <lastmod>2026-09-05T14:50:42.184Z</lastmod>
+    <lastmod>2026-09-04T00:01:20.704Z</lastmod>
   </url>
 </urlset>

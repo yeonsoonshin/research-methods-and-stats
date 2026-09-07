@@ -1,0 +1,5 @@
+---
+title: "z Scoring"
+---
+
+<iframe width="100%" height="100%" src="https://oniiu8-yeon0soon-shin.shinyapps.io/standard-scores/"></iframe>

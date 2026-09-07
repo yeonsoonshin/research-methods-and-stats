@@ -39,7 +39,10 @@ website:
           - appendix-apa.qmd
           - appendix-stats-decisions.qmd
           - appendix-stats-overview.qmd
+          - appendix-z-scoring.qmd
           - appendix-z-dist.qmd
+          - appendix-t-dist.qmd
+
 
 format:
   html:
