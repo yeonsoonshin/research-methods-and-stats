@@ -12,7 +12,7 @@ This lab will use Rosenberg Self-Esteem Scale [@rosenberg_society_1965] to demon
 ## Learning Objectives {.unnumbered}
 
 1.  Understand the concepts of reliability in measurement.
-2.  Produce a scatterplot to visualize the relationship between two items in a scale.
+2.  Produce a scatter plot to visualize the relationship between two items in a scale.
 3.  Calculate Cronbach's $\alpha$ to assess internal consistency of a scale.
 4.  Calculate composite scores for a scale.
 5.  Interpret what the results of reliability mean in the context of research.
@@ -35,7 +35,6 @@ library(tidyverse)  # for data wrangling and visualization
 library(psych)      # for describe() and scoreItems()
 library(broom)      # for tidying model output
 library(papaja)     # for APA style write up
-library(gt)         # for gt tables
 library(BrailleR)   # for accessibility
 GoBlind()
 ```
@@ -85,15 +84,72 @@ Rosenberg Self-Esteem Scale (RSES) items.
 :::
 
 
-Let's take a look at the data. We will read in the data and use `describe()` function from the `psych` package to get a summary of the data.
+Let's take a look at the data. We will read in the data using a function called `read_csv()` from the `tidyverse` package.
 
 ```{r}
 df <- read_csv('data/rses.csv') %>%
   as_tibble()
-describe(df) %>% gt()
 ```
 
-::: callout-tip
+:::{.callout-note}
+### More Notes on Pipe Operator
+The above code chunk uses the pipe operator `%>%` to pass the output of `read_csv()` function to `as_tibble()` function.  This is the same as the following two options:
+
+**Option 2:** Use a intermediate object `intermediate_output` to save the output of the `read_csv` function. The con of this approach is that you will need to create and manage an additional object in your environment. 
+
+```{r, eval=FALSE}
+intermediate_output <- read_csv('data/rses.csv') 
+df <- as_tibble(intermediate_output)
+```
+
+**Option 3:** Instead of using a pipe operator, you can directly pass the output of the `read_csv` function to the `as_tibble` function.
+
+```{r, eval=FALSE}
+df <- as_tibble(read_csv('data/rses.csv'))
+```
+
+All three options achieve the same result, but the first option with pipe operator is more readable and easier to understand. 
+
+Option 3 is concise, but it is less readable. If you will need this intermediate output for other purposes, then Option 2 is a good choice. However, if this is a one-off operation, then you don't need to create another object just to pass the output of `read_csv()` to `as_tibble()`. In this case, Option 1 is the best choice.
+
+Because we will be using the tibble with the data throughout the lab, we will save it as an object called `df`.
+:::
+
+To check if the data is loaded correctly, and what variables the data contains, there are a couple of different ways to inspect the data.
+
+### View the first few rows of the data: `head()`
+
+It will be quite overwhelming to look at all 318 rows of the data, so we will use `head()` function to view the first few rows of the data.
+
+`kable()` function from the `knitr` package is used to print the output in a nice table format in your Quarto document.
+
+```{r}
+head(df) %>%
+  knitr::kable() # print the output in a nice table
+```
+
+### Inspect the variables as rows: `glimpse()` from `tidyverse`
+
+If you are like me, and you find it easier to read the variables as rows instead of columns, then you can use `glimpse()` function to inspect the structure of the dataset. As a bonus, you get to see the data type of each variable as well (more on this later).
+
+Let's use `glimpse()` function to inspect the structure of the dataset. 
+
+```{r}
+glimpse(df)
+```
+
+### Get summaries of the data: `describe()` from the `psych` package
+
+Use `describe()` function from the `psych` package to get a summary of the data. 
+
+```{r}
+describe(df) %>%
+  knitr::kable() 
+```
+
+From this output, you can find some aspects of the data. For example, `n` is the number of responses (data entries) for each variable, and `mean` is the average response. You can also find the minimum and maximum values for each variable. For today's purposes, we will focus on these three colums: `n`, `min`, and `max`. We want to make sure that the data is complete (no missing values) and that all items are in the expected range (0-3 for RSES). 
+
+::: {.callout-note}
 ## Data Inspection Checklist
 
 - Are data complete (no missing values or wrong data)?
@@ -110,28 +166,43 @@ To summarize, we want to check if the items are internally consistent and correl
 
 ### Inspect pairs of items
 
-We will first create a scatter plot of the items to visually inspect their relationships. If the items are internally consistent, we should see a pattern of positive correlation between them. As we discussed above, Items 1 and 3 are supposed to measure the same construct, but they are worded in opposite directions. Therefore, we expect to see a negative correlation between these two items. We will create a scatter plot of Items 1 and 3 to visualize their relationship. Since the responses are on a 4-point Likert scale, we will use `geom_jitter()` to add some random noise to the points so that we can see the distribution of the responses more clearly.
+#### Scatter plots
+
+We will first create a scatter plot of the items to visually inspect their relationships. If the items are internally consistent, we should see a pattern of positive correlation between them. As we discussed above, Items 1 and 3 are supposed to measure the same construct, but they are worded in opposite directions. Therefore, we expect to see a negative correlation between these two items. We will create a scatter plot of Items 1 and 3 to visualize their relationship. 
+
+For this, we will use `ggplot()` function from the `ggplot2` package to create a scatter plot. We will map the first item (`RSES01`) to the x-axis and the third item (`RSES03`) to the y-axis. So what do we do with the mapped data? We need to specify what else needs to happen with that data. For `ggplot()`, we keep adding layers to the plot using `+` operator. For example, we can add a layer to the plot that adds points to the plot using `geom_point()` function. We can also add a layer that adds a regression line to the plot using `geom_smooth()` function.
+
+Since the responses are on a 4-point Likert scale, we will use `geom_jitter()` to add some random noise to the points so that we can see the distribution of the responses more clearly.
 
 ```{r}
 # create a scatter plot of the items
 df %>%
   ggplot(aes(x = RSES01, 
-             y = RSES03)) +
-  geom_jitter(alpha = 0.5, width = 0.2, height = 0.2) +
-  labs(x = "Item 1", y = "Item 3", 
-       title = "Rosenberg Self-Esteem Scale") +
+             y = RSES03)) + # map the first item to the x-axis and the third item to the y-axis
+  geom_jitter(alpha = 0.5, width = 0.2, height = 0.2) + # add some random noise to the points so individual dots are visible
+  labs(x = "Item 1", # add label to the x-axis
+       y = "Item 3", # add label to the y-axis
+       title = "Rosenberg Self-Esteem Scale") + # add title to the plot
   coord_fixed(ratio = 1) + # make the x and y axes have the same ratio
-  theme_classic()
+  theme_classic() # use a classic theme for the plot
 ```
 
-What's the correlation between the two items? We can calculate the correlation using `cor()` function. To look at a specific variable (column) in a data frame, we can use the `$` operator. For example, to look at the first item (`RSES01`), we can use `df$RSES01`. To look at the third item (`RSES03`), we can use `df$RSES03`. We can then pass these two variables to the `cor()` function to calculate the correlation between them.
+
+#### Correlation coefficient
+
+We see a bunch of dots, but we would like to quantify the trend in the data. We can do this by calculating the correlation coefficient between the two items.
+
+What's the correlation between the two items? We can calculate the correlation using `cor()` function. To look at a specific variable (column) in a data frame, we can use the `$` operator. For example, to look at the first item (`RSES01`), we can use `df$RSES01`. To look at the third item (`RSES03`), we can use `df$RSES03`. We can then pass these two variables to the `cor()` function to calculate the correlation between them. Think of this `cor()` function as something like the `sqrt()` function that we used in Lab 1. The `sqrt()` function takes a number as input and returns the square root of that number. Similarly, the `cor()` function takes two variables as input and returns the correlation between them.
 
 ```{r}
 # calculate the correlation between the two items
-cor(df$RSES01, df$RSES03) %>% 
-    round(3) # round the correlation to 3 decimal places
+cor(df$RSES01, df$RSES03)
 ```
 
+:::{.callout-note}
+#### Rounding Numbers
+If the number you got is a little too long and have many decimal places, you can round the number to 3 decimal places using `round()` function. For example, if you want to round the correlation to 3 decimal places, you can use `round(cor(df$RSES01, df$RSES03), 3)`. Alternatively, you can use the pipe operator `%>%` to pass the output of `cor()` function to `round()` function. For example, `cor(df$RSES01, df$RSES03) %>% round(3)`.
+:::
 
 :::{.callout-tip}
 #### Exercise 1
@@ -146,13 +217,27 @@ cor(df$RSES01, df$RSES03) %>%
 
 We use **Cronbach's $\alpha$** (read as "Cronbach's alpha") to quantify the internal consistency. If Cronbach's $\alpha$ is greater than or equal to 0.7, we can say that the items are internally consistent and reliable. Ideally, we want to see Cronbach's $\alpha$ to be greater than 0.8, but this is not always the case in practice.
 
-We will create an array of keys, where the items that need to be reverse scored are prefixed with a minus sign (`-`). For example, for the third item "All in all, I am inclined to feel that I am a failure.", we will use `-3` to indicate that this item needs to be reverse scored. 
+We will create an array of keys, where the items that need to be reverse scored are prefixed with a minus sign (`-`). For example, for the third item "All in all, I am inclined to feel that I am a failure.", we will use `-3` to indicate that this third item needs to be reverse scored. 
 
 For this example, we will only look at the first five items.
 
 ```{r}
 rses.keys <- list(RSES = c(1, 2, -3, 4, -5))
 ```
+
+:::{.callout-note}
+#### List
+
+This is a data structure called a **list**. A list is a collection of objects that can be of different types. What is important to note here is that we can specify a name for each element in the list (in this case, `RSES` is the name of the first element in the list). We can access the elements in the list using the `$` operator. For example, to access the first element in the list, we can use `rses.keys$RSES`. This will return a vector of numbers that represent the items in RSES that need to be scored. 
+
+```{r}
+rses.keys
+```
+
+```{r}
+rses.keys$RSES
+```
+:::
 
 With the keys defined, we can now score the items in RSES using `scoreItems()` function from the `psych` package. This function will calculate the composite scores and also calculate Cronbach's $\alpha$ for the scale.
 
@@ -165,27 +250,42 @@ rses <- scoreItems(
 )
 ```
 
+:::{.callout-note}
+#### Function With Named Arguments
+So far, the functions that we took one or two inputs. For example, `cor()` function takes two inputs (two variables) and `round()` function takes two inputs (a number and the number of decimal places to round to). However, some functions can take multiple inputs. For example, `scoreItems()` function takes three inputs: `keys`, `items`, and `totals`. The first input is the keys that we defined above, the second input is the items in RSES that we want to score, and the third input is a logical value that indicates whether we want to calculate the total scores for each participant. In this case, we set `totals = TRUE` to calculate the total scores for each participant. 
+
+When you specify the input arguments with their names (e.g., `keys = rses.keys`), it is called **named arguments**. This is useful when a function takes multiple inputs, and you want to specify which input corresponds to which argument. If you don't specify the names of the arguments, the function will assume that the inputs are in the order that they are defined in the function. If you don't specify the names of the arguments, you can still use the function, but it is less readable and more prone to errors. For example, if you want to use `scoreItems()` function without named arguments, you can achieve the same result as above with the following code:
+
+```{r, eval=FALSE}
+rses <- scoreItems(rses.keys, df %>% select(starts_with("RSES")), TRUE)
+```
+
+It is less readable because you have to remember the order of the arguments, and it is more prone to errors because you can easily mix up the order of the arguments. Therefore, it is a good practice to use named arguments when a function takes multiple inputs.
+:::
+
 #### Composite scores
 
-You can find the RSES scores for each participant under `scores` in the `rses` object. 
+You can find the RSES scores for each participant under `scores` in the `rses` object. `$` operator is used to accuess the `scores` in the `rses` object. The `scores` is a data frame that contains the composite scores for each participant. We can convert the `scores` to a tibble for easier inspection.
 
 ```{r}
 # convert the scores to a tibble
 rses.scores <- rses$scores %>% 
   as_tibble() 
 
-head(rses.scores) %>% gt() # print the first few rows to inspect the rses.scores object
+head(rses.scores) %>%
+  knitr::kable()
 ```
 
-We can now summarize the RSES scores.
+We can now summarize the RSES scores with some descriptive statistics (e.g., what's the average?) We are getting ahead of ourselves a little bit, but the point here is that we can use the `describe()` function from the `psych` package to get a summary of the RSES scores.
 
 ```{r}
-describe(rses.scores) %>% gt()
+describe(rses.scores) %>% 
+  knitr::kable()
 ```
 
 #### Internal consistency (Cronbach's alpha)
 
-Let's check the Cronbach's $\alpha$ for the RSES scale. We can access the Cronbach's $\alpha$ values from the `rses` object. 
+Now this is what we wanted to do all along. Let's check internal consistency of the scale. For this, we will examine the Cronbach's $\alpha$ for the RSES scale. We can access the Cronbach's $\alpha$ values from the `rses` object. 
 
 ::: callout-tip
 ## Questions to answer about the data:
@@ -197,7 +297,7 @@ Let's check the Cronbach's $\alpha$ for the RSES scale. We can access the Cronba
 # check the Cronbach's alpha for the RSES scale
 rses$alpha %>% 
     round(3) %>% # round the Cronbach's alpha to 3 decimal places
-    knitr::kable() # similar to gt() that prints the table
+    knitr::kable()
 ```
 
 #### Write up the results
@@ -231,4 +331,21 @@ Repeat the reliability analysis for the RSES using all 10 items. Write up the re
 - Cronbach's $\alpha$ values greater than or equal to 0.7 indicate acceptable internal consistency, while values less than 0.7 indicate poor internal consistency.
 - `scoreItems()` function from the `psych` package can be used to calculate composite scores for a scale and also calculate Cronbach's $\alpha$.
 
+### Additional Notes
 
+:::{.callout-note}
+#### An Alternative Way to Calculate Composite Scores
+
+Can you guess how you can calculate the composite scores without using `scoreItems()` function? If you thought about just adding up the scores for each item, then you are correct! For example, to calculate the composite scores for the first five items in RSES, you can use the following code, which should give you the same results as the `scoreItems()` function.
+
+```{r}
+composite_scores <- df$RSES01 + df$RSES02 + (3 - df$RSES03) + df$RSES04 + (3 - df$RSES05)
+
+head(composite_scores) %>%
+  knitr::kable()
+```
+
+Note that we need to reverse score the appropriate items (Items 3 and 5) by subtracting the scores from 3. This is because the items are scored on a 4-point Likert scale (0-3), and we want to reverse the scoring for the items that are negatively worded.
+
+If this feels like a lot of work, you can use the function `scoreItems()` from the `psych` package to do this for you. This function takes care of reverse scoring and calculating the composite scores for you. It also calculates Cronbach's $\alpha$ for the scale, so that is a bonus! I just wanted to show you that you don't need all these bells and whistles to calculate composite scores, but it is nice to have them when you are doing research.
+:::

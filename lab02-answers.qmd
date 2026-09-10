@@ -1,0 +1,161 @@
+---
+title: "Lab 2. Measurement Reliability Answers"
+format: 
+  html:
+    embed-resources: true
+---
+
+## Preliminaries
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+### Load the necessary packages for data wrangling, visualization, and analysis.
+
+```{r}
+library(tidyverse)  # for data wrangling and visualization
+library(psych)      # for describe() and scoreItems()
+library(broom)      # for tidying model output
+library(papaja)     # for APA style write up
+library(BrailleR)   # for accessibility
+GoBlind()
+```
+
+### Read in the data
+
+```{r}
+df <- read_csv('data/rses.csv') %>%
+  as_tibble()
+```
+
+
+### Check the data
+
+```{r}
+head(df) %>%
+  knitr::kable() # print the output in a nice table
+```
+
+
+
+##  Exercise 1
+
+:::{.callout-tip}
+#### Exercise 1
+
+1. Choose two items from RSES that are expected to be **positively** correlated and create a scatter plot of the two items. Report the correlation between the two items. Are the two items positively correlated? If not, what could be the reason?
+
+2. Choose two items from RSES that are expected to be **negatively** correlated and create a scatter plot of the two items. Report the correlation between the two items. Are the two items negatively correlated? If not, what could be the reason?
+:::
+
+
+### Positive Correlation Example
+
+Item 5 "I feel I do not have much to be proud of." and Item 10 "At times I think I am no good at all." are both reversed and thus expected to be positively correlated. 
+
+#### Scatter Plot
+
+```{r}
+# create a scatter plot of the items
+df %>%
+  ggplot(aes(x = RSES05, 
+             y = RSES10)) + # map the first item to the x-axis and the third item to the y-axis
+  geom_jitter(alpha = 0.5, width = 0.2, height = 0.2) + # add some random noise to the points so individual dots are visible
+  labs(x = "Item 5", # add label to the x-axis
+       y = "Item 10", # add label to the y-axis
+       title = "Rosenberg Self-Esteem Scale") + # add title to the plot
+  coord_fixed(ratio = 1) + # make the x and y axes have the same ratio
+  theme_classic() # use a classic theme for the plot
+```
+
+#### Correlation Coefficient
+
+```{r}
+# calculate the correlation between the two items
+cor(df$RSES05, df$RSES10) %>%
+  round(3) %>% # round the correlation coefficient to 3 decimal places
+  knitr::kable() # print the output in a nice table
+```
+
+### Negative Correlation Example
+
+Item 2 "I feel that I have a number of good qualities." and Item 9 "I certainly feel useless at times." are expected to be negatively correlated. 
+
+#### Scatter Plot
+
+```{r}
+# create a scatter plot of the items
+df %>%
+  ggplot(aes(x = RSES02, 
+             y = RSES09)) + # map the first item to the x-axis and the third item to the y-axis
+  geom_jitter(alpha = 0.5, width = 0.2, height = 0.2) + # add some random noise to the points so individual dots are visible
+  labs(x = "Item 2", # add label to the x-axis
+       y = "Item 9", # add label to the y-axis
+       title = "Rosenberg Self-Esteem Scale") + # add title to the plot
+  coord_fixed(ratio = 1) + # make the x and y axes have the same ratio
+  theme_classic() # use a classic theme for the plot
+```
+
+#### Correlation Coefficient
+
+```{r}
+# calculate the correlation between the two items
+cor(df$RSES02, df$RSES09) %>%
+  round(3) %>% # round the correlation coefficient to 3 decimal places
+  knitr::kable() # print the output in a nice table
+```
+
+## Exercise 2
+
+:::{.callout-tip}
+#### Exercise 2
+
+Repeat the reliability analysis for the RSES using all 10 items. Write up the results of the reliability analysis in APA style **in your own words**. You can use the example write-up above as a guide, but do not copy it verbatim. Make sure to include the description of the scale and how the score was calculated, the **purpose** of the analysis, the **method** used, the **results** of the analysis, and the **interpretation** of the results.
+:::
+
+#### Set the items to be scored
+
+```{r}
+rses.keys <- list(RSES = c(1, 2, -3, 4, -5, 6, 7, -8, -9, -10)) 
+```
+
+#### Score Items and Get Cronbach's Alpha
+
+```{r}
+# score the items in RSES (columns that start with "RSES") using the keys defined above
+rses <- scoreItems(
+  keys = rses.keys, 
+  items = df %>% select(starts_with("RSES")),
+  totals = TRUE
+)
+```
+
+#### Inspect Composite Scores
+
+```{r}
+# convert the scores to a tibble
+rses.scores <- rses$scores %>% 
+  as_tibble() 
+
+head(rses.scores) %>%
+  knitr::kable()
+```
+
+#### Get Cronbach's Alpha
+
+```{r}
+# check the Cronbach's alpha for the RSES scale
+rses$alpha %>% 
+    round(3) %>% # round the Cronbach's alpha to 3 decimal places
+    knitr::kable()
+```
+
+#### Write up the results
+
+> We used the Revised Self-Esteem Scale (RSES) to measure self-esteem. RSES is a brief measure of self-esteem, with 10 items. Participants rated the extent to which they agreed with each statement on a 4-point Likert scale (0 = Strongly Disagree, 3 = Strongly Agree). Composite scores were calculated by summing the responses across all items with reverse scoring applied to the appropriate items (Items 3, 5, 8, 9, 10).
+> Reliability analysis using Cronbach's $\alpha$ showed that the RSES had good internal consistency ($\alpha$ = .92).
