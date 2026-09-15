@@ -110,6 +110,17 @@ cor(df$RSES02, df$RSES09) %>%
   knitr::kable() # print the output in a nice table
 ```
 
+### Correlation Coefficients for All Pairs
+
+```{r}
+# calculate the correlation matrix for all items in RSES
+df %>%
+  select(starts_with("RSES")) %>% # select only the columns that start with "RSES"
+  cor() %>% # calculate the correlation matrix
+  round(3) %>% # round the correlation coefficients to 3 decimal places
+  knitr::kable() # print the output in a nice table
+```
+
 ## Exercise 2
 
 :::{.callout-tip}
