@@ -11,8 +11,8 @@ knitr::opts_chunk$set(
 )
 
 library(tidyverse)  # for data wrangling and visualization
-library(BrailleR)   # for brailleR tables
-GoBlind()
+# library(BrailleR)   # for brailleR tables
+# GoBlind()
 
 theme_set(theme_classic(base_size = 16))
 
