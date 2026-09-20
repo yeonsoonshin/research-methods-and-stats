@@ -338,5 +338,5 @@ This is why it is important to distinguish between the statistical significance 
 * The logic of null hypothesis significance testing (NHST) is to determine whether an observed pattern in a sample is likely to have occurred by chance or reflects a real pattern in the population.
 * The **p-value** is the probability of a sample result at least as extreme as the one observed under the null hypothesis. 
 * The **$\alpha$-level** is the threshold for determining whether a p-value is low enough to reject the null hypothesis. By convention, it is set to .05. This is the **Type I error rate** that you will overclaim an effect when there is none.
-* A **statistically significant** result is one that has a p-value less than the $\alpha$-level, and passed the "is the observed pattern any different from chance?" question.
+* A **statistically significant** result is one that has a p-value less than or equal to the $\alpha$-level, and passed the "is the observed pattern any different from chance?" question.
 * A statistically significant tells you that the pattern is different from chance, but it does not tell you _by how much_. A **practically significant** results are those that are strong enough to be useful in some real-world context.
