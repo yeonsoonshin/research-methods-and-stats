@@ -36,6 +36,7 @@ website:
           - lab01-r-basics.qmd
           - lab02-reliability.qmd
           - lab03-eda.qmd
+          - lab04-standard-scores.qmd
       - section: "Appendix"
         contents:
           - appendix-apa.qmd

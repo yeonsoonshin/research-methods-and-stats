@@ -1,0 +1,374 @@
+---
+title: "Lab 4: Standard Scores and Probability"
+format:
+  html:
+    html-math-method: plain
+    embed-resources: true
+---
+
+In this lab, we will practice finding standard scores from probability values and vice versa, and convert between raw scores and standard scores.
+
+## Learning Objectives {.unnumbered}
+
+1. Convert between raw scores and standard scores (z scores).
+2. Find probabilities from z scores and vice versa.
+
+::: {.callout-note}
+#### Basic concepts to keep in mind:
+
+1. The cutoff values are on the x-axis of the normal distribution curve.
+2. The probability corresponds to the area under the curve.
+3. The probability adds up to 1. The total area under the curve is 1.
+:::
+
+How extraverted/introverted are you compared to the average person? To answer this question, we will use the Big Five Inventory (BFI) extraversion scale. 
+
+Respond to the following three items from the Big Five Inventory (BFI), on a scale of 1 to 5 (1 = strongly disagree and 5 = strongly agree). Take the mean of the three items to get a single composite score. 
+
+  * I see myself as someone who is talkative.
+  * I see myself as someone who is reserved (Reverse).
+  * I see myself as someone who is outgoing, sociable. 
+
+BFI extraversion has a mean of 3.48 and a standard deviation of 0.65. Given this information, are you more extraverted or introverted than the average person? By how much? Is that unusual? 
+
+If we assume that the scores are normally distributed, then we can find out exactly how unusual/special your score is, using the standard score (z score) and probability.
+
+
+## Going Between Raw Scores and z Scores
+
+Once we know the raw score and the mean and standard deviation, we can convert it to a z score or vice versa. Remember that R is just a fancy calculator, so we can find z scores and raw scores using the formulas we learned in class.
+
+Say, we have a raw score of 2.67, and want to know the relative standing of that score in the unit of "typical" deviations (SD):
+
+```{r}
+mean <- 3.48
+sd <- 0.65
+raw_score <- 2.67
+z <- (raw_score - mean) / sd
+z
+```
+
+
+If you know the z score and want to find the raw score, you are just reversing that steps. If you know someone is 1.5 standard deviations above the mean, and you know the mean and the standard deviation, you can find the raw score using the formula:
+
+```{r}
+mean <- 3.48
+sd <- 0.65
+z <- 1.5
+raw_score <- z * sd + mean
+raw_score
+```
+
+
+:::{.callout-tip}
+#### Exercise 1
+Use the formulas above to convert the following z scores to raw scores and vice versa:
+
+  a. z = -1.96, mean = 3.48, sd = 0.65
+  b. raw score = 9.18, mean = 12.26, sd = 1.57
+
+:::
+
+## Using R to Find z Scores and Probabilities
+
+How extreme is your extraversion, given the population mean and standard deviation? In other words, what are the chances to see someone with your extraversion score or more extreme (on either end)? For this, we need to find the corresponding probability in the tail of your z score. 
+
+You can use the z Distribution app, or you can just use R to find the probability without all the bells and whistles. It is up to you which one you use. Here, I show you how to do it in R.
+
+R provides functions to help us find standard scores and probabiilities. All of these functions assume that the probability is **on the left side of the curve (lower tail)**, because the default is to calculate the cumulative probability from the bottom (left). 
+
+* `qnorm`: find the standard score (z-score) for a given probability.
+* `pnorm`: find the probability for a given standard score (z-score).
+
+These are anchors that will help us remember which function to use:
+
+```{r}
+pnorm(0) # should return 0.5, because there is exactly half of the area below the mean (0)
+
+qnorm(0.5) # should return 0, because the mean (center) is at 0
+```
+
+## z Scores to Probability
+
+### Probability Below a z Score (Lower Tail)
+
+Let's start with a simple case. We want to know how much of the normally distributed data is below a z-score of $-1$. From the empirical 68-95-99.7 rule, we know that about 34% of the data is between the mean and -1, and about 50% of the data is below the mean. So we expect the probability to be about 50 - 34 = 16%. Let's see what R says.
+
+```{r}
+pnorm(-1)
+```
+
+That's pretty close! But what if we want to know how much of the data is below a z score of, say, $-1.2$? There is no simple rule for that, so we will use R to get the corresponding probability.
+
+```{r}
+pnorm(-1.2)
+```
+
+::: {.callout-tip}
+#### Exercise 1
+
+Find the probability below the following z-scores:
+
+  a. -2
+  b. -1.96
+  c. -1.645
+  d. -1.28
+  e. 0
+
+:::
+
+### Probability Above a z Score (Upper Tail)
+
+To find the probability above a z score, we can use the fact that the total area under the curve is 1. So, if we want to find the probability above a z score of $-1$, we can subtract the probability below that z score from 1.
+
+```{r}
+1 - pnorm(-1)
+```
+
+The same goes for probabilities above any z score. 
+
+```{r}
+1 - pnorm(1)
+```
+
+::: {.callout-tip}
+#### Exercise 2
+
+Find the probability above the following z-scores:
+
+  a. 2
+  b. 1.96
+  c. 1.645
+  d. 1.28
+  e. 0
+
+Compare the values you get with the ones from Exercise 1. What do you notice?
+:::
+
+Because the normal distribution is symmetric, the probability below a z score of $-1$ is the same as the probability above a z score of $1$.
+
+### Probability in Both Tails
+
+What if we want to find the probability outside of a z score of $-1$ and $1$? We can find the probability below $-1$ and above $1$, and add them together. 
+
+```{r}
+pnorm(-1) + (1 - pnorm(1)) 
+```
+
+Or, because of the symmetry, we can just find the probability below $-1$ and double it.
+
+```{r}
+2 * pnorm(-1)
+```
+
+If you like working with positive numbers, you can get the same results by finding the probability in the top tail above $1$ and doubling it.
+
+```{r}
+2 * (1 - pnorm(1))
+```
+
+All of these methods will give you the same result.
+
+:::{.callout-tip}
+#### Exercise 3
+
+Find the probability in both tails outside of the following z-scores:
+
+  a. -2 and 2
+  b. -1.96 and 1.96
+  c. -1.645 and 1.645
+  d. -1.28 and 1.28
+
+:::
+
+### Probability Between Two z Scores
+
+The numbers don't have to be symmetric. For example, we can find the probability between folks 1.5 standard deviations below the mean and 1 standard deviation above the mean. Because `pnorm` gives us the cumulative probability from the bottom, we can find the probability below z=1 and subtract the probability below z=-1.5.
+
+```{r}
+pnorm(1) - pnorm(-1.5)
+```
+
+::: {.callout-tip}
+#### Exercise 4
+Find the probability between the following z-scores:
+
+  a. -1.645 and -0.524
+  b. -0.524 and 0.842
+  c. 0.842 and 1.645
+
+:::
+
+## Probability to z Scores
+
+Students find it a little more challenging to go from probability to z scores. But it is just the reverse of what we did above. We will use the `qnorm` function to find the z score for a given probability.
+
+### Probability Below a z Score (Lower Tail)
+
+Let's start with a simple case. We want to know what the corresponding standard score is for the bottom 1% of the normal distribution.
+
+```{r}
+qnorm(0.01) 
+```
+
+Let's try a few more examples.
+
+::: {.callout-tip}
+#### Exercise 5
+
+Find the z-scores **below** which the following percentages of the normal distribution fall:
+
+  a. 2.275%
+  b. 2.5%
+  c. 5%
+  d. 50%
+
+:::
+
+
+### Probability Above a z Score (Upper Tail)
+
+Now, let's find the z-scores **above** which 1% of the normal distribution falls. Because `qnorm` calculates the cumulative probability from the left, we need to express the probability in terms of the lower tail. Top 1% means that 99% from the bottom (100% - 1% = 99%). 
+
+```{r}
+qnorm(1 - 0.01)
+```
+
+::: {.callout-tip}
+#### Exercise 6
+
+Find the z-scores **above** which the following percentages of the normal distribution fall:
+
+  a. 2.275%
+  b. 2.5%
+  c. 5%
+  d. 50%
+
+Compare the values you get with the ones from Exercise 1. What do you notice?
+
+:::
+
+### Probability in Both Tails
+
+What this means is that, when we want to find the z-scores where the probability outside of those z-scores is known, that's just twice the probability in one tail. For example, if we want to find the z-scores where 1% of the distribution is outside of those z-scores in both tails (equal distance from the mean), we are essentially finding the z-scores where 0.5% is in the lower tail and 0.5% is in the upper tail.
+
+```{r}
+qnorm(0.01 / 2) # lower tail
+qnorm(1 - 0.01 / 2) # upper tail
+```
+
+::: {.callout-tip}
+#### Exercise 7
+Find the z-scores **outside** of which the following percentages of the normal distribution fall:
+
+  a. 4.55%
+  b. 5%
+  c. 10%
+
+:::
+
+### Probability Between Two z Scores
+
+What if we want to find the z-scores from bottom 10% to top 5%? They are not symmetric, so what do we do? 
+
+This is essentially subtracting the cumulative probability of the lower z-score from the cumulative probability of the upper z-score.
+
+```{r}
+qnorm(0.95) - qnorm(0.10)
+```
+
+::: {.callout-tip}
+#### Exercise 8
+Find the cutoff z scores for the following probabilities:
+
+  a. Bottom 5% to Bottom 30%
+  b. Bottom 30% to Top 20%
+  c. Top 20% to Top 5%
+  
+:::
+
+
+## Putting It All Together
+
+z scores are just the bridge between raw scores and probabilities. If you want to find the probability from a raw score, you first convert the raw score to a z score, and then use that z score to find the probability. If you want to find the raw score from a probability, you first find the z score for that probability, and then convert that z score to a raw score.
+
+Or better yet, you can use the `pnorm` and `qnorm` functions to do all of that in one step. For example, if you want to find the probability below a raw score of 120 when the mean is 100 and the standard deviation is 15, you can use `pnorm` to do that in one step:
+
+```{r}
+pnorm(q=120, mean=100, sd=15)
+```
+
+For the reverse, the same idea applies. If you want to find the raw score below which 90% of the data falls, you can use `qnorm` to do that in one step:
+
+```{r}
+qnorm(p=0.90, mean=100, sd=15)
+```
+
+Using this, we can find the range of Big Five Inventory (BFI) scores that would correspond to the middle 95% of the population. The BFI has a mean of 3.48 and SD of 0.65. 95% is in the middle, so each tail has 2.5% of the data.
+
+```{r}
+qnorm(p=0.025, mean=3.48, sd=0.65) # lower cutoff
+qnorm(p=1-0.025, mean=3.48, sd=0.65) # upper cutoff
+```
+
+Writing numbers repeatedly is tedious and error prone, so we will store the numbers in variables and use those variables in the calculations.
+
+```{r}
+m_bfi <- 3.48
+sd_bfi <- 0.65
+p_tail <- 0.025 # probability in each tail
+lower_cutoff <- qnorm(p_tail, m_bfi, sd_bfi)
+upper_cutoff <- qnorm(1-p_tail, m_bfi, sd_bfi)
+```
+
+95% of the population has BFI scores between `r lower_cutoff` and `r upper_cutoff`. In another words, 5% of the population will have BFI scores more extreme than those cutoff scores. From this, you can already see if your extraversion score is outside of this range or now. But to find out the exact probability of seeing someone with your extraversion score or more extreme, we can use `pnorm` to find the probability.
+
+For example, if you want to find the probability below a raw score of 2.5 (a score that's below the mean), you can use `pnorm` to do that in one step:
+
+```{r}
+pnorm(q=2.5, mean=3.48, sd=0.65)
+```
+
+If you want to find the probability above a raw score of 4.5 (a score that's above the mean), you can just subtract the probability below that raw score from 1, as we practiced in Exercise 6.
+
+```{r}
+1-pnorm(q=4.5, mean=3.48, sd=0.65)
+```
+
+:::{.callout-tip}
+#### Exercise 10
+* How extreme is your extraversion, given the population mean and standard deviation? In other words, what are the chances to see someone with your extraversion score or more extreme (on either end)?
+:::
+
+
+:::{.callout-tip}
+#### BONUS Exercise
+Repeat the above exercise using the Eysenck Personality Inventory (EPI) extraversion scale. The EPI has a mean of 12.26 and SD of 1.57.
+
+Here are items from Eysenck Personality Inventory (EPI) that measure extraversion. Answer the following question with Yes or No, and count up the number of items that you answered "Yes" to regular items and "No" to reverse items.
+
+1. Do you often long for excitement
+1. Are you usually carefree
+1. Do you stop and think things over before doing anything (Reverse)
+1. Do you generally do and say things quickly without stopping to think
+1. Would you do almost anything for a dare
+1. Do you often do things on the spur of the moment
+1. Generally do you prefer reading to meeting people (Reverse)
+1. Do you like going out a lot
+1. Do you prefer to have few but special friends (Reverse)
+1. When people shout at you do you shout back 
+1. Can you usually let yourself go and enjoy yourself a lot at a lively party
+1. Do other people think of you as being very lively
+1. Are you mostly quiet when you are with other people (Reverse)
+1. If there is something you want to know about, would you rather look it up in a book than talk to someone about it (Reverse)
+1. Do you like the kind of work that you need to pay close attention to (Reverse)
+1. Do you hate being with a crowd who play jokes on one another (Reverse)
+1. Do you like doing things in which you have to act quickly
+1. Are you slow and unhurried in the way you move (Reverse)
+1. Do you like talking to people so much that you never miss a chance of talking to a stranger
+1. Would you be very unhappy if you could not see lots of people most of the time
+1. Would you say that you were fairly self-confident
+1. Do you find it hard to really enjoy yourself at a lively party (Reverse)
+1. Can you easily get some life into a dull party
+1. Do you like playing pranks on others
+:::
