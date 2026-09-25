@@ -4613,11 +4613,15 @@ vertical-align: -.125em;
 <section id="probability-between-two-z-scores-1" class="level3" data-number="4.4">
 <h3 data-number="4.4" class="anchored" data-anchor-id="probability-between-two-z-scores-1"><span class="header-section-number">4.4</span> Probability Between Two z Scores</h3>
 <p>What if we want to find the z-scores from bottom 10% to top 5%? They are not symmetric, so what do we do?</p>
-<p>This is essentially subtracting the cumulative probability of the lower z-score from the cumulative probability of the upper z-score.</p>
+<p>This is exactly what we did for finding the z-scores for the bottom 10% and the top 5%.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.95</span>) <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="fl">0.10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.95</span>) <span class="co"># top 5 %</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.926405</code></pre>
+<pre><code>[1] 1.644854</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.10</span>) <span class="co"># bottom 10 %</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1.281552</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -4645,48 +4649,48 @@ vertical-align: -.125em;
 <p>z scores are just the bridge between raw scores and probabilities. If you want to find the probability from a raw score, you first convert the raw score to a z score, and then use that z score to find the probability. If you want to find the raw score from a probability, you first find the z score for that probability, and then convert that z score to a raw score.</p>
 <p>Or better yet, you can use the <code>pnorm</code> and <code>qnorm</code> functions to do all of that in one step. For example, if you want to find the probability below a raw score of 120 when the mean is 100 and the standard deviation is 15, you can use <code>pnorm</code> to do that in one step:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q=</span><span class="dv">120</span>, <span class="at">mean=</span><span class="dv">100</span>, <span class="at">sd=</span><span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q=</span><span class="dv">120</span>, <span class="at">mean=</span><span class="dv">100</span>, <span class="at">sd=</span><span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9087888</code></pre>
 </div>
 </div>
 <p>For the reverse, the same idea applies. If you want to find the raw score below which 90% of the data falls, you can use <code>qnorm</code> to do that in one step:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="at">p=</span><span class="fl">0.90</span>, <span class="at">mean=</span><span class="dv">100</span>, <span class="at">sd=</span><span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="at">p=</span><span class="fl">0.90</span>, <span class="at">mean=</span><span class="dv">100</span>, <span class="at">sd=</span><span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 119.2233</code></pre>
 </div>
 </div>
 <p>Using this, we can find the range of Big Five Inventory (BFI) scores that would correspond to the middle 95% of the population. The BFI has a mean of 3.48 and SD of 0.65. 95% is in the middle, so each tail has 2.5% of the data.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="at">p=</span><span class="fl">0.025</span>, <span class="at">mean=</span><span class="fl">3.48</span>, <span class="at">sd=</span><span class="fl">0.65</span>) <span class="co"># lower cutoff</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="at">p=</span><span class="fl">0.025</span>, <span class="at">mean=</span><span class="fl">3.48</span>, <span class="at">sd=</span><span class="fl">0.65</span>) <span class="co"># lower cutoff</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.206023</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="at">p=</span><span class="dv">1</span><span class="fl">-0.025</span>, <span class="at">mean=</span><span class="fl">3.48</span>, <span class="at">sd=</span><span class="fl">0.65</span>) <span class="co"># upper cutoff</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="at">p=</span><span class="dv">1</span><span class="fl">-0.025</span>, <span class="at">mean=</span><span class="fl">3.48</span>, <span class="at">sd=</span><span class="fl">0.65</span>) <span class="co"># upper cutoff</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4.753977</code></pre>
 </div>
 </div>
 <p>Writing numbers repeatedly is tedious and error prone, so we will store the numbers in variables and use those variables in the calculations.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>m_bfi <span class="ot">&lt;-</span> <span class="fl">3.48</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>sd_bfi <span class="ot">&lt;-</span> <span class="fl">0.65</span></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>p_tail <span class="ot">&lt;-</span> <span class="fl">0.025</span> <span class="co"># probability in each tail</span></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>lower_cutoff <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(p_tail, m_bfi, sd_bfi)</span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>upper_cutoff <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>p_tail, m_bfi, sd_bfi)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>m_bfi <span class="ot">&lt;-</span> <span class="fl">3.48</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>sd_bfi <span class="ot">&lt;-</span> <span class="fl">0.65</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>p_tail <span class="ot">&lt;-</span> <span class="fl">0.025</span> <span class="co"># probability in each tail</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>lower_cutoff <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(p_tail, m_bfi, sd_bfi)</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>upper_cutoff <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>p_tail, m_bfi, sd_bfi)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>95% of the population has BFI scores between 2.2060234 and 4.7539766. In another words, 5% of the population will have BFI scores more extreme than those cutoff scores. From this, you can already see if your extraversion score is outside of this range or now. But to find out the exact probability of seeing someone with your extraversion score or more extreme, we can use <code>pnorm</code> to find the probability.</p>
 <p>For example, if you want to find the probability below a raw score of 2.5 (a score that’s below the mean), you can use <code>pnorm</code> to do that in one step:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q=</span><span class="fl">2.5</span>, <span class="at">mean=</span><span class="fl">3.48</span>, <span class="at">sd=</span><span class="fl">0.65</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="at">q=</span><span class="fl">2.5</span>, <span class="at">mean=</span><span class="fl">3.48</span>, <span class="at">sd=</span><span class="fl">0.65</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.06581665</code></pre>
 </div>
 </div>
 <p>If you want to find the probability above a raw score of 4.5 (a score that’s above the mean), you can just subtract the probability below that raw score from 1, as we practiced in Exercise 6.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(<span class="at">q=</span><span class="fl">4.5</span>, <span class="at">mean=</span><span class="fl">3.48</span>, <span class="at">sd=</span><span class="fl">0.65</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(<span class="at">q=</span><span class="fl">4.5</span>, <span class="at">mean=</span><span class="fl">3.48</span>, <span class="at">sd=</span><span class="fl">0.65</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.05829709</code></pre>
 </div>

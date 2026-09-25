@@ -271,10 +271,11 @@ Find the z-scores **outside** of which the following percentages of the normal d
 
 What if we want to find the z-scores from bottom 10% to top 5%? They are not symmetric, so what do we do? 
 
-This is essentially subtracting the cumulative probability of the lower z-score from the cumulative probability of the upper z-score.
+This is exactly what we did for finding the z-scores for the bottom 10% and the top 5%.
 
 ```{r}
-qnorm(0.95) - qnorm(0.10)
+qnorm(0.95) # top 5 %
+qnorm(0.10) # bottom 10 %
 ```
 
 ::: {.callout-tip}
