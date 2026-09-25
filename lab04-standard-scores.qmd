@@ -336,7 +336,7 @@ If you want to find the probability above a raw score of 4.5 (a score that's abo
 ```
 
 :::{.callout-tip}
-#### Exercise 10
+#### Exercise 1
 * How extreme is your extraversion, given the population mean and standard deviation? In other words, what are the chances to see someone with your extraversion score or more extreme (on either end)?
 :::
 
