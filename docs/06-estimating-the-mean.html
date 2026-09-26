@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Yeon Soon Shin">
+<meta name="author" content="Anjali Thapar">
+<meta name="author" content="Dustin Albert">
+<meta name="author" content="Linda R. Cote">
+<meta name="author" content="Rupa G. Gordon">
+<meta name="author" content="Chrislyn E. Randell">
+<meta name="author" content="Judy Smith">
+<meta name="author" content="Helena Marvin">
+
+<title>Ch.6: Estimating the Parameter – Research Methods and Statistics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ba8f7c244c1f50cbf6c6a3aa3874339a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Research Methods and Statistics
+      </li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Research Methods and Statistics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Research Methods and Statistics</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Unit 1. The Foundations of Psychology Research</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-psych-science.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ch.1: Psychological Science</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-research-questions-and-claims.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ch.2: Research Questions to Claims</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-measurement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ch.3: Measurement</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-visualizing-and-describing-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ch.4: Visualizing and Describing Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Unit 2. Introduction to Inferential Statistics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-hypothesis-testing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ch 5. Hypothesis Testing</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Lab</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab01-r-basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 1: R Basics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab02-reliability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 2: Measurement Reliability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab03-eda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 3: Exploratory Data Analysis (EDA)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab04-standard-scores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 4: Standard Scores and Probability</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendix</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-apa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presenting Your Work in APA Style</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-stats-decisions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Which Statistical Test Should I Use?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-stats-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Statistics Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-z-scoring.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">z Scoring</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-z-dist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">z Distribution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-t-dist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">t Distribution</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#populations-and-samples" id="toc-populations-and-samples" class="nav-link" data-scroll-target="#populations-and-samples"><span class="header-section-number">1</span> Populations and Samples</a>
+  <ul>
+  <li><a href="#representativeness-of-the-sample-and-sampling-bias" id="toc-representativeness-of-the-sample-and-sampling-bias" class="nav-link" data-scroll-target="#representativeness-of-the-sample-and-sampling-bias"><span class="header-section-number">1.1</span> Representativeness of the Sample and Sampling Bias</a></li>
+  <li><a href="#sample-size-and-sampling-error" id="toc-sample-size-and-sampling-error" class="nav-link" data-scroll-target="#sample-size-and-sampling-error"><span class="header-section-number">1.2</span> Sample Size and Sampling Error</a></li>
+  <li><a href="#individual-scores-sample-statistics-and-population-parameters" id="toc-individual-scores-sample-statistics-and-population-parameters" class="nav-link" data-scroll-target="#individual-scores-sample-statistics-and-population-parameters"><span class="header-section-number">1.3</span> Individual Scores, Sample Statistics, and Population Parameters</a></li>
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key Takeaways</a></li>
+  </ul></li>
+  <li><a href="#estimating-counts" id="toc-estimating-counts" class="nav-link" data-scroll-target="#estimating-counts"><span class="header-section-number">2</span> Estimating Counts</a>
+  <ul>
+  <li><a href="#sampling-distribution-of-sample-counts" id="toc-sampling-distribution-of-sample-counts" class="nav-link" data-scroll-target="#sampling-distribution-of-sample-counts"><span class="header-section-number">2.1</span> Sampling Distribution of Sample Counts</a>
+  <ul>
+  <li><a href="#theoretical-distributions-of-sampling-error" id="toc-theoretical-distributions-of-sampling-error" class="nav-link" data-scroll-target="#theoretical-distributions-of-sampling-error"><span class="header-section-number">2.1.1</span> Theoretical Distributions of Sampling Error</a></li>
+  <li><a href="#larger-sample-sizes-smaller-sampling-error" id="toc-larger-sample-sizes-smaller-sampling-error" class="nav-link" data-scroll-target="#larger-sample-sizes-smaller-sampling-error"><span class="header-section-number">2.1.2</span> Larger Sample Sizes, Smaller Sampling Error</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#estimating-the-mean" id="toc-estimating-the-mean" class="nav-link" data-scroll-target="#estimating-the-mean"><span class="header-section-number">3</span> Estimating the Mean</a>
+  <ul>
+  <li><a href="#the-sampling-distribution-of-sample-means" id="toc-the-sampling-distribution-of-sample-means" class="nav-link" data-scroll-target="#the-sampling-distribution-of-sample-means"><span class="header-section-number">3.1</span> The Sampling Distribution of Sample Means</a>
+  <ul>
+  <li><a href="#the-central-limit-theorem" id="toc-the-central-limit-theorem" class="nav-link" data-scroll-target="#the-central-limit-theorem"><span class="header-section-number">3.1.1</span> The Central Limit Theorem</a></li>
+  </ul></li>
+  <li><a href="#key-takeaways-1" id="toc-key-takeaways-1" class="nav-link" data-scroll-target="#key-takeaways-1">Key Takeaways</a></li>
+  </ul></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Ch.6: Estimating the Parameter</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Authors</div>
+    <div class="quarto-title-meta-contents">
+             <p>Yeon Soon Shin </p>
+             <p>Anjali Thapar </p>
+             <p>Dustin Albert </p>
+             <p>Linda R. Cote </p>
+             <p>Rupa G. Gordon </p>
+             <p>Chrislyn E. Randell </p>
+             <p>Judy Smith </p>
+             <p>Helena Marvin </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="learning-objectives" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<ol type="1">
+<li></li>
+<li></li>
+</ol>
+</section>
+<section id="populations-and-samples" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="populations-and-samples"><span class="header-section-number">1</span> Populations and Samples</h2>
+<p>In Psychological research, we are usually interested in understanding a specific group of people. This group is known as the population of interest, or simply the population. The <strong>population</strong> is the collection of all people who have some characteristic in common; it can be as broad as “all people” if we have a very general research question about human psychology, or it can be extremely narrow, such as “all psychology majors at small liberal arts colleges” if we have a specific group in mind.</p>
+<p>In statistics, we often rely on a sample: a subset of the population that we can actually collect data from. If you are commissioned to examine how the American people feel about a new policy, it is not practical or possible to ask every single American their opinion. Instead, we ask a relatively small number of Americans and draw inferences about the entire country from their responses. There are two issues to consider: the representativeness of the sample and the size of the sample.</p>
+<section id="representativeness-of-the-sample-and-sampling-bias" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="representativeness-of-the-sample-and-sampling-bias"><span class="header-section-number">1.1</span> Representativeness of the Sample and Sampling Bias</h3>
+<p>As we touched on in Chapter 1, in choosing a sample, it is crucial that it not over-represent one kind of people from the population. For example, in a survey of American’s attitude toward a new policy, something would be wrong with our sample if it happened to be made up entirely of college students. If the sample held only college students, it could not be used to infer the attitudes of other Americans. Inferences from statistics are based on the assumption that sampling is representative of the population. If the sample is not representative, then the possibility of sampling bias occurs. <strong>Sampling bias</strong> means that our conclusions apply only to our sample and are not generalizable to the full population. If we are beginning research into a completely unstudied area, we may sometimes take some shortcuts to quickly gather data and get a general idea of how things work before fully investing a lot of time and money into well-designed research projects with proper sampling. This is known as <strong>convenience sampling</strong>, named for its ease of use. In limited cases, such as the one just described, convenience sampling is okay because we intend to follow up with a <strong>representative sample</strong>.</p>
+</section>
+<section id="sample-size-and-sampling-error" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="sample-size-and-sampling-error"><span class="header-section-number">1.2</span> Sample Size and Sampling Error</h3>
+<p>A population is described by a parameter; the parameter is the true value of the descriptive in the population, but one that we can never know for sure. For example, the Bureau of Labor Statistics reports that the average hourly wage of chefs is $23.87. However, even if this number were computed using information from every single chef in the United States (making it a parameter), it would quickly become slightly off as one chef retires and a new chef enters the job market. Additionally, as noted above, there is virtually no way to collect data from every single person in a population. In order to understand a variable, we estimate the population parameter using a sample statistic. Here, the term statistic refers to the specific number we compute from the data (e.g., the mean). <strong>A sample statistic is an estimate of the true population parameter</strong>.</p>
+<p>Even if our sample is representative of the population, our estimate will not be perfect. Even the best sample will be somewhat off from the full population, and there will always be some discrepancy between the parameter and the statistic we compute to estimate it. This discrepancy is known as <strong>sampling error</strong>. Just by a fluke of chance, our sample may have a slightly higher or lower mean than the population.</p>
+<p><strong>But we can reduce the amount of sampling error by increasing our sample size.</strong> In the example of the average hourly wage of chefs, if we only sampled 10 chefs, we would expect a lot of variability in our sample mean. Maybe we just happened to find 10 highly paid chefs. Next time we ask another 10 chefs and get their average, the central tendency in the new sample will vary a lot from the earlier sample. However, if we sampled 100 chefs, we would expect less variability in our sample mean. If we sampled 1,000 chefs, we would expect even less variability in our sample mean. The larger the sample size, the more likely it is that our sample statistic will be close to the true population parameter. In the pigeon example, if we asked 4 pigeons a question, all 4 pigeons giving the correct answer is not that surprising and can happen by chance. However, in the 1000 pigeon example, if they were just guessing, it would be very unlikely that all 1000 pigeons would give the correct answer. The larger the sample size, the more likely it is that our sample statistic will be close to the true population parameter.</p>
+</section>
+<section id="individual-scores-sample-statistics-and-population-parameters" class="level3" data-number="1.3">
+<h3 data-number="1.3" class="anchored" data-anchor-id="individual-scores-sample-statistics-and-population-parameters"><span class="header-section-number">1.3</span> Individual Scores, Sample Statistics, and Population Parameters</h3>
+<p>Most of what we have dealt with so far has concerned individual scores grouped into samples, with those samples being drawn from and, hopefully, representative of a population. We saw how we can understand the location of individual scores within a sample’s distribution via z scores, and how we can extend that to understand how likely it is to observe scores higher or lower than an individual score via probability.</p>
+<p>Inherent in this work is the notion that an individual score will differ from the mean, which we quantify as a z score. All of the individual scores will differ from the mean in different amounts and different directions, which is natural and expected. We quantify these differences as variance and standard deviation. Measures of spread and the idea of variability in observations is a key principle in inferential statistics. We know that any observation, whether it is a single score, a set of scores, or a particular descriptive statistic will differ from the center of whatever distribution it belongs in.</p>
+<p>This is equally true of things outside of statistics and format data collection and analysis. Some days you hear your alarm and wake up easily, but other days you need to hit snooze a few (dozen) times. Some days traffic is light, but other days it is very heavy. Some classes you are able to focus, pay attention, and take good notes, but other days you find yourself zoning out the entire time. Each individual observation is an insight but is not, by itself, the entire story, and it takes an extreme deviation from what we expect for us to think that something strange is going on. Being a little sleepy is normal, but being completely unable to get out of bed might indicate that we are sick. Light traffic is a good thing, but almost no cars on the road might make us think something is going on, like a floodwatch or road closure.</p>
+<p>All of these principles carry forward from scores within samples to samples within populations. <strong>Just like an individual score will differ from its mean, an individual sample mean will differ from the true population mean.</strong> We know ahead of time that if we collect data and compute a sample, the observed value of that sample will be at least slightly off from what we expect it to be based on our supposed population mean; this is natural and expected due to sampling error. However, if our sample mean is extremely different from what we expect based on the population mean, there may be something going on. In hypothesis testing, we are asking whether our observed difference is within the range of diffrence expected by sampling error, or whether it is unlikely to have occured by chance alone.</p>
+</section>
+<section id="key-takeaways" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="key-takeaways">Key Takeaways</h3>
+<ul>
+<li>Increasing the sample size reduces the amount of sampling error.</li>
+<li>Increasing the sample size does not reduce the amount of variability in individual scores.</li>
+</ul>
+</section>
+</section>
+<section id="estimating-counts" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="estimating-counts"><span class="header-section-number">2</span> Estimating Counts</h2>
+<section id="sampling-distribution-of-sample-counts" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="sampling-distribution-of-sample-counts"><span class="header-section-number">2.1</span> Sampling Distribution of Sample Counts</h3>
+<section id="theoretical-distributions-of-sampling-error" class="level4" data-number="2.1.1">
+<h4 data-number="2.1.1" class="anchored" data-anchor-id="theoretical-distributions-of-sampling-error"><span class="header-section-number">2.1.1</span> Theoretical Distributions of Sampling Error</h4>
+<p>Remember that in the binomial distribution over the possible counts of correct pigeon responses, we could compute what the probability of observing a certain number of correct responses was. That was a theoretical distribution of the sample “counts” (<a href="#fig-binomial-4" class="quarto-xref">Figure&nbsp;1</a>). This theoretical distribution shows our “expected” variability in the sample counts. If 10,000 different researchers were to sample 4 pigeons (sample size = 4), the empirical distribution of the sample counts would look like a theoretical, binomial distribution (<a href="#fig-binomial-4-r" class="quarto-xref">Figure&nbsp;2</a>). Some researchers may see all four pigeons correct due to <strong>sampling error</strong>, and we expect that to happen about 6.25% of the time (out of 10,000 samples). In our simulated 10,000 samples (studies), we see a similar pattern, where 657 samples have all four pigeons correct (<a href="#tbl-binomial" class="quarto-xref">Table&nbsp;1</a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-binomial-4" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Bar Chart showing the probability distribution of the number of correct answers by chance. The x-axis shows the possible sample count from 0 to the number of pigeons studied, and the y-axis shows the probability.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-binomial-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-estimating-the-mean_files/figure-html/fig-binomial-4-1.png" class="img-fluid figure-img" alt="Bar Chart showing the probability distribution of the number of correct answers by chance. The x-axis shows the possible sample count from 0 to the number of pigeons studied, and the y-axis shows the probability." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-binomial-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: How likely is it for this many pigeons out of four pigeons to be correct by chance if pigeons are just guessing? Probabilities are shown in <a href="#tbl-binomial" class="quarto-xref">Table&nbsp;1</a>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-binomial-4-r" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Bar Chart showing the frequency distribution of the number of correct answers after 10,000 trials. The x-axis shows the sample count from 0 to the sample size, and the y-axis shows the frequency out of 10,000. The highest frequency is at 2 aroudn 3800, and the frequency decreases as the sample count moves away from the middle.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-binomial-4-r-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-estimating-the-mean_files/figure-html/fig-binomial-4-r-1.png" class="img-fluid figure-img" alt="Bar Chart showing the frequency distribution of the number of correct answers after 10,000 trials. The x-axis shows the sample count from 0 to the sample size, and the y-axis shows the frequency out of 10,000. The highest frequency is at 2 aroudn 3800, and the frequency decreases as the sample count moves away from the middle." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-binomial-4-r-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: The empirical distribution of the number of correct answers. Empricial frequencies are shown in <a href="#tbl-binomial" class="quarto-xref">Table&nbsp;1</a>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-tbl-align="left">
+<div id="tbl-binomial" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-align="left">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-binomial-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: The probability of 0 to 4 pigeons being correct by chance if a pigeon is just guessing, and empirically observed frequencies after 100 trials.
+</figcaption>
+<div aria-describedby="tbl-binomial-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Correct.Pigeons</th>
+<th style="text-align: right;">Probability</th>
+<th style="text-align: right;">Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.0625</td>
+<td style="text-align: right;">652</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.2500</td>
+<td style="text-align: right;">2472</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.3750</td>
+<td style="text-align: right;">3702</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.2500</td>
+<td style="text-align: right;">2517</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.0625</td>
+<td style="text-align: right;">657</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="larger-sample-sizes-smaller-sampling-error" class="level4" data-number="2.1.2">
+<h4 data-number="2.1.2" class="anchored" data-anchor-id="larger-sample-sizes-smaller-sampling-error"><span class="header-section-number">2.1.2</span> Larger Sample Sizes, Smaller Sampling Error</h4>
+<p>If we increase the sample size to 100 pigeons, our sampling error is reduced, and it is much less likely to get the counts of correct responses that are far from the expected value of 50 (<a href="#fig-binomial-100" class="quarto-xref">Figure&nbsp;3</a>). Some researchers may see all 100 pigeons correct due to sampling error, but that chance is less than one in a trillion.</p>
+<p>As the sample size increases, another interesting thing happens. The distribution of sample counts becomes much more like a normal distribution. This will be important to keep in mind as we move forward, because the normal distribution is a very useful distribution in statistics.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-binomial-100" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Bar Chart showing the probability distribution of the number of correct answers by chance. The x-axis shows the possible sample count from 0 to 100, and the y-axis shows the probability.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-binomial-100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-estimating-the-mean_files/figure-html/fig-binomial-100-1.png" class="img-fluid figure-img" alt="Bar Chart showing the probability distribution of the number of correct answers by chance. The x-axis shows the possible sample count from 0 to 100, and the y-axis shows the probability." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-binomial-100-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Number of Correct Pigeons Out of 100 Pigeons. The variability is much smaller than in <a href="#fig-binomial-4" class="quarto-xref">Figure&nbsp;1</a>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>So far, we have been looking at the theoretical distribution of counts, which follows the rules of probability. When we estimate the population count, we base that estimate on the sample count, while also considering the sampling error associated with that estimate.</p>
+<p>Can we do something like this for the mean?</p>
+</section>
+</section>
+</section>
+<section id="estimating-the-mean" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="estimating-the-mean"><span class="header-section-number">3</span> Estimating the Mean</h2>
+<section id="the-sampling-distribution-of-sample-means" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="the-sampling-distribution-of-sample-means"><span class="header-section-number">3.1</span> The Sampling Distribution of Sample Means</h3>
+<p>As we have seen with the distribution of sample counts, we can also consider the distribution of sample means. We need the theoretical distribution of how much sample means vary from the true population mean, due to sampling error. If we were to take many samples, all of the same size, and calculate the mean of each of those, we could put those means together to form a distribution. This new distribution is, intuitively, known as the distribution of sample means. For our purposes, understanding the distribution of sample means will be enough to see how all other sampling distributions work to enable and inform our inferential analyses, so these two terms will be used interchangeably from here on out. Let’s take a deeper look at some of its characteristics.</p>
+<section id="the-central-limit-theorem" class="level4" data-number="3.1.1">
+<h4 data-number="3.1.1" class="anchored" data-anchor-id="the-central-limit-theorem"><span class="header-section-number">3.1.1</span> The Central Limit Theorem</h4>
+<p>We have already seen that the distribution of sample counts becomes more normal as the sample size increases. The same is true for the distribution of sample means. This is known as the <strong>Central Limit Theorem</strong>. The Central Limit Theorem states that, regardless of the shape of the population distribution of individual scores, if we take the mean of the scores in a large enough sample, those sample means will be normally distributed. In other words, <strong>as long as we have a decent sized sample (roughly 30+), the distribution of sample means will be approximately normal, no matter what shape your population distribution is</strong>. Even if the individual scores are bimodal, skewed, or spiky, or just about anything else, when you average across many scores, the distribution of those averages will be normal – although when the population distribution is extremely skewed or looks very different from a normal distribution, we may need a larger sample size to make the sampling distribution of sample means normal.</p>
+<p>This is a very important property of the distribution of sample means, because it allows us to use the normal distribution to make inferences about how exactly unlikely our sample mean is, just like you found out about how exactly unlikely a single extraversion score is.</p>
+<p>Normal distributions are defined by their mean and standard deviation – where’s the peak, and how spread out is the distribution? That means, to know the probability of observing sample means as extreme as our sample mean or more extreme, we need to know the mean and the standard deviation of the distribution of sample means. In terms of sample means, what we need to know is the typical sample mean, and how much variability we can expect in the sample means. Very helpfully, the Central Limit Theorem tells us how to find both of those:</p>
+<ul>
+<li>The mean of the sampling distribution (i.e., the mean of the sample means) is the same as the mean of the population (<span class="math inline">\(\mu_M\)</span>).</li>
+</ul>
+<p>#<span class="math display">\[ \mu_M = \mu\]</span></p>
+<ul>
+<li>The standard deviation of the sampling distribution (i.e., the standard deviation of the sample means <span class="math inline">\(\sigma_M\)</span>; called <strong>standard error of the mean (SEM)</strong>) gets smaller as the sample size increases. <span class="math display">\[\sigma_M = \frac{\sigma}{\sqrt{n}}\]</span></li>
+</ul>
+<p>where <span class="math inline">\(\sigma\)</span> is the standard deviation of the population, and <span class="math inline">\(n\)</span> is the sample size.</p>
+<p>Notice that the sample size is in the SEM equation. As stated above, the sampling distribution refers to samples of a specific size. That is, all sample means must be calculated from samples of the same size n, such as n = 10, n = 30, or n = 100. This sample size refers to how many people or observations are in each individual sample, not how many samples are used to form the sampling distribution. This is because the sampling distribution is a theoretical distribution, not one we will ever actually calculate or observe. <a href="#fig-sampling-distribution" class="quarto-xref">Figure&nbsp;4</a> displays the principles stated here in graphical form.</p>
+<div id="fig-sampling-distribution" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A bell curve line. The horizontal axis is labeled mu subscript M. There is a line from the center of the bell curve to the peak. A line extends from the center line about two thirds of the way up, connecting to the curved line. It is labeled sigma subscript M.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sampling-distribution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://umsystem.pressbooks.pub/app/uploads/sites/23/2021/12/Sampling_Distribution_of_Sample_Means-2.png" class="img-fluid figure-img" alt="A bell curve line. The horizontal axis is labeled mu subscript M. There is a line from the center of the bell curve to the peak. A line extends from the center line about two thirds of the way up, connecting to the curved line. It is labeled sigma subscript M.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sampling-distribution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: The Sampling Distribution of Sample Means by Judy Schmitt
+</figcaption>
+</figure>
+</div>
+<p>Because the standard deviation of the sampling distribution of sample means gets smaller as the sample size increases, we can see that larger samples will give us more precise estimates of the population mean. This is called the <strong>law of large numbers</strong>. The law of large numbers states that as the sample size increases, the sample mean will get closer and closer to the population mean. This is illustrated in <a href="#fig-law-of-large-numbers" class="quarto-xref">Figure&nbsp;5</a>.</p>
+<div id="fig-law-of-large-numbers" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A graph with four curved lines. The horizontal axis is labeled mu subscript M. The range is 30 to 70. The curved lines get narrower as they get taller, with the colors and status as follows: at the bottom, the widest shortest line is solid orange and labeled N=10. The next line is dotted and black, labeled N=30. the next line is solid and dark blue, labeled N=50. The final line is dotted and light blue, labeled N=100.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-law-of-large-numbers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://umsystem.pressbooks.pub/app/uploads/sites/23/2021/12/Sampling_Distributions_with_Different_Sample_Sizes-2.png" class="img-fluid figure-img" alt="A graph with four curved lines. The horizontal axis is labeled mu subscript M. The range is 30 to 70. The curved lines get narrower as they get taller, with the colors and status as follows: at the bottom, the widest shortest line is solid orange and labeled N=10. The next line is dotted and black, labeled N=30. the next line is solid and dark blue, labeled N=50. The final line is dotted and light blue, labeled N=100.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-law-of-large-numbers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Sampling distributions from the same population with <span class="math inline">\(\mu = 50\)</span> and <span class="math inline">\(\sigma = 10\)</span> but different sample sizes (N = 10, N = 30, N = 50, N = 100)
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="key-takeaways-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="key-takeaways-1">Key Takeaways</h3>
+<ul>
+<li></li>
+<li></li>
+</ul>
+</section>
+</section>
+<section id="exercises" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="exercises">Exercises</h2>
+<ol type="1">
+<li></li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/yeonsoon\.github\.io\/research-methods-and-stats-book");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

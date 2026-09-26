@@ -1,0 +1,337 @@
+---
+title: "Lab 4: Standard Scores and Probability Answers"
+format:
+  html:
+    html-math-method: plain
+    embed-resources: true
+---
+
+## Going Between Raw Scores and z Scores
+
+#### Exercise 1
+
+a. z = -1.96, mean = 3.48, sd = 0.65
+
+```{r}
+(-1.96 * 0.65) + 3.48
+```
+
+:::{.callout-caution}
+##### Common Mistakes
+
+Pay attention to the sign. Negative z score means that the raw score is "below" the mean. If you dropped the minus sign, you would get a raw score above the mean.
+
+```{r}
+1.96 * 0.65 + 3.48
+```
+:::
+
+b. raw score = 9.18, mean = 12.26, sd = 1.57
+
+```{r}
+(9.18-12.26)/1.57
+```
+
+## z Scores to Probability
+
+#### Exercise 1
+Find the probability below the following z-scores:
+
+  a. -2
+  b. -1.96
+  c. -1.645
+  d. -1.28
+  e. 0
+  
+```{r}
+pnorm(-2)
+pnorm(-1.96)
+pnorm(-1.645)
+pnorm(-1.28)
+pnorm(0)
+```
+
+#### Exercise 2
+
+Find the probability above the following z-scores:
+
+  a. 2
+  b. 1.96
+  c. 1.645
+  d. 1.28
+  e. 0
+
+```{r}
+1-pnorm(2)
+1-pnorm(1.96)
+1-pnorm(1.645)
+1-pnorm(1.28)
+1-pnorm(0)
+```
+
+:::{.callout-note}
+#### Compare the values you get with the ones from Exercise 1. What do you notice?
+They are exactly the same as Exercise 1, because normal distributions are symmetric.
+:::
+
+#### Exercise 3
+
+Find the probability in both tails outside of the following z-scores:
+
+  a. -2 and 2
+  b. -1.96 and 1.96
+  c. -1.645 and 1.645
+  d. -1.28 and 1.28
+  
+```{r}
+2*(1-pnorm(2)) # twice the probability above 2
+2*(1-pnorm(1.96)) # twice the probability above 1.96
+2*(1-pnorm(1.645)) # twice the probability above 1.645
+2*(1-pnorm(1.28)) # twice the probability above 1.28
+```
+  
+#### Exercise 4
+Find the probability between the following z-scores:
+
+  a. -1.645 and -0.524
+  b. -0.524 and 0.842
+  c. 0.842 and 1.645
+
+```{r}
+pnorm(-0.524) - pnorm(-1.645) # probability between -1.645 and -0.524
+pnorm(0.842) - pnorm(-0.524) # probability between -0.524 and 0.842
+pnorm(1.645) - pnorm(0.842) # probability between 0.842 and 1.645
+```
+
+## Probability to z Scores
+
+#### Exercise 5
+
+Find the z-scores **below** which the following percentages of the normal distribution fall:
+
+  a. 2.275%
+  b. 2.5%
+  c. 5%
+  d. 50%
+  
+```{r}
+qnorm(0.02275) # 2.275% below this z
+qnorm(0.025) # 2.5% below this z
+qnorm(0.05) # 5% below this z
+qnorm(0.5) # 50% below this z
+```
+
+#### Exercise 6
+
+Find the z-scores **above** which the following percentages of the normal distribution fall:
+
+  a. 2.275%
+  b. 2.5%
+  c. 5%
+  d. 50%
+
+```{r}
+qnorm(1-0.02275) # 2.275% above this z
+qnorm(1-0.025) # 2.5% above this z
+qnorm(1-0.05) # 5% above this z
+qnorm(1-0.5) # 50% above this z
+```
+
+:::{.callout-caution}
+##### Common Mistakes
+
+For proportion in the tails, pay attention to the match between the sign and the side of the tail.
+
+* For negative z, lower tail contains less than half.
+* For positive z, upper tail contains less than half.
+
+Because this exercise is asking about upper tail, z scores should be all positive.
+:::
+
+:::{.callout-note}
+#### Compare the values you get with the ones from Exercise 5. What do you notice?
+They are identical to Exercise 5, except that the signs are flipped. This is because normal distributions are symmetric.
+:::
+
+
+#### Exercise 7
+Find the z-scores **outside** of which the following percentages of the normal distribution fall:
+
+  a. 4.55%
+  b. 5%
+  c. 10%
+  
+```{r}
+# a. 4.55%
+qnorm(0.0455/2)
+qnorm(1-(0.0455/2))
+
+# b. 5%
+qnorm(0.05/2)
+qnorm(1-(0.05/2))
+
+# c. 10%
+qnorm(0.1/2)
+qnorm(1-(0.1/2))
+```
+
+
+#### Exercise 8
+Find the cutoff z scores for the following probabilities:
+
+  a. Bottom 5% to Bottom 30%
+  b. Bottom 30% to Top 20%
+  c. Top 20% to Top 5%
+  
+```{r}
+#  Bottom 5% to Bottom 30%
+qnorm(0.05) 
+qnorm(0.3)
+
+# Bottom 30% to Top 20%
+qnorm(0.3) 
+qnorm(1-0.2)
+
+# Top 20% to Top 5%
+qnorm(1-0.2) 
+qnorm(1-0.05)
+```
+:::{.callout-caution}
+##### Common Mistakes
+
+```{r}
+qnorm(0.2) # this is bottom 20, not top 20
+```
+
+Check: Z score for the top 20% should be positive (Top 50% is z=0).
+
+:::
+
+## Putting It All Together
+
+#### Exercise 1
+How extreme is your extraversion, given the population mean and standard deviation? In other words, what are the chances to see someone with your extraversion score or more extreme (on either end)?
+
+For visualization, use [the two tails section in the app](https://oniiu8-yeon0soon-shin.shinyapps.io/z-dist/#find-the-probability-in-the-two-tails-from-two-cutoff-values).
+
+##### If your extraversion score was lower than average
+
+```{r}
+my_score <- 3.33
+
+cumul_p <- pnorm(q=my_score, mean=3.48, sd=0.65) # probability below this score
+
+# one tail is probability below the score
+one_tail_p <- cumul_p 
+
+# scores "as extreme as" can be on either side of the spectrum (extremely introverted or extremely extraverted) 
+one_tail_p * 2
+```
+
+##### If your extraversion score was higher than average
+
+```{r}
+my_score <- 3.63
+
+cumul_p <- pnorm(q=my_score, mean=3.48, sd=0.65) # probability below this score
+
+# one tail is probability above the score (1-probability below)
+one_tail_p <- 1-cumul_p 
+
+# scores "as extreme as" can be on either side of the spectrum (extremely introverted or extremely extraverted) 
+one_tail_p * 2
+```
+
+
+:::{.callout-caution}
+##### Common Mistakes: Reporting only one tail
+
+Because scores "as extreme as" can be on either side of the spectrum (extremely introverted or extremely extraverted), you need to double the probability in one tail to **get the total probability**.
+
+```{r}
+m_bfi <- 3.48
+sd_bfi <- 0.65
+m_epi <- 12.26
+sd_epi <- 1.57
+```
+
+
+Some quick markers to check: 
+
+* If you are within 1SD, there is at least ~32% of people who's as extreme as you.
+* If you are within 2SD, there is at least ~5% of people who's as extreme as you.
+
+Below are examples of mistakes, ordered by score:
+
+##### 2.33
+
+```{r}
+my_score <- 2.33
+my_z <- (my_score - m_bfi) / sd_bfi
+pnorm(my_z) 
+2 * pnorm(my_z)
+```
+
+`r pnorm(my_z)` is the lower tail probability, and the probability to find someone as extreme or more extreme is `r pnorm(my_z) * 2`.
+
+##### 2.67
+
+```{r}
+my_score <- 2.67
+my_z <- (my_score - m_bfi) / sd_bfi
+pnorm(my_z)
+2 * pnorm(my_z)
+```
+
+`r pnorm(my_z)` is the lower tail probability, and the probability to find someone as extreme or more extreme is `r pnorm(my_z) * 2`.
+
+##### 3
+
+```{r}
+my_score <- 3
+my_z <- (my_score - m_bfi) / sd_bfi
+pnorm(my_z)
+2 * pnorm(my_z)
+```
+
+`r pnorm(my_z)` is the lower tail probability, and the probability to find someone as extreme or more extreme is `r pnorm(my_z) * 2`.
+
+##### 3.33
+
+```{r}
+my_score <- 3.33
+pnorm(my_score, m_bfi, sd_bfi)
+2 * pnorm(my_score, m_bfi, sd_bfi)
+```
+
+`r pnorm(my_score, m_bfi, sd_bfi)` is the lower tail probability, and the probability to find someone as extreme or more extreme is `r pnorm(my_score, m_bfi, sd_bfi) * 2`.
+
+##### Above average
+
+```{r}
+my_score <- 4.1
+1-pnorm(my_score, m_bfi, sd_bfi)
+2 * (1-pnorm(my_score, m_bfi, sd_bfi))
+```
+
+`r 1-pnorm(my_score, m_bfi, sd_bfi)` is the **upper** tail probability, and the probability to find someone as extreme or more extreme is `r (1-pnorm(my_score, m_bfi, sd_bfi)) * 2`.
+
+```{r}
+my_score <- 4.33
+1-pnorm(my_score, m_bfi, sd_bfi)
+2 * (1-pnorm(my_score, m_bfi, sd_bfi))
+```
+
+`r 1-pnorm(my_score, m_bfi, sd_bfi)` is the **upper** tail probability, and the probability to find someone as extreme or more extreme is `r (1-pnorm(my_score, m_bfi, sd_bfi)) * 2`.
+
+
+```{r}
+my_score <- 5
+1-pnorm(my_score, m_bfi, sd_bfi)
+2 * (1-pnorm(my_score, m_bfi, sd_bfi))
+```
+
+`r 1-pnorm(my_score, m_bfi, sd_bfi)` is the **upper** tail probability, and the probability to find someone as extreme or more extreme is `r (1-pnorm(my_score, m_bfi, sd_bfi)) * 2`.
+
+
+:::
