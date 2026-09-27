@@ -15,7 +15,7 @@
 <meta name="author" content="Judy Smith">
 <meta name="author" content="Helena Marvin">
 
-<title>Ch.6: Estimating the Parameter – Research Methods and Statistics</title>
+<title>Ch.6: Estimating the Mean – Research Methods and Statistics</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -123,9 +123,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Research Methods and Statistics
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-hypothesis-testing.html">Unit 2. Introduction to Inferential Statistics</a></li><li class="breadcrumb-item"><a href="./06-estimating-the-mean.html">Ch.6: Estimating the Mean</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -204,6 +202,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="./05-hypothesis-testing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ch 5. Hypothesis Testing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-estimating-the-mean.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Ch.6: Estimating the Mean</span></a>
   </div>
 </li>
       </ul>
@@ -301,39 +305,32 @@ window.Quarto = {
    
   <ul>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
-  <li><a href="#populations-and-samples" id="toc-populations-and-samples" class="nav-link" data-scroll-target="#populations-and-samples"><span class="header-section-number">1</span> Populations and Samples</a>
+  <li><a href="#populations-samples-and-individuals" id="toc-populations-samples-and-individuals" class="nav-link" data-scroll-target="#populations-samples-and-individuals"><span class="header-section-number">1</span> Populations, Samples, and Individuals</a>
   <ul>
-  <li><a href="#representativeness-of-the-sample-and-sampling-bias" id="toc-representativeness-of-the-sample-and-sampling-bias" class="nav-link" data-scroll-target="#representativeness-of-the-sample-and-sampling-bias"><span class="header-section-number">1.1</span> Representativeness of the Sample and Sampling Bias</a></li>
-  <li><a href="#sample-size-and-sampling-error" id="toc-sample-size-and-sampling-error" class="nav-link" data-scroll-target="#sample-size-and-sampling-error"><span class="header-section-number">1.2</span> Sample Size and Sampling Error</a></li>
+  <li><a href="#understanding-population-parameter-not-individual-scores" id="toc-understanding-population-parameter-not-individual-scores" class="nav-link" data-scroll-target="#understanding-population-parameter-not-individual-scores"><span class="header-section-number">1.1</span> Understanding Population Parameter, Not Individual Scores</a></li>
+  <li><a href="#estimating-population-parameters-from-sample-statistics-comes-with-sampling-error" id="toc-estimating-population-parameters-from-sample-statistics-comes-with-sampling-error" class="nav-link" data-scroll-target="#estimating-population-parameters-from-sample-statistics-comes-with-sampling-error"><span class="header-section-number">1.2</span> Estimating Population Parameters From Sample Statistics Comes With Sampling Error</a></li>
   <li><a href="#individual-scores-sample-statistics-and-population-parameters" id="toc-individual-scores-sample-statistics-and-population-parameters" class="nav-link" data-scroll-target="#individual-scores-sample-statistics-and-population-parameters"><span class="header-section-number">1.3</span> Individual Scores, Sample Statistics, and Population Parameters</a></li>
   <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key Takeaways</a></li>
-  </ul></li>
-  <li><a href="#estimating-counts" id="toc-estimating-counts" class="nav-link" data-scroll-target="#estimating-counts"><span class="header-section-number">2</span> Estimating Counts</a>
-  <ul>
-  <li><a href="#sampling-distribution-of-sample-counts" id="toc-sampling-distribution-of-sample-counts" class="nav-link" data-scroll-target="#sampling-distribution-of-sample-counts"><span class="header-section-number">2.1</span> Sampling Distribution of Sample Counts</a>
-  <ul>
-  <li><a href="#theoretical-distributions-of-sampling-error" id="toc-theoretical-distributions-of-sampling-error" class="nav-link" data-scroll-target="#theoretical-distributions-of-sampling-error"><span class="header-section-number">2.1.1</span> Theoretical Distributions of Sampling Error</a></li>
-  <li><a href="#larger-sample-sizes-smaller-sampling-error" id="toc-larger-sample-sizes-smaller-sampling-error" class="nav-link" data-scroll-target="#larger-sample-sizes-smaller-sampling-error"><span class="header-section-number">2.1.2</span> Larger Sample Sizes, Smaller Sampling Error</a></li>
-  </ul></li>
   </ul></li>
   <li><a href="#estimating-the-mean" id="toc-estimating-the-mean" class="nav-link" data-scroll-target="#estimating-the-mean"><span class="header-section-number">3</span> Estimating the Mean</a>
   <ul>
   <li><a href="#the-sampling-distribution-of-sample-means" id="toc-the-sampling-distribution-of-sample-means" class="nav-link" data-scroll-target="#the-sampling-distribution-of-sample-means"><span class="header-section-number">3.1</span> The Sampling Distribution of Sample Means</a>
   <ul>
-  <li><a href="#the-central-limit-theorem" id="toc-the-central-limit-theorem" class="nav-link" data-scroll-target="#the-central-limit-theorem"><span class="header-section-number">3.1.1</span> The Central Limit Theorem</a></li>
+  <li><a href="#the-central-limit-theorem-sample-means-of-large-samples-are-normally-distributed-around-the-population-mean" id="toc-the-central-limit-theorem-sample-means-of-large-samples-are-normally-distributed-around-the-population-mean" class="nav-link" data-scroll-target="#the-central-limit-theorem-sample-means-of-large-samples-are-normally-distributed-around-the-population-mean"><span class="header-section-number">3.1.1</span> The Central Limit Theorem: Sample Means of Large Samples Are Normally Distributed Around the Population Mean</a></li>
   </ul></li>
-  <li><a href="#key-takeaways-1" id="toc-key-takeaways-1" class="nav-link" data-scroll-target="#key-takeaways-1">Key Takeaways</a></li>
+  <li><a href="#the-law-of-large-numbers-larger-samples-give-more-precise-estimates-of-the-population-mean" id="toc-the-law-of-large-numbers-larger-samples-give-more-precise-estimates-of-the-population-mean" class="nav-link" data-scroll-target="#the-law-of-large-numbers-larger-samples-give-more-precise-estimates-of-the-population-mean"><span class="header-section-number">3.2</span> The Law of Large Numbers: Larger Samples Give More Precise Estimates of the Population Mean</a></li>
+  <li><a href="#uncertainty-of-the-estimate-confidence-intervals" id="toc-uncertainty-of-the-estimate-confidence-intervals" class="nav-link" data-scroll-target="#uncertainty-of-the-estimate-confidence-intervals"><span class="header-section-number">3.3</span> Uncertainty of the Estimate: Confidence Intervals</a></li>
+  <li><a href="#key-takeaways-2" id="toc-key-takeaways-2" class="nav-link" data-scroll-target="#key-takeaways-2">Key Takeaways</a></li>
   </ul></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-hypothesis-testing.html">Unit 2. Introduction to Inferential Statistics</a></li><li class="breadcrumb-item"><a href="./06-estimating-the-mean.html">Ch.6: Estimating the Mean</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Ch.6: Estimating the Parameter</h1>
+<h1 class="title">Ch.6: Estimating the Mean</h1>
 </div>
 
 
@@ -366,46 +363,60 @@ window.Quarto = {
 <section id="learning-objectives" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
 <ol type="1">
-<li></li>
-<li></li>
+<li>Distinguish between individual scores, sample statistics, and population parameters.</li>
+<li>Explain why sample statistics vary from sample to sample due to sampling error.</li>
+<li>Describe the shape and center of the sampling distribution of sample means, using the Central Limit Theorem.</li>
+<li>Explain the standard error of the mean as a measure of the variability of sample means and its relationship to sample size.</li>
+<li>Construct and interpret a confidence interval to express uncertainty in an estimate of the population mean.</li>
 </ol>
 </section>
-<section id="populations-and-samples" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="populations-and-samples"><span class="header-section-number">1</span> Populations and Samples</h2>
+<section id="populations-samples-and-individuals" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="populations-samples-and-individuals"><span class="header-section-number">1</span> Populations, Samples, and Individuals</h2>
 <p>In Psychological research, we are usually interested in understanding a specific group of people. This group is known as the population of interest, or simply the population. The <strong>population</strong> is the collection of all people who have some characteristic in common; it can be as broad as “all people” if we have a very general research question about human psychology, or it can be extremely narrow, such as “all psychology majors at small liberal arts colleges” if we have a specific group in mind.</p>
-<p>In statistics, we often rely on a sample: a subset of the population that we can actually collect data from. If you are commissioned to examine how the American people feel about a new policy, it is not practical or possible to ask every single American their opinion. Instead, we ask a relatively small number of Americans and draw inferences about the entire country from their responses. There are two issues to consider: the representativeness of the sample and the size of the sample.</p>
-<section id="representativeness-of-the-sample-and-sampling-bias" class="level3" data-number="1.1">
-<h3 data-number="1.1" class="anchored" data-anchor-id="representativeness-of-the-sample-and-sampling-bias"><span class="header-section-number">1.1</span> Representativeness of the Sample and Sampling Bias</h3>
-<p>As we touched on in Chapter 1, in choosing a sample, it is crucial that it not over-represent one kind of people from the population. For example, in a survey of American’s attitude toward a new policy, something would be wrong with our sample if it happened to be made up entirely of college students. If the sample held only college students, it could not be used to infer the attitudes of other Americans. Inferences from statistics are based on the assumption that sampling is representative of the population. If the sample is not representative, then the possibility of sampling bias occurs. <strong>Sampling bias</strong> means that our conclusions apply only to our sample and are not generalizable to the full population. If we are beginning research into a completely unstudied area, we may sometimes take some shortcuts to quickly gather data and get a general idea of how things work before fully investing a lot of time and money into well-designed research projects with proper sampling. This is known as <strong>convenience sampling</strong>, named for its ease of use. In limited cases, such as the one just described, convenience sampling is okay because we intend to follow up with a <strong>representative sample</strong>.</p>
+<p>In statistics, we often rely on a sample: a subset of the population that we can actually collect data from. If you are commissioned to examine how the American people feel about a new policy, it is not practical or possible to ask every single American their opinion. Instead, we ask a relatively small number of Americans and draw inferences about the entire country from their responses.</p>
+<!-- ### Representativeness of the Sample and Sampling Bias 
+
+As we touched on in Chapter 1, in choosing a sample, it is crucial that it not over-represent one kind of people from the population. For example, in a survey of American's attitude toward a new policy, something would be wrong with our sample if it happened to be made up entirely of college students. If the sample held only college students, it could not be used to infer the attitudes of other Americans. Inferences from statistics are based on the assumption that sampling is representative of the population. If the sample is not representative, then the possibility of sampling bias occurs. **Sampling bias** means that our conclusions apply only to our sample and are not generalizable to the full population. If we are beginning research into a completely unstudied area, we may sometimes take some shortcuts to quickly gather data and get a general idea of how things work before fully investing a lot of time and money into well-designed research projects with proper sampling. This is known as **convenience sampling**, named for its ease of use. In limited cases, such as the one just described, convenience sampling is okay because we intend to follow up with a **representative sample**.  -->
+<section id="understanding-population-parameter-not-individual-scores" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="understanding-population-parameter-not-individual-scores"><span class="header-section-number">1.1</span> Understanding Population Parameter, Not Individual Scores</h3>
+<p>In hypothesis testing, our goal is to draw conclusions about the population as a whole, not to predict individual scores. For example, we may want to know whether people in the United States generally prefer chocolate ice cream or vanilla ice cream to inform marketing and sales strategies. However, we are not trying to predict the preference of any specific person. Similarly, we may be interested in the average public attitude toward a new policy, rather than whether a particular individual supports or opposes it. We may also want to know the average hourly wage of chefs, rather than predict the earnigs of a specific chef. In each of these examples, the focus is on understanding <strong>overall characteristics of the population</strong>, not individual scores. The most commonly studied population characteristic is the average – the mean. Because of its importance, much of the remainder of this course will focus on population means and testing whether the means are different from one another.</p>
 </section>
-<section id="sample-size-and-sampling-error" class="level3" data-number="1.2">
-<h3 data-number="1.2" class="anchored" data-anchor-id="sample-size-and-sampling-error"><span class="header-section-number">1.2</span> Sample Size and Sampling Error</h3>
-<p>A population is described by a parameter; the parameter is the true value of the descriptive in the population, but one that we can never know for sure. For example, the Bureau of Labor Statistics reports that the average hourly wage of chefs is $23.87. However, even if this number were computed using information from every single chef in the United States (making it a parameter), it would quickly become slightly off as one chef retires and a new chef enters the job market. Additionally, as noted above, there is virtually no way to collect data from every single person in a population. In order to understand a variable, we estimate the population parameter using a sample statistic. Here, the term statistic refers to the specific number we compute from the data (e.g., the mean). <strong>A sample statistic is an estimate of the true population parameter</strong>.</p>
-<p>Even if our sample is representative of the population, our estimate will not be perfect. Even the best sample will be somewhat off from the full population, and there will always be some discrepancy between the parameter and the statistic we compute to estimate it. This discrepancy is known as <strong>sampling error</strong>. Just by a fluke of chance, our sample may have a slightly higher or lower mean than the population.</p>
-<p><strong>But we can reduce the amount of sampling error by increasing our sample size.</strong> In the example of the average hourly wage of chefs, if we only sampled 10 chefs, we would expect a lot of variability in our sample mean. Maybe we just happened to find 10 highly paid chefs. Next time we ask another 10 chefs and get their average, the central tendency in the new sample will vary a lot from the earlier sample. However, if we sampled 100 chefs, we would expect less variability in our sample mean. If we sampled 1,000 chefs, we would expect even less variability in our sample mean. The larger the sample size, the more likely it is that our sample statistic will be close to the true population parameter. In the pigeon example, if we asked 4 pigeons a question, all 4 pigeons giving the correct answer is not that surprising and can happen by chance. However, in the 1000 pigeon example, if they were just guessing, it would be very unlikely that all 1000 pigeons would give the correct answer. The larger the sample size, the more likely it is that our sample statistic will be close to the true population parameter.</p>
+<section id="estimating-population-parameters-from-sample-statistics-comes-with-sampling-error" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="estimating-population-parameters-from-sample-statistics-comes-with-sampling-error"><span class="header-section-number">1.2</span> Estimating Population Parameters From Sample Statistics Comes With Sampling Error</h3>
+<p>A population is described by a parameter; the parameter is the true value of the descriptive in the population that we want to know, but one that we can never know for sure. For example, the Bureau of Labor Statistics reports that the average hourly wage of chefs is $23.87. However, even if this number were computed using information from every single chef in the United States (making it a parameter), it would quickly become slightly off as one chef retires and a new chef enters the job market. Additionally, there is virtually no way to collect data from every single person in a population. In order to understand a variable, we estimate the population parameter using a sample statistic. Here, the term statistic refers to the specific number we compute from the data (e.g., the mean). <strong>A sample statistic is an estimate of the true population parameter</strong>.</p>
+<p>Even if our sample is representative of the population, our estimate will not be perfect. Even the best sample will be somewhat off from the full population, and there will always be some discrepancy between the parameter and the statistic we compute to estimate it. This discrepancy is known as <strong>sampling error</strong>. Just by a fluke of chance, our sample may have a slightly higher or lower mean than the population. So when you are estimating a population parameter from a sample statistic, you should always consider <strong>how off your estimate might be</strong>.</p>
 </section>
 <section id="individual-scores-sample-statistics-and-population-parameters" class="level3" data-number="1.3">
 <h3 data-number="1.3" class="anchored" data-anchor-id="individual-scores-sample-statistics-and-population-parameters"><span class="header-section-number">1.3</span> Individual Scores, Sample Statistics, and Population Parameters</h3>
 <p>Most of what we have dealt with so far has concerned individual scores grouped into samples, with those samples being drawn from and, hopefully, representative of a population. We saw how we can understand the location of individual scores within a sample’s distribution via z scores, and how we can extend that to understand how likely it is to observe scores higher or lower than an individual score via probability.</p>
 <p>Inherent in this work is the notion that an individual score will differ from the mean, which we quantify as a z score. All of the individual scores will differ from the mean in different amounts and different directions, which is natural and expected. We quantify these differences as variance and standard deviation. Measures of spread and the idea of variability in observations is a key principle in inferential statistics. We know that any observation, whether it is a single score, a set of scores, or a particular descriptive statistic will differ from the center of whatever distribution it belongs in.</p>
-<p>This is equally true of things outside of statistics and format data collection and analysis. Some days you hear your alarm and wake up easily, but other days you need to hit snooze a few (dozen) times. Some days traffic is light, but other days it is very heavy. Some classes you are able to focus, pay attention, and take good notes, but other days you find yourself zoning out the entire time. Each individual observation is an insight but is not, by itself, the entire story, and it takes an extreme deviation from what we expect for us to think that something strange is going on. Being a little sleepy is normal, but being completely unable to get out of bed might indicate that we are sick. Light traffic is a good thing, but almost no cars on the road might make us think something is going on, like a floodwatch or road closure.</p>
-<p>All of these principles carry forward from scores within samples to samples within populations. <strong>Just like an individual score will differ from its mean, an individual sample mean will differ from the true population mean.</strong> We know ahead of time that if we collect data and compute a sample, the observed value of that sample will be at least slightly off from what we expect it to be based on our supposed population mean; this is natural and expected due to sampling error. However, if our sample mean is extremely different from what we expect based on the population mean, there may be something going on. In hypothesis testing, we are asking whether our observed difference is within the range of diffrence expected by sampling error, or whether it is unlikely to have occured by chance alone.</p>
+<p>This is equally true of things outside of statistics and format data collection and analysis. Some days you hear your alarm and wake up easily, but other days you need to hit snooze a few (dozen) times. Some days traffic is light, but other days it is very heavy. Some classes you are able to focus, pay attention, and take good notes, but other days you find yourself zoning out the entire time. Each individual observation is an insight but is not, by itself, the entire story, and it takes an extreme deviation from what we expect for us to think that something strange is going on. Being a little sleepy is normal, but being completely unable to get out of bed might indicate that we are sick. Light traffic is a good thing, but almost no cars on the road might make us think something is going on, like a flood watch or road closure.</p>
+<p>All of these principles carry forward from scores within samples to samples within populations. Just like an individual score will differ from its mean, <strong>an individual sample mean will differ from the true population mean.</strong> We know ahead of time that if we collect data and compute a sample, the observed value of that sample will be at least slightly off from what we expect it to be based on our supposed population mean; this is natural and expected due to sampling error. However, if our sample mean is extremely different from what we expect based on the population mean, there may be something going on. In hypothesis testing, we are asking whether our observed difference is within the range of diffrence expected by sampling error, or whether it is unlikely to have occured by chance alone.</p>
 </section>
 <section id="key-takeaways" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="key-takeaways">Key Takeaways</h3>
+<h3 class="unnumbered anchored">Key Takeaways</h3>
 <ul>
-<li>Increasing the sample size reduces the amount of sampling error.</li>
-<li>Increasing the sample size does not reduce the amount of variability in individual scores.</li>
+<li>Our goal in statistics is to understand the population as a whole, not individual scores.</li>
+<li>We estimate population parameters using sample statistics (the number we calculate from data), but that estimate will be off by some amount due to sampling error. Thus, we need to consider how much sampling error is expected when we estimate population parameters from sample statistics.</li>
 </ul>
-</section>
-</section>
-<section id="estimating-counts" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="estimating-counts"><span class="header-section-number">2</span> Estimating Counts</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Bonus Section: Estimating the Count (Click to Reveal)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<section id="estimating-the-count" class="level2 callout-body-container callout-body" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="estimating-the-count"><span class="header-section-number">2</span> Estimating the Count</h2>
 <section id="sampling-distribution-of-sample-counts" class="level3" data-number="2.1">
 <h3 data-number="2.1" class="anchored" data-anchor-id="sampling-distribution-of-sample-counts"><span class="header-section-number">2.1</span> Sampling Distribution of Sample Counts</h3>
-<section id="theoretical-distributions-of-sampling-error" class="level4" data-number="2.1.1">
-<h4 data-number="2.1.1" class="anchored" data-anchor-id="theoretical-distributions-of-sampling-error"><span class="header-section-number">2.1.1</span> Theoretical Distributions of Sampling Error</h4>
-<p>Remember that in the binomial distribution over the possible counts of correct pigeon responses, we could compute what the probability of observing a certain number of correct responses was. That was a theoretical distribution of the sample “counts” (<a href="#fig-binomial-4" class="quarto-xref">Figure&nbsp;1</a>). This theoretical distribution shows our “expected” variability in the sample counts. If 10,000 different researchers were to sample 4 pigeons (sample size = 4), the empirical distribution of the sample counts would look like a theoretical, binomial distribution (<a href="#fig-binomial-4-r" class="quarto-xref">Figure&nbsp;2</a>). Some researchers may see all four pigeons correct due to <strong>sampling error</strong>, and we expect that to happen about 6.25% of the time (out of 10,000 samples). In our simulated 10,000 samples (studies), we see a similar pattern, where 657 samples have all four pigeons correct (<a href="#tbl-binomial" class="quarto-xref">Table&nbsp;1</a>).</p>
+<section id="how-much-sampling-error-is-expected" class="level4" data-number="2.1.1">
+<h4 data-number="2.1.1" class="anchored" data-anchor-id="how-much-sampling-error-is-expected"><span class="header-section-number">2.1.1</span> How Much Sampling Error Is Expected?</h4>
+<p>Remember that in the binomial distribution over the possible counts of correct pigeon responses, we could compute what the probability of observing a certain number of correct responses was. That was a distribution of possible “counts” in samples (<a href="#fig-binomial-4" class="quarto-xref">Figure&nbsp;1</a>). This distribution shows our “expected” variability in the sample counts in the long run of studies. If 10,000 different studies draw a sample 4 pigeons (sample size = 4), the empirical distribution of the counts from those samples would look like a binomial distribution (<a href="#fig-binomial-4-r" class="quarto-xref">Figure&nbsp;2</a>). Some researchers may see all four pigeons correct due to <strong>sampling error</strong>, and we expect that to happen about 6.25% of the time (out of 10,000 samples). If we simulate 10,000 studies, we see a similar pattern, where 657 studies have all four pigeons correct (<a href="#tbl-binomial" class="quarto-xref">Table&nbsp;1</a>).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-binomial-4" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Bar Chart showing the probability distribution of the number of correct answers by chance. The x-axis shows the possible sample count from 0 to the number of pigeons studied, and the y-axis shows the probability.">
@@ -484,8 +495,8 @@ Table&nbsp;1: The probability of 0 to 4 pigeons being correct by chance if a pig
 </div>
 </div>
 </section>
-<section id="larger-sample-sizes-smaller-sampling-error" class="level4" data-number="2.1.2">
-<h4 data-number="2.1.2" class="anchored" data-anchor-id="larger-sample-sizes-smaller-sampling-error"><span class="header-section-number">2.1.2</span> Larger Sample Sizes, Smaller Sampling Error</h4>
+<section id="larger-sample-sizes-reduce-sampling-error" class="level4" data-number="2.1.2">
+<h4 data-number="2.1.2" class="anchored" data-anchor-id="larger-sample-sizes-reduce-sampling-error"><span class="header-section-number">2.1.2</span> Larger Sample Sizes Reduce Sampling Error</h4>
 <p>If we increase the sample size to 100 pigeons, our sampling error is reduced, and it is much less likely to get the counts of correct responses that are far from the expected value of 50 (<a href="#fig-binomial-100" class="quarto-xref">Figure&nbsp;3</a>). Some researchers may see all 100 pigeons correct due to sampling error, but that chance is less than one in a trillion.</p>
 <p>As the sample size increases, another interesting thing happens. The distribution of sample counts becomes much more like a normal distribution. This will be important to keep in mind as we move forward, because the normal distribution is a very useful distribution in statistics.</p>
 <div class="cell">
@@ -502,25 +513,40 @@ Figure&nbsp;3: Number of Correct Pigeons Out of 100 Pigeons. The variability is 
 </div>
 </div>
 </div>
-<p>So far, we have been looking at the theoretical distribution of counts, which follows the rules of probability. When we estimate the population count, we base that estimate on the sample count, while also considering the sampling error associated with that estimate.</p>
-<p>Can we do something like this for the mean?</p>
+<p>So far, we have been looking at the distribution of counts, which follows the rules of probability. When we estimate the population count, we base that estimate on the sample count, while also considering the sampling error associated with that estimate. Can we do something like this for the mean?</p>
 </section>
+</section>
+<section id="key-takeaways-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="key-takeaways-1">Key Takeaways</h3>
+<ul>
+<li>Sampling distribution of sample counts shows the expected variability in sample counts due to sampling error.</li>
+<li>As the sample size increases, the variability in the sample counts decreases.</li>
+<li>The distribution of sample counts becomes more normal as the sample size increases.</li>
+</ul>
+</section>
+</section>
+</div>
+</div>
 </section>
 </section>
 <section id="estimating-the-mean" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="estimating-the-mean"><span class="header-section-number">3</span> Estimating the Mean</h2>
 <section id="the-sampling-distribution-of-sample-means" class="level3" data-number="3.1">
 <h3 data-number="3.1" class="anchored" data-anchor-id="the-sampling-distribution-of-sample-means"><span class="header-section-number">3.1</span> The Sampling Distribution of Sample Means</h3>
-<p>As we have seen with the distribution of sample counts, we can also consider the distribution of sample means. We need the theoretical distribution of how much sample means vary from the true population mean, due to sampling error. If we were to take many samples, all of the same size, and calculate the mean of each of those, we could put those means together to form a distribution. This new distribution is, intuitively, known as the distribution of sample means. For our purposes, understanding the distribution of sample means will be enough to see how all other sampling distributions work to enable and inform our inferential analyses, so these two terms will be used interchangeably from here on out. Let’s take a deeper look at some of its characteristics.</p>
-<section id="the-central-limit-theorem" class="level4" data-number="3.1.1">
-<h4 data-number="3.1.1" class="anchored" data-anchor-id="the-central-limit-theorem"><span class="header-section-number">3.1.1</span> The Central Limit Theorem</h4>
-<p>We have already seen that the distribution of sample counts becomes more normal as the sample size increases. The same is true for the distribution of sample means. This is known as the <strong>Central Limit Theorem</strong>. The Central Limit Theorem states that, regardless of the shape of the population distribution of individual scores, if we take the mean of the scores in a large enough sample, those sample means will be normally distributed. In other words, <strong>as long as we have a decent sized sample (roughly 30+), the distribution of sample means will be approximately normal, no matter what shape your population distribution is</strong>. Even if the individual scores are bimodal, skewed, or spiky, or just about anything else, when you average across many scores, the distribution of those averages will be normal – although when the population distribution is extremely skewed or looks very different from a normal distribution, we may need a larger sample size to make the sampling distribution of sample means normal.</p>
-<p>This is a very important property of the distribution of sample means, because it allows us to use the normal distribution to make inferences about how exactly unlikely our sample mean is, just like you found out about how exactly unlikely a single extraversion score is.</p>
-<p>Normal distributions are defined by their mean and standard deviation – where’s the peak, and how spread out is the distribution? That means, to know the probability of observing sample means as extreme as our sample mean or more extreme, we need to know the mean and the standard deviation of the distribution of sample means. In terms of sample means, what we need to know is the typical sample mean, and how much variability we can expect in the sample means. Very helpfully, the Central Limit Theorem tells us how to find both of those:</p>
+<p>Just as we can consider the distribution of possible sample counts, we can also consider the distribution of possible sample means–the theoretical distribution of how much sample means vary from the true population mean, due to sampling error. If we were to take many samples, all of the same size, and calculate the mean of each of those, we could put those means together to form a distribution. This new distribution is, intuitively, known as the <strong>distribution of sample means</strong>, of the <strong>sampling distribution of the mean</strong>. Let’s take a deeper look at some of its characteristics.</p>
+<section id="the-central-limit-theorem-sample-means-of-large-samples-are-normally-distributed-around-the-population-mean" class="level4" data-number="3.1.1">
+<h4 data-number="3.1.1" class="anchored" data-anchor-id="the-central-limit-theorem-sample-means-of-large-samples-are-normally-distributed-around-the-population-mean"><span class="header-section-number">3.1.1</span> The Central Limit Theorem: Sample Means of Large Samples Are Normally Distributed Around the Population Mean</h4>
+<p>We have already seen that the distribution of sample counts becomes more normal as the sample size increases. The same is true for the distribution of sample means. This is known as the <strong>Central Limit Theorem</strong>. The Central Limit Theorem states that, regardless of the shape of the population distribution of individual scores, if we take the mean of the scores in a large enough sample, those sample means will be normally distributed. In other words, <strong>as long as we have a decent sized sample, the distribution of sample means will be approximately normal, no matter what shape your population distribution is</strong>. Even if the individual scores are bimodal, skewed, or spiky, or just about anything else, when you average across many scores, the distribution of those averages will be normal. We would just need a larger sample size in those cases.</p>
+<p>Normal distributions are very useful in two ways:</p>
+<ol type="1">
+<li><p>It allows us to know how much variability is expected in the sample means due to sampling error, and thus how close our sample mean is likely to be to the true population mean.</p></li>
+<li><p>It allows us to know how unlikely or unusual our sample mean is from some assumed population mean. What is the probability of observing sample means as extreme as our sample mean or more extreme if the population mean is some assumed value? This is the question we will be asking a lot in hypothesis testing.</p></li>
+</ol>
+<p>For this, we need to know the mean and the standard deviation of the distribution of sample means: the typical sample mean, how much variability we can expect in the sample means. Very helpfully, the Central Limit Theorem tells us how to find both of those:</p>
 <ul>
 <li>The mean of the sampling distribution (i.e., the mean of the sample means) is the same as the mean of the population (<span class="math inline">\(\mu_M\)</span>).</li>
 </ul>
-<p>#<span class="math display">\[ \mu_M = \mu\]</span></p>
+<p><span class="math display">\[ \mu_M = \mu\]</span></p>
 <ul>
 <li>The standard deviation of the sampling distribution (i.e., the standard deviation of the sample means <span class="math inline">\(\sigma_M\)</span>; called <strong>standard error of the mean (SEM)</strong>) gets smaller as the sample size increases. <span class="math display">\[\sigma_M = \frac{\sigma}{\sqrt{n}}\]</span></li>
 </ul>
@@ -536,6 +562,10 @@ Figure&nbsp;4: The Sampling Distribution of Sample Means by Judy Schmitt
 </figcaption>
 </figure>
 </div>
+</section>
+</section>
+<section id="the-law-of-large-numbers-larger-samples-give-more-precise-estimates-of-the-population-mean" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="the-law-of-large-numbers-larger-samples-give-more-precise-estimates-of-the-population-mean"><span class="header-section-number">3.2</span> The Law of Large Numbers: Larger Samples Give More Precise Estimates of the Population Mean</h3>
 <p>Because the standard deviation of the sampling distribution of sample means gets smaller as the sample size increases, we can see that larger samples will give us more precise estimates of the population mean. This is called the <strong>law of large numbers</strong>. The law of large numbers states that as the sample size increases, the sample mean will get closer and closer to the population mean. This is illustrated in <a href="#fig-law-of-large-numbers" class="quarto-xref">Figure&nbsp;5</a>.</p>
 <div id="fig-law-of-large-numbers" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A graph with four curved lines. The horizontal axis is labeled mu subscript M. The range is 30 to 70. The curved lines get narrower as they get taller, with the colors and status as follows: at the bottom, the widest shortest line is solid orange and labeled N=10. The next line is dotted and black, labeled N=30. the next line is solid and dark blue, labeled N=50. The final line is dotted and light blue, labeled N=100.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -548,25 +578,64 @@ Figure&nbsp;5: Sampling distributions from the same population with <span class=
 </figure>
 </div>
 </section>
+<section id="uncertainty-of-the-estimate-confidence-intervals" class="level3" data-number="3.3">
+<h3 data-number="3.3" class="anchored" data-anchor-id="uncertainty-of-the-estimate-confidence-intervals"><span class="header-section-number">3.3</span> Uncertainty of the Estimate: Confidence Intervals</h3>
+<p>Up to this point, we estimated the population parameter for the mean using a sample statistic of the mean. From one point of view, this makes sense: we have one value for our parameter so we use a single value (called a <strong>point estimate</strong>) to estimate it. However, we have seen that all statistics have sampling error and that the value we find for the sample mean will bounce around based on the people in our sample, simply due to random chance. Thinking about estimation from this perspective, it would make more sense to take that error into account rather than relying just on our point estimate. To express this uncertainty, we calculate what is known as a <strong>confidence interval</strong>.</p>
+<p>The basic idea is straightforward. When we know the population mean, we can calculate how far sample means are likely to fall from that population mean due to the sampling error. A confidence level is set at the proportion of the sampling distribution we want to capture. Is it the middle 90% of the sample means? The middle 95%? Once we have a confidence level, we can use the properties of the normal distribution to find the cutoff sample means that contain the desired proportion of sample means, called <span class="math inline">\(z^{*}\)</span>. At a 95% confidence level, we identify the range around the population mean that contains the middle 95% of all possible sample means. The cutoff z scores that correspond to the middle 95% (denoted <span class="math inline">\(z^{*}\)</span>) are -1.96 and 1.96. Therefore, if sample means are normally distributed, <strong>95% of the possible sample means would fall within 1.96 standard errors of the population mean</strong>. Multiplying this critical value <span class="math inline">\(z^{*}\)</span> by the standard error of the mean (SEM) gives the <strong>margin of error</strong>.</p>
+<p><span class="math display">\[ z^{*} \times SEM = 1.96 \times SEM = 1.96 \times \frac{\sigma}{\sqrt{n}} \]</span></p>
+<p>If the population mean were known, we could use the margin of error to find the range of sample means we would expect to observe at a given confidence level. In practice, however, we almost never know the population mean, while the sample mean can be calculated from our data. When estimating the population mean, we reverse the logic: rather than starting with a known population mean and determining which sample means are likely, we begin with our sample mean and construct an interval around it to express uncertainty in our estimate.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>A <strong>confidence interval</strong> is constructed by taking our point estimate and extending the margin of error equally in both directions: <span class="math display">\[ \text{CI} = M \pm \text{Margin of Error}\]</span></p>
+<p>When written as an interval, we report it with square brackets: CI = [M - Margin of Error, M + Margin of Error]. For example, suppose a sample has a mean of 50 and standard error of 2. The margin of error at 95% confidence is <span class="math inline">\(1.96 \times 2 = 3.92\)</span>. The 95% confidence interval is therefore <span class="math inline">\(50 \pm 3.92\)</span>, or <span class="math inline">\([46.08, 53.92]\)</span>.</p>
+<p>So what does a 95% confidence interval represent? If we were to repeat studies with different samples many times and calculate a confidence interval from each as 1.96 standard errors around the sample mean, 95% of those intervals will contain the true population mean. We call this a 95% confidence interval because confidence intervals you could construct from samples of the same size will contain the true population mean 95% of the time.</p>
+<p>With everything else held constant, if you want to be more confident, you need to make the interval wider to catch the true population mean more often. If your interval is narrower, your confidence in capturing the true population mean is lower, because only a smaller proportion of the possible confidence intervals will contain the true mean. <a href="#fig-confidence-interval" class="quarto-xref">Figure&nbsp;6</a> illustrates this idea with 50% confidence intervals.</p>
+<div id="fig-confidence-interval" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A Normal population distribution with a true mean $\mu$ shown as a dashed vertical line, and 20 confidence intervals are below. 10 of the intervals are blue and contain the true mean, and 10 of the intervals are red and do not contain the true mean.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-confidence-interval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/Normal_distribution_50%25_CI_illustration.svg/1920px-Normal_distribution_50%25_CI_illustration.svg.png?utm_source=en.wikipedia.org&amp;utm_campaign=imageinfo&amp;utm_content=thumbnail" class="img-fluid figure-img" alt="A Normal population distribution with a true mean $\mu$ shown as a dashed vertical line, and 20 confidence intervals are below. 10 of the intervals are blue and contain the true mean, and 10 of the intervals are red and do not contain the true mean.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-confidence-interval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: <strong>Confidence Intervals.</strong> Each row of points is a sample from the same normal distribution, and 20 different confidence intervals are constructed from 20 different samples. The colored lines are 50% confidence intervals for the population mean <span class="math inline">\(\mu\)</span>. At the center of each interval is the sample mean, marked with a diamond. The blue intervals contain the true population mean, and the red ones do not. Image taken from <a href="https://en.wikipedia.org/wiki/Confidence_interval">Wikipedia</a>
+</figcaption>
+</figure>
+</div>
+<p>Notice that the uncertainty is in the interval, not in the population mean. The population mean is fixed and unknown, and different samples from the same population will produce different sample means, and therefore, different confidence intervals. We do not know whether we happened to draw a sample whose mean is very close to the population mean or one that is far away due to sampling error. The confidence interval expresses that uncertainty by pairing our point estimate with an estimate of how off that point estimate is likely to be because of sampling error.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Common Misinterpretation of Confidence Intervals
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A common misinterpretation of confidence interval is that the percentage of confidence refers to the probability that the true population mean is in the particular interval calculated from our sample.</p>
+<p>However, this is wrong because the true mean is fixed, and once the interval is calculated, those particular endpoints either contain the true mean or they do not. We will never know which way it is.</p>
+<p>Instead, The percentage of confidence in a confidence interval refers to the long-run frequency of successful inferences among the possible confidence intervals constructed from many different samples. If we were to repeat this process many times, 95% of the confidence intervals we calculate would contain the true population mean.</p>
+</div>
+</div>
 </section>
-<section id="key-takeaways-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="key-takeaways-1">Key Takeaways</h3>
+<section id="key-takeaways-2" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="key-takeaways-2">Key Takeaways</h3>
 <ul>
-<li></li>
-<li></li>
+<li>Estimate of the mean is off by some amount due to sampling error. To understand how much sampling error is expected for a given sample size, we use the distribution of sample means from the many studies we could theoretically conduct, called <strong>the sampling distribution of sample means</strong>.</li>
+<li>When sample sizes are large enough, the sampling distribution of sample means will be a normal distribution centered around the true population mean, no matter the shape of population distribution of individual scores. This is known as the <strong>Central Limit Theorem</strong>.</li>
+<li>As sample size increases (i.e., more participants in a study), the sampling distribution becomes narrower, meaning sample means become more precise estimates of the population mean, following the <strong>law of large numbers</strong>.</li>
+<li>The standard deviation of the sampling distribution of sample means is called <strong>the standard error of the mean (SEM)</strong>, quantifying the typical error in the estimate. The SEM is equal to the population standard deviation divided by the square root of the sample size.</li>
+<li>A <strong>confidence interval</strong> expresses uncertainty in a point estimate by extending the point estimate by a <strong>margin of error</strong>. For example, 1.96 standard errors on either side of the sample mean capture the middle 95% of normally distributed sample means. If we conducted many studies from the same population with the same sample size and constructed a 95% confidence interval from each sample, approximately 95% of those intervals would contain the true population mean.</li>
 </ul>
+
+
 </section>
 </section>
-<section id="exercises" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="exercises">Exercises</h2>
-<ol type="1">
-<li></li>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>If you are curious why we can reverse the logic, remember what matters is the distance between the sample mean and the population mean. If a person stands 100 feet away from their home, the home is also 100 feet from the person. The distance is the same regardless of which point we use as the reference.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
-
-
-</section>
-
-</main> <!-- /main -->
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

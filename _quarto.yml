@@ -31,6 +31,7 @@ website:
       - section: "Unit 2. Introduction to Inferential Statistics"
         contents:
           - 05-hypothesis-testing.qmd
+          - 06-estimating-the-mean.qmd
       - section: "Lab"
         contents:
           - lab01-r-basics.qmd
