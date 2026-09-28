@@ -2,60 +2,53 @@
 
 Here is a quick overview of the most common statistical tests and when to use them. The following tables summarize the questions you might ask, the type of data you have, and the appropriate statistical test to use. 
 
-## Decision Table by Questions and Data Types
+## Decision Table by Questions
 
-| Question | Categorical | Continuous | Refer to |
+| Question | Continuous Data | Refer to |
 |:---|:---|:---| :---|
-| Is a variable different from a baseline? | Chi-Square Goodness-of-Fit Test | One-sample z-test or One-sample t-test | @tbl-one-sample |
-| Do groups/conditions differ? | N/A | t-test or ANOVA | @tbl-means |
-| Are two variables related? | Chi-Square Test of Independence | Pearson Correlation | @tbl-association |
-| Can scores be predicted? | N/A | Simple or Multiple Linear Regression | @tbl-prediction |
+| Is the mean different from a baseline? | One-sample z-test or One-sample t-test | @tbl-one-sample |
+| Are group/condition means different? | t-test or ANOVA | @tbl-means |
+| Are two variables related? |  Pearson Correlation | @tbl-association |
+| What predicts the mean of an outcome and how? | Simple or Multiple Linear Regression | @tbl-prediction |
 
-### "Is a variable different from a baseline?" 
+### "Is the mean different from a baseline?" 
 
 ::: {#tbl-one-sample .list-table}
-Statistical Tests for Answering "Is a variable different from a baseline?"
+Statistical Tests for Answering "Is the mean different from a baseline?"
 
-- - Variable type
-  - Population variance known?
+- - Population variance
   - Test
 
-- - Categorical
-  - N/A
-  - Chi-Square Goodness-of-Fit Test
-
-- - []{rowspan=2} Continuous
-  - Yes
+- - Known
   - One-sample z-test
 
-- - No
+- - Unknown
   - One-sample t-test
 :::
 
-### "Do groups/conditions differ?"
+### "Are group/condition means different?"
 
 | \# of IVs | \# of levels | Independent groups/conditions | Related groups/conditions |
 |:---|:---|:---|:---|
 | 1 | 2 | Independent Samples t-test | Paired Samples t-test |
 | 1 | $\geq$ 2 | One-way Between-Subjects ANOVA | One-way Repeated-Measures ANOVA |
 | $\gt$ 1 | $\geq$ 2 | Factorial Between-Subjects ANOVA | Factorial Repeated-Measures ANOVA |
-: Statistical Tests for Answering "Do groups/conditions differ?" {#tbl-means}
+: Statistical Tests for Answering "Are group/condition means different?" {#tbl-means}
 
 ### "Are two variables related?"
 
 | Variable Types | Test |
 | :---|:---|
-| Both **Categorical** | Chi-Square Test of Independence |
 | Both **Continuous** | Pearson Correlation |
 : Statistical Tests for Answering "Are two variables related?" {#tbl-association}
 
-### "Can scores be predicted?"
+### "What predicts the mean of an outcome and how?"
 
 | \# of Predictors | Test |
 | :---|:---|
 | 1 | Simple Linear Regression |
 | $\gt$ 1 | Multiple Linear Regression |
-: Statistical Tests for Answering "Can scores be predicted?" {#tbl-prediction}
+: Statistical Tests for Answering "What predicts the mean of an outcome and how?" {#tbl-prediction}
 
 ## Statistical Tests by DV and IV Types
 
@@ -107,12 +100,6 @@ Statistical Tests by DV and IV Types
   
 - - Pearson Correlation
   - Continuous (two)
-  - []{rowspan=3} None
-  - []{rowspan=3} None
-  
-- - Chi-Square Goodness-of-Fit Test
-  - Categorical (one)
-  
-- - Chi-Square Test of Independence
-  - Categorical (two)
+  - None
+  - None
 :::
