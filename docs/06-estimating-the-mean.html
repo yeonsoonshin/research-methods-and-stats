@@ -34,41 +34,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -604,65 +569,6 @@ Figure&nbsp;4: The Sampling Distribution of Sample Means by Judy Schmitt
 </figure>
 </div>
 <div class="cell" data-layout-nrow="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">50</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>std <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">30</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> std<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>cv <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="dv">1</span> <span class="sc">-</span> a<span class="sc">/</span><span class="dv">2</span>)  <span class="co"># 95% CI upper bound</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>pop_peak <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(mu, mu, std)  <span class="co"># population peak</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>samp_peak <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(mu, mu, se)  <span class="co"># sampling distribution peak</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>std_height <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(mu <span class="sc">+</span> std, mu, std)  <span class="co"># density at one standard deviation above the mean</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>se_height <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(mu <span class="sc">+</span> se, mu, se)  <span class="co"># density at one standard error above the mean</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_normal</span>(<span class="at">m =</span> mu, <span class="at">s =</span> std, <span class="at">areatype =</span> <span class="st">"none"</span>, <span class="at">xaxis =</span> <span class="st">"Individual Scores"</span>) <span class="sc">+</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">0</span>) <span class="sc">+</span> </span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># population mean</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> mu, <span class="at">xend =</span> mu, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">yend =</span> pop_peak, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linetype =</span> <span class="st">"solid"</span>) <span class="sc">+</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> mu, <span class="at">y =</span> pop_peak <span class="sc">*</span> <span class="fl">1.1</span>, </span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">expression</span>(<span class="st">"\u03bc"</span>), <span class="at">size =</span> <span class="dv">8</span>) <span class="sc">+</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># standard deviation of the population</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> mu, <span class="at">xend =</span> mu <span class="sc">+</span> std, <span class="at">y =</span> std_height, <span class="at">yend =</span> std_height, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linetype =</span> <span class="st">"solid"</span>) <span class="sc">+</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> mu <span class="sc">+</span> std<span class="sc">/</span><span class="dv">2</span>, <span class="at">y =</span> std_height <span class="sc">*</span> <span class="fl">0.9</span>, <span class="at">label =</span> <span class="st">"\u03c3"</span>, <span class="at">size =</span> <span class="dv">8</span>) <span class="sc">+</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># axis</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fu">floor</span>(mu<span class="dv">-4</span><span class="sc">*</span>std), <span class="fu">ceiling</span>(mu<span class="sc">+</span><span class="dv">4</span><span class="sc">*</span>std), std)) <span class="sc">+</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">mult =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.1</span>))) <span class="sc">+</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># don't show the x-axis label and ticks for the first plot</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">unit</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>), <span class="st">"mm"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Scale for y is already present.
-Adding another scale for y, which will replace the existing scale.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: The `margin` argument should be constructed using the `margin()`
-function.</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_normal</span>(<span class="at">m =</span> mu, <span class="at">s =</span> se, <span class="at">areatype =</span> <span class="st">"none"</span>, <span class="at">xaxis =</span> <span class="st">"Possible Sample Means"</span>) <span class="sc">+</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fu">floor</span>(mu<span class="dv">-4</span><span class="sc">*</span>std), <span class="fu">ceiling</span>(mu<span class="sc">+</span><span class="dv">4</span><span class="sc">*</span>std), std)) <span class="sc">+</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">0</span>) <span class="sc">+</span> </span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># population mean</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> mu, <span class="at">xend =</span> mu, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">yend =</span> samp_peak, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linetype =</span> <span class="st">"solid"</span>) <span class="sc">+</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> mu, <span class="at">y =</span> samp_peak <span class="sc">*</span> <span class="fl">1.1</span>, </span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">expression</span>(<span class="st">"\u03bc"</span>[M]), <span class="at">size =</span> <span class="dv">8</span>) <span class="sc">+</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># standard error of the mean</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> mu, <span class="at">xend =</span> mu <span class="sc">+</span> se, <span class="at">y =</span> se_height, <span class="at">yend =</span> se_height, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linetype =</span> <span class="st">"solid"</span>) <span class="sc">+</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> mu <span class="sc">+</span> se<span class="sc">/</span><span class="dv">2</span>, <span class="at">y =</span> se_height <span class="sc">*</span> <span class="fl">0.9</span>, <span class="at">label =</span> <span class="st">"SEM"</span>, <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># axis</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">mult =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.1</span>))) <span class="sc">+</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># don't show the x-axis label and ticks for the first plot</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">unit</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>), <span class="st">"mm"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Scale for y is already present.
-Adding another scale for y, which will replace the existing scale.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: The `margin` argument should be constructed using the `margin()`
-function.</code></pre>
-</div>
 <div id="fig-sampling-distribution" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-sampling-distribution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">

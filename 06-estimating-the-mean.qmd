@@ -15,12 +15,12 @@ format:
 ---
 
 ```{r, include=FALSE}
-# knitr::opts_chunk$set(
-#   include = FALSE,
-#   echo = FALSE,
-#   message = FALSE,
-#   warning = FALSE
-# )
+knitr::opts_chunk$set(
+  include = FALSE,
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
 
 library(tidyverse)
 theme_set(theme_classic(base_size = 16))
@@ -281,6 +281,19 @@ plot_normal(m = mu, s = se, areatype = "none", xaxis = "Possible Sample Means") 
     # standard error of the mean
     annotate("segment", x = mu, xend = mu + se, y = se_height, yend = se_height, color = "black", linetype = "solid") +
     annotate("text", x = mu + se/2, y = se_height * 0.9, label = "SEM", size = 5) +
+    # --- critical values (invisible) --- #
+    # --- left arrow --- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = mu - 2 * std, xend = mu - 4 * std, 
+             y = samp_peak * 1.1, yend = samp_peak * 1.1,
+             col = "white") +
+    # --- right arrow --- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = mu + 2 * std, xend = mu + 4 * std, 
+             y = samp_peak * 1.1, yend = samp_peak * 1.1,
+             col = "white") +
     # axis
     scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
     # don't show the x-axis label and ticks for the first plot
