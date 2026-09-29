@@ -34,6 +34,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -208,6 +243,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="./06-estimating-the-mean.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Ch.6: Estimating the Mean</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-one-sample-z-test-and-t-test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ch.7: One Sample z-test and t-test</span></a>
   </div>
 </li>
       </ul>
@@ -551,7 +592,7 @@ Figure&nbsp;3: Number of Correct Pigeons Out of 100 Pigeons. The variability is 
 <li>The standard deviation of the sampling distribution (i.e., the standard deviation of the sample means <span class="math inline">\(\sigma_M\)</span>; called <strong>standard error of the mean (SEM)</strong>) gets smaller as the sample size increases. <span class="math display">\[\sigma_M = \frac{\sigma}{\sqrt{n}}\]</span></li>
 </ul>
 <p>where <span class="math inline">\(\sigma\)</span> is the standard deviation of the population, and <span class="math inline">\(n\)</span> is the sample size.</p>
-<p>Notice that the sample size is in the SEM equation. As stated above, the sampling distribution refers to samples of a specific size. That is, all sample means must be calculated from samples of the same size n, such as n = 10, n = 30, or n = 100. This sample size refers to how many people or observations are in each individual sample, not how many samples are used to form the sampling distribution. This is because the sampling distribution is a theoretical distribution, not one we will ever actually calculate or observe. <a href="#fig-sampling-distribution" class="quarto-xref">Figure&nbsp;4</a> displays the principles stated here in graphical form.</p>
+<p>Notice that the sample size is in the SEM equation. As stated above, the sampling distribution refers to samples of a specific size. That is, all sample means must be calculated from samples of the same size n, such as n = 10, n = 30, or n = 100. This sample size refers to how many people or observations are in each individual sample, not how many samples are used to form the sampling distribution. This is because the sampling distribution is a theoretical distribution, not one we will ever actually calculate or observe. <a href="#fig-sampling-distribution" class="quarto-xref">Figure&nbsp;5</a> displays the principles stated here in graphical form.</p>
 <div id="fig-sampling-distribution" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A bell curve line. The horizontal axis is labeled mu subscript M. There is a line from the center of the bell curve to the peak. A line extends from the center line about two thirds of the way up, connecting to the curved line. It is labeled sigma subscript M.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-sampling-distribution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -562,18 +603,116 @@ Figure&nbsp;4: The Sampling Distribution of Sample Means by Judy Schmitt
 </figcaption>
 </figure>
 </div>
+<div class="cell" data-layout-nrow="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>std <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>se <span class="ot">&lt;-</span> std<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>cv <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="dv">1</span> <span class="sc">-</span> a<span class="sc">/</span><span class="dv">2</span>)  <span class="co"># 95% CI upper bound</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>pop_peak <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(mu, mu, std)  <span class="co"># population peak</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>samp_peak <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(mu, mu, se)  <span class="co"># sampling distribution peak</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>std_height <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(mu <span class="sc">+</span> std, mu, std)  <span class="co"># density at one standard deviation above the mean</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>se_height <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(mu <span class="sc">+</span> se, mu, se)  <span class="co"># density at one standard error above the mean</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_normal</span>(<span class="at">m =</span> mu, <span class="at">s =</span> std, <span class="at">areatype =</span> <span class="st">"none"</span>, <span class="at">xaxis =</span> <span class="st">"Individual Scores"</span>) <span class="sc">+</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">0</span>) <span class="sc">+</span> </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># population mean</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> mu, <span class="at">xend =</span> mu, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">yend =</span> pop_peak, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linetype =</span> <span class="st">"solid"</span>) <span class="sc">+</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> mu, <span class="at">y =</span> pop_peak <span class="sc">*</span> <span class="fl">1.1</span>, </span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">expression</span>(<span class="st">"\u03bc"</span>), <span class="at">size =</span> <span class="dv">8</span>) <span class="sc">+</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># standard deviation of the population</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> mu, <span class="at">xend =</span> mu <span class="sc">+</span> std, <span class="at">y =</span> std_height, <span class="at">yend =</span> std_height, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linetype =</span> <span class="st">"solid"</span>) <span class="sc">+</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> mu <span class="sc">+</span> std<span class="sc">/</span><span class="dv">2</span>, <span class="at">y =</span> std_height <span class="sc">*</span> <span class="fl">0.9</span>, <span class="at">label =</span> <span class="st">"\u03c3"</span>, <span class="at">size =</span> <span class="dv">8</span>) <span class="sc">+</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># axis</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fu">floor</span>(mu<span class="dv">-4</span><span class="sc">*</span>std), <span class="fu">ceiling</span>(mu<span class="sc">+</span><span class="dv">4</span><span class="sc">*</span>std), std)) <span class="sc">+</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">mult =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.1</span>))) <span class="sc">+</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># don't show the x-axis label and ticks for the first plot</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">unit</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>), <span class="st">"mm"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Scale for y is already present.
+Adding another scale for y, which will replace the existing scale.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The `margin` argument should be constructed using the `margin()`
+function.</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_normal</span>(<span class="at">m =</span> mu, <span class="at">s =</span> se, <span class="at">areatype =</span> <span class="st">"none"</span>, <span class="at">xaxis =</span> <span class="st">"Possible Sample Means"</span>) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fu">floor</span>(mu<span class="dv">-4</span><span class="sc">*</span>std), <span class="fu">ceiling</span>(mu<span class="sc">+</span><span class="dv">4</span><span class="sc">*</span>std), std)) <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">0</span>) <span class="sc">+</span> </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># population mean</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> mu, <span class="at">xend =</span> mu, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">yend =</span> samp_peak, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linetype =</span> <span class="st">"solid"</span>) <span class="sc">+</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> mu, <span class="at">y =</span> samp_peak <span class="sc">*</span> <span class="fl">1.1</span>, </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">label =</span> <span class="fu">expression</span>(<span class="st">"\u03bc"</span>[M]), <span class="at">size =</span> <span class="dv">8</span>) <span class="sc">+</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># standard error of the mean</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> mu, <span class="at">xend =</span> mu <span class="sc">+</span> se, <span class="at">y =</span> se_height, <span class="at">yend =</span> se_height, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linetype =</span> <span class="st">"solid"</span>) <span class="sc">+</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> mu <span class="sc">+</span> se<span class="sc">/</span><span class="dv">2</span>, <span class="at">y =</span> se_height <span class="sc">*</span> <span class="fl">0.9</span>, <span class="at">label =</span> <span class="st">"SEM"</span>, <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># axis</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">mult =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.1</span>))) <span class="sc">+</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># don't show the x-axis label and ticks for the first plot</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>          <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">unit</span>(<span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>), <span class="st">"mm"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Scale for y is already present.
+Adding another scale for y, which will replace the existing scale.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The `margin` argument should be constructed using the `margin()`
+function.</code></pre>
+</div>
+<div id="fig-sampling-distribution" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sampling-distribution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-sampling-distribution" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-sampling-distribution-1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Top panel shows a Population distribution of individual scores. The x-axis shows possible individual scores. The center population mean is marked by a vertical line with the label `mu`; the standard deviation of the population is marked by a horizontal line extending from the center and labeled `sigma`. Bottom panel shows a Sampling distribution of sample means. The x-axis shows possible sample means. The center population mean is marked by a vertical line with the label `mu subscript M`; the standard deviation of the sample means is marked by a horizontal line extending from the center and labeled `SEM`.">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-sampling-distribution-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-estimating-the-mean_files/figure-html/fig-sampling-distribution-1.png" class="img-fluid figure-img" data-ref-parent="fig-sampling-distribution" alt="Top panel shows a Population distribution of individual scores. The x-axis shows possible individual scores. The center population mean is marked by a vertical line with the label `mu`; the standard deviation of the population is marked by a horizontal line extending from the center and labeled `sigma`. Bottom panel shows a Sampling distribution of sample means. The x-axis shows possible sample means. The center population mean is marked by a vertical line with the label `mu subscript M`; the standard deviation of the sample means is marked by a horizontal line extending from the center and labeled `SEM`." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-sampling-distribution-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) A population distribution of individual scores.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-sampling-distribution" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-sampling-distribution-2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Top panel shows a Population distribution of individual scores. The x-axis shows possible individual scores. The center population mean is marked by a vertical line with the label `mu`; the standard deviation of the population is marked by a horizontal line extending from the center and labeled `sigma`. Bottom panel shows a Sampling distribution of sample means. The x-axis shows possible sample means. The center population mean is marked by a vertical line with the label `mu subscript M`; the standard deviation of the sample means is marked by a horizontal line extending from the center and labeled `SEM`.">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-sampling-distribution-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="06-estimating-the-mean_files/figure-html/fig-sampling-distribution-2.png" class="img-fluid figure-img" data-ref-parent="fig-sampling-distribution" alt="Top panel shows a Population distribution of individual scores. The x-axis shows possible individual scores. The center population mean is marked by a vertical line with the label `mu`; the standard deviation of the population is marked by a horizontal line extending from the center and labeled `sigma`. Bottom panel shows a Sampling distribution of sample means. The x-axis shows possible sample means. The center population mean is marked by a vertical line with the label `mu subscript M`; the standard deviation of the sample means is marked by a horizontal line extending from the center and labeled `SEM`." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-sampling-distribution-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) A sampling distribution of sample means.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sampling-distribution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Population and Sampling Distributions.
+</figcaption>
+</figure>
+</div>
+</div>
 </section>
 </section>
 <section id="the-law-of-large-numbers-larger-samples-give-more-precise-estimates-of-the-population-mean" class="level3" data-number="3.2">
 <h3 data-number="3.2" class="anchored" data-anchor-id="the-law-of-large-numbers-larger-samples-give-more-precise-estimates-of-the-population-mean"><span class="header-section-number">3.2</span> The Law of Large Numbers: Larger Samples Give More Precise Estimates of the Population Mean</h3>
-<p>Because the standard deviation of the sampling distribution of sample means gets smaller as the sample size increases, we can see that larger samples will give us more precise estimates of the population mean. This is called the <strong>law of large numbers</strong>. The law of large numbers states that as the sample size increases, the sample mean will get closer and closer to the population mean. This is illustrated in <a href="#fig-law-of-large-numbers" class="quarto-xref">Figure&nbsp;5</a>.</p>
+<p>Because the standard deviation of the sampling distribution of sample means gets smaller as the sample size increases, we can see that larger samples will give us more precise estimates of the population mean. This is called the <strong>law of large numbers</strong>. The law of large numbers states that as the sample size increases, the sample mean will get closer and closer to the population mean. This is illustrated in <a href="#fig-law-of-large-numbers" class="quarto-xref">Figure&nbsp;6</a>.</p>
 <div id="fig-law-of-large-numbers" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A graph with four curved lines. The horizontal axis is labeled mu subscript M. The range is 30 to 70. The curved lines get narrower as they get taller, with the colors and status as follows: at the bottom, the widest shortest line is solid orange and labeled N=10. The next line is dotted and black, labeled N=30. the next line is solid and dark blue, labeled N=50. The final line is dotted and light blue, labeled N=100.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-law-of-large-numbers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="https://umsystem.pressbooks.pub/app/uploads/sites/23/2021/12/Sampling_Distributions_with_Different_Sample_Sizes-2.png" class="img-fluid figure-img" alt="A graph with four curved lines. The horizontal axis is labeled mu subscript M. The range is 30 to 70. The curved lines get narrower as they get taller, with the colors and status as follows: at the bottom, the widest shortest line is solid orange and labeled N=10. The next line is dotted and black, labeled N=30. the next line is solid and dark blue, labeled N=50. The final line is dotted and light blue, labeled N=100.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-law-of-large-numbers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: Sampling distributions from the same population with <span class="math inline">\(\mu = 50\)</span> and <span class="math inline">\(\sigma = 10\)</span> but different sample sizes (N = 10, N = 30, N = 50, N = 100)
+Figure&nbsp;6: Sampling distributions from the same population with <span class="math inline">\(\mu = 50\)</span> and <span class="math inline">\(\sigma = 10\)</span> but different sample sizes (N = 10, N = 30, N = 50, N = 100)
 </figcaption>
 </figure>
 </div>
@@ -587,14 +726,14 @@ Figure&nbsp;5: Sampling distributions from the same population with <span class=
 <p>A <strong>confidence interval</strong> is constructed by taking our point estimate and extending the margin of error equally in both directions: <span class="math display">\[ \text{CI} = M \pm \text{Margin of Error}\]</span></p>
 <p>When written as an interval, we report it with square brackets: CI = [M - Margin of Error, M + Margin of Error]. For example, suppose a sample has a mean of 50 and standard error of 2. The margin of error at 95% confidence is <span class="math inline">\(1.96 \times 2 = 3.92\)</span>. The 95% confidence interval is therefore <span class="math inline">\(50 \pm 3.92\)</span>, or <span class="math inline">\([46.08, 53.92]\)</span>.</p>
 <p>So what does a 95% confidence interval represent? If we were to repeat studies with different samples many times and calculate a confidence interval from each as 1.96 standard errors around the sample mean, 95% of those intervals will contain the true population mean. We call this a 95% confidence interval because confidence intervals you could construct from samples of the same size will contain the true population mean 95% of the time.</p>
-<p>With everything else held constant, if you want to be more confident, you need to make the interval wider to catch the true population mean more often. If your interval is narrower, your confidence in capturing the true population mean is lower, because only a smaller proportion of the possible confidence intervals will contain the true mean. <a href="#fig-confidence-interval" class="quarto-xref">Figure&nbsp;6</a> illustrates this idea with 50% confidence intervals.</p>
+<p>With everything else held constant, if you want to be more confident, you need to make the interval wider to catch the true population mean more often. If your interval is narrower, your confidence in capturing the true population mean is lower, because only a smaller proportion of the possible confidence intervals will contain the true mean. <a href="#fig-confidence-interval" class="quarto-xref">Figure&nbsp;7</a> illustrates this idea with 50% confidence intervals.</p>
 <div id="fig-confidence-interval" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A Normal population distribution with a true mean $\mu$ shown as a dashed vertical line, and 20 confidence intervals are below. 10 of the intervals are blue and contain the true mean, and 10 of the intervals are red and do not contain the true mean.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-confidence-interval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/Normal_distribution_50%25_CI_illustration.svg/1920px-Normal_distribution_50%25_CI_illustration.svg.png?utm_source=en.wikipedia.org&amp;utm_campaign=imageinfo&amp;utm_content=thumbnail" class="img-fluid figure-img" alt="A Normal population distribution with a true mean $\mu$ shown as a dashed vertical line, and 20 confidence intervals are below. 10 of the intervals are blue and contain the true mean, and 10 of the intervals are red and do not contain the true mean.">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-confidence-interval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6: <strong>Confidence Intervals.</strong> Each row of points is a sample from the same normal distribution, and 20 different confidence intervals are constructed from 20 different samples. The colored lines are 50% confidence intervals for the population mean <span class="math inline">\(\mu\)</span>. At the center of each interval is the sample mean, marked with a diamond. The blue intervals contain the true population mean, and the red ones do not. Image taken from <a href="https://en.wikipedia.org/wiki/Confidence_interval">Wikipedia</a>
+Figure&nbsp;7: <strong>Confidence Intervals.</strong> Each row of points is a sample from the same normal distribution, and 20 different confidence intervals are constructed from 20 different samples. The colored lines are 50% confidence intervals for the population mean <span class="math inline">\(\mu\)</span>. At the center of each interval is the sample mean, marked with a diamond. The blue intervals contain the true population mean, and the red ones do not. Image taken from <a href="https://en.wikipedia.org/wiki/Confidence_interval">Wikipedia</a>
 </figcaption>
 </figure>
 </div>

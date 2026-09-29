@@ -1,0 +1,588 @@
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  include = FALSE,
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+
+library(tidyverse)  # for data wrangling and visualization
+# library(BrailleR)   # for brailleR tables
+# GoBlind()
+
+theme_set(theme_classic(base_size = 16))
+
+set.seed(123)
+plot_normal <- function(m = 0, s = 1,
+                        areatype = "none", 
+                        lb = NULL, ub = NULL, 
+                        xaxis = "z", 
+                        mycol = "darkorange") {
+  # extend past the default range (with margin) whenever a cutoff falls outside it
+  ll <- min(-4*s+m, lb - s, ub - s)
+  ul <- max(4*s+m, lb + s, ub + s)
+  if (areatype == "body") {
+    lb <- ifelse(is.null(lb), ll, lb)
+    ub <- ifelse(is.null(ub), ul, ub)
+  }
+  shadelim <- switch(areatype,
+                  "body" = c(lb, ub),
+                  "lowertail" = c(ll, ub),
+                  "uppertail" = c(lb, ul))
+  shadecol <- switch(areatype, "body" = "steelblue", mycol)
+
+  p <- ggplot(data = data.frame(x = seq(ll, ul, 1)), aes(x))
+
+  if (areatype == "none") {
+      p
+  } else if (areatype == "twotail") {
+      p <- p +
+        stat_function(fun = dnorm, n = 1000, args = list(mean = m, sd = s),
+                         geom = "area", col = "darkgray", fill = shadecol,
+                         alpha = 0.8, xlim = c(ll, min(lb, ub))) +
+        stat_function(fun = dnorm, n = 1000, args = list(mean = m, sd = s),
+                      geom = "area", col = "darkgray", fill = shadecol,
+                      alpha = 0.8, xlim = c(max(lb, ub), ul))
+  } else {
+      p <- p +
+        stat_function(fun = dnorm, n = 1000, args = list(mean = m, sd = s),
+                         geom = "area", col = "darkgray", fill = shadecol,
+                         alpha = 0.8, xlim = shadelim)
+  }
+
+  p <- p +
+    # curve
+    stat_function(fun = dnorm, n = 1000, args = list(mean = m, sd = s),
+                  col = "darkgray", linewidth = 1) +
+    # vertical lines
+    # geom_vline(xintercept = c(lb, ub), col = "black") +
+    # label
+    xlab(xaxis) +
+    # misc
+    scale_x_continuous(breaks = seq(floor(ll), ceiling(ul), s)) +
+    scale_y_continuous(expand = c(0, 0)) +
+    theme(
+      axis.text.y = element_blank(),
+      axis.title.y = element_blank(),
+      axis.line.y = element_blank(),
+      axis.ticks.y = element_blank(),
+      plot.title = element_text(hjust = 0.5)
+    )
+  return(p)
+}
+```
+
+```{r}
+mu <- 220
+std <- 36
+n <- 100
+x <- 228
+
+se <- std/sqrt(n)
+z <- (x - mu)/se
+
+p_onetail <- 1 - pnorm(x, mu, se)
+x_inv <- ifelse(x < mu, qnorm(1-p_onetail, mu, se), qnorm(p_onetail, mu, se))
+
+a <- 0.05
+cv_two <- qnorm(1 - a/2)  
+cv_one <- qnorm(1 - a)
+
+
+pop_peak <- dnorm(mu, mu, std)  # population peak
+samp_peak <- dnorm(mu, mu, se)  # sampling distribution peak
+std_height <- dnorm(mu + std, mu, std)  # density at one standard deviation above the mean
+se_height <- dnorm(mu + se, mu, se)  # density at one standard error above the mean
+
+```
+
+```{r, include=TRUE}
+#| label: fig-sampling-distribution
+#| fig-cap: "Distribution of Sample Means Under the Null Hypothesis"
+#| fig-alt: 
+#|  - "A sampling distribution of sample means. The x-axis shows possible sample means. The center population mean is marked by a vertical line. The standard deviation of the sample means SEM is marked by a horizontal line extending from the center."
+#| fig-height: 4.5
+
+plot_normal(m = mu, s = se, 
+            areatype = "none", 
+            xaxis = "Possible Sample Means") +
+    geom_hline(yintercept=0) + 
+    # --- population mean --- #
+    annotate("segment", # vertical line
+             x = mu, xend = mu, 
+             y = 0, yend = samp_peak, 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = paste0("H[0]:", "\u03bc[M]==\u03bc[0]"), 
+             x = mu, y = samp_peak * 1.1, 
+             size = 8, parse = TRUE) +
+    # --- standard error of the mean --- #
+    annotate("segment",  # horizontal line
+             x = mu, xend = mu + se, 
+             y = se_height, yend = se_height, 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = "SEM", 
+             x = mu + se/2, 
+             y = se_height * 0.9,
+             size = 5) +
+    # --- critical values (invisible) --- #
+    # --- left arrow --- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = mu - cv_two * se, xend = mu - 4 * se, 
+             y = samp_peak * 1.1, yend = samp_peak * 1.1,
+             col = "white") +
+    # --- right arrow --- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = mu + cv_two * se, xend = mu + 4 * se, 
+             y = samp_peak * 1.1, yend = samp_peak * 1.1,
+             col = "white") +
+    # --- x axis --- #
+    scale_x_continuous(breaks = seq(mu - 4 * se, mu + 4 * se, se)) +
+    # # don't show the x-axis label and ticks for the first plot
+    # theme(axis.ticks.x = element_blank(), 
+    #       axis.text.x = element_blank()) +
+    theme(axis.title.x = element_text(margin = unit(c(5, 0, 0, 0), "mm"))) +
+    # --- y axis --- #
+    scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
+```
+
+```{r, include=TRUE}
+#| label: fig-two-tail-1
+#| fig-cap: "**Two-Tailed Test**. The sample means outside the cutoff values are unlikely under the null hypothesis. The area outside the cutoff values in both tails adds up to the significance level \u03b1 (set to 0.05 in this example)."
+#| fig-alt: 
+#|  - "A two-tailed test. The population mean under the null hypothesis is marked by a vertical line and labeled H naught μ subscript M equals μ subscript 0. The standard error of the mean SEM is marked by a horizontal line extending from the center. The cutoff values for unlikely sample means under the null hypothesis are marked by vertical lines and labeled with α/2. The area outside the cutoff values is shaded in red."
+#| fig-height: 4.5
+
+f_twotail <- plot_normal(m = mu, s = se, 
+                         areatype = "twotail", 
+                         lb = mu - cv_two * se, ub = mu + cv_two * se, 
+                         xaxis = "Possible Sample Means", 
+                         mycol = "red") +
+    # --- population mean --- #
+    annotate("segment", # vertical line
+             x = mu, xend = mu, 
+             y = 0, yend = samp_peak, 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = paste0("H[0]:", "\u03bc[M]==\u03bc[0]"), 
+             x = mu, y = samp_peak * 1.1, 
+             size = 8, parse = TRUE) +
+    # --- standard error of the mean --- #
+    annotate("segment",  # horizontal line
+             x = mu, xend = mu + se, 
+             y = se_height, yend = se_height, 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = "SEM", 
+             x = mu + se/2, 
+             y = se_height * 0.9,
+             size = 5) +
+    # --- critical values --- #
+    # ----- lines ------ #
+    geom_vline(xintercept = c(mu - cv_two * se, mu + cv_two * se), 
+               col = "red") +
+    # ---- left ---- #
+    # ----- arrow ----- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = mu - cv_two * se, xend = mu - 4 * se, 
+             y = samp_peak * 1.1, yend = samp_peak * 1.1,
+             col = "red") +
+    # ----- label (unlikely) ----- #
+    annotate("text", 
+             label = '"unlikely"', 
+             x = mu - 3 * se, 
+             y = samp_peak * 1.2, 
+             size = 6, col = "red") +
+    # ----- label (alpha / 2) ----- #
+    annotate("text", 
+             label = "\u03b1/2",
+             x = mu - 3 * se, 
+             y = samp_peak, 
+             size = 6, col = "red") +
+    # ---- right ---- #
+    # ----- arrow ----- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = mu + cv_two * se, xend = mu + 4 * se, 
+             y = samp_peak * 1.1, yend = samp_peak * 1.1,
+             col = "red") +
+    # ----- label (unlikely) ----- #
+    annotate("text", 
+             label = '"unlikely"', 
+             x = mu + 3 * se, 
+             y = samp_peak * 1.2, 
+             size = 6, col = "red") +
+    # ----- label (alpha / 2) ----- #
+    annotate("text", 
+             label = "\u03b1/2",
+             x = mu + 3 * se, 
+             y = samp_peak, 
+             size = 6, col = "red") +
+    # --- x axis --- #
+    scale_x_continuous(breaks = seq(mu - 4 * se, mu + 4 * se, se)) +
+    # # don't show the x-axis label and ticks for the first plot
+    # theme(axis.ticks.x = element_blank(), 
+    #       axis.text.x = element_blank()) +
+    theme(axis.title.x = element_text(margin = unit(c(5, 0, 0, 0), "mm"))) +
+    # --- y axis --- #
+    scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
+f_twotail
+```
+
+
+```{r, include=TRUE}
+#| label: fig-two-tail
+#| fig-cap: "**Two-Tailed Test**. The sample means outside the cutoff values are unlikely under the null hypothesis. The area outside the cutoff values in both tails adds up to the significance level \u03b1 (set to 0.05 in this example)."
+#| fig-alt: 
+#|  - "A two-tailed test. The population mean under the null hypothesis is marked by a vertical line and labeled H naught μ subscript M equals μ subscript 0. The standard error of the mean SEM is marked by a horizontal line extending from the center. The cutoff values for unlikely sample means under the null hypothesis are marked by vertical lines and labeled with α/2. The area outside the cutoff values is shaded in red."
+#| fig-height: 3.5
+f_twotail
+```
+
+
+```{r, include=TRUE}
+#| label: fig-one-tail
+#| layout-nrow: 2
+#| fig-cap: "**One-Tailed Test**. The sample mean is unlikely under the null hypothesis. The area outside the cutoff value is shaded in red."
+#| fig-subcap: 
+#| - $H_1 \colon \mu \gt \mu_0$
+#| - $H_1 \colon \mu \lt \mu_0$
+#| fig-alt: 
+#|  - "A one-tailed test. The population mean under the null hypothesis is marked by a vertical line and labeled H naught μ subscript M equals μ subscript 0. The standard error of the mean SEM is marked by a horizontal line extending from the center. The cutoff value for an unlikely sample mean under the null hypothesis is marked by a vertical line and labeled with α. Upper panel has unlikely area outside the right tail, and lower panel has unlikely area outside the left tail, shaded in red."
+#| fig-height: 3.5
+plot_normal(m = mu, s = se, 
+            areatype = "uppertail", 
+            lb = mu + cv_one * se, 
+            xaxis = "Possible Sample Means", 
+            mycol = "red") +
+    # --- population mean --- #
+    annotate("segment", # vertical line
+             x = mu, xend = mu, 
+             y = 0, yend = samp_peak, 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = paste0("H[0]:", "\u03bc[M]==\u03bc[0]"), 
+             x = mu, y = samp_peak * 1.1, 
+             size = 8, parse = TRUE) +
+    # --- standard error of the mean --- #
+    annotate("segment",  # horizontal line
+             x = mu, xend = mu + se, 
+             y = se_height, yend = se_height, 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = "SEM", 
+             x = mu + se/2, 
+             y = se_height * 0.9,
+             size = 5) +
+    # --- critical values --- #
+    # ----- lines ------ #
+    geom_vline(xintercept = c(mu + cv_one * se), 
+               col = "red") +
+    # ---- right ---- #
+    # ----- arrow ----- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = mu + cv_one * se, xend = mu + 4 * se, 
+             y = samp_peak * 1.1, yend = samp_peak * 1.1,
+             col = "red") +
+    # ----- label (unlikely) ----- #
+    annotate("text", 
+             label = '"unlikely"', 
+             x = mu + 3 * se, 
+             y = samp_peak * 1.2, 
+             size = 6, col = "red") +
+    # ----- label (alpha / 2) ----- #
+    annotate("text", 
+             label = "\u03b1",
+             x = mu + 3 * se, 
+             y = samp_peak, 
+             size = 6, col = "red") +
+    # --- x axis --- #
+    scale_x_continuous(breaks = seq(mu - 4 * se, mu + 4 * se, se)) +
+    # # don't show the x-axis label and ticks for the first plot
+    # theme(axis.ticks.x = element_blank(), 
+    #       axis.text.x = element_blank()) +
+    theme(axis.title.x = element_text(margin = unit(c(5, 0, 0, 0), "mm"))) +
+    # --- y axis --- #
+    scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
+
+plot_normal(m = mu, s = se, 
+            areatype = "lowertail", 
+            ub = mu - cv_one * se, 
+            xaxis = "Possible Sample Means", 
+            mycol = "red") +
+    # --- population mean --- #
+    annotate("segment", # vertical line
+             x = mu, xend = mu, 
+             y = 0, yend = samp_peak, 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = paste0("H[0]:", "\u03bc[M]==\u03bc[0]"), 
+             x = mu, y = samp_peak * 1.1, 
+             size = 8, parse = TRUE) +
+    # --- standard error of the mean --- #
+    annotate("segment",  # horizontal line
+             x = mu, xend = mu + se, 
+             y = se_height, yend = se_height, 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = "SEM", 
+             x = mu + se/2, 
+             y = se_height * 0.9,
+             size = 5) +
+    # --- critical values --- #
+    # ----- lines ------ #
+    geom_vline(xintercept = c(mu - cv_one * se), 
+               col = "red") +
+    # ---- left ---- #
+    # ----- arrow ----- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = mu - cv_one * se, xend = mu - 4 * se, 
+             y = samp_peak * 1.1, yend = samp_peak * 1.1,
+             col = "red") +
+    # ----- label (unlikely) ----- #
+    annotate("text", 
+             label = '"unlikely"', 
+             x = mu - 3 * se, 
+             y = samp_peak * 1.2, 
+             size = 6, col = "red") +
+    # ----- label (alpha / 2) ----- #
+    annotate("text", 
+             label = "\u03b1",
+             x = mu - 3 * se, 
+             y = samp_peak, 
+             size = 6, col = "red") +
+    # --- x axis --- #
+    scale_x_continuous(breaks = seq(mu - 4 * se, mu + 4 * se, se)) +
+    # # don't show the x-axis label and ticks for the first plot
+    # theme(axis.ticks.x = element_blank(), 
+    #       axis.text.x = element_blank()) +
+    theme(axis.title.x = element_text(margin = unit(c(5, 0, 0, 0), "mm"))) +
+    # --- y axis --- #
+    scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
+
+```
+
+
+```{r, include=TRUE}
+#| label: fig-hypothesis-test
+#| fig-cap: "**Two-Tailed Hypothesis Test**. The sample mean M is outside of the cutoff values, and therefore unlikely under the null hypothesis. The p-value is the probability of observing a sample mean as extreme as M or more extreme if H0 is true. The shaded area in orange in both tails represents the p-value."
+#| fig-alt: "Sampling distribution of sample means. The population mean under the null hypothesis is marked by a black vertical line and labeled H naught μ subscript M equals μ subscript 0. The standard error of the mean SEM is marked by a black horizontal line extending from the center. The cutoff values for unlikely sample means under the null hypothesis are marked by red vertical lines and labeled with α/2. The observed sample mean M is marked by an arrow, and the area as extreme as M or more extreme is shaded in orange in both tails, representing the p-value."
+#| fig-height: 3.5
+#| 
+plot_normal(m = mu, s = se,
+            areatype = "twotail", 
+            lb = min(x, x_inv), ub = max(x, x_inv), 
+            xaxis = "Possible Sample Means") +
+    # --- population mean --- #
+    annotate("segment", # vertical line
+             x = mu, xend = mu, 
+             y = 0, yend = samp_peak, 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = paste0("H[0]:", "\u03bc[M]==\u03bc[0]"), 
+             x = mu, y = samp_peak * 1.1, 
+             size = 8, parse = TRUE) +
+    # --- standard error of the mean --- #
+    annotate("segment",  # horizontal line
+             x = mu, xend = mu + se, 
+             y = se_height, yend = se_height, 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = "SEM", 
+             x = mu + se/2, 
+             y = se_height * 0.9,
+             size = 5) +
+    # --- critical values --- #
+    # ----- lines ------ #
+    geom_vline(xintercept = c(mu - cv_two * se, mu + cv_two * se), 
+               col = "red") +
+    # ---- left ---- #
+    # ----- arrow ----- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = mu - cv_two * se, xend = mu - 4 * se, 
+             y = samp_peak * 1.1, yend = samp_peak * 1.1,
+             col = "red") +
+    # ----- label (unlikely) ----- #
+    annotate("text", 
+             label = '"unlikely"', 
+             x = mu - 3 * se, 
+             y = samp_peak * 1.2, 
+             size = 6, col = "red") +
+    # ----- label (alpha / 2) ----- #
+    annotate("text", 
+             label = "\u03b1/2",
+             x = mu - 3 * se, 
+             y = samp_peak, 
+             size = 6, col = "red") +
+    # ---- right ---- #
+    # ----- arrow ----- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = mu + cv_two * se, xend = mu + 4 * se, 
+             y = samp_peak * 1.1, yend = samp_peak * 1.1,
+             col = "red") +
+    # ----- label (unlikely) ----- #
+    annotate("text", 
+             label = '"unlikely"', 
+             x = mu + 3 * se, 
+             y = samp_peak * 1.2, 
+             size = 6, col = "red") +
+    # ----- label (alpha / 2) ----- #
+    annotate("text", 
+             label = "\u03b1/2",
+             x = mu + 3 * se, 
+             y = samp_peak, 
+             size = 6, col = "red") +
+    # --- observed sample mean --- #
+    annotate("segment", # arrow
+             arrow=arrow(type = "closed", length = unit(0.1, "in")),
+             x = x, xend = x,
+             y = samp_peak * 0.2, yend = 0, 
+             color = "black", 
+             linetype = "solid", 
+             ) +
+    annotate("text", 
+             label = "M", 
+             x = x, 
+             y = samp_peak * 0.3, 
+             size = 8) +
+    # --- p values --- #
+    # ---- left ----- #
+    annotate("text", 
+             label = "p/2", 
+             x = mu - 3 * se, 
+             y = samp_peak * 0.2, 
+             size = 6, col="darkorange") +
+    # ---- right ----- #
+    annotate("text", 
+             label = "p/2", 
+             x = mu + 3 * se, 
+             y = samp_peak * 0.2, 
+             size = 6, col="darkorange") +
+    # --- x axis --- #
+    scale_x_continuous(breaks = seq(mu - 4 * se, mu + 4 * se, se)) +
+    # # don't show the x-axis label and ticks for the first plot
+    # theme(axis.ticks.x = element_blank(), 
+    #       axis.text.x = element_blank()) +
+    theme(axis.title.x = element_text(margin = unit(c(5, 0, 0, 0), "mm"))) +
+    # --- y axis --- #
+    scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
+
+```
+
+```{r, include=TRUE}
+#| label: fig-hypothesis-test-standardized
+#| fig-cap: "**Two-Tailed Hypothesis Test Using Test Statistics (z)**. test statistic z is outside of the critical values for z, and therefore unlikely under the null hypothesis. The p-value is the probability of observing a test statistic as extreme as z or more extreme if H0 is true. The shaded area in orange in both tails represents the p-value."
+#| fig-alt: "Standarized sampling distribution of sample means. The population mean under the null hypothesis is marked by a black vertical line at 0 and labeled H naught μ subscript M equals μ subscript 0. The standard error of the mean SEM is marked by a black horizontal line extending from the center and is 1. The cutoff values for unlikely sample means under the null hypothesis are marked by red vertical lines and labeled with α/2. The observed test statistic z is marked by an arrow, and the area as extreme as z or more extreme is shaded in orange in both tails, representing the p-value."
+#| fig-height: 3.5
+
+plot_normal(m = 0, s = 1,
+            areatype = "twotail", 
+            lb = min(z, -z), ub = max(z, -z), 
+            xaxis = "Test Statistics (z)") +
+    # --- population mean --- #
+    annotate("segment", # vertical line
+             x = 0, xend = 0, 
+             y = 0, yend = dnorm(0), 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = paste0("H[0]:", "\u03bc[M]==\u03bc[0]"), 
+             x = 0, y = dnorm(0) * 1.1, 
+             size = 8, parse = TRUE) +
+    # --- standard error of the mean --- #
+    annotate("segment",  # horizontal line
+             x = 0, xend = 1, 
+             y = dnorm(1), yend = dnorm(1), 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = "1", 
+             x = 1/2, 
+             y = dnorm(1) * 0.9,
+             size = 5) +
+    # --- critical values --- #
+    # ----- lines ------ #
+    geom_vline(xintercept = c(qnorm(a/2), qnorm(1-a/2)), 
+               col = "red") +
+    # ---- left ---- #
+    # ----- arrow ----- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = qnorm(a/2), xend = -4, 
+             y = dnorm(0) * 1.1, yend = dnorm(0) * 1.1,
+             col = "red") +
+    # ----- label (unlikely) ----- #
+    annotate("text", 
+             label = '"unlikely"', 
+             x = -3, 
+             y = dnorm(0) * 1.2, 
+             size = 6, col = "red") +
+    # ----- label (alpha / 2) ----- #
+    annotate("text", 
+             label = "\u03b1/2",
+             x = -3, 
+             y = dnorm(0), 
+             size = 6, col = "red") +
+    # ---- right ---- #
+    # ----- arrow ----- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = qnorm(1-a/2), xend = 4, 
+             y = dnorm(0) * 1.1, yend = dnorm(0) * 1.1,
+             col = "red") +
+    # ----- label (unlikely) ----- #
+    annotate("text", 
+             label = '"unlikely"', 
+             x = 3, 
+             y = dnorm(0) * 1.2, 
+             size = 6, col = "red") +
+    # ----- label (alpha / 2) ----- #
+    annotate("text", 
+             label = "\u03b1/2",
+             x = 3, 
+             y = dnorm(0), 
+             size = 6, col = "red") +
+    # --- observed sample mean (standardized) --- #
+    annotate("segment", # arrow
+             arrow=arrow(type = "closed", length = unit(0.1, "in")),
+             x = z, xend = z,
+             y = dnorm(0) * 0.3, yend = 0, 
+             color = "black", 
+             linetype = "solid", 
+             ) +
+    annotate("text", 
+             label = "z == frac(M - \u03bc[0], SEM)", 
+             hjust = 0.1,
+             x = z, 
+             y = dnorm(0) * 0.5, 
+             size = 6,
+             parse = TRUE) +
+    # --- p values --- #
+    # ---- left ----- #
+    annotate("text", 
+             label = "p/2", 
+             x = -3, 
+             y = dnorm(0) * 0.2, 
+             size = 6, col="darkorange") +
+    # ---- right ----- #
+    annotate("text", 
+             label = "p/2", 
+             x = 3, 
+             y = dnorm(0) * 0.2, 
+             size = 6, col="darkorange") +
+    # --- x axis --- #
+    scale_x_continuous(breaks = seq(-4, 4, 1)) +
+    # # don't show the x-axis label and ticks for the first plot
+    # theme(axis.ticks.x = element_blank(), 
+    #       axis.text.x = element_blank()) +
+    theme(axis.title.x = element_text(margin = unit(c(5, 0, 0, 0), "mm"))) +
+    # --- y axis --- #
+    scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
+
+```

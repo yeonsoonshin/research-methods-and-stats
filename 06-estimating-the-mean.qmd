@@ -15,6 +15,13 @@ format:
 ---
 
 ```{r, include=FALSE}
+# knitr::opts_chunk$set(
+#   include = FALSE,
+#   echo = FALSE,
+#   message = FALSE,
+#   warning = FALSE
+# )
+
 library(tidyverse)
 theme_set(theme_classic(base_size = 16))
 
@@ -27,6 +34,60 @@ coinflip <- function(n_toss=1, p_head=0.5, k = NULL, highlight = "steelblue", xt
          y = "Probability") +
     scale_x_discrete(breaks=seq(0,n_toss,xtick_interval)) +
     scale_y_continuous(expand = c(0,0))
+}
+
+plot_normal <- function(m = 0, s = 1, areatype = "none", lb = NULL, ub = NULL, xaxis = "z") {
+  # extend past the default range (with margin) whenever a cutoff falls outside it
+  ll <- min(-4*s+m, lb - s, ub - s)
+  ul <- max(4*s+m, lb + s, ub + s)
+  if (areatype == "body") {
+    lb <- ifelse(is.null(lb), ll, lb)
+    ub <- ifelse(is.null(ub), ul, ub)
+  }
+  shadelim <- switch(areatype,
+                  "body" = c(lb, ub),
+                  "lowertail" = c(ll, ub),
+                  "uppertail" = c(lb, ul))
+  shadecol <- switch(areatype, "body" = "steelblue", "darkorange")
+
+  p <- ggplot(data = data.frame(x = seq(ll, ul, 1)), aes(x))
+
+  if (areatype == "none") {
+      p
+  } else if (areatype == "twotail") {
+      p <- p +
+        stat_function(fun = dnorm, n = 1000, args = list(mean = m, sd = s),
+                         geom = "area", col = "darkgray", fill = shadecol,
+                         alpha = 0.8, xlim = c(ll, min(lb, ub))) +
+        stat_function(fun = dnorm, n = 1000, args = list(mean = m, sd = s),
+                      geom = "area", col = "darkgray", fill = shadecol,
+                      alpha = 0.8, xlim = c(max(lb, ub), ul))
+  } else {
+      p <- p +
+        stat_function(fun = dnorm, n = 1000, args = list(mean = m, sd = s),
+                         geom = "area", col = "darkgray", fill = shadecol,
+                         alpha = 0.8, xlim = shadelim)
+  }
+
+  p <- p +
+    # curve
+    stat_function(fun = dnorm, n = 1000, args = list(mean = m, sd = s),
+                  col = "darkgray", linewidth = 1) +
+    # vertical lines
+    geom_vline(xintercept = c(lb, ub), col = "black") +
+    # label
+    xlab(xaxis) +
+    # misc
+    # scale_x_continuous(breaks = seq(floor(ll), ceiling(ul), s)) +
+    scale_y_continuous(expand = c(0, 0)) +
+    theme(
+      axis.text.y = element_blank(),
+      axis.title.y = element_blank(),
+      axis.line.y = element_blank(),
+      axis.ticks.y = element_blank(),
+      plot.title = element_text(hjust = 0.5)
+    )
+  return(p)
 }
 ```
 
@@ -171,6 +232,64 @@ where $\sigma$ is the standard deviation of the population, and $n$ is the sampl
 Notice that the sample size is in the SEM equation. As stated above, the sampling distribution refers to samples of a specific size. That is, all sample means must be calculated from samples of the same size n, such as n = 10, n = 30, or n = 100. This sample size refers to how many people or observations are in each individual sample, not how many samples are used to form the sampling distribution. This is because the sampling distribution is a theoretical distribution, not one we will ever actually calculate or observe. @fig-sampling-distribution displays the principles stated here in graphical form.
 
 ![The Sampling Distribution of Sample Means by Judy Schmitt](https://umsystem.pressbooks.pub/app/uploads/sites/23/2021/12/Sampling_Distribution_of_Sample_Means-2.png){#fig-sampling-distribution fig-alt="A bell curve line. The horizontal axis is labeled mu subscript M. There is a line from the center of the bell curve to the peak. A line extends from the center line about two thirds of the way up, connecting to the curved line. It is labeled sigma subscript M."}
+
+```{r, include=TRUE}
+#| label: fig-sampling-distribution
+#| layout-nrow: 2
+#| fig-cap: "Population and Sampling Distributions."
+#| fig-subcap:
+#|  - "A population distribution of individual scores."
+#|  - "A sampling distribution of sample means."
+#| fig-alt: "Top panel shows a Population distribution of individual scores. The x-axis shows possible individual scores. The center population mean is marked by a vertical line with the label `mu`; the standard deviation of the population is marked by a horizontal line extending from the center and labeled `sigma`. Bottom panel shows a Sampling distribution of sample means. The x-axis shows possible sample means. The center population mean is marked by a vertical line with the label `mu subscript M`; the standard deviation of the sample means is marked by a horizontal line extending from the center and labeled `SEM`."
+#| fig-height: 4.5
+mu <- 50
+std <- 10
+n <- 30
+se <- std/sqrt(n)
+a <- 0.05
+cv <- qnorm(1 - a/2)  # 95% CI upper bound
+pop_peak <- dnorm(mu, mu, std)  # population peak
+samp_peak <- dnorm(mu, mu, se)  # sampling distribution peak
+std_height <- dnorm(mu + std, mu, std)  # density at one standard deviation above the mean
+se_height <- dnorm(mu + se, mu, se)  # density at one standard error above the mean
+
+plot_normal(m = mu, s = std, areatype = "none", xaxis = "Individual Scores") +
+    geom_hline(yintercept=0) + 
+    # population mean
+    annotate("segment", x = mu, xend = mu, y = 0, yend = pop_peak, color = "black", linetype = "solid") +
+    annotate("text", x = mu, y = pop_peak * 1.1, 
+    label = expression("\u03bc"), size = 8) +
+    # standard deviation of the population
+    annotate("segment", x = mu, xend = mu + std, y = std_height, yend = std_height, color = "black", linetype = "solid") +
+    annotate("text", x = mu + std/2, y = std_height * 0.9, label = "\u03c3", size = 8) +
+    # axis
+    scale_x_continuous(breaks = seq(floor(mu-4*std), ceiling(mu+4*std), std)) +
+    scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
+    # don't show the x-axis label and ticks for the first plot
+    theme(axis.ticks.x = element_blank(), 
+          axis.text.x = element_blank(),
+          axis.title.x = element_text(margin = unit(c(5, 0, 0, 0), "mm")))
+
+
+plot_normal(m = mu, s = se, areatype = "none", xaxis = "Possible Sample Means") +
+    scale_x_continuous(breaks = seq(floor(mu-4*std), ceiling(mu+4*std), std)) +
+    geom_hline(yintercept=0) + 
+    # population mean
+    annotate("segment", x = mu, xend = mu, y = 0, yend = samp_peak, color = "black", linetype = "solid") +
+    annotate("text", x = mu, y = samp_peak * 1.1, 
+    label = expression("\u03bc"[M]), size = 8) +
+    # standard error of the mean
+    annotate("segment", x = mu, xend = mu + se, y = se_height, yend = se_height, color = "black", linetype = "solid") +
+    annotate("text", x = mu + se/2, y = se_height * 0.9, label = "SEM", size = 5) +
+    # axis
+    scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
+    # don't show the x-axis label and ticks for the first plot
+    theme(axis.ticks.x = element_blank(), 
+          axis.text.x = element_blank(),
+          axis.title.x = element_text(margin = unit(c(5, 0, 0, 0), "mm")))
+
+
+```
 
 ### The Law of Large Numbers: Larger Samples Give More Precise Estimates of the Population Mean
 

@@ -1,0 +1,1476 @@
+---
+title: "Ch.7: One Sample z-test and t-test"
+author: 
+  - "Yeon Soon Shin"
+  - "Anjali Thapar"
+  - "Dustin Albert"
+  - "Nichole Vittoz"
+  - "Linda R. Cote"
+  - "Rupa G. Gordon"
+  - "Chrislyn E. Randell"
+  - "Judy Smith"
+  - "Helena Marvin"
+format:
+  html:
+    number-offset: 6
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  include = FALSE,
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+
+library(tidyverse)  # for data wrangling and visualization
+# library(BrailleR)   # for brailleR tables
+# GoBlind()
+
+theme_set(theme_classic(base_size = 16))
+
+set.seed(123)
+plot_normal <- function(m = 0, s = 1,
+                        areatype = "none", 
+                        lb = NULL, ub = NULL, 
+                        xaxis = "z", 
+                        mycol = "darkorange") {
+  # extend past the default range (with margin) whenever a cutoff falls outside it
+  ll <- min(-4*s+m, lb - s, ub - s)
+  ul <- max(4*s+m, lb + s, ub + s)
+  if (areatype == "body") {
+    lb <- ifelse(is.null(lb), ll, lb)
+    ub <- ifelse(is.null(ub), ul, ub)
+  }
+  shadelim <- switch(areatype,
+                  "body" = c(lb, ub),
+                  "lowertail" = c(ll, ub),
+                  "uppertail" = c(lb, ul))
+  shadecol <- switch(areatype, "body" = "steelblue", mycol)
+
+  p <- ggplot(data = data.frame(x = seq(ll, ul, 1)), aes(x))
+
+  if (areatype == "none") {
+      p
+  } else if (areatype == "twotail") {
+      p <- p +
+        stat_function(fun = dnorm, n = 1000, args = list(mean = m, sd = s),
+                         geom = "area", col = "darkgray", fill = shadecol,
+                         alpha = 0.8, xlim = c(ll, min(lb, ub))) +
+        stat_function(fun = dnorm, n = 1000, args = list(mean = m, sd = s),
+                      geom = "area", col = "darkgray", fill = shadecol,
+                      alpha = 0.8, xlim = c(max(lb, ub), ul))
+  } else {
+      p <- p +
+        stat_function(fun = dnorm, n = 1000, args = list(mean = m, sd = s),
+                         geom = "area", col = "darkgray", fill = shadecol,
+                         alpha = 0.8, xlim = shadelim)
+  }
+
+  p <- p +
+    # curve
+    stat_function(fun = dnorm, n = 1000, args = list(mean = m, sd = s),
+                  col = "darkgray", linewidth = 1) +
+    # vertical lines
+    # geom_vline(xintercept = c(lb, ub), col = "black") +
+    # label
+    xlab(xaxis) +
+    # misc
+    scale_x_continuous(breaks = seq(floor(ll), ceiling(ul), s)) +
+    scale_y_continuous(expand = c(0, 0)) +
+    theme(
+      axis.text.y = element_blank(),
+      axis.title.y = element_blank(),
+      axis.line.y = element_blank(),
+      axis.ticks.y = element_blank(),
+      plot.title = element_text(hjust = 0.5)
+    )
+  return(p)
+}
+
+plot_t <- function(df = 30,
+                   areatype = "none", 
+                   lb = NULL, ub = NULL,  
+                   xaxis = "t",
+                   mycol = "darkorange") {
+  # extend past the default range (with margin) whenever a cutoff falls outside it
+  ll <- min(-4, lb - 1, ub - 1)
+  ul <- max(4, lb + 1, ub + 1)
+  if (areatype == "body") {
+    lb <- ifelse(is.null(lb), ll, lb)
+    ub <- ifelse(is.null(ub), ul, ub)
+  }
+  shadelim <- switch(areatype,
+                  "body" = c(lb, ub),
+                  "lowertail" = c(ll, ub),
+                  "uppertail" = c(lb, ul))
+  shadecol <- switch(areatype, "body" = "steelblue", mycol)
+
+  p <- ggplot(data = data.frame(x = seq(ll, ul, 1)), aes(x))
+
+  if (areatype == "none") {
+      p
+  } else if (areatype == "twotail") {
+      p <- p +
+        stat_function(fun = dt, n = 1000, args = list(df = df),
+                         geom = "area", col = "darkgray", fill = shadecol,
+                         alpha = 0.8, xlim = c(ll, min(lb, ub))) +
+        stat_function(fun = dt, n = 1000, args = list(df = df),
+                      geom = "area", col = "darkgray", fill = shadecol,
+                      alpha = 0.8, xlim = c(max(lb, ub), ul))
+  } else {
+      p <- p +
+        stat_function(fun = dt, n = 1000, args = list(df = df),
+                         geom = "area", col = "darkgray", fill = shadecol,
+                         alpha = 0.8, xlim = shadelim)
+  }
+
+  p <- p +
+    # curve
+    stat_function(fun = dt, n = 1000, args = list(df = df),
+                  col = "darkgray", linewidth = 1) +
+    # vertical lines
+    # geom_vline(xintercept = c(lb, ub), col = "black") +
+    # label
+    xlab(xaxis) +
+    # misc
+    scale_x_continuous(breaks = seq(floor(ll), ceiling(ul), 1)) +
+    scale_y_continuous(expand = c(0, 0)) +
+    theme(
+      axis.text.y = element_blank(),
+      axis.title.y = element_blank(),
+      axis.line.y = element_blank(),
+      axis.ticks.y = element_blank(),
+      plot.title = element_text(hjust = 0.5)
+    )
+  return(p)
+}
+```
+
+```{r}
+mu <- 220
+std <- 36
+n <- 100
+x <- 228
+samp_sd <- 40
+
+se <- std/sqrt(n)
+z <- (x - mu)/se
+
+p_onetail <- 1 - pnorm(x, mu, se)
+x_inv <- ifelse(x < mu, qnorm(1-p_onetail, mu, se), qnorm(p_onetail, mu, se))
+
+a <- 0.05
+cv_two <- qnorm(1 - a/2)  
+cv_one <- qnorm(1 - a)
+
+t <- (x - mu)/(samp_sd/sqrt(n))
+p_onetail_t <- 1 - pt(t, df = (n-1))
+cv_two_t <- qt(1 - a/2, df = (n-1))
+cv_one_t <- qt(1 - a, df = (n-1))
+
+d <- (x - mu)/std
+
+pop_peak <- dnorm(mu, mu, std)  # population peak
+samp_peak <- dnorm(mu, mu, se)  # sampling distribution peak
+
+std_height <- dnorm(mu + std, mu, std)  # density at one standard deviation above the mean
+se_height <- dnorm(mu + se, mu, se)  # density at one standard error above the mean
+cv_height <- dnorm(mu + cv_two * se, mu, se)
+
+```
+
+Now that you have mastered the basic process of hypothesis testing, you are ready for this: your first real statistical test. The first question we can answer with hypothesis testing is whether a sample mean is significantly different from a baseline value. To answer this question, we can use either a one-sample z-test or a one-sample t-test.
+
+Both one-sample z-tests and one-sample t-tests are used to determine whether a sample mean is significantly different from a baseline value. When do we use which? In a one-sample z-test, that baseline is some known population mean, and we also know the spread of the scores in the population (i.e., population standard deviation). In a one-sample t-test, the baseline can be a known population mean or a hypothesized value, but the spread of the scores is unknown, so we estimate it from the sample.
+
+The logic is the same from before. We see something interesting in our data -- in this case, the mean difference from the baseline value -- and we want to know if that difference is "real" (statistical significance) and big enough to care (practical significance). For statistical significance, we start with the null hypothesis that there is no difference in the population, and we calculate the probability of observing sample means as extreme as the one we observed or more extreme if the null hypothesis is true. If that probability is low enough (lower than our threshold of significance, alpha), the data is unlikely enough under the null hypothesis that we conclude that there is something interesting going on in the population. For practical significance, we consider how large the difference between someone with the sample and someone with the baseline value.
+
+## One-Sample z-Test
+
+First, we need to formulate the research and null hypotheses. Remember, in such a hypothesis test, we are trying to compare two populations. Population 1, the research population, is the one from which we have drawn a research sample.
+
+![One-sample z-test by Nichole Vittoz](https://pressbooks.bccampus.ca/statspsych/wp-content/uploads/sites/1469/2021/08/Fig-5.3-1-768x392.png){#fig-one-sample-z-test fig-alt="One-sample z-test. Research population 1 with a mean of mu 1 is on the left, shown as a circle with a dashed line. From there, a solid arrow extends to the bottom to show that a sample with a mean of M is drawn from that population. Another arrow extends to the right from research population 1 to the comparison population 2 with a mean of mu 2, shown as a circle with a solid line. Under the arrow, three questions are shown: different from? less than? greater than?"}
+
+We do not have access to the actual research population mean, hence the need to calculate a sample mean. That sample mean is our best proxy for the population 1 mean, which we need to compare to the mean of population 2. The nature of the comparison, in particular its directionality, is determined by the researcher’s prediction.
+
+Next, we need to determine what sample means we can expect if the null hypothesis is true. This distribution of sample means under the null hypothesis is shown in @fig-sampling-distribution. If the population mean is the same in both populations, then the sampling distribution of sample means will be centered on the population 2's mean. The spread of the sampling distribution is determined by the standard error of the mean (SEM), which is the population standard deviation divided by the square root of the sample size. 
+
+
+```{r, include=TRUE}
+#| label: fig-sampling-distribution
+#| fig-cap: "Distribution of Sample Means Under the Null Hypothesis"
+#| fig-alt: 
+#|  - "A sampling distribution of sample means. The x-axis shows possible sample means. The center population mean is marked by a vertical line. The standard deviation of the sample means SEM is marked by a horizontal line extending from the center."
+#| fig-height: 4.5
+
+plot_normal(m = mu, s = se, 
+            areatype = "none", 
+            xaxis = "Possible Sample Means") +
+    geom_hline(yintercept=0) + 
+    # --- population mean --- #
+    annotate("segment", # vertical line
+             x = mu, xend = mu, 
+             y = 0, yend = samp_peak, 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+            #  label = paste0("H[0]:", "\u03bc[M]==\u03bc[0]"), 
+             label = paste0("\u03bc[M]"),
+             x = mu, y = samp_peak * 1.1, 
+             size = 8, parse = TRUE) +
+    # --- standard error of the mean --- #
+    annotate("segment",  # horizontal line
+             x = mu, xend = mu + se, 
+             y = se_height, yend = se_height, 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = "SEM", 
+             x = mu + se/2, 
+             y = se_height * 0.9,
+             size = 5) +
+    # --- critical values (invisible) --- #
+    # --- left arrow --- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = mu - cv_two * se, xend = mu - 4 * se, 
+             y = samp_peak * 1.1, yend = samp_peak * 1.1,
+             col = "white") +
+    # --- right arrow --- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = mu + cv_two * se, xend = mu + 4 * se, 
+             y = samp_peak * 1.1, yend = samp_peak * 1.1,
+             col = "white") +
+    # --- x axis --- #
+    scale_x_continuous(breaks = seq(mu - 4 * se, mu + 4 * se, se)) +
+    # # don't show the x-axis label and ticks for the first plot
+    theme(axis.ticks.x = element_blank(), 
+          axis.text.x = element_blank()) +
+    theme(axis.title.x = element_text(margin = unit(c(5, 0, 0, 0), "mm"))) +
+    # --- y axis --- #
+    scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
+```
+
+
+### Margin of Error and Confidence Intervals 
+
+Our point estimate for the population mean is the sample mean, but @fig-sampling-distribution shows that there is some uncertainty in what sample means we may observe when we only get to observe a subset of the true population, due to sampling error. As we've seen before, how far a sample mean can fall from the population mean with some confidence level is called the margin of error @fig-margin-of-error. Confidence intervals communicate uncertainty with some degree of confidence by extending sample mean by the margin of error equally in both directions.
+
+$$\text{Confidence Interval} = \text{Sample Mean} \pm \text{Margin of Error}$$
+
+
+```{r, include=TRUE}
+#| label: fig-margin-of-error
+#| fig-cap: "Margin of Error"
+#| fig-alt: 
+#|  - "A sampling distribution of sample means. The x-axis shows possible sample means. The center population mean is marked by a vertical line. The standard deviation of the sample means SEM is marked by a horizontal line extending from the center."
+#| fig-height: 4.5
+
+plot_normal(m = mu, s = se, 
+            areatype = "body",
+            lb = mu - cv_two * se, ub = mu + cv_two * se, 
+            xaxis = "Possible Sample Means") +
+    geom_hline(yintercept=0) + 
+    # --- population mean --- #
+    annotate("segment", # vertical line
+             x = mu, xend = mu, 
+             y = 0, yend = samp_peak, 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = paste0("\u03bc[M]"), 
+             x = mu, y = samp_peak * 1.1, 
+             size = 8, parse = TRUE) +
+    # --- standard error of the mean --- #
+    annotate("segment",  # horizontal line
+             x = mu, xend = mu + se, 
+             y = se_height, yend = se_height, 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = "SEM", 
+             x = mu + se/2, 
+             y = se_height * 0.9,
+             size = 5) +
+    # --- Margin of Error --- #
+    annotate("segment", 
+             arrow = arrow(ends = "both", type = "closed", length = unit(0.1, "in")), 
+             x = mu - cv_two * se, xend = mu, 
+             y = cv_height, yend = cv_height) +
+    annotate("text", 
+             label = "Margin of Error", 
+             x = mu - cv_two * se/2, 
+             y = cv_height * 0.5,
+             size = 5) +
+    # --- critical values (invisible) --- #
+    # --- left arrow --- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = mu - cv_two * se, xend = mu - 4 * se, 
+             y = samp_peak * 1.1, yend = samp_peak * 1.1,
+             col = "white") +
+    # --- right arrow --- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = mu + cv_two * se, xend = mu + 4 * se, 
+             y = samp_peak * 1.1, yend = samp_peak * 1.1,
+             col = "white") +
+    # --- x axis --- #
+    scale_x_continuous(breaks = seq(mu - 4 * se, mu + 4 * se, se)) +
+    # # don't show the x-axis label and ticks for the first plot
+    theme(axis.ticks.x = element_blank(), 
+          axis.text.x = element_blank()) +
+    theme(axis.title.x = element_text(margin = unit(c(5, 0, 0, 0), "mm"))) +
+    # --- y axis --- #
+    scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
+```
+
+
+
+### Null Hypothesis and Alternative Hypothesis
+
+The hypothesis that an apparent effect is due to chance is called the null hypothesis, written $H_0$ (“H-naught”). The null hypothesis (H0) states that there is no significant difference between the sample mean and the baseline value. Subscript 0 will mark the parameters associated with the null hypothesis, so $\mu_{0}$ indicates the population mean under the null hypothesis.
+
+$$H_0 \colon \mu_{M} = \mu_{0}$$
+
+The alternative hypothesis ($H_1$) needs to include all possibilities that are not included in the null hypothesis, because when the sample data is unlikely under the null hypothesis, we have to support the alternative hypothesis. The alternative hypothesis states that there is a significant difference between the sample mean and the baseline value.
+
+#### Two-tailed Test
+
+The simplest is the two-tailed test with non-directional hypothesis. It just states that the sample mean is not the same as the baseline value. 
+
+$$H_1 \colon \mu_{M} \neq \mu_{0}$$
+
+What this is saying is that the difference can go either way -- the sample mean can be either greater than or less than the baseline value. In this case, we need to distribute our Type I error rate $\alpha$ equally across both tails (marked red in @fig-two-tail-1). If the sample means are too low (outside of the cutoff valueson the left tail) or too high (on the right tail), then they are unlikely under the null hypothesis, and we reject the null hypothesis. 
+
+```{r, include=TRUE}
+#| label: fig-two-tail-1
+#| fig-cap: "**Two-Tailed Test**. The sample means outside the cutoff values are unlikely under the null hypothesis. The area outside the cutoff values in both tails adds up to the significance level \u03b1 (set to 0.05 in this example)."
+#| fig-alt: 
+#|  - "A two-tailed test. The population mean under the null hypothesis is marked by a vertical line and labeled H naught μ subscript M equals μ subscript 0. The standard error of the mean SEM is marked by a horizontal line extending from the center. The cutoff values for unlikely sample means under the null hypothesis are marked by vertical lines and labeled with α/2. The area outside the cutoff values is shaded in red."
+#| fig-height: 4.5
+
+f_twotail <- plot_normal(m = mu, s = se, 
+                         areatype = "twotail", 
+                         lb = mu - cv_two * se, ub = mu + cv_two * se, 
+                         xaxis = "Possible Sample Means", 
+                         mycol = "red") +
+    # --- population mean --- #
+    annotate("segment", # vertical line
+             x = mu, xend = mu, 
+             y = 0, yend = samp_peak, 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = paste0("H[0]:", "\u03bc[M]==\u03bc[0]"), 
+             x = mu, y = samp_peak * 1.1, 
+             size = 8, parse = TRUE) +
+    # --- standard error of the mean --- #
+    annotate("segment",  # horizontal line
+             x = mu, xend = mu + se, 
+             y = se_height, yend = se_height, 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = "SEM", 
+             x = mu + se/2, 
+             y = se_height * 0.9,
+             size = 5) +
+    # --- critical values --- #
+    # ----- lines ------ #
+    geom_vline(xintercept = c(mu - cv_two * se, mu + cv_two * se), 
+               col = "red") +
+    # ---- left ---- #
+    # ----- arrow ----- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = mu - cv_two * se, xend = mu - 4 * se, 
+             y = samp_peak * 1.1, yend = samp_peak * 1.1,
+             col = "red") +
+    # ----- label (unlikely) ----- #
+    annotate("text", 
+             label = '"unlikely"', 
+             x = mu - 3 * se, 
+             y = samp_peak * 1.2, 
+             size = 6, col = "red") +
+    # ----- label (alpha / 2) ----- #
+    annotate("text", 
+             label = "\u03b1/2",
+             x = mu - 3 * se, 
+             y = samp_peak, 
+             size = 6, col = "red") +
+    # ---- right ---- #
+    # ----- arrow ----- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = mu + cv_two * se, xend = mu + 4 * se, 
+             y = samp_peak * 1.1, yend = samp_peak * 1.1,
+             col = "red") +
+    # ----- label (unlikely) ----- #
+    annotate("text", 
+             label = '"unlikely"', 
+             x = mu + 3 * se, 
+             y = samp_peak * 1.2, 
+             size = 6, col = "red") +
+    # ----- label (alpha / 2) ----- #
+    annotate("text", 
+             label = "\u03b1/2",
+             x = mu + 3 * se, 
+             y = samp_peak, 
+             size = 6, col = "red") +
+    # --- x axis --- #
+    scale_x_continuous(breaks = seq(mu - 4 * se, mu + 4 * se, se)) +
+    # # don't show the x-axis label and ticks for the first plot
+    theme(axis.ticks.x = element_blank(), 
+          axis.text.x = element_blank()) +
+    theme(axis.title.x = element_text(margin = unit(c(5, 0, 0, 0), "mm"))) +
+    # --- y axis --- #
+    scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
+f_twotail
+```
+
+#### One-tailed Test
+
+If the researcher has a directional hypothesis, and the population of interest can have only one directional difference from the baseline value, then a one-tailed test is appropriate. For example, if you are testing the mean height of 6-year-old children against the 5-year old baseline, it is reasonable to believe that, compared to the mean height of 5-year-olds, the mean height of 6-year-olds will be either the same (the null hypothesis) or greater (the alternative hypothesis). In this case, we can use a one-tailed test with a directional hypothesis.
+
+$$H_1 \colon \mu_{M} > \mu_{0}$$
+
+The Type I error rate is not split across two tails, but instead is concentrated in one tail (marked red in @fig-one-tail). If the sample mean is too high (outside of the cutoff value on the right tail), then it is unlikely under the null hypothesis, and we reject the null hypothesis. 
+
+The same logic applies if the alternative hypothesis is that the sample mean is less than the baseline value, in which case the cutoff value is on the left tail.
+
+$$H_1 \colon \mu_{M} < \mu_{0}$$
+
+```{r, include=TRUE}
+#| label: fig-one-tail
+#| layout-nrow: 2
+#| fig-cap: "**One-Tailed Test**. The sample mean is unlikely under the null hypothesis. The area outside the cutoff value is shaded in red."
+#| fig-subcap: 
+#| - $H_1 \colon \mu \gt \mu_0$
+#| - $H_1 \colon \mu \lt \mu_0$
+#| fig-alt: 
+#|  - "A one-tailed test. The population mean under the null hypothesis is marked by a vertical line and labeled H naught μ subscript M equals μ subscript 0. The standard error of the mean SEM is marked by a horizontal line extending from the center. The cutoff value for an unlikely sample mean under the null hypothesis is marked by a vertical line and labeled with α. Upper panel has unlikely area outside the right tail, and lower panel has unlikely area outside the left tail, shaded in red."
+#| fig-height: 3.5
+plot_normal(m = mu, s = se, 
+            areatype = "uppertail", 
+            lb = mu + cv_one * se, 
+            xaxis = "Possible Sample Means", 
+            mycol = "red") +
+    # --- population mean --- #
+    annotate("segment", # vertical line
+             x = mu, xend = mu, 
+             y = 0, yend = samp_peak, 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = paste0("H[0]:", "\u03bc[M]==\u03bc[0]"), 
+             x = mu, y = samp_peak * 1.1, 
+             size = 8, parse = TRUE) +
+    # --- standard error of the mean --- #
+    annotate("segment",  # horizontal line
+             x = mu, xend = mu + se, 
+             y = se_height, yend = se_height, 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = "SEM", 
+             x = mu + se/2, 
+             y = se_height * 0.9,
+             size = 5) +
+    # --- critical values --- #
+    # ----- lines ------ #
+    geom_vline(xintercept = c(mu + cv_one * se), 
+               col = "red") +
+    # ---- right ---- #
+    # ----- arrow ----- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = mu + cv_one * se, xend = mu + 4 * se, 
+             y = samp_peak * 1.1, yend = samp_peak * 1.1,
+             col = "red") +
+    # ----- label (unlikely) ----- #
+    annotate("text", 
+             label = '"unlikely"', 
+             x = mu + 3 * se, 
+             y = samp_peak * 1.2, 
+             size = 6, col = "red") +
+    # ----- label (alpha / 2) ----- #
+    annotate("text", 
+             label = "\u03b1",
+             x = mu + 3 * se, 
+             y = samp_peak, 
+             size = 6, col = "red") +
+    # --- x axis --- #
+    scale_x_continuous(breaks = seq(mu - 4 * se, mu + 4 * se, se)) +
+    # # don't show the x-axis label and ticks for the first plot
+    # theme(axis.ticks.x = element_blank(), 
+    #       axis.text.x = element_blank()) +
+    theme(axis.title.x = element_text(margin = unit(c(5, 0, 0, 0), "mm"))) +
+    # --- y axis --- #
+    scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
+
+plot_normal(m = mu, s = se, 
+            areatype = "lowertail", 
+            ub = mu - cv_one * se, 
+            xaxis = "Possible Sample Means", 
+            mycol = "red") +
+    # --- population mean --- #
+    annotate("segment", # vertical line
+             x = mu, xend = mu, 
+             y = 0, yend = samp_peak, 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = paste0("H[0]:", "\u03bc[M]==\u03bc[0]"), 
+             x = mu, y = samp_peak * 1.1, 
+             size = 8, parse = TRUE) +
+    # --- standard error of the mean --- #
+    annotate("segment",  # horizontal line
+             x = mu, xend = mu + se, 
+             y = se_height, yend = se_height, 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = "SEM", 
+             x = mu + se/2, 
+             y = se_height * 0.9,
+             size = 5) +
+    # --- critical values --- #
+    # ----- lines ------ #
+    geom_vline(xintercept = c(mu - cv_one * se), 
+               col = "red") +
+    # ---- left ---- #
+    # ----- arrow ----- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = mu - cv_one * se, xend = mu - 4 * se, 
+             y = samp_peak * 1.1, yend = samp_peak * 1.1,
+             col = "red") +
+    # ----- label (unlikely) ----- #
+    annotate("text", 
+             label = '"unlikely"', 
+             x = mu - 3 * se, 
+             y = samp_peak * 1.2, 
+             size = 6, col = "red") +
+    # ----- label (alpha / 2) ----- #
+    annotate("text", 
+             label = "\u03b1",
+             x = mu - 3 * se, 
+             y = samp_peak, 
+             size = 6, col = "red") +
+    # --- x axis --- #
+    scale_x_continuous(breaks = seq(mu - 4 * se, mu + 4 * se, se)) +
+    # # don't show the x-axis label and ticks for the first plot
+    theme(axis.ticks.x = element_blank(), 
+          axis.text.x = element_blank()) +
+    theme(axis.title.x = element_text(margin = unit(c(5, 0, 0, 0), "mm"))) +
+    # --- y axis --- #
+    scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
+
+```
+
+
+### How Unlikely Are Sample Means as Extreme as the One Observed or More Extreme?
+
+Now, we need to determine how unlikely the sample mean is under the null hypothesis: the p-value. We can find the probability in the tails of the sampling distribution using the z distribution. In @fig-hypothesis-test, the probability of observing a sample mean as extreme as the one observed or more extreme if the null hypothesis is true is represented by the shaded area in orange in both tails. If that probability is lower than our threshold of significance, we reject the null hypothesis and conclude that there is a significant difference between the sample mean and the baseline value.
+
+```{r, include=TRUE}
+#| label: fig-hypothesis-test
+#| fig-cap: "**Two-Tailed Hypothesis Test**. The sample mean M is outside of the cutoff values, and therefore unlikely under the null hypothesis. The p-value is the probability of observing a sample mean as extreme as M or more extreme if H0 is true. The shaded area in orange in both tails represents the p-value."
+#| fig-alt: "Sampling distribution of sample means. The population mean under the null hypothesis is marked by a black vertical line and labeled H naught μ subscript M equals μ subscript 0. The standard error of the mean SEM is marked by a black horizontal line extending from the center. The cutoff values for unlikely sample means under the null hypothesis are marked by red vertical lines and labeled with α/2. The observed sample mean M is marked by an arrow, and the area as extreme as M or more extreme is shaded in orange in both tails, representing the p-value."
+#| fig-height: 3.5
+#| 
+plot_normal(m = mu, s = se,
+            areatype = "twotail", 
+            lb = min(x, x_inv), ub = max(x, x_inv), 
+            xaxis = "Possible Sample Means") +
+    # --- population mean --- #
+    annotate("segment", # vertical line
+             x = mu, xend = mu, 
+             y = 0, yend = samp_peak, 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = paste0("H[0]:", "\u03bc[M]==\u03bc[0]"), 
+             x = mu, y = samp_peak * 1.1, 
+             size = 8, parse = TRUE) +
+    # --- standard error of the mean --- #
+    annotate("segment",  # horizontal line
+             x = mu, xend = mu + se, 
+             y = se_height, yend = se_height, 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = "SEM", 
+             x = mu + se/2, 
+             y = se_height * 0.9,
+             size = 5) +
+    # --- critical values --- #
+    # ----- lines ------ #
+    geom_vline(xintercept = c(mu - cv_two * se, mu + cv_two * se), 
+               col = "red") +
+    # ---- left ---- #
+    # ----- arrow ----- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = mu - cv_two * se, xend = mu - 4 * se, 
+             y = samp_peak * 1.1, yend = samp_peak * 1.1,
+             col = "red") +
+    # ----- label (unlikely) ----- #
+    annotate("text", 
+             label = '"unlikely"', 
+             x = mu - 3 * se, 
+             y = samp_peak * 1.2, 
+             size = 6, col = "red") +
+    # ----- label (alpha / 2) ----- #
+    annotate("text", 
+             label = "\u03b1/2",
+             x = mu - 3 * se, 
+             y = samp_peak, 
+             size = 6, col = "red") +
+    # ---- right ---- #
+    # ----- arrow ----- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = mu + cv_two * se, xend = mu + 4 * se, 
+             y = samp_peak * 1.1, yend = samp_peak * 1.1,
+             col = "red") +
+    # ----- label (unlikely) ----- #
+    annotate("text", 
+             label = '"unlikely"', 
+             x = mu + 3 * se, 
+             y = samp_peak * 1.2, 
+             size = 6, col = "red") +
+    # ----- label (alpha / 2) ----- #
+    annotate("text", 
+             label = "\u03b1/2",
+             x = mu + 3 * se, 
+             y = samp_peak, 
+             size = 6, col = "red") +
+    # --- observed sample mean --- #
+    annotate("segment", # arrow
+             arrow=arrow(type = "closed", length = unit(0.1, "in")),
+             x = x, xend = x,
+             y = samp_peak * 0.2, yend = 0, 
+             color = "black", 
+             linetype = "solid", 
+             ) +
+    annotate("text", 
+             label = "M", 
+             x = x, 
+             y = samp_peak * 0.3, 
+             size = 8) +
+    # --- p values --- #
+    # ---- left ----- #
+    annotate("text", 
+             label = "p/2", 
+             x = mu - 3 * se, 
+             y = samp_peak * 0.2, 
+             size = 6, col="darkorange") +
+    # ---- right ----- #
+    annotate("text", 
+             label = "p/2", 
+             x = mu + 3 * se, 
+             y = samp_peak * 0.2, 
+             size = 6, col="darkorange") +
+    # --- x axis --- #
+    scale_x_continuous(breaks = seq(mu - 4 * se, mu + 4 * se, se)) +
+    # # don't show the x-axis label and ticks for the first plot
+    theme(axis.ticks.x = element_blank(), 
+          axis.text.x = element_blank()) +
+    theme(axis.title.x = element_text(margin = unit(c(5, 0, 0, 0), "mm"))) +
+    # --- y axis --- #
+    scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
+
+```
+
+
+#### z Distribution Under the Hood
+
+How did we find the p value? We used what we know about the standard normal distribution. We can standardize the sampling distribution of sample means by subtracting the population mean and dividing by the standard error of the mean. This gives us a z distribution, which is a standard normal distribution with a mean of 0 and a standard deviation of 1. As noted before, the z distribution allows us to find probabilities for any sample mean under the null hypothesis. 
+
+@fig-z-distribution shows the z distribution, which is the same as the sampling distribution of sample means, but standardized. The population mean under the null hypothesis is marked by a vertical line at 0, and the standard error of the mean is marked by a horizontal line extending from the center. Now, our unit is the standard error of the mean (i.e., z=1 is one standard error away from the population mean under the null hypothesis). 
+
+```{r, include=TRUE}
+#| label: fig-z-distribution
+#| fig-cap: "z Distribution"
+#| fig-alt: 
+#|  - "A sampling distribution of sample means. The x-axis shows possible sample means. The center population mean is marked by a vertical line. The standard deviation of the sample means SEM is marked by a horizontal line extending from the center."
+#| fig-height: 4.5
+
+plot_normal(m = 0, s = 1,
+            areatype = "none",
+            xaxis = "Test Statistics (z)") +
+    # --- population mean --- #
+    annotate("segment", # vertical line
+             x = 0, xend = 0, 
+             y = 0, yend = dnorm(0), 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = paste0("H[0]:", "\u03bc[M]==\u03bc[0]"), 
+             x = 0, y = dnorm(0) * 1.1, 
+             size = 8, parse = TRUE) +
+    # --- standard error of the mean --- #
+    annotate("segment",  # horizontal line
+             x = 0, xend = 1, 
+             y = dnorm(1), yend = dnorm(1), 
+             color = "black", linetype = "solid") +
+    # --- critical values (invisible) --- #
+    # ---- left ---- #
+    # ----- arrow ----- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = qnorm(a/2), xend = -4, 
+             y = dnorm(0) * 1.1, yend = dnorm(0) * 1.1,
+             col = "white") +
+    # ---- right ---- #
+    # ----- arrow ----- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = qnorm(1-a/2), xend = 4, 
+             y = dnorm(0) * 1.1, yend = dnorm(0) * 1.1,
+             col = "white") +
+    # --- x axis --- #
+    scale_x_continuous(breaks = seq(-4, 4, 1)) +
+    # # don't show the x-axis label and ticks for the first plot
+    # theme(axis.ticks.x = element_blank(), 
+    #       axis.text.x = element_blank()) +
+    theme(axis.title.x = element_text(margin = unit(c(5, 0, 0, 0), "mm"))) +
+    # --- y axis --- #
+    scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
+```
+
+
+@fig-hypothesis-test-z shows the same hypothesis test as @fig-hypothesis-test, but in terms of the z distribution. The observed sample mean is standardized to a test statistic z, which is the number of standard errors that the sample mean is away from the population mean under the null hypothesis. The p value is still the probability of observing a test statistic as extreme as z or more extreme if $H_0$ is true. 
+
+
+
+```{r, include=TRUE}
+#| label: fig-hypothesis-test-z
+#| fig-cap: "**Two-Tailed Hypothesis Test Using Test Statistic (z)**. test statistic z is outside of the critical values for z, and therefore unlikely under the null hypothesis. The p-value is the probability of observing a test statistic as extreme as z or more extreme if H0 is true. The shaded area in orange in both tails represents the p-value."
+#| fig-alt: "Standarized sampling distribution of sample means. The population mean under the null hypothesis is marked by a black vertical line at 0 and labeled H naught μ subscript M equals μ subscript 0. The standard error of the mean SEM is marked by a black horizontal line extending from the center and is 1. The cutoff values for unlikely sample means under the null hypothesis are marked by red vertical lines and labeled with α/2. The observed test statistic z is marked by an arrow, and the area as extreme as z or more extreme is shaded in orange in both tails, representing the p-value."
+#| fig-height: 3.5
+
+plot_normal(m = 0, s = 1,
+            areatype = "twotail", 
+            lb = min(z, -z), ub = max(z, -z), 
+            xaxis = "Test Statistics (z)") +
+    # --- population mean --- #
+    annotate("segment", # vertical line
+             x = 0, xend = 0, 
+             y = 0, yend = dnorm(0), 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = paste0("H[0]:", "\u03bc[M]==\u03bc[0]"), 
+             x = 0, y = dnorm(0) * 1.1, 
+             size = 8, parse = TRUE) +
+    # --- standard error of the mean --- #
+    annotate("segment",  # horizontal line
+             x = 0, xend = 1, 
+             y = dnorm(1), yend = dnorm(1), 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = "1", 
+             x = 1/2, 
+             y = dnorm(1) * 0.9,
+             size = 5) +
+    # --- critical values --- #
+    # ----- lines ------ #
+    geom_vline(xintercept = c(qnorm(a/2), qnorm(1-a/2)), 
+               col = "red") +
+    # ---- left ---- #
+    # ----- arrow ----- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = qnorm(a/2), xend = -4, 
+             y = dnorm(0) * 1.1, yend = dnorm(0) * 1.1,
+             col = "red") +
+    # ----- label (unlikely) ----- #
+    annotate("text", 
+             label = '"unlikely"', 
+             x = -3, 
+             y = dnorm(0) * 1.2, 
+             size = 6, col = "red") +
+    # ----- label (alpha / 2) ----- #
+    annotate("text", 
+             label = "\u03b1/2",
+             x = -3, 
+             y = dnorm(0), 
+             size = 6, col = "red") +
+    # ---- right ---- #
+    # ----- arrow ----- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = qnorm(1-a/2), xend = 4, 
+             y = dnorm(0) * 1.1, yend = dnorm(0) * 1.1,
+             col = "red") +
+    # ----- label (unlikely) ----- #
+    annotate("text", 
+             label = '"unlikely"', 
+             x = 3, 
+             y = dnorm(0) * 1.2, 
+             size = 6, col = "red") +
+    # ----- label (alpha / 2) ----- #
+    annotate("text", 
+             label = "\u03b1/2",
+             x = 3, 
+             y = dnorm(0), 
+             size = 6, col = "red") +
+    # --- observed sample mean (standardized) --- #
+    annotate("segment", # arrow
+             arrow=arrow(type = "closed", length = unit(0.1, "in")),
+             x = z, xend = z,
+             y = dnorm(0) * 0.3, yend = 0, 
+             color = "black", 
+             linetype = "solid", 
+             ) +
+    annotate("text", 
+             label = "z == frac(M - \u03bc[0], SEM)", 
+             hjust = 0.1,
+             x = z, 
+             y = dnorm(0) * 0.5, 
+             size = 6,
+             parse = TRUE) +
+    # --- p values --- #
+    # ---- left ----- #
+    annotate("text", 
+             label = "p/2", 
+             x = -3, 
+             y = dnorm(0) * 0.2, 
+             size = 6, col="darkorange") +
+    # ---- right ----- #
+    annotate("text", 
+             label = "p/2", 
+             x = 3, 
+             y = dnorm(0) * 0.2, 
+             size = 6, col="darkorange") +
+    # --- x axis --- #
+    scale_x_continuous(breaks = seq(-4, 4, 1)) +
+    # # don't show the x-axis label and ticks for the first plot
+    # theme(axis.ticks.x = element_blank(), 
+    #       axis.text.x = element_blank()) +
+    theme(axis.title.x = element_text(margin = unit(c(5, 0, 0, 0), "mm"))) +
+    # --- y axis --- #
+    scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
+
+```
+
+### Statistical Significance Conclusion
+
+Because the p-value is less than the significance level $\alpha$ (i.e., the observed sample mean is unlikely enough under the null hypothesis), we reject the null hypothesis and conclude that there is a significant difference between the sample mean and the baseline value. 
+
+### Big Enough Difference to Matter?
+
+When we reject the null hypothesis, we are stating that the difference we found was statistically significant, but we have mentioned several times that this tells us nothing about practical significance. To get an idea of the actual size of what we found, we can compute a new statistic called an effect size. Effect size gives us an idea of how large, important, or meaningful a statistically significant effect is. For mean differences like we calculated here, our effect size is Cohen’s d:
+
+$$d = \frac{M - \mu_{0}}{\sigma}$$
+
+Essentially, we are comparing the difference between the sample mean and the population mean under the null hypothesis to the population standard deviation @fig-effect-size-z.
+
+
+
+```{r, include=TRUE}
+#| label: fig-effect-size-z
+#| fig-cap: "**Effect Size (Cohen's d)** for a z-test. The effect size is the standardized difference between the sample mean and the population mean under the null hypothesis. The effect size is calculated as d = (M - μ0) / σ."
+#| fig-alt: "Population distribution of individual scores. The null hypothesis population distribution is shown in gray, and the population distribution with the sample mean is shown in black. The population standard deviation is shown as sigma. The difference between the sample mean and the population mean under the null hypothesis is marked by an arrow. The effect size is labeled as d = (M - μ0) / σ."
+#| fig-height: 3.5
+plot_normal(m = mu, s = std,
+            areatype = "none", 
+            xaxis = "Individual Scores") +
+    # --- null mean --- #
+    annotate("segment", # vertical line
+             x = mu, xend = mu, 
+             y = 0, yend = pop_peak, 
+             color = "darkgray", linetype = "solid") +
+    # --- population distribution --- #
+    stat_function(fun = dnorm, n = 1000, args = list(mean = x, sd = std),
+                  col = "black") +
+    # --- population mean --- #
+    annotate("segment", # vertical line
+             x = x, xend = x, 
+             y = 0, yend = pop_peak, 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = "M", 
+             x = x, y = pop_peak * 1.1, 
+             size = 8, 
+             parse = TRUE) +
+    # --- standard deviation --- #
+    annotate("segment",  # horizontal line
+             x = x, xend = x + std, 
+             y = std_height, yend = std_height, 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = "sigma", 
+             x = x + std/2, 
+             y = std_height * 0.9,
+             size = 8,
+             parse = TRUE) +
+    # --- difference --- #
+    annotate("segment",  # horizontal line
+             arrow=arrow(type = "closed", length = unit(0.1, "in")),
+             x = mu, xend = x, 
+             y = pop_peak * 0.2, yend = pop_peak * 0.2, 
+             color = "black", linetype = "solid", linewidth = 1.5) +
+    annotate("text", 
+             label = "M - \u03bc[0]", 
+             hjust = 0,
+             x = x + std * 0.1, 
+             y = pop_peak * 0.2,
+             size = 8,
+             parse = TRUE) +
+    # --- effect size --- #
+    annotate("text",
+            label = paste0("d",  "==", "frac(M - \u03bc[0], \u03c3)"), 
+            hjust = 0,
+            x = mu - 4 * std, y = pop_peak,
+            size = 8,
+            parse = TRUE) + 
+    # --- x axis --- #
+    # # don't show the x-axis label and ticks for the first plot
+    theme(axis.ticks.x = element_blank(), 
+          axis.text.x = element_blank()) +
+    theme(axis.title.x = element_text(margin = unit(c(5, 0, 0, 0), "mm"))) +
+    # --- y axis --- #
+    scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
+  
+```
+
+Notice that this is very similar to our formula for z, but we no longer take into account the sample size (since overly large samples can make it too easy to reject the null). Cohen’s d is interpreted in units of standard deviations, just like z. 
+
+Cohen’s d is interpreted as small, moderate, or large. General guidelines suggest that d = 0.20 is small, d = 0.50 is moderate, and d = 0.80 is large @fig-effect-size-guidelines. Notice that as the effect size increases, the overlap between the individual scores under the null distribution (gray) and the population distribution (black) decreases. Obviously, values can fall in between these guidelines, so we should use our best judgment and the context of the problem to make our final interpretation of size.
+
+
+```{r, include=TRUE}
+#| label: fig-effect-size-guidelines
+#| layout-nrow: 3
+#| fig-cap: "**Effect Size (Cohen's d) Guidelines**. "
+#| fig-subcap:
+#| - "Small effect size (d = 0.2)."
+#| - "Medium effect size (d = 0.5)."
+#| - "Large effect size (d = 0.8)."
+#| fig-alt: "Effect Size Guidelines. Three plots showing the standardized population distributions for small (0.2), medium (0.5), and large (0.8) effect sizes. The null hypothesis population distribution is shown in gray, and the population distribution with the sample mean is shown in black. The difference between the sample mean and the population mean under the null hypothesis is marked by an arrow. The population distribution overlap with the null distribution decreases as the effect size increases."
+#| fig-height: 2.8
+
+small_d <- 0.2
+medium_d <- 0.5
+large_d <- 0.8
+
+plot_effect_size <- function(d, text = NULL) { 
+p <- plot_normal(m = 0, s = 1,
+                 areatype = "none", 
+                 xaxis = "Standardized Individual Scores (z)") +
+    # --- null mean --- #
+    annotate("segment", # vertical line
+             x = 0, xend = 0, 
+             y = 0, yend = dnorm(0), 
+             color = "black", linetype = "solid") +
+    # --- population distribution --- #
+    stat_function(fun = dnorm, n = 1000, args = list(mean = d, sd = 1),
+                  col = "black") +
+    # --- population mean --- #
+    annotate("segment", # vertical line
+             x = d, xend = d, 
+             y = 0, yend = dnorm(0), 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = "M", 
+             x = d, y = dnorm(0) * 1.1, 
+             size = 8, 
+             parse = TRUE) +
+    # --- standard deviation --- #
+    annotate("segment",  # horizontal line
+             x = d, xend = d + 1, 
+             y = dnorm(1), yend = dnorm(1), 
+             color = "black", linetype = "solid") +
+    # --- difference --- #
+    annotate("segment",  # horizontal line
+             arrow=arrow(type = "closed", length = unit(0.1, "in")),
+             x = 0, xend = d, 
+             y = dnorm(0) * 0.2, yend = dnorm(0) * 0.2, 
+             color = "black", linetype = "solid", linewidth = 1.5) +
+    annotate("text", 
+             label = "frac(M - \u03bc[0], \u03c3)", 
+             hjust = 0,
+             x = d + 0.1, 
+             y = dnorm(0) * 0.2,
+             size = 6,
+             parse = TRUE) +
+    # --- effect size --- #
+    annotate("text",
+                label = paste0(text),
+                hjust = 0,
+                x = -4 , y = dnorm(0),
+                size = 8,
+                parse = TRUE) +
+    annotate("text",
+                label = paste0("d",  "==", d),
+                hjust = 0,
+                x = -4 , y = dnorm(0) * 0.8,
+                size = 8,
+                parse = TRUE) + 
+    # --- x axis --- #
+    # # don't show the x-axis label and ticks for the first plot
+    # theme(axis.ticks.x = element_blank(), 
+    #       axis.text.x = element_blank()) +
+    theme(axis.title.x = element_text(margin = unit(c(5, 0, 0, 0), "mm"))) +
+    # --- y axis --- #
+    scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
+
+return(p)
+}
+
+plot_effect_size(small_d, "Small")
+plot_effect_size(medium_d, "Medium")
+plot_effect_size(large_d, "Large")
+
+```
+
+
+
+Effect sizes are incredibly useful and provide important information and clarification that overcomes some of the weakness of hypothesis testing. Any time you perform a hypothesis test, whether statistically significant or not, you should always calculate and report effect size.
+
+
+
+
+
+
+
+
+## One-Sample t-Test
+
+In reality, z-test is rarely used because we almost never know the population standard deviation. Instead, we use the sample standard deviation $s$ to estimate the population standard deviation.
+
+![One-Sample t-Test by Nichole Vittoz](https://pressbooks.bccampus.ca/statspsych/wp-content/uploads/sites/1469/2021/08/Fig-5.11-768x468.png){#fig-one-sample-t-test fig-alt="One-sample t-test. Research population 1 with a mean of mu 1 is on the left, shown as a circle with a dashed line. From there, a solid arrow extends to the bottom to show that a sample with a mean of M and standard deviation of s subscript M is drawn from that population. Another arrow extends to the right from research population 1 to the comparison population 2 with a mean of mu 2, shown as a circle with a solid line. Under the arrow, three questions are shown: different from? less than? greater than? Now, there is another arrow extending from the sample standard deviation s subscript M to the right, labeled 'estimate', which extends to the comparison population 2's sigma subscript M."}
+
+
+ so our standard error of the mean becomes: 
+
+$$SEM = \frac{s}{\sqrt{n}}$$
+
+By doing this, however, we introduce more uncertainty into our estimate of the standard error of the mean. To account for this additional uncertainty, we use a different distribution called the t distribution to find probabilities for sample means under the null hypothesis.
+
+
+```{r, include=TRUE}
+#| label: fig-sampling-distribution-t
+#| fig-cap: "t Distribution of Sample Means Under the Null Hypothesis"
+#| fig-alt: 
+#|  - "A sampling distribution of sample means. The x-axis shows possible sample means. The center population mean is marked by a vertical line. The standard deviation of the sample means SEM is marked by a horizontal line extending from the center."
+#| fig-height: 4.5
+
+plot_t(df = (n-1), 
+       areatype = "none", 
+       xaxis = "Test Statistics (t)") +
+    geom_hline(yintercept=0) + 
+    # --- population mean --- #
+    annotate("segment", # vertical line
+             x = 0, xend = 0, 
+             y = 0, yend = dt(0, df = (n-1)), 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = paste0("H[0]:", "\u03bc[M]==\u03bc[0]"), 
+             x = 0, y = dt(0, df = (n-1)) * 1.1, 
+             size = 8, parse = TRUE) +
+    # --- standard error of the mean --- #
+    annotate("segment",  # horizontal line
+             x = 0, xend = 1, 
+             y = dt(1, df = (n-1)), yend = dt(1, df = (n-1)), 
+             color = "black", linetype = "solid") +
+    # annotate("text", 
+    #          label = "SEM", 
+    #          x = 0.5, 
+    #          y = dt(1, df = (n-1)) * 0.9,
+    #          size = 5) +
+    # --- critical values (invisible) --- #
+    # --- left arrow --- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = qnorm(a/2), xend = - 4, 
+             y = dt(0, df = (n-1)) * 1.1, yend = dt(0, df = (n-1)) * 1.1,
+             col = "white") +
+    # --- right arrow --- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = qnorm(1-a/2), xend = 4, 
+             y = dt(0, df = (n-1)) * 1.1, yend = dt(0, df = (n-1)) * 1.1,
+             col = "white") +
+    # --- x axis --- #
+    scale_x_continuous(breaks = seq(-4, 4, 1)) +
+    # # don't show the x-axis label and ticks for the first plot
+    # theme(axis.ticks.x = element_blank(), 
+    #       axis.text.x = element_blank()) +
+    theme(axis.title.x = element_text(margin = unit(c(5, 0, 0, 0), "mm"))) +
+    # --- y axis --- #
+    scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
+```
+
+The t distributions are a series of distributions, based on the normal distribution, that adjust their shape according to **degrees of freedom**. The degrees of freedom for one-sample t-test is $n - 1$, where $n$ is the sample size. As the sample size increases, the degrees of freedom increase, and the t distribution approaches the z distribution.
+
+![Distributions Comparing Effects of Degrees of Freedom](https://umsystem.pressbooks.pub/app/uploads/sites/23/2021/12/MicrosoftTeams-image-19.png){#fig-degrees-of-freedom fig-alt="The image shows the relationship between the Student's t-distribution and the standard normal (z) distribution. The key takeaway is that as the degrees of freedom ((df)) increase, the t-distribution becomes more similar to the standard normal distribution.  The standard normal distribution (z) is represented by the solid red line. The t-distributions are represented by the dashed lines for different degrees of freedom: (df=2), (df=10), and (df=30). The t-distribution with the lowest degrees of freedom ((df=2)) has the flattest peak and the thickest tails, indicating more probability in the tails and less in the center compared to the z-distribution.  As the degrees of freedom increase to (df=10) and then to (df=30), the t-distribution curves become taller and narrower, more closely approximating the shape of the standard normal distribution.  The t-distribution with (df=30) is visually almost indistinguishable from the standard normal distribution."}
+
+
+### Margin of Error and Confidence Intervals 
+
+Because t distribution is now used to find probabilities for sample means under the null hypothesis, our "confidence" also maps to different margin of error values. Our sample size not only determines the SEM, but also the critical values for t, $t^*$.
+
+$$\text{Margin of Error} = t^* \times \frac{s}{\sqrt{n}}$$
+
+Confidence intervals are then calculated in the same way, by extending the sample mean by the margin of error in both directions. 
+
+### Two-Tailed Hypothesis Test Using Test Statistic (t)
+
+The logic of significance testing is the same as before. We are just finding the probabilities using the test statistic $t$ instead of $z$. The test statistic $t$ is calculated as:
+
+$$t = \frac{M - \mu_{0}}{SEM} = \frac{M - \mu_{0}}{s/\sqrt{n}}$$
+
+We calculate the test statistic $t$ and find the probability of observing test statistics as extreme as our $t$ or more extreme if $H_0$ is true. If this probability is less than our significance level $\alpha$, we reject the null hypothesis and conclude that there is a significant difference between the sample mean and the baseline value (@fig-hypothesis-test-t).
+
+This time, t is right outside of the critical values for t, and therefore still "unlikely enough" under the null hypothesis.
+
+```{r, include=TRUE}
+#| label: fig-hypothesis-test-t
+#| fig-cap: "**Two-Tailed Hypothesis Test Using Test Statistic (t)**. test statistic t is outside of the critical values for t, and therefore unlikely under the null hypothesis. The p-value is the probability of observing a test statistic as extreme as t or more extreme if H0 is true. The shaded area in orange in both tails represents the p-value."
+#| fig-alt: "Standarized sampling distribution of sample means. The population mean under the null hypothesis is marked by a black vertical line at 0 and labeled H naught μ subscript M equals μ subscript 0. The standard error of the mean SEM is marked by a black horizontal line extending from the center and is 1. The cutoff values for unlikely sample means under the null hypothesis are marked by red vertical lines and labeled with α/2. The observed test statistic t is marked by an arrow, and the area as extreme as t or more extreme is shaded in orange in both tails, representing the p-value."
+#| fig-height: 3.5
+
+plot_t(df = (n-1),
+       areatype = "twotail", 
+       lb = min(t, -t), ub = max(t, -t),
+       xaxis = "Test Statistics (t)") +
+    # --- population mean --- #
+    annotate("segment", # vertical line
+             x = 0, xend = 0, 
+             y = 0, yend = dt(0, df = (n-1)), 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = paste0("H[0]:", "\u03bc[M]==\u03bc[0]"), 
+             x = 0, y = dt(0, df = (n-1)) * 1.1, 
+             size = 8, parse = TRUE) +
+    # --- standard error of the mean --- #
+    annotate("segment",  # horizontal line
+             x = 0, xend = 1, 
+             y = dt(1, df = (n-1)), yend = dt(1, df = (n-1)), 
+             color = "black", linetype = "solid") +
+    # --- critical values --- #
+    # ----- lines ------ #
+    geom_vline(xintercept = c(-cv_two_t, cv_two_t), 
+               col = "red") +
+    # ---- left ---- #
+    # ----- arrow ----- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = -cv_two_t, xend = -4, 
+             y = dt(0, df = (n-1)) * 1.1, yend = dt(0, df = (n-1)) * 1.1,
+             col = "red") +
+    # ----- label (unlikely) ----- #
+    annotate("text", 
+             label = '"unlikely"', 
+             x = -3, 
+             y = dt(0, df = (n-1)) * 1.2, 
+             size = 6, col = "red") +
+    # ----- label (alpha / 2) ----- #
+    annotate("text", 
+             label = "\u03b1/2",
+             x = -3, 
+             y = dt(0, df = (n-1)),
+             size = 6, col = "red") +
+    # ---- right ---- #
+    # ----- arrow ----- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = cv_two_t, xend = 4, 
+             y = dt(0, df = (n-1)) * 1.1, yend = dt(0, df = (n-1)) * 1.1,
+             col = "red") +
+    # ----- label (unlikely) ----- #
+    annotate("text", 
+             label = '"unlikely"', 
+             x = 3, 
+             y = dt(0, df = (n-1)) * 1.2, 
+             size = 6, col = "red") +
+    # ----- label (alpha / 2) ----- #
+    annotate("text", 
+             label = "\u03b1/2",
+             x = 3, 
+             y = dt(0, df = (n-1)),
+             size = 6, col = "red") +
+    # --- observed test statistic --- #
+    annotate("segment", # arrow
+             arrow=arrow(type = "closed", length = unit(0.1, "in")),
+             x = t, xend = t,
+             y = dt(0, df = (n-1)) * 0.1, yend = 0, 
+             color = "black", 
+             linetype = "solid", 
+             ) +
+    annotate("text", 
+             label = "t", 
+             x = t, 
+             y = dt(0, df = (n-1)) * 0.2, 
+             size = 8,
+             parse = TRUE) +
+    # --- p values --- #
+    # ---- left ----- #
+    annotate("text", 
+             label = "p/2", 
+             x = -3, 
+             y = dt(0, df = (n-1)) * 0.2, 
+             size = 6, col="darkorange") +
+    # ---- right ----- #
+    annotate("text", 
+             label = "p/2", 
+             x = 3, 
+             y = dt(0, df = (n-1)) * 0.2, 
+             size = 6, col="darkorange") +
+    # --- x axis --- #
+    scale_x_continuous(breaks = seq(-4, 4, 1)) +
+    # # don't show the x-axis label and ticks for the first plot
+    # theme(axis.ticks.x = element_blank(), 
+    #       axis.text.x = element_blank()) +
+    theme(axis.title.x = element_text(margin = unit(c(5, 0, 0, 0), "mm"))) +
+    # --- y axis --- #
+    scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
+
+```
+
+
+### Effect Size (Cohen's d): Big Enough Difference to Matter?
+
+The effect size, again, measures the standardized difference between the sample mean and the population mean under the null hypothesis. Because we do not know the population standard deviation, we use the sample standard deviation to calculate Cohen's d for t-tests:
+$$d = \frac{M - \mu_0}{s}$$
+
+```{r, include=TRUE}
+#| label: fig-effect-size-t
+#| fig-cap: "**Effect Size (Cohen's d)** for t-tests. The effect size is the standardized difference between the sample mean and the population mean under the null hypothesis. The effect size is calculated as d = (M - μ0) / s."
+#| fig-alt: "Population distribution of individual scores. The null hypothesis population distribution is shown in gray, and the population distribution with the sample mean is shown in black. The sample standard deviation is shown as s. The difference between the sample mean and the population mean under the null hypothesis is marked by an arrow. The effect size is labeled as d = (M - μ0) / s."
+#| fig-height: 3.5
+plot_normal(m = 0, s = 1,
+                 areatype = "none", 
+                 xaxis = "Standardized Individual Scores (z)") +
+    # --- null mean --- #
+    annotate("segment", # vertical line
+             x = 0, xend = 0, 
+             y = 0, yend = dnorm(0), 
+             color = "black", linetype = "solid") +
+    # --- population distribution --- #
+    stat_function(fun = dnorm, n = 1000, args = list(mean = (x-mu)/samp_sd, sd = 1),
+                  col = "black") +
+    # --- population mean --- #
+    annotate("segment", # vertical line
+             x = d, xend = d, 
+             y = 0, yend = dnorm(0), 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = "M", 
+             x = d, y = dnorm(0) * 1.1, 
+             size = 8, 
+             parse = TRUE) +
+    # --- standard deviation --- #
+    annotate("segment",  # horizontal line
+             x = d, xend = d + 1, 
+             y = dnorm(1), yend = dnorm(1), 
+             color = "black", linetype = "solid") +
+    # --- difference --- #
+    annotate("segment",  # horizontal line
+             arrow=arrow(type = "closed", length = unit(0.1, "in")),
+             x = 0, xend = d, 
+             y = dnorm(0) * 0.2, yend = dnorm(0) * 0.2, 
+             color = "black", linetype = "solid", linewidth = 1.5) +
+    annotate("text", 
+             label = "frac(M - \u03bc[0], s)", 
+             hjust = 0,
+             x = d + 0.1, 
+             y = dnorm(0) * 0.2,
+             size = 6,
+             parse = TRUE) +
+    # --- effect size --- #
+    annotate("text",
+            label = paste0("d",  "==", "frac(M - \u03bc[0], s)"), 
+            hjust = 0,
+            x = -4, y = dnorm(0),
+            size = 8,
+            parse = TRUE) + 
+    # --- x axis --- #
+    # # don't show the x-axis label and ticks for the first plot
+    # theme(axis.ticks.x = element_blank(), 
+    #       axis.text.x = element_blank()) +
+    theme(axis.title.x = element_text(margin = unit(c(5, 0, 0, 0), "mm"))) +
+    # --- y axis --- #
+    scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
+```
+
+### One-Sample t-Test Example
+
+The personnel department for a major retail store in the Northeast reported that the average number of absences due to illness during the months of January and February for the past five years was equal to 7.85 days per employee. Assume the number of absences is normally distributed.
+
+In an attempt to reduce absences, the company randomly selects 25 employees from multiple stores and offers them free flu shots this year. All 25 participants agree and the average number of absences in January and February for this sample was 6.25 days with SD = 3.15 days. 
+
+Do employees who receive flu shots have a different number of absences from the prior 5-year average (7.85)?
+
+#### Confidence Interval
+
+We will construct a 95% confidence interval for the mean number of absences in when flu shots are received.
+
+$$\text{Margin of Error} = t^* \times \frac{s}{\sqrt{n}}$$
+
+The critical value t depends on the degrees of freedom ($df = n - 1 = 25 - 1 = 24$) and the confidence level (95%). Using a t-table or statistical software, we find that the critical value $t^*$ for $df = 24$ and a two-tailed test at the 95% confidence level is approximately `r round(qt(0.975, df = 24), 3)`.
+
+$$\text{Margin of Error} = `r round(qt(0.975, df = 24), 3)` \times \frac{3.15}{\sqrt{25}} \approx `r round(qt(0.975, df = 24) * 3.15 / sqrt(25), 3)`$$
+
+The standard error of the mean (SEM) is calculated as:
+
+$$SEM = \frac{s}{\sqrt{n}} = \frac{3.15}{\sqrt{25}} = 0.63$$
+
+The 95% confidence interval for the mean number of absences when flu shots are received is:
+
+$$95\% \text{ CI} = M \pm \text{Margin of Error} = 6.25 \pm `r round(qt(0.975, df = 24) * 3.15 / sqrt(25), 3)` = [`r round(6.25 - (qt(0.975, df = 24) * 3.15 / sqrt(25)), 3)`, `r round(6.25 + (qt(0.975, df = 24) * 3.15 / sqrt(25)), 3)`]$$
+
+95% of the confidence intervals constructed the same was as this one would contain the true mean number of absences for employees who receive flu shots.
+
+#### Hypotheses
+
+Because it is conceivable that the flu shots could either increase or decrease absences (perhaps healthy employees are more likely to take time off), we will use a two-tailed test.
+
+* Null Hypothesis: People who receive flu shots have an average number of absences of is equal to the prior 5-yr average.
+
+$$H_0: \mu_{\text{flu shot}} =7.86$$
+
+* Alternative Hypothesis: People who receive flu shots have an average number of absences of is equal to the prior 5-yr average.
+
+$$H_1: \mu_{\text{flu shot}} \neq 7.86$$
+
+
+#### Statistical Significance: How Unlikely is the Sample Mean (or More Extreme)?
+
+To determine how unlikely the sample mean of 6.25 is (or more extreme) under the null hypothesis, we calculate the t-statistic:
+
+$$t = \frac{M - \mu_{0}}{SEM} = \frac{6.25 - 7.85}{0.63} \approx `r round((6.25 - 7.85) / 0.63, 3)`$$
+
+Note that t is negative because the sample mean is less than the population mean under the null hypothesis. However, because we are conducting a two-tailed test, we are interested in the absolute value of t.
+
+With this statistic and t distribution, we can find the probability of observing a sample mean as extreme as 6.25 (or more extreme) if the null hypothesis is true. This is the p-value for our test.
+
+$$p = `r round(2 * pt(-abs((6.25 - 7.85) / 0.63), df = 24), 3)`$$
+
+```{r, include=TRUE}
+#| label: fig-hypothesis-test-t-example
+#| fig-cap: "**Two-Tailed Hypothesis Test Using Test Statistic (t)**. test statistic t is outside of the critical values for t, and therefore unlikely under the null hypothesis. The p-value is the probability of observing a test statistic as extreme as t or more extreme if H0 is true. The shaded area in orange in both tails represents the p-value."
+#| fig-alt: "T distribution. The population mean under the null hypothesis is marked by a black vertical line at 0 and labeled H naught μ subscript M equals μ subscript 0. The standard error of the mean SEM is marked by a black horizontal line extending from the center and is 1. The cutoff values for unlikely sample means under the null hypothesis are marked by red vertical lines and labeled with α/2. The observed test statistic t is marked by an arrow, and the area as extreme as t or more extreme is shaded in orange in both tails, representing the p-value."
+#| fig-height: 3.5
+
+n = 25
+t = (6.25 - 7.85) / (3.15 / sqrt(25))
+cv_two_t = qt(0.975, df = (n-1))
+
+plot_t(df = (n-1),
+       areatype = "twotail", 
+       lb = min(t, -t), ub = max(t, -t),
+       xaxis = "Test Statistics (t)") +
+    # --- population mean --- #
+    annotate("segment", # vertical line
+             x = 0, xend = 0, 
+             y = 0, yend = dt(0, df = (n-1)), 
+             color = "black", linetype = "solid") +
+    annotate("text", 
+             label = paste0("H[0]:", "\u03bc[M]==\u03bc[0]"), 
+             x = 0, y = dt(0, df = (n-1)) * 1.1, 
+             size = 8, parse = TRUE) +
+    # --- standard error of the mean --- #
+    annotate("segment",  # horizontal line
+             x = 0, xend = 1, 
+             y = dt(1, df = (n-1)), yend = dt(1, df = (n-1)), 
+             color = "black", linetype = "solid") +
+    # --- critical values --- #
+    # ----- lines ------ #
+    geom_vline(xintercept = c(-cv_two_t, cv_two_t), 
+               col = "red") +
+    # ---- left ---- #
+    # ----- arrow ----- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = -cv_two_t, xend = -4, 
+             y = dt(0, df = (n-1)) * 1.1, yend = dt(0, df = (n-1)) * 1.1,
+             col = "red") +
+    # ----- label (unlikely) ----- #
+    annotate("text", 
+             label = '"unlikely"', 
+             x = -3, 
+             y = dt(0, df = (n-1)) * 1.2, 
+             size = 6, col = "red") +
+    # ----- label (alpha / 2) ----- #
+    annotate("text", 
+             label = "\u03b1/2",
+             x = -3, 
+             y = dt(0, df = (n-1)),
+             size = 6, col = "red") +
+    # ---- right ---- #
+    # ----- arrow ----- #
+    annotate("segment", 
+             arrow = arrow(type = "closed", length = unit(0.1, "in")), 
+             x = cv_two_t, xend = 4, 
+             y = dt(0, df = (n-1)) * 1.1, yend = dt(0, df = (n-1)) * 1.1,
+             col = "red") +
+    # ----- label (unlikely) ----- #
+    annotate("text", 
+             label = '"unlikely"', 
+             x = 3, 
+             y = dt(0, df = (n-1)) * 1.2, 
+             size = 6, col = "red") +
+    # ----- label (alpha / 2) ----- #
+    annotate("text", 
+             label = "\u03b1/2",
+             x = 3, 
+             y = dt(0, df = (n-1)),
+             size = 6, col = "red") +
+    # --- observed test statistic --- #
+    annotate("segment", # arrow
+             arrow=arrow(type = "closed", length = unit(0.1, "in")),
+             x = t, xend = t,
+             y = dt(0, df = (n-1)) * 0.1, yend = 0, 
+             color = "black", 
+             linetype = "solid", 
+             ) +
+    annotate("text", 
+             label = "t", 
+             x = t, 
+             y = dt(0, df = (n-1)) * 0.2, 
+             size = 8,
+             parse = TRUE) +
+    # --- p values --- #
+    # ---- left ----- #
+    annotate("text", 
+             label = "p/2", 
+             x = -3, 
+             y = dt(0, df = (n-1)) * 0.2, 
+             size = 6, col="darkorange") +
+    # ---- right ----- #
+    annotate("text", 
+             label = "p/2", 
+             x = 3, 
+             y = dt(0, df = (n-1)) * 0.2, 
+             size = 6, col="darkorange") +
+    # --- x axis --- #
+    scale_x_continuous(breaks = seq(-4, 4, 1)) +
+    # # don't show the x-axis label and ticks for the first plot
+    # theme(axis.ticks.x = element_blank(), 
+    #       axis.text.x = element_blank()) +
+    theme(axis.title.x = element_text(margin = unit(c(5, 0, 0, 0), "mm"))) +
+    # --- y axis --- #
+    scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
+
+```
+
+#### Effect Size (Cohen's d): Big Enough Difference to Matter?
+
+The effect size, again, measures the standardized difference between the sample mean and the population mean under the null hypothesis. Because we do not know the population standard deviation, we use the sample standard deviation to calculate Cohen's d for t-tests:
+
+$$d = \frac{M - \mu_0}{s} = \frac{6.25 - 7.85}{3.15} \approx `r round((6.25 - 7.85) / 3.15, 2)`$$
+
+According to Cohen's guidelines, this is a medium effect size. Note that the effect size is a negative value, because the sample mean is less than the population mean under the null hypothesis. The magnitude of the effect size is what matters, not the sign.
+
+#### Report the Results
+
+> One-sample t-test showed that the average number of absences for employees who received flu shots (M = 6.25, SD = 3.15) was significantly lower than the prior 5-year average of 7.85, $t$(24) = `r round(t, 2)`, $p$ = `r round(2 * pt(-abs(t), df = 24), 3)`, 95% CI = [`r round(6.25 - qt(0.975, df = 24) * 3.15 / sqrt(25), 2)`, `r round(6.25 + qt(0.975, df = 24) * 3.15 / sqrt(25), 2)`]. The effect size was medium (Cohen's d = `r round((6.25 - 7.85) / 3.15, 2)`). This suggests that receiving flu shots may have a meaningful impact on reducing employee absences during the months of January and February.
+
+A few things to note about this example report:
+
+1. Note that, although the test was two-tailed, you state that the sample mean was significantly **lower** than the baseline. If you just said that the sample mean was significantly different from the baseline, that's not that informative.Readers may be left unsatisfied, wondering if the sample mean was higher or lower than the baseline. Reduce their cognitive load by telling them the direction of the difference.
+
+2. $t$, $d$, and the direction should match:
+
+* If you say the sample mean is "lower" than the baseline, then $t$ and $d$ backing up that statement should be negative. 
+* If you say the sample mean is "higher" than the baseline, then $t$ and $d$ backing up that statement should be positive. 
+
+
+
+3. Note that I did not elaborate the p-value as "the probability of observing sample means as extreme as 6.25 or more extreme if flu shots had no effect". APA style lets us communicate all this information in a concise way by simply reporting (1) that you used a null hypothesis test (e.g., one-sample t-test), and (2) the p-value. The reader can then interpret the p-value in the context of the null hypothesis test. The same goes for the confidence interval. What this means for you as a reader is that you should be able to interpret and deciper $p$ and $CI$ values in the context of the null hypothesis test without needing to be told what they mean!
+
+4. I reported the p value to three decimal places, which is standard practice. If the p-value is less than 0.001, you can report it as $p < .001$. In the old days, it was common to just say $p < .05$, but we want to give the readers more information than that so if they have a different threshold for significance, they can make their own decision about whether the result is significant or not.

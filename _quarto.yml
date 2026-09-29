@@ -32,6 +32,7 @@ website:
         contents:
           - 05-hypothesis-testing.qmd
           - 06-estimating-the-mean.qmd
+          - 07-one-sample-z-test-and-t-test.qmd
       - section: "Lab"
         contents:
           - lab01-r-basics.qmd
