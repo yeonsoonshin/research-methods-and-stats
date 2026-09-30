@@ -39,6 +39,7 @@ website:
           - lab02-reliability.qmd
           - lab03-eda.qmd
           - lab04-standard-scores.qmd
+          - lab05-one-sample-t-test.qmd
       - section: "Appendix"
         contents:
           - appendix-apa.qmd

@@ -1,0 +1,204 @@
+---
+title: "Lab 5: One-Sample t-Test Answers"
+format:
+  html:
+    html-math-method: plain
+    embed-resources: true
+---
+
+## Preliminaries {#preliminaries}
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+```{r}
+library(tidyverse)  # for data wrangling and visualization
+library(psych)      # for describe() and scoreItems()
+library(janitor)    # for frequency and contingency tables
+library(broom)      # for tidy t-test output
+library(papaja)     # for APA style output
+library(lsr)        # for cohensD()
+library(BrailleR)   # for accessibility
+GoBlind()
+```
+
+```{r, include=FALSE}
+theme_set(theme_classic(base_size = 16))
+```
+
+## Data
+
+```{r}
+df <- read_csv('data/tworek2016_study2.csv') %>%
+  as_tibble() %>%
+  select(diff, excluded) %>% 
+  filter(excluded == 0)
+glimpse(df)
+```
+
+```{r}
+describe(df) %>%
+  knitr::kable() 
+```
+
+## Check Assumptions
+
+### Normality
+
+```{r}
+df %>% 
+    ggplot(aes(x = diff)) +
+    geom_histogram(bins = 9, color = "black", fill = "lightblue") +
+    labs(x = "Inherence Bias", y = "Frequency") +
+    theme_classic()
+```
+
+
+```{r}
+shapiro.test(df$diff)
+```
+
+## One-Sample t-Test
+
+```{r}
+res_t <- t.test(df$diff,
+                mu = 0, 
+                alternative = "two.sided")
+res_t
+```
+
+```{r}
+res_apa <- res_t %>%
+   apa_print()
+res_apa$full_result
+```
+
+`r res_apa$full_result`
+
+### Effect Size (Cohen's d)
+
+```{r}
+d <- cohensD(df$diff, mu = 0)
+d
+```
+
+## Write up the results
+
+> A one-sample t-test was performed to compare the mean relative preference of inherent over extrinsic explanation to the baseline of 0. The mean preference was significantly above the baseline, `r res_apa$full_result`, with a small effect size, d = `r round(d, 2)`. These results suggest that there is a small but significant tendency to prefer inherent over extrinsic explanations. 
+
+
+## Bonus Exercise: Demographics Analysis
+
+### Study 1
+
+```{r}
+df.demo <- read_csv('data/tworek2016_study1.csv') %>%
+  as_tibble() %>%
+  select(Age, Gender, Excluded) %>% 
+  filter(Excluded == 0) %>% # filter out excluded participants
+  select(-Excluded) %>% # exclude the excluded variable
+glimpse()
+```
+
+```{r}
+df.demo %>%
+    ggplot(aes(x = Age)) +
+    geom_histogram(bins = 10, color = "black", fill = "lightblue") +
+    labs(x = "Age", y = "Frequency") +
+    ggtitle("Age Distribution") +
+    theme_classic()
+```
+
+```{r}
+df.demo %>%
+    tabyl(Gender) %>%
+    adorn_totals("row") %>%
+    adorn_pct_formatting(digits = 1) %>%
+    knitr::kable()
+```
+
+### Study 2
+
+```{r}
+df.demo <- read_csv('data/tworek2016_study2.csv') %>%
+  as_tibble() %>%
+  select(age, gender, excluded) %>% 
+  filter(excluded == 0) %>% # filter out excluded participants
+  select(-excluded) %>% # exclude the excluded variable
+glimpse()
+```
+
+```{r}
+df.demo %>%
+    ggplot(aes(x = age)) +
+    geom_histogram(bins = 10, color = "black", fill = "lightblue") +
+    labs(x = "Age", y = "Frequency") +
+    ggtitle("Age Distribution") +
+    theme_classic()
+```
+
+```{r}
+df.demo %>%
+    tabyl(gender) %>%
+    adorn_totals("row") %>%
+    adorn_pct_formatting(digits = 1) %>%
+    knitr::kable()
+```
+
+
+## Bonus Exercise: Reliability Analysis
+
+### Study 1
+
+```{r}
+df.items <- read_csv('data/tworek2016_study1.csv') %>%
+  as_tibble() %>%
+  select(starts_with("ih"), Excluded) %>% # select the 15 items and the Excluded variable
+  filter(Excluded == 0) %>% # filter out excluded participants
+  select(-ihc1, -ihc2, -Excluded) # exclude the two attention check items and the Excluded variable
+glimpse(df.items)
+```
+
+```{r}
+ih.keys <- list(ih = seq(1, 15)) # no reverse-coded items
+
+# score the items using the scoreItems() function from the psych package
+ih <- scoreItems(
+  items = df.items,
+  keys = ih.keys,
+  totals = FALSE)
+
+ih$alpha # Cronbach's alpha
+```
+
+### Study 2
+
+```{r}
+df.items <- read_csv('data/tworek2016_study2.csv') %>%
+  as_tibble() %>%
+  select(starts_with("ext"), starts_with("ih"), excluded) %>% 
+  filter(excluded == 0) %>% # filter out excluded participants
+  select(-ihcatch1, -ihcatch2, -ihav, -extav, -excluded) # exclude the two attention check items and the excluded variable
+glimpse(df.items)
+```
+
+```{r}
+ih.keys <- list(ih = c(-seq(1, 15), seq(16, 30))) # no reverse-coded items
+
+# score the items using the scoreItems() function from the psych package
+ih <- scoreItems(
+  items = df.items,
+  keys = ih.keys,
+  totals = FALSE)
+
+ih$alpha # Cronbach's alpha
+```
+
+
+
+
