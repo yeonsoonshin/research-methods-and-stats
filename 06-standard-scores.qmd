@@ -1,0 +1,180 @@
+---
+title: Standard Scores
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  include = FALSE,
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+
+library(tidyverse)  # for data wrangling and visualization
+# library(BrailleR)   # for brailleR tables
+# GoBlind()
+
+theme_set(theme_classic(base_size = 16))
+
+set.seed(123)
+
+# helper functions adapted from Navarro and Foxcroft
+# ---- normal ---- #
+plot_normal_interval <- function (lb, ub, m = 0, s = 1, xaxis = "z") {
+  ll = -4*s+m
+  ul = 4*s+m
+  ggplot(data = data.frame(x = seq(ll, ul, 1)), aes(x)) +
+    stat_function(fun = dnorm, n = 1000, args = list(mean =  m, sd = s), col="darkgray", geom = "area",
+                  fill = "steelblue", alpha=0.8, xlim = c(lb, ub)) +
+    stat_function(fun = dnorm, n = 1000, args = list(mean = m, sd = s), col="darkgray", linewidth=1) +
+    geom_vline(xintercept = c(lb, ub), col="gray")+
+    scale_x_continuous(breaks = seq(ll, ul, s)) +
+    scale_y_continuous(expand = c(0, 0)) +
+    ggtitle(paste("Shaded area = ", sprintf("%.2f", 100*(pnorm(ub, m, s)-pnorm(lb, m, s))), "%")) +
+    xlab(xaxis) +
+    theme(
+      axis.text.y = element_blank(),
+      axis.title.y = element_blank(),
+      axis.line.y = element_blank(),
+      axis.ticks.y = element_blank(),
+      plot.title = element_text(hjust = 0.5))
+}
+plot_normal_lessthan <- function (ub, m = 0, s = 1, xaxis = "z") {
+  ll = -4*s+m
+  ul = 4*s+m
+  ggplot(data = data.frame(x = seq(ll, ul, 1)), aes(x)) +
+    stat_function(fun = dnorm, n = 1000, args = list(mean =  m, sd = s), col="darkgray", geom = "area",
+                  fill = "grey", alpha=0.8, xlim = c(ll, ub)) +
+    stat_function(fun = dnorm, n = 1000, args = list(mean = m, sd = s), col="darkgray", linewidth=1) +
+    scale_x_continuous(breaks = seq(ll, ul, s)) +
+    scale_y_continuous(expand = c(0, 0)) +
+    ggtitle(paste("Shaded area = ", sprintf("%.2f", 100*(pnorm(ub, m, s))), "%")) +
+    xlab(xaxis) +
+    theme(
+      axis.text.y = element_blank(),
+      axis.title.y = element_blank(),
+      axis.line.y = element_blank(),
+      axis.ticks.y = element_blank(),
+      plot.title = element_text(hjust = 0.5))
+}
+plot_normal_greaterthan <- function (lb, m = 0, s = 1, xaxis = "z") {
+  ll = -4*s+m
+  ul = 4*s+m
+  ggplot(data = data.frame(x = seq(ll, ul, 1)), aes(x)) +
+    stat_function(fun = dnorm, n = 1000, args = list(mean =  m, sd = s), col="darkgray", geom = "area",
+                  fill = "grey", alpha=0.8, xlim = c(lb, ul)) +
+    stat_function(fun = dnorm, n = 1000, args = list(mean = m, sd = s), col="darkgray", linewidth=1) +
+    scale_x_continuous(breaks = seq(ll, ul, s)) +
+    scale_y_continuous(expand = c(0, 0)) +
+    ggtitle(paste("Shaded area = ", sprintf("%.2f", 100*(1-pnorm(lb, m, s))), "%")) +
+    xlab(xaxis) +
+    theme(
+      axis.text.y = element_blank(),
+      axis.title.y = element_blank(),
+      axis.line.y = element_blank(),
+      axis.ticks.y = element_blank(),
+      plot.title = element_text(hjust = 0.5))
+}
+plot_normal_greaterthan_or_lessthan <- function (ub, lb, m = 0, s = 1, xaxis = "z") {
+  ll = -4*s+m
+  ul = 4*s+m
+  ggplot(data = data.frame(x = seq(ll, ul, 1)), aes(x)) +
+    stat_function(fun = dnorm, n = 1000, args = list(mean =  m, sd = s), col="grey", geom = "area",
+                  fill = "grey", alpha=0.8, xlim = c(lb, ul)) +
+    stat_function(fun = dnorm, n = 1000, args = list(mean =  m, sd = s), col="grey", geom = "area",
+                  fill = "grey", alpha=0.8, xlim = c(ll, ub)) +
+    stat_function(fun = dnorm, n = 1000, args = list(mean = m, sd = s), col="darkgray", linewidth=1) +
+    scale_x_continuous(breaks = seq(ll, ul, s)) +
+    scale_y_continuous(expand = c(0, 0)) +
+    ggtitle(paste("Shaded area = ", sprintf("%.2f", 100*((1-pnorm(lb, m, s))+pnorm(ub, m, s))), "%")) +
+    xlab(xaxis) +
+    theme(
+      axis.text.y = element_blank(),
+      axis.title.y = element_blank(),
+      axis.line.y = element_blank(),
+      axis.ticks.y = element_blank(),
+      plot.title = element_text(hjust = 0.5))
+}
+```
+
+
+```{r, include=TRUE}
+#| label: fig-normal-intervals
+#| layout-nrow: 3
+#| fig-cap: "Normal Distributions and the 68-95-99.7 Rule"
+#| fig-subcap:
+#|  - "An interval from $-1$ \u03c3 to $1$ \u03c3 from \u03bc covers 68.27% of the data"
+#|  - "An interval from $-2$ \u03c3 to $2$ \u03c3 from \u03bc covers 95.45% of the data"
+#|  - "An interval from $-3$ \u03c3 to $3$ \u03c3 from \u03bc covers 99.73% of the data"
+#| fig-alt: 
+#|  - "A normal distributions where the x-axis shows the scores from negative 4 standard deviations to 4 standard deviations from the mean with vertical lines and shaded area under the normal curve corresponding to an interval."
+#| fig-height: 2.5
+
+x_breaks = c(-4, -3, -2, -1, 0, 1, 2, 3, 4)
+x_labels = c("\u03bc-4\u03c3", "\u03bc-3\u03c3", "\u03bc-2\u03c3", "\u03bc-1\u03c3", "\u03bc", "\u03bc+1\u03c3", "\u03bc+2\u03c3", "\u03bc+3\u03c3", "\u03bc+4\u03c3")
+plot_normal_interval(-1, 1, xaxis = "Score") + scale_x_continuous(breaks = x_breaks, labels = x_labels)
+plot_normal_interval(-2, 2, xaxis = "Score") + scale_x_continuous(breaks = x_breaks, labels = x_labels)
+plot_normal_interval(-3, 3, xaxis = "Score") + scale_x_continuous(breaks = x_breaks, labels = x_labels)
+```
+
+
+```{r, include=TRUE}
+#| label: fig-standard-normal-intervals
+#| layout-nrow: 3
+#| fig-cap: "The Standard Normal Distribution and the 68-95-99.7 Rule"
+#| fig-subcap:
+#|  - "z score interval from $-1$ to $1$ covers 68.27% of the data"
+#|  - "z score interval from $-2$ to $2$ covers 95.45% of the data"
+#|  - "z score interval from $-3$ to $3$ covers 99.73% of the data"
+#| fig-alt: "A Standard Normal Distributions where the x-axis shows the z scores from negative 4 to 4 with vertical lines and shaded area under the normal curve corresponding to an interval."
+#| fig-height: 3
+
+plot_normal_interval(-1, 1)
+plot_normal_interval(-2, 2)
+plot_normal_interval(-3, 3)
+```
+
+
+```{r, include=TRUE}
+#| label: fig-standard-normal-dist
+#| fig-cap: "The Standard Normal Distribution"
+#| fig-alt: "The standard normal distribution with mean of 0 and standard deviation of 1. The x-axis shows scores from -5 to 5, and the y-axis shows the density. There are lines at -3, -2, -1, 0, 1, 2, and 3, creating intervals. The labels indicate the probability of a score falling within each interval: 0.001, 0.021, 0.136, 0.341, 0.341, 0.136, 0.021, and 0.001."
+
+dnorm_vec <- dnorm(seq(-5,5,.1),mean=0,sd=1)
+x_range   <- seq(-5,5,.1)
+t_df<-data.frame(x_range,dnorm_vec)
+
+ggplot(t_df, aes(x=x_range,y=dnorm_vec))+
+  geom_line()+
+  geom_vline(xintercept = 0)+
+  geom_vline(xintercept = c(-3,-2,-1,1,2,3))+
+  theme_classic()+
+  ylab("Density")+
+  xlab("Score") +
+  ggtitle("Standard Normal Distribution") +
+  scale_x_continuous(breaks=seq(-5,5,1))+
+  geom_label(data = data.frame(x=-.5, y=.3,
+            label=round(pnorm(c(0,1),0,1)[2]-pnorm(c(0,1),0,1)[1], digits=3)), 
+            aes(x = x, y = y, label = label))+
+  geom_label(data = data.frame(x=.5, y=.3,
+            label=round(pnorm(c(0,1),0,1)[2]-pnorm(c(0,1),0,1)[1], digits=3)), 
+            aes(x = x, y = y, label = label))+
+    geom_label(data = data.frame(x=-1.5, y=.3,
+            label=round(pnorm(c(1,2),0,1)[2]-pnorm(c(1,2),0,1)[1], digits=3)), 
+            aes(x = x, y = y, label = label))+
+  geom_label(data = data.frame(x=1.5, y=.3,
+            label=round(pnorm(c(1,2),0,1)[2]-pnorm(c(1,2),0,1)[1], digits=3)), 
+            aes(x = x, y = y, label = label)) + 
+  geom_label(data = data.frame(x=-2.5, y=.3,
+            label=round(pnorm(c(2,3),0,1)[2]-pnorm(c(2,3),0,1)[1], digits=3)), 
+            aes(x = x, y = y, label = label))+
+  geom_label(data = data.frame(x=2.5, y=.3,
+            label=round(pnorm(c(2,3),0,1)[2]-pnorm(c(2,3),0,1)[1], digits=3)), 
+            aes(x = x, y = y, label = label))+ 
+  geom_label(data = data.frame(x=-3.5, y=.3,
+            label=round(pnorm(c(3,4),0,1)[2]-pnorm(c(3,4),0,1)[1], digits=3)), 
+            aes(x = x, y = y, label = label))+
+  geom_label(data = data.frame(x=3.5, y=.3,
+            label=round(pnorm(c(3,4),0,1)[2]-pnorm(c(3,4),0,1)[1], digits=3)), 
+            aes(x = x, y = y, label = label))
+```

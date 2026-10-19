@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://yeonsoon.github.io/research-methods-and-stats-book/z-test-slides.html</loc>
-    <lastmod>2026-09-28T22:04:09.783Z</lastmod>
+    <lastmod>2026-10-02T13:59:18.948Z</lastmod>
   </url>
   <url>
     <loc>https://yeonsoon.github.io/research-methods-and-stats-book/lab05-answers.html</loc>
@@ -107,5 +107,9 @@
   <url>
     <loc>https://yeonsoon.github.io/research-methods-and-stats-book/lab05-one-sample-t-test.html</loc>
     <lastmod>2026-09-30T02:27:21.637Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yeonsoon.github.io/research-methods-and-stats-book/08-paired-samples-t-test.html</loc>
+    <lastmod>2026-10-16T20:51:54.389Z</lastmod>
   </url>
 </urlset>

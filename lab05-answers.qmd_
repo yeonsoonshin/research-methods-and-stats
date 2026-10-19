@@ -72,6 +72,11 @@ res_t <- t.test(df$diff,
 res_t
 ```
 
+:::{.callout-caution}
+### Common Mistake: Baseline (null mean) 
+Our baseline changed now that our DV is a "relative" preference score. The baseline is now 0, not 5. Make sure you run the t-test using the correct baseline by putting that value in the `mu` argument.
+:::
+
 ```{r}
 res_apa <- res_t %>%
    apa_print()
@@ -87,10 +92,68 @@ d <- cohensD(df$diff, mu = 0)
 d
 ```
 
+:::{.callout-caution}
+### Common Mistake: Baseline (null mean) for Cohen's d
+Our baseline changed now that our DV is a "relative" preference score. The baseline is now 0, not 5. Make sure you calculate Cohen's d using the correct baseline by putting that value in the `mu` argument.
+:::
+
 ## Write up the results
 
 > A one-sample t-test was performed to compare the mean relative preference of inherent over extrinsic explanation to the baseline of 0. The mean preference was significantly above the baseline, `r res_apa$full_result`, with a small effect size, d = `r round(d, 2)`. These results suggest that there is a small but significant tendency to prefer inherent over extrinsic explanations. 
 
+
+:::{.callout-caution}
+### Common Mistakes: Baseline
+* "the scale midpoint of 0"
+
+Our baseline is no longer the scale midpoint of 5. The baseline is now 0, because we are using a "relative" preference score. Make sure you report the correct baseline in your write-up.
+:::
+
+:::{.callout-caution}
+### Common Mistakes: Not Reporting the Direction of the Effect
+
+Note that, although the test was two-tailed, you state that the sample mean was significantly **above** the baseline. If you just said that the sample mean was significantly different from the baseline, that's not that informative. Readers may be left unsatisfied, wondering if the sample mean was higher or lower than the baseline. Reduce their cognitive load by telling them the direction of the difference.
+:::
+
+:::{.callout-caution}
+### Common Mistakes: Mismatch between the statement and the statistics
+
+$t$, $d$, and **the direction should match**:
+
+* If you say the sample mean is "lower" than the baseline, then $t$ and $d$ backing up that statement should be negative. 
+* If you say the sample mean is "higher" than the baseline, then $t$ and $d$ backing up that statement should be positive. 
+:::
+
+
+:::{.callout-caution}
+### Common Mistake: Explaining the null hypothesis or concluding that "we can reject the null hypothesis"
+
+This is a common mistake that students make when writing up their results. You do not need to explain the null hypothesis in your write-up. The null hypothesis is a statistical concept that is assumed to be known by your audience. You can simply report the results of the test and let the reader interpret them from "compare ... to the baseline of 0" and "significantly above the baseline". You do not need to explain what the null hypothesis is or what it means.
+
+The flip side is that you are also assumed to know what the null hypothesis is when you read a write-up. That's why we practice specifying the null hypothesis in this class!
+:::
+
+:::{.callout-caution}
+### Common Mistake: Reporting statistics in a prose format
+Note that I did not elaborate the p-value as "the probability of observing sample means as extreme as this sample mean or more extreme if people did not have preference for one explanation over the other". APA style lets us communicate all this information in a concise way by simply reporting (1) that you used a null hypothesis test (e.g., one-sample t-test), and (2) the p-value. The reader can then interpret the p-value in the context of the null hypothesis test. The same goes for the confidence interval. What this means for you as a reader is that you should be able to interpret and deciper $p$ and $CI$ values in the context of the null hypothesis test without needing to be told what they mean!
+:::
+
+:::{.callout-caution}
+### Common Mistake: Not specifying the type of t-test
+"A t-test was performed" is not enough, because you need to specify what kind of t-test was performed. 
+:::
+
+
+:::{.callout-caution}
+### Common Mistake: Interpreting small effect sizes as not "significant"
+
+Here, we see that the effect size is small, but the result is still statistically significant. This is a "small but significant effect". Significance is about whether the effect is likely to be due to chance, and effect size is about the magnitude of the effect.
+
+In this context, people do significantly prefer inherent over extrinsic explanations. There is a bias. Is that bias large? No, it's small. But it is still a real bias!
+
+In another context, say you are comparing average height of girls at age 15 and 16. You may find that the average height of 16-year-olds is significantly taller than that of 15-year-olds, the growth is not dramatic (effect size is small). Is it still a real difference that girls are still growing taller between 15 and 16? Yes, a small but significant effect!
+
+:::
 
 ## Bonus Exercise: Demographics Analysis
 
