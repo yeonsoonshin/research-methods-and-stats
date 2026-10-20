@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Yeon Soon Shin">
+<meta name="author" content="Anjali Thapar">
+<meta name="author" content="Dustin Albert">
+<meta name="author" content="Linda R. Cote">
+<meta name="author" content="Rupa G. Gordon">
+<meta name="author" content="Chrislyn E. Randell">
+<meta name="author" content="Judy Smith">
+<meta name="author" content="Helena Marvin">
+
+<title>Ch.9: Independent Samples t-test – Research Methods and Statistics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ba8f7c244c1f50cbf6c6a3aa3874339a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-paired-samples-t-test.html">Unit 3. Mean Comparisons</a></li><li class="breadcrumb-item"><a href="./09-independent-samples-t-test.html">Ch.9: Independent Samples t-test</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Research Methods and Statistics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Research Methods and Statistics</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Unit 1. The Foundations of Psychology Research</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-psych-science.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ch.1: Psychological Science</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-research-questions-and-claims.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ch.2: Research Questions to Claims</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-measurement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ch.3: Measurement</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-visualizing-and-describing-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ch.4: Visualizing and Describing Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Unit 2. Introduction to Inferential Statistics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-hypothesis-testing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ch 5. Hypothesis Testing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-estimating-the-mean.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ch.6: Estimating the Mean</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-one-sample-z-test-and-t-test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ch.7: One Sample z-test and t-test</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Unit 3. Mean Comparisons</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-paired-samples-t-test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ch.8: Paired Samples t-test</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-independent-samples-t-test.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Ch.9: Independent Samples t-test</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Lab</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab01-r-basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 1: R Basics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab02-reliability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 2: Measurement Reliability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab03-eda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 3: Exploratory Data Analysis (EDA)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab04-standard-scores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 4: Standard Scores and Probability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab05-one-sample-t-test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 5: One-Sample t-Test</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendix</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-apa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presenting Your Work in APA Style</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-stats-decisions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Which Statistical Test Should I Use?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-stats-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Statistics Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-z-scoring.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">z Scoring</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-z-dist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">z Distribution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-t-dist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">t Distribution</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#independent-samples-t-test" id="toc-independent-samples-t-test" class="nav-link active" data-scroll-target="#independent-samples-t-test"><span class="header-section-number">9</span> Independent Samples t-test</a>
+  <ul>
+  <li><a href="#difference-of-means" id="toc-difference-of-means" class="nav-link" data-scroll-target="#difference-of-means"><span class="header-section-number">9.1</span> Difference of Means</a>
+  <ul>
+  <li><a href="#research-questions-about-independent-means" id="toc-research-questions-about-independent-means" class="nav-link" data-scroll-target="#research-questions-about-independent-means"><span class="header-section-number">9.1.1</span> Research Questions about Independent Means</a></li>
+  </ul></li>
+  <li><a href="#hypotheses-of-difference-of-means" id="toc-hypotheses-of-difference-of-means" class="nav-link" data-scroll-target="#hypotheses-of-difference-of-means"><span class="header-section-number">9.2</span> Hypotheses of Difference of Means</a>
+  <ul>
+  <li><a href="#test-statistic" id="toc-test-statistic" class="nav-link" data-scroll-target="#test-statistic"><span class="header-section-number">9.2.1</span> Test Statistic</a>
+  <ul class="collapse">
+  <li><a href="#standard-error-and-pooled-variance" id="toc-standard-error-and-pooled-variance" class="nav-link" data-scroll-target="#standard-error-and-pooled-variance"><span class="header-section-number">9.2.1.1</span> Standard Error and Pooled Variance</a></li>
+  <li><a href="#find-p-values-from-the-t-distribution" id="toc-find-p-values-from-the-t-distribution" class="nav-link" data-scroll-target="#find-p-values-from-the-t-distribution"><span class="header-section-number">9.2.1.2</span> Find p values from the t distribution</a>
+  <ul class="collapse">
+  <li><a href="#degrees-of-freedom" id="toc-degrees-of-freedom" class="nav-link" data-scroll-target="#degrees-of-freedom"><span class="header-section-number">9.2.1.2.1</span> Degrees of Freedom</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#example-bad-press-in-two-damples." id="toc-example-bad-press-in-two-damples." class="nav-link" data-scroll-target="#example-bad-press-in-two-damples."><span class="header-section-number">9.3</span> Example: Bad Press, in two damples.</a>
+  <ul>
+  <li><a href="#step-0.-state-the-hypotheses" id="toc-step-0.-state-the-hypotheses" class="nav-link" data-scroll-target="#step-0.-state-the-hypotheses"><span class="header-section-number">9.3.1</span> Step 0. State the hypotheses</a></li>
+  <li><a href="#steps-1-and-2.-confidence-interval-and-statistical-significance" id="toc-steps-1-and-2.-confidence-interval-and-statistical-significance" class="nav-link" data-scroll-target="#steps-1-and-2.-confidence-interval-and-statistical-significance"><span class="header-section-number">9.3.2</span> Steps 1 and 2. Confidence Interval and Statistical Significance</a>
+  <ul class="collapse">
+  <li><a href="#assumption-homogeneity-of-variance" id="toc-assumption-homogeneity-of-variance" class="nav-link" data-scroll-target="#assumption-homogeneity-of-variance"><span class="header-section-number">9.3.2.1</span> Assumption: Homogeneity of Variance</a></li>
+  </ul></li>
+  <li><a href="#step-3.-practical-significance-and-effect-size-calculate-cohens" id="toc-step-3.-practical-significance-and-effect-size-calculate-cohens" class="nav-link" data-scroll-target="#step-3.-practical-significance-and-effect-size-calculate-cohens"><span class="header-section-number">9.3.3</span> Step 3. Practical Significance and Effect Size: Calculate Cohen’s</a></li>
+  <li><a href="#interpret-the-results" id="toc-interpret-the-results" class="nav-link" data-scroll-target="#interpret-the-results"><span class="header-section-number">9.3.4</span> Interpret the Results</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-paired-samples-t-test.html">Unit 3. Mean Comparisons</a></li><li class="breadcrumb-item"><a href="./09-independent-samples-t-test.html">Ch.9: Independent Samples t-test</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Ch.9: Independent Samples t-test</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Authors</div>
+    <div class="quarto-title-meta-contents">
+             <p>Yeon Soon Shin </p>
+             <p>Anjali Thapar </p>
+             <p>Dustin Albert </p>
+             <p>Linda R. Cote </p>
+             <p>Rupa G. Gordon </p>
+             <p>Chrislyn E. Randell </p>
+             <p>Judy Smith </p>
+             <p>Helena Marvin </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="independent-samples-t-test" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Independent Samples t-test</h1>
+<p>We have seen how to compare a single mean against a given value and how to utilize difference scores to look for meaningful, consistent change via a single mean difference. Now, we will learn how to compare two separate means from groups that do not overlap to see if there is a difference between them. The process of testing hypotheses about two means is exactly the same as it is for testing hypotheses about a single mean, and the logical structure of the formulas is the same as well. However, we will be adding a few extra steps this time to account for the fact that our data are coming from different sources.</p>
+<section id="difference-of-means" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="difference-of-means"><span class="header-section-number">9.1</span> Difference of Means</h2>
+<p>In the previous chapter, we learned about mean differences, that is, the average value of difference scores. Those difference scores came from one group and two time points (or two perspectives). Now, we will deal with the difference of the means, that is, the average values of separate groups that are represented by separate descriptive statistics. This analysis involves two groups and one time point. As with all of our other tests as well, both of these analyses are concerned with a single variable.</p>
+<p>It is very important to keep these two tests separate and understand the distinctions between them because they assess very different questions and require different approaches to the data. When in doubt, think about how the data were collected and where they came from. If they came from two time points with the same people (sometimes referred to as “longitudinal” data), you know you are working with two data points from the same participant (the measurement was repeated) and will use a paired samples t-test. If it came from a single time point that used separate groups, you need to look at the nature of those groups and decide whether they are related. Can individuals in one group being meaningfully matched up with one and only one individual from the other group? For example, are they a romantic couple? If so, we call those data matched pairs and we use a paired samples t-test. However, if there’s no logical or meaningful way to link individuals across groups, or if there is no overlap between the groups, then we say the groups are independent and use the independent samples t-test, the subject of this chapter.</p>
+<section id="research-questions-about-independent-means" class="level3" data-number="9.1.1">
+<h3 data-number="9.1.1" class="anchored" data-anchor-id="research-questions-about-independent-means"><span class="header-section-number">9.1.1</span> Research Questions about Independent Means</h3>
+<p>Many research ideas in the behavioral sciences and other areas of research are concerned with whether or not two means are the same or different. Logically, we therefore say that these research questions are concerned with group mean differences. That is, on average, do we expect a person from Group A to be higher or lower on some variable than a person from Group B. In any research design looking at <strong>group mean differences</strong>, there are some key criteria we must consider: the groups must be mutually exclusive (i.e., you can only be part of one group at any given time), and the groups have to be measured on the same variable (i.e., you can’t compare personality in one group to reaction time in another group since those values would not be the same anyway).</p>
+<p>Let’s look at one of the most common and logical examples: testing a new medication. When a new medication is developed, the researchers who created it need to demonstrate that it effectively treats the symptoms they are trying to alleviate. The simplest design that will answer this question involves two groups: one group that receives the new medication (the “treatment” group) and one group that receives a placebo (the “control” group). Participants are randomly assigned to one of the two groups (remember that random assignment is the hallmark of a true experiment), and the researchers test the symptoms in each person in each group after they received either the medication or the placebo. They then calculate the average symptoms in each group and compare them to see if the treatment group did better (i.e., had fewer or less severe symptoms) than the control group.</p>
+<p>In this example, we had two groups: treatment and control. Membership in these two groups was mutually exclusive—each individual participant received either the experimental medication or the placebo. No one in the experiment received both, so there was no overlap between the two groups. Additionally, each group could be measured on the same variable: symptoms related to the disease or ailment being treated. Because each group was measured on the same variable, the average scores in each group could be meaningfully compared. If the treatment was ineffective, we would expect that the average symptoms of someone receiving the treatment would be the same as the average symptoms of someone receiving the placebo (i.e., there is no difference between the groups). However, if the treatment was effective, we would expect fewer symptoms from the treatment group, leading to a lower group average.</p>
+<p>Now let’s look at an example using groups that already exist. A common, and perhaps salient, question is how students feel about their job prospects after graduation. Suppose that we have narrowed our potential choice of college down to two universities and, in the course of trying to decide between the two, we come across a survey that has data from each university on how students at those universities feel about their future job prospects. As with our last example, we have two groups: University A and University B, and each participant is in only one of the two groups (assuming there are no transfer students who were somehow able to rate both universities). Because students at each university completed the same survey, they are measuring the same thing, so we can use a t test to compare the average perceptions of students at each university to see if they are the same. If they are the same, then we should continue looking for other things about each university to help us decide on where to go. But, if they are different, we can use that information in favor of the university with higher job prospects.</p>
+<p>As we can see, the grouping variable we use for an independent samples t test can be a set of groups we create (as in the experimental medication example) or groups that already exist naturally (as in the university example). There are countless other examples of research questions relating to two group means, making the independent samples t test one of the most widely used analyses around.</p>
+</section>
+</section>
+<section id="hypotheses-of-difference-of-means" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="hypotheses-of-difference-of-means"><span class="header-section-number">9.2</span> Hypotheses of Difference of Means</h2>
+<p>The process of testing hypotheses using an independent samples t test is the same as it was in the previous chapters, and it starts with stating our hypotheses.</p>
+<p>Our null hypothesis for an independent samples t test is the same as all others: there is no difference. The means of the two groups are the same under the null hypothesis, no matter how those groups were formed. Mathematically, this takes on two equivalent forms:</p>
+<p><span class="math display">\[H_0: \mu_1 = \mu_2\]</span> <span class="math display">\[H_0: \mu_1 - \mu_2 = 0\]</span></p>
+<p>Both of these formulations of the null hypothesis tell us exactly the same thing: that the numerical value of the means is the same in both groups. This is more clear in the first formulation, but the second formulation also makes sense (any number minus itself is always zero) and helps us out a little when we get to the math of the test statistic. Either one is acceptable and you only need to report one. The English interpretation of both of them is also the same:</p>
+<p><span class="math display">\[H_0: \text{There is no difference between the means of the two groups.}\]</span></p>
+<p>Our alternative hypotheses are also unchanged: we simply replace the equal sign (<span class="math inline">\(\eq\)</span>) with one of the three inequalities (<span class="math inline">\(\gt\)</span>, <span class="math inline">\(\lt\)</span>, <span class="math inline">\(\neq\)</span>):</p>
+<p><span class="math display">\[H_1: \mu_1 \gt \mu_2\]</span> <span class="math display">\[H_1: \mu_1 \lt \mu_2\]</span> <span class="math display">\[H_1: \mu_1 \neq \mu_2\]</span></p>
+<p>or</p>
+<p><span class="math display">\[H_1: \mu_1 - \mu_2 \gt 0\]</span> <span class="math display">\[H_1: \mu_1 - \mu_2 \lt 0\]</span> <span class="math display">\[H_1: \mu_1 - \mu_2 \neq 0\]</span></p>
+<p>Whichever formulation you chose for the null hypothesis should be the one you use for the alternative hypothesis (be consistent).</p>
+<p>The English interpretation for the two-tailed alternative hypothesis is: <span class="math display">\[H_1: \text{There is a difference between the means of the two groups.}\]</span></p>
+<p>Notice that we are now dealing with two means instead of just one, so it will be very important to keep track of which mean goes with which population and, by extension, which dataset and sample data. We use subscripts to differentiate between the populations, so make sure to keep track of which is which. If it is helpful, you can also use more descriptive subscripts. To use the experimental medication example:</p>
+<p><span class="math display">\[H_0: \text{There is no difference between the means of the treatment and control groups.}\]</span> <span class="math display">\[H_0: \mu_\text{treatment} = \mu_\text{control}\]</span></p>
+<p><span class="math display">\[H_1: \text{There is a difference between the means of the treatment and control groups.}\]</span> <span class="math display">\[H_1: \mu_\text{treatment} \neq \mu_\text{control}\]</span></p>
+<section id="test-statistic" class="level3" data-number="9.2.1">
+<h3 data-number="9.2.1" class="anchored" data-anchor-id="test-statistic"><span class="header-section-number">9.2.1</span> Test Statistic</h3>
+<p>The test statistic for our independent samples t test takes on the same logical structure and format as our other t tests: our observed effect minus our null hypothesis value, all divided by the standard error:</p>
+<p><span class="math display">\[t = \frac{(M_1 - M_2) - (\mu_1 - \mu_2)}{SEM}\]</span></p>
+<p>Because our null hypothesis states that there is no difference between the two means <span class="math inline">\(\mu_1 = \mu_2\)</span>, we can simplify this formula to:</p>
+<p><span class="math display">\[t = \frac{M_1 - M_2}{SEM}\]</span></p>
+<p>Calculating our standard error, as we will see next, is where the biggest differences between this t test and other t tests appears. However, once we do calculate it and use it in our test statistic, everything else goes back to normal. We are still using this t statistic to find a p value from the t distribution, which we will then compare to our alpha level to determine whether or not to reject the null hypothesis.</p>
+<section id="standard-error-and-pooled-variance" class="level4" data-number="9.2.1.1">
+<h4 data-number="9.2.1.1" class="anchored" data-anchor-id="standard-error-and-pooled-variance"><span class="header-section-number">9.2.1.1</span> Standard Error and Pooled Variance</h4>
+<p>Recall that the standard error is the average distance between any given sample mean and the center of its corresponding sampling distribution, and it is a function of the standard deviation of the population (either given or estimated) and the sample size. This definition and interpretation hold true for our independent samples t test as well, but because we are working with two samples drawn from two populations, we have to first combine their estimates of standard deviation—or, more accurately, their estimates of variance—into a single value that we can then use to calculate our standard error.</p>
+<p><span class="math display">\[s_\text{pooled}^2 = \frac{SS_1 + SS_2}{df_1 + df_2}\]</span></p>
+<p>SEM is still calculated as the standard deviation divided by the square root of the sample size, but now we have two sample sizes to consider. The formula for SEM in an independent samples t test is:</p>
+<p><span class="math display">\[SEM = s_\text{pooled} \times \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}\]</span></p>
+<p>You won’t have to calculate this by hand – just remember that the logic is the same as before, and that the standard error is still a function of the standard deviation and sample size. The only difference is that we are now working with two samples instead of one.</p>
+</section>
+<section id="find-p-values-from-the-t-distribution" class="level4" data-number="9.2.1.2">
+<h4 data-number="9.2.1.2" class="anchored" data-anchor-id="find-p-values-from-the-t-distribution"><span class="header-section-number">9.2.1.2</span> Find p values from the t distribution</h4>
+<p>Once we have our test statistic, we can find the corresponding p value from the t distribution.</p>
+<section id="degrees-of-freedom" class="level5" data-number="9.2.1.2.1">
+<h5 data-number="9.2.1.2.1" class="anchored" data-anchor-id="degrees-of-freedom"><span class="header-section-number">9.2.1.2.1</span> Degrees of Freedom</h5>
+<p>For an independent samples t test, the degrees of freedom are calculated as follows:</p>
+<p><span class="math display">\[df = n_1 + n_2 - 2\]</span></p>
+<p>This looks different than before, but it is just adding the individual degrees of freedom from each group (<span class="math inline">\(n − 1\)</span>) together. Notice that the sample sizes, <span class="math inline">\(n\)</span>, also get subscripts so we can tell them apart.</p>
+</section>
+</section>
+</section>
+</section>
+<section id="example-bad-press-in-two-damples." class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="example-bad-press-in-two-damples."><span class="header-section-number">9.3</span> Example: Bad Press, in two damples.</h2>
+<p>We will continue the example from the previous section. The difference is that, rather than having one group of participants complete the ratings before and after watching the commercial, we will have two separate groups of participants: one watching the new commercial and one watching the old commercial. 7 people are randomly assigned to each group to view the commercial as a focus group. The focus group members first watch the commercial and fill out the same questionnaire a second time. They use a two-tailed test since they know that past commercials have not gone over well with the public, and they want to make sure the new one does not backfire. Just so it happens, the data seems pretty close to the previous example, but they are coming from different individuals.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>new <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">9</span>, <span class="dv">4</span>, <span class="dv">8</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>old <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="fu">length</span>(new) <span class="sc">+</span> <span class="fu">length</span>(old)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="step-0.-state-the-hypotheses" class="level3" data-number="9.3.1">
+<h3 data-number="9.3.1" class="anchored" data-anchor-id="step-0.-state-the-hypotheses"><span class="header-section-number">9.3.1</span> Step 0. State the hypotheses</h3>
+<p><span class="math display">\[H_0: \text{There is no difference in attitude towards the bank after watching new vs. old commercials.}\]</span> <span class="math display">\[H_0: \mu_\text{new} = \mu_\text{old}\]</span></p>
+<p><span class="math display">\[H_1: \text{There is a difference in attitude towards the bank after watching new vs. old commercials.}\]</span> <span class="math display">\[H_1: \mu_\text{new} \neq \mu_\text{old}\]</span></p>
+<p>Instead of hand calculating the test statistic and p value, we will use R to do this for us. The following code will calculate the t statistic and p value for our data.</p>
+</section>
+<section id="steps-1-and-2.-confidence-interval-and-statistical-significance" class="level3" data-number="9.3.2">
+<h3 data-number="9.3.2" class="anchored" data-anchor-id="steps-1-and-2.-confidence-interval-and-statistical-significance"><span class="header-section-number">9.3.2</span> Steps 1 and 2. Confidence Interval and Statistical Significance</h3>
+<p>Note that the <code>paired</code> argument is set to FALSE because now new and old groups are independent (different, unrelated individuals).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> new, <span class="at">y =</span> old, <span class="at">paired =</span> <span class="cn">FALSE</span>, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Two Sample t-test
+
+data:  new and old
+t = 1.9298, df = 12, p-value = 0.07761
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.3318019  5.4746590
+sample estimates:
+mean of x mean of y 
+ 6.428571  3.857143 </code></pre>
+</div>
+</div>
+<p>Do you notice that the test results are not significant anymore? The p value is now 0.077, and there is not enough evidence that new commercial is better than the old one. Why would that be? The answer is that we have less power to detect a difference when we are working with independent samples. In the previous example, we were able to control for individual differences by using the same people in both groups. Now, we have two different groups of people, and there is more variability in the data because of that. So even though the means of “old” is the same as means of “pre” in the previous example, and the means of “new” is the same as means of “post” in the previous example, we are not able to detect a significant difference between them because of the increased variability in the data.</p>
+<section id="assumption-homogeneity-of-variance" class="level4" data-number="9.3.2.1">
+<h4 data-number="9.3.2.1" class="anchored" data-anchor-id="assumption-homogeneity-of-variance"><span class="header-section-number">9.3.2.1</span> Assumption: Homogeneity of Variance</h4>
+<p>Notice the “var.equal = TRUE” argument in the t.test() function. For the current analysis, one important assumption is homogeneity of variance. This is fancy statistical talk for the idea that the true population variance for each group is the same and any difference in the observed sample variances is due to random chance. (If this sounds eerily similar to the idea of testing the null hypothesis that the true population means are equal, that’s because it is exactly the same!) This notion allows us to compute a single pooled variance that uses our easily calculated degrees of freedom. If the assumption is shown to not be true, then we have to use a very complicated formula to estimate the proper degrees of freedom. There are formal tests to assess whether or not this assumption is met, but we will not discuss them here.</p>
+<p>Many statistical programs incorporate the test of homogeneity of variance automatically and can report the results of the analysis assuming it is true or assuming it has been violated. You can easily tell which is which by the degrees of freedom: the corrected degrees of freedom (which is used when the assumption of homogeneity of variance is violated) will have decimal places. Fortunately, the independent samples t test is very robust to violations of this assumption (an analysis is “robust” if it works well even when its assumptions are not met), which is why we do not bother going through the tedious work of testing and estimating new degrees of freedom by hand.</p>
+</section>
+</section>
+<section id="step-3.-practical-significance-and-effect-size-calculate-cohens" class="level3" data-number="9.3.3">
+<h3 data-number="9.3.3" class="anchored" data-anchor-id="step-3.-practical-significance-and-effect-size-calculate-cohens"><span class="header-section-number">9.3.3</span> Step 3. Practical Significance and Effect Size: Calculate Cohen’s</h3>
+<p>Now, we want to know how big the effect is. Is the attitude change big enough to matter in the real world? Should the bank roll out this commercial to the public? To answer these questions, we need to calculate an effect size. Perhaps the statistical results are not significant, but the effect size is large enough to consider perhaps our study was underpowered (not enough participants).</p>
+<p>Again, we can use R to calculate Cohen’s d for us. The following code will calculate Cohen’s d for our data. You can check that the results match what we calculated by hand.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>lsr<span class="sc">::</span><span class="fu">cohensD</span>(new, old, <span class="at">method =</span> <span class="st">"pooled"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.031523</code></pre>
+</div>
+</div>
+<p>Cohen’s d is 1.03, which is considered a large effect size. This means that the difference between the two groups is large enough to be meaningful in the real world, even though it was not statistically significant. This could be due to the small sample size (n = 7 for each group), which may not have enough power to detect a significant difference.</p>
+</section>
+<section id="interpret-the-results" class="level3" data-number="9.3.4">
+<h3 data-number="9.3.4" class="anchored" data-anchor-id="interpret-the-results"><span class="header-section-number">9.3.4</span> Interpret the Results</h3>
+<p>Putting all this together, we can write up the results as follows:</p>
+<blockquote class="blockquote">
+<p>Independent samples t-test was conducted on attitudes towards the bank after a new vs.&nbsp;old commercial intervention. Based on our focus group of 14 people, we cannot conclude that the average difference in opinion (<span class="math inline">\(M_D = 2.57\)</span>) was for the better after viewing the new commercial (<span class="math inline">\(M_\text{new} = 6.43\)</span>), compared to the old commercial (<span class="math inline">\(M_\text{old} = 3.86\)</span>), 95% CI: <span class="math inline">\([-0.33,  5.47]\)</span>. However, this difference was associated with a large effect size, Cohen’s <span class="math inline">\(d = 1.03\)</span>.</p>
+</blockquote>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/yeonsoon\.github\.io\/research-methods-and-stats-book");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

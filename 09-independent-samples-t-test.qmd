@@ -1,0 +1,313 @@
+---
+title: "Ch.9: Independent Samples t-test"
+author: 
+  - "Yeon Soon Shin"
+  - "Anjali Thapar"
+  - "Dustin Albert"
+  - "Linda R. Cote"
+  - "Rupa G. Gordon"
+  - "Chrislyn E. Randell"
+  - "Judy Smith"
+  - "Helena Marvin"
+format:
+  html:
+    number-offset: 8
+---
+
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  include = TRUE,
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+
+library(tidyverse)  # for data wrangling and visualization
+# library(BrailleR)   # for brailleR tables
+# GoBlind()
+
+theme_set(theme_classic(base_size = 16))
+
+set.seed(123)
+plot_normal <- function(m = 0, s = 1,
+                        areatype = "none", 
+                        lb = NULL, ub = NULL, 
+                        xaxis = "z", 
+                        mycol = "darkorange") {
+  # extend past the default range (with margin) whenever a cutoff falls outside it
+  ll <- min(-4*s+m, lb - s, ub - s)
+  ul <- max(4*s+m, lb + s, ub + s)
+  if (areatype == "body") {
+    lb <- ifelse(is.null(lb), ll, lb)
+    ub <- ifelse(is.null(ub), ul, ub)
+  }
+  shadelim <- switch(areatype,
+                  "body" = c(lb, ub),
+                  "lowertail" = c(ll, ub),
+                  "uppertail" = c(lb, ul))
+  shadecol <- switch(areatype, "body" = "steelblue", mycol)
+
+  p <- ggplot(data = data.frame(x = seq(ll, ul, 1)), aes(x))
+
+  if (areatype == "none") {
+      p
+  } else if (areatype == "twotail") {
+      p <- p +
+        stat_function(fun = dnorm, n = 1000, args = list(mean = m, sd = s),
+                         geom = "area", col = "darkgray", fill = shadecol,
+                         alpha = 0.8, xlim = c(ll, min(lb, ub))) +
+        stat_function(fun = dnorm, n = 1000, args = list(mean = m, sd = s),
+                      geom = "area", col = "darkgray", fill = shadecol,
+                      alpha = 0.8, xlim = c(max(lb, ub), ul))
+  } else {
+      p <- p +
+        stat_function(fun = dnorm, n = 1000, args = list(mean = m, sd = s),
+                         geom = "area", col = "darkgray", fill = shadecol,
+                         alpha = 0.8, xlim = shadelim)
+  }
+
+  p <- p +
+    # curve
+    stat_function(fun = dnorm, n = 1000, args = list(mean = m, sd = s),
+                  col = "darkgray", linewidth = 1) +
+    # vertical lines
+    # geom_vline(xintercept = c(lb, ub), col = "black") +
+    # label
+    xlab(xaxis) +
+    # misc
+    scale_x_continuous(breaks = seq(floor(ll), ceiling(ul), s)) +
+    scale_y_continuous(expand = c(0, 0)) +
+    theme(
+      axis.text.y = element_blank(),
+      axis.title.y = element_blank(),
+      axis.line.y = element_blank(),
+      axis.ticks.y = element_blank(),
+      plot.title = element_text(hjust = 0.5)
+    )
+  return(p)
+}
+
+plot_t <- function(df = 30,
+                   areatype = "none", 
+                   lb = NULL, ub = NULL,  
+                   xaxis = "t",
+                   mycol = "darkorange") {
+  # extend past the default range (with margin) whenever a cutoff falls outside it
+  ll <- min(-4, lb - 1, ub - 1)
+  ul <- max(4, lb + 1, ub + 1)
+  if (areatype == "body") {
+    lb <- ifelse(is.null(lb), ll, lb)
+    ub <- ifelse(is.null(ub), ul, ub)
+  }
+  shadelim <- switch(areatype,
+                  "body" = c(lb, ub),
+                  "lowertail" = c(ll, ub),
+                  "uppertail" = c(lb, ul))
+  shadecol <- switch(areatype, "body" = "steelblue", mycol)
+
+  p <- ggplot(data = data.frame(x = seq(ll, ul, 1)), aes(x))
+
+  if (areatype == "none") {
+      p
+  } else if (areatype == "twotail") {
+      p <- p +
+        stat_function(fun = dt, n = 1000, args = list(df = df),
+                         geom = "area", col = "darkgray", fill = shadecol,
+                         alpha = 0.8, xlim = c(ll, min(lb, ub))) +
+        stat_function(fun = dt, n = 1000, args = list(df = df),
+                      geom = "area", col = "darkgray", fill = shadecol,
+                      alpha = 0.8, xlim = c(max(lb, ub), ul))
+  } else {
+      p <- p +
+        stat_function(fun = dt, n = 1000, args = list(df = df),
+                         geom = "area", col = "darkgray", fill = shadecol,
+                         alpha = 0.8, xlim = shadelim)
+  }
+
+  p <- p +
+    # curve
+    stat_function(fun = dt, n = 1000, args = list(df = df),
+                  col = "darkgray", linewidth = 1) +
+    # vertical lines
+    # geom_vline(xintercept = c(lb, ub), col = "black") +
+    # label
+    xlab(xaxis) +
+    # misc
+    scale_x_continuous(breaks = seq(floor(ll), ceiling(ul), 1)) +
+    scale_y_continuous(expand = c(0, 0)) +
+    theme(
+      axis.text.y = element_blank(),
+      axis.title.y = element_blank(),
+      axis.line.y = element_blank(),
+      axis.ticks.y = element_blank(),
+      plot.title = element_text(hjust = 0.5)
+    )
+  return(p)
+}
+```
+
+# Independent Samples t-test
+
+We have seen how to compare a single mean against a given value and how to utilize difference scores to look for meaningful, consistent change via a single mean difference. Now, we will learn how to compare two separate means from groups that do not overlap to see if there is a difference between them. The process of testing hypotheses about two means is exactly the same as it is for testing hypotheses about a single mean, and the logical structure of the formulas is the same as well. However, we will be adding a few extra steps this time to account for the fact that our data are coming from different sources.
+
+## Difference of Means
+
+In the previous chapter, we learned about mean differences, that is, the average value of difference scores. Those difference scores came from one group and two time points (or two perspectives). Now, we will deal with the difference of the means, that is, the average values of separate groups that are represented by separate descriptive statistics. This analysis involves two groups and one time point. As with all of our other tests as well, both of these analyses are concerned with a single variable.
+
+It is very important to keep these two tests separate and understand the distinctions between them because they assess very different questions and require different approaches to the data. When in doubt, think about how the data were collected and where they came from. If they came from two time points with the same people (sometimes referred to as “longitudinal” data), you know you are working with two data points from the same participant (the measurement was repeated) and will use a paired samples t-test. If it came from a single time point that used separate groups, you need to look at the nature of those groups and decide whether they are related. Can individuals in one group being meaningfully matched up with one and only one individual from the other group? For example, are they a romantic couple? If so, we call those data matched pairs and we use a paired samples t-test. However, if there’s no logical or meaningful way to link individuals across groups, or if there is no overlap between the groups, then we say the groups are independent and use the independent samples t-test, the subject of this chapter.
+
+### Research Questions about Independent Means
+
+Many research ideas in the behavioral sciences and other areas of research are concerned with whether or not two means are the same or different. Logically, we therefore say that these research questions are concerned with group mean differences. That is, on average, do we expect a person from Group A to be higher or lower on some variable than a person from Group B. In any research design looking at **group mean differences**, there are some key criteria we must consider: the groups must be mutually exclusive (i.e., you can only be part of one group at any given time), and the groups have to be measured on the same variable (i.e., you can’t compare personality in one group to reaction time in another group since those values would not be the same anyway).
+
+Let’s look at one of the most common and logical examples: testing a new medication. When a new medication is developed, the researchers who created it need to demonstrate that it effectively treats the symptoms they are trying to alleviate. The simplest design that will answer this question involves two groups: one group that receives the new medication (the “treatment” group) and one group that receives a placebo (the “control” group). Participants are randomly assigned to one of the two groups (remember that random assignment is the hallmark of a true experiment), and the researchers test the symptoms in each person in each group after they received either the medication or the placebo. They then calculate the average symptoms in each group and compare them to see if the treatment group did better (i.e., had fewer or less severe symptoms) than the control group.
+
+In this example, we had two groups: treatment and control. Membership in these two groups was mutually exclusive—each individual participant received either the experimental medication or the placebo. No one in the experiment received both, so there was no overlap between the two groups. Additionally, each group could be measured on the same variable: symptoms related to the disease or ailment being treated. Because each group was measured on the same variable, the average scores in each group could be meaningfully compared. If the treatment was ineffective, we would expect that the average symptoms of someone receiving the treatment would be the same as the average symptoms of someone receiving the placebo (i.e., there is no difference between the groups). However, if the treatment was effective, we would expect fewer symptoms from the treatment group, leading to a lower group average.
+
+Now let’s look at an example using groups that already exist. A common, and perhaps salient, question is how students feel about their job prospects after graduation. Suppose that we have narrowed our potential choice of college down to two universities and, in the course of trying to decide between the two, we come across a survey that has data from each university on how students at those universities feel about their future job prospects. As with our last example, we have two groups: University A and University B, and each participant is in only one of the two groups (assuming there are no transfer students who were somehow able to rate both universities). Because students at each university completed the same survey, they are measuring the same thing, so we can use a t test to compare the average perceptions of students at each university to see if they are the same. If they are the same, then we should continue looking for other things about each university to help us decide on where to go. But, if they are different, we can use that information in favor of the university with higher job prospects.
+
+As we can see, the grouping variable we use for an independent samples t test can be a set of groups we create (as in the experimental medication example) or groups that already exist naturally (as in the university example). There are countless other examples of research questions relating to two group means, making the independent samples t test one of the most widely used analyses around.
+
+
+## Hypotheses of Difference of Means
+
+The process of testing hypotheses using an independent samples t test is the same as it was in the previous chapters, and it starts with stating our hypotheses.
+
+Our null hypothesis for an independent samples t test is the same as all others: there is no difference. The means of the two groups are the same under the null hypothesis, no matter how those groups were formed. Mathematically, this takes on two equivalent forms:
+
+$$H_0: \mu_1 = \mu_2$$
+$$H_0: \mu_1 - \mu_2 = 0$$
+
+Both of these formulations of the null hypothesis tell us exactly the same thing: that the numerical value of the means is the same in both groups. This is more clear in the first formulation, but the second formulation also makes sense (any number minus itself is always zero) and helps us out a little when we get to the math of the test statistic. Either one is acceptable and you only need to report one. The English interpretation of both of them is also the same:
+
+$$H_0: \text{There is no difference between the means of the two groups.}$$
+
+Our alternative hypotheses are also unchanged: we simply replace the equal sign ($\eq$) with one of the three inequalities ($\gt$, $\lt$, $\neq$):
+
+$$H_1: \mu_1 \gt \mu_2$$
+$$H_1: \mu_1 \lt \mu_2$$
+$$H_1: \mu_1 \neq \mu_2$$
+
+or
+
+$$H_1: \mu_1 - \mu_2 \gt 0$$
+$$H_1: \mu_1 - \mu_2 \lt 0$$
+$$H_1: \mu_1 - \mu_2 \neq 0$$
+
+Whichever formulation you chose for the null hypothesis should be the one you use for the alternative hypothesis (be consistent).
+
+The English interpretation for the two-tailed alternative hypothesis is:
+$$H_1: \text{There is a difference between the means of the two groups.}$$
+
+Notice that we are now dealing with two means instead of just one, so it will be very important to keep track of which mean goes with which population and, by extension, which dataset and sample data. We use subscripts to differentiate between the populations, so make sure to keep track of which is which. If it is helpful, you can also use more descriptive subscripts. To use the experimental medication example:
+
+$$H_0: \text{There is no difference between the means of the treatment and control groups.}$$
+$$H_0: \mu_\text{treatment} = \mu_\text{control}$$
+
+$$H_1: \text{There is a difference between the means of the treatment and control groups.}$$
+$$H_1: \mu_\text{treatment} \neq \mu_\text{control}$$
+
+
+
+
+
+### Test Statistic
+
+The test statistic for our independent samples t test takes on the same logical structure and format as our other t tests: our observed effect minus our null hypothesis value, all divided by the standard error:
+
+$$t = \frac{(M_1 - M_2) - (\mu_1 - \mu_2)}{SEM}$$
+
+Because our null hypothesis states that there is no difference between the two means $\mu_1 = \mu_2$, we can simplify this formula to:
+
+$$t = \frac{M_1 - M_2}{SEM}$$
+
+Calculating our standard error, as we will see next, is where the biggest differences between this t test and other t tests appears. However, once we do calculate it and use it in our test statistic, everything else goes back to normal. We are still using this t statistic to find a p value from the t distribution, which we will then compare to our alpha level to determine whether or not to reject the null hypothesis.
+
+#### Standard Error and Pooled Variance
+
+Recall that the standard error is the average distance between any given sample mean and the center of its corresponding sampling distribution, and it is a function of the standard deviation of the population (either given or estimated) and the sample size. This definition and interpretation hold true for our independent samples t test as well, but because we are working with two samples drawn from two populations, we have to first combine their estimates of standard deviation—or, more accurately, their estimates of variance—into a single value that we can then use to calculate our standard error.
+
+$$s_\text{pooled}^2 = \frac{SS_1 + SS_2}{df_1 + df_2}$$
+
+SEM is still calculated as the standard deviation divided by the square root of the sample size, but now we have two sample sizes to consider. The formula for SEM in an independent samples t test is:
+
+$$SEM = s_\text{pooled} \times \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}$$
+
+You won't have to calculate this by hand -- just remember that the logic is the same as before, and that the standard error is still a function of the standard deviation and sample size. The only difference is that we are now working with two samples instead of one.
+
+
+#### Find p values from the t distribution
+
+Once we have our test statistic, we can find the corresponding p value from the t distribution. 
+
+
+##### Degrees of Freedom
+
+For an independent samples t test, the degrees of freedom are calculated as follows:
+
+$$df = n_1 + n_2 - 2$$
+
+This looks different than before, but it is just adding the individual degrees of freedom from each group ($n − 1$) together. Notice that the sample sizes, $n$, also get subscripts so we can tell them apart.
+
+
+## Example: Bad Press, in two damples.
+
+We will continue the example from the previous section. The difference is that, rather than having one group of participants complete the ratings before and after watching the commercial, we will have two separate groups of participants: one watching the new commercial and one watching the old commercial. 7 people are randomly assigned to each group to view the commercial as a focus group. The focus group members first watch the commercial and fill out the same questionnaire a second time. They use a two-tailed test since they know that past commercials have not gone over well with the public, and they want to make sure the new one does not backfire. Just so it happens, the data seems pretty close to the previous example, but they are coming from different individuals.
+
+
+```{r, echo=TRUE}
+new = c(2, 8, 5, 9, 9, 4, 8)
+old = c(3, 3, 5, 8, 3, 1, 4)
+n = length(new) + length(old)
+```
+
+### Step 0. State the hypotheses
+
+$$H_0: \text{There is no difference in attitude towards the bank after watching new vs. old commercials.}$$
+$$H_0: \mu_\text{new} = \mu_\text{old}$$
+
+
+$$H_1: \text{There is a difference in attitude towards the bank after watching new vs. old commercials.}$$
+$$H_1: \mu_\text{new} \neq \mu_\text{old}$$
+
+
+Instead of hand calculating the test statistic and p value, we will use R to do this for us. The following code will calculate the t statistic and p value for our data.
+
+
+### Steps 1 and 2. Confidence Interval and Statistical Significance
+
+Note that the `paired` argument is set to FALSE because now new and old groups are independent (different, unrelated individuals). 
+
+```{r, include=TRUE}
+t.test(x = new, y = old, paired = FALSE, var.equal = TRUE)
+```
+
+Do you notice that the test results are not significant anymore? The p value is now 0.077, and there is not enough evidence that new commercial is better than the old one. Why would that be? The answer is that we have less power to detect a difference when we are working with independent samples. In the previous example, we were able to control for individual differences by using the same people in both groups. Now, we have two different groups of people, and there is more variability in the data because of that. So even though the means of "old" is the same as means of "pre" in the previous example, and the means of "new" is the same as means of "post" in the previous example, we are not able to detect a significant difference between them because of the increased variability in the data.
+
+#### Assumption: Homogeneity of Variance
+
+Notice the "var.equal = TRUE" argument in the t.test() function. For the current analysis, one important assumption is homogeneity of variance. This is fancy statistical talk for the idea that the true population variance for each group is the same and any difference in the observed sample variances is due to random chance. (If this sounds eerily similar to the idea of testing the null hypothesis that the true population means are equal, that’s because it is exactly the same!) This notion allows us to compute a single pooled variance that uses our easily calculated degrees of freedom. If the assumption is shown to not be true, then we have to use a very complicated formula to estimate the proper degrees of freedom. There are formal tests to assess whether or not this assumption is met, but we will not discuss them here.
+
+Many statistical programs incorporate the test of homogeneity of variance automatically and can report the results of the analysis assuming it is true or assuming it has been violated. You can easily tell which is which by the degrees of freedom: the corrected degrees of freedom (which is used when the assumption of homogeneity of variance is violated) will have decimal places. Fortunately, the independent samples t test is very robust to violations of this assumption (an analysis is “robust” if it works well even when its assumptions are not met), which is why we do not bother going through the tedious work of testing and estimating new degrees of freedom by hand.
+
+### Step 3. Practical Significance and Effect Size: Calculate Cohen's 
+
+Now, we want to know how big the effect is. Is the attitude change big enough to matter in the real world? Should the bank roll out this commercial to the public? To answer these questions, we need to calculate an effect size. Perhaps the statistical results are not significant, but the effect size is large enough to consider perhaps our study was underpowered (not enough participants).
+
+Again, we can use R to calculate Cohen's d for us. The following code will calculate Cohen's d for our data. You can check that the results match what we calculated by hand.
+
+```{r, include=TRUE}
+lsr::cohensD(new, old, method = "pooled")
+```
+
+Cohen's d is 1.03, which is considered a large effect size. This means that the difference between the two groups is large enough to be meaningful in the real world, even though it was not statistically significant. This could be due to the small sample size (n = 7 for each group), which may not have enough power to detect a significant difference.
+
+### Interpret the Results
+
+Putting all this together, we can write up the results as follows:
+
+> Independent samples t-test was conducted on attitudes towards the bank after a new vs. old commercial intervention. Based on our focus group of 14 people, we cannot conclude that the average difference in opinion ($M_D = 2.57$) was for the better after viewing the new commercial ($M_\text{new} = 6.43$), compared to the old commercial ($M_\text{old} = 3.86$),  95% CI: $[-0.33,  5.47]$. However, this difference was associated with a large effect size, Cohen’s $d = 1.03$.
+
+
+

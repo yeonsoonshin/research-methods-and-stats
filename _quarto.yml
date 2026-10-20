@@ -36,6 +36,7 @@ website:
       - section: "Unit 3. Mean Comparisons"
         contents:
           - 08-paired-samples-t-test.qmd
+          - 09-independent-samples-t-test.qmd
       - section: "Lab"
         contents:
           - lab01-r-basics.qmd
