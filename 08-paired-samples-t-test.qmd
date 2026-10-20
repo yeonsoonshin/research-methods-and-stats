@@ -434,6 +434,6 @@ lsr::cohensD(post, pre, method = "paired")
 
 Putting all this together, we can write up the results as follows:
 
-> Paired samples t-test was conducted on attitudes towards the bank before and after a commercial intervention. Based on our focus group of 7 people, we can conclude that the average change in opinion ($M_D = 2.57$, $SD_D = 2.64$) was for the better after viewing the commercial, 95% CI: $[0.13, 5.01]$, with a large effect size, Cohen’s $d = 0.98$.
+> Paired samples t-test was conducted on attitudes towards the bank before and after a commercial intervention. Based on our focus group of 7 people, we can conclude that the average change in opinion ($M_D = 2.57$, $SD_D = 2.64$) was for the better after viewing the commercial, 95% CI: $[0.13, 5.01]$, $t(6) = 2.580$, $p = .0418$, with a large effect size, Cohen’s $d = 0.98$.
 
 

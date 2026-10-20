@@ -315,6 +315,12 @@ window.Quarto = {
  <span class="menu-text">Lab 5: One-Sample t-Test</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab06-two-sample-t-test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 6: Two-Sample t-Test</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -398,7 +404,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#assumption-homogeneity-of-variance" id="toc-assumption-homogeneity-of-variance" class="nav-link" data-scroll-target="#assumption-homogeneity-of-variance"><span class="header-section-number">9.3.2.1</span> Assumption: Homogeneity of Variance</a></li>
   </ul></li>
-  <li><a href="#step-3.-practical-significance-and-effect-size-calculate-cohens" id="toc-step-3.-practical-significance-and-effect-size-calculate-cohens" class="nav-link" data-scroll-target="#step-3.-practical-significance-and-effect-size-calculate-cohens"><span class="header-section-number">9.3.3</span> Step 3. Practical Significance and Effect Size: Calculate Cohen’s</a></li>
+  <li><a href="#step-3.-practical-significance-and-effect-size-calculate-cohens-d" id="toc-step-3.-practical-significance-and-effect-size-calculate-cohens-d" class="nav-link" data-scroll-target="#step-3.-practical-significance-and-effect-size-calculate-cohens-d"><span class="header-section-number">9.3.3</span> Step 3. Practical Significance and Effect Size: Calculate Cohen’s D</a></li>
   <li><a href="#interpret-the-results" id="toc-interpret-the-results" class="nav-link" data-scroll-target="#interpret-the-results"><span class="header-section-number">9.3.4</span> Interpret the Results</a></li>
   </ul></li>
   </ul></li>
@@ -463,7 +469,7 @@ window.Quarto = {
 <p><span class="math display">\[H_0: \mu_1 = \mu_2\]</span> <span class="math display">\[H_0: \mu_1 - \mu_2 = 0\]</span></p>
 <p>Both of these formulations of the null hypothesis tell us exactly the same thing: that the numerical value of the means is the same in both groups. This is more clear in the first formulation, but the second formulation also makes sense (any number minus itself is always zero) and helps us out a little when we get to the math of the test statistic. Either one is acceptable and you only need to report one. The English interpretation of both of them is also the same:</p>
 <p><span class="math display">\[H_0: \text{There is no difference between the means of the two groups.}\]</span></p>
-<p>Our alternative hypotheses are also unchanged: we simply replace the equal sign (<span class="math inline">\(\eq\)</span>) with one of the three inequalities (<span class="math inline">\(\gt\)</span>, <span class="math inline">\(\lt\)</span>, <span class="math inline">\(\neq\)</span>):</p>
+<p>Our alternative hypotheses are also unchanged: we simply replace the equal sign (<span class="math inline">\(=\)</span>) with one of the three inequalities (<span class="math inline">\(\gt\)</span>, <span class="math inline">\(\lt\)</span>, <span class="math inline">\(\neq\)</span>):</p>
 <p><span class="math display">\[H_1: \mu_1 \gt \mu_2\]</span> <span class="math display">\[H_1: \mu_1 \lt \mu_2\]</span> <span class="math display">\[H_1: \mu_1 \neq \mu_2\]</span></p>
 <p>or</p>
 <p><span class="math display">\[H_1: \mu_1 - \mu_2 \gt 0\]</span> <span class="math display">\[H_1: \mu_1 - \mu_2 \lt 0\]</span> <span class="math display">\[H_1: \mu_1 - \mu_2 \neq 0\]</span></p>
@@ -539,8 +545,8 @@ mean of x mean of y
 <p>Many statistical programs incorporate the test of homogeneity of variance automatically and can report the results of the analysis assuming it is true or assuming it has been violated. You can easily tell which is which by the degrees of freedom: the corrected degrees of freedom (which is used when the assumption of homogeneity of variance is violated) will have decimal places. Fortunately, the independent samples t test is very robust to violations of this assumption (an analysis is “robust” if it works well even when its assumptions are not met), which is why we do not bother going through the tedious work of testing and estimating new degrees of freedom by hand.</p>
 </section>
 </section>
-<section id="step-3.-practical-significance-and-effect-size-calculate-cohens" class="level3" data-number="9.3.3">
-<h3 data-number="9.3.3" class="anchored" data-anchor-id="step-3.-practical-significance-and-effect-size-calculate-cohens"><span class="header-section-number">9.3.3</span> Step 3. Practical Significance and Effect Size: Calculate Cohen’s</h3>
+<section id="step-3.-practical-significance-and-effect-size-calculate-cohens-d" class="level3" data-number="9.3.3">
+<h3 data-number="9.3.3" class="anchored" data-anchor-id="step-3.-practical-significance-and-effect-size-calculate-cohens-d"><span class="header-section-number">9.3.3</span> Step 3. Practical Significance and Effect Size: Calculate Cohen’s D</h3>
 <p>Now, we want to know how big the effect is. Is the attitude change big enough to matter in the real world? Should the bank roll out this commercial to the public? To answer these questions, we need to calculate an effect size. Perhaps the statistical results are not significant, but the effect size is large enough to consider perhaps our study was underpowered (not enough participants).</p>
 <p>Again, we can use R to calculate Cohen’s d for us. The following code will calculate Cohen’s d for our data. You can check that the results match what we calculated by hand.</p>
 <div class="cell">
@@ -555,7 +561,7 @@ mean of x mean of y
 <h3 data-number="9.3.4" class="anchored" data-anchor-id="interpret-the-results"><span class="header-section-number">9.3.4</span> Interpret the Results</h3>
 <p>Putting all this together, we can write up the results as follows:</p>
 <blockquote class="blockquote">
-<p>Independent samples t-test was conducted on attitudes towards the bank after a new vs.&nbsp;old commercial intervention. Based on our focus group of 14 people, we cannot conclude that the average difference in opinion (<span class="math inline">\(M_D = 2.57\)</span>) was for the better after viewing the new commercial (<span class="math inline">\(M_\text{new} = 6.43\)</span>), compared to the old commercial (<span class="math inline">\(M_\text{old} = 3.86\)</span>), 95% CI: <span class="math inline">\([-0.33,  5.47]\)</span>. However, this difference was associated with a large effect size, Cohen’s <span class="math inline">\(d = 1.03\)</span>.</p>
+<p>Independent samples t-test was conducted on attitudes towards the bank after a new vs.&nbsp;old commercial intervention. Based on our focus group of 14 people, we cannot conclude that the average difference in opinion (<span class="math inline">\(M_D = 2.57\)</span>) was for the better after viewing the new commercial (<span class="math inline">\(M_\text{new} = 6.43\)</span>), compared to the old commercial (<span class="math inline">\(M_\text{old} = 3.86\)</span>), 95% CI: <span class="math inline">\([-0.33,  5.47]\)</span>, <span class="math inline">\(t(12) = 1.930\)</span>, <span class="math inline">\(p = .078\)</span>. However, this difference was associated with a large effect size, Cohen’s <span class="math inline">\(d = 1.03\)</span>.</p>
 </blockquote>
 
 

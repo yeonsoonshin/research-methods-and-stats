@@ -183,7 +183,7 @@ Both of these formulations of the null hypothesis tell us exactly the same thing
 
 $$H_0: \text{There is no difference between the means of the two groups.}$$
 
-Our alternative hypotheses are also unchanged: we simply replace the equal sign ($\eq$) with one of the three inequalities ($\gt$, $\lt$, $\neq$):
+Our alternative hypotheses are also unchanged: we simply replace the equal sign ($=$) with one of the three inequalities ($\gt$, $\lt$, $\neq$):
 
 $$H_1: \mu_1 \gt \mu_2$$
 $$H_1: \mu_1 \lt \mu_2$$
@@ -291,7 +291,7 @@ Notice the "var.equal = TRUE" argument in the t.test() function. For the current
 
 Many statistical programs incorporate the test of homogeneity of variance automatically and can report the results of the analysis assuming it is true or assuming it has been violated. You can easily tell which is which by the degrees of freedom: the corrected degrees of freedom (which is used when the assumption of homogeneity of variance is violated) will have decimal places. Fortunately, the independent samples t test is very robust to violations of this assumption (an analysis is “robust” if it works well even when its assumptions are not met), which is why we do not bother going through the tedious work of testing and estimating new degrees of freedom by hand.
 
-### Step 3. Practical Significance and Effect Size: Calculate Cohen's 
+### Step 3. Practical Significance and Effect Size: Calculate Cohen's D
 
 Now, we want to know how big the effect is. Is the attitude change big enough to matter in the real world? Should the bank roll out this commercial to the public? To answer these questions, we need to calculate an effect size. Perhaps the statistical results are not significant, but the effect size is large enough to consider perhaps our study was underpowered (not enough participants).
 
@@ -307,7 +307,7 @@ Cohen's d is 1.03, which is considered a large effect size. This means that the 
 
 Putting all this together, we can write up the results as follows:
 
-> Independent samples t-test was conducted on attitudes towards the bank after a new vs. old commercial intervention. Based on our focus group of 14 people, we cannot conclude that the average difference in opinion ($M_D = 2.57$) was for the better after viewing the new commercial ($M_\text{new} = 6.43$), compared to the old commercial ($M_\text{old} = 3.86$),  95% CI: $[-0.33,  5.47]$. However, this difference was associated with a large effect size, Cohen’s $d = 1.03$.
+> Independent samples t-test was conducted on attitudes towards the bank after a new vs. old commercial intervention. Based on our focus group of 14 people, we cannot conclude that the average difference in opinion ($M_D = 2.57$) was for the better after viewing the new commercial ($M_\text{new} = 6.43$), compared to the old commercial ($M_\text{old} = 3.86$),  95% CI: $[-0.33,  5.47]$, $t(12) = 1.930$, $p = .078$. However, this difference was associated with a large effect size, Cohen’s $d = 1.03$.
 
 
 
