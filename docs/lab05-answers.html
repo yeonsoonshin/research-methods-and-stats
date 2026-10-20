@@ -4148,12 +4148,29 @@ vertical-align: -.125em;
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Lab</span></a>
+ <span class="menu-text">Unit 3. Mean Comparisons</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-paired-samples-t-test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ch.8: Paired Samples t-test</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Lab</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lab01-r-basics.html" class="sidebar-item-text sidebar-link">
@@ -4188,13 +4205,13 @@ vertical-align: -.125em;
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">Appendix</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendix-apa.html" class="sidebar-item-text sidebar-link">
@@ -4462,6 +4479,19 @@ mean of x
 0.6482143 </code></pre>
 </div>
 </div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Common Mistake: Baseline (null mean)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Our baseline changed now that our DV is a “relative” preference score. The baseline is now 0, not 5. Make sure you run the t-test using the correct baseline by putting that value in the <code>mu</code> argument.</p>
+</div>
+</div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>res_apa <span class="ot">&lt;-</span> res_t <span class="sc">%&gt;%</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">apa_print</span>()</span>
@@ -4480,6 +4510,19 @@ mean of x
 <pre><code>[1] 0.3721972</code></pre>
 </div>
 </div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Common Mistake: Baseline (null mean) for Cohen’s d
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Our baseline changed now that our DV is a “relative” preference score. The baseline is now 0, not 5. Make sure you calculate Cohen’s d using the correct baseline by putting that value in the <code>mu</code> argument.</p>
+</div>
+</div>
 </section>
 </section>
 <section id="write-up-the-results" class="level2" data-number="5">
@@ -4487,6 +4530,107 @@ mean of x
 <blockquote class="blockquote">
 <p>A one-sample t-test was performed to compare the mean relative preference of inherent over extrinsic explanation to the baseline of 0. The mean preference was significantly above the baseline, <span class="math inline"><em>M</em> = 0.65</span>, 95% CI <span class="math inline">[0.32, 0.97]</span>, <span class="math inline"><em>t</em>(111) = 3.94</span>, <span class="math inline"><em>p</em> &lt; .001</span>, with a small effect size, d = 0.37. These results suggest that there is a small but significant tendency to prefer inherent over extrinsic explanations.</p>
 </blockquote>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Common Mistakes: Baseline
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>“the scale midpoint of 0”</li>
+</ul>
+<p>Our baseline is no longer the scale midpoint of 5. The baseline is now 0, because we are using a “relative” preference score. Make sure you report the correct baseline in your write-up.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Common Mistakes: Not Reporting the Direction of the Effect
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that, although the test was two-tailed, you state that the sample mean was significantly <strong>above</strong> the baseline. If you just said that the sample mean was significantly different from the baseline, that’s not that informative. Readers may be left unsatisfied, wondering if the sample mean was higher or lower than the baseline. Reduce their cognitive load by telling them the direction of the difference.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Common Mistakes: Mismatch between the statement and the statistics
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline"><em>t</em></span>, <span class="math inline"><em>d</em></span>, and <strong>the direction should match</strong>:</p>
+<ul>
+<li>If you say the sample mean is “lower” than the baseline, then <span class="math inline"><em>t</em></span> and <span class="math inline"><em>d</em></span> backing up that statement should be negative.</li>
+<li>If you say the sample mean is “higher” than the baseline, then <span class="math inline"><em>t</em></span> and <span class="math inline"><em>d</em></span> backing up that statement should be positive.</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Common Mistake: Explaining the null hypothesis or concluding that “we can reject the null hypothesis”
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is a common mistake that students make when writing up their results. You do not need to explain the null hypothesis in your write-up. The null hypothesis is a statistical concept that is assumed to be known by your audience. You can simply report the results of the test and let the reader interpret them from “compare … to the baseline of 0” and “significantly above the baseline”. You do not need to explain what the null hypothesis is or what it means.</p>
+<p>The flip side is that you are also assumed to know what the null hypothesis is when you read a write-up. That’s why we practice specifying the null hypothesis in this class!</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Common Mistake: Reporting statistics in a prose format
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that I did not elaborate the p-value as “the probability of observing sample means as extreme as this sample mean or more extreme if people did not have preference for one explanation over the other”. APA style lets us communicate all this information in a concise way by simply reporting (1) that you used a null hypothesis test (e.g., one-sample t-test), and (2) the p-value. The reader can then interpret the p-value in the context of the null hypothesis test. The same goes for the confidence interval. What this means for you as a reader is that you should be able to interpret and deciper <span class="math inline"><em>p</em></span> and <span class="math inline"><em>C</em><em>I</em></span> values in the context of the null hypothesis test without needing to be told what they mean!</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Common Mistake: Not specifying the type of t-test
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>“A t-test was performed” is not enough, because you need to specify what kind of t-test was performed.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Common Mistake: Interpreting small effect sizes as not “significant”
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Here, we see that the effect size is small, but the result is still statistically significant. This is a “small but significant effect”. Significance is about whether the effect is likely to be due to chance, and effect size is about the magnitude of the effect.</p>
+<p>In this context, people do significantly prefer inherent over extrinsic explanations. There is a bias. Is that bias large? No, it’s small. But it is still a real bias!</p>
+<p>In another context, say you are comparing average height of girls at age 15 and 16. You may find that the average height of 16-year-olds is significantly taller than that of 15-year-olds, the growth is not dramatic (effect size is small). Is it still a real difference that girls are still growing taller between 15 and 16? Yes, a small but significant effect!</p>
+</div>
+</div>
 </section>
 <section id="bonus-exercise-demographics-analysis" class="level2" data-number="6">
 <h2 data-number="6" class="anchored" data-anchor-id="bonus-exercise-demographics-analysis"><span class="header-section-number">6</span> Bonus Exercise: Demographics Analysis</h2>

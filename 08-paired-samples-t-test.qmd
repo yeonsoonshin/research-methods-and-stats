@@ -4,7 +4,6 @@ author:
   - "Yeon Soon Shin"
   - "Anjali Thapar"
   - "Dustin Albert"
-  - "Nichole Vittoz"
   - "Linda R. Cote"
   - "Rupa G. Gordon"
   - "Chrislyn E. Randell"
@@ -15,6 +14,139 @@ format:
     number-offset: 7
 ---
 
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  include = TRUE,
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+
+library(tidyverse)  # for data wrangling and visualization
+# library(BrailleR)   # for brailleR tables
+# GoBlind()
+
+theme_set(theme_classic(base_size = 16))
+
+set.seed(123)
+plot_normal <- function(m = 0, s = 1,
+                        areatype = "none", 
+                        lb = NULL, ub = NULL, 
+                        xaxis = "z", 
+                        mycol = "darkorange") {
+  # extend past the default range (with margin) whenever a cutoff falls outside it
+  ll <- min(-4*s+m, lb - s, ub - s)
+  ul <- max(4*s+m, lb + s, ub + s)
+  if (areatype == "body") {
+    lb <- ifelse(is.null(lb), ll, lb)
+    ub <- ifelse(is.null(ub), ul, ub)
+  }
+  shadelim <- switch(areatype,
+                  "body" = c(lb, ub),
+                  "lowertail" = c(ll, ub),
+                  "uppertail" = c(lb, ul))
+  shadecol <- switch(areatype, "body" = "steelblue", mycol)
+
+  p <- ggplot(data = data.frame(x = seq(ll, ul, 1)), aes(x))
+
+  if (areatype == "none") {
+      p
+  } else if (areatype == "twotail") {
+      p <- p +
+        stat_function(fun = dnorm, n = 1000, args = list(mean = m, sd = s),
+                         geom = "area", col = "darkgray", fill = shadecol,
+                         alpha = 0.8, xlim = c(ll, min(lb, ub))) +
+        stat_function(fun = dnorm, n = 1000, args = list(mean = m, sd = s),
+                      geom = "area", col = "darkgray", fill = shadecol,
+                      alpha = 0.8, xlim = c(max(lb, ub), ul))
+  } else {
+      p <- p +
+        stat_function(fun = dnorm, n = 1000, args = list(mean = m, sd = s),
+                         geom = "area", col = "darkgray", fill = shadecol,
+                         alpha = 0.8, xlim = shadelim)
+  }
+
+  p <- p +
+    # curve
+    stat_function(fun = dnorm, n = 1000, args = list(mean = m, sd = s),
+                  col = "darkgray", linewidth = 1) +
+    # vertical lines
+    # geom_vline(xintercept = c(lb, ub), col = "black") +
+    # label
+    xlab(xaxis) +
+    # misc
+    scale_x_continuous(breaks = seq(floor(ll), ceiling(ul), s)) +
+    scale_y_continuous(expand = c(0, 0)) +
+    theme(
+      axis.text.y = element_blank(),
+      axis.title.y = element_blank(),
+      axis.line.y = element_blank(),
+      axis.ticks.y = element_blank(),
+      plot.title = element_text(hjust = 0.5)
+    )
+  return(p)
+}
+
+plot_t <- function(df = 30,
+                   areatype = "none", 
+                   lb = NULL, ub = NULL,  
+                   xaxis = "t",
+                   mycol = "darkorange") {
+  # extend past the default range (with margin) whenever a cutoff falls outside it
+  ll <- min(-4, lb - 1, ub - 1)
+  ul <- max(4, lb + 1, ub + 1)
+  if (areatype == "body") {
+    lb <- ifelse(is.null(lb), ll, lb)
+    ub <- ifelse(is.null(ub), ul, ub)
+  }
+  shadelim <- switch(areatype,
+                  "body" = c(lb, ub),
+                  "lowertail" = c(ll, ub),
+                  "uppertail" = c(lb, ul))
+  shadecol <- switch(areatype, "body" = "steelblue", mycol)
+
+  p <- ggplot(data = data.frame(x = seq(ll, ul, 1)), aes(x))
+
+  if (areatype == "none") {
+      p
+  } else if (areatype == "twotail") {
+      p <- p +
+        stat_function(fun = dt, n = 1000, args = list(df = df),
+                         geom = "area", col = "darkgray", fill = shadecol,
+                         alpha = 0.8, xlim = c(ll, min(lb, ub))) +
+        stat_function(fun = dt, n = 1000, args = list(df = df),
+                      geom = "area", col = "darkgray", fill = shadecol,
+                      alpha = 0.8, xlim = c(max(lb, ub), ul))
+  } else {
+      p <- p +
+        stat_function(fun = dt, n = 1000, args = list(df = df),
+                         geom = "area", col = "darkgray", fill = shadecol,
+                         alpha = 0.8, xlim = shadelim)
+  }
+
+  p <- p +
+    # curve
+    stat_function(fun = dt, n = 1000, args = list(df = df),
+                  col = "darkgray", linewidth = 1) +
+    # vertical lines
+    # geom_vline(xintercept = c(lb, ub), col = "black") +
+    # label
+    xlab(xaxis) +
+    # misc
+    scale_x_continuous(breaks = seq(floor(ll), ceiling(ul), 1)) +
+    scale_y_continuous(expand = c(0, 0)) +
+    theme(
+      axis.text.y = element_blank(),
+      axis.title.y = element_blank(),
+      axis.line.y = element_blank(),
+      axis.ticks.y = element_blank(),
+      plot.title = element_text(hjust = 0.5)
+    )
+  return(p)
+}
+```
+
 # Paired Samples t-test
 
 So far, we have dealt with data measured on a single variable at a single point in time, allowing us to gain an understanding of the logic and process behind statistics and hypothesis testing. Now, we will look at a slightly different type of data that has new information we couldn’t get at before: difference within individuals. Specifically, we will look at how the value of a variable, within people, changes across two time points, or differs across two conditions. This is a very powerful thing to do, and, as we will see shortly, it involves only a very slight addition to our existing process and does not change the mechanics of hypothesis testing or formulas at all!
@@ -24,29 +156,35 @@ So far, we have dealt with data measured on a single variable at a single point 
 Researchers are often interested in change over time. Sometimes we want to see if change occurs naturally, and other times we are hoping for change in response to some manipulation. In each of these cases, we measure a single variable at different times, and what we are looking for is whether or not we get the same score at Time 2 as we did at Time 1. The absolute value of our measurements does not matter—all that matters is the change, or the **difference score**. Let’s look at an example.
 
 :::{#tbl-difference .list-table}
-**Raw and difference scores before and after training**
+**Raw and difference scores before and after an intervention**
 
-- - Before
-  - After
+- - Before (Time 1)
+  - After (Time 2)
   - Improvement
-- - 6
-  - 9
-  - 3
-- - 7
-  - 7
+- - 3
+  - 2
+  - -1
+- - 3
+  - 8
+  - 5
+- - 5
+  - 5
   - 0
-- - 4
-  - 10
+- - 8
+  - 9
+  - 1
+- - 3
+  - 9
   - 6
 - - 1
+  - 4
   - 3
-  - 2
-- - 8
-  - 10
-  - 2
+- - 4
+  - 8
+  - 4
 :::
 
-@tbl-difference shows scores on a quiz that five employees received before they took a training course and after they took the course. The difference between these scores (i.e., the score after minus the score before) represents improvement in the employees’ ability. The third column is what we look at when assessing whether our training was effective. We want to see positive scores, which indicate that the employees’ performance went up. What we are not interested in is how good they were before the training or after the training. Notice that the lowest-scoring employee before the training (with a score of 1) improved just as much as the highest scoring employee before the training (with a score of 8), regardless of how far apart they were to begin with. There’s also one improvement score of 0, meaning that the training did not help this employee. An important factor in this is that the participants received the same assessment at both time points. To calculate improvement or any other difference score, we must measure only a single variable.
+@tbl-difference shows ratings on an attitude towards a bank before they watched a commercial and after they watched it. The difference between these scores (i.e., the score after minus the score before) represents improvement in the attitude. The third column is what we look at when assessing whether our commercial was effective. We want to see positive scores, which indicate that the viewers' attitude went up. What we are not interested in is how good they were before the intervention or after the intervention. An important factor in this is that the participants received the same assessment at both time points. To calculate improvement or any other difference score, we must measure only a single variable.
 
 When looking at change scores like the ones in @tbl-difference, we calculate our difference scores by taking the Time 2 score and subtracting the Time 1 score. That is:
 
@@ -92,9 +230,6 @@ $$H_1: \mu_D < 0$$
 
 As before, your choice of which alternative hypothesis to use should be specified before you collect data based on your research question and any evidence you might have that would indicate a specific directional (or non-directional) change.
 
-
-## P-Value: How Unlikely Under the Null Hypothesis?
-
 ### Test Statistic
 
 Our test statistic for the change scores follows exactly the same format as the one-sample t-test. In fact, the only difference is in the data that we use. For our change test, we first calculate a difference score as shown above. Then, we use those scores as the raw data in the same mean calculation, standard error formula, and t statistic. Let’s look at each of these.
@@ -115,5 +250,190 @@ Finally, our test statistic t has the same structure as well:
 
 $$t = \frac{M_D - \mu_D}{SEM} = \frac{M_D - \mu_D}{s_D/\sqrt{n}}$$
 
-As we can see, once we calculate our difference scores from our raw measurements, everything else is exactly the same. Let’s see an example.
+As we can see, once we calculate our difference scores from our raw measurements, everything else is exactly the same. 
+
+#### Find p values from the t distribution
+
+Now that we have our test statistic, we can find the corresponding p value from the t distribution. The degrees of freedom for this test are calculated in the same way as before: $df = n - 1$. We can then use the t distribution to find the probability of getting a test statistic as extreme or more extreme than the one we calculated. This is our p value, which we can compare to our alpha level to determine whether or not to reject the null hypothesis. 
+
+## Example: Bad Press
+
+Let’s say that a bank wants to make sure that their new commercial will make them look good to the public, so they recruit 7 people to view the commercial as a focus group. The focus group members fill out a short questionnaire about how they view the company, then watch the commercial and fill out the same questionnaire a second time. They use a two-tailed test since they know that past commercials have not gone over well with the public, and they want to make sure the new one does not backfire. The data are shown in @tbl-difference.
+
+We will use R as a calculator here, so we will first enter the data in @tbl-difference into R and calculate the difference scores.
+
+```{r, echo=TRUE}
+post = c(2, 8, 5, 9, 9, 4, 8)
+pre = c(3, 3, 5, 8, 3, 1, 4)
+diff = post - pre
+n = length(diff)
+```
+
+### Step 0. State the hypotheses
+
+$$H_0: \text{There is no change in attitude towards the bank after watching the commercial.}$$
+$$H_0: \mu_D = 0$$
+
+
+$$H_1: \text{There is a change in attitude towards the bank after watching the commercial.}$$
+$$H_1: \mu_D \neq 0$$
+
+
+### Step 1. Confidence Interval
+
+We are asking questions about the average in the population, and we are estimating that average with our sample mean. We should consider how confident we are in that estimate.
+
+$$ CI = M_D \pm t^* \times SEM$$
+
+
+We can calculate each piece of this formula in R. First, we calculate the mean difference score.
+
+```{r, include=TRUE}
+mean_diff = mean(diff)
+mean_diff
+```
+
+As we learned, the Standard Error of the Mean (SEM) gets smaller as the sample size increases, which means that we don't need to stretch our confidence interval as far to be confident in our estimate. 
+
+$$SEM = \frac{s_D}{\sqrt{n}}$$
+
+```{r, include=TRUE}
+sem = sd(diff)/sqrt(n)
+sem
+```
+
+Now, how many of these SEMs do we need to stretch out to get a 95% confidence interval? We can find this by looking up the critical t value for our degrees of freedom and alpha level.
+
+```{r, include=TRUE}
+df = n - 1
+t_star = qt(1 - 0.05/2, df = df)
+t_star
+```
+
+Putting everyting together, we can calculate the confidence interval.
+
+```{r, include=TRUE}
+ci_lower = mean_diff - t_star * sem
+ci_upper = mean_diff + t_star * sem
+
+ci_lower
+ci_upper
+```
+
+95% confidence interval for the mean difference is [`r round(ci_lower, 2)`, `r round(ci_upper, 2)`], meaning that 95% of the confidence intervals would contain the true average change in attitude.
+
+### Step 2. Statistical Significance: Calculate the t statistic and p value
+
+Now, let's test whether the mean change that we observed in our sample (`r round(mean_diff, 2)`) is big enough for us to believe that this effect is present in the population. 
+
+Our test statistic is the observed mean difference divided by the standard error of the mean (SEM), which tells us how many SEMs away from the null hypothesis our observed mean difference is.
+
+$$t = \frac{M_D - \mu_D}{SEM} = \frac{M_D - \mu_D}{s_D/\sqrt{n}}$$
+
+```{r, include=TRUE}
+t = mean_diff / sem
+t
+```
+
+Now, using the t distribution, we can map this t statistic to a p value, which tells us the probability of getting a test statistic as extreme or more extreme than the one we observed if the null hypothesis were true.
+
+```{r}
+p = (1-pt(t, df = df)) * 2
+p
+```
+
+p value is `r round(p, 4)`, which is less than our alpha level of 0.05. This is the area under the curve in both tails in @fig-hypothesis-test-t. Since this probability is low, we reject the null hypothesis and conclude that there is a significant change in attitude towards the bank after watching the commercial.
+
+```{r, echo=FALSE, include=TRUE}
+#| label: fig-hypothesis-test-t
+#| fig-cap: "**Two-Tailed Hypothesis Test Using Test Statistic (t)**. The p-value is the probability of observing a test statistic as extreme as t or more extreme if H0 is true. The shaded area in orange in both tails represents the p-value."
+#| fig-alt: "T distribution figure with two tails shaded in orange representing the p-value. t statistic is marked with a vertical arrow and labeled t."
+#| fig-height: 3.5
+
+plot_t(df = (n-1),
+       areatype = "twotail", 
+       lb = min(t, -t), ub = max(t, -t),
+       xaxis = "Test Statistics (t)") +
+    # --- population mean --- #
+    annotate("segment", # vertical line
+             x = 0, xend = 0, 
+             y = 0, yend = dt(0, df = (n-1)), 
+             color = "black", linetype = "solid") +
+    # --- standard error of the mean --- #
+    annotate("segment",  # horizontal line
+             x = 0, xend = 1, 
+             y = dt(1, df = (n-1)), yend = dt(1, df = (n-1)), 
+             color = "black", linetype = "solid") +
+    # --- observed test statistic --- #
+    annotate("segment", # arrow
+             arrow=arrow(type = "closed", length = unit(0.1, "in")),
+             x = t, xend = t,
+             y = dt(0, df = (n-1)) * 0.1, yend = 0, 
+             color = "black", 
+             linetype = "solid", 
+             ) +
+    annotate("text", 
+             label = "t", 
+             x = t, 
+             y = dt(0, df = (n-1)) * 0.2, 
+             size = 8,
+             parse = TRUE) +
+    # --- p values --- #
+    # ---- left ----- #
+    annotate("text", 
+             label = "p/2", 
+             x = -3, 
+             y = dt(0, df = (n-1)) * 0.2, 
+             size = 6, col="darkorange") +
+    # ---- right ----- #
+    annotate("text", 
+             label = "p/2", 
+             x = 3, 
+             y = dt(0, df = (n-1)) * 0.2, 
+             size = 6, col="darkorange") +
+    # --- x axis --- #
+    scale_x_continuous(breaks = seq(-4, 4, 1)) +
+    # # don't show the x-axis label and ticks for the first plot
+    # theme(axis.ticks.x = element_blank(), 
+    #       axis.text.x = element_blank()) +
+    theme(axis.title.x = element_text(margin = unit(c(5, 0, 0, 0), "mm"))) +
+    # --- y axis --- #
+    scale_y_continuous(expand = expansion(mult = c(0, 0.1)))
+```
+
+#### Using R to Calculate the t statistic and p value
+
+We can hand calculate the t statistic and p value, but we can also use R to do this for us. The following code will calculate the t statistic and p value for our data. You can check that the results match what we calculated by hand.
+
+
+```{r, include=TRUE}
+t.test(x = post, y = pre, paired = TRUE)
+```
+
+### Step 3. Practical Significance and Effect Size: Calculate Cohen's 
+
+Now, we want to know how big the effect is. Is the attitude change big enough to matter in the real world? Should the bank roll out this commercial to the public? To answer these questions, we need to calculate an effect size. The most common effect size for paired samples t-tests is Cohen's d, which is calculated as follows:
+
+$$d = \frac{M_D}{s_D}$$
+
+```{r, include=TRUE}
+d = mean_diff / sd(diff)
+d
+```
+
+This tells us that the average change in attitude is `r round(d, 2)` standard deviations above the null hypothesis of no change. This is a large effect size, which means that the commercial had a meaningful impact on the viewers' attitudes towards the bank. 
+
+
+Again, we can use R to calculate Cohen's d for us. The following code will calculate Cohen's d for our data. You can check that the results match what we calculated by hand.
+
+```{r, include=TRUE}
+lsr::cohensD(post, pre, method = "paired")
+```
+
+### Interpret the Results
+
+Putting all this together, we can write up the results as follows:
+
+> Paired samples t-test was conducted on attitudes towards the bank before and after a commercial intervention. Based on our focus group of 7 people, we can conclude that the average change in opinion (MD = 2.57, SDD = 2.64) was for the better after viewing the commercial, 95% CI: [0.13, 5.01], with a large effect size, Cohen’s d = 0.98.
+
 

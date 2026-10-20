@@ -9,7 +9,6 @@
 <meta name="author" content="Yeon Soon Shin">
 <meta name="author" content="Anjali Thapar">
 <meta name="author" content="Dustin Albert">
-<meta name="author" content="Nichole Vittoz">
 <meta name="author" content="Linda R. Cote">
 <meta name="author" content="Rupa G. Gordon">
 <meta name="author" content="Chrislyn E. Randell">
@@ -34,6 +33,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -124,9 +158,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Research Methods and Statistics
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-paired-samples-t-test.html">Unit 3. Mean Comparisons</a></li><li class="breadcrumb-item"><a href="./08-paired-samples-t-test.html">Ch.8: Paired Samples t-test</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -224,12 +256,29 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Lab</span></a>
+ <span class="menu-text">Unit 3. Mean Comparisons</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-paired-samples-t-test.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Ch.8: Paired Samples t-test</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Lab</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lab01-r-basics.html" class="sidebar-item-text sidebar-link">
@@ -255,19 +304,22 @@ window.Quarto = {
   </div>
 </li>
           <li class="sidebar-item">
- <span class="menu-text">lab05-one-sample-t-test.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="./lab05-one-sample-t-test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 5: One-Sample t-Test</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">Appendix</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./appendix-apa.html" class="sidebar-item-text sidebar-link">
@@ -322,10 +374,23 @@ window.Quarto = {
   <ul>
   <li><a href="#a-rose-by-any-other-name" id="toc-a-rose-by-any-other-name" class="nav-link" data-scroll-target="#a-rose-by-any-other-name"><span class="header-section-number">8.1.1</span> A Rose by Any Other Name</a></li>
   </ul></li>
-  <li><a href="#hypotheses-of-change-and-differences" id="toc-hypotheses-of-change-and-differences" class="nav-link" data-scroll-target="#hypotheses-of-change-and-differences"><span class="header-section-number">8.2</span> Hypotheses of Change and Differences</a></li>
-  <li><a href="#p-value-how-unlikely-under-the-null-hypothesis" id="toc-p-value-how-unlikely-under-the-null-hypothesis" class="nav-link" data-scroll-target="#p-value-how-unlikely-under-the-null-hypothesis"><span class="header-section-number">8.3</span> P-Value: How Unlikely Under the Null Hypothesis?</a>
+  <li><a href="#hypotheses-of-change-and-differences" id="toc-hypotheses-of-change-and-differences" class="nav-link" data-scroll-target="#hypotheses-of-change-and-differences"><span class="header-section-number">8.2</span> Hypotheses of Change and Differences</a>
   <ul>
-  <li><a href="#test-statistic" id="toc-test-statistic" class="nav-link" data-scroll-target="#test-statistic"><span class="header-section-number">8.3.1</span> Test Statistic</a></li>
+  <li><a href="#test-statistic" id="toc-test-statistic" class="nav-link" data-scroll-target="#test-statistic"><span class="header-section-number">8.2.1</span> Test Statistic</a>
+  <ul class="collapse">
+  <li><a href="#find-p-values-from-the-t-distribution" id="toc-find-p-values-from-the-t-distribution" class="nav-link" data-scroll-target="#find-p-values-from-the-t-distribution"><span class="header-section-number">8.2.1.1</span> Find p values from the t distribution</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#example-bad-press" id="toc-example-bad-press" class="nav-link" data-scroll-target="#example-bad-press"><span class="header-section-number">8.3</span> Example: Bad Press</a>
+  <ul>
+  <li><a href="#step-0.-state-the-hypotheses" id="toc-step-0.-state-the-hypotheses" class="nav-link" data-scroll-target="#step-0.-state-the-hypotheses"><span class="header-section-number">8.3.1</span> Step 0. State the hypotheses</a></li>
+  <li><a href="#step-1.-confidence-interval" id="toc-step-1.-confidence-interval" class="nav-link" data-scroll-target="#step-1.-confidence-interval"><span class="header-section-number">8.3.2</span> Step 1. Confidence Interval</a></li>
+  <li><a href="#step-2.-statistical-significance-calculate-the-t-statistic-and-p-value" id="toc-step-2.-statistical-significance-calculate-the-t-statistic-and-p-value" class="nav-link" data-scroll-target="#step-2.-statistical-significance-calculate-the-t-statistic-and-p-value"><span class="header-section-number">8.3.3</span> Step 2. Statistical Significance: Calculate the t statistic and p value</a>
+  <ul class="collapse">
+  <li><a href="#using-r-to-calculate-the-t-statistic-and-p-value" id="toc-using-r-to-calculate-the-t-statistic-and-p-value" class="nav-link" data-scroll-target="#using-r-to-calculate-the-t-statistic-and-p-value"><span class="header-section-number">8.3.3.1</span> Using R to Calculate the t statistic and p value</a></li>
+  </ul></li>
+  <li><a href="#step-3.-practical-significance-and-effect-size-calculate-cohens" id="toc-step-3.-practical-significance-and-effect-size-calculate-cohens" class="nav-link" data-scroll-target="#step-3.-practical-significance-and-effect-size-calculate-cohens"><span class="header-section-number">8.3.4</span> Step 3. Practical Significance and Effect Size: Calculate Cohen’s</a></li>
+  <li><a href="#interpret-the-results" id="toc-interpret-the-results" class="nav-link" data-scroll-target="#interpret-the-results"><span class="header-section-number">8.3.5</span> Interpret the Results</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -334,7 +399,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-paired-samples-t-test.html">Unit 3. Mean Comparisons</a></li><li class="breadcrumb-item"><a href="./08-paired-samples-t-test.html">Ch.8: Paired Samples t-test</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Ch.8: Paired Samples t-test</h1>
 </div>
@@ -349,7 +414,6 @@ window.Quarto = {
              <p>Yeon Soon Shin </p>
              <p>Anjali Thapar </p>
              <p>Dustin Albert </p>
-             <p>Nichole Vittoz </p>
              <p>Linda R. Cote </p>
              <p>Rupa G. Gordon </p>
              <p>Chrislyn E. Randell </p>
@@ -376,49 +440,59 @@ window.Quarto = {
 <div id="tbl-difference" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-difference-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: <strong>Raw and difference scores before and after training</strong>
+Table&nbsp;1: <strong>Raw and difference scores before and after an intervention</strong>
 </figcaption>
 <div aria-describedby="tbl-difference-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table id="tbl-difference" class="caption-top table">
 <thead>
 <tr class="header">
-<th>Before</th>
-<th>After</th>
+<th>Before (Time 1)</th>
+<th>After (Time 2)</th>
 <th>Improvement</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>6</td>
-<td>9</td>
 <td>3</td>
+<td>2</td>
+<td>-1</td>
 </tr>
 <tr class="even">
-<td>7</td>
-<td>7</td>
-<td>0</td>
+<td>3</td>
+<td>8</td>
+<td>5</td>
 </tr>
 <tr class="odd">
-<td>4</td>
-<td>10</td>
+<td>5</td>
+<td>5</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>9</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>9</td>
 <td>6</td>
 </tr>
 <tr class="even">
 <td>1</td>
+<td>4</td>
 <td>3</td>
-<td>2</td>
 </tr>
 <tr class="odd">
+<td>4</td>
 <td>8</td>
-<td>10</td>
-<td>2</td>
+<td>4</td>
 </tr>
 </tbody>
 </table>
 </div>
 </figure>
 </div>
-<p><a href="#tbl-difference" class="quarto-xref">Table&nbsp;1</a> shows scores on a quiz that five employees received before they took a training course and after they took the course. The difference between these scores (i.e., the score after minus the score before) represents improvement in the employees’ ability. The third column is what we look at when assessing whether our training was effective. We want to see positive scores, which indicate that the employees’ performance went up. What we are not interested in is how good they were before the training or after the training. Notice that the lowest-scoring employee before the training (with a score of 1) improved just as much as the highest scoring employee before the training (with a score of 8), regardless of how far apart they were to begin with. There’s also one improvement score of 0, meaning that the training did not help this employee. An important factor in this is that the participants received the same assessment at both time points. To calculate improvement or any other difference score, we must measure only a single variable.</p>
+<p><a href="#tbl-difference" class="quarto-xref">Table&nbsp;1</a> shows ratings on an attitude towards a bank before they watched a commercial and after they watched it. The difference between these scores (i.e., the score after minus the score before) represents improvement in the attitude. The third column is what we look at when assessing whether our commercial was effective. We want to see positive scores, which indicate that the viewers’ attitude went up. What we are not interested in is how good they were before the intervention or after the intervention. An important factor in this is that the participants received the same assessment at both time points. To calculate improvement or any other difference score, we must measure only a single variable.</p>
 <p>When looking at change scores like the ones in <a href="#tbl-difference" class="quarto-xref">Table&nbsp;1</a>, we calculate our difference scores by taking the Time 2 score and subtracting the Time 1 score. That is:</p>
 <p><span class="math display">\[X_{D} = X_{T2} - X_{T1}\]</span></p>
 <p>Where <span class="math inline">\(X_{D}\)</span> is the difference score, <span class="math inline">\(X_{T1}\)</span> is the score on the variable at Time 1, and <span class="math inline">\(X_{T2}\)</span> is the score on the variable at Time 2. The difference score, <span class="math inline">\(X_D\)</span>, will be the data we use to test for improvement or change. We subtract Time 2 minus Time 1 for ease of interpretation; if scores get better, then the difference score will be positive. Similarly, if we’re measuring something like reaction time or depression symptoms that we are trying to reduce, then better outcomes (lower scores) will yield negative difference scores.</p>
@@ -434,17 +508,14 @@ Table&nbsp;1: <strong>Raw and difference scores before and after training</stron
 <h2 data-number="8.2" class="anchored" data-anchor-id="hypotheses-of-change-and-differences"><span class="header-section-number">8.2</span> Hypotheses of Change and Differences</h2>
 <p>When we work with difference scores, our research questions have to do with change. Did scores improve? Did symptoms get better? Did prevalence go up or down? Our hypotheses will reflect this. Remember that the null hypothesis is the idea that there is nothing interesting, notable, or impactful represented in our dataset. In a related samples t test, that takes the form of “no change.” There is no improvement in scores or decrease in symptoms. Thus, our null hypothesis is:</p>
 <p><span class="math display">\[H_0: \text{There is no change or difference in the population.}\]</span> <span class="math display">\[H_0: \mu_D = 0\]</span></p>
-<p>As with our other null hypotheses, we can express the null hypothesis for parired samples t-tests in both words and mathematical notation. The exact wording of the written-out version should be changed to match whatever research question we are addressing (e.g., “There is no change in ability scores after training”). However, the mathematical version of the null hypothesis is always exactly the same: the average change score is equal to zero. Our population parameter for the average is still <span class="math inline">\(\mu\)</span>, but it now has a subscript <span class="math inline">\(D\)</span> to denote the fact that it is the average change score and not the average raw observation before or after our manipulation. Obviously, individual difference scores can go up or down, but the null hypothesis states that these positive or negative change values are just random chance and that the true average change score across all people is 0.</p>
+<p>As with our other null hypotheses, we can express the null hypothesis for paired samples t-tests in both words and mathematical notation. The exact wording of the written-out version should be changed to match whatever research question we are addressing (e.g., “There is no change in ability scores after training”). However, the mathematical version of the null hypothesis is always exactly the same: the average change score is equal to zero. Our population parameter for the average is still <span class="math inline">\(\mu\)</span>, but it now has a subscript <span class="math inline">\(D\)</span> to denote the fact that it is the average change score and not the average raw observation before or after our manipulation. Obviously, individual difference scores can go up or down, but the null hypothesis states that these positive or negative change values are just random chance and that the true average change score across all people is 0.</p>
 <p>Our alternative hypotheses will also follow the same format that they did before: they can be directional if we suspect a change or difference in a specific direction, or we can use an inequality sign to test for any change:</p>
 <p>Two-tailed test: <span class="math display">\[H_1: \text{There is a change or difference in the population.}\]</span> <span class="math display">\[H_1: \mu_D \neq 0\]</span></p>
 <p>One-tailed tests (improvement or increase): <span class="math display">\[H_1: \text{The average score increases in the population.}\]</span> <span class="math display">\[H_1: \mu_D &gt; 0\]</span></p>
 <p>One-tailed tests (decline or decrease): <span class="math display">\[H_1: \text{The average score decreases in the population.}\]</span> <span class="math display">\[H_1: \mu_D &lt; 0\]</span></p>
 <p>As before, your choice of which alternative hypothesis to use should be specified before you collect data based on your research question and any evidence you might have that would indicate a specific directional (or non-directional) change.</p>
-</section>
-<section id="p-value-how-unlikely-under-the-null-hypothesis" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="p-value-how-unlikely-under-the-null-hypothesis"><span class="header-section-number">8.3</span> P-Value: How Unlikely Under the Null Hypothesis?</h2>
-<section id="test-statistic" class="level3" data-number="8.3.1">
-<h3 data-number="8.3.1" class="anchored" data-anchor-id="test-statistic"><span class="header-section-number">8.3.1</span> Test Statistic</h3>
+<section id="test-statistic" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="test-statistic"><span class="header-section-number">8.2.1</span> Test Statistic</h3>
 <p>Our test statistic for the change scores follows exactly the same format as the one-sample t-test. In fact, the only difference is in the data that we use. For our change test, we first calculate a difference score as shown above. Then, we use those scores as the raw data in the same mean calculation, standard error formula, and t statistic. Let’s look at each of these.</p>
 <p>The mean difference score is calculated in the same way as any other mean: sum each of the individual difference scores and divide by the sample size.</p>
 <p><span class="math display">\[M_D = \frac{\sum X_D}{n}\]</span></p>
@@ -454,7 +525,156 @@ Table&nbsp;1: <strong>Raw and difference scores before and after training</stron
 <p><span class="math display">\[SEM = \frac{s_D}{\sqrt{n}}\]</span></p>
 <p>Finally, our test statistic t has the same structure as well:</p>
 <p><span class="math display">\[t = \frac{M_D - \mu_D}{SEM} = \frac{M_D - \mu_D}{s_D/\sqrt{n}}\]</span></p>
-<p>As we can see, once we calculate our difference scores from our raw measurements, everything else is exactly the same. Let’s see an example.</p>
+<p>As we can see, once we calculate our difference scores from our raw measurements, everything else is exactly the same.</p>
+<section id="find-p-values-from-the-t-distribution" class="level4" data-number="8.2.1.1">
+<h4 data-number="8.2.1.1" class="anchored" data-anchor-id="find-p-values-from-the-t-distribution"><span class="header-section-number">8.2.1.1</span> Find p values from the t distribution</h4>
+<p>Now that we have our test statistic, we can find the corresponding p value from the t distribution. The degrees of freedom for this test are calculated in the same way as before: <span class="math inline">\(df = n - 1\)</span>. We can then use the t distribution to find the probability of getting a test statistic as extreme or more extreme than the one we calculated. This is our p value, which we can compare to our alpha level to determine whether or not to reject the null hypothesis.</p>
+</section>
+</section>
+</section>
+<section id="example-bad-press" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="example-bad-press"><span class="header-section-number">8.3</span> Example: Bad Press</h2>
+<p>Let’s say that a bank wants to make sure that their new commercial will make them look good to the public, so they recruit 7 people to view the commercial as a focus group. The focus group members fill out a short questionnaire about how they view the company, then watch the commercial and fill out the same questionnaire a second time. They use a two-tailed test since they know that past commercials have not gone over well with the public, and they want to make sure the new one does not backfire. The data are shown in <a href="#tbl-difference" class="quarto-xref">Table&nbsp;1</a>.</p>
+<p>We will use R as a calculator here, so we will first enter the data in <a href="#tbl-difference" class="quarto-xref">Table&nbsp;1</a> into R and calculate the difference scores.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>post <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">9</span>, <span class="dv">4</span>, <span class="dv">8</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pre <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>diff <span class="ot">=</span> post <span class="sc">-</span> pre</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="fu">length</span>(diff)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="step-0.-state-the-hypotheses" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="step-0.-state-the-hypotheses"><span class="header-section-number">8.3.1</span> Step 0. State the hypotheses</h3>
+<p><span class="math display">\[H_0: \text{There is no change in attitude towards the bank after watching the commercial.}\]</span> <span class="math display">\[H_0: \mu_D = 0\]</span></p>
+<p><span class="math display">\[H_1: \text{There is a change in attitude towards the bank after watching the commercial.}\]</span> <span class="math display">\[H_1: \mu_D \neq 0\]</span></p>
+</section>
+<section id="step-1.-confidence-interval" class="level3" data-number="8.3.2">
+<h3 data-number="8.3.2" class="anchored" data-anchor-id="step-1.-confidence-interval"><span class="header-section-number">8.3.2</span> Step 1. Confidence Interval</h3>
+<p>We are asking questions about the average in the population, and we are estimating that average with our sample mean. We should consider how confident we are in that estimate.</p>
+<p><span class="math display">\[ CI = M_D \pm t^* \times SEM\]</span></p>
+<p>We can calculate each piece of this formula in R. First, we calculate the mean difference score.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mean_diff <span class="ot">=</span> <span class="fu">mean</span>(diff)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>mean_diff</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.571429</code></pre>
+</div>
+</div>
+<p>As we learned, the Standard Error of the Mean (SEM) gets smaller as the sample size increases, which means that we don’t need to stretch our confidence interval as far to be confident in our estimate.</p>
+<p><span class="math display">\[SEM = \frac{s_D}{\sqrt{n}}\]</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sem <span class="ot">=</span> <span class="fu">sd</span>(diff)<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>sem</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9965928</code></pre>
+</div>
+</div>
+<p>Now, how many of these SEMs do we need to stretch out to get a 95% confidence interval? We can find this by looking up the critical t value for our degrees of freedom and alpha level.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> n <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>t_star <span class="ot">=</span> <span class="fu">qt</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.05</span><span class="sc">/</span><span class="dv">2</span>, <span class="at">df =</span> df)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>t_star</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.446912</code></pre>
+</div>
+</div>
+<p>Putting everyting together, we can calculate the confidence interval.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ci_lower <span class="ot">=</span> mean_diff <span class="sc">-</span> t_star <span class="sc">*</span> sem</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>ci_upper <span class="ot">=</span> mean_diff <span class="sc">+</span> t_star <span class="sc">*</span> sem</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>ci_lower</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1328538</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ci_upper</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.010003</code></pre>
+</div>
+</div>
+<p>95% confidence interval for the mean difference is [0.13, 5.01], meaning that 95% of the confidence intervals would contain the true average change in attitude.</p>
+</section>
+<section id="step-2.-statistical-significance-calculate-the-t-statistic-and-p-value" class="level3" data-number="8.3.3">
+<h3 data-number="8.3.3" class="anchored" data-anchor-id="step-2.-statistical-significance-calculate-the-t-statistic-and-p-value"><span class="header-section-number">8.3.3</span> Step 2. Statistical Significance: Calculate the t statistic and p value</h3>
+<p>Now, let’s test whether the mean change that we observed in our sample (2.57) is big enough for us to believe that this effect is present in the population.</p>
+<p>Our test statistic is the observed mean difference divided by the standard error of the mean (SEM), which tells us how many SEMs away from the null hypothesis our observed mean difference is.</p>
+<p><span class="math display">\[t = \frac{M_D - \mu_D}{SEM} = \frac{M_D - \mu_D}{s_D/\sqrt{n}}\]</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>t <span class="ot">=</span> mean_diff <span class="sc">/</span> sem</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>t</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.58022</code></pre>
+</div>
+</div>
+<p>Now, using the t distribution, we can map this t statistic to a p value, which tells us the probability of getting a test statistic as extreme or more extreme than the one we observed if the null hypothesis were true.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">=</span> (<span class="dv">1</span><span class="sc">-</span><span class="fu">pt</span>(t, <span class="at">df =</span> df)) <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.04175711</code></pre>
+</div>
+</div>
+<p>p value is 0.0418, which is less than our alpha level of 0.05. This is the area under the curve in both tails in <a href="#fig-hypothesis-test-t" class="quarto-xref">Figure&nbsp;1</a>. Since this probability is low, we reject the null hypothesis and conclude that there is a significant change in attitude towards the bank after watching the commercial.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-hypothesis-test-t" class="quarto-float quarto-figure quarto-figure-center anchored" alt="T distribution figure with two tails shaded in orange representing the p-value. t statistic is marked with a vertical arrow and labeled t.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hypothesis-test-t-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="08-paired-samples-t-test_files/figure-html/fig-hypothesis-test-t-1.png" class="img-fluid figure-img" alt="T distribution figure with two tails shaded in orange representing the p-value. t statistic is marked with a vertical arrow and labeled t." width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hypothesis-test-t-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: <strong>Two-Tailed Hypothesis Test Using Test Statistic (t)</strong>. The p-value is the probability of observing a test statistic as extreme as t or more extreme if H0 is true. The shaded area in orange in both tails represents the p-value.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<section id="using-r-to-calculate-the-t-statistic-and-p-value" class="level4" data-number="8.3.3.1">
+<h4 data-number="8.3.3.1" class="anchored" data-anchor-id="using-r-to-calculate-the-t-statistic-and-p-value"><span class="header-section-number">8.3.3.1</span> Using R to Calculate the t statistic and p value</h4>
+<p>We can hand calculate the t statistic and p value, but we can also use R to do this for us. The following code will calculate the t statistic and p value for our data. You can check that the results match what we calculated by hand.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> post, <span class="at">y =</span> pre, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Paired t-test
+
+data:  post and pre
+t = 2.5802, df = 6, p-value = 0.04176
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ 0.1328538 5.0100034
+sample estimates:
+mean difference 
+       2.571429 </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="step-3.-practical-significance-and-effect-size-calculate-cohens" class="level3" data-number="8.3.4">
+<h3 data-number="8.3.4" class="anchored" data-anchor-id="step-3.-practical-significance-and-effect-size-calculate-cohens"><span class="header-section-number">8.3.4</span> Step 3. Practical Significance and Effect Size: Calculate Cohen’s</h3>
+<p>Now, we want to know how big the effect is. Is the attitude change big enough to matter in the real world? Should the bank roll out this commercial to the public? To answer these questions, we need to calculate an effect size. The most common effect size for paired samples t-tests is Cohen’s d, which is calculated as follows:</p>
+<p><span class="math display">\[d = \frac{M_D}{s_D}\]</span></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> mean_diff <span class="sc">/</span> <span class="fu">sd</span>(diff)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>d</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9752314</code></pre>
+</div>
+</div>
+<p>This tells us that the average change in attitude is 0.98 standard deviations above the null hypothesis of no change. This is a large effect size, which means that the commercial had a meaningful impact on the viewers’ attitudes towards the bank.</p>
+<p>Again, we can use R to calculate Cohen’s d for us. The following code will calculate Cohen’s d for our data. You can check that the results match what we calculated by hand.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>lsr<span class="sc">::</span><span class="fu">cohensD</span>(post, pre, <span class="at">method =</span> <span class="st">"paired"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9752314</code></pre>
+</div>
+</div>
+</section>
+<section id="interpret-the-results" class="level3" data-number="8.3.5">
+<h3 data-number="8.3.5" class="anchored" data-anchor-id="interpret-the-results"><span class="header-section-number">8.3.5</span> Interpret the Results</h3>
+<p>Putting all this together, we can write up the results as follows:</p>
+<blockquote class="blockquote">
+<p>Paired samples t-test was conducted on attitudes towards the bank before and after a commercial intervention. Based on our focus group of 7 people, we can conclude that the average change in opinion (MD = 2.57, SDD = 2.64) was for the better after viewing the commercial, 95% CI: [0.13, 5.01], with a large effect size, Cohen’s d = 0.98.</p>
+</blockquote>
 
 
 </section>
