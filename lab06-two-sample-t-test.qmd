@@ -40,7 +40,7 @@ GoBlind()
 ```
 
 ```{r, include=FALSE}
-theme_set(theme_classic(base_size = 16))
+theme_set(theme_classic(base_size = 20))
 ```
 
 
@@ -79,6 +79,7 @@ glimpse(df)
 
 ```{r}
 describe(df) %>%
+  apa_num() %>% # round the numbers to 2 decimal places
   knitr::kable() 
 ```
 
@@ -97,8 +98,47 @@ df %>%
 ```
 
 ```{r}
-shapiro.test(df$diff)
+res_shapiro <- shapiro.test(df$diff)
+
+res_shapiro  %>%
+  tidy() %>%
+  mutate(
+    across(where(is.numeric) & !p.value, ~ apa_num(.)),
+    p.value = apa_p(p.value)
+  ) %>%
+  knitr::kable()
 ```
+
+:::{.callout-note}
+### Shapiro-Wilk Test Results
+`r papaja::apa_print(res_shapiro)$full_result`
+:::
+
+
+### Point plot of the means and confidence intervals
+
+We will plot the data using a point plot of the mean differences and the 95% confidence intervals of the difference scores. 
+The error bars can represent either the standard error of the mean or the 95% confidence interval. The convention is to use the 95% confidence interval for point plots, and the standard error of the mean for bar graphs. Here, we will use the 95% confidence interval.
+
+```{r}
+#| label: "fig-study2"
+#| fig-cap: "Mean of inherence bias (differences in endorsement of inherent vs. extrinsic explanations). Error bars represent 95% confidence intervals."
+
+df %>%
+  ggplot(aes(x = "", y = diff)) +
+  # horizontal line at y = 0
+  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
+  # mean per condition
+  stat_summary(fun = mean, geom = "point", color = "black", size = 3) +
+  # confidence interval per condition (bootstrap CI)
+  stat_summary(fun.data = mean_cl_normal, geom = "errorbar", width = 0.2) +
+  # overlay individual data points with jitter and transparency
+  geom_point(position = position_jitter(width = 0.1), alpha = 0.2, size = 0.5) +
+  # axis label
+  labs(x = "", y = "Inherence Bias") +
+  scale_y_continuous(expand = c(0, 0), limits = c(-9, 9))
+```
+
 
 ### Paired Samples t-Test
 
@@ -109,6 +149,14 @@ We conduct the paired-samples t-test on the inherent and extrinsic scores, or we
 res_paired_t <- t.test(df$ihav, df$extav,
                 paired = TRUE,
                 alternative = "two.sided")
+res_paired_t %>%
+  tidy() %>%
+  mutate(
+    across(where(is.numeric) & !p.value, ~ apa_num(.)),
+    p.value = apa_p(p.value)
+  ) %>%
+  knitr::kable()
+
 res_paired_t
 ```
 
@@ -118,10 +166,24 @@ Here's the one-sample t-test version that you've already done in the previous la
 res_onesample_t <- t.test(df$diff,
                 mu = 0, 
                 alternative = "two.sided")
+res_onesample_t %>%
+  tidy() %>%
+  mutate(
+    across(where(is.numeric) & !p.value, ~ apa_num(.)),
+    p.value = apa_p(p.value)
+  ) %>%
+  knitr::kable()
+
 res_onesample_t
 ```
 
 You can see that the results are identical, because whether the two means are the same is the same thing as asking whether the mean of the difference scores is 0. 
+
+:::{.callout-note}
+### t-test Results
+* Paired samples t-test on the inherent and extrinsic scores: `r papaja::apa_print(res_paired_t)$full_result`
+* One sample t-test on the difference scores: `r papaja::apa_print(res_onesample_t)$full_result`
+:::
 
 ### Effect Size (Cohen's d)
 
@@ -132,17 +194,44 @@ d_paired <- cohensD(df$ihav, df$extav, method = "paired")
 d_paired
 ```
 
+:::{.callout-note}
+### Cohen's d
+Cohen's d = `r round(d_paired, 2)`
+:::
+
+
 ### Write up the results
 
-> Paired samples t-test was performed to compare inherence bias scores between inherent and extrinsic explanations. The results indicated that the mean inherence bias ($M_\text{inherent} = `r round(mean(df$ihav), 2)`$) was significantly higher than the mean extrinsic bias ($M_\text{extrinsic} = `r round(mean(df$extav), 2)`$), `r papaja::apa_print(res_paired_t)$full_result`, with a small effect size, d = `r round(d_paired, 2)`. These results suggest that people have a small preference for inherent explanations over extrinsic explanations.
+> Paired samples t-test was performed to compare inherence bias scores between inherent and extrinsic explanations. The results indicated that the mean inherence bias ($M_\text{inherent} = `r round(mean(df$ihav), 2)`$) was significantly higher than the mean extrinsic bias ($M_\text{extrinsic} = `r round(mean(df$extav), 2)`$), `r papaja::apa_print(res_paired_t)$full_result`, with a small effect size, d = `r round(d_paired, 2)` (see @fig-study2). These results suggest that people have a small preference for inherent explanations over extrinsic explanations.
 
+:::{.callout-tip}
+## Paired Samples t-test Write-Up Checklist
+
+- What type of test was performed (e.g., Paired samples t-test), to test what hypothesis?
+- Which DV was tested?
+- What was your sample mean in each condition?
+  - $M_1$
+  - $M_2$
+- What was your estimate for the mean of difference scores between conditions?
+  - $M_D$
+  - 95% $\text{CI}_{M_D}$
+- What are the results of the analysis? 
+  - Was the mean of one condition significantly higher or lower than the other condition? In which direction?
+  - t statistic
+  - degrees of freedom
+  - p-value
+- What was the practical significance of the results?
+  - Small, medium, or large effect size?
+  - Cohen's d
+- What do the statistical results mean in the context of the research question?
+- If a figure is included, refer to it in the write up.
+:::
 
 ## Between-Subject Design
 
 In their study 4, @tworek_why_2016 investigated whether priming extrinsic explanations can reduce inherence bias. In this study, participants were randomly assigned to one of two conditions: the Anti-Inherence condition, where they were primed with extrinsic explanations, and the Control condition, where they were not primed. The dependent variable is the inherence bias score, which is the average of 15 items that measure people's preference for inherent explanations over extrinsic explanations. 
 
 For this, we can conduct an independent samples t-test to see if there is a significant difference in the average inherence bias score between the two conditions.
-
 
 ### Null Hypothesis and Alternative Hypothesis
 
@@ -172,6 +261,7 @@ We can inspect the descriptive statistics of the data using the `describe()` fun
 
 ```{r}
 describe(df) %>%
+  apa_num() %>%
   knitr::kable() 
 ```
 
@@ -198,9 +288,44 @@ There is a statistical test for normality called the Shapiro-Wilk test. The null
 
 
 ```{r}
-shapiro.test(df %>% filter(Condition == "Control") %>% pull(InherenceBias))
-shapiro.test(df %>% filter(Condition == "Anti-Inherence") %>% pull(InherenceBias))
+res_shapiro_a <- df %>%
+  filter(Condition == "Control") %>%
+  pull("InherenceBias") %>%
+  shapiro.test()
+
+res_shapiro_b <- df %>%
+  filter(Condition == "Anti-Inherence") %>%
+  pull("InherenceBias") %>%
+  shapiro.test()
 ```
+
+###### Control condition normality test
+```{r}
+res_shapiro_a %>%
+  tidy() %>%
+  mutate(
+    across(where(is.numeric) & !p.value, ~ apa_num(.)),
+    p.value = apa_p(p.value)
+  ) %>%
+  knitr::kable()
+```
+
+###### Anti-Inherence condition normality test
+```{r}
+res_shapiro_b %>%
+  tidy() %>%
+  mutate(
+    across(where(is.numeric) & !p.value, ~ apa_num(.)),
+    p.value = apa_p(p.value)
+  ) %>%
+  knitr::kable()
+```
+
+:::{.callout-note}
+### Shapiro-Wilk Test Results
+* Control: `r papaja::apa_print(res_shapiro_a)$full_result`
+* Anti-Inherence: `r papaja::apa_print(res_shapiro_b)$full_result`
+:::
 
 There is not enough evidence that the data are not normally distributed, so the assumption of normality is met, and we are good to go with the t-test.
 
@@ -209,10 +334,63 @@ There is not enough evidence that the data are not normally distributed, so the 
 The fourth assumption is about the variance of the data: (4) the variance of the two groups are equal. We can check this assumption using Levene's test, which tests the null hypothesis that the variances of the two groups are equal. If the p-value is less than 0.05, we reject the null hypothesis and conclude that the variances are not equal. So here, what we are looking for is that "there is not enough evidence that the variances are not equal" -- when p > .05, we proceed with the test.
 
 ```{r}
-leveneTest(InherenceBias ~ Condition, data = df)
+res_levene <- leveneTest(InherenceBias ~ Condition, data = df, center = mean)
+res_levene %>%
+  tidy() %>%
+  mutate(
+    across(where(is.numeric) & !p.value, ~ apa_num(.)),
+    p.value = apa_p(p.value)
+  ) %>%
+  knitr::kable()
 ```
 
 There is not enough evidence that the variances are not equal, so the assumption of homogeneity of variance is met, and we are good to go with the t-test.
+
+:::{.callout-note}
+### Levene's Test Results
+`r papaja::apa_print(res_levene)$full_result`
+:::
+
+### Descriptive Statistics
+
+#### Control Condition
+
+```{r}
+df %>% filter(Condition == "Control") %>%
+  describe() %>%
+  apa_num() %>% # round the numbers to 2 decimal places
+  knitr::kable()
+```
+
+#### Anti-Inherence Condition
+
+```{r}
+df %>% filter(Condition == "Anti-Inherence") %>%
+  describe() %>%
+  apa_num() %>% # round the numbers to 2 decimal places
+  knitr::kable()
+```
+
+### Bar graphs of the means and standard errors
+
+For the indepedent samples t-test, we will plot a bar graph of the mean inherence bias scores and the standard errors of the mean for each condition.
+The error bars can represent either the standard error of the mean or the 95% confidence interval. You will need to report which one you are using. Here, we will use the standard error of the mean.
+
+```{r}
+#| label: "fig-study4"
+#| fig-cap: "Bar graph of the mean inherence bias scores. Error bars represent the standard error of the mean."
+df %>%
+  ggplot(aes(x = Condition, y = InherenceBias)) +
+  # mean per condition
+  stat_summary(fun = mean, geom = "bar", fill = "lightblue", color = "black", width = 0.5) +
+  # standard error per condition
+  stat_summary(fun.data = mean_se, geom = "errorbar", width = 0.2) +
+  labs(x = "Condition", y = "Inherence Bias") +
+  # add individual data points with jitter and transparency
+  geom_point(position = position_jitter(width = 0.1), alpha = 0.2, size = 0.5) +
+  # fix the horizontal axis at y = 0
+  scale_y_continuous(expand = c(0, 0), limits = c(0, 9))
+```
 
 ### Independent Samples t-Test
 
@@ -229,8 +407,22 @@ res_ind_t <- t.test(InherenceBias ~ Condition,
                   data = df,
                   var.equal = TRUE,
                   alternative = "two.sided")
+
+res_ind_t %>%
+  tidy() %>%
+  mutate(
+    across(where(is.numeric) & !p.value, ~ apa_num(.)),
+    p.value = apa_p(p.value)
+  ) %>%
+  knitr::kable()
+
 res_ind_t
 ```
+
+:::{.callout-note}
+### Independent Samples t-test Results in APA format
+`r papaja::apa_print(res_ind_t)$full_result`
+:::
 
 ### Effect Size (Cohen's d)
 
@@ -241,20 +433,26 @@ d_ind <- cohensD(InherenceBias ~ Condition, data = df, method = "pooled")
 d_ind
 ```
 
+:::{.callout-note}
+### Cohen's d
+* Equal variance: Cohen's d = `r round(d_ind, 2)`
+:::
+
 ### Write up the results
 
-> A independent-samples t-test was performed to compare inherence bias scores between the Anti-Inherence and Control conditions. The results indicated that the mean inherence bias score was significantly reduced in the Anti-Inherence condition ($M_\text{Anti-Inherence} = 5.64$) than in the Control condition ($M_\text{Control} = 6.28$), `r papaja::apa_print(res_ind_t)$full_result`, with a moderate effect size, d = `r round(d_ind, 2)`. These results suggest that the priming extrinsic explanations can reduce inherence bias.
+> A independent-samples t-test was performed to compare inherence bias scores between the Anti-Inherence and Control conditions. The results indicated that the mean inherence bias score was significantly reduced in the Anti-Inherence condition ($M_\text{Anti-Inherence} = 5.64$, $SD_\text{Anti-Inherence} = 1.23$) than in the Control condition ($M_\text{Control} = 6.28$, $SD_\text{Control} = 1.18$), `r papaja::apa_print(res_ind_t)$full_result`, with a moderate effect size, d = `r round(d_ind, 2)` (see @fig-study4). These results suggest that priming extrinsic explanations can reduce inherence bias.
 
 :::{.callout-tip}
-## t-test Write-Up Checklist
+## Independent Samples t-test Write-Up Checklist
 
-- What type of test was performed, to test what hypothesis?
-- Which DV was tested, and what was the baseline value it was compared to?
-- What was your sample mean in each group/condition?
-  - M
-- What was your estimate for the mean difference between the two groups/conditions?
-  - M
-  - 95% CI
+- What type of test was performed (e.g., Student's t-test, Welch's t-test), to test what hypothesis?
+- Which DV was tested?
+- What was your sample mean and standard deviation in each group/condition?
+  - $M_1$, $SD_1$
+  - $M_2$, $SD_2$
+- What was your estimate for the difference in means between the two groups/conditions?
+  - $M_1 - M_2$
+  - 95% $\text{CI}_{M_1 - M_2}$
 - What are the results of the analysis? 
   - Was the mean of one group significantly higher or lower than the other group? In which direction?
   - t statistic
@@ -263,7 +461,8 @@ d_ind
 - What was the practical significance of the results?
   - Small, medium, or large effect size?
   - Cohen's d
-- What does the statistical result mean in the context of the research question?
+- What do the statistical results mean in the context of the research question?
+- If a figure is included, refer to it in the write up.
 :::
 
 ## Exercises
@@ -271,7 +470,7 @@ d_ind
 :::{.callout-tip}
 ### Exercise: Imundo et al. (2021) Study 2
 
-`imundo_study2.csv` contains data for the restudy condition of Imundo et al. (2021) Study 2. Conduct an appropriate t-test for the data, comparing the Same vs. Different context conditions. Report the results in APA style, interpreting the results in the context of the research question.
+`imundo_study2.csv` contains data for the restudy condition of Imundo et al. (2021) Study 2. Conduct an appropriate t-test for the data, comparing the Same vs. Different context conditions. 
 
 * `ID`: participant ID
 * `StudyActivity`: For this lab, there is only "Restudy" activity included in the data.
@@ -288,4 +487,8 @@ df <- read_csv('data/imundo_study2.csv') %>%
   as_tibble() %>%
   mutate(RestudyContext = factor(RestudyContext, levels = c("Different", "Same")))
 ```
+
+1. Plot the data using a bar graph with error bars representing the standard error of the mean. You can use the code above as a template for your graph.
+1. Run the appropriate t-test, and report the results in APA style, interpreting the results in the context of the research question.
+
 :::
