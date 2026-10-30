@@ -1,5 +1,5 @@
 ---
-title: "Lab 6: One-Way ANOVA"
+title: "Lab 7: One-Way ANOVA"
 author: 
   - "Yeon Soon Shin"
   - "Anjali Thapar"
