@@ -1,3 +1,16 @@
+---
+title: "Lab 7: One-Way ANOVA Model Answers"
+author: 
+  - "Yeon Soon Shin"
+  - "Anjali Thapar"
+  - "Dustin Albert"
+format:
+  html:
+    html-math-method: plain
+    embed-resources: true
+---
+
+
 ## Preliminaries {.unnumbered #preliminaries}
 
 ```{r, include=FALSE}
@@ -135,7 +148,7 @@ There is not enough evidence that the variances are not equal, so the assumption
 
 ## Descriptive Statistics
 
-Usually, we would report mean and sd. But FOMO was skewed, so I am going to also report median ($Mdn$) and IQR.
+Usually, we would report mean and sd. But LossIndex was skewed, so I am going to also report median ($Mdn$) and IQR.
 
 ```{r}
 df %>%
@@ -258,38 +271,18 @@ res_posthoc %>%
   * `***` indicates p < .001.
   * `ns` indicates not significant
 
-From the post hoc tests, the only significant difference as from the lower FOMO in Past Plans group, compared to the baseline. 
+From the post hoc tests, the only significant difference as from the higher perceived loss in the own group condition than the third person condition.
 
 ## Write up the results
 
-> We tested whether interventions reduce FOMO (Fear of Missing Out). Levene's test indicated that the assumption of homogeneity of variance was met, $F(3, 784) = 2.24, p = .083$. One-way between-subjects ANOVA on the FOMO ratings showed a significant effect of interventions, $F(3, 784) = 3.79, p = .010$, with a small effect size, $\eta_p^2 = .014$ (see @fig-bar).
-> 
-> Post-hoc comparisons using Tukey's HSD revealed that this effect was driven by a significant reduction of FOMO in the Past Plans condition ($M_\text{PastPlans} = 2.71$, $SD_\text{PastPlans} = 1.57$) compared to the Baseline condition ($M_\text{Baseline} = 3.22$, $SD_\text{Baseline} = 1.63$), $p_\text{tukey} = .008$. Neither the Future Plan ($M_\text{FuturePlan} = 3.10$, $SD_\text{FuturePlan} = 1.73$, $p_\text{tukey} = .884$) nor the Third Person condition ($M_\text{ThirdPerson} = 3.06$, $SD_\text{ThirdPerson} = 1.52$, $p_\text{tukey} = .760$) differed significantly from the baseline. Additionally, there were no significant differences across interventions (Future Plan vs. Past Plans, $p_\text{tukey} = .070$; Third Person vs. Future Plan, $p_\text{tukey} = .994$, Third Person vs. Past Plans, $p_\text{tukey} = .131$).
-> These results suggest that recalling social bonding experiences may be an effective intervention to reduce FOMO. 
+The researchers investigated whether people exaggerate negative social ramifications when they imagine missing a social event themselves, relative to social ramifications for a friend who is missing the same event, and whether they perceive more loss for their own group compared to an irrelevant group. They randomly assigned participants to one of three scenarios: Own Group, Irrelevant Group, and Third Person, and asked them to rate perceived loss on a 7-point scale.
 
+Levene's test indicated that the homogeneity of variance assumption was not violated, $F(2, 491) = 0.28, p = .759$. We conducted a one-way between-subjects ANOVA on perceived loss across three conditions. The results showed that there was a significant effect of the type of scenario, $F(2,491) = 4.11, p = .017$, with a small effect size, $\eta_p^2 = .016$. 
 
-:::{.callout-tip}
-## One-way ANOVA Write-Up Checklist
+To find which conditions show differences, Tukey's HSD was conducted (@fig-bar). Perceived loss was significantly higher in the Own Group condition ($M_\text{OwnGroup} = 2.75$, $SD_\text{OwnGroup} = 1.46$), compared to the Third person condition ($M_\text{ThirdPerson} = 2.30$, $SD_\text{ThirdPerson} = 1.46$), $p_\text{tukey} = .016$, suggesting that people exaggerate their loss relative to other's loss. However, there was no significant difference between the Irrelevant Group condition ($M_\text{IrrelevantGroup} = 2.42$, $SD_\text{IrrelevantGroup} = 1.52$) and the Own Group condition, $p_\text{tukey} = .114$ nor the Third Person condition, $p_\text{tukey} = .713$. 
 
-- What type of test was performed to test what hypothesis?
-- Which DV was tested?
-- Was there a significant effect of your IV?
-  - Test statistic $F$ (e.g., $F(df1, df2)$ = value)
-    - $p$ value (report raw $p$ value to 3 decimal places unless it is smaller than .001)
-  - Effect size $\eta_p^2$
-    - Small (.01), Medium (.06), Large (.14)
-- If there was a statistically significant effect, which level drove the effect?
-  - Which post-hoc test was performed (Tukey or Games-Howell)?
-  - Descriptive statistic (M and SD for each level)
-  - $p$ value (report raw $p$ value to 3 decimal places unless it is smaller than .001) with the test name as subscript (e.g., $p_\text{tukey}$)
-  - Which condition has higher/lower mean? Note the direction if significant.
-- What do the statistical results mean in the context of the research question?
-- If a figure is included, refer to it in the write up.
-:::
+These results are consistent with the exaggeration effect that people perceive greater loss when the same event is missed by themselves versus another person. 
 
-## Exercise
+However, it is inconclusive whether the group type matters in loss perception. One possibility is that, while the average perceived loss did not differ significantly, the kind of loss may differ by group (e.g., weakening the relationship with a particular individual in the group vs. being left out of a group in general). 
 
-:::{.callout-tip}
-## Exercise
-
-:::
+Another possibility is that the magnitude of exaggeration, not the perceived loss itself, depends on the group type. To examine this, we could add a scenario where the third person is missing out on a group irrelevant to them, and test for the interaction between perspective (first vs. third person) and group type (own vs. irrelevant). This could inform how the relevance of the group shpe the perceived negative consequences of missing an event.
