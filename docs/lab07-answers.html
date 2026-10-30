@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>lab07-answers – Research Methods and Statistics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ba8f7c244c1f50cbf6c6a3aa3874339a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Research Methods and Statistics
+      </li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Research Methods and Statistics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Research Methods and Statistics</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Unit 1. The Foundations of Psychology Research</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-psych-science.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ch.1: Psychological Science</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-research-questions-and-claims.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ch.2: Research Questions to Claims</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-measurement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ch.3: Measurement</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-visualizing-and-describing-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ch.4: Visualizing and Describing Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Unit 2. Introduction to Inferential Statistics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-hypothesis-testing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ch 5. Hypothesis Testing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-estimating-the-mean.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ch.6: Estimating the Mean</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-one-sample-z-test-and-t-test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ch.7: One Sample z-test and t-test</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Unit 3. Mean Comparisons</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-paired-samples-t-test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ch.8: Paired Samples t-test</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-independent-samples-t-test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ch.9: Independent Samples t-test</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Lab</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab01-r-basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 1: R Basics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab02-reliability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 2: Measurement Reliability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab03-eda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 3: Exploratory Data Analysis (EDA)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab04-standard-scores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 4: Standard Scores and Probability</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab05-one-sample-t-test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 5: One-Sample t-Test</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab06-two-sample-t-test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 6: Two-Sample t-Test</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab07-one-way-anova.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 6: One-Way ANOVA</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendix</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-apa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presenting Your Work in APA Style</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-stats-decisions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Which Statistical Test Should I Use?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-stats-overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Statistics Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-z-scoring.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">z Scoring</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-z-dist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">z Distribution</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix-t-dist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">t Distribution</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#preliminaries" id="toc-preliminaries" class="nav-link active" data-scroll-target="#preliminaries">Preliminaries</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="header-section-number">1</span> Data</a>
+  <ul>
+  <li><a href="#read-in-and-clean-the-data" id="toc-read-in-and-clean-the-data" class="nav-link" data-scroll-target="#read-in-and-clean-the-data"><span class="header-section-number">1.1</span> Read in and clean the data</a></li>
+  <li><a href="#inspect-the-data" id="toc-inspect-the-data" class="nav-link" data-scroll-target="#inspect-the-data"><span class="header-section-number">1.2</span> Inspect the data</a></li>
+  </ul></li>
+  <li><a href="#check-assumptions" id="toc-check-assumptions" class="nav-link" data-scroll-target="#check-assumptions"><span class="header-section-number">2</span> Check Assumptions</a>
+  <ul>
+  <li><a href="#normality-is-anova-appropriate-to-use" id="toc-normality-is-anova-appropriate-to-use" class="nav-link" data-scroll-target="#normality-is-anova-appropriate-to-use"><span class="header-section-number">2.1</span> Normality: Is ANOVA appropriate to use?</a></li>
+  <li><a href="#homogeneity-of-variance-which-anova" id="toc-homogeneity-of-variance-which-anova" class="nav-link" data-scroll-target="#homogeneity-of-variance-which-anova"><span class="header-section-number">2.2</span> Homogeneity of Variance: Which ANOVA?</a></li>
+  </ul></li>
+  <li><a href="#descriptive-statistics" id="toc-descriptive-statistics" class="nav-link" data-scroll-target="#descriptive-statistics"><span class="header-section-number">3</span> Descriptive Statistics</a></li>
+  <li><a href="#bar-graphs" id="toc-bar-graphs" class="nav-link" data-scroll-target="#bar-graphs"><span class="header-section-number">4</span> Bar Graphs</a></li>
+  <li><a href="#one-way-between-subjects-anova" id="toc-one-way-between-subjects-anova" class="nav-link" data-scroll-target="#one-way-between-subjects-anova"><span class="header-section-number">5</span> One-way between-subjects ANOVA</a></li>
+  <li><a href="#post-hoc-comparisons" id="toc-post-hoc-comparisons" class="nav-link" data-scroll-target="#post-hoc-comparisons"><span class="header-section-number">6</span> Post-hoc comparisons</a></li>
+  <li><a href="#write-up-the-results" id="toc-write-up-the-results" class="nav-link" data-scroll-target="#write-up-the-results"><span class="header-section-number">7</span> Write up the results</a></li>
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise"><span class="header-section-number">8</span> Exercise</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lab07-answers.epub"><i class="bi bi-file"></i>ePub</a></li><li><a href="lab07-answers.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="preliminaries" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="preliminaries">Preliminaries</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)  <span class="co"># for data wrangling and visualization</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)      <span class="co"># for describe()</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(BrailleR)   <span class="co"># for accessibility</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">GoBlind</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="data" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="data"><span class="header-section-number">1</span> Data</h2>
+<section id="read-in-and-clean-the-data" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="read-in-and-clean-the-data"><span class="header-section-number">1.1</span> Read in and clean the data</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'data/rifkin2025_study5.csv'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Condition =</span> <span class="fu">factor</span>(</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>      Condition, </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">levels=</span><span class="fu">c</span>(<span class="st">"Third Person Miss"</span>, </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Miss - Irrelevant Group"</span>, </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Miss - Own Group"</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>              ),</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"Third Person"</span>, </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Irrelevant Group"</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>               <span class="st">"Own Group"</span>))) </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 494
+Columns: 5
+$ ID           &lt;chr&gt; "Subj1", "Subj2", "Subj3", "Subj6", "Subj7", "Subj8", "Su…
+$ Condition    &lt;fct&gt; Third Person, Third Person, Third Person, Third Person, T…
+$ LossIndex    &lt;dbl&gt; 4.00, 3.00, 2.00, 1.00, 2.67, 1.00, 2.33, 1.00, 5.00, 5.3…
+$ BondingIndex &lt;dbl&gt; 3.333333, 6.333333, 5.666667, 6.666667, 6.333333, 4.00000…
+$ Age          &lt;dbl&gt; 34, 49, 48, 31, 33, 35, 36, 31, 36, 33, 39, 34, 53, 43, 5…</code></pre>
+</div>
+</div>
+</section>
+<section id="inspect-the-data" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="inspect-the-data"><span class="header-section-number">1.2</span> Inspect the data</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  psych<span class="sc">::</span><span class="fu">describe</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 3%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">vars</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">median</th>
+<th style="text-align: right;">trimmed</th>
+<th style="text-align: right;">mad</th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">max</th>
+<th style="text-align: right;">range</th>
+<th style="text-align: right;">skew</th>
+<th style="text-align: right;">kurtosis</th>
+<th style="text-align: right;">se</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ID*</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">494</td>
+<td style="text-align: right;">247.500000</td>
+<td style="text-align: right;">142.7497811</td>
+<td style="text-align: right;">247.500000</td>
+<td style="text-align: right;">247.500000</td>
+<td style="text-align: right;">183.1011</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">494</td>
+<td style="text-align: right;">493.000000</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">-1.2072899</td>
+<td style="text-align: right;">6.4226163</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Condition*</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">494</td>
+<td style="text-align: right;">1.997976</td>
+<td style="text-align: right;">0.8169080</td>
+<td style="text-align: right;">2.000000</td>
+<td style="text-align: right;">1.997475</td>
+<td style="text-align: right;">1.4826</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2.000000</td>
+<td style="text-align: right;">0.0037057</td>
+<td style="text-align: right;">-1.5045348</td>
+<td style="text-align: right;">0.0367544</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">LossIndex</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">494</td>
+<td style="text-align: right;">2.487692</td>
+<td style="text-align: right;">1.4872266</td>
+<td style="text-align: right;">2.000000</td>
+<td style="text-align: right;">2.304520</td>
+<td style="text-align: right;">1.4826</td>
+<td style="text-align: right;">1.000000</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">6.000000</td>
+<td style="text-align: right;">0.8060560</td>
+<td style="text-align: right;">-0.3083666</td>
+<td style="text-align: right;">0.0669135</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BondingIndex</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">494</td>
+<td style="text-align: right;">5.503374</td>
+<td style="text-align: right;">0.9505997</td>
+<td style="text-align: right;">5.333333</td>
+<td style="text-align: right;">5.535354</td>
+<td style="text-align: right;">0.9884</td>
+<td style="text-align: right;">1.666667</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">5.333333</td>
+<td style="text-align: right;">-0.4061585</td>
+<td style="text-align: right;">0.1936018</td>
+<td style="text-align: right;">0.0427695</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Age</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">494</td>
+<td style="text-align: right;">41.605263</td>
+<td style="text-align: right;">12.8729181</td>
+<td style="text-align: right;">39.000000</td>
+<td style="text-align: right;">40.500000</td>
+<td style="text-align: right;">11.8608</td>
+<td style="text-align: right;">19.000000</td>
+<td style="text-align: right;">81</td>
+<td style="text-align: right;">62.000000</td>
+<td style="text-align: right;">0.7176875</td>
+<td style="text-align: right;">-0.1331657</td>
+<td style="text-align: right;">0.5791800</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</section>
+<section id="check-assumptions" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="check-assumptions"><span class="header-section-number">2</span> Check Assumptions</h2>
+<p>There are 4 assumptions for one-way between-subject ANOVA.</p>
+<ol type="1">
+<li><strong>Continuous Data</strong>: The data are continuous (interval or ratio scale).</li>
+<li><strong>Independence</strong>: The data are independent (no same participant is measured more than once in our sample).</li>
+<li><strong>Normality</strong>: The residuals (deviations from the group mean) are normally distributed within each group.</li>
+<li><strong>Homogeneity of Variance</strong>: Group variances are equal.</li>
+</ol>
+<p>As with the t-tests, the first two assumptions are coming from the research design. In our data, we will need to check for normality and homogeneity of variance.</p>
+<section id="normality-is-anova-appropriate-to-use" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="normality-is-anova-appropriate-to-use"><span class="header-section-number">2.1</span> Normality: Is ANOVA appropriate to use?</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>…or should I use an alternative to ANOVA?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If normality assumption is violated to a degree that ANOVA is not appropriate, then use a nonparametric alternative that relies on ranks rather than raw scores.</p>
+<p>For One-way Between-Subject ANOVA, the alternative is Kruskal-Wallis Test.</p>
+</div>
+</div>
+<p>Similar to t-test, the Central Limit Theorem is relevant. If we have large enough sample size, ANOVA is robust to moderate violation of normality.</p>
+<p>When the sample size is large, Shapiro-Wilk test can be too sensitive to small deviations from normality. Because we have approximately 200 subjects per condition, we will use visual inspection to check for egregious outliers and non-normality.</p>
+<p>Because this assumption is about residuals (each score’s deviation from its own group/condition mean), we will need to inspect each condition, as we did for independent samples t-test. Because this is about the shape (skew and tail), and the residuals would have the same shape as the raw scores, we will plot the raw score distributions.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> LossIndex)) <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span> Condition) <span class="sc">+</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">binwidth =</span> <span class="fl">0.33</span>, <span class="co"># each bin covers 0.33 because there were three items</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> <span class="st">'black'</span>, </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> <span class="st">'lightgray'</span>) <span class="sc">+</span> </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab07-answers_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>This is an untitled chart with no subtitle or caption.
+The chart is comprised of 3 panels containing sub-charts, arranged horizontally.
+The panels represent different values of Condition.
+Each sub-chart has x-axis '' with labels 2, 4 and 6.
+Each sub-chart has y-axis '' with labels 0, 20, 40 and 60.
+Panel 1 represents data for Condition = Third Person COORD = 1.
+Panel 1 is a bar chart with 19 vertical bars.
+It has colour set to black.
+It has fill set to purplish white.
+Panel 2 represents data for Condition = Irrelevant Group COORD = 1.
+Panel 2 is a bar chart with 19 vertical bars.
+It has colour set to black.
+It has fill set to purplish white.
+Panel 3 represents data for Condition = Own Group COORD = 1.
+Panel 3 is a bar chart with 19 vertical bars.
+It has colour set to black.
+It has fill set to purplish white.</code></pre>
+</div>
+</div>
+<p>The distributions are positively skewed, with many participants giving the lowest possible score (a floor effect), but there are no extreme outliers. The shapes are similar across conditions, and with a large sample size (over 150 per condition), ANOVA should be reasonably robust, so we cautiously proceed.</p>
+</section>
+<section id="homogeneity-of-variance-which-anova" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="homogeneity-of-variance-which-anova"><span class="header-section-number">2.2</span> Homogeneity of Variance: Which ANOVA?</h3>
+<p><strong>Levene’s test</strong> tests whether the spread of scores is similar across groups (i.e., homogeneity of variance). In addition to choosing which ANOVA to use, homogeneity of variance is relevant in choosing the type of post-hoc test (see <a href="#tbl-homogeneity-decisions" class="quarto-xref">Table&nbsp;1</a>).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Which ANOVA and post-hoc tests?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div id="tbl-homogeneity-decisions" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-homogeneity-decisions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Decisions to make according to whether variances are equal (homogeneous).
+</figcaption>
+<div aria-describedby="tbl-homogeneity-decisions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table id="tbl-homogeneity-decisions" class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Decision</th>
+<th style="text-align: left;">Equal</th>
+<th style="text-align: left;">Unequal</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Which ANOVA?</td>
+<td style="text-align: left;">Fisher’s</td>
+<td style="text-align: left;">Welch’s</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Which post-hoc pairwise tests?</td>
+<td style="text-align: left;">Tukey’s HSD</td>
+<td style="text-align: left;">Games-Howell</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The common thread is that, for unequal variances, tests tend to be <em>more conservative</em>. For example, even if Fisher’s <span class="math inline">\(F\)</span> is significant, Welch’s <span class="math inline">\(F\)</span> may not be significant. For post-hoc, <span class="math inline">\(p\)</span> values from Tukey’s HSD are already higher than unadjusted <span class="math inline">\(p\)</span> values from independent samples t-test (Student’s <span class="math inline">\(t\)</span>), but it will be even higher for Games-Howell, which makes it harder to reject the null hypothesis.</p>
+</div>
+</div>
+<p>Let’s find out if the spread of our DV (LossIndex) is similar across conditions, using Levene’s test.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>res_levene <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">leveneTest</span>(LossIndex <span class="sc">~</span> Condition, </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">data =</span> df)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>res_levene <span class="sc">%&gt;%</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">where</span>(is.numeric) <span class="sc">&amp;</span> <span class="sc">!</span>p.value, <span class="sc">~</span> papaja<span class="sc">::</span><span class="fu">apa_num</span>(.)),</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">p.value =</span> papaja<span class="sc">::</span><span class="fu">apa_p</span>(p.value)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">statistic</th>
+<th style="text-align: left;">p.value</th>
+<th style="text-align: left;">df</th>
+<th style="text-align: left;">df.residual</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0.28</td>
+<td style="text-align: left;">.759</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">491</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>There is not enough evidence that the variances are not equal, so the assumption of homogeneity of variance is reasonably met, and we are good to go with Fisher’s ANOVA.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Levene’s Test Results
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(F(2, 491) = 0.28\)</span>, <span class="math inline">\(p = .759\)</span></p>
+</div>
+</div>
+</section>
+</section>
+<section id="descriptive-statistics" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="descriptive-statistics"><span class="header-section-number">3</span> Descriptive Statistics</h2>
+<p>Usually, we would report mean and sd. But FOMO was skewed, so I am going to also report median (<span class="math inline">\(Mdn\)</span>) and IQR.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Condition) <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  rstatix<span class="sc">::</span><span class="fu">get_summary_stats</span>(</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    LossIndex, </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">show =</span> <span class="fu">c</span>(<span class="st">"n"</span>, <span class="st">"mean"</span>, <span class="st">"sd"</span>, <span class="st">"median"</span>, <span class="st">"iqr"</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">where</span>(is.numeric) <span class="sc">&amp;</span> <span class="sc">!</span>n, <span class="sc">~</span> papaja<span class="sc">::</span><span class="fu">apa_num</span>(.)) <span class="co"># round</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Condition</th>
+<th style="text-align: left;">variable</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: left;">mean</th>
+<th style="text-align: left;">sd</th>
+<th style="text-align: left;">median</th>
+<th style="text-align: left;">iqr</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Third Person</td>
+<td style="text-align: left;">LossIndex</td>
+<td style="text-align: right;">165</td>
+<td style="text-align: left;">2.30</td>
+<td style="text-align: left;">1.46</td>
+<td style="text-align: left;">1.67</td>
+<td style="text-align: left;">2.33</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Irrelevant Group</td>
+<td style="text-align: left;">LossIndex</td>
+<td style="text-align: right;">165</td>
+<td style="text-align: left;">2.42</td>
+<td style="text-align: left;">1.52</td>
+<td style="text-align: left;">2.00</td>
+<td style="text-align: left;">2.33</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Own Group</td>
+<td style="text-align: left;">LossIndex</td>
+<td style="text-align: right;">164</td>
+<td style="text-align: left;">2.75</td>
+<td style="text-align: left;">1.46</td>
+<td style="text-align: left;">2.33</td>
+<td style="text-align: left;">2.42</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="bar-graphs" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="bar-graphs"><span class="header-section-number">4</span> Bar Graphs</h2>
+<p>This time, we will use the <code>apa_barplot</code> function from the <code>papaja</code> package to generate a bar graph. This gives us a APA-style plot.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>res_plot <span class="ot">&lt;-</span> papaja<span class="sc">::</span><span class="fu">apa_barplot</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> df,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="st">"ID"</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">dv =</span> <span class="st">"LossIndex"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">factors =</span> <span class="st">"Condition"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">tendency =</span> mean, <span class="co"># the height of the bars represent mean</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">dispersion =</span> se, <span class="co"># error bars represent se</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">7</span>) <span class="co"># perceived loss is measured on a 7-point scale (1 to 7)</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div id="fig-bar" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab07-answers_files/figure-html/fig-bar-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Mean perceived loss in the conditions. Error bars represent standard error.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>We can also inspect the content of the plot as the table from the plot object. This should be the same as your descriptive statistic table.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>res_plot<span class="sc">$</span>y <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  papaja<span class="sc">::</span><span class="fu">apa_num</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Condition</th>
+<th style="text-align: left;">tendency</th>
+<th style="text-align: left;">dispersion</th>
+<th style="text-align: left;">lower_limit</th>
+<th style="text-align: left;">upper_limit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Irrelevant Group</td>
+<td style="text-align: left;">2.42</td>
+<td style="text-align: left;">0.12</td>
+<td style="text-align: left;">2.30</td>
+<td style="text-align: left;">2.54</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Own Group</td>
+<td style="text-align: left;">2.75</td>
+<td style="text-align: left;">0.11</td>
+<td style="text-align: left;">2.63</td>
+<td style="text-align: left;">2.86</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Third Person</td>
+<td style="text-align: left;">2.29</td>
+<td style="text-align: left;">0.11</td>
+<td style="text-align: left;">2.18</td>
+<td style="text-align: left;">2.41</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Alternative: ggplot
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Condition, <span class="at">y =</span> LossIndex)) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># mean per condition</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun =</span> mean, </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">geom =</span> <span class="st">"bar"</span>, </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">fill =</span> <span class="st">"lightblue"</span>, </span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">color =</span> <span class="st">"black"</span>, </span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">width =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># standard error per condition</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.data =</span> mean_se, </span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>              <span class="at">geom =</span> <span class="st">"errorbar"</span>, </span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>              <span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add individual data points with jitter and transparency</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">position =</span> <span class="fu">position_jitter</span>(<span class="at">width =</span> <span class="fl">0.1</span>), </span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>             <span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">size =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># adjust y-axis to start from 1</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">7</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab07-answers_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>This is an untitled chart with no subtitle or caption.
+It has x-axis '' with labels Third Person, Irrelevant Group and Own Group.
+It has y-axis '' with labels 2, 4 and 6.
+It has 3 layers.
+Layer 1 is a bar chart with 3 vertical bars.
+Bar 1 is centered at 1, and length is from 0 to 2.29.
+Bar 2 is centered at 2, and length is from 0 to 2.42.
+Bar 3 is centered at 3, and length is from 0 to 2.75.
+Layer 1 has fill set to very light greenish blue.
+Layer 1 has colour set to black.
+Layer 1 has width set to 0.5.
+Layer 2 is an errorbar graph that VI cannot process.
+Layer 2 has width set to 0.2.
+Layer 3 is a set of 494 big solid circle points of which about 88% can be seen.
+Layer 3 has alpha set to 0.2.
+Layer 3 has size set to 0.5.</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="one-way-between-subjects-anova" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="one-way-between-subjects-anova"><span class="header-section-number">5</span> One-way between-subjects ANOVA</h2>
+<p>To compute test statistic F and its associated <span class="math inline">\(p\)</span> value, and the effect size <span class="math inline">\(\eta^2\)</span>, we will use <code>anova_test</code> from the <code>rstatix</code> package.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>res_anova <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  rstatix<span class="sc">::</span><span class="fu">anova_test</span>(</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">dv =</span> LossIndex, <span class="co"># DV</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">between =</span> Condition, <span class="co"># Between-subjects IV</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">wid =</span> ID, <span class="co"># Variable that has the participant ID</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">effect.size =</span> <span class="st">"pes"</span>, <span class="co"># partial eta squared</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    ) </span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>res_anova <span class="sc">%&gt;%</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Effect</th>
+<th style="text-align: right;">DFn</th>
+<th style="text-align: right;">DFd</th>
+<th style="text-align: right;">F</th>
+<th style="text-align: right;">p</th>
+<th style="text-align: left;">p&lt;.05</th>
+<th style="text-align: right;">pes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Condition</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">491</td>
+<td style="text-align: right;">4.111</td>
+<td style="text-align: right;">0.017</td>
+<td style="text-align: left;">*</td>
+<td style="text-align: right;">0.016</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li><code>DFn</code>: between degrees of freedom</li>
+<li><code>DFd</code>: within degrees of freedom</li>
+<li><code>F</code>: F-statistic</li>
+<li><code>p</code>: p value</li>
+<li><code>p&lt;.05</code>: significance is marked with an asterisk (<em>). <strong> indicates p &lt; .01, and </strong></em> indicates p &lt; .001.</li>
+<li>pes: partial eta squared</li>
+</ul>
+<p>There is a significant effect of interventions. Let’s find out which condition is driving the effect.</p>
+</section>
+<section id="post-hoc-comparisons" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="post-hoc-comparisons"><span class="header-section-number">6</span> Post-hoc comparisons</h2>
+<p>For post hoc comparisons, we will use Tukey’s HSD, because the homogeneity of variance assumption was not violated.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>res_posthoc <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  rstatix<span class="sc">::</span><span class="fu">tukey_hsd</span>(LossIndex <span class="sc">~</span> Condition)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>res_posthoc <span class="sc">%&gt;%</span> </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">tidy</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">where</span>(is.numeric) <span class="sc">&amp;</span> <span class="sc">!</span>(p.adj), </span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>           <span class="sc">~</span> papaja<span class="sc">::</span><span class="fu">apa_num</span>(.)),</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">p.adj =</span> papaja<span class="sc">::</span><span class="fu">apa_p</span>(p.adj) </span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 10%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 5%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">term</th>
+<th style="text-align: left;">group1</th>
+<th style="text-align: left;">group2</th>
+<th style="text-align: left;">null.value</th>
+<th style="text-align: left;">estimate</th>
+<th style="text-align: left;">conf.low</th>
+<th style="text-align: left;">conf.high</th>
+<th style="text-align: left;">p.adj</th>
+<th style="text-align: left;">p.adj.signif</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Condition</td>
+<td style="text-align: left;">Third Person</td>
+<td style="text-align: left;">Irrelevant Group</td>
+<td style="text-align: left;">0.00</td>
+<td style="text-align: left;">0.13</td>
+<td style="text-align: left;">-0.26</td>
+<td style="text-align: left;">0.51</td>
+<td style="text-align: left;">.713</td>
+<td style="text-align: left;">ns</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Condition</td>
+<td style="text-align: left;">Third Person</td>
+<td style="text-align: left;">Own Group</td>
+<td style="text-align: left;">0.00</td>
+<td style="text-align: left;">0.45</td>
+<td style="text-align: left;">0.07</td>
+<td style="text-align: left;">0.84</td>
+<td style="text-align: left;">.016</td>
+<td style="text-align: left;">*</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Condition</td>
+<td style="text-align: left;">Irrelevant Group</td>
+<td style="text-align: left;">Own Group</td>
+<td style="text-align: left;">0.00</td>
+<td style="text-align: left;">0.33</td>
+<td style="text-align: left;">-0.06</td>
+<td style="text-align: left;">0.71</td>
+<td style="text-align: left;">.114</td>
+<td style="text-align: left;">ns</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li><code>null.value</code>: the null hypothesis is that the difference between group 2 and group 1 is this value (all 0s here)</li>
+<li><code>estimate</code>: difference in means (group2 - group1)</li>
+<li><code>conf.low</code> and <code>conf.high</code>: lowerbound and upperbound of the 95% confidence interval for the difference in means</li>
+<li><code>p.ajd</code>: <span class="math inline">\(p\)</span> value adjusted for multiple comparisons, using Tukey.</li>
+<li><code>p.ajd.signif</code>: significance is marked with asterisks (*).
+<ul>
+<li><code>**</code> indicates p &lt; .01</li>
+<li><code>***</code> indicates p &lt; .001.</li>
+<li><code>ns</code> indicates not significant</li>
+</ul></li>
+</ul>
+<p>From the post hoc tests, the only significant difference as from the lower FOMO in Past Plans group, compared to the baseline.</p>
+</section>
+<section id="write-up-the-results" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="write-up-the-results"><span class="header-section-number">7</span> Write up the results</h2>
+<blockquote class="blockquote">
+<p>We tested whether interventions reduce FOMO (Fear of Missing Out). Levene’s test indicated that the assumption of homogeneity of variance was met, <span class="math inline">\(F(3, 784) = 2.24, p = .083\)</span>. One-way between-subjects ANOVA on the FOMO ratings showed a significant effect of interventions, <span class="math inline">\(F(3, 784) = 3.79, p = .010\)</span>, with a small effect size, <span class="math inline">\(\eta_p^2 = .014\)</span> (see <a href="#fig-bar" class="quarto-xref">Figure&nbsp;1</a>).</p>
+<p>Post-hoc comparisons using Tukey’s HSD revealed that this effect was driven by a significant reduction of FOMO in the Past Plans condition (<span class="math inline">\(M_\text{PastPlans} = 2.71\)</span>, <span class="math inline">\(SD_\text{PastPlans} = 1.57\)</span>) compared to the Baseline condition (<span class="math inline">\(M_\text{Baseline} = 3.22\)</span>, <span class="math inline">\(SD_\text{Baseline} = 1.63\)</span>), <span class="math inline">\(p_\text{tukey} = .008\)</span>. Neither the Future Plan (<span class="math inline">\(M_\text{FuturePlan} = 3.10\)</span>, <span class="math inline">\(SD_\text{FuturePlan} = 1.73\)</span>, <span class="math inline">\(p_\text{tukey} = .884\)</span>) nor the Third Person condition (<span class="math inline">\(M_\text{ThirdPerson} = 3.06\)</span>, <span class="math inline">\(SD_\text{ThirdPerson} = 1.52\)</span>, <span class="math inline">\(p_\text{tukey} = .760\)</span>) differed significantly from the baseline. Additionally, there were no significant differences across interventions (Future Plan vs.&nbsp;Past Plans, <span class="math inline">\(p_\text{tukey} = .070\)</span>; Third Person vs.&nbsp;Future Plan, <span class="math inline">\(p_\text{tukey} = .994\)</span>, Third Person vs.&nbsp;Past Plans, <span class="math inline">\(p_\text{tukey} = .131\)</span>). These results suggest that recalling social bonding experiences may be an effective intervention to reduce FOMO.</p>
+</blockquote>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>One-way ANOVA Write-Up Checklist
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>What type of test was performed to test what hypothesis?</li>
+<li>Which DV was tested?</li>
+<li>Was there a significant effect of your IV?
+<ul>
+<li>Test statistic <span class="math inline">\(F\)</span> (e.g., <span class="math inline">\(F(df1, df2)\)</span> = value)
+<ul>
+<li><span class="math inline">\(p\)</span> value (report raw <span class="math inline">\(p\)</span> value to 3 decimal places unless it is smaller than .001)</li>
+</ul></li>
+<li>Effect size <span class="math inline">\(\eta_p^2\)</span>
+<ul>
+<li>Small (.01), Medium (.06), Large (.14)</li>
+</ul></li>
+</ul></li>
+<li>If there was a statistically significant effect, which level drove the effect?
+<ul>
+<li>Which post-hoc test was performed (Tukey or Games-Howell)?</li>
+<li>Descriptive statistic (M and SD for each level)</li>
+<li><span class="math inline">\(p\)</span> value (report raw <span class="math inline">\(p\)</span> value to 3 decimal places unless it is smaller than .001) with the test name as subscript (e.g., <span class="math inline">\(p_\text{tukey}\)</span>)</li>
+<li>Which condition has higher/lower mean? Note the direction if significant.</li>
+</ul></li>
+<li>What do the statistical results mean in the context of the research question?</li>
+<li>If a figure is included, refer to it in the write up.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="exercise" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="exercise"><span class="header-section-number">8</span> Exercise</h2>
+<div class="callout callout-style-default callout-tip callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/yeonsoon\.github\.io\/research-methods-and-stats-book");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

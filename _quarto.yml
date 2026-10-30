@@ -45,6 +45,7 @@ website:
           - lab04-standard-scores.qmd
           - lab05-one-sample-t-test.qmd
           - lab06-two-sample-t-test.qmd
+          - lab07-one-way-anova.qmd
       - section: "Appendix"
         contents:
           - appendix-apa.qmd

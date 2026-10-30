@@ -1,0 +1,367 @@
+---
+title: "Lab 6: One-Way ANOVA"
+author: 
+  - "Yeon Soon Shin"
+  - "Anjali Thapar"
+  - "Dustin Albert"
+format:
+  html:
+    html-math-method: plain
+    embed-resources: true
+---
+
+# One-way Between-Subjects ANOVA
+
+Today's data comes from @rifkin_anxiety_2025. They wanted to investigate effective intervention methods for reducing FOMO. The recruited 788 participants online, and asked them to browse social media posts until they found posts showing an event with their main group of friends that they missed out on. Then participants were randomly assigned to one of four intervention condition. 
+
+* Baseline (n = 202): no intervention
+* Past Plans (n = 201)
+  > "Describe a time in the past that you attended an event or gathering with your social group. This could be a virtual gathering, a phone call, or an in-person event. Write a few sentences describing what you did as a group."
+* Future Plans (n = 195)
+  > "Write about the next time you will connect with your group of friends. This could be a virtual gathering, a phone call, or an in-person event. Write a few sentences describing what you are likely to do and when this might happen. Or you might describe something you could do to connect with your friends in the future."
+* Third Person (n = 190)
+  > "Before moving on with the survey, imagine for a moment that you actually were present at this social-group gathering, and instead, one of your friends from this group was not there. Suppose your friend feels anxious about missing the group gathering. What would you say to your friend?"
+
+They then measured FOMO on an 8-item FOMO scale ("I am concerned that I missed out on a rewarding experience."; 1 = strongly disagree, 7 = strongly agree).
+
+
+## Null Hypothesis and Alternative Hypothesis
+
+The null hypothesis is that FOMO is the same for all conditions.
+
+$$H_0: \mu_\text{Baseline} = \mu_\text{FuturePlan} = \mu_\text{PastPlan} = \mu_\text{Third Person}$$
+
+The alternative hypothesis is that at least one condition has a different FOMO.
+
+## Preliminaries {.unnumbered #preliminaries}
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+```{r}
+library(tidyverse)  # for data wrangling and visualization
+library(psych)      # for describe()
+library(BrailleR)   # for accessibility
+GoBlind()
+```
+
+```{r, include=FALSE}
+theme_set(theme_classic(base_size = 20))
+```
+
+## Data
+
+The relevant variables in the data are as follows:
+
+* `ID`: Participant ID
+* `Condition`: Intervention Conditions (4 levels: "Baseline", "Future Plan", "Past Plans", "Third Person")
+* `FOMO`: The average response in the 8-item FOMO scale (1 = strongly disagree, 7 = strongly agree).
+
+### Read in and clean the data 
+
+```{r}
+df <- read_csv('data/rifkin2025_study6.csv') %>%
+  as_tibble() %>%
+  select(ID, Condition, FOMO) %>%
+  mutate(Condition = factor(Condition, levels=c("Baseline", "Future Plan", "Past Plans", "Third Person"))) 
+
+
+glimpse(df)
+```
+
+
+### Inspect the data
+
+```{r}
+df %>%
+  psych::describe() %>%
+  knitr::kable()
+```
+
+## Check Assumptions
+
+There are 4 assumptions for one-way between-subject ANOVA. 
+
+1. **Continuous Data**: The data are continuous (interval or ratio scale).
+2. **Independence**: The data are independent (no same participant is measured more than once in our sample).
+3. **Normality**: The residuals (deviations from the group mean) are normally distributed within each group. 
+4. **Homogeneity of Variance**: Group variances are equal.
+
+As with the t-tests, the first two assumptions are coming from the research design. In our data, we will need to check for normality and homogeneity of variance.
+
+### Normality: Is ANOVA appropriate to use? 
+
+:::{.callout-note}
+#### ...or should I use an alternative to ANOVA?
+If normality assumption is violated to a degree that ANOVA is not appropriate, then use a nonparametric alternative that relies on ranks rather than raw scores.
+
+For One-way Between-Subject ANOVA, the alternative is Kruskal-Wallis Test.
+:::
+
+Similar to t-test, the Central Limit Theorem is relevant. If we have large enough sample size, ANOVA is robust to moderate violation of normality. 
+
+When the sample size is large, Shapiro-Wilk test can be too sensitive to small deviations from normality. Because we have approximately 200 subjects per condition, we will use visual inspection to check for egregious outliers and non-normality. 
+
+Because this assumption is about residuals (each score's deviation from its own group/condition mean), we will need to inspect each condition, as we did for independent samples t-test. Because this is about the shape (skew and tail), and the residuals would have the same shape as the raw scores, we will plot the raw score distributions.
+
+```{r}
+df %>% 
+    ggplot(aes(x = FOMO)) +
+    facet_wrap(~ Condition) +
+    geom_histogram(
+      binwidth = 0.25, # each bin covers 0.25
+      color = 'black', 
+      fill = 'lightgray') + 
+    theme_classic()
+```
+
+The distributions are positively skewed, with many participants giving the lowest possible score (a floor effect), but there are no extreme outliers. The shapes are similar across conditions, and with a large sample size (about 200 per condition), ANOVA should be reasonably robust, so we cautiously proceed.
+
+### Homogeneity of Variance: Which ANOVA?
+
+**Levene's test** tests whether the spread of scores is similar across groups (i.e., homogeneity of variance). In addition to choosing which ANOVA to use, homogeneity of variance is relevant in choosing the type of post-hoc test (see @tbl-homogeneity-decisions).
+
+:::{.callout-note}
+#### Which ANOVA and post-hoc tests?
+
+:::{#tbl-homogeneity-decisions .list-table aligns="l,l,l" }
+Decisions to make according to whether variances are equal (homogeneous).
+
+- - Decision
+  - Equal
+  - Unequal
+- - Which ANOVA?
+  - Fisher's
+  - Welch's
+- - Which post-hoc pairwise tests?
+  - Tukey's HSD
+  - Games-Howell
+:::
+
+The common thread is that, for unequal variances, tests tend to be *more conservative*. For example, even if Fisher's $F$ is significant, Welch's $F$ may not be significant. For post-hoc, $p$ values from Tukey's HSD are already higher than unadjusted $p$ values from independent samples t-test (Student's $t$), but it will be even higher for Games-Howell, which makes it harder to reject the null hypothesis.
+:::
+
+Let's find out if the spread of our DV (FOMO) is similar across conditions, using Levene's test.
+
+```{r}
+res_levene <- car::leveneTest(FOMO ~ Condition, 
+                              data = df)
+
+res_levene %>%
+  broom::tidy() %>%
+  mutate(
+    across(where(is.numeric) & !p.value, ~ papaja::apa_num(.)),
+    p.value = papaja::apa_p(p.value)
+  ) %>%
+  knitr::kable()
+```
+
+There is not enough evidence that the variances are not equal, so the assumption of homogeneity of variance is reasonably met, and we are good to go with Fisher's ANOVA. 
+
+:::{.callout-note}
+### Levene's Test Results
+`r papaja::apa_print(res_levene)$full_result`
+:::
+
+## Descriptive Statistics
+
+Usually, we would report mean and sd. But FOMO was skewed, so I am going to also report median ($Mdn$) and IQR.
+
+```{r}
+df %>%
+  group_by(Condition) %>%
+  rstatix::get_summary_stats(
+    FOMO, 
+    show = c("n", "mean", "sd", "median", "iqr")
+  ) %>%
+  mutate(
+    across(where(is.numeric) & !n, ~ papaja::apa_num(.)) # round
+  ) %>%
+  knitr::kable()
+```
+
+## Bar Graphs 
+
+This time, we will use the `apa_barplot` function from the `papaja` package to generate a bar graph. This gives us a APA-style plot. 
+
+```{r}
+#| label: fig-bar
+#| fig-cap: Mean FOMO in the intervention conditions. Error bars represent standard error.
+res_plot <- papaja::apa_barplot(
+  data = df,
+  id = "ID",
+  dv = "FOMO",
+  factors = "Condition",
+  tendency = mean, # the height of the bars represent mean
+  dispersion = se, # error bars represent se
+  ylim = c(1, 7) # FOMO is measured on a 7-point scale (1 to 7)
+)
+```
+
+We can also inspect the content of the plot as the table from the plot object. This should be the same as your descriptive statistic table.
+
+```{r}
+res_plot$y %>% 
+  papaja::apa_num() %>%
+  knitr::kable()
+```
+
+
+
+:::{.callout-note}
+### Alternative: ggplot
+
+```{r}
+df %>%
+  ggplot(aes(x = Condition, y = FOMO)) +
+  # mean per condition
+  stat_summary(fun = mean, 
+               geom = "bar", 
+               fill = "lightblue", 
+               color = "black", 
+               width = 0.5) +
+  # standard error per condition
+  stat_summary(fun.data = mean_se, 
+              geom = "errorbar", 
+              width = 0.2) +
+  # add individual data points with jitter and transparency
+  geom_point(position = position_jitter(width = 0.1), 
+             alpha = 0.2, size = 0.5) +
+  # adjust y-axis to start from 1
+  coord_cartesian(ylim = c(1, 7))
+```
+:::
+
+
+
+## One-way between-subjects ANOVA
+
+To compute test statistic F and its associated $p$ value, and the effect size $\eta^2$, we will use `anova_test` from the `rstatix` package. 
+
+```{r}
+res_anova <- df %>%
+  rstatix::anova_test(
+    dv = FOMO, # DV
+    between = Condition, # Between-subjects IV (if it's repeated measures, use within = Condition)
+    wid = ID, # Variable that has the participant ID
+    effect.size = "pes", # partial eta squared
+    ) 
+res_anova %>%
+  knitr::kable()
+```
+
+* `DFn`: between degrees of freedom
+* `DFd`: within degrees of freedom
+* `F`: F-statistic
+* `p`: p value
+* `p<.05`: significance is marked with an asterisk (*). ** indicates p < .01, and *** indicates p < .001.
+* pes: partial eta squared
+
+
+There is a significant effect of interventions. Let's find out which condition is driving the effect.
+
+## Post-hoc comparisons
+
+For post hoc comparisons, we will use Tukey's HSD, because the homogeneity of variance assumption was not violated.
+
+```{r}
+res_posthoc <- df %>%
+  rstatix::tukey_hsd(FOMO ~ Condition)
+
+res_posthoc %>% 
+  broom::tidy() %>%
+  mutate(
+    across(where(is.numeric) & !(p.adj), 
+           ~ papaja::apa_num(.)),
+    p.adj = papaja::apa_p(p.adj) 
+  ) %>%
+  knitr::kable()
+```
+
+* `null.value`: the null hypothesis is that the difference between group 2 and group 1 is this value (all 0s here)
+* `estimate`: difference in means (group2 - group1)
+* `conf.low` and `conf.high`: lowerbound and upperbound of the 95% confidence interval for the difference in means
+* `p.ajd`: $p$ value adjusted for multiple comparisons, using Tukey.
+* `p.ajd.signif`: significance is marked with asterisks (*). 
+  * `**` indicates p < .01
+  * `***` indicates p < .001.
+  * `ns` indicates not significant
+
+From the post hoc tests, the only significant difference as from the lower FOMO in Past Plans group, compared to the baseline. 
+
+## Write up the results
+
+> We tested whether interventions reduce FOMO (Fear of Missing Out). Levene's test indicated that the assumption of homogeneity of variance was met, $F(3, 784) = 2.24, p = .083$. One-way between-subjects ANOVA on the FOMO ratings showed a significant effect of interventions, $F(3, 784) = 3.79, p = .010$, with a small effect size, $\eta_p^2 = .014$ (see @fig-bar).
+> 
+> Post-hoc comparisons using Tukey's HSD revealed that this effect was driven by a significant reduction of FOMO in the Past Plans condition ($M_\text{PastPlans} = 2.71$, $SD_\text{PastPlans} = 1.57$) compared to the Baseline condition ($M_\text{Baseline} = 3.22$, $SD_\text{Baseline} = 1.63$), $p_\text{tukey} = .008$. Neither the Future Plan ($M_\text{FuturePlan} = 3.10$, $SD_\text{FuturePlan} = 1.73$, $p_\text{tukey} = .884$) nor the Third Person condition ($M_\text{ThirdPerson} = 3.06$, $SD_\text{ThirdPerson} = 1.52$, $p_\text{tukey} = .760$) differed significantly from the baseline. Additionally, there were no significant differences across interventions (Future Plan vs. Past Plans, $p_\text{tukey} = .070$; Third Person vs. Future Plan, $p_\text{tukey} = .994$, Third Person vs. Past Plans, $p_\text{tukey} = .131$).
+> These results suggest that recalling social bonding experiences may be an effective intervention to reduce FOMO. 
+
+
+:::{.callout-tip}
+## One-way ANOVA Write-Up Checklist
+
+- What type of test was performed to test what hypothesis?
+- Which DV was tested?
+- Was there a significant effect of your IV?
+  - Test statistic $F$ (e.g., $F(df1, df2)$ = value)
+    - $p$ value (report raw $p$ value to 3 decimal places unless it is smaller than .001)
+  - Effect size $\eta_p^2$
+    - Small (.01), Medium (.06), Large (.14)
+- If there was a statistically significant effect, which level drove the effect?
+  - Which post-hoc test was performed (Tukey or Games-Howell)?
+  - Descriptive statistic (M and SD for each level)
+  - $p$ value (report raw $p$ value to 3 decimal places unless it is smaller than .001) with the test name as subscript (e.g., $p_\text{tukey}$)
+  - Which condition has higher/lower mean? Note the direction if significant.
+- What do the statistical results mean in the context of the research question?
+- If a figure is included, refer to it in the write up.
+:::
+
+## Exercise
+
+:::{.callout-tip}
+## Exercise: Rifkin et al. (2025) Study 5
+
+`rifkin2025_study5.csv` contains another study on social bonding. 
+
+Here, they wanted to test if people feel more "fear" of negative ramifications when they are missing out on a group event.
+
+There is an excerpt from @rifkin_anxiety_2025:
+
+> After indicating their social group and the names of three friends in this group, participants were prompted to imagine they were invited on an upcoming road trip. In two of the three conditions, the other people on the road trip would be members of their social group (Miss Own Group condition, n = 162) or a friend’s family members (Miss Irrelevant Group condition, n = 164) and that they would miss the road trip.
+To test for an exaggeration effect, we included a third condition in which the road trip would involve the participant’s own social group and that the participant could attend but another friend from the group could not (Third-Person Miss condition; n = 162). Thus, this condition involves taking a third-person (vs. first-person) perspective on missing out on the same social event, which has been shown to reveal differences in emotionally laden biases (Buehler et al., 2012).
+We then collected measures of perceived social bonding and cognitions surrounding potential negative social ramifications (order counterbalanced). All participants indicated perceptions of social bonding that would take place during the road trip (three items; e.g., “How much bonding do you think will happen during the road trip?” 1 = very little, 7 = a great deal; α = .86; M = 5.50; SD = .95). They also reported their concerns about the negative ramifications of missing out, either from the perspective of themselves or the friend that would miss out, depending on condition (three items; e.g., “Missing the road trip could weaken [your]/[their] relationship with the group [group name],” 1 = strongly disagree, 7 = strongly agree, α = .92, M = 2.47, SD = 1.48).
+
+* `ID`: Participant ID
+* `Condition`: Missed event conditions
+  * "Third Person Miss"
+  * "Miss - Irrelevant Group"
+  * "Miss - Own Group"
+* `LossIndex` : The average ratings of negative social ramiciations on a 7-point scale (1 to 7)
+* `BondingIndex`: The average ratings of bonding that would occur in the missed event on a 7-point scale (1 to 7)
+
+To get you started, the following code reads in the data and cleans it up for analysis. You can use this code as a starting point for your analysis.
+
+```{r}
+df <- read_csv('data/rifkin2025_study5.csv') %>%
+  as_tibble() %>%
+  mutate(Condition = factor(
+      Condition, 
+      levels=c("Third Person Miss", 
+               "Miss - Irrelevant Group", 
+               "Miss - Own Group"
+              ),
+      labels=c("Third Person", 
+               "Irrelevant Group",
+               "Own Group"))) 
+
+glimpse(df)
+```
+
+1. Plot the data using a bar graph with error bars representing the standard errors.
+1. Run the appropriate omnibus test, and if necessary, post-hoc tests. Report the results in APA style, interpreting the results in the context of the research question.
+:::
