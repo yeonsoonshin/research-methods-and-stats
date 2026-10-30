@@ -294,31 +294,46 @@ res_posthoc %>%
 
 From the post hoc tests, the only significant difference as from the lower FOMO in Past Plans group, compared to the baseline. 
 
-## Write up the results
+## Write up
 
-> We tested whether interventions reduce FOMO (Fear of Missing Out). Levene's test indicated that the assumption of homogeneity of variance was met, $F(3, 784) = 2.24, p = .083$. One-way between-subjects ANOVA on the FOMO ratings showed a significant effect of interventions, $F(3, 784) = 3.79, p = .010$, with a small effect size, $\eta_p^2 = .014$ (see @fig-bar).
+This write-up covers the method and discussion. If you have a separate method section, the first paragraph would belong in the method section.
+
+> We tested whether interventions could reduce FOMO (Fear of Missing Out). Participants were randomly assigned to one of four intervention conditions (Baseline, Future Plan, Past Plans, and Third Person), and reported FOMO on a 7-point scale. FOMO was averaged across 8 items. 
+>
+> Levene's test indicated that the assumption of homogeneity of variance was met, $F(3, 784) = 2.24, p = .083$. We conducted a one-way between-subjects ANOVA on the FOMO ratings across the four intervention conditions. The ANOVA showed a significant effect of interventions, $F(3, 784) = 3.79, p = .010$, with a small effect size, $\eta_p^2 = .014$.
 > 
-> Post-hoc comparisons using Tukey's HSD revealed that this effect was driven by a significant reduction of FOMO in the Past Plans condition ($M_\text{PastPlans} = 2.71$, $SD_\text{PastPlans} = 1.57$) compared to the Baseline condition ($M_\text{Baseline} = 3.22$, $SD_\text{Baseline} = 1.63$), $p_\text{tukey} = .008$. Neither the Future Plan ($M_\text{FuturePlan} = 3.10$, $SD_\text{FuturePlan} = 1.73$, $p_\text{tukey} = .884$) nor the Third Person condition ($M_\text{ThirdPerson} = 3.06$, $SD_\text{ThirdPerson} = 1.52$, $p_\text{tukey} = .760$) differed significantly from the baseline. Additionally, there were no significant differences across interventions (Future Plan vs. Past Plans, $p_\text{tukey} = .070$; Third Person vs. Future Plan, $p_\text{tukey} = .994$, Third Person vs. Past Plans, $p_\text{tukey} = .131$).
-> These results suggest that recalling social bonding experiences may be an effective intervention to reduce FOMO. 
+> Post-hoc comparisons using Tukey's HSD revealed that this effect was driven by a significant reduction of FOMO in the Past Plans condition ($M_\text{PastPlans} = 2.71$, $SD_\text{PastPlans} = 1.57$) compared to the Baseline condition ($M_\text{Baseline} = 3.22$, $SD_\text{Baseline} = 1.63$), $p_\text{tukey} = .008$ (see @fig-bar). Neither the Future Plan ($M_\text{FuturePlan} = 3.10$, $SD_\text{FuturePlan} = 1.73$, $p_\text{tukey} = .884$) nor the Third Person condition ($M_\text{ThirdPerson} = 3.06$, $SD_\text{ThirdPerson} = 1.52$, $p_\text{tukey} = .760$) differed significantly from the baseline. Additionally, there were no significant differences across interventions (Future Plan vs. Past Plans, $p_\text{tukey} = .070$; Third Person vs. Future Plan, $p_\text{tukey} = .994$, Third Person vs. Past Plans, $p_\text{tukey} = .131$).
+>
+> These results suggest that recalling social bonding experiences may be an effective intervention to reduce FOMO, although the effect was small. However, it is unclear what drove this effect. The Past Plans condition involved concrete events that had already happened, whereas the Future Plan condition could involve either a concrete plan (e.g., a birthday party next week) or a possible opportunity to connect (e.g., texting friends to see if they want to get dinner next week). As a result, the reduction could be driven by recalling a past event itself or by the concreteness of that event, because past events are inherently concrete and specific. Future research could help distinguish between these alternative explanations by manipulating the concreteness of future plans. If concrete future plans also reduced FOMO relative to bothvague plans and the baseline, this would suggest that the concreteness of the social event is sufficient for reducing FOMO. If past plans were significantly more effective than concrete future plans, this would suggest that recall contributes to the reduction beyond concreteness. 
 
 
 :::{.callout-tip}
 ## One-way ANOVA Write-Up Checklist
 
-- What type of test was performed to test what hypothesis?
-- Which DV was tested?
-- Was there a significant effect of your IV?
-  - Test statistic $F$ (e.g., $F(df1, df2)$ = value)
-    - $p$ value (report raw $p$ value to 3 decimal places unless it is smaller than .001)
-  - Effect size $\eta_p^2$
-    - Small (.01), Medium (.06), Large (.14)
-- If there was a statistically significant effect, which level drove the effect?
-  - Which post-hoc test was performed (Tukey or Games-Howell)?
-  - Descriptive statistic (M and SD for each level)
-  - $p$ value (report raw $p$ value to 3 decimal places unless it is smaller than .001) with the test name as subscript (e.g., $p_\text{tukey}$)
-  - Which condition has higher/lower mean? Note the direction if significant.
+- A sentence or two to describe what the test was about
+  - Motivate the research question
+  - What type of test was performed?
+  - What hypothesis is being tested? (The goal of the research, not the null hypothesis.)
+  - Which DV was tested?
+- Which test was run to check which assumption?
+  - Was the assumption met?
+    - Relevant statistics
+- Main results
+  - ANOVA
+    - Was there a significant effect of your IV?
+      - Test statistic $F$ (e.g., $F(df1, df2)$ = value)
+        - $p$ value (report raw $p$ value to 3 decimal places unless it is smaller than .001)
+      - Effect size $\eta_p^2$
+        - Small (.01), Medium (.06), Large (.14)
+    - If there was a statistically significant effect, which level drove the effect?
+      - Which post-hoc test was performed (Tukey or Games-Howell)?
+      - Descriptive statistic (M and SD for each level)
+      - $p$ value (report raw $p$ value to 3 decimal places unless it is smaller than .001) with the test name as subscript (e.g., $p_\text{tukey}$)
+      - If significant difference was found, describe in which direction (i.e., Which condition has higher/lower mean?)
 - What do the statistical results mean in the context of the research question?
+  - Make suggestions for future research if test was inconclusive and/or if there are alternative explanations to the results.
 - If a figure is included, refer to it in the write up.
+- Use appropriate causal/ associative language based on the three causal criteria.
 :::
 
 ## Exercise
