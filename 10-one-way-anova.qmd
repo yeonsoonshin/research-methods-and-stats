@@ -1,0 +1,15 @@
+---
+title: "Ch.10: One-way ANOVA"
+author: 
+  - "Yeon Soon Shin"
+  - "Anjali Thapar"
+  - "Dustin Albert"
+  - "Linda R. Cote"
+  - "Rupa G. Gordon"
+  - "Chrislyn E. Randell"
+  - "Judy Smith"
+  - "Helena Marvin"
+format:
+  html:
+    number-offset: 9
+---

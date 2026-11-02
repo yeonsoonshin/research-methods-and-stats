@@ -1,0 +1,229 @@
+---
+title: "Ch.11: Introduction to Factorial ANOVA"
+author: 
+  - "Yeon Soon Shin"
+  - "Anjali Thapar"
+  - "Dustin Albert"
+  - "Nichole Vittoz"
+format:
+  html:
+    number-offset: 10
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  include = TRUE,
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+library(tidyverse)
+library(BrailleR)
+GoBlind()
+```
+# Introduction to Factorial ANOVA
+
+Just like the fractals we see in nature, we can add multiple branchings to every experimental group, thus exploring combinations of factors and their contribution to the meaningful patterns we see in the data.
+
+In this chapter we will tackle two-way Analysis of Variance (ANOVA) and explore conceptually how factorial analysis works. To understand when you need two-way ANOVA and how to set up the analyses, you need to understand the matching research design terminology. We will also need to define and interpret main effects and interaction effects, both of which can be analyzed in a factorial research design. Later we will approach the detection and interpretation of interaction effects, specifically, which will really help you see the extraordinary complexity of information factorial analyses can offer.
+
+Factorial analyses such as a two-way ANOVA are required when we analyze data from a more complex study design than we have seen up until now. Specifically, when a study (or quasi-experiment) includes two or more independent variables (or grouping variables), we need factorial analysis. **Factors** are the grouping variables (either IV or naturally occurring groups), and "way" refers to the number of factors in the study. For example, a two-way ANOVA is used when there are two factors, while a three-way ANOVA is used when there are three factors, and so on.
+
+:::{.callout-note}
+## ANOVA Terms and Notations
+
+* **Factor**: A grouping _variable_ used to account for variance among scores. In an experiment, a factor is an independent variable (IV) that the researcher manipulates; a factor can also be an observed grouping variable (e.g., gender), in which case causal claims are limited.
+* **Levels**: Groups/conditions within a factor.
+* **Way**: The number of factors in the ANOVA.
+  * **One-way ANOVA** includes one factor;
+  * **Two-way ANOVA** includes two factors;
+  * **Three-way ANOVA** includes three factors;
+  * ...
+* **Factorial notation (m x n x ...)**: Each number is the number of levels in one factor, and "x" (read as "by") indicates that the factors are fully crossed with all combinations of levels. The count of numbers is the number of factors, and their product is the number of combinations (called _cells_). It's commonly written as follows:
+
+  > **m** (Factor1: Level1 /Level 2/ ... Level m) **x n** (Factor2: Level 1/ Level 2/ ... Level n) **ANOVA**
+
+  * 2x2 ANOVA: Two factors (a two-way ANOVA), with 2 levels in each factor; 4 cells. 
+  <details><summary>Click to expand examples</summary>
+    * 2 (Time: Pre vs. Post) x 2 (Group: Control vs. Treatment) ANOVA
+    </details>
+  * 2x3 ANOVA: Two factors (a two-way ANOVA), with 2 levels in the first and 3 levels in the second; 6 cells.
+  * 2x2x2 ANOVA: Three factors (a three-way ANOVA), with 2 levels in each; 8 cells.
+* **Between-subjects Factorial ANOVA**: Each participant is in only one level of every factor.
+  <details><summary>Click to expand examples</summary>
+  * 2 (Group: Control vs. Treatment) x 3 (Gender: Woman vs. Man vs. Non-Binary) 
+  </details>
+* **Repeated-measures Factorial ANOVA**: Each participant is measured at every level of every factor.
+  <details><summary>Click to expand examples</summary>
+  * 2 (Time: Pre vs. Post) x 2 (Hand: Dominant vs. Non-dominant hand) 
+  </details>
+* **Mixed ANOVA**: At least one factor is between-subjects and at least one is repeated within subjects. 
+  <details><summary>Click to expand examples</summary>
+  * Treatment group is between-subjects; Time is within-subject. 
+  </details>
+:::
+
+
+
+## Clinical Scenario: Antidepressant
+
+Let's consider a simple example of a two-way ANOVA. Imagine we want to study the effect of an antidepressant drug on depression. Depression is measured with the PHQ-9 scale, and the score ranges from 0 to 27.
+
+```{r include=FALSE}
+grand_mean <- 16
+A  <- c(Pre = 1, Post = -1)            
+B  <- c(Control = 1, Treatment = -1)
+AB <- c(-1, 1, 1, -1) # pre control, pre treatment, post control post treatment
+
+model_data <- expand_grid(
+  Time = factor(names(A), levels = c("Pre", "Post")), 
+  Group = factor(names(B), levels = c("Control", "Treatment"))) %>%
+  mutate(GM = grand_mean,
+         A  = A[Time],
+         B  = B[Group],
+         AB = AB,
+         DV = GM + A + B + AB)
+```
+
+## Scenario 1: Comparing DV across Time (pre- vs. post-treatment)
+
+The first factor we can consider is time (pre- vs. post-treatment). @tbl-one-factor shows hypothetical means for pre and post treatment. 
+
+```{r}
+#| label: tbl-one-factor
+#| tbl-cap: "Hypothetical means for pre and post treatment."
+
+tab <- xtabs(DV ~ Group + Time,
+             data = model_data %>%
+                      filter(Group == "Treatment"),
+             drop.unused.levels = TRUE)
+
+tab_m <- addmargins(tab, margin = 2, 
+                    FUN = list(Mean = mean), 
+                    quiet = TRUE)
+
+tab_m %>% knitr::kable(align = "ccc")
+```
+
+
+However, we've discussed issues with One-Group Pretest-Posttest Design. Just measuring depression pre vs. post treatment is not enough to understand the effect of the drug. We can't manipulate the order of the treatment (pre is always before post), and we cannot randomly assign participants to the counterbalanced order of "pre then post" or "post then pre," because, what does "post then pre" even mean? This comes with many confounds, especially the threats associated with time (e.g., history, maturation, etc.). 
+
+What we would need is a good comparison group to compare the changes (i.e., differences) in depression scores from pre to post treatment. This is where the second factor comes in: group (treatment vs. control).
+
+
+## Scenario 2: Comparing DV across Time (pre- vs. post-treatment) and Group (treatment vs. control)
+
+Again, we need a good comparison group for the change. What we are looking for is whether the change in depression scores from pre to post ***depends on*** whether they are receiving treatment (treatment vs. control). In other words, is the symptom improvement bigger for the treatment group than for the control group? We call this an **interaction effect**. The effect of one factor depends on the level of the other factor. If the improvement is bigger for the treatment group, maturation or history alone cannot explain the improvement. 
+
+Additionally, we can check whether there is a pre-existing differences in the two groups, and even if any difference does exist (e.g., it just so happens that our control group has lower depression score on average), we can look for a **larger** differences after the treatment.
+
+If we find a significant interaction effect, we can conclude that the antidepressant drug is effective in reducing depression scores.
+
+Let's examine this hypothetical means for all four combinations of levels (cells) in @tbl-two-by-two, and the **marginal means** of each factor.
+
+```{r}
+#| label: tbl-two-by-two
+#| tbl-cap: "Hypothetical cell and marginal means for a 2 (Time: Pre vs. Post) × 2 (Group: Control vs. Treatment) design. There are 4 cells (Pre-control, Pre-treatment, Post-control, Post-treatment) for a 2 x 2 design."
+
+tab <- xtabs(DV ~ Group + Time, 
+             data = model_data)
+tab_m <- addmargins(tab, 
+                    FUN = list(Mean = mean), 
+                    quiet = TRUE)
+
+tab_m %>% knitr::kable(align = "ccc")
+```
+
+### Main Effects
+
+#### Main Effect of Factor 1 (Time)
+You might already notice that the **marginal means** of pre and post (@tbl-two-by-two column means in the bottom row; @fig-2x2-main-1) look different. This is called the **main effect** of time, which is about the reduction in the depression scores between the two time points _regardless of_ the other factor, treatment. In other words, we are collapsing (i.e., averaging) across control and treatment conditions.
+
+#### Main Effects of Factor 2 (Group)
+Similarly, we can consider the **marginal means** of treatment and control (@tbl-two-by-two row means in the right-most column; @fig-2x2-main-2), which shows the **main effect** of treatment. Again, we are averaging across pre and post, because we are interested in the overall difference between individuals who were assigned to the two groups, regardless of the status of treatment (pre vs. post). 
+
+```{r}
+#| label: fig-2x2-main
+#| layout: [[50, 50]]
+#| fig-cap: "Two-way ANOVA: Main effects"
+#| fig-subcap: 
+#|  - "Main effect of time. The bar graph shows the marginal means of time (the bottom row of @tbl-two-by-two)."
+#|  - "Main effect of treatment group. The bar graph shows the marginal means of time (the right-most row of @tbl-two-by-two)."
+#| fig-alt:
+#|  - "Bar graph showing the main effect of time on the x-axis (pre and post); y-axis shows DV from 0 to 18. Pre has bar height of 17; Post 15."
+#|  - "Bar graph showing the main effect of group on the x-axis (control and treatment); y-axis shows DV from 0 to 17. Control has bar height of 17; Treatment 15."
+
+# main effect of time
+model_data %>%
+  ggplot(aes(
+    x = Time, 
+    y = DV)) +
+  stat_summary(
+    geom = "bar",
+    fun.aggretate = "mean"
+  ) +
+  theme_classic(base_size = 40)
+
+# main effect of group
+model_data %>%
+  ggplot(aes(
+    x = Group, 
+    y = DV)) +
+  stat_summary(
+    geom = "bar",
+    fun.aggretate = "mean"
+  ) +
+  theme_classic(base_size = 40)
+
+```
+
+
+### Interaction Effect
+
+The key advantage of Factorial ANOVA, however, lies in the interaction. Now we are not just comparing two means. We have four **cell means** for all combinations of pre/post and control/treatment! With interaction, we are looking for the ***difference in differences***. In this scenario, we are looking for the difference in _changes_: is the change from pre to post bigger for the treatment group, compared to the control group?
+
+We can represent this with an interaction plot @fig-2x2-interaction. Notice that the slopes (changes from pre to post) are different between the groups (represented by line), and the slope for the treatment group is steeper than the control group. If this interaction is significant, meaning that the variability explained by these two factors are significantly larger than the variability _unexplained_, and if the treatment group had significantly larger improvement than the control group, this suggests that the treatment is effective in reducing depression symptoms, above and beyond what the natural prognosis would predict.
+
+### Interpreting main effects when there is an interaction
+
+Main effects can be misleading when there is an interaction. In our example, the main effect of time (the overall decrease from pre to post) is not that meaningful, because it is mostly mostly driven by the treatment group, which dropped 6 points, while the control group dropped only 2. Likewise, the main effect of group (17 vs. 15) arises entirely after treatment, because the groups did not differ at pre. Describing the interaction (the pattern across the four cells) is therefore more informative than describing each marginal mean.
+
+```{r}
+#| label: fig-2x2-interaction
+#| fig-cap: "Two-way ANOVA: Interaction effect between time and treatment group"
+#| fig-alt: "Interaction plot showing the interaction effect between time on the x-axis (pre and post) and group as separate lines. Dashed line shows control group and solid line shows treatment group; y-axis shows DV from 0 to 18. While control group's slope is flat, treatment group's slope is negative."
+
+# interaction
+model_data %>%
+  ggplot(aes(
+    x = Time, 
+    y = DV,  
+    group = Group,
+    linetype = Group)) +
+  geom_line() +
+  geom_point() +
+  scale_linetype_manual(values = c(
+    Control = "dashed",
+    Treatment = "solid")
+  ) +
+  theme_classic(base_size = 20) +
+  theme(legend.position = "bottom",
+        legend.key.width = unit(2, "cm"))
+```
+
+## Key Takeaways {.unnumbered}
+
+* Factorial ANOVA is used when a study has two or more factors (grouping variables, either manipulated IVs or naturally occurring groups). "Way" is the number of factors, and the factorial notation (e.g., 2 x 3) gives the number of levels in each factor. The product of those numbers is the number of cells.
+* A two-way ANOVA tests three effects:
+   * The **main effect** of each factor compares marginal means, averaging across the levels of the other factor.
+   * The **interaction effect** asks whether the effect of one factor depends on the level of the other factor.
+* The interaction is a *difference in differences*. In the antidepressant example, it asks whether the pre-to-post change is bigger for the treatment group than for the control group. Graphically, it shows up as non-parallel lines in an interaction plot.
+* Main effects can be misleading when there is an interaction. In the example, the main effect of time is driven by the treatment group, so describing the interaction (the pattern across cells) is more informative than describing each marginal mean.
+
+
+
+
+
+
+
+
