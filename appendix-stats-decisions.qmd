@@ -23,15 +23,15 @@ Statistical Tests for Answering "Is the mean different from a baseline?"
   - One-sample z-test
 
 - - Unknown
-  - One-sample t-test
+  - [One-sample t-test](#sec-one-sample-t-test)
 :::
 
 ### "Are group/condition means different?"
 
 | \# of IVs | \# of levels | Independent groups/conditions | Related groups/conditions |
 |:---|:---|:---|:---|
-| 1 | 2 | Independent Samples t-test | Paired Samples t-test |
-| 1 | $\geq$ 2 | One-way Between-Subjects ANOVA | One-way Repeated-Measures ANOVA |
+| 1 | 2 | [Independent Samples t-test](@sec-ind-samples-t-test) | [Paired Samples t-test](@sec-paired-samples-t-test) |
+| 1 | $\geq$ 2 | [One-way Between-Subjects ANOVA](@sec-one-way-between-anova) | [One-way Repeated-Measures ANOVA](@sec-one-way-repeated-anova) |
 | $\gt$ 1 | $\geq$ 2 | Factorial Between-Subjects ANOVA | Factorial Repeated-Measures ANOVA |
 : Statistical Tests for Answering "Are group/condition means different?" {#tbl-means}
 
@@ -65,18 +65,18 @@ Statistical Tests by DV and IV Types
   - []{rowspan=2} None
   - []{rowspan=6} None
 
-- - One-sample t-test (unknown $\sigma$)
+- - [One-sample t-test (unknown $\sigma$)](@sec-one-sample-t-test)
 
-- - Independent Samples t-test
+- - [Independent Samples t-test](@sec-ind-samples-t-test)
   - Categorical (two independent levels)
   
-- - Paired Samples t-test
+- - [Paired Samples t-test](@sec-paired-samples-t-test)
   - Categorical (two related levels)
   
-- - One-way Between-Subjects ANOVA
+- - [One-way Between-Subjects ANOVA](@sec-one-way-between-anova)
   - Categorical (more than two independent levels)
   
-- - One-way Repeated-Measures ANOVA
+- - [One-way Repeated-Measures ANOVA](@sec-one-way-repeated-anova)
   - Categorical (more than two related levels)
   
 - - Factorial Between-Subjects ANOVA
@@ -102,4 +102,133 @@ Statistical Tests by DV and IV Types
   - Continuous (two)
   - None
   - None
+:::
+
+## Statistical Tests by Assumptions
+
+:::{.callout-note}
+### Tests for Checking Assumptions
+
+:::{.list-table header-rows=1 header-cols=1}
+- - Assumption
+  - Test
+  - Not Violated When
+- - Normality
+  - Shapiro-Wilk Test
+  - []{rowspan=3} p > .05
+- - Homogeneity of Variance
+  - Levene's Test
+- - Sphericity 
+  - Mauchly's Test
+:::
+:::
+
+:::{.callout-note}
+### Checking Normality Assumption
+
+If normality is violated in any sample (condition/group), the normality assumption is violated.
+
+:::{.list-table header-rows=1}
+- - Sample Size
+  - Criteria
+  - Assumption
+- - []{rowspan=2} Large
+  - No extreme outliers
+  - Not violated
+- - Extreme outliers present
+  - Violated
+- - []{rowspan=2} Small
+  - No outliers & Shapiro-Wilk p > .05
+  - Not violated
+- - Outliers or Shapiro-Wilk p < .05
+  - Violated
+:::
+
+:::
+
+
+
+
+### One-sample t-test {#sec-one-sample-t-test}
+
+:::{.list-table header-rows=2 aligns="c,c"}
+
+- - []{colspan=2} Normality Assumption
+- - Not Violated <br> &rarr; Parametric Test
+  - Violated <br> &rarr; Non-Parametric Test
+- - One-sample t-test
+  - One-sample Wilcoxon test
+:::
+
+
+### Paired Samples t-test {#sec-paired-samples-t-test}
+
+:::{.list-table header-rows=2 aligns="c,c"}
+
+- - []{colspan=2} Normality Assumption
+- - Not Violated <br> &rarr; Parametric Test
+  - Violated <br> &rarr; Non-Parametric Test
+- - Paired samples t-test
+  - Wilcoxon signed-rank test
+:::
+
+### Independent Samples t-test {#sec-ind-samples-t-test}
+
+:::{.list-table header-rows=2 header-cols=2 widths="20,20,30,30" aligns="r,r,c,c"}
+
+- - 
+  - 
+  - []{colspan=2} Normality Assumption
+- - 
+  - 
+  - Not Violated <br> &rarr; Parametric Test
+  - Violated <br> &rarr; Non-Parametric Test
+- - []{rowspan=2} Homogeneity of Variance Assumption
+  - Not Violated
+  - Independent samples Student's t-test
+  - []{rowspan=2} Mann-Whitney U test
+- - Violated
+  - Independent samples Welch's t-test
+:::
+
+### One-Way Repeated-Measures ANOVA {#sec-one-way-repeated-anova}
+
+:::{.list-table header-rows=2 header-cols=2 widths="20,20,30,30" aligns="r,r,c,c"}
+
+- - 
+  - 
+  - []{colspan=2} Normality Assumption
+- - 
+  - 
+  - Not Violated <br> &rarr; Parametric Test
+  - Violated <br> &rarr; Non-Parametric Test
+- - []{rowspan=3} Sphericity Assumption
+  - Not Violated
+  - ANOVA with no sphericity correction
+  - []{rowspan=3} Friedman test
+- - Violated (Greenhouse-Geisser epsilon < .75)
+  - ANOVA with Greenhouse-Geisser sphericity correction
+- - Violated (Greenhouse-Geisser epsilon > .75)
+  - ANOVA with Huynh-Feldt sphericity correction
+:::
+
+
+### One-Way Between-Subjects ANOVA {#sec-one-way-between-anova}
+
+:::{#tbl-assumption-one-way-between-anova .list-table header-rows=2 header-cols=2 widths="20,20,30,30" aligns="l,l,l,l"}
+One-Way Between-Subjects ANOVA
+
+- - 
+  - 
+  - []{colspan=2} Normality Assumption
+- - 
+  - 
+  - Not Violated <br> &rarr; Parametric Test
+  - Violated <br> &rarr; Non-Parametric Test
+- - []{rowspan=2} Homogeneity of Variance Assumption
+  - Not Violated
+  - Fisher's ANOVA
+  - []{rowspan=2} Kruskal-Wallis test
+- - Violated
+  - Welch's ANOVA
 :::

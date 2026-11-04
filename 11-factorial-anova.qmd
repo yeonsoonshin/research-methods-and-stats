@@ -74,6 +74,14 @@ grand_mean <- 16
 A  <- c(Pre = 1, Post = -1)            
 B  <- c(Control = 1, Treatment = -1)
 AB <- c(-1, 1, 1, -1) # pre control, pre treatment, post control post treatment
+# grand_mean <- 15.5
+# A  <- c(Pre = 1.5, Post = -1.5)            
+# B  <- c(Control = 0.5, Treatment = -0.5)
+# AB <- c(-0.5, 0.5, 0.5, -0.5) # pre control, pre treatment, post control post treatment
+# grand_mean <- 16
+# A  <- c(Pre = 0, Post = 0)            
+# B  <- c(Control = 1, Treatment = -1)
+# AB <- c(0, 0, 0, 0) # pre control, pre treatment, post control post treatment
 
 model_data <- expand_grid(
   Time = factor(names(A), levels = c("Pre", "Post")), 
@@ -206,8 +214,8 @@ model_data %>%
     Control = "dashed",
     Treatment = "solid")
   ) +
-  theme_classic(base_size = 20) +
-  theme(legend.position = "bottom",
+  theme_classic(base_size = 26) +
+  theme(legend.position = "none",
         legend.key.width = unit(2, "cm"))
 ```
 

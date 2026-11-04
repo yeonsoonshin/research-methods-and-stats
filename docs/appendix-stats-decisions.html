@@ -359,6 +359,14 @@ window.Quarto = {
   <li><a href="#what-predicts-the-mean-of-an-outcome-and-how" id="toc-what-predicts-the-mean-of-an-outcome-and-how" class="nav-link" data-scroll-target="#what-predicts-the-mean-of-an-outcome-and-how"><span class="header-section-number">1.1.4</span> “What predicts the mean of an outcome and how?”</a></li>
   </ul></li>
   <li><a href="#statistical-tests-by-dv-and-iv-types" id="toc-statistical-tests-by-dv-and-iv-types" class="nav-link" data-scroll-target="#statistical-tests-by-dv-and-iv-types"><span class="header-section-number">1.2</span> Statistical Tests by DV and IV Types</a></li>
+  <li><a href="#statistical-tests-by-assumptions" id="toc-statistical-tests-by-assumptions" class="nav-link" data-scroll-target="#statistical-tests-by-assumptions"><span class="header-section-number">1.3</span> Statistical Tests by Assumptions</a>
+  <ul>
+  <li><a href="#sec-one-sample-t-test" id="toc-sec-one-sample-t-test" class="nav-link" data-scroll-target="#sec-one-sample-t-test"><span class="header-section-number">1.3.1</span> One-sample t-test</a></li>
+  <li><a href="#sec-paired-samples-t-test" id="toc-sec-paired-samples-t-test" class="nav-link" data-scroll-target="#sec-paired-samples-t-test"><span class="header-section-number">1.3.2</span> Paired Samples t-test</a></li>
+  <li><a href="#sec-ind-samples-t-test" id="toc-sec-ind-samples-t-test" class="nav-link" data-scroll-target="#sec-ind-samples-t-test"><span class="header-section-number">1.3.3</span> Independent Samples t-test</a></li>
+  <li><a href="#sec-one-way-repeated-anova" id="toc-sec-one-way-repeated-anova" class="nav-link" data-scroll-target="#sec-one-way-repeated-anova"><span class="header-section-number">1.3.4</span> One-Way Repeated-Measures ANOVA</a></li>
+  <li><a href="#sec-one-way-between-anova" id="toc-sec-one-way-between-anova" class="nav-link" data-scroll-target="#sec-one-way-between-anova"><span class="header-section-number">1.3.5</span> One-Way Between-Subjects ANOVA</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="appendix-stats-decisions.epub"><i class="bi bi-file"></i>ePub</a></li><li><a href="appendix-stats-decisions.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
@@ -424,7 +432,7 @@ window.Quarto = {
 Table&nbsp;1: Statistical Tests for Answering “Is the mean different from a baseline?”
 </figcaption>
 <div aria-describedby="tbl-one-sample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table id="tbl-one-sample" class="caption-top table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Population variance</th>
@@ -438,7 +446,7 @@ Table&nbsp;1: Statistical Tests for Answering “Is the mean different from a ba
 </tr>
 <tr class="even">
 <td>Unknown</td>
-<td>One-sample t-test</td>
+<td><a href="#sec-one-sample-t-test">One-sample t-test</a></td>
 </tr>
 </tbody>
 </table>
@@ -455,12 +463,6 @@ Table&nbsp;2: Statistical Tests for Answering “Are group/condition means diffe
 </figcaption>
 <div aria-describedby="tbl-means-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: left;"># of IVs</th>
@@ -473,14 +475,14 @@ Table&nbsp;2: Statistical Tests for Answering “Are group/condition means diffe
 <tr class="odd">
 <td style="text-align: left;">1</td>
 <td style="text-align: left;">2</td>
-<td style="text-align: left;">Independent Samples t-test</td>
-<td style="text-align: left;">Paired Samples t-test</td>
+<td style="text-align: left;"><a href="@sec-ind-samples-t-test">Independent Samples t-test</a></td>
+<td style="text-align: left;"><a href="@sec-paired-samples-t-test">Paired Samples t-test</a></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">1</td>
 <td style="text-align: left;"><span class="math inline">\(\geq\)</span> 2</td>
-<td style="text-align: left;">One-way Between-Subjects ANOVA</td>
-<td style="text-align: left;">One-way Repeated-Measures ANOVA</td>
+<td style="text-align: left;"><a href="@sec-one-way-between-anova">One-way Between-Subjects ANOVA</a></td>
+<td style="text-align: left;"><a href="@sec-one-way-repeated-anova">One-way Repeated-Measures ANOVA</a></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><span class="math inline">\(\gt\)</span> 1</td>
@@ -582,22 +584,22 @@ Table&nbsp;5: Statistical Tests by DV and IV Types
 <td rowspan="6"> None</td>
 </tr>
 <tr class="even">
-<th>One-sample t-test (unknown <span class="math inline">\(\sigma\)</span>)</th>
+<th><a href="@sec-one-sample-t-test">One-sample t-test (unknown <span class="math inline">\(\sigma\)</span>)</a></th>
 </tr>
 <tr class="odd">
-<th>Independent Samples t-test</th>
+<th><a href="@sec-ind-samples-t-test">Independent Samples t-test</a></th>
 <td>Categorical (two independent levels)</td>
 </tr>
 <tr class="even">
-<th>Paired Samples t-test</th>
+<th><a href="@sec-paired-samples-t-test">Paired Samples t-test</a></th>
 <td>Categorical (two related levels)</td>
 </tr>
 <tr class="odd">
-<th>One-way Between-Subjects ANOVA</th>
+<th><a href="@sec-one-way-between-anova">One-way Between-Subjects ANOVA</a></th>
 <td>Categorical (more than two independent levels)</td>
 </tr>
 <tr class="even">
-<th>One-way Repeated-Measures ANOVA</th>
+<th><a href="@sec-one-way-repeated-anova">One-way Repeated-Measures ANOVA</a></th>
 <td>Categorical (more than two related levels)</td>
 </tr>
 <tr class="odd">
@@ -635,8 +637,250 @@ Table&nbsp;5: Statistical Tests by DV and IV Types
 </div>
 </figure>
 </div>
+</section>
+<section id="statistical-tests-by-assumptions" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="statistical-tests-by-assumptions"><span class="header-section-number">1.3</span> Statistical Tests by Assumptions</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Tests for Checking Assumptions
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Assumption</th>
+<th>Test</th>
+<th>Not Violated When</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th>Normality</th>
+<td>Shapiro-Wilk Test</td>
+<td rowspan="3"> p &gt; .05</td>
+</tr>
+<tr class="even">
+<th>Homogeneity of Variance</th>
+<td>Levene’s Test</td>
+</tr>
+<tr class="odd">
+<th>Sphericity</th>
+<td>Mauchly’s Test</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Checking Normality Assumption
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If normality is violated in any sample (condition/group), the normality assumption is violated.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Sample Size</th>
+<th>Criteria</th>
+<th>Assumption</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td rowspan="2"> Large</td>
+<td>No extreme outliers</td>
+<td>Not violated</td>
+</tr>
+<tr class="even">
+<td>Extreme outliers present</td>
+<td>Violated</td>
+</tr>
+<tr class="odd">
+<td rowspan="2"> Small</td>
+<td>No outliers &amp; Shapiro-Wilk p &gt; .05</td>
+<td>Not violated</td>
+</tr>
+<tr class="even">
+<td>Outliers or Shapiro-Wilk p &lt; .05</td>
+<td>Violated</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="sec-one-sample-t-test" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="sec-one-sample-t-test"><span class="header-section-number">1.3.1</span> One-sample t-test</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th colspan="2" style="text-align: center;"> Normality Assumption</th>
+</tr>
+<tr class="even">
+<th style="text-align: center;">Not Violated <br> → Parametric Test</th>
+<th style="text-align: center;">Violated <br> → Non-Parametric Test</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">One-sample t-test</td>
+<td style="text-align: center;">One-sample Wilcoxon test</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sec-paired-samples-t-test" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="sec-paired-samples-t-test"><span class="header-section-number">1.3.2</span> Paired Samples t-test</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th colspan="2" style="text-align: center;"> Normality Assumption</th>
+</tr>
+<tr class="even">
+<th style="text-align: center;">Not Violated <br> → Parametric Test</th>
+<th style="text-align: center;">Violated <br> → Non-Parametric Test</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Paired samples t-test</td>
+<td style="text-align: center;">Wilcoxon signed-rank test</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sec-ind-samples-t-test" class="level3" data-number="1.3.3">
+<h3 data-number="1.3.3" class="anchored" data-anchor-id="sec-ind-samples-t-test"><span class="header-section-number">1.3.3</span> Independent Samples t-test</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 30%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;"></th>
+<th style="text-align: right;"></th>
+<th colspan="2" style="text-align: center;"> Normality Assumption</th>
+</tr>
+<tr class="even">
+<th style="text-align: right;"></th>
+<th style="text-align: right;"></th>
+<th style="text-align: center;">Not Violated <br> → Parametric Test</th>
+<th style="text-align: center;">Violated <br> → Non-Parametric Test</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th rowspan="2" style="text-align: right;"> Homogeneity of Variance Assumption</th>
+<th style="text-align: right;">Not Violated</th>
+<td style="text-align: center;">Independent samples Student’s t-test</td>
+<td rowspan="2" style="text-align: center;"> Mann-Whitney U test</td>
+</tr>
+<tr class="even">
+<th style="text-align: right;">Violated</th>
+<td style="text-align: center;">Independent samples Welch’s t-test</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sec-one-way-repeated-anova" class="level3" data-number="1.3.4">
+<h3 data-number="1.3.4" class="anchored" data-anchor-id="sec-one-way-repeated-anova"><span class="header-section-number">1.3.4</span> One-Way Repeated-Measures ANOVA</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 30%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;"></th>
+<th style="text-align: right;"></th>
+<th colspan="2" style="text-align: center;"> Normality Assumption</th>
+</tr>
+<tr class="even">
+<th style="text-align: right;"></th>
+<th style="text-align: right;"></th>
+<th style="text-align: center;">Not Violated <br> → Parametric Test</th>
+<th style="text-align: center;">Violated <br> → Non-Parametric Test</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th rowspan="3" style="text-align: right;"> Sphericity Assumption</th>
+<th style="text-align: right;">Not Violated</th>
+<td style="text-align: center;">ANOVA with no sphericity correction</td>
+<td rowspan="3" style="text-align: center;"> Friedman test</td>
+</tr>
+<tr class="even">
+<th style="text-align: right;">Violated (Greenhouse-Geisser epsilon &lt; .75)</th>
+<td style="text-align: center;">ANOVA with Greenhouse-Geisser sphericity correction</td>
+</tr>
+<tr class="odd">
+<th style="text-align: right;">Violated (Greenhouse-Geisser epsilon &gt; .75)</th>
+<td style="text-align: center;">ANOVA with Huynh-Feldt sphericity correction</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sec-one-way-between-anova" class="level3" data-number="1.3.5">
+<h3 data-number="1.3.5" class="anchored" data-anchor-id="sec-one-way-between-anova"><span class="header-section-number">1.3.5</span> One-Way Between-Subjects ANOVA</h3>
+<div id="tbl-assumption-one-way-between-anova" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-assumption-one-way-between-anova-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6: One-Way Between-Subjects ANOVA
+</figcaption>
+<div aria-describedby="tbl-assumption-one-way-between-anova-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table id="tbl-assumption-one-way-between-anova" class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 30%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;"></th>
+<th colspan="2" style="text-align: left;"> Normality Assumption</th>
+</tr>
+<tr class="even">
+<th style="text-align: left;"></th>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Not Violated <br> → Parametric Test</th>
+<th style="text-align: left;">Violated <br> → Non-Parametric Test</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th rowspan="2" style="text-align: left;"> Homogeneity of Variance Assumption</th>
+<th style="text-align: left;">Not Violated</th>
+<td style="text-align: left;">Fisher’s ANOVA</td>
+<td rowspan="2" style="text-align: left;"> Kruskal-Wallis test</td>
+</tr>
+<tr class="even">
+<th style="text-align: left;">Violated</th>
+<td style="text-align: left;">Welch’s ANOVA</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
 
 
+</section>
 </section>
 </section>
 
