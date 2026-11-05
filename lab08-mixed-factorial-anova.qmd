@@ -1,0 +1,397 @@
+---
+title: "Lab 8: Mixed Factorial ANOVA"
+author: 
+  - "Yeon Soon Shin"
+  - "Anjali Thapar"
+  - "Dustin Albert"
+format:
+  html:
+    html-math-method: plain
+    embed-resources: true
+---
+
+# Mixed Factorial ANOVA
+
+Today's data comes from @li_smartphone_2025, which examined the effectiveness of a smartphone-based mindfulness intervention for reducing stress and anxiety in adults who are dignosed with autism. 
+
+The abstract of the paper outlines the study:
+
+> **Objectives** In-person mindfulness-based interventions (MBIs) have been shown to decrease symptoms of anxiety and stress in autistic adults, who often report high levels of these symptoms. Little is known about the effectiveness of remote MBIs for this population, which may be particularly useful given the common barriers autistic adults face in accessing in-person treatment. This study examined the feasibility and effectiveness of an app-based mindfulness intervention for autistic adults. 
+>
+> **Method** This randomized controlled trial (RCT) examined whether a 6-week remote intervention, using a customized version of the Healthy Minds Program app, reduced symptoms of anxiety and perceived stress in 89 autistic adults. Participants were randomly assigned to either the mindfulness intervention or a wait-list control (WLC) group. The WLC group received the intervention after the RCT. Self-report measures of anxiety, perceived stress, positive and negative affect, and trait mindfulness were administered at several timepoints.
+
+
+## Preliminaries {.unnumbered #preliminaries}
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+```{r}
+library(tidyverse)   # for data wrangling and visualization
+library(performance) # for assumption checks
+library(BrailleR)    # for accessibility
+GoBlind()
+```
+
+```{r, include=FALSE}
+theme_set(theme_classic(base_size = 20))
+```
+
+## Data
+
+For this lab, we will compare Five Factor Mindfulness Questionnaire (FFMQ) scores between two groups (Intervention vs. Waitlist Control) at two timepoints (Pre vs. Post).
+
+* `MainID`: Participant ID
+* `Group`: 1 = Intervention, 2 = Waitlist Control
+* `Timepoint`: 1 = Pre, 2 = Post
+* `FFMQ`: Five Factor Mindfulness Questionnaire score excluding the Observing subscale (range: 31 - 155)
+
+### Read in and clean the data 
+
+```{r}
+df <- read_csv('data/li2025.csv') %>%
+  as_tibble() %>%
+  mutate(
+    MainID = factor(MainID),
+    Group = factor(Group,
+      levels = c(2, 1),
+      labels = c("WaitlistControl", "Intervention")),
+    Timepoint = factor(Timepoint,
+      levels = c(1, 2),
+      labels = c("Pre", "Post"))
+  )
+
+glimpse(df)
+```
+
+### Inspect the data
+
+```{r}
+df %>%
+  psych::describe() %>%
+  knitr::kable()
+```
+
+#### Visualize the distribution
+
+It is always a good idea to visualize the distribution of the dependent variable, subsetted by the factors in the design. You can check if the distribution looks approximately normal and not skewed, and if there are any outliers. Additionally, you can also check if the range of responses is reasonable (e.g., if the minimum and maximum values are within the possible range of the scale).
+
+```{r}
+df %>% 
+    ggplot(aes(x = FFMQ)) +
+    facet_grid(Group ~ Timepoint) + # Group on rows, Timepoint on columns
+    geom_histogram(
+      bins = 10, # 10 bins
+      color = 'black', 
+      fill = 'lightgray') + 
+    theme_classic()
+```
+
+
+## Check Assumptions
+
+As we've discussed, our assumptions are about the residuals of the model, not the raw data. What that means is that after accounting for the effects of the factors in the model, what cannot be explained by the model (i.e., the residuals) should be approximately normally distributed and have equal variance across groups. 
+
+Mixed factorial ANOVA where there are only two levels of the within-subjects factor (i.e., pre vs. post) is equivalent to a one-way between-subjects ANOVA on the change scores. So we will check the assumptions of normality and homogeneity of variance on the change scores.
+
+For this, we first need to calculate the change scores for each participant, which is the difference between the post-intervention and pre-intervention scores. `pivot_wider()` is a convenient function to reshape the data from long to wide format, so that we can calculate the change scores.
+
+```{r}
+df_wide <- df %>%
+  pivot_wider(
+    id_cols = c(Group, MainID), # keep these columns
+    names_from = Timepoint,     # create new columns for each level of Timepoint (Pre and Post)
+    values_from = FFMQ          # the values under the new columns will be the FFMQ scores
+  ) %>%
+  mutate(
+    FFMQ_change = Post - Pre    # create a new column for the change scores
+  )
+```
+
+### Normality 
+
+Now, plot the distribution of the change scores for each group. We are looking for a roughly normal distribution. 
+
+```{r}
+df_wide %>% 
+    ggplot(aes(x = FFMQ_change)) +
+    facet_grid( ~ Group) + # Group on rows, Timepoint on columns
+    geom_histogram(
+      bins = 10, # 10 bins
+      color = 'black', 
+      fill = 'lightgray') + 
+    theme_classic()
+```
+
+They are not too skewed, so we can proceed to use ANOVA.
+
+### Homogeneity of Variance: Which ANOVA?
+
+We will run Levene's test on the change scores. 
+
+```{r}
+res_levene <- car::leveneTest(FFMQ_change ~ Group, 
+                              data = df_wide)
+
+res_levene %>%
+  broom::tidy() %>%
+  mutate(
+    across(where(is.numeric) & !p.value, ~ papaja::apa_num(.)),
+    p.value = papaja::apa_p(p.value)
+  ) %>%
+  knitr::kable()
+```
+
+
+## Descriptive Statistics
+
+We want the marginal means and the cell means for each group at each timepoint. The marginal means are the means for each level of a factor, averaged across the levels of the other factor. The cell means are the means for each combination of the levels of the factors.
+
+### Marginal Means and SDs
+
+```{r}
+df %>%
+  group_by(Group) %>%
+  rstatix::get_summary_stats(
+    FFMQ, 
+    show = c("n", "mean", "sd")
+  ) %>%
+  mutate(
+    across(where(is.numeric) & !n, ~ papaja::apa_num(.)) # round
+  ) %>%
+  knitr::kable()
+```
+
+```{r}
+df %>%
+  group_by(Timepoint) %>%
+  rstatix::get_summary_stats(
+    FFMQ, 
+    show = c("n", "mean", "sd")
+  ) %>%
+  mutate(
+    across(where(is.numeric) & !n, ~ papaja::apa_num(.)) # round
+  ) %>%
+  knitr::kable()
+```
+
+
+### Cell Means and SDs
+```{r}
+df %>%
+  group_by(Group, Timepoint) %>%
+  rstatix::get_summary_stats(
+    FFMQ, 
+    show = c("n", "mean", "sd")
+  ) %>%
+  mutate(
+    across(where(is.numeric) & !n, ~ papaja::apa_num(.)) # round
+  ) %>%
+  knitr::kable()
+```
+
+
+## Mixed Factorial ANOVA
+
+### Define the Model
+
+To conduct a mixed factorial ANOVA, we will use the `afex` package, which is a convenient wrapper around the `aov()` function. The `aov_ez()` function takes care of specifying the model formula and the data structure for you. You will need to specify which factor is the within-subjects factor and which is the between-subjects factor.
+
+```{r}
+mod <- afex::aov_ez(
+  data = df,                      # data frame
+  dv = "FFMQ",                    # dependent variable
+  id = "MainID",                  # participant ID
+  within = "Timepoint",           # within-subjects factor
+  between = "Group",              # between-subjects factor
+  type = 3                        # Type III sums of squares
+  ) 
+res_anova <- papaja::apa_print(mod, es = "pes") # partial eta-squared
+```
+
+### Plot Interaction 
+
+We should to visualize all cell means, and dividing the data by the factors. Because there are 2 x 2 = 4 cells in this design, we will have 4 cell means. 
+
+We will represent one factor (within-subjects factor) on the x-axis, and the other factor (between-subjects factor) as separate lines.
+
+```{r}
+#| label: fig-interaction-plot
+#| fig-cap: "Mean FFMQ scores for each group at each timepoint. Error bars represent 95% between-subjects confidence intervals."
+ 
+res_plot <- mod %>%
+  papaja::apa_lineplot(
+    factors = c("Timepoint", "Group"),
+    tendency = mean,
+    dispersion = ci,
+    level = 0.95,
+    jit = 0.05,       # dodge the points to avoid overlap
+    ylim = c(30, 50), # reasonable min for FFMQ scores
+    args_lines = list(lty = c(2, 1)),
+    args_points = list(pch = c(1, 16)),
+    args_errorbars = list(width = 0.1)
+  )
+```
+
+Here are all the cell means and the 95% within-subjects confidence intervals.
+
+```{r}
+res_plot$y %>% 
+  papaja::apa_num() %>%
+  knitr::kable()
+```
+
+### ANOVA Results
+
+We can print the ANOVA table using the `afex::nice()` function, which provides a nice summary of the ANOVA results. We will also include the effect size (partial eta-squared) in the table.
+
+```{r}
+mod %>%
+  afex::nice(
+    es = "pes",   # partial eta-squared
+  ) %>%
+  knitr::kable()
+```
+
+Similar to the results from `anova_test()`, the results show you the relevant statistics:
+
+* df: the degrees of freedom for the numerator (signal) and denominator (noise)
+* MSE: Mean Squared Error ($MS_\text{error}$)
+* F: the F-statistic
+* pes: the effect size (partial eta-squared)
+* p.value: the p-value
+
+The difference for factorial ANOVA is that you have multiple rows in the table, one for each main effect and one for the interaction effect. 
+
+For this example, we have two main effects (Timepoint and Group) and one interaction effect (Timepoint:Group). You will need to interpret the main effects and the interaction effect separately.
+
+Let's go through the interpretation for each effect.
+
+* Main effect of group: The main effect of group is not significant, becuse p.value is greater than 0.05. This means that there is no overall difference in FFMQ scores between the two groups (average of the individuals in the Intervention group vs. the Waitlist Control group), regardless of timepoint.
+  * Because this is not significant, we do not follow up with post-hoc comparisons for the main effect of group.
+
+* Main effect of timepoint: The main effect of timepoint is significant, because p.value is less than 0.05. This means that there is an overall difference in FFMQ scores between the two timepoints (average of the all individuals at Pre vs. Post), regardless of group. 
+  * Because this main effect is significant, we will consider following up with post-hoc comparisons for the main effect of timepoint. However, there are only two levels of timepoint, so we actually do not need to check "where the difference is coming from" because we already know that the difference is between Pre and Post. What you do need to check is the direction of the difference, which you can do by looking at the descriptive statistics table and the plot of the interaction effect.
+  * Before we interpret this main effect, we need to check if the interaction effect is significant. If the interaction effect is significant, then this main effect is qualified by the interaction. Maybe the difference is driven by one group. So let's check the interaction effect.
+
+* Interaction effect of timepoint and group: The interaction effect is significant, because p.value is less than 0.05. This means that the difference in FFMQ scores between the two timepoints (Pre vs. Post) is different for the two groups (Intervention vs. Waitlist Control). In other words, the effect of timepoint on FFMQ scores depends on which group the individual is in. 
+  * Because this interaction effect is significant, we will follow up with post-hoc comparisons to see where the difference is coming from. 
+
+
+## Post-hoc Comparisons
+
+For post-hoc comparisons, we will look at 4 simple effects: the effect of timepoint within each group, and the effect of group within each timepoint.
+
+Because there are 4 comparisons, not every pair of means (e.g., Pre-Intervention vs. Post-Control) is being compared. Instead, we are only comparing the means that are relevant to the interaction effect. Therefore, we will use Holm's method to adjust for multiple comparisons.
+
+`emmeans` package is a convenient way to conduct post-hoc comparisons. The `emmeans()` function computes the estimated marginal means (EMMs) for each level of the factors in the model, and the `contrast()` function computes the pairwise comparisons between the EMMs.
+
+There are 4 arguments in the `contrast()` function that we will use:
+
+* `interaction`: specifies which pairwise comparisons to compute. We will use `"revpairwise"` to reverse the order of the pairwise comparisons, so that we can subtract the Pre mean from the Post mean.
+* `simple`: specifies which factor to compute the simple effects for. We will use `"each"` to compute the simple effects for each factor. If you are only interested in the simple effects of one factor, you can specify that factor instead of `"each"` (e.g., `"Timepoint"`). 
+* `combine`: specifies whether to combine the results of the simple effects into a single output. This is useful if you want to see all the simple effects in one table. We will use `TRUE` to combine the results.
+* `adjust`: specifies the method to adjust for multiple comparisons. We will use `"holm"` to adjust for multiple comparisons using Holm's method.
+
+```{r}
+emmeans::emmeans(mod, ~ Timepoint * Group) %>%
+  emmeans::contrast(
+    interaction = "revpairwise", 
+    simple = "each",
+    combine = TRUE,
+    adjust = "holm"
+  ) %>%
+  broom::tidy() %>%
+  # take care of rounding and formatting for APA style
+  mutate( 
+    across(where(is.numeric) & !adj.p.value & !df, 
+           ~ papaja::apa_num(.)),
+    adj.p.value = papaja::apa_p(adj.p.value) 
+  ) %>%
+  knitr::kable()
+```
+
+Now we are ready to interpret the results of the post-hoc comparisons.
+
+Each row in the table represents a pairwise comparison between two means. To find which effects are being tested, you can look at the first 4 columns, which indicate the levels of the factors being compared.:
+
+* The first row shows the simple effect of time (see the Timepoint_revpairwise column: Post - Pre) for the Waitlist Control group (see the Group column).
+* The second row shows the simple effect of time (see the Timepoint_revpairwise column: Post - Pre) for the Intervention group (see the Group column).
+* The third row shows the simple effect of group (see the Group_revpairwise column: Intervention - Waitlist Control) for the Pre timepoint (see the Timepoint column).
+* The fourth row shows the simple effect of group (see the Group_revpairwise column: Intervention - Waitlist Control) for the Post timepoint (see the Timepoint column).
+
+These are essentially t-tests for each of the simple effects, and the results show you the relevant statistics:
+
+* estimate: the estimated difference between the two means being compared
+* std.error: the standard error of the estimated difference
+* df: the degrees of freedom for the t-test
+* statistic: the t-statistic for the t-test
+* adj.p.value: the p-value for the t-test, adjusted for multiple comparisons using Holm
+
+Among the 4 simple effects, only the second row (the simple effect of time for the Intervention group) is significant, because the adjusted p-value is less than 0.05. This means that the FFMQ scores increased from Pre to Post for the Intervention group, but not for the Waitlist Control group.
+
+
+## Write up
+
+> We tested whether a smartphone-based 6-week mindfulness intervention was effective in increasing mindfulness scores (FFMQ) in adults with autism. Participants were randomly assigned to either the Intervention group or the Waitlist Control group. FFMQ scores were measured at two timepoints (Pre and Post). 
+> 
+> Levene's test indicated that the assumption of homogeneity of variance was not violated, $F(1, 77) = 1.94, p = .167$. A 2 (Timepoint: Pre, Post) x 2 (Group: Intervention, Control) mixed factorial ANOVA was conducted to examine the effect of the intervention on FFMQ scores (see @fig-interaction-plot).
+> The main effect of Group was not significant, `r res_anova$full_result$Group` ( $M_\text{Intervention} = 36.64$, $SD_\text{Intervention} = 6.48$; $M_\text{Control} = 34.26$; $M_\text{Control} = 8.15$). 
+> There was a significant main effect of Timepoint, `r res_anova$full_result$Timepoint`, indicating that FFMQ scores were higher at Post ($M = 36.85$, $SD = 7.72$) than at Pre ($M = 33.90$, $SD = 6.99$).
+> This main effect was qualified by a significant interaction between Timepoint and Group, `r res_anova$full_result$Group_Timepoint`. Post-hoc comparisons using Holm's correction revealed that the increase in the FFMQ scores over time was driven by the Interventions group, where FFMQ scores significantly increased from Pre ($M = 34.24$, $SD = 6.11$) to Post ($M = 39.03$, $SD = 6.01$), $p_\text{holm} < .001$. For the Control group, Pre ($M = 33.60$, $SD = 7.74$) and Post ($M = 34.93$, $SD = 8.58$) scores did not significantly differ, $p_\text{holm} = .272$. The simple effect of group was not significant at either timepoint, Pre ($p_\text{holm} = .684$) or Post ($p_\text{holm} = .053$).
+> Together, these results suggest that the smartphone-based mindfulness intervention may be effective in increasing mindfulness in adults with autism. 
+
+
+:::{.callout-tip}
+## Factorial ANOVA Write-Up Checklist
+
+- A sentence or two to describe what the test was about
+  - Motivate the research question
+  - What type of test was performed?
+  - What hypothesis is being tested? (The goal of the research, not the null hypothesis.)
+  - Which DV was tested?
+- Which test was run to check which assumption?
+  - Was the assumption met?
+    - Relevant statistics
+- Main results
+  - ANOVA: For each main effect and interaction effect, report the following:
+    - Was there a significant effect of your IV?
+      - Test statistic $F$ (e.g., $F(df1, df2)$ = value)
+        - $p$ value (report raw $p$ value to 3 decimal places unless it is smaller than .001)
+      - Effect size $\eta_p^2$
+        - Small (.01), Medium (.06), Large (.14)
+    - Post-hoc comparisons: 
+      - For each significant main effect with more than 2 levels, conduct post-hoc pairwise comparisons and report the following:
+        - Which post-hoc test was performed (Tukey or Games-Howell)?
+        - Descriptive statistic (M and SD for each level)
+        - $p$ value (report $p$ value to 3 decimal places unless it is smaller than .001) with the test name as subscript (e.g., $p_\text{tukey}$)
+        - If significant difference was found, describe in which direction (i.e., Which condition has higher/lower mean?)
+      - For each significant interaction effect, conduct post-hoc comparisons on simple effects and report the following:
+        - Descriptive statistic (M and SD for each combination of levels)
+        - $p$ value (report $p$ value to 3 decimal places unless it is smaller than .001) with the test name as subscript (e.g., $p_\text{holm}$)
+        - If significant difference was found, describe in which direction (i.e., Which condition has higher/lower mean?)
+- What do the statistical results mean in the context of the research question?
+  - Make suggestions for future research if test was inconclusive and/or if there are alternative explanations to the results.
+- If a figure is included, refer to it in the write up.
+- Use appropriate causal/ associative language based on the three causal criteria.
+:::
+
+## Exercise
+
+
+:::{.callout-tip}
+## Exercise: Li et al. (2025) "Perceived Stress Score"
+
+Their main hypotheses were on anxiety and stress. For this exercise, we will examine perceived stress using the Perceived Stress Scale (`PSS`). This is a 10-item self-report measure that assesses stress over the past month. The toal score ranges from 0 to 40 (higher score indicates higher stress).
+
+Conduct a 2 (Timepoint: Pre, Post) x 2 (Group: Intervention, Control) mixed factorial ANOVA to examine the effect of the intervention on PSS scores. 
+
+1. Plot the data using a line graph.
+2. Run the appropriate statistical tests and write up your results in APA style.
+
+:::
