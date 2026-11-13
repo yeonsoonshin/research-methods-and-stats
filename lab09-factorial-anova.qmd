@@ -1,0 +1,82 @@
+---
+title: "Lab 9: Factorial ANOVA"
+author: 
+  - "Yeon Soon Shin"
+  - "Anjali Thapar"
+  - "Dustin Albert"
+format:
+  html:
+    html-math-method: plain
+    embed-resources: true
+---
+
+# Factorial ANOVA
+
+For today's lab, we will return to Imundo et al. (2021). In their Study 2, they looked at two different types of review methods (Restudy and Test) in either same or different contexts as the original study context. This is perfect for a factorial ANOVA because we have two independent variables (IVs) and one dependent variable (DV).
+
+Because we have already covered the basics of a factorial ANOVA in lab 8, we will focus on the interpretation of the results and the write-up of the results in APA style.
+
+## Learning Objectives {.unnumbered}
+
+1.  Be able to read in data and clean it.
+1.  Be able to use appropriate assumption checks on the residuals.
+2.  Be able to plot factorial ANOVA results as a bar graph.
+3.  Be able to interpret the results of a factorial ANOVA and write them up in APA style.
+
+
+## Exercise
+
+:::{.callout-tip}
+## Exercise: Review Context x Activity
+
+Hypothetical replication data from Imundo et al. (2021) Study 2 is provided in the `data` folder in `imundo_follow-up.csv`. The data contains the following variables:
+
+* `ID`: participant ID
+* `ReviewContext`: whether the review context was the same or different as the original study context (Same, Different)
+* `ReviewActivity`: whether the review activity was a restudy or a test (Restudy, Test)
+* `ProportionRecalled`: the proportion of items recalled in the final test (DV)
+* `NumberCorrectWordsRecalled`: the number of items recalled in the final test
+* `Age`: participant age
+* `Gender`: participant gender (Female, Male, Other)
+
+Conduct a 2 (ReviewContext: Same, Different) x 2 (ReviewActivity: Restudy, Test) factorial ANOVA to examine the effect of the review context and activity on the proportion of items recalled.
+
+1. Plot the data using a bar graph, using the `papaja::apa_barplot` function.
+2. Run the appropriate statistical tests and write up your results in APA style.
+
+:::
+
+
+:::{.callout-tip}
+## Factorial ANOVA Write-Up Checklist
+
+- A sentence or two to describe what the test was about
+  - Motivate the research question
+  - What type of test was performed?
+  - What hypothesis is being tested? (The goal of the research, not the null hypothesis.)
+  - Which DV was tested?
+- Which test was run to check which assumption?
+  - Was the assumption met?
+    - Relevant statistics
+- Main results
+  - ANOVA: For each main effect and interaction effect, report the following:
+    - Was there a significant effect of your IV?
+      - Test statistic $F$ (e.g., $F(df1, df2)$ = value)
+        - $p$ value (report raw $p$ value to 3 decimal places unless it is smaller than .001)
+      - Effect size $\eta_p^2$
+        - Small (.01), Medium (.06), Large (.14)
+    - Post-hoc comparisons: 
+      - For each significant main effect with more than 2 levels, conduct post-hoc pairwise comparisons and report the following:
+        - Which post-hoc test was performed (Tukey or Games-Howell)?
+        - Descriptive statistic (M and SD for each level)
+        - $p$ value (report $p$ value to 3 decimal places unless it is smaller than .001) with the test name as subscript (e.g., $p_\text{tukey}$)
+        - If significant difference was found, describe in which direction (i.e., Which condition has higher/lower mean?)
+      - For each significant interaction effect, conduct post-hoc comparisons on simple effects and report the following:
+        - Descriptive statistic (M and SD for each combination of levels)
+        - $p$ value (report $p$ value to 3 decimal places unless it is smaller than .001) with the test name as subscript (e.g., $p_\text{holm}$)
+        - If significant difference was found, describe in which direction (i.e., Which condition has higher/lower mean?)
+- What do the statistical results mean in the context of the research question?
+  - Make suggestions for future research if test was inconclusive and/or if there are alternative explanations to the results.
+- If a figure is included, refer to it in the write up.
+- Use appropriate causal/ associative language based on the three causal criteria.
+:::

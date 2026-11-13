@@ -130,7 +130,7 @@ df_wide %>%
 
 They are not too skewed, so we can proceed to use ANOVA.
 
-### Homogeneity of Variance: Which ANOVA?
+### Homogeneity of Variance
 
 We will run Levene's test on the change scores. 
 

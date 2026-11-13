@@ -1,0 +1,263 @@
+---
+title: "Lab 9: Factorial ANOVA Answers"
+author: 
+  - "Yeon Soon Shin"
+  - "Anjali Thapar"
+  - "Dustin Albert"
+format:
+  html:
+    html-math-method: plain
+    embed-resources: true
+---
+
+## Preliminaries {.unnumbered #preliminaries}
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+```{r}
+library(tidyverse)   # for data wrangling and visualization
+library(performance) # for assumption checks
+library(BrailleR)    # for accessibility
+GoBlind()
+```
+
+```{r, include=FALSE}
+theme_set(theme_classic(base_size = 20))
+```
+
+## Data
+
+Hypothetical data from Imundo et al. (2021) Study 2 is provided in the `data` folder in `imundo_follow-up.csv`. The data contains the following variables:
+
+* `ID`: participant ID
+* `ReviewContext`: whether the review context was the same or different as the original study context
+* `ReviewActivity`: whether the review activity was a restudy or a test
+* `ProportionRecalled`: the proportion of items recalled in the final test (DV)
+* `NumberCorrectWordsRecalled`: the number of items recalled in the final test
+* `Age`: participant age
+* `Gender`: participant gender (Female, Male, Other)
+
+### Read in and clean the data 
+
+```{r}
+df <- read_csv('data/imundo_follow-up.csv') %>%
+  as_tibble() %>%
+  mutate(ReviewContext = factor(ReviewContext, levels = c("Same", "Different"))) %>%
+  mutate(ReviewActivity = factor(ReviewActivity, levels = c("Restudy", "Test")))
+
+glimpse(df)
+```
+
+### Inspect the data
+
+```{r}
+df %>%
+  psych::describe() %>%
+  knitr::kable()
+```
+
+#### Visualize the distribution
+
+It is always a good idea to visualize the distribution of the dependent variable, subsetted by the factors in the design. You can check if the distribution looks approximately normal and not skewed, and if there are any outliers. Additionally, you can also check if the range of responses is reasonable (e.g., if the minimum and maximum values are within the possible range of the scale).
+
+```{r}
+df %>% 
+    ggplot(aes(x = ProportionRecalled)) +
+    facet_grid(ReviewContext ~ ReviewActivity) + # Group on rows, Timepoint on columns
+    geom_histogram(
+      bins = 10, # 10 bins
+      color = 'black', 
+      fill = 'lightgray') + 
+    theme_classic()
+```
+
+
+## Check Assumptions
+
+
+### Normality 
+
+```{r}
+df %>% 
+    ggplot(aes(x = ProportionRecalled)) +
+    facet_grid(ReviewContext ~ ReviewActivity) + # Group on rows, Timepoint on columns
+    geom_histogram(
+      bins = 10, # 10 bins
+      color = 'black', 
+      fill = 'lightgray') + 
+    theme_classic()
+```
+
+They are not too skewed, and because we have approximately 50 participants per cell, we can proceed to use ANOVA.
+
+### Homogeneity of Variance
+
+We will run Levene's test on the DV.
+
+```{r}
+res_levene <- car::leveneTest(ProportionRecalled ~ ReviewContext * ReviewActivity, 
+                              data = df)
+
+res_levene %>%
+  broom::tidy() %>%
+  mutate(
+    across(where(is.numeric) & !p.value, ~ papaja::apa_num(.)),
+    p.value = papaja::apa_p(p.value)
+  ) %>%
+  knitr::kable()
+```
+
+
+## Descriptive Statistics
+
+We want the marginal means and the cell means for each group at each timepoint. The marginal means are the means for each level of a factor, averaged across the levels of the other factor. The cell means are the means for each combination of the levels of the factors.
+
+### Marginal Means and SDs
+
+```{r}
+df %>%
+  group_by(ReviewContext) %>%
+  rstatix::get_summary_stats(
+    ProportionRecalled, 
+    show = c("n", "mean", "sd")
+  ) %>%
+  mutate(
+    across(where(is.numeric) & !n, ~ papaja::apa_num(.)) # round
+  ) %>%
+  knitr::kable()
+```
+
+```{r}
+df %>%
+  group_by(ReviewActivity) %>%
+  rstatix::get_summary_stats(
+    ProportionRecalled, 
+    show = c("n", "mean", "sd")
+  ) %>%
+  mutate(
+    across(where(is.numeric) & !n, ~ papaja::apa_num(.)) # round
+  ) %>%
+  knitr::kable()
+```
+
+
+### Cell Means and SDs
+```{r}
+df %>%
+  group_by(ReviewContext, ReviewActivity) %>%
+  rstatix::get_summary_stats(
+    ProportionRecalled, 
+    show = c("n", "mean", "sd")
+  ) %>%
+  mutate(
+    across(where(is.numeric) & !n, ~ papaja::apa_num(.)) # round
+  ) %>%
+  knitr::kable()
+```
+
+
+##  Factorial ANOVA
+
+### Define the Model
+
+```{r}
+mod <- afex::aov_ez(
+  data = df,                                      # data frame
+  dv = "ProportionRecalled",                      # dependent variable
+  id = "ID",                                      # participant ID
+  between = c("ReviewContext", "ReviewActivity"), # between-subjects factor
+  type = 3                                        # Type III sums of squares
+  ) 
+res_anova <- papaja::apa_print(mod, es = "pes") # partial eta-squared
+```
+
+### Plot Interaction 
+
+```{r}
+#| label: fig-interaction-plot
+#| fig-cap: "Mean Proportion Recalled for each condition. Error bars represent 95% between-subjects confidence intervals."
+#| fig-alt: "Line graph with ReviewContext on the x-axis and separate lines for ReviewActivity. The y-axis is Proportion Recalled."
+ 
+res_plot <- mod %>%
+  papaja::apa_lineplot(
+    factors = c("ReviewContext", "ReviewActivity"),
+    tendency = mean,
+    dispersion = ci,
+    level = 0.95,
+    jit = 0.05,       # dodge the points to avoid overlap
+    ylim = c(0, 1),   # reasonable min for Proportion Recalled
+    args_lines = list(lty = c(2, 1)),
+    args_points = list(pch = c(1, 16)),
+    args_errorbars = list(width = 0.1)
+  )
+```
+
+```{r}
+#| label: fig-bar
+#| fig-alt: "Bar graph with ReviewContext on the x-axis and separate bars for ReviewActivity. The y-axis is Proportion Recalled."
+#| fig-cap: "Mean Proportion Recalled for each condition. Error bars represent 95% between-subjects confidence intervals."
+f1_colors = c("#E1BE6A", "#40B0A6")  
+res_plot <- mod %>%
+    papaja::apa_barplot(
+    factors = c("ReviewContext", "ReviewActivity"),
+    tendency = mean,
+    dispersion = ci,
+    level = 0.95,
+    ylim = c(0, 1),   # reasonable min for Proportion Recalled
+    args_rect = list(col = f1_colors),
+    args_legend = list(
+      x="topleft",
+      fill = f1_colors)
+)
+```
+
+Here are all the cell means and the 95% within-subjects confidence intervals.
+
+```{r}
+res_plot$y %>% 
+  papaja::apa_num() %>%
+  knitr::kable()
+```
+
+### ANOVA Results
+
+
+```{r}
+mod %>%
+  afex::nice(
+    es = "pes",   # partial eta-squared
+  ) %>%
+  knitr::kable()
+```
+
+Because we have a significant interaction, we will conduct post-hoc comparisons to explore the simple effects of one factor for every level of the other factor.
+
+## Post-hoc Comparisons
+
+```{r}
+emmeans::emmeans(mod, ~ ReviewContext * ReviewActivity) %>%
+  emmeans::contrast(
+    interaction = "revpairwise", 
+    simple = "each",
+    combine = TRUE,
+    adjust = "holm"
+  ) %>%
+  broom::tidy() %>%
+  # take care of rounding and formatting for APA style
+  mutate( 
+    across(where(is.numeric) & !adj.p.value & !df, 
+           ~ papaja::apa_num(.)),
+    adj.p.value = papaja::apa_p(adj.p.value) 
+  ) %>%
+  knitr::kable()
+```
+
+## Write-Up
+
+To test whether the effect of review activity on memory performance depended on the type of review context, we conducted a 2 (Review Activity: Restudy vs. Test) x 2 (Review Context: Same vs. Different) between-subjects ANOVA on the proportion of recalled items. Levene's test indicated that the assumption of homogeneity of variance was met, $F(3, 199) = 1.65$, $p = .180$. The main effect of Review Context was not significant, $F(1, 199) = 1.54$, $p = .216$, $\eta_p^2 < .01$. The main effect of Review Activity was significant, $F(1, 199) = 15.86$, $p < .001$, $\eta_p^2 = .074$, where the Test Group ($M = .31$, $SD = .19$) recalled a higher proportion of items than the Restudy Group ($M = .21$, $SD = .17$). This main effect was qualified by a significant interaction between Review Context and Review Activity, $F(1, 199) = 4.83$, $p = .029$, $\eta_p^2 = .024$. Post-hoc comparisons revealed that for the Same review context, Test group ($M = .32$, $SD = .23$) recalled a significantly higher proportion of items than the Restudy group ($M = .17$, $SD = .15$), $p < .001$. In contrast, for the Different review context, there was no significant difference between the Test group ($M = .30$, $SD = .15$) and the Restudy group ($M = .26$, $SD = .18$), $p = .424$. The difference between the review contexts was not significant for the Test group, $p = .501$, but for the Restudy group, participants in the Different review context recalled a significantly higher proportion of items than those in the Same review context, $p = .047$. These results suggest that the benefit of testing over restudying is more pronounced when the review context is the same as the original study context, whereas restudying in a different context may mitigate the effect of review activity.

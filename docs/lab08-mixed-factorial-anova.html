@@ -4251,6 +4251,12 @@ vertical-align: -.125em;
  <span class="menu-text">Lab 8: Mixed Factorial ANOVA</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab09-factorial-anova.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 9: Factorial ANOVA</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -4324,7 +4330,7 @@ vertical-align: -.125em;
   <li><a href="#check-assumptions" id="toc-check-assumptions" class="nav-link" data-scroll-target="#check-assumptions"><span class="header-section-number">1.2</span> Check Assumptions</a>
   <ul>
   <li><a href="#normality" id="toc-normality" class="nav-link" data-scroll-target="#normality"><span class="header-section-number">1.2.1</span> Normality</a></li>
-  <li><a href="#homogeneity-of-variance-which-anova" id="toc-homogeneity-of-variance-which-anova" class="nav-link" data-scroll-target="#homogeneity-of-variance-which-anova"><span class="header-section-number">1.2.2</span> Homogeneity of Variance: Which ANOVA?</a></li>
+  <li><a href="#homogeneity-of-variance" id="toc-homogeneity-of-variance" class="nav-link" data-scroll-target="#homogeneity-of-variance"><span class="header-section-number">1.2.2</span> Homogeneity of Variance</a></li>
   </ul></li>
   <li><a href="#descriptive-statistics" id="toc-descriptive-statistics" class="nav-link" data-scroll-target="#descriptive-statistics"><span class="header-section-number">1.3</span> Descriptive Statistics</a>
   <ul>
@@ -4833,8 +4839,8 @@ It has fill set to purplish white.</code></pre>
 </div>
 <p>They are not too skewed, so we can proceed to use ANOVA.</p>
 </section>
-<section id="homogeneity-of-variance-which-anova" class="level3" data-number="1.2.2">
-<h3 data-number="1.2.2" class="anchored" data-anchor-id="homogeneity-of-variance-which-anova"><span class="header-section-number">1.2.2</span> Homogeneity of Variance: Which ANOVA?</h3>
+<section id="homogeneity-of-variance" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="homogeneity-of-variance"><span class="header-section-number">1.2.2</span> Homogeneity of Variance</h3>
 <p>We will run Levene’s test on the change scores.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>res_levene <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">leveneTest</span>(FFMQ_change <span class="sc">~</span> Group, </span>

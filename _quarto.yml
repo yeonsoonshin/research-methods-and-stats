@@ -48,6 +48,7 @@ website:
           - lab06-two-sample-t-test.qmd
           - lab07-one-way-anova.qmd
           - lab08-mixed-factorial-anova.qmd
+          - lab09-factorial-anova.qmd
       - section: "Appendix"
         contents:
           - appendix-apa.qmd
